@@ -1,0 +1,12 @@
+:local(.grid) {
+    height: 100%;
+    margin: 0 auto;
+    position: relative;;
+}
+
+:local(.gridItem) {
+    position: absolute;
+    width: 236px;
+    padding: 0;
+    box-sizing: border-box;
+}
