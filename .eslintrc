@@ -1,0 +1,12 @@
+{
+    "plugins": [
+        "pinterest"
+    ],
+    "env": {
+        "es6": true
+    },
+    "ecmaFeatures": {
+        "modules": true,
+        "jsx": true
+    }
+}
