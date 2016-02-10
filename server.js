@@ -1,3 +1,4 @@
+/* eslint-env node */
 let Hapi = require('hapi');
 let debug = require('debug')('server');
 

@@ -61,11 +61,11 @@ class App extends React.Component {
 
     loadItems (meta) {
         getPins(meta)
-           .then(newPins => {
+            .then(newPins => {
                 this.setState({
                     pins: this.state.pins.concat(newPins)
                 });
-        });
+            });
     }
 
     render () {

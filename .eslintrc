@@ -1,9 +1,14 @@
 {
-    "plugins": [
+    "extends": [
         "pinterest"
     ],
+    "plugins": [
+        "pinterest",
+        "react"
+    ],
     "env": {
-        "es6": true
+        "es6": true,
+        "browser": true
     },
     "ecmaFeatures": {
         "modules": true,
