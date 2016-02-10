@@ -73,10 +73,7 @@ export default class Grid extends Component {
      */
     resetLocalCache (columnCount) {
         // Sets the columns heights as an array, each member corresponding to a column.
-        this.currColHeights = [];
-        for (let i = 0; i < columnCount; i++) {
-            this.currColHeights.push(0);
-        }
+        this.currColHeights = new (window.Uint32Array || window.Array)(columnCount);
 
         // The next item that we need to position.
         this.positionNextIdx = 0;
@@ -240,7 +237,6 @@ export default class Grid extends Component {
 
     /**
      * Returns the index of the shortest column.
-     * TODO: Back this with a priority queue for improved performance.
      */
     shortestColumn () {
         let min = 0;
