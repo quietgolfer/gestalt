@@ -13,4 +13,5 @@ npm start
 ```
 
 Navigate to one of the examples:
-* [http://localhost:3000/Grid/index.html](Grid)
+* [http://localhost:3000/Dialog/index.html](Dialog)
+* [http://localhost:3000/Modal/index.html](Modal)

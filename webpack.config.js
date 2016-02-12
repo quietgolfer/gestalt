@@ -1,6 +1,7 @@
 module.exports = {
     entry: {
-        gridExample: './examples/Grid/example.js'
+        gridExample: './examples/Grid/example.js',
+        modalExample: './examples/Modal/example.js',
     },
     output: {
         filename: '[name].entry.js',
