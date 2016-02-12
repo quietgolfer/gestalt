@@ -1,4 +1,4 @@
-:local(.mask) {
+.mask {
     bottom: 0;
     left: 0;
     right: 0;
@@ -9,7 +9,7 @@
     display: block;
 }
 
-:local(.wrapper) {
+.wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -21,7 +21,7 @@
     position: fixed;
 }
 
-:local(.content) {
+.content {
     position: relative;
     background: #FFF;
     border-radius: 6px;
