@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Grid from '../../components/Grid/Grid'
+import Grid from '../../components/Grid/Grid';
 
 function getRandomColor() {
     let letters = '0123456789ABCDEF'.split('');
@@ -32,7 +32,7 @@ let getPins = (meta = {}) => {
 class App extends React.Component {
 
     constructor (props) {
-        super(props)
+        super(props);
         this.state = {
             pins: []
         };

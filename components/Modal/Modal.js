@@ -45,5 +45,5 @@ export default class Modal extends Component {
 }
 
 Modal.propTypes = {
-  onHide: React.PropTypes.func
+    onHide: React.PropTypes.func
 };

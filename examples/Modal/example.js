@@ -6,7 +6,7 @@ import Modal from '../../components/Modal/Modal';
 class App extends React.Component {
 
     constructor (props) {
-        super(props)
+        super(props);
         this.state = {
             openModal: false
         };
