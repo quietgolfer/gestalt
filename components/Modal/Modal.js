@@ -31,12 +31,13 @@ export default class Modal extends Component {
     }
 
     render () {
+        const { children } = this.props;
         return (
             <div>
                 <div className={style.mask}></div>
                 <div className={style.wrapper}  ref={ref => this.wrapper = ref}>
                     <div className={style.content} ref={ref => this.content = ref}>
-                        {this.props.children}
+                        {children}
                     </div>
                 </div>
             </div>
@@ -45,5 +46,6 @@ export default class Modal extends Component {
 }
 
 Modal.propTypes = {
+    children: React.PropTypes.any,
     onHide: React.PropTypes.func
 };

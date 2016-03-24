@@ -1,17 +1,9 @@
 {
     "extends": [
-        "pinterest"
-    ],
-    "plugins": [
         "pinterest",
-        "react"
+        "pinterest/rules/react"
     ],
     "env": {
-        "es6": true,
         "browser": true
-    },
-    "ecmaFeatures": {
-        "modules": true,
-        "jsx": true
     }
 }

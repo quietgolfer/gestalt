@@ -28,9 +28,11 @@ class App extends React.Component {
     render () {
         let modal = null;
         if (this.state.openModal) {
-            modal = <Modal onHide={this.closeModal.bind(this)}>
-                <span>Hello, here is some modal content.</span>
-            </Modal>;
+            modal = (
+                <Modal onHide={this.closeModal.bind(this)}>
+                    <span>Hello, here is some modal content.</span>
+                </Modal>
+            );
         }
 
         return (

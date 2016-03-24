@@ -69,6 +69,17 @@ export default class Grid extends Component {
     }
 
     /**
+     * Delays resize handling in case the scroll container is still being resized.
+     */
+    handleResize () {
+        if (this._resizeTimeout) {
+            clearTimeout(this._resizeTimeout);
+            this._resizeTimeout = null;
+        }
+        this._resizeTimeout = setTimeout(this.reflowIfNeeded.bind(this), 100);
+    }
+
+    /**
      * Resets the local cache.
      */
     resetLocalCache (columnCount) {
@@ -88,17 +99,6 @@ export default class Grid extends Component {
 
         // The grid left offset, set whenever there's a resize event or when we update.
         this.leftOffset = null;
-    }
-
-    /**
-     * Delays resize handling in case the scroll container is still being resized.
-     */
-    handleResize () {
-        if (this._resizeTimeout) {
-            clearTimeout(this._resizeTimeout);
-            this._resizeTimeout = null;
-        }
-        this._resizeTimeout = setTimeout(this.reflowIfNeeded.bind(this), 100);
     }
 
     /**
@@ -263,11 +263,6 @@ export default class Grid extends Component {
 
 Grid.propTypes = {
     /**
-     * Minimum number of columns to display.
-     */
-    minCols: React.PropTypes.number,
-
-    /**
      * An array of all objects to display in the grid.
      */
     items: React.PropTypes.array,
@@ -277,6 +272,11 @@ Grid.propTypes = {
      * The callback should update the state of the items, and pass those in as props to this component.
      */
     loadItems: React.PropTypes.func,
+
+    /**
+     * Minimum number of columns to display.
+     */
+    minCols: React.PropTypes.number,
 
     /**
      * A callback to render a given item object.

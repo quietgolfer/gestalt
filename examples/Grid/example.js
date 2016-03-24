@@ -46,19 +46,6 @@ class App extends React.Component {
         });
     }
 
-    renderItem (pin) {
-        let pinStyles = {
-            border: '1px solid #fff',
-            width: '234px',
-            background: pin.color,
-            height: `${pin.height}px`
-        };
-
-        return <div style={pinStyles}>
-            {pin.name}
-        </div>;
-    }
-
     loadItems (meta) {
         getPins(meta)
             .then(newPins => {
@@ -68,12 +55,27 @@ class App extends React.Component {
             });
     }
 
+    renderItem (pin) {
+        let pinStyles = {
+            border: '1px solid #fff',
+            width: '234px',
+            background: pin.color,
+            height: `${pin.height}px`
+        };
+
+        return (
+            <div style={pinStyles}>
+                {pin.name}
+            </div>
+        );
+    }
+
     render () {
         return (
             <Grid
+                items={this.state.pins}
                 loadItems={this.loadItems.bind(this)}
-                renderItem={this.renderItem.bind(this)}
-                items={this.state.pins} />
+                renderItem={this.renderItem.bind(this)} />
         );
     }
 };

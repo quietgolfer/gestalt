@@ -38,8 +38,8 @@ describe('<TextField />', () => {
         let errors = false;
         const textField = TestUtils.renderIntoDocument(
             <TextField
-                validators={[() => ({errors: ['error']})]}
-                onValidation={() => errors = true} />
+                onValidation={() => errors = true}
+                validators={[() => ({errors: ['error']})]} />
         );
         const el = ReactDOM.findDOMNode(textField);
         expect(!errors);
