@@ -1,26 +1,24 @@
 module.exports = {
     entry: {
+        main: './components/index.js',
         gridExample: './examples/Grid/example.js',
-        modalExample: './examples/Modal/example.js',
+        modalExample: './examples/Modal/example.js'
     },
     output: {
         filename: '[name].entry.js',
-        publicPath: 'http://localhost:8090/assets',
+        publicPath: 'http://localhost:8090/assets'
     },
     module: {
         loaders: [
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader?modules'
+                loader: 'style!css?modules'
             },
             {
-                test: /\.jsx?$/,
+                test: /\.js$/,
                 exclude: /(node_modules)/,
-                loader: 'babel-loader',
+                loader: 'babel',
             },
         ],
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx'],
-    },
+    }
 };
