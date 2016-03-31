@@ -75,7 +75,8 @@ class App extends React.Component {
             <Grid
                 items={this.state.pins}
                 loadItems={this.loadItems.bind(this)}
-                renderItem={this.renderItem.bind(this)} />
+                renderItem={this.renderItem.bind(this)}
+            />
         );
     }
 };

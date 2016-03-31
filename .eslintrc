@@ -4,6 +4,7 @@
         "pinterest/rules/react"
     ],
     "env": {
-        "browser": true
+        "browser": true,
+        "es6": true
     }
 }

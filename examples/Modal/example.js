@@ -30,14 +30,14 @@ class App extends React.Component {
         if (this.state.openModal) {
             modal = (
                 <Modal onHide={this.closeModal.bind(this)}>
-                    <span>Hello, here is some modal content.</span>
+                    <span>{'Hello, here is some modal content.'}</span>
                 </Modal>
             );
         }
 
         return (
             <div>
-                <a href='#' onClick={this.openModal.bind(this)}>Open Modal</a>
+                <a href='#' onClick={this.openModal.bind(this)}>{'Open Modal'}</a>
                 {modal}
             </div>
         );
