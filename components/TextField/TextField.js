@@ -5,20 +5,6 @@ import styles from './TextField.css';
 const cx = classnames.bind(styles);
 
 export default class TextField extends Component {
-
-    static propTypes = {
-        disabled: PropTypes.bool.isRequired,
-        errored: PropTypes.bool.isRequired,
-        focused: PropTypes.bool.isRequired
-    }
-
-    static defaultProps = {
-        disabled: false,
-        errored: false,
-        focused: false,
-        type: 'text'
-    }
-
     constructor(props, context) {
         super(props, context);
     }
@@ -49,3 +35,16 @@ export default class TextField extends Component {
         return <input {...this.props} classNames={cs} ref={this.setInputRef} />;
     }
 }
+
+TextField.propTypes = {
+    disabled: PropTypes.bool.isRequired,
+    errored: PropTypes.bool.isRequired,
+    focused: PropTypes.bool.isRequired
+};
+
+TextField.defaultProps = {
+    disabled: false,
+    errored: false,
+    focused: false,
+    type: 'text'
+};

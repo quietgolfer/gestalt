@@ -1,7 +1,6 @@
 {
   "name": "pinterest-gestalt",
   "version": "0.0.1",
-  "private": true,
   "description": "Pinterest web components written in React.",
   "scripts": {
     "start": "npm run server | npm run dev",
