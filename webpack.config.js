@@ -1,6 +1,5 @@
 module.exports = {
     entry: {
-        main: './components/index.js',
         gridExample: './examples/Grid/example.js',
         modalExample: './examples/Modal/example.js'
     },

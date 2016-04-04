@@ -1,10 +1,10 @@
-.grid {
+.Grid {
     height: 100%;
     margin: 0 auto;
     position: relative;
 }
 
-.gridItem {
+.Grid__Item {
     position: absolute;
     width: 236px;
     padding: 0;

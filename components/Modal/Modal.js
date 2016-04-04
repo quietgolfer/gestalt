@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './Modal.css';
+import styles from './Modal.css';
 
 export default class Modal extends Component {
 
@@ -34,9 +34,9 @@ export default class Modal extends Component {
         const { children } = this.props;
         return (
             <div>
-                <div className={style.mask}></div>
-                <div className={style.wrapper}  ref={ref => this.wrapper = ref}>
-                    <div className={style.content} ref={ref => this.content = ref}>
+                <div className={styles.Modal__Mask}></div>
+                <div className={styles.Modal__Wrapper}  ref={ref => this.wrapper = ref}>
+                    <div className={styles.Modal__Content} ref={ref => this.content = ref}>
                         {children}
                     </div>
                 </div>

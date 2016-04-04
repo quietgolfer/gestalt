@@ -1,4 +1,4 @@
-.mask {
+.Modal__Mask {
     bottom: 0;
     left: 0;
     right: 0;
@@ -9,7 +9,7 @@
     display: block;
 }
 
-.wrapper {
+.Modal__Wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -21,7 +21,7 @@
     position: fixed;
 }
 
-.content {
+.Modal__Content {
     position: relative;
     background: #fff;
     border-radius: 6px;

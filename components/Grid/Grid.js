@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './Grid.css';
+import styles from './Grid.css';
 import raf from '../../lib/raf';
 
 const COLUMN_WIDTH = 236;
@@ -250,9 +250,9 @@ export default class Grid extends Component {
 
     render () {
         return (
-            <div className={style.grid} ref={ref => this.container = ref}>
+            <div className={styles.Grid} ref={ref => this.container = ref}>
                 {this.props.items.map((item, idx) =>
-                    <div className={style.gridItem} key={idx} ref={ref => this.itemRefs[idx] = ref}>
+                    <div className={styles.Grid__Item} key={idx} ref={ref => this.itemRefs[idx] = ref}>
                         {this.props.renderItem(item)}
                     </div>
                 )}
