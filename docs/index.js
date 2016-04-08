@@ -1,5 +1,6 @@
 import '../components/Card/__tests__/Card-doc';
 import '../components/Divider/__tests__/Divider-doc';
+import '../components/Grid/__tests__/Grid-doc';
 import '../components/Heading/__tests__/Heading-doc';
 import '../components/Mask/__tests__/Mask-doc';
 import '../components/Tabs/__tests__/Tabs-doc';
