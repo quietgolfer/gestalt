@@ -1,0 +1,11 @@
+.Mask {
+    overflow: hidden; /* .overflow-hidden */
+}
+
+.Mask--rounded {
+    border-radius: 6px; /* .rounded */
+}
+
+.Mask--circle {
+    border-radius: 100%; /* .circle */
+}

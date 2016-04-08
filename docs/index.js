@@ -1,8 +1,9 @@
 import '../components/Card/__tests__/Card-doc';
-import '../components/TextField/__tests__/TextField-doc';
 import '../components/Divider/__tests__/Divider-doc';
+import '../components/Mask/__tests__/Mask-doc';
 import '../components/Tabs/__tests__/Tabs-doc';
 import '../components/Text/__tests__/Text-doc';
+import '../components/TextField/__tests__/TextField-doc';
 
 import { card, doc, ns } from 'devcards';
 
