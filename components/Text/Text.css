@@ -1,0 +1,38 @@
+.Text {
+    font-family: "Helvetica Neue";
+}
+
+.Text--xs {
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: -0.1px;
+    word-spacing: 0;
+}
+
+.Text--s {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.15px;
+    word-spacing: 0;
+}
+
+.Text--m {
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: -0.2px;
+    word-spacing: 0;
+}
+
+.Text--l {
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.25px;
+    word-spacing: 0;
+}
+
+.Text--xl {
+    font-size: 21px;
+    line-height: 23px;
+    letter-spacing: -0.3px;
+    word-spacing: -1.3px;
+}
