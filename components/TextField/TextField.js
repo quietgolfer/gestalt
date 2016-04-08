@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
+import classnames from 'classnames/bind';
 import styles from './TextField.css';
 
 const cx = classnames.bind(styles);
@@ -32,7 +32,7 @@ export default class TextField extends Component {
             }
         );
 
-        return <input {...this.props} classNames={cs} ref={this.setInputRef} />;
+        return <input {...this.props} className={cs} ref={this.setInputRef} />;
     }
 }
 

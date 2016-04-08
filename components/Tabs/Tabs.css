@@ -1,0 +1,50 @@
+.Tabs {
+    border: 1px solid #cecece;
+    border-radius: 6px;
+    display: flex;
+    overflow: hidden;
+
+    user-select: none;
+}
+
+.Tabs--item {
+    float: left;
+    width: 103px;
+}
+
+.Tabs--item {
+    background-color: #f7f7f7;
+    background-image: linear-gradient(#fff, #f0f0f0);
+    border-left: 1px solid #cecece;
+    color: #333;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    padding-bottom: 5px;
+    padding-top: 6px;
+    width: 100%;
+
+    /*border: 0;
+margin: 0;
+padding: 0;*/
+
+outline: none;
+position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+
+.Tabs--item:first-child {
+    border-left: none;
+}
+
+.Tabs--item:hover {
+      background-image: linear-gradient(transparent 0%, rgba(0,0,0,0.02) 100%);
+}
+
+.Tabs--item__isSelected,
+.Tabs--item__isSelected:hover {
+  background-image: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.06) 100%);
+  box-shadow: none;
+  text-shadow: none;
+}
