@@ -1,3 +1,5 @@
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+
 module.exports = {
     entry: [
         'devcards/main',
@@ -24,5 +26,8 @@ module.exports = {
             require('postcss-browser-reporter')(),
             require('postcss-reporter')()
         ];
-    }
+    },
+    plugins: [
+        new OpenBrowserPlugin({url: 'http://localhost:8080/docs'})
+    ]
 };

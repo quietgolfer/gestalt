@@ -1,4 +1,4 @@
-# React Components
+# Gestalt
 
 ## Development
 
@@ -11,7 +11,4 @@ Start the development server:
 ```
 npm start
 ```
-
-Navigate to one of the examples:
-* [http://localhost:3000/Dialog/index.html](Dialog)
-* [http://localhost:3000/Modal/index.html](Modal)
+The documentation will automatically open in your default browser.
