@@ -1,3 +1,4 @@
+import Heading from '../Heading/Heading';
 import React, { Component } from 'react';
 import styles from './Modal.css';
 
@@ -48,4 +49,21 @@ export default class Modal extends Component {
 Modal.propTypes = {
     children: React.PropTypes.any,
     onHide: React.PropTypes.func
+};
+
+export const ModalHeading = ({children}) => <div className={styles['Modal__Child--header']}>
+    <Heading size='s'>{children}</Heading>
+</div>;
+ModalHeading.propTypes = {
+    children: React.PropTypes.any
+};
+
+export const ModalContent = ({children}) => <div className={styles['Modal__Child--content']}>{children}</div>;
+ModalContent.propTypes = {
+    children: React.PropTypes.any
+};
+
+export const ModalFooter = ({children}) => <div className={styles['Modal__Child--footer']}>{children}</div>;
+ModalFooter.propTypes = {
+    children: React.PropTypes.any
 };

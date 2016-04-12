@@ -3,6 +3,7 @@ import '../components/Divider/__tests__/Divider-doc';
 import '../components/Grid/__tests__/Grid-doc';
 import '../components/Heading/__tests__/Heading-doc';
 import '../components/Mask/__tests__/Mask-doc';
+import '../components/Modal/__tests__/Modal-doc';
 import '../components/Tabs/__tests__/Tabs-doc';
 import '../components/Text/__tests__/Text-doc';
 import '../components/TextField/__tests__/TextField-doc';
