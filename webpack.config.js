@@ -27,6 +27,7 @@ module.exports = {
             require('postcss-reporter')()
         ];
     },
+    devtool: 'source-map',
     plugins: [
         new OpenBrowserPlugin({url: 'http://localhost:8080/docs'})
     ]
