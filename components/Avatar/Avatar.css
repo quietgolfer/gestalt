@@ -1,0 +1,16 @@
+.Image {
+    overflow: hidden;
+}
+
+.Image__img {
+    display: block;
+    max-width: 100%;
+}
+
+.Image--rounded {
+    border-radius: 6px;
+}
+
+.Image--circle {
+    border-radius: 9999px;
+}

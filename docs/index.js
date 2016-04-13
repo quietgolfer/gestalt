@@ -1,7 +1,9 @@
+import '../components/Avatar/__tests__/Avatar-doc';
 import '../components/Card/__tests__/Card-doc';
 import '../components/Divider/__tests__/Divider-doc';
 import '../components/Grid/__tests__/Grid-doc';
 import '../components/Heading/__tests__/Heading-doc';
+import '../components/Image/__tests__/Image-doc';
 import '../components/Mask/__tests__/Mask-doc';
 import '../components/Modal/__tests__/Modal-doc';
 import '../components/Tabs/__tests__/Tabs-doc';
