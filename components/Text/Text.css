@@ -36,3 +36,15 @@
     letter-spacing: -0.3px;
     word-spacing: -1.3px;
 }
+
+.Text--bold {
+    font-weight: 800; /* .bold */
+}
+
+.Text--black {
+    color: #555;
+}
+
+.Text--gray {
+    color: #b5b5b5;
+}

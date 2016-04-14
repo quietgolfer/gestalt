@@ -5,12 +5,21 @@ import styles from './Text.css';
 const cx = classnames.bind(styles);
 
 export default function Text(props) {
-    const { children, size } = props;
-    const cs = cx('Text', `Text--${size}`);
+    const { bold, children, color, size } = props;
+    const cs = cx('Text', `Text--${size}`, `Text--${color}`, {
+        'Text--bold': bold
+    });
     return <div className={cs}>{children}</div>;
 };
 
 Text.propTypes = {
+    bold: PropTypes.bool.isRequired,
     children: PropTypes.node.isRequired,
-    size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+    color: PropTypes.oneOf(['black', 'gray']),
+    size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired
+};
+
+Text.defaultProps = {
+    bold: false,
+    color: 'black'
 };
