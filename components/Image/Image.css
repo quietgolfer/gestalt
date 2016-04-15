@@ -8,7 +8,7 @@
 
 }
 
-.Image__placeholder-wrapper {
+.Image__placeholder--wrapper {
     position: absolute;
     top: 0;
     left: 0;
@@ -20,7 +20,7 @@
     justify-content: center;
 }
 
-.Image__placeholder-text {
+.Image__placeholder--text {
     text-align: center; /* .center */
     opacity: 0.5;
 }

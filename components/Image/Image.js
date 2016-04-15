@@ -14,8 +14,8 @@ export function Placeholder(props) {
     const { aspect, color, children } = props;
     return (
         <div className={cx('Image__placeholder')} style={{backgroundColor: color, paddingBottom: `${aspect}%`}}>
-            <div className={cx('Image__placeholder-wrapper')}>
-                <div className={cx('Image__placeholder-text')}>
+            <div className={cx('Image__placeholder--wrapper')}>
+                <div className={cx('Image__placeholder--text')}>
                     {children}
                 </div>
             </div>
