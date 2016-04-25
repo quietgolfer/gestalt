@@ -1,34 +1,41 @@
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+/* eslint-env node */
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
 
 module.exports = {
-    entry: [
-        'devcards/main',
-        './docs/index.js'
-    ],
+    entry: './src/index.css',
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: '[name].js',
+    },
     module: {
         loaders: [
             {
                 test: /\.css$/,
-                loader: 'style!css?modules&importLoaders=1&localIdentName=[local]--[hash:base64:5]!postcss'
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules\/(?!devcards)/,
-                loader: 'babel',
-            },
+                loader: ExtractTextPlugin.extract(
+                    'style',
+                    [
+                        'css?modules&importLoaders=1&localIdentName=[local]',
+                        'postcss'
+                    ],
+                    {filename: 'gestalt.css'}
+                )
+            }
         ],
     },
     postcss: function(webpack) {
         return [
-            require('postcss-import')({ addDependencyTo: webpack }),
-            require('postcss-url')(),
-            require('postcss-cssnext')(),
-            require('postcss-browser-reporter')(),
-            require('postcss-reporter')()
+            require('postcss-import')({addDependencyTo: webpack}),
+            require('postcss-cssnext')({
+                features: {
+                    customMedia: {
+                        extensions: require('./src/breakpoints')
+                    }
+                }
+            })
         ];
     },
-    devtool: 'source-map',
     plugins: [
-        new OpenBrowserPlugin({url: 'http://localhost:8080/docs'})
+        new ExtractTextPlugin('gestalt.css'),
     ]
 };

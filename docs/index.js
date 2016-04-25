@@ -1,14 +1,17 @@
-import '../components/Avatar/__tests__/Avatar-doc';
-import '../components/Card/__tests__/Card-doc';
-import '../components/Divider/__tests__/Divider-doc';
-import '../components/Grid/__tests__/Grid-doc';
-import '../components/Heading/__tests__/Heading-doc';
-import '../components/Image/__tests__/Image-doc';
-import '../components/Mask/__tests__/Mask-doc';
-import '../components/Modal/__tests__/Modal-doc';
-import '../components/Tabs/__tests__/Tabs-doc';
-import '../components/Text/__tests__/Text-doc';
-import '../components/TextField/__tests__/TextField-doc';
+import '../src/Avatar/__tests__/Avatar-doc';
+import '../src/Button/__tests__/Button-doc';
+import '../src/Card/__tests__/Card-doc';
+import '../src/Colors/Colors-doc';
+import '../src/Divider/__tests__/Divider-doc';
+import '../src/Grid/__tests__/Grid-doc';
+import '../src/Heading/__tests__/Heading-doc';
+import '../src/Image/__tests__/Image-doc';
+import '../src/Mask/__tests__/Mask-doc';
+import '../src/Modal/__tests__/Modal-doc';
+import '../src/Switch/__tests__/Switch-doc';
+import '../src/Tabs/__tests__/Tabs-doc';
+import '../src/Text/__tests__/Text-doc';
+import '../src/TextField/__tests__/TextField-doc';
 
 import { card, doc, ns } from 'devcards';
 

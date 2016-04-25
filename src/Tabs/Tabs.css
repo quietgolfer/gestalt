@@ -1,0 +1,18 @@
+.Tabs {
+    composes: bg-super-light-gray flex overflow-hidden from "../index.css";
+    background-color: #efefef;
+    border-radius: 4px;
+
+    user-select: none;
+    padding: 2px;
+}
+
+.Tabs--item {
+    composes: col-12 text-center p2 from "../index.css";
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Tabs--item__isSelected {
+    composes: bg-white from "../index.css";
+}

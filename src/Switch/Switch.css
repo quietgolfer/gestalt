@@ -1,0 +1,27 @@
+.Switch {
+    border-radius: 48px; /* .circle */
+    display: inline-block;
+    width: 48px;
+    padding: 2px;
+    background-color: #555;
+    cursor: pointer;
+}
+
+.Switch__switched {
+    background-color: #88a5ab;
+}
+
+.Switch--slider {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: #fff;
+}
+
+.Switch--slider__switched {
+    float: right;
+}
+
+.Switch--checkbox {
+    display: none;
+}

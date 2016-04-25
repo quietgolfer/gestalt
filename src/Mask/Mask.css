@@ -1,0 +1,15 @@
+.Mask {
+    composes: overflow-hidden relative from "../index.css";
+}
+
+.Mask--square {
+    border-radius: 0;
+}
+
+.Mask--rounded {
+    border-radius: 6px; /* .rounded */
+}
+
+.Mask--circle {
+    border-radius: 100%; /* .circle */
+}
