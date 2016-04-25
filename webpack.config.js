@@ -9,7 +9,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.css$/,
-                loader: 'style!css?modules&importLoaders=1!postcss'
+                loader: 'style!css?modules&importLoaders=1&localIdentName=[local]--[hash:base64:5]!postcss'
             },
             {
                 test: /\.js$/,
