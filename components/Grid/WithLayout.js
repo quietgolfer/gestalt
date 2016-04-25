@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 export default class WithLayout extends Component {
     constructor (props, context) {
         super(props, context);
-        this.measuringNode = document.createElement('div');
+        if (typeof document !== 'undefined') {
+            this.measuringNode = document.createElement('div');
+        }
         this.state = {
             cache: null
         };
@@ -16,18 +18,15 @@ export default class WithLayout extends Component {
 
     componentWillReceiveProps (nextProps) {
         if (this.props.invalidateCacheKey !== nextProps.invalidateCacheKey) {
-            this.setState({
-                cache: null
-            });
             setTimeout(() => {
-                this.renderToCache();
+                this.renderToCache(true);
             });
         }
     }
 
-    renderToCache () {
+    renderToCache (invalidate) {
         // If we don't have the item in cache yet, render it.
-        if (!this.state.cache) {
+        if (!this.state.cache || invalidate) {
             // Append a temporary node to the dom to measure it.
             document.body.appendChild(this.measuringNode);
             var child = this.props.children();
@@ -36,7 +35,13 @@ export default class WithLayout extends Component {
             document.body.removeChild(this.measuringNode);
 
             // Trigger the prop fn to determine layout using layout information.
-            let processedLayoutInfo = this.props.processInfo(this.props.data, clientWidth, clientHeight);
+            let processedLayoutInfo;
+            if (typeof document === 'undefined') {
+                processedLayoutInfo = {top: 0, left: 0};
+            } else {
+                processedLayoutInfo = this.props.processInfo(this.props.data, clientWidth, clientHeight);
+            }
+
             this.setState({
                 cache: this.props.children(processedLayoutInfo)
             });
@@ -49,7 +54,7 @@ export default class WithLayout extends Component {
         }
 
         // Return nothing until we're ready to render.
-        return null;
+        return this.props.children();
     }
 }
 

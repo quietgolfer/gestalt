@@ -16,14 +16,10 @@ export default class Grid extends Component {
     constructor (props, context) {
         super(props, context);
 
-        // Initially set the number of columns to the minimum, this will be resized to the container size
-        // after the component renders.
-        this.resetLocalCache(this.calculateColumns());
+        this.currColHeights = [];
 
         this.state = {
-            // Since items are positioned absolutely, we can't rely on margin or padding to center
-            // an arbitrary number of columns. Calculate the offset in order to center the grid.
-            leftOffset: this.determineLeftOffset()
+            leftOffset: 0
         };
     }
 
@@ -39,6 +35,17 @@ export default class Grid extends Component {
 
         this.props.scrollContainer.addEventListener('scroll', this.boundScrollHandler);
         this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
+
+        // We calculate columns and offset after the component mounts in order to support server rendering.
+        // Initially set the number of columns to the minimum, this will be resized to the container size
+        // after the component renders.
+        this.resetLocalCache(this.calculateColumns());
+
+        this.setState({
+            // Since items are positioned absolutely, we can't rely on margin or padding to center
+            // an arbitrary number of columns. Calculate the offset in order to center the grid.
+            leftOffset: this.determineLeftOffset()
+        });
     }
 
     /**
@@ -65,7 +72,11 @@ export default class Grid extends Component {
      */
     resetLocalCache (columnCount) {
         // Sets the columns heights as an array, each member corresponding to a column.
-        this.currColHeights = new (window.Uint32Array || window.Array)(columnCount);
+        if (typeof document === 'undefined') {
+            this.currColHeights = [];
+        } else {
+            this.currColHeights = new (self.Uint32Array || self.Array)(columnCount);
+        }
 
         // Whether or not we have requested new items.
         // This is used as a flag to signal that we need to wait before loading additional items.
@@ -139,7 +150,8 @@ export default class Grid extends Component {
      * Returns the container height.
      */
     getContainerHeight  () {
-        return this.container.parentNode.clientHeight;
+        let container = this.props.scrollContainer;
+        return container.clientHeight || container.innerHeight;
     }
 
     /**
@@ -194,7 +206,7 @@ export default class Grid extends Component {
                         processInfo={this.processInfo.bind(this)}>
                     {
                         (position={left: 0, top: 0}) => <div
-                            className={styles.Grid__Item}
+                            className={styles['Grid__Item']}
                             key={idx}
                             style={{top: position.top, left: position.left}}>
                             <this.props.comp data={item} />
@@ -237,5 +249,5 @@ Grid.propTypes = {
 
 Grid.defaultProps = {
     minCols: 3,
-    scrollContainer: window
+    scrollContainer: typeof window !== 'undefined' ? window : null
 };
