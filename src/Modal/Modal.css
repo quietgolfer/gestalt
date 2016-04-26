@@ -40,7 +40,7 @@
 .Modal__Child--footer {
     composes: Modal__Child--content;
     border-top: 1px solid #e7e7e7;
-    background: #F0F0F0;
+    background: #f0f0f0;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     text-align: right;
