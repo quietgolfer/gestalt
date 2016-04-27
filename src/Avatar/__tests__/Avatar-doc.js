@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Avatar from '../Avatar';
 import { card, doc, ns } from 'devcards';
 
@@ -7,6 +7,15 @@ ns('Avatar');
 class PreloadImageContext extends Component {
     static childContextTypes = {
         canPreloadImages: React.PropTypes.bool
+    }
+
+    static propTypes = {
+        canPreloadImages: PropTypes.bool.isRequired,
+        children: PropTypes.node.isRequired,
+    }
+
+    static defaultProps = {
+        canPreloadImages: false,
     }
 
     getChildContext() {

@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* eslint no-console:0 */
 
 var primary = [
     'blue',

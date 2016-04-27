@@ -1,3 +1,6 @@
+/* eslint-env node */
+/* eslint no-console:0 */
+
 // whitespace scale TBD:
 //
 //   0 = 0

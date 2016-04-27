@@ -9,14 +9,14 @@ import SearchField from '../SearchField';
 describe('<SearchField />', () => {
     it('can be controlled', () => {
         const textField = TestUtils.renderIntoDocument(
-            <TextField onChange={() => {}} value="Text" />
+            <SearchField onChange={() => {}} value="Text" />
         );
         expect(textField.value).toBe('Text');
     });
 
     it('can be uncontrolled', () => {
         const textField = TestUtils.renderIntoDocument(
-            <TextField defaultValue="DefaultText" />
+            <SearchField defaultValue="DefaultText" />
         );
         const el = ReactDOM.findDOMNode(textField);
         el.value = 'Text';

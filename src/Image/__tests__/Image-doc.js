@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Image, { Placeholder } from '../Image';
 import { card, doc, ns } from 'devcards';
 import Mask from '../../Mask/Mask';
@@ -10,6 +10,11 @@ ns('Image');
 class PreloadImageContext extends Component {
     static childContextTypes = {
         preloadingSupported: React.PropTypes.bool
+    }
+
+    static propTypes = {
+        canPreloadImages: PropTypes.bool.isRequired,
+        children: PropTypes.node.isRequired,
     }
 
     getChildContext() {
@@ -45,27 +50,27 @@ card('Preloading',
 To test this out, adjust network throttling in your developer tools.`,
     <div className="flex mxn2">
         <div className="col-4 px2">
-            <h5>Static</h5>
+            <h5>{'Static'}</h5>
             <PreloadImageContext>
                 <Image
                     alt="example.com"
                     color="#CCC"
                     height={750}
-                    src="https://s-media-cache-ak0.pinimg.com/564x/5a/da/e7/5adae7e3e6cd31a86f9a6608618f3a30.jpg"
                     placeholder="example.com"
+                    src="https://s-media-cache-ak0.pinimg.com/564x/5a/da/e7/5adae7e3e6cd31a86f9a6608618f3a30.jpg"
                     width={500}
                 />
             </PreloadImageContext>
         </div>
         <div className="col-4 px2">
-            <h5>Preloaded</h5>
+            <h5>{'Preloaded'}</h5>
             <PreloadImageContext canPreloadImages>
                 <Image
                     alt="ynkim.com"
                     color="#CCC"
                     height={750}
-                    src="https://s-media-cache-ak0.pinimg.com/564x/5a/da/e7/5adae7e3e6cd31a86f9a6608618f3a30.jpg"
                     placeholder="example.com"
+                    src="https://s-media-cache-ak0.pinimg.com/564x/5a/da/e7/5adae7e3e6cd31a86f9a6608618f3a30.jpg"
                     width={500}
                 />
             </PreloadImageContext>
@@ -79,17 +84,19 @@ card('Placeholders',
             <Placeholder
                 aspect={(314 / 216) * 100}
                 color="#018077">
-                <Text size="s">example.com</Text>
+                <Text size="s">{'example.com'}</Text>
             </Placeholder>
         </div>
 
         <div className="col-4 px2">
-            <Mask type="circle" width={60} height={60}>
+            <Mask height={60} type="circle" width={60}>
                 <Placeholder
                     aspect={100}
                     color="#CCC">
-                    <Heading size="xs" color="white">CL</Heading>
+                    <Heading color="white" size="xs">
+                        {'CL'}
+                    </Heading>
                 </Placeholder>
             </Mask>
         </div>
-    </div>)
+    </div>);

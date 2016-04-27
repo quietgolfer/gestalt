@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import classnames from 'classnames/bind';
-import styles from './Navbar.css'
+import styles from './Navbar.css';
 
 const cx = classnames.bind(styles);
 

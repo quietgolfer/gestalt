@@ -7,9 +7,7 @@ ns('Tabs');
 card('Tabs',
     doc`# Tabs
 
-Tabs make it easy to explore and switch between different views or functional aspects of an app or to browse categorized data sets.
-
-A segmented control can display a title (an NSString object) or an image (UIImage object). The UISegmentedControl object automatically resizes segments to fit proportionally within their superview unless they have a specific width set. When you add and remove segments, you can request that the action be animated with sliding and fading effects.
+Lorem ipsum dolor sit amet.
 
     <Tabs items={['First', 'Second', 'Third']} selectedItemIndex={1} />
 
@@ -20,7 +18,7 @@ A segmented control can display a title (an NSString object) or an image (UIImag
     {heading: false});
 
 card('Usage',
-    doc`Tabs are dumb components, meaning you need to write up the behavior when you click on an item. This simple example takes the index provided by the \`onChange\` callback and sets the \`selectedItemIndex\`.
+    doc`Tabs are dumb components, meaning you need to write up the behavior when you click on an item.
 
 If you'd like the tabs to control hiding or showing content that state should live in a parent component.`,
     (atom) => {
@@ -39,4 +37,4 @@ If you'd like the tabs to control hiding or showing content that state should li
         );
     },
     {selectedItemIndex: 0},
-    {inspectData: true});
+    {inspectData: true, history: true});
