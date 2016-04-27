@@ -31,7 +31,7 @@ export default class Grid extends Component {
             this.fetchMoreIfNeeded();
         };
 
-        this.boundResizeHandler =() => this.handleResize();
+        this.boundResizeHandler = () => this.handleResize();
 
         this.props.scrollContainer.addEventListener('scroll', this.boundScrollHandler);
         this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
@@ -205,7 +205,7 @@ export default class Grid extends Component {
                         key={idx}
                         processInfo={this.processInfo.bind(this)}>
                     {
-                        (position={left: 0, top: 0}) => <div
+                        (position = {left: 0, top: 0}) => <div
                             className={styles['Grid__Item']}
                             key={idx}
                             style={{top: position.top, left: position.left}}>

@@ -33,9 +33,17 @@ Swatch.propTypes = {
 card('Color',
     doc`# Colors
 
-TODO: This is copied from go/spec but isn't up to date any more. >8 Primary colors + needs information about making the colors "Pinterest neutral" (i.e. no "commerce" in "commerce blue").
+TODO: This is copied from go/spec but isn't up to date any more. >8 Primary
+colors + needs information about making the colors "Pinterest neutral" (i.e. no
+"commerce" in "commerce blue").
 
-The BRIO color system relies on a primary neutral palette of grays and white, with chief contrast provided by Pinterest's corporate identity red plus Commerce blue; red and blue buttons are used sparingly in order to draw attention. A limited set of less saturated colors: green and yellow are used consistently throughout the UI to indicate success and system comments. There are total of eight colors — carefully chosen to let a few key colors and the user's content predominate.`,
+The BRIO color system relies on a primary neutral palette of grays and white,
+with chief contrast provided by Pinterest's corporate identity red plus Commerce
+blue; red and blue buttons are used sparingly in order to draw attention. A
+limited set of less saturated colors: green and yellow are used consistently
+throughout the UI to indicate success and system comments. There are total of
+eight colors — carefully chosen to let a few key colors and the user's content
+predominate.`,
     <div />,
     {},
     {heading: false});
@@ -84,8 +92,8 @@ const alts = [
     'purple'
 ].reduce((acc, color) => {
     let g = [];
-    for(let i=0; i<10; ++i) {
-        g.push(`${color}-${i+1}`);
+    for(let i = 0; i < 10; ++i) {
+        g.push(`${color}-${i + 1}`);
     }
     acc.push(g);
     return acc;
@@ -94,7 +102,9 @@ const alts = [
 function SmallSwatch({color, size}) {
     return (
         <div className="mxn1 p1 center">
-            <div className={'mx-auto circle ' + cx(`bg-${color}`)} style={{width: size, height: size}} />
+            <div className={'mx-auto circle ' + cx(`bg-${color}`)} style={{
+                width: size, height: size
+            }}></div>
             <div className="h6 gray">{color}</div>
         </div>
     );
@@ -107,7 +117,10 @@ SmallSwatch.propTypes = {
 };
 
 card('Extended Palette',
-    doc`TODO: Explain when these colors are to be used. Are they part of a stable matching between strings and colors? If so, provide example of scale mapping String -> Color. In that case, consider dropping color utilities and just export raw HEX in JS.`,
+    doc`TODO: Explain when these colors are to be used. Are they part of a
+    stable matching between strings and colors? If so, provide example of scale
+    mapping String -> Color. In that case, consider dropping color utilities and
+    just export raw HEX in JS.`,
     <div className="flex content-stretch">
         {alts.map((g, i) =>
             <div className="flex flex-column col-12 justify-center flex-wrap" key={i}>

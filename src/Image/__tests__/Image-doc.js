@@ -31,13 +31,21 @@ class PreloadImageContext extends Component {
 card('Image',
     doc`# Image
 
-This component the workhorse of Pinterest. If you define Pinterest to be all about collecting ideas, then images is how we choose to represent those ideas. In response, we've added a few extra super-powers to the regular Image tag to make it even more awesome.
+This component the workhorse of Pinterest. If you define Pinterest to be all
+about collecting ideas, then images is how we choose to represent those ideas.
+In response, we've added a few extra super-powers to the regular Image tag to
+make it even more awesome.
 
 ### Dimensions
 
-One thing that might be unusual is that the width and the height of the component are required, yet the image will scale to the size of its container. This is so that the placeholder's size can be calculated before the image has rendered.
+One thing that might be unusual is that the width and the height of the
+component are required, yet the image will scale to the size of its container.
+This is so that the placeholder's size can be calculated before the image has
+rendered.
 
-While the exact dimensions supplied aren't used, (only the ratio between them is considered) you should always try to try to supply the exact dimensions of the source image requested.
+While the exact dimensions supplied aren't used, (only the ratio between them is
+considered) you should always try to try to supply the exact dimensions of the
+source image requested.
 
 ### Shapes
 
@@ -45,7 +53,9 @@ You can compose images with [Masks](#/Mask) to produce different shapes like rou
     null, {}, {heading: false});
 
 card('Preloading',
-    doc`In environments where a DOM is available, \`Image\` has the ability to pre-load its content and show a placeholder while it does so. Otherwise, it renders a static \`<img/>\` tag.
+    doc`In environments where a DOM is available, \`Image\` has the ability to
+pre-load its content and show a placeholder while it does so. Otherwise, it
+renders a static \`<img/>\` tag.
 
 To test this out, adjust network throttling in your developer tools.`,
     <div className="flex mxn2">

@@ -22,7 +22,7 @@ var alt = [
     'blue',
     'purple'
 ].reduce(function(acc, color) {
-    for(var n=1; n<=10; ++n) {
+    for(var n = 1; n <= 10; ++n) {
         acc.push(color + '-' + n);
     }
     return acc;
