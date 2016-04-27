@@ -17,6 +17,7 @@ export default class Grid extends Component {
         super(props, context);
 
         this.currColHeights = [];
+        this.setCacheKey();
 
         this.state = {
             leftOffset: 0
@@ -39,7 +40,7 @@ export default class Grid extends Component {
         // We calculate columns and offset after the component mounts in order to support server rendering.
         // Initially set the number of columns to the minimum, this will be resized to the container size
         // after the component renders.
-        this.resetLocalCache(this.calculateColumns());
+        this.reflow(this.calculateColumns());
 
         this.setState({
             // Since items are positioned absolutely, we can't rely on margin or padding to center
@@ -70,17 +71,28 @@ export default class Grid extends Component {
     /**
      * Resets the local cache.
      */
-    resetLocalCache (columnCount) {
+    reflow (columnCount) {
+        columnCount = columnCount || this.calculateColumns();
+
         // Sets the columns heights as an array, each member corresponding to a column.
         if (typeof document === 'undefined') {
             this.currColHeights = [];
         } else {
             this.currColHeights = new (self.Uint32Array || self.Array)(columnCount);
         }
+        this.setCacheKey();
 
         // Whether or not we have requested new items.
         // This is used as a flag to signal that we need to wait before loading additional items.
         this.fetchingWith = false;
+    }
+
+    /**
+     * Sets a cache key based on the number of columns and a timestamp.
+     * This is consumed by the WithLayout component to cache grid item layout.
+     */
+    setCacheKey () {
+        this.cacheKey = this.currColHeights.length + '-' + Date.now();
     }
 
     /**
@@ -107,7 +119,7 @@ export default class Grid extends Component {
         let leftOffset = this.determineLeftOffset();
 
         if (newColCount !== this.currColHeights.length || this.state.leftOffset !== leftOffset) {
-            this.resetLocalCache(newColCount);
+            this.reflow(newColCount);
             // Recalculate left offset with new col count.
             this.setState({leftOffset: this.determineLeftOffset()});
             this.forceUpdate();
@@ -201,7 +213,7 @@ export default class Grid extends Component {
                 {this.props.items.map((item, idx) =>
                     <WithLayout
                         data={item}
-                        invalidateCacheKey={this.currColHeights.length}
+                        invalidateCacheKey={this.cacheKey}
                         key={idx}
                         processInfo={this.processInfo.bind(this)}>
                     {
@@ -209,7 +221,7 @@ export default class Grid extends Component {
                             className={styles['Grid__Item']}
                             key={idx}
                             style={{top: position.top, left: position.left}}>
-                            <this.props.comp data={item} />
+                            <this.props.comp data={item} itemIdx={idx} />
                         </div>
                     }
                     </WithLayout>
