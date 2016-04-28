@@ -193,7 +193,7 @@ export default class Grid extends Component {
      */
     processInfo (data, width, height) {
         let column = this.shortestColumn();
-        let top = this.currColHeights[column];
+        let top = this.currColHeights[column] || 0;
         let left = column * COLUMN_WIDTH + ITEM_MARGIN * column;
         this.currColHeights[column] += height + ITEM_MARGIN;
 
