@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
-const COLUMN_WIDTH = 236;
-
 // Buffer of pixels before we load more items when scrolling.
 // TODO: This should by dynamic, based on the size of the container and resource response time.
 const SCROLL_BUFFER = 400;
-
-// Gutter around each item.
-const ITEM_MARGIN = 14;
 
 export default class Grid extends Component {
 
@@ -99,7 +94,7 @@ export default class Grid extends Component {
      * Determines the number of columns to display.
      */
     calculateColumns () {
-        const eachItemWidth = COLUMN_WIDTH + ITEM_MARGIN;
+        const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
         const scroller = this.props.scrollContainer;
         let newColCount = Math.floor((scroller.clientWidth || scroller.innerWidth) / eachItemWidth);
 
@@ -172,7 +167,7 @@ export default class Grid extends Component {
     determineLeftOffset () {
         let scroller = this.props.scrollContainer;
         let containerWidth = scroller.clientWidth || scroller.innerWidth;
-        return (containerWidth - this.currColHeights.length * (COLUMN_WIDTH + ITEM_MARGIN)) / 2;
+        return (containerWidth - this.currColHeights.length * (this.props.columnWidth + this.props.gutterWidth)) / 2;
     }
 
     /**
@@ -194,8 +189,8 @@ export default class Grid extends Component {
     processInfo (data, width, height) {
         let column = this.shortestColumn();
         let top = this.currColHeights[column] || 0;
-        let left = column * COLUMN_WIDTH + ITEM_MARGIN * column;
-        this.currColHeights[column] += height + ITEM_MARGIN;
+        let left = column * this.props.columnWidth + this.props.gutterWidth * column;
+        this.currColHeights[column] += height + this.props.gutterWidth;
 
         return {
             top,
@@ -233,9 +228,19 @@ export default class Grid extends Component {
 
 Grid.propTypes = {
     /**
+     * The width of each column.
+     */
+    columnWidth: React.PropTypes.number,
+
+    /**
      * The component to render.
      */
     comp: React.PropTypes.func,
+
+    /**
+     * The amount of space between each item.
+     */
+    gutterWidth: React.PropTypes.number,
 
     /**
      * An array of all objects to display in the grid.
@@ -260,6 +265,8 @@ Grid.propTypes = {
 };
 
 Grid.defaultProps = {
+    columnWidth: 236,
+    gutterWidth: 14,
     minCols: 3,
     scrollContainer: typeof window !== 'undefined' ? window : null
 };
