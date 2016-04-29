@@ -204,23 +204,25 @@ export default class Grid extends Component {
         }
 
         return (
-            <div className={styles.Grid} ref={ref => this.container = ref} style={{left: this.state.leftOffset}}>
-                {this.props.items.map((item, idx) =>
-                    <WithLayout
-                        data={item}
-                        invalidateCacheKey={this.cacheKey}
-                        key={idx}
-                        processInfo={this.processInfo.bind(this)}>
-                    {
-                        (position = {left: 0, top: 0}) => <div
-                            className={styles['Grid__Item']}
+            <div style={{width: `calc(100% - ${this.state.leftOffset}px)`}}>
+                <div className={styles.Grid} ref={ref => this.container = ref} style={{left: this.state.leftOffset}}>
+                    {this.props.items.map((item, idx) =>
+                        <WithLayout
+                            data={item}
+                            invalidateCacheKey={this.cacheKey}
                             key={idx}
-                            style={{top: position.top, left: position.left}}>
-                            <this.props.comp data={item} itemIdx={idx} />
-                        </div>
-                    }
-                    </WithLayout>
-                )}
+                            processInfo={this.processInfo.bind(this)}>
+                        {
+                            (position = {left: 0, top: 0}) => <div
+                                className={styles['Grid__Item']}
+                                key={idx}
+                                style={{top: position.top, left: position.left}}>
+                                <this.props.comp data={item} itemIdx={idx} />
+                            </div>
+                        }
+                        </WithLayout>
+                    )}
+                </div>
             </div>
         );
     }
