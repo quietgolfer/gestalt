@@ -1,6 +1,4 @@
 import '../src/Avatar/__tests__/Avatar-doc';
-import '../src/Button/__tests__/Button-doc';
-import '../src/Card/__tests__/Card-doc';
 import '../src/Colors/Colors-doc';
 import '../src/Divider/__tests__/Divider-doc';
 import '../src/Grid/__tests__/Grid-doc';
