@@ -92,8 +92,9 @@
 }
 
 .truncate {
-    composes: fit overflow-hidden from "./Layout/Layout.css";
-    composes: no-wrap;
+    max-width: 100%;
+    overflow: hidden;
+    word-wrap: nowrap;
     text-overflow: ellipsis;
 }
 
@@ -155,7 +156,6 @@
 }
 
 .display-xs {
-    @composes: bold;
     font-size: var(--size-6);
     line-height: var(--leading-6);
     letter-spacing: var(--tracking-6);
@@ -163,7 +163,6 @@
 }
 
 .display-s {
-    @composes: bold;
     font-size: var(--size-7);
     line-height: var(--leading-7);
     letter-spacing: var(--tracking-7);
@@ -171,7 +170,6 @@
 }
 
 .display-m {
-    @composes: bold;
     font-size: var(--size-8);
     line-height: var(--leading-8);
     letter-spacing: var(--tracking-8);
@@ -179,7 +177,6 @@
 }
 
 .display-l {
-    @composes: bold;
     font-size: var(--size-9);
     line-height: var(--leading-9);
     letter-spacing: var(--tracking-9);
@@ -187,7 +184,6 @@
 }
 
 .display-xl {
-    @composes: bold;
     font-size: var(--size-10);
     line-height: var(--leading-10);
     letter-spacing: var(--tracking-10);
