@@ -1,5 +1,5 @@
 module.exports = {
-    sm: '(min-width: 40em)',
-    md: '(min-width: 52em)',
-    lg: '(min-width: 52em)'
+    sm: '(min-width: 360px)',
+    md: '(min-width: 800px)',
+    lg: '(min-width: 1312px)'
 };
