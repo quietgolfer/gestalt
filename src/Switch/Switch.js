@@ -15,24 +15,31 @@ export default class Switch extends Component {
         switched: false,
     }
 
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(e) {
+        this.props.onChange(e.nativeEvent.target.checked);
+    }
+
     render() {
         const {
-            onChange,
             switched,
         } = this.props;
         return (
-            <div className={cx('Switch', {
+            <label className={cx('Switch', {
                 'Switch__switched': switched
-            })}
-                onClick={onChange}>
+            })}>
                 <div className={cx('Switch--slider', {'Switch--slider__switched': switched})} />
                 <input
                     checked={switched}
                     className={cx('Switch--checkbox')}
-                    readOnly
+                    onChange={this.handleChange}
                     type="checkbox"
                 />
-            </div>
+            </label>
         );
     }
 }
