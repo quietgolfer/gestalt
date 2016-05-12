@@ -7,11 +7,12 @@
     "clean": "rm -f dist/main.js",
     "clobber": "rm -rf dist",
     "devserver": "webpack-dev-server --hot --inline --progress --colors --config webpack.config.docs.js",
+    "jest": "./node_modules/jest-cli/bin/jest.js .",
     "lint:eslint": "./node_modules/eslint/bin/eslint.js . --ext js",
     "lint:stylelint": "./node_modules/stylelint/dist/cli.js src/**/*.css",
     "lint": "npm run lint:eslint ; npm run lint:stylelint",
     "start": "npm run devserver",
-    "test": "./node_modules/jest-cli/bin/jest.js ."
+    "test": "npm run lint:stylelint && npm run lint:eslint && npm run jest"
   },
   "author": "Pinterest",
   "license": "MIT",
