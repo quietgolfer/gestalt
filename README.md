@@ -1,4 +1,5 @@
 # Gestalt
+[![Build Status](https://travis-ci.com/pinterest/gestalt.svg?token=yfARxv3oq7ZT3ZbmJWVN&branch=master)](https://travis-ci.com/pinterest/gestalt)
 
 ## Development
 
