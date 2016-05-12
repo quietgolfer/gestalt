@@ -59,6 +59,10 @@
       "<rootDir>/node_modules/react-dom",
       "<rootDir>/node_modules/react-addons-test-utils"
     ],
-    "scriptPreprocessor": "<rootDir>/jestPreprocessor.js"
+    "scriptPreprocessor": "<rootDir>/jestPreprocessor.js",
+    "testPathIgnorePatterns": [
+        "/node_modules/",
+        "/__docs__/"
+    ]
   }
 }

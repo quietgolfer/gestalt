@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
-import colors from './Colors.css';
+import colors from '../Colors.css';
 import { card, doc, ns } from 'devcards';
 
 ns('Colors');

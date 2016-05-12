@@ -1,5 +1,5 @@
 /* eslint-env jest */
-jest.unmock('../TextField');
+jest.unmock('../SearchField');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
