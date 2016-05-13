@@ -29,6 +29,7 @@
     "babel-preset-stage-1": "^6.5.0",
     "css-loader": "^0.23.1",
     "devcards": "chrislloyd/devcards",
+    "enzyme": "^2.3.0",
     "eslint": "^2.5.3",
     "eslint-config-pinterest": "^17.0.0",
     "eslint-plugin-pinterest": "^3.0.0",
@@ -59,14 +60,14 @@
   },
   "jest": {
     "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/enzyme",
       "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils"
+      "<rootDir>/node_modules/react-dom"
     ],
     "scriptPreprocessor": "<rootDir>/jestPreprocessor.js",
     "testPathIgnorePatterns": [
-        "/node_modules/",
-        "/__docs__/"
+      "/node_modules/",
+      "/__docs__/"
     ]
   }
 }
