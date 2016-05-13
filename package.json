@@ -2,6 +2,7 @@
   "name": "pinterest-gestalt",
   "version": "0.0.2",
   "description": "Pinterest web components written in React.",
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "clean": "rm -f dist/main.js",
