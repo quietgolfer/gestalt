@@ -94,7 +94,7 @@
 .truncate {
     max-width: 100%;
     overflow: hidden;
-    word-wrap: nowrap;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 
