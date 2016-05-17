@@ -65,6 +65,10 @@
       "<rootDir>/node_modules/react-dom"
     ],
     "scriptPreprocessor": "<rootDir>/jestPreprocessor.js",
+    "testDirectoryName": "src",
+    "testFileExtensions": [
+      "jest.js"
+    ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/__docs__/"
