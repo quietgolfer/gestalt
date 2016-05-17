@@ -1,5 +1,8 @@
 import { createElement, PropTypes } from 'react';
 import classnames from 'classnames/bind';
+import styles from '../index.css';
+
+const cx = classnames.bind(styles);
 
 const sizesToElementMap = {
     xs: 'h5',
@@ -11,7 +14,7 @@ const sizesToElementMap = {
 
 export default function Heading(props) {
     const { children, color, size } = props;
-    const cs = classnames(
+    const cs = cx(
         'antialiased',
         'bold',
         'my0',
@@ -28,8 +31,7 @@ Heading.propTypes = {
         'white',
         'light-gray',
         'dark-gray',
-        'blue',
-        'green'
+        'blue'
     ]).isRequired,
     size: PropTypes.oneOf([
         'xs',

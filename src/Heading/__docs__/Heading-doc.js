@@ -40,7 +40,6 @@ card('Colors',
         <Heading size="m">{'Dark gray (default)'}</Heading>
         <Heading color="light-gray" size="m">{'Light gray'}</Heading>
         <Heading color="blue" size="m">{'Blue'}</Heading>
-        <Heading color="dark-green" size="m">{'Green'}</Heading>
     </div>,
     {},
     {heading: false});
