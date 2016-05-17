@@ -1,6 +1,6 @@
 {
   "name": "pinterest-gestalt",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Pinterest web components written in React.",
   "main": "src/index.js",
   "scripts": {
