@@ -3,14 +3,17 @@
     display: inline-block;
     width: 48px;
     padding: 2px;
-    background-color: #b5b5b5;
     cursor: pointer;
     position: relative;
     transition: background 0.2s ease;
 }
 
+.Switch__off {
+    composes: bg-light-gray from "../index.css";
+}
+
 .Switch__switched {
-    background-color: #364a4c;
+    composes: bg-dark-green from "../index.css";
 }
 
 .Switch--slider {
@@ -19,8 +22,11 @@
     border-radius: 100%;
     background-color: #fff;
     position: absolute;
-    left: 2px;
     transition: left 0.2s ease;
+}
+
+.Switch--slider__off {
+    left: 2px;
 }
 
 .Switch--slider__switched {

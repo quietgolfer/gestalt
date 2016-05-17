@@ -30,9 +30,13 @@ export default class Switch extends Component {
         } = this.props;
         return (
             <label className={cx('Switch', {
+                'Switch__off': !switched,
                 'Switch__switched': switched
             })}>
-                <div className={cx('Switch--slider', {'Switch--slider__switched': switched})} />
+                <div className={cx('Switch--slider', {
+                    'Switch--slider__off': !switched,
+                    'Switch--slider__switched': switched
+                })}></div>
                 <input
                     checked={switched}
                     className={cx('Switch--checkbox')}
