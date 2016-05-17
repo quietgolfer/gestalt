@@ -52,13 +52,13 @@ function margins(i, hbt, vbt) {
 function negativeMargins(i, nhbt, nvbt) {
     return `
 .mxn${i} {
-    margin-right: ${nhbt};
     margin-left: ${nhbt};
+    margin-right: ${nhbt};
 }
 
 .myn${i} {
-    margin-top: ${nvbt};
     margin-bottom: ${nvbt};
+    margin-top: ${nvbt};
 }`;
 }
 
@@ -74,8 +74,8 @@ function padding(i, hbt, vbt) {
 }
 
 .py${i} {
-    padding-top: ${vbt};
     padding-bottom: ${vbt};
+    padding-top: ${vbt};
 }`;
 }
 

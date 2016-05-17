@@ -1,6 +1,7 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
+    "declaration-block-properties-order": [["composes"], { unspecified: "bottomAlphabetical" }],
     "indentation": 4
   }
 }

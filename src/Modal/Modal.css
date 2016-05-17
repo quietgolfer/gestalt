@@ -1,28 +1,27 @@
 .Modal__Mask {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
     background-color: #e2e4e4;
+    bottom: 0;
+    display: block;
+    left: 0;
     opacity: 0.9;
     position: fixed;
-    display: block;
+    right: 0;
+    top: 0;
 }
 
 .Modal__Wrapper {
+    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    overflow-y: scroll;
-    bottom: 0;
     left: 0;
+    overflow-y: scroll;
+    position: fixed;
     right: 0;
     top: 0;
-    position: fixed;
 }
 
 .Modal__Content {
-    position: relative;
     background: #fff;
     border-radius: 6px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
@@ -39,10 +38,10 @@
 
 .Modal__Child--footer {
     composes: Modal__Child--content;
-    border-top: 1px solid #e7e7e7;
     background: #f0f0f0;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    border-top: 1px solid #e7e7e7;
     text-align: right;
 }
 

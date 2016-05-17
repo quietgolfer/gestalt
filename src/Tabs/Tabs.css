@@ -2,9 +2,8 @@
     composes: bg-super-light-gray flex overflow-hidden from "../index.css";
     background-color: #efefef;
     border-radius: 4px;
-
-    user-select: none;
     padding: 2px;
+    user-select: none;
 }
 
 .Tabs--item {
