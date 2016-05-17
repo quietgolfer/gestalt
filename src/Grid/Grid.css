@@ -1,6 +1,7 @@
 .Grid {
     composes: relative from "../index.css";
     height: 100%;
+    margin: 0 auto;
 }
 
 .Grid__Item {

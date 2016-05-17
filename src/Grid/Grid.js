@@ -15,8 +15,14 @@ export default class Grid extends Component {
         this.setCacheKey();
 
         this.state = {
-            leftOffset: 0
+            containerWidth: '100%'
         };
+    }
+
+    componentWillMount () {
+        // We calculate columns and offset just before the component mounts so that children have the correct column
+        // count when mounting
+        this.reflow(this.calculateColumns());
     }
 
     /**
@@ -32,15 +38,10 @@ export default class Grid extends Component {
         this.props.scrollContainer.addEventListener('scroll', this.boundScrollHandler);
         this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
 
-        // We calculate columns and offset after the component mounts in order to support server rendering.
-        // Initially set the number of columns to the minimum, this will be resized to the container size
-        // after the component renders.
-        this.reflow(this.calculateColumns());
-
         this.setState({
             // Since items are positioned absolutely, we can't rely on margin or padding to center
-            // an arbitrary number of columns. Calculate the offset in order to center the grid.
-            leftOffset: this.determineLeftOffset()
+            // an arbitrary number of columns. Calculate the width in order to center the grid.
+            containerWidth: this.determineWidth()
         });
     }
 
@@ -106,17 +107,16 @@ export default class Grid extends Component {
 
     /**
      * Reflows items if needed after a resize.
-     * We need to reflow items if the number of columns we would display should change,
-     * or if the left offset changes.
+     * We need to reflow items if the number of columns we would display should change.
      */
     reflowIfNeeded () {
         let newColCount = this.calculateColumns();
-        let leftOffset = this.determineLeftOffset();
+        let containerWidth = this.determineWidth();
 
-        if (newColCount !== this.currColHeights.length || this.state.leftOffset !== leftOffset) {
+        if (newColCount !== this.currColHeights.length || this.state.containerWidth !== containerWidth) {
             this.reflow(newColCount);
-            // Recalculate left offset with new col count.
-            this.setState({leftOffset: this.determineLeftOffset()});
+            // Recalculate width with new col count.
+            this.setState({containerWidth: this.determineWidth()});
             this.forceUpdate();
             return true;
         }
@@ -162,12 +162,11 @@ export default class Grid extends Component {
     }
 
     /**
-     * Container width - item width / 2
+     * # of columns * total item width - 1 item margin
      */
-    determineLeftOffset () {
-        let scroller = this.props.scrollContainer;
-        let containerWidth = scroller.clientWidth || scroller.innerWidth;
-        return (containerWidth - this.currColHeights.length * (this.props.columnWidth + this.props.gutterWidth)) / 2;
+    determineWidth () {
+        const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
+        return (this.currColHeights.length * eachItemWidth) - this.props.gutterWidth + 'px';
     }
 
     /**
@@ -204,25 +203,35 @@ export default class Grid extends Component {
         }
 
         return (
-            <div style={{width: `calc(100% - ${this.state.leftOffset}px)`}}>
-                <div className={styles.Grid} ref={ref => this.container = ref} style={{left: this.state.leftOffset}}>
-                    {this.props.items.map((item, idx) =>
-                        <WithLayout
-                            data={item}
-                            invalidateCacheKey={this.cacheKey}
-                            key={idx}
-                            processInfo={this.processInfo.bind(this)}>
-                        {
-                            (position = {left: 0, top: 0}) => <div
-                                className={styles['Grid__Item']}
-                                key={idx}
-                                style={{top: position.top, left: position.left}}>
-                                <this.props.comp data={item} itemIdx={idx} />
-                            </div>
+            <div className={styles.Grid} style={{width: this.state.containerWidth}}>
+                {this.props.items.map((item, idx) =>
+                    <WithLayout
+                        data={item}
+                        invalidateCacheKey={this.cacheKey}
+                        key={idx}
+                        processInfo={this.processInfo.bind(this)}>
+                    {
+                        (position = {left: 0, top: 0}) => {
+                            let itemStyles = {};
+                            if (position) {
+                                itemStyles.style = {
+                                    ...styles.gridItem,
+                                    top: position.top,
+                                    left: position.left
+                                };
+                            }
+                            return (
+                                <div
+                                    className={styles['Grid__Item']}
+                                    key={idx}
+                                    {...itemStyles}>
+                                    <this.props.comp data={item} itemIdx={idx} />
+                                </div>
+                            );
                         }
-                        </WithLayout>
-                    )}
-                </div>
+                    }
+                    </WithLayout>
+                )}
             </div>
         );
     }
