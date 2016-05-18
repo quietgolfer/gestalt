@@ -211,7 +211,7 @@ export default class Grid extends Component {
                         key={idx}
                         processInfo={this.processInfo.bind(this)}>
                     {
-                        (position = {left: 0, top: 0}) => {
+                        (position = null) => {
                             let itemStyles = {};
                             if (position) {
                                 itemStyles.style = {
@@ -222,7 +222,7 @@ export default class Grid extends Component {
                             }
                             return (
                                 <div
-                                    className={styles['Grid__Item']}
+                                    className={(position ? styles['Grid__Item'] : 'static')}
                                     key={idx}
                                     {...itemStyles}>
                                     <this.props.comp data={item} itemIdx={idx} />
