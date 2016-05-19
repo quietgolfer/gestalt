@@ -95,6 +95,9 @@ export default class Grid extends Component {
      * Determines the number of columns to display.
      */
     calculateColumns () {
+        if (!this.props.scrollContainer) {
+            return 0;
+        }
         const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
         const scroller = this.props.scrollContainer;
         let newColCount = Math.floor((scroller.clientWidth || scroller.innerWidth) / eachItemWidth);

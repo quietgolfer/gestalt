@@ -1,0 +1,8 @@
+cd test && npm start &
+
+until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+    printf '.'
+    sleep 5
+done
+
+NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs $(find src -name '*.ghost.js')
