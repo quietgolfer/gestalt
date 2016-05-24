@@ -30,7 +30,8 @@ export default class WithLayout extends Component {
             // Append a temporary node to the dom to measure it.
             document.body.appendChild(this.measuringNode);
             var child = this.props.children();
-            let rendered = ReactDOM.render(child, this.measuringNode);
+            let rendered = ReactDOM.unstable_renderSubtreeIntoContainer(
+               this, child, this.measuringNode);
             let {clientWidth, clientHeight} = rendered;
             document.body.removeChild(this.measuringNode);
 
