@@ -13,5 +13,3 @@ Start the development server:
 npm start
 ```
 The documentation will automatically open in your default browser.
-
-dkjbdjhsjkhsaj
