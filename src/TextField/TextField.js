@@ -5,46 +5,43 @@ import styles from './TextField.css';
 const cx = classnames.bind(styles);
 
 export default class TextField extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
 
-    get value() {
-        return this.input.value;
-    }
+  setInputRef = (ref) => {
+    this.input = ref;
+  }
 
-    setInputRef = (ref) => {
-        this.input = ref;
-    }
+  get value() {
+    return this.input.value;
+  }
 
-    render() {
-        const {
+  render() {
+    const {
             disabled,
             errored,
-            focused
+            focused,
         } = this.props;
 
-        const cs = cx('TextField',
-            {
-                'TextField--isDisabled': disabled,
-                'TextField--isErrored': errored,
-                'TextField--isFocused': focused
-            }
+    const cs = cx('TextField',
+      {
+        'TextField--isDisabled': disabled,
+        'TextField--isErrored': errored,
+        'TextField--isFocused': focused,
+      }
         );
 
-        return <input {...this.props} className={cs} ref={this.setInputRef} />;
-    }
+    return <input {...this.props} className={cs} ref={this.setInputRef} />;
+  }
 }
 
 TextField.propTypes = {
-    disabled: PropTypes.bool.isRequired,
-    errored: PropTypes.bool.isRequired,
-    focused: PropTypes.bool.isRequired
+  disabled: PropTypes.bool.isRequired,
+  errored: PropTypes.bool.isRequired,
+  focused: PropTypes.bool.isRequired,
 };
 
 TextField.defaultProps = {
-    disabled: false,
-    errored: false,
-    focused: false,
-    type: 'text'
+  disabled: false,
+  errored: false,
+  focused: false,
+  type: 'text',
 };

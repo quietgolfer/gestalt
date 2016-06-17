@@ -5,12 +5,12 @@
 
 .clearfix::before,
 .clearfix::after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix::after {
-    clear: both;
+  clear: both;
 }
 
 /* display */
@@ -46,15 +46,15 @@
 .flex { display: flex; }
 
 @media (--sm) {
-    .sm-flex { display: flex; }
+  .sm-flex { display: flex; }
 }
 
 @media (--md) {
-    .md-flex { display: flex; }
+  .md-flex { display: flex; }
 }
 
 @media (--lg) {
-    .lg-flex { display: flex; }
+  .lg-flex { display: flex; }
 }
 
 .flex-column { flex-direction: column; }
@@ -87,9 +87,9 @@
 
 /* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
 .flex-auto {
-    flex: 1 1 auto;
-    min-height: 0; /* 1 */
-    min-width: 0; /* 1 */
+  flex: 1 1 auto;
+  min-height: 0; /* 1 */
+  min-width: 0; /* 1 */
 }
 .flex-none { flex: none; }
 

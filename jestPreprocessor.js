@@ -1,4 +1,4 @@
-var babelJest = require('babel-jest');
+const babelJest = require('babel-jest');
 
 /*
     @chrislloyd - This is a hack around jest not fully supporting webpack. You
@@ -10,10 +10,10 @@ var babelJest = require('babel-jest');
     `webpack.config.js` file changes.
 */
 module.exports = {
-    process: function(src, filename) {
-        if (filename.match(/\.css$/)) {
-            return '';
-        }
-        return babelJest.process(src, filename);
-    },
+  process(src, filename) {
+    if (filename.match(/\.css$/)) {
+      return '';
+    }
+    return babelJest.process(src, filename);
+  },
 };

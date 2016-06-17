@@ -1,192 +1,192 @@
 :root {
-    --blue: #0084ff;
-    --dark-gray: #555;
-    --dark-green: #364a4c;
-    --light-gray: #b5b5b5;
-    --pink: #fbb6ac;
-    --red: #bd081c;
-    --slate-green: #88a5ab;
-    --super-light-gray: #efefef;
-    --white: #fff;
-    --yellow: #fab904;
+  --blue: #0084ff;
+  --dark-gray: #555;
+  --dark-green: #364a4c;
+  --light-gray: #b5b5b5;
+  --pink: #fbb6ac;
+  --red: #bd081c;
+  --slate-green: #88a5ab;
+  --super-light-gray: #efefef;
+  --white: #fff;
+  --yellow: #fab904;
 }
 
 /* blue */
 
 .blue {
-    color: var(--blue);
+  color: var(--blue);
 }
 
 .blue-hover:hover {
-    color: var(--blue);
+  color: var(--blue);
 }
 
 .bg-blue {
-    background-color: var(--blue);
+  background-color: var(--blue);
 }
 
 .bg-blue-hover:hover {
-    background-color: var(--blue);
+  background-color: var(--blue);
 }
 
 /* dark-gray */
 
 .dark-gray {
-    color: var(--dark-gray);
+  color: var(--dark-gray);
 }
 
 .dark-gray-hover:hover {
-    color: var(--dark-gray);
+  color: var(--dark-gray);
 }
 
 .bg-dark-gray {
-    background-color: var(--dark-gray);
+  background-color: var(--dark-gray);
 }
 
 .bg-dark-gray-hover:hover {
-    background-color: var(--dark-gray);
+  background-color: var(--dark-gray);
 }
 
 /* dark-green */
 
 .dark-green {
-    color: var(--dark-green);
+  color: var(--dark-green);
 }
 
 .dark-green-hover:hover {
-    color: var(--dark-green);
+  color: var(--dark-green);
 }
 
 .bg-dark-green {
-    background-color: var(--dark-green);
+  background-color: var(--dark-green);
 }
 
 .bg-dark-green-hover:hover {
-    background-color: var(--dark-green);
+  background-color: var(--dark-green);
 }
 
 /* light-gray */
 
 .light-gray {
-    color: var(--light-gray);
+  color: var(--light-gray);
 }
 
 .light-gray-hover:hover {
-    color: var(--light-gray);
+  color: var(--light-gray);
 }
 
 .bg-light-gray {
-    background-color: var(--light-gray);
+  background-color: var(--light-gray);
 }
 
 .bg-light-gray-hover:hover {
-    background-color: var(--light-gray);
+  background-color: var(--light-gray);
 }
 
 /* pink */
 
 .pink {
-    color: var(--pink);
+  color: var(--pink);
 }
 
 .pink-hover:hover {
-    color: var(--pink);
+  color: var(--pink);
 }
 
 .bg-pink {
-    background-color: var(--pink);
+  background-color: var(--pink);
 }
 
 .bg-pink-hover:hover {
-    background-color: var(--pink);
+  background-color: var(--pink);
 }
 
 /* red */
 
 .red {
-    color: var(--red);
+  color: var(--red);
 }
 
 .red-hover:hover {
-    color: var(--red);
+  color: var(--red);
 }
 
 .bg-red {
-    background-color: var(--red);
+  background-color: var(--red);
 }
 
 .bg-red-hover:hover {
-    background-color: var(--red);
+  background-color: var(--red);
 }
 
 /* slate-green */
 
 .slate-green {
-    color: var(--slate-green);
+  color: var(--slate-green);
 }
 
 .slate-green-hover:hover {
-    color: var(--slate-green);
+  color: var(--slate-green);
 }
 
 .bg-slate-green {
-    background-color: var(--slate-green);
+  background-color: var(--slate-green);
 }
 
 .bg-slate-green-hover:hover {
-    background-color: var(--slate-green);
+  background-color: var(--slate-green);
 }
 
 /* super-light-gray */
 
 .super-light-gray {
-    color: var(--super-light-gray);
+  color: var(--super-light-gray);
 }
 
 .super-light-gray-hover:hover {
-    color: var(--super-light-gray);
+  color: var(--super-light-gray);
 }
 
 .bg-super-light-gray {
-    background-color: var(--super-light-gray);
+  background-color: var(--super-light-gray);
 }
 
 .bg-super-light-gray-hover:hover {
-    background-color: var(--super-light-gray);
+  background-color: var(--super-light-gray);
 }
 
 /* white */
 
 .white {
-    color: var(--white);
+  color: var(--white);
 }
 
 .white-hover:hover {
-    color: var(--white);
+  color: var(--white);
 }
 
 .bg-white {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
 .bg-white-hover:hover {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
 /* yellow */
 
 .yellow {
-    color: var(--yellow);
+  color: var(--yellow);
 }
 
 .yellow-hover:hover {
-    color: var(--yellow);
+  color: var(--yellow);
 }
 
 .bg-yellow {
-    background-color: var(--yellow);
+  background-color: var(--yellow);
 }
 
 .bg-yellow-hover:hover {
-    background-color: var(--yellow);
+  background-color: var(--yellow);
 }

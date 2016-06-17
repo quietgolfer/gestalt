@@ -1,21 +1,21 @@
 .Image {
-    composes: overflow-hidden from "../index.css";
+  composes: overflow-hidden from "../index.css";
 }
 
 .Image__placeholder {
-    composes: fit relative from "../index.css";
+  composes: fit relative from "../index.css";
 }
 
 .Image__placeholder--wrapper {
-    composes: absolute flex items-center justify-center top-0 left-0 bottom-0 right-0 from "../index.css";
+  composes: absolute flex items-center justify-center top-0 left-0 bottom-0 right-0 from "../index.css";
 }
 
 .Image__placeholder--text {
-    composes: text-center from "../index.css";
-    opacity: 0.5;
+  composes: text-center from "../index.css";
+  opacity: 0.5;
 }
 
 .Image__img {
-    composes: block fit from "../index.css";
-    height: auto;
+  composes: block fit from "../index.css";
+  height: auto;
 }

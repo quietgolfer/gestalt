@@ -5,9 +5,9 @@ import { card, doc, ns } from 'devcards';
 ns('Grid');
 
 card('Grid',
-    doc`# Grid
+  doc`# Grid
 
 The Pinterest grid.`,
-    <ExampleGrid />,
-    {}, {padding: false}
+  <ExampleGrid />,
+  {}, { padding: false }
 );

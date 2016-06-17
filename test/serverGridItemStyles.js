@@ -1,14 +1,14 @@
 // Generate initial server styles for the grid.
 let styles = '';
-let minColumns = 3;
-let maxColumns = 10;
-let itemMargin = 14;
-let itemWidth = 250;
+const minColumns = 3;
+const maxColumns = 10;
+const itemMargin = 14;
+const itemWidth = 250;
 let minWidth = 0;
 let maxWidth = minColumns * itemWidth + itemWidth - 1;
 
-for (var i = minColumns; i < maxColumns + 1; i++) {
-    styles += `
+for (let i = minColumns; i < maxColumns + 1; i++) {
+  styles += `
 @media (min-width: ${minWidth}px) and (max-width: ${maxWidth}px) {
     .static:nth-child(-n+${i}) {
         float: left;
@@ -22,8 +22,8 @@ for (var i = minColumns; i < maxColumns + 1; i++) {
 }
 
 `;
-    minWidth = maxWidth + 1;
-    maxWidth = maxWidth + itemWidth;
+  minWidth = maxWidth + 1;
+  maxWidth = maxWidth + itemWidth;
 }
 styles += `
 .static {
@@ -35,4 +35,6 @@ styles += `
 }
 `;
 
-export default styles;
+const exportStyles = styles;
+
+export default exportStyles;

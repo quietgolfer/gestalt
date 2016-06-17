@@ -1,22 +1,24 @@
 import React from 'react';
 
-export default class Item extends React.Component {
-    render () {
-        let pinStyles = {
-            border: '1px solid #fff',
-            width: '234px',
-            background: this.props.data.color,
-            height: `${this.props.data.height}px`
-        };
+export default function Item(props) {
+  const {
+    data,
+  } = props;
 
-        return (
-            <div style={pinStyles}>
-                {this.props.data.name}
-            </div>
-        );
-    }
+  let pinStyles = {
+    border: '1px solid #fff',
+    width: '234px',
+    background: data.color,
+    height: `${data.height}px`,
+  };
+
+  return (
+    <div style={pinStyles}>
+      {data.name}
+    </div>
+  );
 }
 
 Item.propTypes = {
-    data: React.PropTypes.object
+  data: React.PropTypes.object,
 };

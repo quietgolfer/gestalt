@@ -5,5 +5,5 @@ import { card, doc, ns } from 'devcards';
 ns('TextField');
 
 card('TextField',
-    doc`Lorem ipsum dolor sit amet.`,
-    <TextField readOnly value="Foo" />);
+  doc`Lorem ipsum dolor sit amet.`,
+  <TextField readOnly value="Foo" />);

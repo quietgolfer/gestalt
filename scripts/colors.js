@@ -3,36 +3,36 @@
 /* eslint-env node */
 /* eslint no-console:0 */
 
-var colors = [
-    'blue',
-    'dark-gray',
-    'dark-green',
-    'light-gray',
-    'pink',
-    'red',
-    'slate-green',
-    'super-light-gray',
-    'white',
-    'yellow',
+const colors = [
+  'blue',
+  'dark-gray',
+  'dark-green',
+  'light-gray',
+  'pink',
+  'red',
+  'slate-green',
+  'super-light-gray',
+  'white',
+  'yellow',
 ];
 
-colors.forEach(function(color) {
-    console.log(`
+colors.forEach((color) => {
+  console.log(`
 /* ${color} */
 
 .${color} {
-    color: var(--${color});
+  color: var(--${color});
 }
 
 .${color}-hover:hover {
-    color: var(--${color});
+  color: var(--${color});
 }
 
 .bg-${color} {
-    background-color: var(--${color});
+  background-color: var(--${color});
 }
 
 .bg-${color}-hover:hover {
-    background-color: var(--${color});
+  background-color: var(--${color});
 }`);
 });
