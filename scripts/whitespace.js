@@ -24,7 +24,7 @@ console.log(`
 `);
 
 const breakpoints = ['', 'sm', 'md', 'lg'];
-const scale = [0, 1, 2, 3, 4];
+const scale = [0, 1, 2, 3, 4, 5, 6];
 
 function margins(i, hbt, vbt) {
   return `.m${i} {
