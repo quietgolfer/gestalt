@@ -9,6 +9,9 @@
   --super-light-gray: #efefef;
   --white: #fff;
   --yellow: #fab904;
+
+  --frost: rgba(#fff, 0.95);
+  --shade: rgba(#000, 0.6);
 }
 
 /* blue */
@@ -189,4 +192,24 @@
 
 .bg-yellow-hover:hover {
   background-color: var(--yellow);
+}
+
+/* frost */
+
+.bg-frost {
+  background-color: var(--frost);
+}
+
+.bg-frost-hover:hover {
+  background-color: var(--frost);
+}
+
+/* darken */
+
+.bg-shade {
+  background-color: var(--shade);
+}
+
+.bg-shade-hover:hover {
+  background-color: var(--shade);
 }
