@@ -93,5 +93,5 @@
 }
 .flex-none { flex: none; }
 
-.order-first { order: 0; }
+.order-first { order: -1; }
 .order-last { order: 99999; }
