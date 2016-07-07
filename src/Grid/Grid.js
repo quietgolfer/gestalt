@@ -138,8 +138,13 @@ export default class Grid extends Component {
     if (newColCount !== this.currColHeights.length
       || this.state.containerWidth !== containerWidth) {
       this.reflow(newColCount);
-      // Recalculate width with new col count.
-      this.setState({ containerWidth: this.determineWidth() });
+      this.setState({
+        // Recalculate width with new col count.
+        containerWidth: this.determineWidth(),
+        // Reset the height to 0.
+        // It will be re-calculated as we insert items into the grid.
+        containerHeight: 0,
+      });
       this.forceUpdate();
       return true;
     }
