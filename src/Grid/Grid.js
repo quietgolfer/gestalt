@@ -16,6 +16,7 @@ export default class Grid extends Component {
 
     this.state = {
       containerWidth: '100%',
+      containerHeight: 0,
     };
   }
 
@@ -196,6 +197,12 @@ export default class Grid extends Component {
     const left = column * this.props.columnWidth + this.props.gutterWidth * column;
     this.currColHeights[column] += height + this.props.gutterWidth;
 
+    if (this.currColHeights[column] > this.state.containerHeight) {
+      this.setState({
+        containerHeight: this.currColHeights[column],
+      });
+    }
+
     return {
       top,
       left,
@@ -208,7 +215,10 @@ export default class Grid extends Component {
     }
 
     return (
-      <div className={styles.Grid} style={{ width: this.state.containerWidth }}>
+      <div
+        className={styles.Grid}
+        style={{ width: this.state.containerWidth, height: this.state.containerHeight }}
+      >
         {this.props.items.map((item, idx) =>
           <WithLayout
             data={item}
