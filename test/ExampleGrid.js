@@ -55,18 +55,25 @@ export default class ExampleGrid extends React.Component {
   }
   /* eslint react/jsx-no-bind:0 */
   render() {
+    const dynamicGridProps = {};
+    // Allow for infinite scroll if the test does not opt out with the finiteLength prop.
+    if (!this.props.finiteLength) {
+      dynamicGridProps.loadItems = this.loadItems;
+    }
     return (
       <div className="gridCentered">
         <Grid
           comp={Item}
           items={this.state.pins}
-          loadItems={this.loadItems}
+          {...dynamicGridProps}
         />
+        <div className="afterGrid"></div>
       </div>
     );
   }
 }
 
 ExampleGrid.propTypes = {
+  finiteLength: React.PropTypes.bool,
   initialPins: React.PropTypes.array,
 };

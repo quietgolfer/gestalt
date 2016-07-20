@@ -27,7 +27,10 @@ for (let i = 0; i < 5; i++) {
 }
 
 app.get('/', (req, res) => {
-  const content = ReactDOMServer.renderToString(<ExampleGrid initialPins={initialPins} />);
+  const content = ReactDOMServer.renderToString(<ExampleGrid
+    finiteLength={!!req.query.finiteLength}
+    initialPins={initialPins}
+  />);
   res.render('index.ejs', {
     serverStyles,
     reactOutput: content,

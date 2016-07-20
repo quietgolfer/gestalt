@@ -48,6 +48,21 @@ export default class Grid extends Component {
   }
 
   /**
+   * Sets the height of the grid after the component updates.
+   * This allows stacking of items under the grid due to absolutely positioned elements.
+   */
+  componentDidUpdate() {
+    setTimeout(() => {
+      const longestColumn = Math.max.apply(null, this.currColHeights);
+      if (this.state.containerHeight !== longestColumn) {
+        this.setState({
+          containerHeight: longestColumn,
+        });
+      }
+    });
+  }
+
+  /**
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
@@ -201,12 +216,6 @@ export default class Grid extends Component {
     const top = this.currColHeights[column] || 0;
     const left = column * this.props.columnWidth + this.props.gutterWidth * column;
     this.currColHeights[column] += height + this.props.gutterWidth;
-
-    if (this.currColHeights[column] > this.state.containerHeight) {
-      this.setState({
-        containerHeight: this.currColHeights[column],
-      });
-    }
 
     return {
       top,
