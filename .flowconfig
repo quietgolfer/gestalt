@@ -1,0 +1,10 @@
+[ignore]
+.*/test/*
+.*/node_modules/fbjs/*
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowIssue
+esproposal.class_instance_fields=enable
+esproposal.class_static_fields=enable
+unsafe.enable_getters_and_setters=true
+module.name_mapper='^.*\.css$' -> '<PROJECT_ROOT>/flow/stubs/CSSModuleStub.js'
