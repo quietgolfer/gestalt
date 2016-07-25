@@ -2,10 +2,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const breakpoints = require('./src/breakpoints');
-const postcssClassPrefix = require('postcss-class-prefix');
 const postcssCssNext = require('postcss-cssnext');
 const postcssImport = require('postcss-import');
-const postcssImportantly = require('postcss-importantly');
 
 
 module.exports = {
@@ -38,8 +36,6 @@ module.exports = {
           },
         },
       }),
-      postcssImportantly(),
-      postcssClassPrefix('dp-'),
     ];
   },
   plugins: [
