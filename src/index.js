@@ -3,6 +3,7 @@ export Container from './Container/Container';
 export Divider from './Divider/Divider';
 export Grid from './Grid/Grid';
 export Heading from './Heading/Heading';
+export Icon from './Icon/Icon';
 export Image from './Image/Image';
 export Mask from './Mask/Mask';
 export Modal from './Modal/Modal';
