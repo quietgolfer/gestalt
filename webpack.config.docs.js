@@ -5,6 +5,7 @@ const postcssUrl = require('postcss-url');
 const postcssCssNext = require('postcss-cssnext');
 const postcssBrowserReporter = require('postcss-browser-reporter');
 const postcssReporter = require('postcss-reporter');
+const FlowStatusWebpackPlugin = require('flow-status-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -13,6 +14,13 @@ module.exports = {
     './docs/index.js',
   ],
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+      },
+    ],
     loaders: [
       {
         test: /\.css$/,
@@ -47,6 +55,7 @@ module.exports = {
     ];
   },
   plugins: [
+    new FlowStatusWebpackPlugin(),
     new OpenBrowserPlugin({ url: 'http://localhost:8080/docs' }),
   ],
 };
