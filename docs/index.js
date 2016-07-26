@@ -1,6 +1,7 @@
 import '../src/Avatar/__docs__/Avatar-doc';
 import '../src/Borders/__docs__/Borders-doc';
 import '../src/Colors/__docs__/Colors-doc';
+import '../src/Columns/__docs__/Columns-doc';
 import '../src/Divider/__docs__/Divider-doc';
 import '../src/Grid/__docs__/Grid-doc';
 import '../src/Heading/__docs__/Heading-doc';

@@ -2,6 +2,10 @@
   --ncols: 12;
 }
 
+.col {
+  float: left;
+}
+
 .col-1 {
   width: calc(1 / var(--ncols) * 100%);
 }
