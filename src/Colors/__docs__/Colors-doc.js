@@ -31,7 +31,7 @@ function Swatch({ color, size, shadow }) {
 Swatch.propTypes = {
   color: PropTypes.string,
   shadow: PropTypes.bool,
-  size: PropTypes.nubmer,
+  size: PropTypes.string,
 };
 
 card('Color',
@@ -120,7 +120,7 @@ function SmallSwatch({ color, size }) {
 SmallSwatch.propTypes = {
   color: PropTypes.string,
   shadow: PropTypes.bool,
-  size: PropTypes.nubmer,
+  size: PropTypes.string,
 };
 
 card('Extended Palette',
