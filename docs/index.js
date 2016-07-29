@@ -14,6 +14,7 @@ import '../src/Switch/__docs__/Switch-doc';
 import '../src/Tabs/__docs__/Tabs-doc';
 import '../src/Text/__docs__/Text-doc';
 import '../src/TextField/__docs__/TextField-doc';
+import '../src/Typography/__docs__/Typography-doc';
 import '../src/Whitespace/__docs__/Whitespace-doc';
 
 import { card, doc, ns } from 'devcards';
