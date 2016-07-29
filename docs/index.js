@@ -7,6 +7,7 @@ import '../src/Grid/__docs__/Grid-doc';
 import '../src/Heading/__docs__/Heading-doc';
 import '../src/Image/__docs__/Image-doc';
 import '../src/Icon/__docs__/Icon-doc';
+import '../src/Layout/__docs__/Layout-doc';
 import '../src/Mask/__docs__/Mask-doc';
 import '../src/Modal/__docs__/Modal-doc';
 import '../src/Switch/__docs__/Switch-doc';
