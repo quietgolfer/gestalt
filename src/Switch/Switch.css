@@ -9,11 +9,11 @@
 }
 
 .Switch__off {
-  composes: bg-light-gray from "../index.css";
+  composes: bg-light-gray from "../../styles.css";
 }
 
 .Switch__switched {
-  composes: bg-dark-green from "../index.css";
+  composes: bg-dark-green from "../../styles.css";
 }
 
 .Switch--slider {

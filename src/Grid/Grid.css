@@ -1,9 +1,9 @@
 .Grid {
-  composes: relative from "../index.css";
+  composes: relative from "../../styles.css";
   height: 100%;
   margin: 0 auto;
 }
 
 .Grid__Item {
-  composes: absolute from "../index.css";
+  composes: absolute from "../../styles.css";
 }

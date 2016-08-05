@@ -1,12 +1,12 @@
 .Tabs {
-  composes: bg-super-light-gray flex overflow-hidden from "../index.css";
+  composes: bg-super-light-gray flex overflow-hidden from "../../styles.css";
   border-radius: 4px;
   padding: 2px;
   user-select: none;
 }
 
 .Tabs--item {
-  composes: col-12 text-center p2 from "../index.css";
+  composes: col-12 text-center p2 from "../../styles.css";
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -17,5 +17,5 @@
 }
 
 .Tabs--item__isSelected {
-  composes: bg-white from "../index.css";
+  composes: bg-white from "../../styles.css";
 }

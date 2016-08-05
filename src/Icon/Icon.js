@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames/bind';
-import styles from '../index.css';
+import styles from '../../styles.css';
 import iconStyles from './Icon.css';
 import paths from './icons/index.js';
 

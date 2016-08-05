@@ -7,7 +7,7 @@ const postcssImport = require('postcss-import');
 
 
 module.exports = {
-  entry: './src/index.css',
+  entry: './styles.css',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
@@ -16,7 +16,6 @@ module.exports = {
     loaders: [
       {
         test: /\.css$/,
-        include: /src/,
         loader: ExtractTextPlugin.extract(
           'style',
           'css?modules&importLoaders=1&localIdentName=[local]!postcss'

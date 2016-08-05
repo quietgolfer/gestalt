@@ -1,6 +1,6 @@
 import { createElement, Element } from 'react';
 import classnames from 'classnames/bind';
-import styles from '../index.css';
+import styles from '../../styles.css';
 
 const cx = classnames.bind(styles);
 

@@ -1,5 +1,5 @@
 .Mask {
-  composes: overflow-hidden relative from "../index.css";
+  composes: overflow-hidden relative from "../../styles.css";
 }
 
 .Mask--square {
