@@ -11,4 +11,5 @@ export Navbar from './Navbar/Navbar';
 export SearchField from './SearchField/SearchField';
 export Switch from './Switch/Switch';
 export Tabs from './Tabs/Tabs';
+export Text from './Text/Text';
 export TextField from './TextField/TextField';
