@@ -8,17 +8,21 @@ const combinedStyles = Object.assign(styles, iconStyles);
 
 const cx = classnames.bind(combinedStyles);
 
-export default function Icon({
-  color = 'light-gray',
-  icon,
-  label,
-  size = 16,
-}: {
-  color: 'white' | 'light-gray' | 'dark-gray' | 'blue',
+type IconProps = {
+  color?: 'white' | 'light-gray' | 'dark-gray' | 'blue',
   icon: string,
   label: string,
-  size: number
-}) {
+  size?: number
+};
+
+export default function Icon(props: IconProps) {
+  const {
+    color = 'light-gray',
+    icon,
+    label,
+    size = 16,
+  } = props;
+
   const cs = cx(
       'Icon',
       `Icon--${icon}`,

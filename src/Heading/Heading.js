@@ -1,4 +1,4 @@
-import { createElement, PropTypes } from 'react';
+import { createElement, Element } from 'react';
 import classnames from 'classnames/bind';
 import styles from '../index.css';
 
@@ -12,8 +12,19 @@ const sizesToElementMap = {
   xl: 'h1',
 };
 
-export default function Heading(props) {
-  const { children, color, size } = props;
+type HeadingProps = {
+  children: Element,
+  color?: 'white' | 'light-gray' | 'dark-gray' | 'blue',
+  size: 'xs' | 's' | 'm' | 'l' | 'xl'
+};
+
+export default function Heading(props: HeadingProps) {
+  const {
+    children,
+    color = 'dark-gray',
+    size,
+  } = props;
+
   const cs = cx(
         'antialiased',
         'bold',
@@ -24,24 +35,3 @@ export default function Heading(props) {
     );
   return createElement(sizesToElementMap[size], { className: cs }, children);
 }
-
-Heading.propTypes = {
-  children: PropTypes.node.isRequired,
-  color: PropTypes.oneOf([
-    'white',
-    'light-gray',
-    'dark-gray',
-    'blue',
-  ]).isRequired,
-  size: PropTypes.oneOf([
-    'xs',
-    's',
-    'm',
-    'l',
-    'xl',
-  ]).isRequired,
-};
-
-Heading.defaultProps = {
-  color: 'dark-gray',
-};
