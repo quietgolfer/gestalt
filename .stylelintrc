@@ -3,12 +3,20 @@
   "rules": {
     "color-named": "never",
     "custom-property-no-outside-root": true,
+    "declaration-block-no-duplicate-properties": [true, {
+      "ignore": ["consecutive-duplicates"]
+    }],
     "declaration-block-properties-order": [["composes"], { unspecified: "bottomAlphabetical" }],
     "declaration-no-important": true,
+    "function-url-quotes": "always",
     "indentation": 2,
     "max-nesting-depth": 0,
+    "no-descending-specificity": true,
     "no-duplicate-selectors": true,
     "no-unknown-animations": true,
+    "property-no-unknown": [true, {
+      ignoreProperties: ['composes']
+    }],
     "property-no-vendor-prefix": true,
     "root-no-standard-properties": true,
     "rule-nested-empty-line-before": ["always", {
