@@ -33,10 +33,8 @@ card('Example',
   doc`A simple avatar to visually represent a person.`,
   <PreloadImageContext canPreloadImages>
     <Avatar
-      avatar={{
-        size: 74,
-        url: 'https://s-media-cache-ak0.pinimg.com/avatars/chrislloyd_1459403984_280.jpg',
-      }}
+      size={74}
+      src="https://s-media-cache-ak0.pinimg.com/avatars/chrislloyd_1459403984_280.jpg"
       name="Chris Lloyd"
     />
   </PreloadImageContext>);
