@@ -1,7 +1,9 @@
 .Switch {
   border-radius: 48px; /* .circle */
+  box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
+  height: 28px;
   padding: 2px;
   position: relative;
   transition: background 0.2s ease;

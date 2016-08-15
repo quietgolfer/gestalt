@@ -29,11 +29,15 @@ export default class Switch extends Component {
             switched,
         } = this.props;
     return (
-      <label
+      <div
+        aria-checked={switched}
         className={cx('Switch', {
           Switch__off: !switched,
           Switch__switched: switched,
         })}
+        onClick={this.handleChange}
+        role="checkbox"
+        tabIndex={0}
       >
         <div
           className={cx('Switch--slider', {
@@ -41,13 +45,7 @@ export default class Switch extends Component {
             'Switch--slider__switched': switched,
           })}
         ></div>
-        <input
-          checked={switched}
-          className={cx('Switch--checkbox')}
-          onChange={this.handleChange}
-          type="checkbox"
-        />
-      </label>
+      </div>
     );
   }
 }
