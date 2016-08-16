@@ -31,7 +31,7 @@ export default function Text(props: TextProps) {
     'sans-serif',
     `text-${size}`,
     color,
-    align,
+    `text-${align}`,
     {
       bold,
       italic,
