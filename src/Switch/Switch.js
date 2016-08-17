@@ -14,18 +14,18 @@ export default function Switch(props) {
         Switch__switched: switched,
       })}
     >
-      <div
-        className={cx('Switch--slider', {
-          'Switch--slider__off': !switched,
-          'Switch--slider__switched': switched,
-        })}
-      />
       <input
         checked={switched}
         className={cx('Switch--checkbox')}
         id={id}
         onChange={onChange}
         type="checkbox"
+      />
+      <div
+        className={cx('Switch--slider', {
+          'Switch--slider__off': !switched,
+          'Switch--slider__switched': switched,
+        })}
       />
     </div>
   );
