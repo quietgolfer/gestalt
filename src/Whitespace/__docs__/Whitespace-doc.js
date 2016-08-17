@@ -3,11 +3,17 @@
 import React from 'react';
 import { card, doc, ns } from 'devcards';
 
+import ws from '../Whitespace.css';
+
 ns('Whitespace');
 
 card('Whitespace',
-  doc`Gestalt uses a simple short-hand way to apply margin and padding to elements.
-  Margin and padding classnames take the form of \`{m, p}{x, y, t, b, l, r}{n}{0-4}\`.
+  doc`Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
+  Margin and padding classnames take the form of \`{m, p}{x, y, t, b, l, r}{n}{0-6}\`.
+
+  The numbers (0-6) represent responsiveness according to "boints", which are screen-independent
+  number of points. As the size of a screen changes, the number of pixels corresponding
+  to that boint value also changes.
 
   Each of those values is explained below:
 
@@ -23,7 +29,7 @@ card('Whitespace',
   | r         | Apply property to the right                 |
   | n         | Apply negative value of property            |
   | 0         | Set margin or padding to 0                  |
-  | 1-4       | Set margin or padding to \`num\`* space val |
+  | 1-6       | Set responsive margin or padding from 1 boint to 6 boints |
 
   Thus, if you want to apply a 2 boint margin to the top, you would apply the class
   \`mt2\` to your element.
@@ -32,5 +38,31 @@ card('Whitespace',
   \`px{1, 2, 3, 4}\` to your element.
 
   If you want to completely get rid of all padding and margin, then you would add
-  \`m0 p0\` to your element.`,
-  <div />);
+  \`m0 p0\` to your element. More examples below.`,
+  <div />
+);
+
+card('Combining Margin and Padding',
+  doc`Some examples of combining margin and padding are found below. Try resizing the
+  browser to see the respsoniveness take place.
+
+  \`\`\`html
+  <div class="mb1 p3"> margin-bottom: 1bt, padding: 3bts </div>
+  <div class="m2 pl4"> margin: 2bt, padding-left: 4bts </div>
+  <div class="mt2 pb2"> margin-top: 2bt, padding-bottom: 2bt </div>
+  \`\`\`
+  `,
+  <div className="container">
+    <div className={`${ws.mb1} ${ws.p3} border`}> {'margin-bottom: 1bt, padding: 3bts'} </div>
+    <div className={`${ws.m2} ${ws.pl4} border`}> {'margin: 2bt, padding-left: 4bts'} </div>
+    <div className={`${ws.mt2} ${ws.pb2} border`}> {'margin-top: 2bt, padding-bottom: 2bt'} </div>
+  </div>
+);
+
+card('Excluded Margin Values',
+  doc`You may notice that there are no classnames for \`mx{1-6}\`, or \`my{1-6}\`. This is
+  because symmetrical whitespace is best applied as padding, as margins collapse.
+
+  So, if you need to apply symmetrical padding, use the corresponding \`px{1-6}\` and \`py{1-6}\`
+  classnames.`
+);
