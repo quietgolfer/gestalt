@@ -10,6 +10,7 @@ type TextProps = {
   bold?: bool,
   children: Element,
   color?: 'light-gray' | 'dark-gray',
+  inline?: bool,
   italic?: bool,
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
   truncate?: bool
@@ -21,6 +22,7 @@ export default function Text(props: TextProps) {
     bold = false,
     children,
     color = 'dark-gray',
+    inline = false,
     italic = false,
     size,
     truncate = false,
@@ -38,5 +40,6 @@ export default function Text(props: TextProps) {
       truncate,
     }
   );
-  return <div className={cs}>{children}</div>;
+  const Tag = inline ? 'span' : 'div';
+  return <Tag className={cs}>{children}</Tag>;
 }

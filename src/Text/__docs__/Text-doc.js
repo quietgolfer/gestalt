@@ -5,31 +5,41 @@ import { card, doc, ns } from 'devcards';
 ns('Text');
 
 card('Text',
-  doc`Pretty standard, really.`,
+  doc`Supported sizes:`,
   <div>
     <p>
-      <Text size="xs">{'Text extra small'}</Text>
+      <Text inline size="xs">{'Text extra small'}</Text>
       {' '}
-      <Text size="xs">{'こんにちは'}</Text>
+      <Text inline size="xs">{'こんにちは'}</Text>
     </p>
     <p>
-      <Text size="s">{'Text small'}</Text>
+      <Text inline size="s">{'Text small'}</Text>
       {' '}
-      <Text size="s">{'こんにちは'}</Text>
+      <Text inline size="s">{'こんにちは'}</Text>
     </p>
     <p>
-      <Text size="m">{'Text medium'}</Text>
+      <Text inline size="m">{'Text medium'}</Text>
       {' '}
-      <Text size="m">{'こんにちは'}</Text>
+      <Text inline size="m">{'こんにちは'}</Text>
     </p>
     <p>
-      <Text size="l">{'Text large'}</Text>
+      <Text inline size="l">{'Text large'}</Text>
       {' '}
-      <Text size="l">{'こんにちは'}</Text>
+      <Text inline size="l">{'こんにちは'}</Text>
     </p>
     <p>
-      <Text size="xl">{'Text extra large'}</Text>
+      <Text inline size="xl">{'Text extra large'}</Text>
       {' '}
-      <Text size="xl">{'こんにちは'}</Text>
+      <Text inline size="xl">{'こんにちは'}</Text>
     </p>
   </div>);
+
+card('Block Layout',
+  doc`By default text uses block elements.`,
+  <div>
+    <Text>{'Here is some content in the default block element.'}</Text>
+    <Text inline>{'Inline text with the `inline` prop. '}</Text>
+    <Text inline>{'More inline text.'}</Text>
+  </div>,
+  {},
+  { heading: false });
