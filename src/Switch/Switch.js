@@ -1,51 +1,43 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Switch.css';
 
 const cx = classnames.bind(styles);
 
-export default class Switch extends Component {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-    switched: PropTypes.bool.isRequired,
-  }
+export default function Switch(props) {
+  const { id, onChange, switched } = props;
 
-  static defaultProps = {
-    onChange: () => {},
-    switched: false,
-  }
-
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    this.props.onChange(e.nativeEvent.target.checked);
-  }
-
-  render() {
-    const {
-            switched,
-        } = this.props;
-    return (
+  return (
+    <div
+      className={cx('Switch', {
+        Switch__off: !switched,
+        Switch__switched: switched,
+      })}
+    >
       <div
-        aria-checked={switched}
-        className={cx('Switch', {
-          Switch__off: !switched,
-          Switch__switched: switched,
+        className={cx('Switch--slider', {
+          'Switch--slider__off': !switched,
+          'Switch--slider__switched': switched,
         })}
-        onClick={this.handleChange}
-        role="checkbox"
-        tabIndex={0}
-      >
-        <div
-          className={cx('Switch--slider', {
-            'Switch--slider__off': !switched,
-            'Switch--slider__switched': switched,
-          })}
-        ></div>
-      </div>
-    );
-  }
+      />
+      <input
+        checked={switched}
+        className={cx('Switch--checkbox')}
+        id={id}
+        onChange={onChange}
+        type="checkbox"
+      />
+    </div>
+  );
 }
+
+Switch.propTypes = {
+  id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  switched: PropTypes.bool.isRequired,
+};
+
+Switch.defaultProps = {
+  onChange: () => {},
+  switched: false,
+};

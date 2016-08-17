@@ -1,5 +1,6 @@
 import React from 'react';
 import Switch from '../Switch';
+import Text from '../../Text/Text';
 import { card, doc, ns } from 'devcards';
 
 ns('Switch');
@@ -21,10 +22,16 @@ If you have stuff you need to fit into a shape, put a \`Mask\` on it.`,
 card('Switch',
   doc`Live example:`,
   (atom) => (
-    <Switch
-      onChange={() => atom.reset({ switched: !atom.deref().switched })}
-      switched={atom.deref().switched}
-    />
+    <div>
+      <label htmlFor="switchExample">
+        <Text size="s">Live example switch label</Text>
+      </label>
+      <Switch
+        onChange={() => atom.reset({ switched: !atom.deref().switched })}
+        id="switchExample"
+        switched={atom.deref().switched}
+      />
+    </div>
   ),
   { switched: false },
   { heading: false });
