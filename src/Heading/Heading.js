@@ -28,7 +28,8 @@ export default function Heading(props: HeadingProps) {
   const cs = cx(
         'antialiased',
         'bold',
-        'my0',
+        'mb0',
+        'mt0',
         'sans-serif',
         `display-${size}`,
         color

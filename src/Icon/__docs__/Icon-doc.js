@@ -28,10 +28,11 @@ card('Icon colors',
           className="flex flex-column items-center circle mr-auto ml-auto"
           style={{
             backgroundColor: '#555',
-            width: 26,
+            boxSizing: 'border-box',
             height: 26,
             marginTop: '-4px',
             paddingTop: '4px',
+            width: 26,
           }}
         >
           <Icon icon="pin" label="Pin" size={21} color="white" />
