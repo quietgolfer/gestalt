@@ -18,7 +18,7 @@ card('Text',
       <Text inline size="s">{'こんにちは'}</Text>
     </p>
     <p>
-      <Text inline size="m">{'Text medium'}</Text>
+      <Text inline size="m">{'Text medium (default size)'}</Text>
       {' '}
       <Text inline size="m">{'こんにちは'}</Text>
     </p>

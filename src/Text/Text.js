@@ -24,7 +24,7 @@ export default function Text(props: TextProps) {
     color = 'dark-gray',
     inline = false,
     italic = false,
-    size,
+    size = 'm',
     truncate = false,
   } = props;
 
