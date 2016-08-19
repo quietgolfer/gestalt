@@ -5,6 +5,10 @@ import styles from '../../styles.css';
 
 const cx = classnames.bind(styles);
 
+type TextContext = {
+  locale?: string
+};
+
 type TextProps = {
   align?: 'left' | 'right' | 'center' | 'justify',
   bold?: bool,
@@ -12,11 +16,12 @@ type TextProps = {
   color?: 'light-gray' | 'dark-gray',
   inline?: bool,
   italic?: bool,
+  locale?: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
   truncate?: bool
 };
 
-export default function Text(props: TextProps) {
+export default function Text(props: TextProps, context: TextContext) {
   const {
     align = 'left',
     bold = false,
@@ -28,6 +33,8 @@ export default function Text(props: TextProps) {
     truncate = false,
   } = props;
 
+  const locale = props.locale || context.locale;
+
   const cs = cx(
     'antialiased',
     'sans-serif',
@@ -38,6 +45,7 @@ export default function Text(props: TextProps) {
       bold,
       italic,
       truncate,
+      [`locale-${locale}`]: !!locale,
     }
   );
   const Tag = inline ? 'span' : 'div';

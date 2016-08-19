@@ -16,6 +16,21 @@
   --size-11: 64px;
   --size-12: 96px;
 
+  /* type sizes for smaller locales */
+
+  --size-locale-ja-1: 8.6px;
+  --size-locale-ja-2: 9.5px;
+  --size-locale-ja-3: 10.3px;
+  --size-locale-ja-4: 12px;
+  --size-locale-ja-5: 13.8px;
+  --size-locale-ja-6: 15.5px;
+  --size-locale-ja-7: 18.1px;
+  --size-locale-ja-8: 20.6px;
+  --size-locale-ja-9: 31px;
+  --size-locale-ja-10: 41.3px;
+  --size-locale-ja-11: 55px;
+  --size-locale-ja-12: 82.6px;
+
   /* leading */
 
   --leading-1: 11px;
@@ -127,11 +142,19 @@
   word-spacing: var(--word-spacing-1);
 }
 
+.text-xs.locale-ja {
+  font-size: var(--size-locale-ja-1);
+}
+
 .text-s {
   font-size: var(--size-2);
   letter-spacing: var(--tracking-2);
   line-height: var(--leading-2);
   word-spacing: var(--word-spacing-2);
+}
+
+.text-s.locale-ja {
+  font-size: var(--size-locale-ja-2);
 }
 
 .text-m {
@@ -141,11 +164,19 @@
   word-spacing: var(--word-spacing-3);
 }
 
+.text-m.locale-ja {
+  font-size: var(--size-locale-ja-3);
+}
+
 .text-l {
   font-size: var(--size-4);
   letter-spacing: var(--tracking-4);
   line-height: var(--leading-4);
   word-spacing: var(--word-spacing-4);
+}
+
+.text-l.locale-ja {
+  font-size: var(--size-locale-ja-4);
 }
 
 .text-xl {
@@ -155,11 +186,19 @@
   word-spacing: var(--word-spacing-5);
 }
 
+.text-xl.locale-ja {
+  font-size: var(--size-locale-ja-5);
+}
+
 .display-xs {
   font-size: var(--size-6);
   letter-spacing: var(--tracking-6);
   line-height: var(--leading-6);
   word-spacing: var(--word-spacing-6);
+}
+
+.display-xs.locale-ja {
+  font-size: var(--size-locale-ja-6);
 }
 
 .display-s {
@@ -169,11 +208,19 @@
   word-spacing: var(--word-spacing-7);
 }
 
+.display-s.locale-ja {
+  font-size: var(--size-locale-ja-7);
+}
+
 .display-m {
   font-size: var(--size-8);
   letter-spacing: var(--tracking-8);
   line-height: var(--leading-8);
   word-spacing: var(--word-spacing-8);
+}
+
+.display-m.locale-ja {
+  font-size: var(--size-locale-ja-8);
 }
 
 .display-l {
@@ -183,11 +230,19 @@
   word-spacing: var(--word-spacing-9);
 }
 
+.display-l.locale-ja {
+  font-size: var(--size-locale-ja-9);
+}
+
 .display-xl {
   font-size: var(--size-10);
   letter-spacing: var(--tracking-10);
   line-height: var(--leading-10);
   word-spacing: var(--word-spacing-10);
+}
+
+.display-xl.locale-ja {
+  font-size: var(--size-locale-ja-10);
 }
 
 @media (--sm) {
@@ -198,11 +253,19 @@
     word-spacing: var(--word-spacing-2);
   }
 
+  .text-xs.locale-ja {
+    font-size: var(--size-locale-ja-2);
+  }
+
   .text-s {
     font-size: var(--size-3);
     letter-spacing: var(--tracking-3);
     line-height: var(--leading-3);
     word-spacing: var(--word-spacing-3);
+  }
+
+  .text-s.locale-ja {
+    font-size: var(--size-locale-ja-3);
   }
 
   .text-m {
@@ -212,11 +275,19 @@
     word-spacing: var(--word-spacing-4);
   }
 
+  .text-m.locale-ja {
+    font-size: var(--size-locale-ja-4);
+  }
+
   .text-l {
     font-size: var(--size-5);
     letter-spacing: var(--tracking-5);
     line-height: var(--leading-5);
     word-spacing: var(--word-spacing-5);
+  }
+
+  .text-l.locale-ja {
+    font-size: var(--size-locale-ja-5);
   }
 
   .text-xl {
@@ -226,11 +297,19 @@
     word-spacing: var(--word-spacing-6);
   }
 
+  .text-xl.locale-ja {
+    font-size: var(--size-locale-ja-6);
+  }
+
   .display-xs {
     font-size: var(--size-7);
     letter-spacing: var(--tracking-7);
     line-height: var(--leading-7);
     word-spacing: var(--word-spacing-7);
+  }
+
+  .display-xs.locale-ja {
+    font-size: var(--size-locale-ja-7);
   }
 
   .display-s {
@@ -240,11 +319,19 @@
     word-spacing: var(--word-spacing-8);
   }
 
+  .display-s.locale-ja {
+    font-size: var(--size-locale-ja-8);
+  }
+
   .display-m {
     font-size: var(--size-9);
     letter-spacing: var(--tracking-9);
     line-height: var(--leading-9);
     word-spacing: var(--word-spacing-9);
+  }
+
+  .display-m.locale-ja {
+    font-size: var(--size-locale-ja-9);
   }
 
   .display-l {
@@ -254,11 +341,19 @@
     word-spacing: var(--word-spacing-10);
   }
 
+  .display-l.locale-ja {
+    font-size: var(--size-locale-ja-10);
+  }
+
   .display-xl {
     font-size: var(--size-11);
     letter-spacing: var(--tracking-11);
     line-height: var(--leading-11);
     word-spacing: var(--word-spacing-11);
+  }
+
+  .display-xl.locale-ja {
+    font-size: var(--size-locale-ja-11);
   }
 }
 
@@ -270,11 +365,19 @@
     word-spacing: var(--word-spacing-3);
   }
 
+  .text-xs.locale-ja {
+    font-size: var(--size-locale-ja-3);
+  }
+
   .text-s {
     font-size: var(--size-4);
     letter-spacing: var(--tracking-4);
     line-height: var(--leading-4);
     word-spacing: var(--word-spacing-4);
+  }
+
+  .text-s.locale-ja {
+    font-size: var(--size-locale-ja-4);
   }
 
   .text-m {
@@ -284,11 +387,19 @@
     word-spacing: var(--word-spacing-5);
   }
 
+  .text-m.locale-ja {
+    font-size: var(--size-locale-ja-5);
+  }
+
   .text-l {
     font-size: var(--size-6);
     letter-spacing: var(--tracking-6);
     line-height: var(--leading-6);
     word-spacing: var(--word-spacing-6);
+  }
+
+  .text-l.locale-ja {
+    font-size: var(--size-locale-ja-6);
   }
 
   .text-xl {
@@ -298,11 +409,19 @@
     word-spacing: var(--word-spacing-7);
   }
 
+  .text-xl.locale-ja {
+    font-size: var(--size-locale-ja-7);
+  }
+
   .display-xs {
     font-size: var(--size-8);
     letter-spacing: var(--tracking-8);
     line-height: var(--leading-8);
     word-spacing: var(--word-spacing-8);
+  }
+
+  .display-xs.locale-ja {
+    font-size: var(--size-locale-ja-8);
   }
 
   .display-s {
@@ -312,11 +431,19 @@
     word-spacing: var(--word-spacing-9);
   }
 
+  .display-s.locale-ja {
+    font-size: var(--size-locale-ja-9);
+  }
+
   .display-m {
     font-size: var(--size-10);
     letter-spacing: var(--tracking-10);
     line-height: var(--leading-10);
     word-spacing: var(--word-spacing-10);
+  }
+
+  .display-m.locale-ja {
+    font-size: var(--size-locale-ja-10);
   }
 
   .display-l {
@@ -326,10 +453,18 @@
     word-spacing: var(--word-spacing-11);
   }
 
+  .display-l.locale-ja {
+    font-size: var(--size-locale-ja-11);
+  }
+
   .display-xl {
     font-size: var(--size-12);
     letter-spacing: var(--tracking-12);
     line-height: var(--leading-12);
     word-spacing: var(--word-spacing-12);
+  }
+
+  .display-xl.locale-ja {
+    font-size: var(--size-locale-ja-12);
   }
 }

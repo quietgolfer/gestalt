@@ -18,14 +18,24 @@ card('Sizes',
   <div>
     <Divider />
     <Heading size="xs">{'Heading extra small'}</Heading>
+    {' '}
+    <Heading locale="ja" size="xs">{'こんにちは'}</Heading>
     <Divider />
     <Heading size="s">{'Heading small'}</Heading>
+    {' '}
+    <Heading locale="ja" size="s">{'こんにちは'}</Heading>
     <Divider />
     <Heading size="m">{'Heading medium'}</Heading>
+    {' '}
+    <Heading locale="ja" size="m">{'こんにちは'}</Heading>
     <Divider />
     <Heading size="l">{'Heading large'}</Heading>
+    {' '}
+    <Heading locale="ja" size="l">{'こんにちは'}</Heading>
     <Divider />
     <Heading size="xl">{'Heading extra large'}</Heading>
+    {' '}
+    <Heading locale="ja" size="xl">{'こんにちは'}</Heading>
     <Divider />
   </div>,
   {},

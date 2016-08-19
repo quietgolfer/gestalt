@@ -10,27 +10,27 @@ card('Text',
     <p>
       <Text inline size="xs">{'Text extra small'}</Text>
       {' '}
-      <Text inline size="xs">{'こんにちは'}</Text>
+      <Text inline locale="ja" size="xs">{'こんにちは'}</Text>
     </p>
     <p>
       <Text inline size="s">{'Text small'}</Text>
       {' '}
-      <Text inline size="s">{'こんにちは'}</Text>
+      <Text inline locale="ja" size="s">{'こんにちは'}</Text>
     </p>
     <p>
       <Text inline size="m">{'Text medium (default size)'}</Text>
       {' '}
-      <Text inline size="m">{'こんにちは'}</Text>
+      <Text inline locale="ja" size="m">{'こんにちは'}</Text>
     </p>
     <p>
       <Text inline size="l">{'Text large'}</Text>
       {' '}
-      <Text inline size="l">{'こんにちは'}</Text>
+      <Text inline locale="ja" size="l">{'こんにちは'}</Text>
     </p>
     <p>
       <Text inline size="xl">{'Text extra large'}</Text>
       {' '}
-      <Text inline size="xl">{'こんにちは'}</Text>
+      <Text inline locale="ja" size="xl">{'こんにちは'}</Text>
     </p>
   </div>);
 

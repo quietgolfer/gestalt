@@ -12,27 +12,37 @@ const sizesToElementMap = {
   xl: 'h1',
 };
 
+type HeadingContext = {
+  locale?: string
+};
+
 type HeadingProps = {
   children: Element,
   color?: 'white' | 'light-gray' | 'dark-gray' | 'blue',
+  locale?: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl'
 };
 
-export default function Heading(props: HeadingProps) {
+export default function Heading(props: HeadingProps, context: HeadingContext) {
   const {
     children,
     color = 'dark-gray',
     size,
   } = props;
 
+  const locale = props.locale || context.locale;
+
   const cs = cx(
-        'antialiased',
-        'bold',
-        'mb0',
-        'mt0',
-        'sans-serif',
-        `display-${size}`,
-        color
-    );
+    'antialiased',
+    'bold',
+    'mb0',
+    'mt0',
+    'sans-serif',
+    `display-${size}`,
+    color,
+    {
+      [`locale-${locale}`]: !!locale,
+    }
+  );
   return createElement(sizesToElementMap[size], { className: cs }, children);
 }
