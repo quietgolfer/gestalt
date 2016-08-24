@@ -34,6 +34,7 @@ const borderLines = [
   'border-bottom',
   'border-left',
   'border-right',
+  'no-border',
 ];
 
 card('Border Lines',
@@ -45,6 +46,7 @@ card('Border Lines',
 <div class="border-bottom"> .border-bottom </div>
 <div class="border-right"> .border-right </div>
 <div class="border-left"> .border-left </div>
+<div class="no-border"> .no-border </div>
 \`\`\`
  `,
   <div className="flex mxn1 justify-center flex-wrap">

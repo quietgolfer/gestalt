@@ -6,6 +6,10 @@
 
 /* Border lines */
 
+.no-border {
+  border: 0;
+}
+
 .border {
   border: var(--border-width) solid var(--border-color);
 }
