@@ -33,7 +33,7 @@ export default function Icon(props: IconProps) {
 
   return (
     <svg className={cs} height={size} width={size} viewBox="0 0 16 16">
-      <text>{label}</text>
+      <title>{label}</title>
       <path d={path} />
     </svg>
   );
