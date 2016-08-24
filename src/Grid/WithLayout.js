@@ -33,6 +33,7 @@ export default class WithLayout extends Component {
       const rendered = ReactDOM.unstable_renderSubtreeIntoContainer(
           this, child, this.measuringNode);
       const { clientWidth, clientHeight } = rendered;
+      ReactDOM.unmountComponentAtNode(this.measuringNode);
       document.body.removeChild(this.measuringNode);
 
       // Trigger the prop fn to determine layout using layout information.
