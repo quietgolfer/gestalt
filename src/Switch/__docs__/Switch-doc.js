@@ -8,7 +8,18 @@ ns('Switch');
 card('Switch',
   doc`# Switch
 
-If you have stuff you need to fit into a shape, put a \`Mask\` on it.`,
+Use the \`Switch\` component as an on/off control.
+
+\`\`\`html
+Switch.propTypes = {
+  id: PropTypes.string,
+  onChange: PropTypes.func,
+  switched: PropTypes.bool,
+};
+\`\`\`
+
+`,
+
   <div className="flex mxn1">
     <div className="p1">
       <Switch />
@@ -20,11 +31,20 @@ If you have stuff you need to fit into a shape, put a \`Mask\` on it.`,
   , {}, { heading: false });
 
 card('Switch',
-  doc`Live example:`,
+  doc`Live example:
+
+  \`\`\`html
+  <Switch
+    onChange={() => atom.reset({ switched: !atom.deref().switched })}
+    id="switchExample"
+    switched={atom.deref().switched}
+  />
+  \`\`\`
+  `,
   (atom) => (
     <div>
       <label htmlFor="switchExample">
-        <Text size="s">Live example switch label</Text>
+        <Text size="s">Live example</Text>
       </label>
       <Switch
         onChange={() => atom.reset({ switched: !atom.deref().switched })}

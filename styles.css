@@ -3,6 +3,7 @@
 @import "./src/Borders/Borders.css";
 @import "./src/Colors/Colors.css";
 @import "./src/Columns/Columns.css";
+@import "./src/Cursor/Cursor.css";
 @import "./src/Layout/Layout.css";
 @import "./src/Typography/Typography.css";
 @import "./src/Whitespace/Whitespace.css";
