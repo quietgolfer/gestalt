@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import typography from '../Typography.css';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Typography');
 

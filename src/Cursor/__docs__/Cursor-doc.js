@@ -1,4 +1,4 @@
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 import React from 'react';
 import classnames from 'classnames/bind';
 import styles from '../../../styles.css';

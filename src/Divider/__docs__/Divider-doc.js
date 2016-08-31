@@ -1,6 +1,6 @@
 import React from 'react';
 import Divider from '../Divider';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Divider');
 

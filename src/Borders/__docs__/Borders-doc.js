@@ -2,7 +2,7 @@
 import React from 'react';
 import classnames from 'classnames/bind';
 import borders from '../Borders.css';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Borders');
 
@@ -37,7 +37,7 @@ const borderLines = [
   'no-border',
 ];
 
-card('Border Lines',
+card('Border lines',
   doc`Use the following classes for applying border outlines to elements:
 
 \`\`\`html
@@ -66,7 +66,7 @@ const borderRadii = [
   'rounded-left',
 ];
 
-card('Border Radii',
+card('Border radii',
   doc`Use the following classes for applying border radii to elements:
 
 

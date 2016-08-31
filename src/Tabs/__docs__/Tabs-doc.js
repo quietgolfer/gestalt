@@ -1,6 +1,6 @@
 import React from 'react';
 import Tabs from '../Tabs';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Tabs');
 
