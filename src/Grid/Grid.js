@@ -30,13 +30,9 @@ export default class Grid extends Component {
    * Adds hooks after the component mounts.
    */
   componentDidMount() {
-    this.boundScrollHandler = () => {
-      this.fetchMoreIfNeeded();
-    };
-
     this.boundResizeHandler = () => this.handleResize();
 
-    this.props.scrollContainer.addEventListener('scroll', this.boundScrollHandler);
+    this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
 
     /* eslint react/no-did-mount-set-state:0 */
@@ -66,7 +62,7 @@ export default class Grid extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
-    this.props.scrollContainer.removeEventListener('scroll', this.boundScrollHandler);
+    this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
   }
 
@@ -169,10 +165,15 @@ export default class Grid extends Component {
   /**
    * Fetches additional items if needed.
    */
-  fetchMoreIfNeeded() {
+  handleScroll = () => {
     // Only fetch more items if we already have some items loaded.
     // The initial render should be supplied through props.
     if (!this.props.items.length || this.fetchingWith) {
+      return;
+    }
+
+    // Only load items if props.loadItems is defined.
+    if (!this.props.loadItems) {
       return;
     }
 
