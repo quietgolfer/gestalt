@@ -3,7 +3,7 @@ import React from 'react';
 import layout from '../Layout.css';
 import classnames from 'classnames/bind';
 
-import { card, doc, ns } from 'corkboard';
+import { card, doc, ns } from 'devcards';
 
 const cx = classnames.bind(layout);
 

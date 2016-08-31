@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react';
+import classnames from 'classnames/bind';
 import Icon from '../Icon';
 import icons from '../icons/index';
-import { card, doc, ns } from 'corkboard';
+import styles from '../../../styles.css';
+import { card, doc, ns } from 'devcards';
+
+const cx = classnames.bind(styles);
 
 ns('Icon');
 
@@ -102,7 +106,7 @@ card('Icon sizes',
 
 function IconType({ iconName }) {
   return (
-    <div className="col-6 sm-col-3 px2 text-center border-box">
+    <div className={cx(['col-6', 'sm-col-3', 'px2', 'text-center', 'border-box'])}>
       <h5>{iconName}</h5>
       <Icon icon={iconName} label={iconName.replace(/-/g, ' ')} size={21} color="light-gray" />
     </div>

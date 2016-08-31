@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { card, doc, ns } from 'corkboard';
+import { card, doc, ns } from 'devcards';
 
 import ws from '../Whitespace.css';
 

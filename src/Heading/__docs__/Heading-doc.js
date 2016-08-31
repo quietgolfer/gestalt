@@ -1,7 +1,7 @@
 import React from 'react';
 import Divider from '../../Divider/Divider';
 import Heading from '../Heading';
-import { card, doc, ns } from 'corkboard';
+import { card, doc, ns } from 'devcards';
 
 ns('Heading');
 

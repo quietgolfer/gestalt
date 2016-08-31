@@ -3,12 +3,11 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import columns from '../Columns.css';
 import borders from '../../Borders/Borders.css';
-import layout from '../../Layout/Layout.css';
-import { card, doc, ns } from 'corkboard';
+import { card, doc, ns } from 'devcards';
 
 ns('Columns');
 
-const combinedStyles = Object.assign(columns, borders, layout);
+const combinedStyles = Object.assign(columns, borders);
 
 const cx = classnames.bind(combinedStyles);
 

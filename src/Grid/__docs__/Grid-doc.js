@@ -1,6 +1,6 @@
 import React from 'react';
 import ExampleGrid from './ExampleGrid';
-import { card, doc, ns } from 'corkboard';
+import { card, doc, ns } from 'devcards';
 
 ns('Grid');
 

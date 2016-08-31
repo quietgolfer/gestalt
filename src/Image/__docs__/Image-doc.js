@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Image, { Placeholder } from '../Image';
-import { card, doc, ns } from 'corkboard';
+import { card, doc, ns } from 'devcards';
 import Mask from '../../Mask/Mask';
 import Text from '../../Text/Text';
 import Heading from '../../Heading/Heading';
