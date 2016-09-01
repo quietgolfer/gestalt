@@ -48,7 +48,7 @@ card('Colors',
       <Heading color="white" size="m">{'White'}</Heading>
     </div>
     <Heading size="m">{'Dark gray (default)'}</Heading>
-    <Heading color="light-gray" size="m">{'Light gray'}</Heading>
+    <Heading color="gray" size="m">{'Light gray'}</Heading>
     <Heading color="blue" size="m">{'Blue'}</Heading>
   </div>,
   {},

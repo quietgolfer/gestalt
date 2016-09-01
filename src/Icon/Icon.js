@@ -9,7 +9,7 @@ const combinedStyles = Object.assign(styles, iconStyles);
 const cx = classnames.bind(combinedStyles);
 
 type IconProps = {
-  color?: 'white' | 'light-gray' | 'dark-gray' | 'blue',
+  color?: 'white' | 'gray' | 'dark-gray' | 'blue',
   icon: string,
   label: string,
   size?: number
@@ -17,7 +17,7 @@ type IconProps = {
 
 export default function Icon(props: IconProps) {
   const {
-    color = 'light-gray',
+    color = 'gray',
     icon,
     label,
     size = 16,

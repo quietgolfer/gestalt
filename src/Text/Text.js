@@ -13,7 +13,7 @@ type TextProps = {
   align?: 'left' | 'right' | 'center' | 'justify',
   bold?: bool,
   children: Element,
-  color?: 'light-gray' | 'dark-gray',
+  color?: 'gray' | 'dark-gray',
   inline?: bool,
   italic?: bool,
   locale?: string,

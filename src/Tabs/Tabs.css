@@ -1,5 +1,5 @@
 .Tabs {
-  composes: bg-super-light-gray flex overflow-hidden from "../../styles.css";
+  composes: bg-light-gray flex overflow-hidden from "../../styles.css";
   border-radius: 4px;
   padding: 2px;
   user-select: none;

@@ -8,7 +8,7 @@ ns('Icon');
 card('Icon',
   doc`# Icon
 
-By default an icon is rendered in medium size and a light-gray color`,
+By default an icon is rendered in medium size and a gray color`,
   null, {}, { heading: false });
 
 card('Icon colors',
@@ -16,8 +16,8 @@ card('Icon colors',
   <div>
     <div className="flex mxn2">
       <div className="col-2 px2 text-center border-box">
-        <h5>light-gray</h5>
-        <Icon icon="pin" label="Pin" size={21} color="light-gray" />
+        <h5>gray</h5>
+        <Icon icon="pin" label="Pin" size={21} color="gray" />
       </div>
       <div className="col-2 px2 text-center border-box">
         <h5>dark-gray</h5>
@@ -104,7 +104,7 @@ function IconType({ iconName }) {
   return (
     <div className="col-6 sm-col-3 px2 text-center border-box">
       <h5>{iconName}</h5>
-      <Icon icon={iconName} label={iconName.replace(/-/g, ' ')} size={21} color="light-gray" />
+      <Icon icon={iconName} label={iconName.replace(/-/g, ' ')} size={21} color="gray" />
     </div>
   );
 }

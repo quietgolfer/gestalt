@@ -62,10 +62,10 @@ card('Primary Colors',
       <Swatch color="dark-gray" size="6rem" />
     </div>
     <div className="px1 col-3 mb2">
-      <Swatch color="light-gray" size="6rem" />
+      <Swatch color="gray" size="6rem" />
     </div>
     <div className="px1 col-3 mb2">
-      <Swatch color="super-light-gray" size="6rem" />
+      <Swatch color="light-gray" size="6rem" />
     </div>
     <div className="px1 col-3 mb2">
       <Swatch color="red" size="6rem" />
@@ -74,23 +74,23 @@ card('Primary Colors',
       <Swatch color="blue" size="6rem" />
     </div>
     <div className="px1 col-3 mb2">
-      <Swatch color="yellow" size="6rem" />
+      <Swatch color="mustard" size="6rem" />
     </div>
     <div className="px1 col-3 mb2">
-      <Swatch color="dark-green" size="6rem" />
+      <Swatch color="pine" size="6rem" />
     </div>
     <div className="px1 col-3 mb2">
-      <Swatch color="slate-green" size="6rem" />
+      <Swatch color="slate" size="6rem" />
     </div>
     <div className="px1 col-3 mb2">
-      <Swatch color="pink" size="6rem" />
+      <Swatch color="salmon" size="6rem" />
     </div>
   </div>);
 
 const alts = [
   'red',
   'orange',
-  'yellow',
+  'mustard',
   'green',
   'blue',
   'purple',

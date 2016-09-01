@@ -18,7 +18,7 @@ type HeadingContext = {
 
 type HeadingProps = {
   children: Element,
-  color?: 'white' | 'light-gray' | 'dark-gray' | 'blue',
+  color?: 'white' | 'gray' | 'dark-gray' | 'blue',
   locale?: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl'
 };

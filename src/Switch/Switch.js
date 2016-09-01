@@ -9,8 +9,8 @@ export default function Switch(props) {
 
   const switchComposed = cx('border-box', 'inline-block', 'relative', 'pointer',
     {
-      'bg-light-gray': !switched,
-      'bg-dark-green': switched,
+      'bg-gray': !switched,
+      'bg-pine': switched,
     });
 
   const switchInline = {
