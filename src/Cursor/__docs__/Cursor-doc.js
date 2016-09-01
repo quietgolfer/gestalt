@@ -1,4 +1,4 @@
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 import React from 'react';
 import classnames from 'classnames/bind';
 import styles from '../../../styles.css';
@@ -13,7 +13,7 @@ const inline = {
 ns('Cursor');
 
 card('Cursor',
-  doc`Collection of different cursor options to help users interface with your design
+  md`Collection of different cursor options to help users interface with your design
 
   For a full list of classes and the properties they correspond to:
 

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Avatar from '../Avatar';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Avatar');
 
@@ -30,7 +30,7 @@ class PreloadImageContext extends Component {
 }
 
 card('Example',
-  doc`A simple avatar to visually represent a person.`,
+  md`A simple avatar to visually represent a person.`,
   <PreloadImageContext canPreloadImages>
     <Avatar
       size={74}

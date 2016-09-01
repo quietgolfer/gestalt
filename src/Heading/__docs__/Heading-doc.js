@@ -1,12 +1,12 @@
 import React from 'react';
 import Divider from '../../Divider/Divider';
 import Heading from '../Heading';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Heading');
 
 card('Heading',
-    doc`# Headings
+    md`# Headings
 
 In all their glory.`,
     null,
@@ -14,7 +14,7 @@ In all their glory.`,
     { heading: false });
 
 card('Sizes',
-  doc`Comes in a variety of sizes:`,
+  md`Comes in a variety of sizes:`,
   <div>
     <Divider />
     <Heading size="xs">{'Heading extra small'}</Heading>
@@ -42,7 +42,7 @@ card('Sizes',
   { heading: false });
 
 card('Colors',
-  doc`And a variety of colors:`,
+  md`And a variety of colors:`,
   <div>
     <div style={{ backgroundColor: '#555' }}>
       <Heading color="white" size="m">{'White'}</Heading>

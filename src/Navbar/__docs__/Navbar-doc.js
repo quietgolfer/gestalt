@@ -1,11 +1,11 @@
 import React from 'react';
 import Navbar from '../Navbar';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Navbar');
 
 card('Navbar',
-  doc`# Navbar
+  md`# Navbar
 
 If you have stuff you need to fit into a shape, put a \`Mask\` on it.`,
   <div className="p1 bg-gray">

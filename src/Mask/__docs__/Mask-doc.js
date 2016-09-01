@@ -1,11 +1,11 @@
 import React from 'react';
 import Mask from '../Mask';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Mask');
 
 card('Mask',
-    doc`# Mask
+    md`# Mask
 
 If you have stuff you need to fit into a shape, put a \`Mask\` on it.`,
   <div className="flex">

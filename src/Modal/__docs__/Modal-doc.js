@@ -1,7 +1,7 @@
 import React from 'react';
 import Divider from '../../Divider/Divider';
 import Modal, { ModalContent, ModalFooter, ModalHeading } from '../Modal';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Modal');
 
@@ -17,7 +17,7 @@ const onHideContentModal = hideModal('contentModalShown');
 const onHideImageModal = hideModal('imageModalShown');
 
 card('Modal',
-  doc`A modal dialog useful for filling with all sorts of content.`,
+  md`A modal dialog useful for filling with all sorts of content.`,
   (atom) => {
     const state = atom.deref();
     return (

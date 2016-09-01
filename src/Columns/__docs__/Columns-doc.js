@@ -4,7 +4,7 @@ import classnames from 'classnames/bind';
 import columns from '../Columns.css';
 import borders from '../../Borders/Borders.css';
 import layout from '../../Layout/Layout.css';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Columns');
 
@@ -53,7 +53,7 @@ Column.propTypes = {
 };
 
 card('Columns',
-  doc`## Columns
+  md`## Columns
 
   Gestalt supports a 12-column system with which you can build layouts by adding \`.col-{1-12}\`
   to your elements.
@@ -89,7 +89,7 @@ card('Columns',
   { heading: false });
 
 card('Breakpoints',
-  doc`There are breakpoints for small, medium, and large screens. Use the \`sm\`, \`md\`,
+  md`There are breakpoints for small, medium, and large screens. Use the \`sm\`, \`md\`,
   and \`lg\` prefixes to achieve a responsive grid on various screen sizes.
 
   \`\`\`html

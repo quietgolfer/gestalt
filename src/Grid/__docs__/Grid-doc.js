@@ -1,13 +1,13 @@
 import React from 'react';
 import ExampleGrid from './ExampleGrid';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Grid');
 
-card('Grid',
-  doc`# Grid
+card('Grid', md`# Grid`, <div />, {}, { heading: false });
 
-The Pinterest grid.`,
-  <ExampleGrid />,
-  {}, { padding: false }
+
+card('Fixed width',
+  md`The Pinterest grid.`,
+  <ExampleGrid />
 );

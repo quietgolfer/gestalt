@@ -3,7 +3,7 @@ import React from 'react';
 import layout from '../Layout.css';
 import classnames from 'classnames/bind';
 
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 const cx = classnames.bind(layout);
 
@@ -72,7 +72,7 @@ function FlexItem(props : ItemProps) {
 ns('Layout');
 
 card('Layout',
-  doc`Most classes needed to layout elements correspond to their CSS properties/values pretty
+  md`Most classes needed to layout elements correspond to their CSS properties/values pretty
   tightly. For example:
 
   \`.pull-left\` and \`.pull-right\` correspond to \`float: left\` and \`float: right\`.
@@ -97,13 +97,13 @@ card('Layout',
   `);
 
 card('Positioning',
-  doc`Gestalt provides helper classes for resetting top, bottom, left, and right positioning.
+  md`Gestalt provides helper classes for resetting top, bottom, left, and right positioning.
   The respective classnames are: \`.top-0\`, \`.bottom-0\`, \`.left-0\`, \`.right-0\`
   `);
 
 // TODO(allenk): Add flexbox properties, along with some code examples
 card('Flexbox',
-  doc`## Flexbox container classes
+  md`## Flexbox container classes
 
   In order to use flexbox, add the \`.flex\` class to a parent container element. If you're
   If you want all elements within the flex container to have the same alignment, then you could add
@@ -131,7 +131,7 @@ const itemClasses = [
 ];
 
 card('Flex box items',
-  doc`If you want to align individual items inside of a flex container, you can use the following
+  md`If you want to align individual items inside of a flex container, you can use the following
   classes on items inside of a flex parent class
   `,
 
@@ -150,7 +150,7 @@ const justificationClasses = [
 ];
 
 card('Flex item justification',
-  doc`If you want to specify the horizonatal spacing for items within a flex container, or the
+  md`If you want to specify the horizonatal spacing for items within a flex container, or the
   horizontal justification for items within a flex container, you can apply the following classes
   to the **parent** container.
   `,
@@ -172,7 +172,7 @@ const contentClasses = [
 ];
 
 card('Flex item justification',
-  doc`If you want to specify the vertical spacing for items within a flex container, or the
+  md`If you want to specify the vertical spacing for items within a flex container, or the
   vertical justification for items within a flex container, you can apply the following classes
   to the **parent** container.
   `,

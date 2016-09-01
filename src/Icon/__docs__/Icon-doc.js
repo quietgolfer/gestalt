@@ -1,18 +1,17 @@
 import React, { PropTypes } from 'react';
 import Icon from '../Icon';
 import icons from '../icons/index';
-import { card, doc, ns } from 'corkboard';
+import { card, text, md, ns } from 'corkboard';
 
 ns('Icon');
 
-card('Icon',
-  doc`# Icon
-
-By default an icon is rendered in medium size and a gray color`,
-  null, {}, { heading: false });
+text(`
+# Icon
+By default an icon is rendered in medium size and a gray color
+`);
 
 card('Icon colors',
-  doc`## Colors`,
+  md`## Colors`,
   <div>
     <div className="flex mxn2">
       <div className="col-2 px2 text-center border-box">
@@ -26,15 +25,14 @@ card('Icon colors',
       <div className="col-2 px2 text-center border-box">
         <h5>white</h5>
         <div
-          className="flex flex-column items-center circle mr-auto ml-auto"
+          className="flex flex-column items-center"
           style={{
             backgroundColor: '#555',
+            borderRadius: '50%',
             boxSizing: 'border-box',
             height: 26,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            marginTop: '-4px',
             paddingTop: '4px',
+            textAlign: 'center',
             width: 26,
           }}
         >
@@ -52,7 +50,7 @@ card('Icon colors',
 
 
 card('Icon sizes',
-  doc`## Sizes`,
+  md`## Sizes`,
   <div>
     <div className="flex mxn2 flex-wrap">
       <div className="col-2 px2 text-center border-box">
@@ -114,7 +112,7 @@ IconType.propTypes = {
 };
 
 card('Icon types',
-  doc`## Types`,
+  md`## Types`,
   <div>
     <div className="flex mxn2 flex-wrap">
       {Object.keys(icons).map((iconName, idx) =>

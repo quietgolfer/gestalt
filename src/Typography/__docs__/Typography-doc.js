@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import typography from '../Typography.css';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Typography');
 
@@ -13,7 +13,7 @@ const textAlignment = [
 ];
 
 card('Typography',
-  doc`## Text alignment
+  md`## Text alignment
 
   You can apply the following classes to adjust the positioning of text within wrapper elements.
 
@@ -40,7 +40,7 @@ const textStyles = [
 ];
 
 card('Styling',
-  doc`## Text styling
+  md`## Text styling
 
   You can use the following classes to apply styling to the text within wrapper elements.
 
@@ -61,10 +61,8 @@ card('Styling',
   {},
   { heading: false });
 
-card('Size',
-  doc`## Text sizing
-
-  If you want different text sizes, you can use the following classes:
+card('Font size',
+  md`If you want different text sizes, you can use the following classes:
   \` {text, display}{xs, s, m, l, xl} \`. These are the responsive font-sizes that
   are up to spec.
 
@@ -72,16 +70,21 @@ card('Size',
   <div className="container">
     {['text', 'display'].map((style, i) =>
       ['xs', 's', 'm', 'l', 'xl'].map((size, j) =>
-        <div className={typography[`${style}-${size}`]} key={i + j}> {`.${style}-${size}`} </div>
+        <div className="bold">
+          <span className={typography[`${style}-${size}`]} key={i + j}>
+            {`.${style}-${size}`}
+          </span>
+          <span className={`${typography[`${style}-${size}`]} ${typography['locale-ja']}`}>
+            こんにちは
+          </span>
+        </div>
       )
     )}
-  </div>,
-  {},
-  { heading: false });
+  </div>);
 
 
 card('Overflow',
-  doc`## Text overflow
+  md`## Text overflow
 
   Gestalt provides utility classes to deal with text overflow. \`.no-wrap\`, \`.break-word\`, or
   \`.truncate\` (which provides an ellipsis).

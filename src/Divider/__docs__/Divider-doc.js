@@ -1,11 +1,11 @@
 import React from 'react';
 import Divider from '../Divider';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Divider');
 
 card('Divider',
-  doc`If you have two things that need to be separated, put a \`Divider\` between them.`,
+  md`If you have two things that need to be separated, put a \`Divider\` between them.`,
   <div>
     <div className="p1">{'Some content'}</div>
     <Divider />

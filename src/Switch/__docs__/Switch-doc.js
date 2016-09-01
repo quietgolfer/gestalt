@@ -1,12 +1,12 @@
 import React from 'react';
 import Switch from '../Switch';
 import Text from '../../Text/Text';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Switch');
 
 card('Switch',
-  doc`# Switch
+  md`# Switch
 
 Use the \`Switch\` component as an on/off control.
 
@@ -31,7 +31,7 @@ Switch.propTypes = {
   , {}, { heading: false });
 
 card('Switch',
-  doc`Live example:
+  md`Live example:
 
   \`\`\`html
   <Switch

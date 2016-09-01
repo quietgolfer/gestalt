@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Image, { Placeholder } from '../Image';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 import Mask from '../../Mask/Mask';
 import Text from '../../Text/Text';
 import Heading from '../../Heading/Heading';
@@ -29,7 +29,7 @@ class PreloadImageContext extends Component {
 }
 
 card('Image',
-  doc`# Image
+  md`# Image
 
 This component the workhorse of Pinterest. If you define Pinterest to be all
 about collecting ideas, then images is how we choose to represent those ideas.
@@ -54,7 +54,7 @@ rounded rectangles or circles.`,
   null, {}, { heading: false });
 
 card('Preloading',
-    doc`In environments where a DOM is available, \`Image\` has the ability to
+    md`In environments where a DOM is available, \`Image\` has the ability to
 pre-load its content and show a placeholder while it does so. Otherwise, it
 renders a static \`<img/>\` tag.
 
@@ -89,7 +89,7 @@ To test this out, adjust network throttling in your developer tools.`,
   </div>);
 
 card('Placeholders',
-  doc`You can add optional content to the middle of a placeholder that shows up as an image loads.`,
+  md`You can add optional content to the middle of a placeholder that shows up as an image loads.`,
   <div className="flex mxn2">
     <div className="col-4 px2">
       <Placeholder

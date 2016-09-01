@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import colors from '../Colors.css';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 ns('Colors');
 
@@ -34,26 +34,14 @@ Swatch.propTypes = {
   size: PropTypes.string,
 };
 
-card('Color',
-  doc`# Colors
-
-TODO: This is copied from go/spec but isn't up to date any more. >8 Primary
-colors + needs information about making the colors "Pinterest neutral" (i.e. no
-"commerce" in "commerce blue").
-
-The BRIO color system relies on a primary neutral palette of grays and white,
+card('Colors',
+  md`The BRIO color system relies on a primary neutral palette of grays and white,
 with chief contrast provided by Pinterest's corporate identity red plus Commerce
 blue; red and blue buttons are used sparingly in order to draw attention. A
 limited set of less saturated colors: green and yellow are used consistently
 throughout the UI to indicate success and system comments. There are total of
 eight colors — carefully chosen to let a few key colors and the user's content
 predominate.`,
-  <div />,
-  {},
-  { heading: false });
-
-card('Primary Colors',
-  doc`Here are the primary colors :)`,
   <div className="flex mxn1 justify-center flex-wrap">
     <div className="px1 col-3 mb2">
       <Swatch color="white" size="6rem" shadow />
@@ -124,7 +112,7 @@ SmallSwatch.propTypes = {
 };
 
 card('Extended Palette',
-  doc`TODO: Explain when these colors are to be used. Are they part of a
+  md`TODO: Explain when these colors are to be used. Are they part of a
   stable matching between strings and colors? If so, provide example of scale
   mapping String -> Color. In that case, consider dropping color utilities and
   just export raw HEX in JS.`,

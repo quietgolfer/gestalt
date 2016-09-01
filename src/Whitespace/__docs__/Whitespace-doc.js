@@ -1,14 +1,14 @@
 // @flow
 
 import React from 'react';
-import { card, doc, ns } from 'corkboard';
+import { card, md, ns } from 'corkboard';
 
 import ws from '../Whitespace.css';
 
 ns('Whitespace');
 
 card('Whitespace',
-  doc`Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
+  md`Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
   Margin and padding classnames take the form of \`{m, p}{x, y, t, b, l, r}{n}{0-6}\`.
 
   The numbers (0-6) represent responsiveness according to "boints", which are screen-independent
@@ -43,7 +43,7 @@ card('Whitespace',
 );
 
 card('Combining Margin and Padding',
-  doc`Some examples of combining margin and padding are found below. Try resizing the
+  md`Some examples of combining margin and padding are found below. Try resizing the
   browser to see the respsoniveness take place.
 
   \`\`\`html
@@ -60,7 +60,7 @@ card('Combining Margin and Padding',
 );
 
 card('Excluded Margin Values',
-  doc`You may notice that there are no classnames for \`mx{1-6}\`, or \`my{1-6}\`. This is
+  md`You may notice that there are no classnames for \`mx{1-6}\`, or \`my{1-6}\`. This is
   because symmetrical whitespace is best applied as padding, as margins collapse.
 
   So, if you need to apply symmetrical padding, use the corresponding \`px{1-6}\` and \`py{1-6}\`
