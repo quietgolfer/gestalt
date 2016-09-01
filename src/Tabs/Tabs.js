@@ -21,7 +21,7 @@ export default function Tabs(props) {
         });
         return (
           <button className={cs} key={i} onClick={(e) => onChange && onChange(i, e)} role="tab">
-            <Text bold color={isSelected ? 'black' : 'gray'} size="xs">{item}</Text>
+            <Text bold color={isSelected ? 'black' : 'gray'} align="center" inline>{item}</Text>
           </button>
         );
       })}

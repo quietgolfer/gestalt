@@ -1,15 +1,17 @@
 .Tabs {
-  composes: bg-light-gray flex overflow-hidden from "../../styles.css";
+  composes: bg-light-gray flex from "../../styles.css";
   border-radius: 4px;
   padding: 2px;
   user-select: none;
 }
 
 .Tabs--item {
-  composes: col-12 text-center p2 from "../../styles.css";
-  border: 0;
+  composes: no-border pointer col-12 p2 mt0 mb0 from "../../styles.css";
   border-radius: 4px;
-  cursor: pointer;
+}
+
+.Tabs--item:focus {
+  position: relative;
 }
 
 .Tabs--item__isNotSelected {
