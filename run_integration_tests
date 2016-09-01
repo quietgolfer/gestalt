@@ -1,4 +1,5 @@
 cd test && npm start &
+SERVER_PID=$!
 
 until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
     printf '.'
@@ -6,3 +7,4 @@ until $(curl --output /dev/null --silent --head --fail http://localhost:3000); d
 done
 
 NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs $(find src -name '*.ghost.js')
+kill -9 $SERVER_PID || true
