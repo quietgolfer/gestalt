@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '../TextField';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('TextField');
 

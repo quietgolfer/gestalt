@@ -1,7 +1,7 @@
 import React from 'react';
 import Divider from '../../Divider/Divider';
 import Modal, { ModalContent, ModalFooter, ModalHeading } from '../Modal';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Modal');
 

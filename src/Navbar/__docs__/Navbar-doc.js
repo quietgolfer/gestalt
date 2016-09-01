@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Navbar');
 

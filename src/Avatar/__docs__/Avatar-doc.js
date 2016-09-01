@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Avatar from '../Avatar';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Avatar');
 

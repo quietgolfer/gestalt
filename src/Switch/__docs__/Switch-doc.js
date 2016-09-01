@@ -1,7 +1,7 @@
 import React from 'react';
 import Switch from '../Switch';
 import Text from '../../Text/Text';
-import { card, doc, ns } from 'devcards';
+import { card, doc, ns } from 'corkboard';
 
 ns('Switch');
 
