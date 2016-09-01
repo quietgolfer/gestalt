@@ -51,7 +51,7 @@ export default {
   cancel,
   'check-circle-bold': checkCircleBold,
   'check-circle-light': checkCircleLight,
-  'cicle-outline': circleOutline,
+  'circle-outline': circleOutline,
   clear,
   cog,
   edit,
