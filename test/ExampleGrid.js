@@ -11,14 +11,25 @@ function getRandomColor() {
   return color;
 }
 
-const getPins = (meta = {}) => {
+const getPins = (meta = {}, collage) => {
   const from = meta.from || 0;
+  let until = from + 20;
+
+  let randHeight = 200;
+  let heightMin = 300;
+
+  if (collage) {
+    until = 5;
+    randHeight = 40;
+    heightMin = 40;
+  }
+
   return new Promise(resolve => {
     const pins = [];
-    for (let i = from; i < from + 20; i++) {
+    for (let i = from; i < until; i++) {
       pins.push({
         name: `foo ${i}`,
-        height: Math.floor(Math.random() * 200) + 300,
+        height: Math.floor(Math.random() * randHeight) + heightMin,
         color: getRandomColor(),
       });
     }
@@ -38,7 +49,7 @@ export default class ExampleGrid extends React.Component {
   }
 
   componentDidMount() {
-    getPins().then(startPins => {
+    getPins({}, this.props.collage).then(startPins => {
       this.setState({
         pins: startPins,
       });
@@ -46,7 +57,7 @@ export default class ExampleGrid extends React.Component {
   }
 
   loadItems = (meta) => {
-    getPins(meta)
+    getPins(meta, this.props.collage)
       .then(newPins => {
         this.setState({
           pins: this.state.pins.concat(newPins),
@@ -56,12 +67,29 @@ export default class ExampleGrid extends React.Component {
   /* eslint react/jsx-no-bind:0 */
   render() {
     const dynamicGridProps = {};
+
+    const gridStyleProps = {
+      style: {},
+    };
+
+    if (this.props.constrained) {
+      gridStyleProps.style.margin = '0px 200px';
+    }
+
+    // One example of a collage layout w/o scrolling.
+    if (this.props.collage) {
+      dynamicGridProps.minCols = 1;
+      dynamicGridProps.gutterWidth = 5;
+      gridStyleProps.style.width = 500;
+    }
+
     // Allow for infinite scroll if the test does not opt out with the finiteLength prop.
     if (!this.props.finiteLength) {
       dynamicGridProps.loadItems = this.loadItems;
     }
+
     return (
-      <div className="gridCentered">
+      <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
         <Grid
           comp={Item}
           items={this.state.pins}
@@ -74,6 +102,8 @@ export default class ExampleGrid extends React.Component {
 }
 
 ExampleGrid.propTypes = {
+  collage: React.PropTypes.bool,
+  constrained: React.PropTypes.bool,
   finiteLength: React.PropTypes.bool,
   initialPins: React.PropTypes.array,
 };

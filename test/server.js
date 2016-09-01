@@ -28,6 +28,8 @@ for (let i = 0; i < 5; i++) {
 
 app.get('/', (req, res) => {
   const content = ReactDOMServer.renderToString(<ExampleGrid
+    collage={!!req.query.collage}
+    constrained={!!req.query.constrained}
     finiteLength={!!req.query.finiteLength}
     initialPins={initialPins}
   />);
