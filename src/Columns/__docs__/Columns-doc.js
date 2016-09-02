@@ -53,9 +53,10 @@ Column.propTypes = {
 };
 
 card('Columns',
-  md`## Columns
+  md`# Columns`, <div />, {}, { heading: false });
 
-  Gestalt supports a 12-column system with which you can build layouts by adding \`.col-{1-12}\`
+card('Column system',
+  md`Gestalt supports a 12-column system with which you can build layouts by adding \`.col-{1-12}\`
   to your elements.
 
   \`\`\`html
@@ -84,9 +85,7 @@ card('Columns',
       <Column size={3} />
       <Column size={3} />
     </Row>
-  </Row>,
-  {},
-  { heading: false });
+  </Row>);
 
 card('Breakpoints',
   md`There are breakpoints for small, medium, and large screens. Use the \`sm\`, \`md\`,

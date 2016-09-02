@@ -11,7 +11,10 @@ card('Switch',
   md`# Switch
 
 Use the \`Switch\` component as an on/off control.
+`, <div />, {}, { heading: false });
 
+card('PropTypes',
+  md`
 \`\`\`html
 Switch.propTypes = {
   id: PropTypes.string,
@@ -29,12 +32,10 @@ Switch.propTypes = {
     <div className="p1">
       <Switch switched />
     </div>
-  </div>
-  , {}, { heading: false });
+  </div>);
 
-card('Switch',
-  md`Live example:
-
+card('Example',
+  md`
   \`\`\`html
   <Switch
     onChange={() => atom.reset({ switched: !atom.deref().switched })}
@@ -54,6 +55,4 @@ card('Switch',
         switched={atom.deref().switched}
       />
     </div>
-  ),
-  { switched: false },
-  { heading: false });
+  ));

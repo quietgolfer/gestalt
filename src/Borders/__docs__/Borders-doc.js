@@ -6,6 +6,10 @@ import { card, md, ns } from 'corkboard';
 
 ns('Borders');
 
+card('Borders',
+  md`# Borders
+  `, <div />, {}, { heading: false });
+
 const cx = classnames.bind(borders);
 
 type Props = {border: string, hasFill?: boolean}

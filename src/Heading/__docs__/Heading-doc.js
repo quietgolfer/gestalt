@@ -6,15 +6,28 @@ import { card, md, ns } from 'corkboard';
 ns('Heading');
 
 card('Heading',
-    md`# Headings
-
-In all their glory.`,
-    null,
-    {},
-    { heading: false });
+  md`# Heading`, <div />, {}, { heading: false });
 
 card('Sizes',
-  md`Comes in a variety of sizes:`,
+  md`Comes in a variety of sizes:
+  \`\`\`html
+  <Heading size="xs">
+    {'Heading extra small'}
+  </Heading>
+  <Heading size="s">
+    {'Heading small'}
+  </Heading>
+  <Heading size="m">
+    {'Heading medium'}
+  </Heading>
+  <Heading size="l">
+    {'Heading large'}
+  </Heading>
+  <Heading size="xl">
+    {'Heading extra large'}
+  </Heading>
+  \`\`\`
+  `,
   <div>
     <Divider />
     <Heading size="xs">{'Heading extra small'}</Heading>
@@ -37,19 +50,30 @@ card('Sizes',
     {' '}
     <Heading locale="ja" size="xl">{'こんにちは'}</Heading>
     <Divider />
-  </div>,
-  {},
-  { heading: false });
+  </div>);
 
 card('Colors',
-  md`And a variety of colors:`,
+  md`And a variety of colors:
+  \`\`\`html
+  <Heading color="white">
+    {'White'}
+  </Heading>
+  <Heading>
+    {'Dark gray (default)'}
+  </Heading>
+  <Heading color="gray">
+    {'Gray'}
+  </Heading>
+  <Heading color="blue">
+    {'Blue'}
+  </Heading>
+  \`\`\`
+  `,
   <div>
     <div style={{ backgroundColor: '#555' }}>
       <Heading color="white" size="m">{'White'}</Heading>
     </div>
     <Heading size="m">{'Dark gray (default)'}</Heading>
-    <Heading color="gray" size="m">{'Light gray'}</Heading>
+    <Heading color="gray" size="m">{'Gray'}</Heading>
     <Heading color="blue" size="m">{'Blue'}</Heading>
-  </div>,
-  {},
-  { heading: false });
+  </div>);

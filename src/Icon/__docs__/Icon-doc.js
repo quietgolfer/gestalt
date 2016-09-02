@@ -12,13 +12,18 @@ text(`
 By default an icon is rendered in medium size and a gray color
 `);
 
-card('Icon colors',
-  md`## Colors`,
+card('Colors',
+  md`
+  \`\`\`html
+  <Icon type="pin" label="Pin"></Icon>
+  <Icon type="pin" label="Pin" color="dark-gray"></Icon>
+  \`\`\`
+  `,
   <div>
-    <div className="flex mxn2">
+    <div className="flex">
       <div className="col-2 px2 text-center border-box">
         <h5>gray</h5>
-        <Icon icon="pin" label="Pin" size={21} color="gray" />
+        <Icon icon="pin" label="Pin" size={21} />
       </div>
       <div className="col-2 px2 text-center border-box">
         <h5>dark-gray</h5>
@@ -46,30 +51,24 @@ card('Icon colors',
         <Icon icon="pin" label="Pin" size={21} color="blue" />
       </div>
     </div>
-  </div>,
-  {},
-  { heading: false });
+  </div>);
 
 
-card('Icon sizes',
-  md`## Sizes`,
+card('Sizes',
+  md`
+  \`\`\`html
+  <Icon type="pin" label="Pin" size={16}></Icon>
+  <Icon type="pin" label="Pin" size={20}></Icon>
+  <Icon type="pin" label="Pin" size={24}></Icon>
+  <Icon type="pin" label="Pin" size={28}></Icon>
+  <Icon type="pin" label="Pin" size={32}></Icon>
+  \`\`\`
+  `,
   <div>
     <div className="flex mxn2 flex-wrap">
       <div className="col-2 px2 text-center border-box">
-        <h5>12</h5>
-        <Icon icon="pin" label="Pin" size={12} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>14</h5>
-        <Icon icon="pin" label="Pin" size={14} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
         <h5>16</h5>
         <Icon icon="pin" label="Pin" size={16} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>18</h5>
-        <Icon icon="pin" label="Pin" size={18} />
       </div>
       <div className="col-2 px2 text-center border-box">
         <h5>20</h5>
@@ -87,18 +86,8 @@ card('Icon sizes',
         <h5>32</h5>
         <Icon icon="pin" label="Pin" size={32} />
       </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>36</h5>
-        <Icon icon="pin" label="Pin" size={36} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>40</h5>
-        <Icon icon="pin" label="Pin" size={40} />
-      </div>
     </div>
-  </div>,
-  {},
-  { heading: false });
+  </div>);
 
 function IconType({ iconName }) {
   return (
@@ -113,14 +102,20 @@ IconType.propTypes = {
   iconName: PropTypes.string,
 };
 
-card('Icon types',
-  md`## Types`,
+card('Types',
+  md`
+  \`\`\`html
+  <Icon type="add" label="Pin"></Icon>
+  <Icon type="add-circle" label="Add"></Icon>
+  <Icon type="add-pin" label="Add a Pin"</Icon>
+  <Icon type="arrow-back" label="Back"</Icon>
+  <Icon type="arrow-circle-forward" label="Forward"</Icon>
+  \`\`\`
+  `,
   <div>
     <div className="flex mxn2 flex-wrap">
       {Object.keys(icons).map((iconName, idx) =>
         <IconType iconName={iconName} key={idx} />
       )}
     </div>
-  </div>,
-  {},
-  { heading: false });
+  </div>);

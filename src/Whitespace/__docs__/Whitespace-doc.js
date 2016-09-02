@@ -8,7 +8,8 @@ import ws from '../Whitespace.css';
 ns('Whitespace');
 
 card('Whitespace',
-  md`Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
+  md`# Whitespace
+  Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
   Margin and padding classnames take the form of \`{m, p}{x, y, t, b, l, r}{n}{0-6}\`.
 
   The numbers (0-6) represent responsiveness according to "boints", which are screen-independent
@@ -39,10 +40,10 @@ card('Whitespace',
 
   If you want to completely get rid of all padding and margin, then you would add
   \`m0 p0\` to your element. More examples below.`,
-  <div />
+  <div />, {}, { heading: false }
 );
 
-card('Combining Margin and Padding',
+card('Combining margin and padding',
   md`Some examples of combining margin and padding are found below. Try resizing the
   browser to see the respsoniveness take place.
 
@@ -59,7 +60,7 @@ card('Combining Margin and Padding',
   </div>
 );
 
-card('Excluded Margin Values',
+card('Excluded margin values',
   md`You may notice that there are no classnames for \`mx{1-6}\`, or \`my{1-6}\`. This is
   because symmetrical whitespace is best applied as padding, as margins collapse.
 

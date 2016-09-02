@@ -6,6 +6,10 @@ import { dangerous } from '../../../.corkboard/dangerous';
 ns('Avatar');
 dangerous('Avatar');
 
+card('Avatar',
+  md`# Avatar
+  `, <div />, {}, { heading: false });
+
 class PreloadImageContext extends Component {
   static childContextTypes = {
     canPreloadImages: React.PropTypes.bool,

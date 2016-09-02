@@ -5,6 +5,10 @@ import { card, md, ns } from 'corkboard';
 
 ns('Typography');
 
+card('Typography',
+  md`# Typography`,
+  <div />, {}, { heading: false });
+
 const textAlignment = [
   'text-left',
   'text-right',
@@ -12,9 +16,8 @@ const textAlignment = [
   'text-justify',
 ];
 
-card('Typography',
-  md`## Text alignment
-
+card('Text alignment',
+  md`
   You can apply the following classes to adjust the positioning of text within wrapper elements.
 
   \`\`\`html
@@ -39,9 +42,8 @@ const textStyles = [
   'antialiased',
 ];
 
-card('Styling',
-  md`## Text styling
-
+card('Text styling',
+  md`
   You can use the following classes to apply styling to the text within wrapper elements.
 
   \`\`\`html
@@ -57,9 +59,7 @@ card('Styling',
     {textStyles.map((style, idx) =>
       <div className={typography[style]} key={idx}> {`.${style}`} </div>
     )}
-  </div>,
-  {},
-  { heading: false });
+  </div>);
 
 card('Font size',
   md`If you want different text sizes, you can use the following classes:
@@ -83,9 +83,8 @@ card('Font size',
   </div>);
 
 
-card('Overflow',
-  md`## Text overflow
-
+card('Text overflow',
+  md`
   Gestalt provides utility classes to deal with text overflow. \`.no-wrap\`, \`.break-word\`, or
   \`.truncate\` (which provides an ellipsis).
   `,
@@ -105,6 +104,4 @@ card('Overflow',
       Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
       Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
     </div>
-  </div>,
-  {},
-  { heading: false });
+  </div>);

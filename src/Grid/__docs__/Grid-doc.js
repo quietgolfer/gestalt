@@ -9,7 +9,6 @@ card('Grid',
   md`# Grid
   `, <div />, {}, { heading: false });
 
-
 card('Fixed width',
   md`With a set number of items, used as a collage component.`,
   <div style={{ width: 400 }}>

@@ -13,6 +13,9 @@ const inline = {
 ns('Cursor');
 
 card('Cursor',
+  md`# Cursor`, <div />, {}, { heading: false });
+
+card('Cursor collection',
   md`Collection of different cursor options to help users interface with your design
 
   For a full list of classes and the properties they correspond to:

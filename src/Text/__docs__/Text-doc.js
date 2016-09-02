@@ -5,7 +5,29 @@ import { card, md, ns } from 'corkboard';
 ns('Text');
 
 card('Text',
-  md`Supported sizes:`,
+  md`# Text`,
+  <div />, {}, { heading: false });
+
+card('Sizes',
+  md`
+  \`\`\`html
+    <Text size="xs">
+      {'Text extra small'}
+    </Text>
+    <Text size="s">
+      {'Text small'}
+    </Text>
+    <Text>
+      {'Text medium (default size)'}
+    </Text>
+    <Text size="l">
+      {'Text large'}
+    </Text>
+    <Text size="xl">
+      {'Text extra large'}
+    </Text>
+  \`\`\`
+  `,
   <div>
     <p>
       <Text inline size="xs">{'Text extra small'}</Text>
@@ -34,12 +56,22 @@ card('Text',
     </p>
   </div>);
 
-card('Block Layout',
-  md`By default text uses block elements.`,
+card('Block vs inline layout',
+  md`By default text uses block elements.
+  \`\`\`html
+    <Text>
+      {'Some content in a default block element.'}
+    </Text>
+    <Text inline>
+      {'Inline text with the "inline" prop. '}
+    </Text>
+    <Text inline>
+      {'More inline text.'}
+    </Text>
+  \`\`\`
+  `,
   <div>
-    <Text>{'Here is some content in the default block element.'}</Text>
-    <Text inline>{'Inline text with the `inline` prop. '}</Text>
+    <Text>{'Some content in a default block element.'}</Text>
+    <Text inline>{'Inline text with the "inline" prop. '}</Text>
     <Text inline>{'More inline text.'}</Text>
-  </div>,
-  {},
-  { heading: false });
+  </div>);

@@ -5,6 +5,9 @@ import { card, md, ns } from 'corkboard';
 
 ns('Colors');
 
+card('Colors',
+  md`# Colors`, <div />, {}, { heading: false });
+
 const cx = classnames.bind(colors);
 
 function Swatch({ color, size, shadow }) {
@@ -34,7 +37,7 @@ Swatch.propTypes = {
   size: PropTypes.string,
 };
 
-card('Colors',
+card('Color system',
   md`The BRIO color system relies on a primary neutral palette of grays and white,
 with chief contrast provided by Pinterest's corporate identity red plus Commerce
 blue; red and blue buttons are used sparingly in order to draw attention. A
@@ -73,57 +76,4 @@ predominate.`,
     <div className="px1 col-3 mb2">
       <Swatch color="salmon" size="6rem" />
     </div>
-  </div>);
-
-const alts = [
-  'red',
-  'orange',
-  'mustard',
-  'green',
-  'blue',
-  'purple',
-].reduce((acc, color) => {
-  const g = [];
-  for (let i = 0; i < 10; ++i) {
-    g.push(`${color}-${i + 1}`);
-  }
-  acc.push(g);
-  return acc;
-}, []);
-
-function SmallSwatch({ color, size }) {
-  return (
-    <div className="mxn1 p1 center">
-      <div
-        className={`mx-auto circle ${cx(`bg-${color}`)}`}
-        style={{
-          width: size, height: size,
-        }}
-      ></div>
-      <div className="h6 gray">{color}</div>
-    </div>
-  );
-}
-
-SmallSwatch.propTypes = {
-  color: PropTypes.string,
-  shadow: PropTypes.bool,
-  size: PropTypes.string,
-};
-
-card('Extended Palette',
-  md`TODO: Explain when these colors are to be used. Are they part of a
-  stable matching between strings and colors? If so, provide example of scale
-  mapping String -> Color. In that case, consider dropping color utilities and
-  just export raw HEX in JS.`,
-  <div className="flex content-stretch">
-    {alts.map((g, i) =>
-      <div className="flex flex-column col-12 justify-center flex-wrap" key={i}>
-        {g.map(color =>
-          <div className="" key={color}>
-            <SmallSwatch color="" size="2rem" />
-          </div>
-        )}
-      </div>
-    )}
   </div>);

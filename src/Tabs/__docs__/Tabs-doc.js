@@ -9,21 +9,30 @@ dangerous('Tabs');
 card('Tabs',
   md`# Tabs
 
-Lorem ipsum dolor sit amet.
+  Tabs may be used to group between multiple selections.
+  The controls display the current state and related state.
 
-  <Tabs items={['First', 'Second', 'Third']} selectedItemIndex={1} />
+  Create layout to convey clear sense of information hierarchy.
+  When control is engaged, information below the control should get updated.
 
-`,
-
-  <Tabs items={['First', 'Second', 'Third']} selectedItemIndex={1} />,
+  `,
+  <div />,
   {},
   { heading: false });
 
-card('Usage',
+card('Example',
   md`Tabs are dumb components, meaning you need to write up the behavior when you click on an item.
 
 If you'd like the tabs to control hiding or showing content that state should
-live in a parent component.`,
+live in a parent component.
+
+\`\`\`html
+<Tabs
+  items={['News', 'You', 'Messages']}
+/>
+\`\`\`
+
+  `,
   (atom) => {
     const state = atom.deref();
     return (

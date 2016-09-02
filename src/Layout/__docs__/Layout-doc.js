@@ -72,7 +72,8 @@ function FlexItem(props : ItemProps) {
 ns('Layout');
 
 card('Layout',
-  md`Most classes needed to layout elements correspond to their CSS properties/values pretty
+  md`# Layout
+  Most classes needed to layout elements correspond to their CSS properties/values pretty
   tightly. For example:
 
   \`.pull-left\` and \`.pull-right\` correspond to \`float: left\` and \`float: right\`.
@@ -94,7 +95,7 @@ card('Layout',
   | .absolute         | \`position: absolute \`                     |
   | .fixed            | \`position: fixed \`                        |
 
-  `);
+  `, <div />, {}, { heading: false });
 
 card('Positioning',
   md`Gestalt provides helper classes for resetting top, bottom, left, and right positioning.
@@ -102,9 +103,8 @@ card('Positioning',
   `);
 
 // TODO(allenk): Add flexbox properties, along with some code examples
-card('Flexbox',
-  md`## Flexbox container classes
-
+card('Flexbox container classes',
+  md`
   In order to use flexbox, add the \`.flex\` class to a parent container element. If you're
   If you want all elements within the flex container to have the same alignment, then you could add
   the following classes to the parent container element.
