@@ -2,8 +2,10 @@ import React, { PropTypes } from 'react';
 import Icon from '../Icon';
 import icons from '../icons/index';
 import { card, text, md, ns } from 'corkboard';
+import { dangerous } from '../../../.corkboard/dangerous';
 
 ns('Icon');
+dangerous('Icon');
 
 text(`
 # Icon

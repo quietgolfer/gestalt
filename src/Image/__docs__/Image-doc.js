@@ -4,8 +4,10 @@ import { card, md, ns } from 'corkboard';
 import Mask from '../../Mask/Mask';
 import Text from '../../Text/Text';
 import Heading from '../../Heading/Heading';
+import { dangerous } from '../../../.corkboard/dangerous';
 
 ns('Image');
+dangerous('Image');
 
 class PreloadImageContext extends Component {
   static childContextTypes = {

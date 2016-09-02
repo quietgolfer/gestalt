@@ -1,8 +1,10 @@
 import React from 'react';
 import Mask from '../Mask';
 import { card, md, ns } from 'corkboard';
+import { dangerous } from '../../../.corkboard/dangerous';
 
 ns('Mask');
+dangerous('Mask');
 
 card('Mask',
     md`# Mask

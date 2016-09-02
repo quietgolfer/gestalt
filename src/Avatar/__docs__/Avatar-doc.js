@@ -1,8 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import Avatar from '../Avatar';
 import { card, md, ns } from 'corkboard';
+import { dangerous } from '../../../.corkboard/dangerous';
 
 ns('Avatar');
+dangerous('Avatar');
 
 class PreloadImageContext extends Component {
   static childContextTypes = {

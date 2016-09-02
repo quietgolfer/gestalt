@@ -1,8 +1,10 @@
 import React from 'react';
 import Tabs from '../Tabs';
 import { card, md, ns } from 'corkboard';
+import { dangerous } from '../../../.corkboard/dangerous';
 
 ns('Tabs');
+dangerous('Tabs');
 
 card('Tabs',
   md`# Tabs
