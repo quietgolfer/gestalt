@@ -1,11 +1,18 @@
+// @flow
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import styles from '../../styles.css';
 
 const cx = classnames.bind(styles);
 
-export default function Switch(props) {
-  const { id, onChange, switched } = props;
+type Props = {
+  id: string,
+  onChange?: (value: boolean) => void,
+  switched?: boolean,
+}
+
+export default function Switch(props: Props) {
+  const { id, onChange, switched = false } = props;
 
   const switchComposed = cx('border-box', 'inline-block', 'relative', 'pointer',
     {
@@ -45,7 +52,10 @@ export default function Switch(props) {
         checked={switched}
         className={checkboxComposed}
         id={id}
-        onChange={(e) => onChange(e.nativeEvent.target.checked)}
+        onChange={
+          (e: { nativeEvent: { target: { checked: boolean}}}) =>
+            onChange(e.nativeEvent.target.checked)
+        }
         style={checkboxInline}
         type="checkbox"
       />
@@ -55,12 +65,7 @@ export default function Switch(props) {
 }
 
 Switch.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   switched: PropTypes.bool,
-};
-
-Switch.defaultProps = {
-  onChange: () => {},
-  switched: false,
 };

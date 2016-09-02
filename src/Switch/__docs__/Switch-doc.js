@@ -27,10 +27,10 @@ Switch.propTypes = {
 
   <div className="flex mxn1">
     <div className="p1">
-      <Switch />
+      <Switch id="ex1" />
     </div>
     <div className="p1">
-      <Switch switched />
+      <Switch id="ex2" switched />
     </div>
   </div>);
 
