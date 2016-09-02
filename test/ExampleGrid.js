@@ -48,14 +48,6 @@ export default class ExampleGrid extends React.Component {
     };
   }
 
-  componentDidMount() {
-    getPins({}, this.props.collage).then(startPins => {
-      this.setState({
-        pins: startPins,
-      });
-    });
-  }
-
   loadItems = (meta) => {
     getPins(meta, this.props.collage)
       .then(newPins => {

@@ -17,7 +17,7 @@ describe('Collage Layout', () => {
     // Assert that all items follow the indentation of the grid.
     const gridItems = await ghost.findElements(selectors.gridItem);
 
-    assert.ok(gridItems.length === 5, 'There are 5 grid items (hard-coded in the fixture)');
+    assert.ok(gridItems.length === 20, 'There are 5 grid items (hard-coded in the fixture)');
 
     // Record the left position of all items.
     const itemLeftMap = {};
@@ -28,6 +28,7 @@ describe('Collage Layout', () => {
       itemLeftMap[itemRect.left].push(itemRect);
     }
 
+    assert.equal(Object.keys(itemLeftMap).length, 2, 'There are two columns of pins.');
     for (let i = 0; i < itemLeftMap.length; i++) {
       assert.ok(itemLeftMap[i].length >= 2, 'there are at least two items in each column');
     }

@@ -14,7 +14,9 @@ describe('Server Render Layout', () => {
     await ghost.open('http://localhost:3000');
 
     const serverItems = await ghost.findElements(selectors.staticItem);
-    assert.equal(serverItems.length, 5);
+
+    // Hard-coded value for initial pins in server.js
+    assert.equal(serverItems.length, 20);
 
     const serverItem1Rect = await serverItems[0].rect();
     const serverItem2Rect = await serverItems[1].rect();

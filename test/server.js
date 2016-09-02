@@ -18,7 +18,7 @@ function getRandomColor() {
 }
 
 let initialPins = [];
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 20; i++) {
   initialPins.push({
     name: `foo ${i}`,
     height: Math.floor(Math.random() * 200) + 300,
