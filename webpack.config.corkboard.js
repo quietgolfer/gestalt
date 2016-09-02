@@ -49,13 +49,9 @@ module.exports = {
         include: [
           path.join(__dirname, 'src'),
           path.join(__dirname, '.corkboard'),
+          path.dirname(require.resolve('corkboard')),
         ],
-        exclude: path.join(__dirname, 'node_modules'),
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel',
-        include: path.dirname(require.resolve('corkboard')),
+        exclude: 'node_modules',
       },
     ],
   },

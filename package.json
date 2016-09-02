@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "clean": "rm -f dist/main.js",
-    "clobber": "rm -rf dist",
     "flow": "flow .",
     "lint:eslint": "eslint . --ext js",
     "lint:stylelint": "stylelint src/**/*.css",
     "lint": "npm run lint:eslint ; npm run lint:stylelint",
+    "build_docs": "webpack --config webpack.config.corkboard.js --colors --progress --optimize-minimize --output-public-path '/gestalt' --output-path docs",
     "start": "corkboard src --config webpack.config.corkboard.js",
     "test": "npm run lint:stylelint && npm run lint:eslint && npm run test:integration && npm run test:jest",
     "test:integration": "./run_integration_tests",
