@@ -13,14 +13,14 @@ export default class WithLayout extends Component {
   }
 
   componentDidMount() {
-    this.renderToCache();
+    if (this.props.layoutReady) {
+      setTimeout(() => this.renderToCache());
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.invalidateCacheKey !== nextProps.invalidateCacheKey) {
-      setTimeout(() => {
-        this.renderToCache(true);
-      });
+    if (nextProps.layoutReady && this.props.invalidateCacheKey !== nextProps.invalidateCacheKey) {
+      setTimeout(() => this.renderToCache(true));
     }
   }
 
@@ -55,29 +55,35 @@ export default class WithLayout extends Component {
       return this.state.cache;
     }
 
-        // Return nothing until we're ready to render.
+    // Return nothing until we're ready to render.
     return this.props.children();
   }
 }
 
 WithLayout.propTypes = {
-    /**
-     * A function to render the child with layout information.
-     */
+  /**
+   * A function to render the child with layout information.
+   */
   children: React.PropTypes.func,
 
-    /**
-     * Item renderer data.
-     */
+  /**
+   * Item renderer data.
+   */
   data: React.PropTypes.object,
 
-    /**
-     * Change this value to invalidate render cache.
-     */
+  /**
+   * Change this value to invalidate render cache.
+   */
   invalidateCacheKey: React.PropTypes.any,
 
-    /**
-     * Processes rendered layout information.
-     */
+  /**
+   * Whether or not we are ready to measure the layout of the children.
+   * This component will not measure the node until notified by this prop.
+   */
+  layoutReady: React.PropTypes.bool,
+
+  /**
+   * Processes rendered layout information.
+   */
   processInfo: React.PropTypes.func,
 };

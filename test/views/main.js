@@ -8,6 +8,7 @@ window.addEventListener('trigger-mount', () => {
   ReactDOM.render(<ExampleGrid
     collage={window.location.search.includes('collage')}
     constrained={window.location.search.includes('constrained')}
+    constructorItemSplice={window.location.search.includes('constructorItemSplice')}
     finiteLength={window.location.search.includes('finiteLength')}
     initialPins={window.initialPins}
   />, mountNode);

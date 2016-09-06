@@ -7,7 +7,7 @@ const selectors = {
   gridItem: '[class^="Grid__Grid__Item"]',
 };
 
-describe.skip('Collage Layout', () => {
+describe('Collage Layout', () => {
   it('Verifies a collage layout', async () => {
     await ghost.open('http://localhost:3000/?finiteLength=1&collage=1');
     await ghost.script(() => {

@@ -29,6 +29,7 @@ for (let i = 0; i < 20; i++) {
 app.get('/', (req, res) => {
   const content = ReactDOMServer.renderToString(<ExampleGrid
     collage={!!req.query.collage}
+    constructorItemSplice={!!req.query.constructorItemSplice}
     constrained={!!req.query.constrained}
     finiteLength={!!req.query.finiteLength}
     initialPins={initialPins}

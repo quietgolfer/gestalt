@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
@@ -20,16 +21,13 @@ export default class Grid extends Component {
     };
   }
 
-  componentWillMount() {
-    // We calculate columns and offset just before the component mounts
-    // so that children have the correct column count when mounting
-    this.reflow(this.calculateColumns());
-  }
-
   /**
    * Adds hooks after the component mounts.
    */
   componentDidMount() {
+    // We calculate columns and offset after the component mounts so we can measure our container.
+    this.reflow(this.calculateColumns());
+
     this.boundResizeHandler = () => this.handleResize();
 
     this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
@@ -40,6 +38,7 @@ export default class Grid extends Component {
       // Since items are positioned absolutely, we can't rely on margin or padding to center
       // an arbitrary number of columns. Calculate the width in order to center the grid.
       containerWidth: this.determineWidth(),
+      layoutReady: true,
     });
   }
 
@@ -130,8 +129,8 @@ export default class Grid extends Component {
     }
 
     const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
-    const scroller = this.props.scrollContainer;
-    let newColCount = Math.floor((scroller.clientWidth || scroller.innerWidth) / eachItemWidth);
+    const parentWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+    let newColCount = Math.floor(parentWidth / eachItemWidth);
 
     if (newColCount < this.props.minCols) {
       newColCount = this.props.minCols;
@@ -240,6 +239,7 @@ export default class Grid extends Component {
             data={item}
             invalidateCacheKey={this.cacheKey}
             key={idx}
+            layoutReady={this.state.layoutReady}
             processInfo={this.processInfo}
           >
           {

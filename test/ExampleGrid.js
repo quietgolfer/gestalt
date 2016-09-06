@@ -43,9 +43,24 @@ export default class ExampleGrid extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      pins: props.initialPins,
-    };
+    if (this.props.constructorItemSplice) {
+      this.state = {
+        pins: props.initialPins.slice(0, 5),
+      };
+    } else {
+      this.state = {
+        pins: props.initialPins,
+      };
+    }
+  }
+
+  componentDidMount() {
+    /* eslint-disable react/no-did-mount-set-state */
+    if (this.props.constructorItemSplice) {
+      this.setState({
+        pins: this.props.initialPins,
+      });
+    }
   }
 
   loadItems = (meta) => {
@@ -94,8 +109,14 @@ export default class ExampleGrid extends React.Component {
 }
 
 ExampleGrid.propTypes = {
+  // Test case: Sets up props to display a collage layout.
   collage: React.PropTypes.bool,
+  // Test case: Constrains the width of the grid rendering.
   constrained: React.PropTypes.bool,
+  // Test case: Slices items in the constructor, then sets the entire list in componentDidMount.
+  constructorItemSplice: React.PropTypes.bool,
+  // Test case: Does not allow infinite scroll.
   finiteLength: React.PropTypes.bool,
+  // The initial data from the server side render.
   initialPins: React.PropTypes.array,
 };
