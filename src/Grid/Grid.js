@@ -131,9 +131,7 @@ export default class Grid extends Component {
 
     const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
     const scroller = this.props.scrollContainer;
-    const scrollerWidth = scroller.clientWidth || scroller.innerWidth;
-    const margins = this.props.marginLeft + this.props.marginRight;
-    let newColCount = Math.floor((scrollerWidth - margins) / eachItemWidth);
+    let newColCount = Math.floor((scroller.clientWidth || scroller.innerWidth) / eachItemWidth);
 
     if (newColCount < this.props.minCols) {
       newColCount = this.props.minCols;
@@ -218,8 +216,7 @@ export default class Grid extends Component {
   processInfo = (data, width, height) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
-    const left = column * this.props.columnWidth + this.props.gutterWidth * column
-      + this.props.marginLeft;
+    const left = column * this.props.columnWidth + this.props.gutterWidth * column;
     this.currColHeights[column] += height + this.props.gutterWidth;
 
     return {
@@ -302,16 +299,6 @@ Grid.propTypes = {
   loadItems: React.PropTypes.func,
 
   /**
-   * Left margin.
-   */
-  marginLeft: React.PropTypes.number,
-
-  /**
-   * Right margin.
-   */
-  marginRight: React.PropTypes.number,
-
-  /**
    * Minimum number of columns to display.
    */
   minCols: React.PropTypes.number,
@@ -325,8 +312,6 @@ Grid.propTypes = {
 Grid.defaultProps = {
   columnWidth: 236,
   gutterWidth: 14,
-  marginLeft: 0,
-  marginRight: 0,
   minCols: 3,
   scrollContainer: typeof window !== 'undefined' ? window : null,
 };

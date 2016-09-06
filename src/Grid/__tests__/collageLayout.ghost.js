@@ -7,15 +7,9 @@ const selectors = {
   gridItem: '[class^="Grid__Grid__Item"]',
 };
 
-describe('Collage Layout', () => {
+describe.skip('Collage Layout', () => {
   it('Verifies a collage layout', async () => {
-    ghost.close();
-    await ghost.open('http://localhost:3000/?finiteLength=1&collage=1', {
-      viewportSize: {
-        width: 500,
-        height: 500,
-      },
-    });
+    await ghost.open('http://localhost:3000/?finiteLength=1&collage=1');
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });
