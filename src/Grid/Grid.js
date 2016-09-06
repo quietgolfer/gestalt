@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
@@ -21,13 +20,16 @@ export default class Grid extends Component {
     };
   }
 
+  componentWillMount() {
+    // We calculate columns and offset just before the component mounts
+    // so that children have the correct column count when mounting
+    this.reflow(this.calculateColumns());
+  }
+
   /**
    * Adds hooks after the component mounts.
    */
   componentDidMount() {
-    // We calculate columns and offset just before the component mounts.
-    this.reflow(this.calculateColumns());
-
     this.boundResizeHandler = () => this.handleResize();
 
     this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
@@ -128,8 +130,10 @@ export default class Grid extends Component {
     }
 
     const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
-    const parentWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-    let newColCount = Math.floor(parentWidth / eachItemWidth);
+    const scroller = this.props.scrollContainer;
+    const scrollerWidth = scroller.clientWidth || scroller.innerWidth;
+    const margins = this.props.marginLeft + this.props.marginRight;
+    let newColCount = Math.floor((scrollerWidth - margins) / eachItemWidth);
 
     if (newColCount < this.props.minCols) {
       newColCount = this.props.minCols;
@@ -214,7 +218,8 @@ export default class Grid extends Component {
   processInfo = (data, width, height) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
-    const left = column * this.props.columnWidth + this.props.gutterWidth * column;
+    const left = column * this.props.columnWidth + this.props.gutterWidth * column
+      + this.props.marginLeft;
     this.currColHeights[column] += height + this.props.gutterWidth;
 
     return {
@@ -297,6 +302,16 @@ Grid.propTypes = {
   loadItems: React.PropTypes.func,
 
   /**
+   * Left margin.
+   */
+  marginLeft: React.PropTypes.number,
+
+  /**
+   * Right margin.
+   */
+  marginRight: React.PropTypes.number,
+
+  /**
    * Minimum number of columns to display.
    */
   minCols: React.PropTypes.number,
@@ -310,6 +325,8 @@ Grid.propTypes = {
 Grid.defaultProps = {
   columnWidth: 236,
   gutterWidth: 14,
+  marginLeft: 0,
+  marginRight: 0,
   minCols: 3,
   scrollContainer: typeof window !== 'undefined' ? window : null,
 };

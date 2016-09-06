@@ -9,7 +9,13 @@ const selectors = {
 
 describe('Collage Layout', () => {
   it('Verifies a collage layout', async () => {
-    await ghost.open('http://localhost:3000/?finiteLength=1&collage=1');
+    ghost.close();
+    await ghost.open('http://localhost:3000/?finiteLength=1&collage=1', {
+      viewportSize: {
+        width: 500,
+        height: 500,
+      },
+    });
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });

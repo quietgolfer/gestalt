@@ -25,11 +25,12 @@ const countColumns = async () => {
 
 const triggerReisze = async (resizeWidthTo) => {
   await ghost.script((newWidth) => {
-    const gridWrapper = document.getElementById('gridWrapper');
-    gridWrapper.style.width = `${newWidth}px`;
+    // Mock out the window width for the next resize calculation.
+    window.innerWidth = newWidth;
     window.dispatchEvent(new Event('resize'));
   }, [resizeWidthTo]);
 };
+
 
 describe('Resize', () => {
   it('Reflows the grid after a resize', async () => {
