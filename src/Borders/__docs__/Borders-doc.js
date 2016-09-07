@@ -1,16 +1,9 @@
 // @flow
 import React from 'react';
-import classnames from 'classnames/bind';
-import borders from '../Borders.css';
-import { card, md, ns } from 'corkboard';
+import { card, md } from 'corkboard';
+import { ns, stylesTable } from '../../../.corkboard/cards';
 
 ns('Borders');
-
-card('Borders',
-  md`# Borders
-  `, <div />, {}, { heading: false });
-
-const cx = classnames.bind(borders);
 
 type Props = {border: string, hasFill?: boolean}
 
@@ -18,15 +11,15 @@ function Swatch({ border, hasFill }: Props) {
   return (
     <div className="flex flex-column items-center center">
       <div
-        className={`${cx(`${border}`)}`}
+        className={border}
         style={{
           width: '6rem',
           height: '6rem',
           backgroundColor: (hasFill ? '#efefef' : 'transparent'),
         }}
       />
-      <div className="h6 py1 gray">
-        <div><code>{'.'}{border}</code></div>
+      <div className="h6 py1 dark-gray text-center">
+        <code className="text-s">{border}</code>
       </div>
     </div>
   );
@@ -41,16 +34,17 @@ const borderLines = [
   'no-border',
 ];
 
-card('Border lines',
-  md`Use the following classes for applying border outlines to elements:
+card('Lines',
+  md`
+Adds those pretty lines that everybody likes.
 
 \`\`\`html
-<div class="border"> .border </div>
-<div class="border-top"> .border-top </div>
-<div class="border-bottom"> .border-bottom </div>
-<div class="border-right"> .border-right </div>
-<div class="border-left"> .border-left </div>
-<div class="no-border"> .no-border </div>
+<div class="border">border</div>
+<div class="border-top">border-top</div>
+<div class="border-bottom">border-bottom</div>
+<div class="border-right">border-right</div>
+<div class="border-left">border-left</div>
+<div class="no-border">no-border</div>
 \`\`\`
  `,
   <div className="flex mxn1 justify-center flex-wrap">
@@ -70,9 +64,9 @@ const borderRadii = [
   'rounded-left',
 ];
 
-card('Border radii',
-  md`Use the following classes for applying border radii to elements:
-
+card('Border Radii',
+  md`
+Adds those pretty border radiuses.
 
 \`\`\`html
 <div class="circle"> .circle </div>
@@ -81,7 +75,6 @@ card('Border radii',
 <div class="rounded-bottom"> .rounded-bottom </div>
 <div class="rounded-right"> .rounded-right </div>
 <div class="rounded-left"> .rounded-left </div>
-
 \`\`\`
   `,
   <div className="flex mxn1 justify-center flex-wrap">
@@ -91,3 +84,7 @@ card('Border radii',
       </div>
     )}
   </div>);
+
+stylesTable(
+  require('!!raw!postcss!../Borders.css')
+);

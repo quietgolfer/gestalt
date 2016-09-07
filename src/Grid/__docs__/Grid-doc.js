@@ -1,13 +1,10 @@
 import React from 'react';
 import CollageGrid from './CollageGrid';
 import ExampleGrid from './ExampleGrid';
-import { card, md, ns } from 'corkboard';
+import { card, md } from 'corkboard';
+import { ns } from '../../../.corkboard/cards';
 
 ns('Grid');
-
-card('Grid',
-  md`# Grid
-  `, <div />, {}, { heading: false });
 
 card('Fixed width',
   md`With a set number of items, used as a collage component.`,
@@ -16,7 +13,10 @@ card('Fixed width',
   </div>
 );
 
-card('Fluid width',
+card(
+  'Fluid width',
   md`The Pinterest grid.`,
-  <ExampleGrid />
+  <ExampleGrid />,
+  {},
+  { stretch: true },
 );

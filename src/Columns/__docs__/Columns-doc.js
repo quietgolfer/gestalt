@@ -1,48 +1,20 @@
 // @flow
 import React, { PropTypes } from 'react';
-import classnames from 'classnames/bind';
 import columns from '../Columns.css';
-import borders from '../../Borders/Borders.css';
-import layout from '../../Layout/Layout.css';
-import { card, md, ns } from 'corkboard';
+import { card, md } from 'corkboard';
+import { ns, stylesTable } from '../../../.corkboard/cards';
 
 ns('Columns');
 
-const combinedStyles = Object.assign(columns, borders, layout);
-
-const cx = classnames.bind(combinedStyles);
-
-type RowProps = {children?: Object[]};
-
-function Row(props: RowProps) {
-  const classes = [
-    'col',
-    'col-12',
-    'mb2',
-  ];
-
-  return (
-    <div className={`${cx(classes)}`}>
-      {props.children}
-    </div>
-  );
-}
-
-type ColumnProps = {size: number, children?: Object[]};
-
-function Column(props: ColumnProps) {
+function Column(props: {size: number, children?: any}) {
   const {
     size,
   } = props;
 
-  const classes = [
-    'col',
-    `col-${size}`,
-    'border',
-  ];
+  const className = `col-${size}`;
 
   return (
-    <div className={`${cx(classes)}`}>
+    <div className={`border p1 border-box ${columns[className]}`}>
       {props.children ? props.children : `.col-${size}`}
     </div>
   );
@@ -52,40 +24,74 @@ Column.propTypes = {
   size: PropTypes.number,
 };
 
-card('Columns',
-  md`# Columns`, <div />, {}, { heading: false });
-
-card('Column system',
+card(
+  'Column system',
   md`Gestalt supports a 12-column system with which you can build layouts by adding \`.col-{1-12}\`
   to your elements.
 
   \`\`\`html
-  <div class="col-12">
-    <div class="col-10"> .col-10 </div>
-    <div class="col-2"> .col-2 </div>
+  <div class="flex">
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
+    <div class="col-1">.col-1</div>
   </div>
-
-  <div class="col-12">
-    <div class="col-3"> .col-3 </div>
-    <div class="col-3"> .col-3 </div>
-    <div class="col-3"> .col-3 </div>
-    <div class="col-3"> .col-3 </div>
+  <div class="flex">
+    <div class="col-8">.col-8</div>
+    <div class="col-8">.col-8</div>
+  </div>
+  <div class="flex">
+    <div class="col-4">.col-4</div>
+    <div class="col-4">.col-4</div>
+    <div class="col-4">.col-4</div>
+  </div>
+  <div class="flex">
+    <div class="col-6">.col-6</div>
+    <div class="col-6">.col-6</div>
   </div>
   \`\`\`
   `,
-  <Row>
-    <Row>
-      <Column size={10} />
-      <Column size={2} />
-    </Row>
+  <div>
+    <div className="flex mb2">
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+      <Column size={1} />
+    </div>
 
-    <Row>
-      <Column size={3} />
-      <Column size={3} />
-      <Column size={3} />
-      <Column size={3} />
-    </Row>
-  </Row>);
+    <div className="flex mb2">
+      <Column size={8} />
+      <Column size={4} />
+    </div>
+
+    <div className="flex mb2">
+      <Column size={4} />
+      <Column size={4} />
+      <Column size={4} />
+    </div>
+
+    <div className="flex">
+      <Column size={6} />
+      <Column size={6} />
+    </div>
+  </div>);
 
 card('Breakpoints',
   md`There are breakpoints for small, medium, and large screens. Use the \`sm\`, \`md\`,
@@ -111,3 +117,5 @@ card('Breakpoints',
   `,
   <div />
 );
+
+stylesTable(require('!!raw!postcss!../Columns.css'));

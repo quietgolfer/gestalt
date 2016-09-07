@@ -1,12 +1,9 @@
 import React from 'react';
 import Text from '../Text';
-import { card, md, ns } from 'corkboard';
+import { card, md } from 'corkboard';
+import { ns } from '../../../.corkboard/cards';
 
 ns('Text');
-
-card('Text',
-  md`# Text`,
-  <div />, {}, { heading: false });
 
 card('Sizes',
   md`

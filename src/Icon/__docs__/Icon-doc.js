@@ -1,16 +1,13 @@
 import React, { PropTypes } from 'react';
 import Icon from '../Icon';
 import icons from '../icons/index';
-import { card, text, md, ns } from 'corkboard';
-import { dangerous } from '../../../.corkboard/dangerous';
+import { card, md } from 'corkboard';
+import { ns } from '../../../.corkboard/cards';
 
-ns('Icon');
-dangerous('Icon');
-
-text(`
-# Icon
-By default an icon is rendered in medium size and a gray color
-`);
+ns(
+  'Icon'
+  `By default an icon is rendered in medium size and a gray color`
+);
 
 card('Colors',
   md`

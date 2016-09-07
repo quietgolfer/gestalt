@@ -1,25 +1,19 @@
 import React from 'react';
 import Mask from '../Mask';
-import { card, md, ns } from 'corkboard';
-import { dangerous } from '../../../.corkboard/dangerous';
+import { card, md } from 'corkboard';
+import { ns } from '../../../.corkboard/cards';
 
-ns('Mask');
-dangerous('Mask');
-
-card('Mask',
-  md`# Mask
-  If you have stuff you need to fit into a shape, put a \`Mask\` on it.`,
-  <div />, {},
-  { heading: false });
+ns(
+  'Mask',
+  'If you have stuff you need to fit into a shape, put a `Mask` on it.'
+);
 
 card('Mask options',
   md`
-  \`\`\`html
+  \`\`\`js
   <Mask height={80} type="circle" width={80}></Mask>
   <Mask height={80} type="rounded" width={80}></Mask>
   \`\`\`
-
-
   `,
   <div className="flex">
     <div className="p1">

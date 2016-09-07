@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
-import layout from '../Layout.css';
 import classnames from 'classnames/bind';
-
-import { card, md, ns } from 'corkboard';
+import { card, md } from 'corkboard';
+import layout from '../Layout.css';
+import { ns, stylesTable } from '../../../.corkboard/cards';
 
 const cx = classnames.bind(layout);
 
@@ -69,33 +69,15 @@ function FlexItem(props : ItemProps) {
   );
 }
 
-ns('Layout');
-
-card('Layout',
-  md`# Layout
-  Most classes needed to layout elements correspond to their CSS properties/values pretty
-  tightly. For example:
+ns(
+  'Layout',
+  `
+Most classes needed to layout elements correspond to their CSS
+properties/values pretty tightly. For example:
 
   \`.pull-left\` and \`.pull-right\` correspond to \`float: left\` and \`float: right\`.
-
-  For a full list of classes and the properties they correspond to:
-
-  | Class name        | Property: value                             |
-  | ---               | ---                                         |
-  | .block            | \`display: block\`                          |
-  | .inline           | \`display: inline\`                         |
-  | .inline-block     | \`display: inline-block \`                  |
-  | .table            | \`display: table \`                         |
-  | .table-cell       | \`display: table-cell \`                    |
-  | .overflow-hidden  | \`overflow: hidden \`                       |
-  | .overflow-scroll  | \`overflow: scroll \`                       |
-  | .overflow-auto    | \`overflow: auto \`                         |
-  | .fit              | \`max-width: 100% \`                        |
-  | .relative         | \`position: relative \`                     |
-  | .absolute         | \`position: absolute \`                     |
-  | .fixed            | \`position: fixed \`                        |
-
-  `, <div />, {}, { heading: false });
+  `
+);
 
 card('Positioning',
   md`Gestalt provides helper classes for resetting top, bottom, left, and right positioning.
@@ -191,3 +173,5 @@ card('Flex item justification',
     )}
   </div>
 );
+
+stylesTable(require('!!raw!postcss!../Layout.css'));

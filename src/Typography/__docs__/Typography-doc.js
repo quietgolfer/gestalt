@@ -1,13 +1,10 @@
 // @flow
 import React from 'react';
 import typography from '../Typography.css';
-import { card, md, ns } from 'corkboard';
+import { card, md } from 'corkboard';
+import { ns, stylesTable } from '../../../.corkboard/cards';
 
 ns('Typography');
-
-card('Typography',
-  md`# Typography`,
-  <div />, {}, { heading: false });
 
 const textAlignment = [
   'text-left',
@@ -105,3 +102,5 @@ card('Text overflow',
       Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum
     </div>
   </div>);
+
+stylesTable(require('!!raw!postcss!../Typography.css'));

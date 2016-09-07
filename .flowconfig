@@ -1,6 +1,7 @@
 [ignore]
 .*/test/*
 .*/node_modules/fbjs/*
+.*/corkboard/node_modules/pinterest-gestalt/*
 
 [options]
 suppress_comment= \\(.\\|\n\\)*\\$FlowIssue

@@ -1,42 +1,31 @@
-import { card, md, ns } from 'corkboard';
+import { card, md } from 'corkboard';
 import React from 'react';
-import classnames from 'classnames/bind';
 import styles from '../../../styles.css';
-import Text from '../../Text/Text';
+import { ns, stylesTable } from '../../../.corkboard/cards';
 
-const cx = classnames.bind(styles);
+ns(
+  'Cursor',
+  `
+Collection of different cursor options to help users interface
+with your design. These don't affect touch input devices.
+`);
 
-const inline = {
-  height: 50,
-};
-
-ns('Cursor');
-
-card('Cursor',
-  md`# Cursor`, <div />, {}, { heading: false });
-
-card('Cursor collection',
-  md`Collection of different cursor options to help users interface with your design
-
-  For a full list of classes and the properties they correspond to:
-
-  | Class name        | Property: value                             |
-  | ---               | ---                                         |
-  | .pointer          | \`cursor: pointer\`                         |
-  | .zoom-in          | \`cursor: zoom-in\`                         |
-  | .zoom-out         | \`cursor: zoom-out\`                        |
-
-  See the divs below for a live example.
-`,
-  <div className={cx('flex', 'col-12')}>
-    <div className={cx('col-4', 'border', 'pointer')} style={inline}>
-      <Text bold>pointer</Text>
+card(
+  'Types',
+  md``,
+  <div className="flex col-12 text-center">
+    <div className={`col-4 mx2 p2 border ${styles.pointer}`}>
+      <code>.pointer</code>
     </div>
-    <div className={cx('col-4', 'border', 'zoom-in')} style={inline}>
-      <Text bold>zoom-in</Text>
+    <div className={`col-4 mx2 p2 border ${styles['zoom-in']}`}>
+      <code>.zoom-in</code>
     </div>
-    <div className={cx('col-4', 'border', 'zoom-out')} style={inline}>
-      <Text bold>zoom-out</Text>
+    <div className={`col-4 mx2 p2 border ${styles['zoom-out']}`}>
+      <code>.zoom-out</code>
     </div>
-  </div>
+  </div>,
+  {},
+  { heading: false, stretch: true }
 );
+
+stylesTable(require('!!raw!postcss!../Cursor.css'));

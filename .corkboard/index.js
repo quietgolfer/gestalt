@@ -1,2 +1,15 @@
 const requireCard = require.context('../src', true, /\-doc\.js$/);
-requireCard.keys().map(path => requireCard(path));
+[
+  'Borders',
+  'Colors',
+  'Columns',
+  'Cursor',
+  'Grid',
+  'Heading',
+  'Layout',
+  'Text',
+  'Typography',
+  'Whitespace',
+].forEach(component =>
+  requireCard(`./${component}/__docs__/${component}-doc.js`)
+);

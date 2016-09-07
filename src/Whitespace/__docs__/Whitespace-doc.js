@@ -1,16 +1,14 @@
 // @flow
 
 import React from 'react';
-import { card, md, ns } from 'corkboard';
-
+import { card, md } from 'corkboard';
+import { ns, stylesTable } from '../../../.corkboard/cards';
 import ws from '../Whitespace.css';
 
-ns('Whitespace');
-
-card('Whitespace',
-  md`# Whitespace
-  Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
-  Margin and padding classnames take the form of \`{m, p}{x, y, t, b, l, r}{n}{0-6}\`.
+ns('Whitespace',
+  `
+Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
+Margin and padding classnames take the form of \`{m, p}{x, y, t, b, l, r}{n}{0-6}\`.
 
   The numbers (0-6) represent responsiveness according to "boints", which are screen-independent
   number of points. As the size of a screen changes, the number of pixels corresponding
@@ -39,8 +37,8 @@ card('Whitespace',
   \`px{1, 2, 3, 4}\` to your element.
 
   If you want to completely get rid of all padding and margin, then you would add
-  \`m0 p0\` to your element. More examples below.`,
-  <div />, {}, { heading: false }
+  \`m0 p0\` to your element. More examples below.
+`
 );
 
 card('Combining margin and padding',
@@ -67,3 +65,5 @@ card('Excluded margin values',
   So, if you need to apply symmetrical padding, use the corresponding \`px{1-6}\` and \`py{1-6}\`
   classnames.`
 );
+
+stylesTable(require('!!raw!postcss!../Whitespace.css'));

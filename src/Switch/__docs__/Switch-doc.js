@@ -2,28 +2,23 @@
 import React from 'react';
 import Switch from '../Switch';
 import Text from '../../Text/Text';
-import { card, md, ns } from 'corkboard';
-import { dangerous } from '../../../.corkboard/dangerous';
+import { card, md } from 'corkboard';
+import { ns } from '../../../.corkboard/cards';
 
-ns('Switch');
-dangerous('Switch');
-
-card('Switch',
-  md`# Switch
-
-Use the \`Switch\` component as an on/off control.
-`, <div />, {}, { heading: false });
+ns(
+  'Switch',
+  'Use the `Switch` component as an on/off control.'
+);
 
 card('PropTypes',
   md`
-\`\`\`html
+\`\`\`js
 Switch.propTypes = {
   id: PropTypes.string,
   onChange: PropTypes.func,
   switched: PropTypes.bool,
 };
 \`\`\`
-
 `,
   (atom) => (
     <div className="flex mxn1">

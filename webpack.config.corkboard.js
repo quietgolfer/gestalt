@@ -20,6 +20,10 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
+  node: {
+    // postcss needs to strip this out to compile clientside
+    fs: 'empty',
+  },
   module: {
     loaders: [
       {
@@ -37,7 +41,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: path.dirname(require.resolve('corkboard')),
+        include: [
+          path.dirname(require.resolve('corkboard')),
+          path.join(__dirname, 'node_modules'),
+        ],
         loaders: [
           'css?importLoaders=1',
           'postcss',
