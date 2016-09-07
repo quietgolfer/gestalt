@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import Switch from '../Switch';
 import Text from '../../Text/Text';
@@ -24,15 +25,23 @@ Switch.propTypes = {
 \`\`\`
 
 `,
-
-  <div className="flex mxn1">
-    <div className="p1">
-      <Switch id="ex1" />
+  (atom) => (
+    <div className="flex mxn1">
+      <div className="p1">
+        <Switch
+          onChange={() => atom.reset()}
+          id="ex1"
+        />
+      </div>
+      <div className="p1">
+        <Switch
+          onChange={() => atom.reset()}
+          id="ex1"
+          switched
+        />
+      </div>
     </div>
-    <div className="p1">
-      <Switch id="ex2" switched />
-    </div>
-  </div>);
+  ));
 
 card('Example',
   md`

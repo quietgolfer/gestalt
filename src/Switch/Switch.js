@@ -7,7 +7,7 @@ const cx = classnames.bind(styles);
 
 type Props = {
   id: string,
-  onChange?: (value: boolean) => void,
+  onChange: (value: boolean) => void,
   switched?: boolean,
 }
 
@@ -66,6 +66,6 @@ export default function Switch(props: Props) {
 
 Switch.propTypes = {
   id: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
   switched: PropTypes.bool,
 };
