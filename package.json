@@ -30,7 +30,7 @@
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-1": "^6.5.0",
-    "corkboard": "^0.1.2",
+    "corkboard": "^0.2.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
     "eslint": "^2.12.0",
