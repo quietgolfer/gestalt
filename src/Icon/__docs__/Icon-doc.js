@@ -5,9 +5,10 @@ import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
 ns(
-  'Icon'
-  `By default an icon is rendered in medium size and a gray color`
-);
+  'Icon',
+  `
+By default an icon is rendered in medium size and a gray color
+`);
 
 card('Colors',
   md`
