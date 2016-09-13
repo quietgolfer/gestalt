@@ -17,8 +17,9 @@ type TextProps = {
   inline?: bool,
   italic?: bool,
   locale?: string,
+  overflow?: 'break-word' | 'normal',
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
-  truncate?: bool
+  truncate?: bool,
 };
 
 export default function Text(props: TextProps, context: TextContext) {
@@ -30,6 +31,7 @@ export default function Text(props: TextProps, context: TextContext) {
     inline = false,
     italic = false,
     size = 'm',
+    overflow = 'normal',
     truncate = false,
   } = props;
 
@@ -44,6 +46,7 @@ export default function Text(props: TextProps, context: TextContext) {
     {
       bold,
       italic,
+      overflow: overflow !== 'normal',
       truncate,
       [`locale-${locale}`]: !!locale,
     }

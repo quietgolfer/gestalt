@@ -8,7 +8,6 @@ const requireCard = require.context('../src', true, /\-doc\.js$/);
   'Heading',
   'Layout',
   'Text',
-  'Typography',
   'Whitespace',
 ].forEach(component =>
   requireCard(`./${component}/__docs__/${component}-doc.js`)

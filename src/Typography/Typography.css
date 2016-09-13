@@ -99,10 +99,6 @@
 
 /* text overflow */
 
-.no-wrap {
-  white-space: nowrap;
-}
-
 .break-word {
   word-wrap: break-word;
 }
