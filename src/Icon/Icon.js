@@ -3,7 +3,7 @@ import classnames from 'classnames/bind';
 import styles from '../../styles.css';
 import iconStyles from './Icon.css';
 import paths from './icons/index.js';
-import uniqueId from '../uniqueId';
+import accessibilityToken from '../accessibilityToken';
 
 const combinedStyles = Object.assign(styles, iconStyles);
 
@@ -46,7 +46,7 @@ export function Icon(props: IconProps) {
 }
 
 export default function IconWithId(props: IconWithIdProps) {
-  const id = uniqueId('icon_');
+  const id = accessibilityToken('icon_');
 
   return (
     <Icon id={id} {...props} />
