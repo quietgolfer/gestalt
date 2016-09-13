@@ -1,5 +1,5 @@
 import React from 'react';
-import { card, registerCard, ns as registerNamespace } from 'corkboard';
+import { card, registerCard, md, ns as registerNamespace } from 'corkboard';
 import cs from 'classnames';
 import Markdown from 'corkboard/lib/components/Markdown';
 import postcss from 'postcss';
@@ -34,7 +34,7 @@ export function stylesTable(src) {
 
   card(
     'Table of Styles',
-    { isDoc: false, text: '' },
+    md``,
     <table className="col-12 border-bottom" style={{ borderCollapse: 'collapse' }}>
       <thead>
         <tr>
@@ -44,7 +44,7 @@ export function stylesTable(src) {
       </thead>
       <tbody>
         {Object.keys(rules).map((rule, i) => (
-          <tr>
+          <tr key={i}>
             <td
               className={cs('no-wrap border-bottom p1', { 'bg-light-gray': (i % 2 === 0) })}
               style={{ verticalAlign: 'top' }}
@@ -53,8 +53,8 @@ export function stylesTable(src) {
             </td>
             <td className={cs('p1', { 'bg-light-gray': (i % 2 === 0) })}>
               <code>
-                {Object.keys(rules[rule]).map(prop => (
-                  <div>{prop}: {rules[rule][prop]}</div>
+                {Object.keys(rules[rule]).map((prop, index) => (
+                  <div key={index}>{prop}: {rules[rule][prop]}</div>
                 ))}
               </code>
             </td>
