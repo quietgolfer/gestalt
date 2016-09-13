@@ -14,13 +14,13 @@ export default class WithLayout extends Component {
 
   componentDidMount() {
     if (this.props.layoutReady) {
-      setTimeout(() => this.renderToCache());
+      this.renderToCache();
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.layoutReady && this.props.invalidateCacheKey !== nextProps.invalidateCacheKey) {
-      setTimeout(() => this.renderToCache(true));
+      this.renderToCache(true);
     }
   }
 
