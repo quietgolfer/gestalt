@@ -7,6 +7,7 @@ const requireCard = require.context('../src', true, /\-doc\.js$/);
   'Cursor',
   'FlexibleGrid',
   'Heading',
+  'Icon',
   'Layout',
   'Text',
   'Whitespace',
