@@ -8,7 +8,7 @@ const selectors = {
   afterGrid: '.afterGrid',
 };
 
-describe('Render Height', () => {
+describe('ClassicGrid > Render Height', () => {
   it('Items can be positioned under the grid', async () => {
     await ghost.open('http://localhost:3000/?finiteLength=1');
     await ghost.script(() => {

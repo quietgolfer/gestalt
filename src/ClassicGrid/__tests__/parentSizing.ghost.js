@@ -7,7 +7,7 @@ const selectors = {
   gridItem: '[class^="Grid__Grid__Item"]',
 };
 
-describe('Parent Sizing', () => {
+describe('ClassicGrid > Parent Sizing', () => {
   it('The grid starts from the left bounding box of the parent', async () => {
     await ghost.open('http://localhost:3000/?finiteLength=1&constrained=1');
     await ghost.script(() => {

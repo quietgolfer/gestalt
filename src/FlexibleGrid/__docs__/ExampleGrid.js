@@ -1,4 +1,4 @@
-import Grid from '../Grid';
+import FlexibleGrid from '../FlexibleGrid';
 import Item from './Item';
 import React from 'react';
 
@@ -56,7 +56,7 @@ export default class ExampleGrid extends React.Component {
 
   render() {
     return (
-      <Grid
+      <FlexibleGrid
         comp={Item}
         items={this.state.pins}
         loadItems={this.loadItems}

@@ -1,10 +1,11 @@
 const requireCard = require.context('../src', true, /\-doc\.js$/);
 [
   'Borders',
+  'ClassicGrid',
   'Colors',
   'Columns',
   'Cursor',
-  'Grid',
+  'FlexibleGrid',
   'Heading',
   'Layout',
   'Text',

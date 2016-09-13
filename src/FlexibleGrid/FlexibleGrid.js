@@ -7,7 +7,7 @@ import WithLayout from './WithLayout';
 // TODO: This should by dynamic, based on the size of the container and resource response time.
 const SCROLL_BUFFER = 400;
 
-export default class Grid extends Component {
+export default class FlexibleGrid extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -35,9 +35,6 @@ export default class Grid extends Component {
 
     /* eslint react/no-did-mount-set-state:0 */
     this.setState({
-      // Since items are positioned absolutely, we can't rely on margin or padding to center
-      // an arbitrary number of columns. Calculate the width in order to center the grid.
-      containerWidth: this.determineWidth(),
       layoutReady: true,
     });
   }
@@ -87,7 +84,7 @@ export default class Grid extends Component {
    * This is consumed by the WithLayout component to cache grid item layout.
    */
   setCacheKey() {
-    this.cacheKey = `${this.currColHeights.length} - ${Date.now()}`;
+    this.cacheKey = `${this.state && this.state.gridWidth} - ${Date.now()}`;
   }
 
   /**
@@ -128,13 +125,14 @@ export default class Grid extends Component {
       return 0;
     }
 
-    const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
-    const parentWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-    let newColCount = Math.floor(parentWidth / eachItemWidth);
+    const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+    const newColCount = Math.floor(gridWidth / this.props.minItemWidth);
+    const itemWidth = gridWidth / newColCount;
 
-    if (newColCount < this.props.minCols) {
-      newColCount = this.props.minCols;
-    }
+    this.setState({
+      gridWidth,
+      itemWidth,
+    });
     return newColCount;
   }
 
@@ -143,15 +141,13 @@ export default class Grid extends Component {
    * We need to reflow items if the number of columns we would display should change.
    */
   reflowIfNeeded() {
-    const newColCount = this.calculateColumns();
-    const containerWidth = this.determineWidth();
+    const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
 
-    if (newColCount !== this.currColHeights.length
-      || this.state.containerWidth !== containerWidth) {
-      this.reflow(newColCount);
+    if (this.state.gridWidth !== gridWidth) {
+      this.reflow(this.calculateColumns());
       this.setState({
         // Recalculate width with new col count.
-        containerWidth: this.determineWidth(),
+        gridWidth,
         // Reset the height to 0.
         // It will be re-calculated as we insert items into the grid.
         containerHeight: 0,
@@ -189,14 +185,6 @@ export default class Grid extends Component {
   }
 
   /**
-   * # of columns * total item width - 1 item margin
-   */
-  determineWidth() {
-    const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
-    return `${(this.currColHeights.length * eachItemWidth) - this.props.gutterWidth}px`;
-  }
-
-  /**
    * Returns the index of the shortest column.
    */
   shortestColumn() {
@@ -215,8 +203,8 @@ export default class Grid extends Component {
   processInfo = (data, width, height) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
-    const left = column * this.props.columnWidth + this.props.gutterWidth * column;
-    this.currColHeights[column] += height + this.props.gutterWidth;
+    const left = column * (this.state.gridWidth / this.currColHeights.length);
+    this.currColHeights[column] += height;
 
     return {
       top,
@@ -225,6 +213,8 @@ export default class Grid extends Component {
   }
 
   render() {
+    const fluidWidth = this.state.gridWidth / this.currColHeights.length;
+
     if (this.fetchingWith !== false && this.fetchingWith !== this.props.items.length) {
       this.fetchingWith = false;
     }
@@ -236,6 +226,7 @@ export default class Grid extends Component {
       >
         {this.props.items.map((item, idx) =>
           <WithLayout
+            constrainWidth={this.state.itemWidth}
             data={item}
             invalidateCacheKey={this.cacheKey}
             key={idx}
@@ -250,6 +241,7 @@ export default class Grid extends Component {
                   ...styles.gridItem,
                   top: position.top,
                   left: position.left,
+                  width: fluidWidth,
                 };
               }
               return (
@@ -270,21 +262,11 @@ export default class Grid extends Component {
   }
 }
 
-Grid.propTypes = {
-  /**
-   * The width of each column.
-   */
-  columnWidth: React.PropTypes.number,
-
+FlexibleGrid.propTypes = {
   /**
    * The component to render.
    */
   comp: React.PropTypes.func,
-
-  /**
-   * The amount of space between each item.
-   */
-  gutterWidth: React.PropTypes.number,
 
   /**
    * An array of all objects to display in the grid.
@@ -299,9 +281,14 @@ Grid.propTypes = {
   loadItems: React.PropTypes.func,
 
   /**
-   * Minimum number of columns to display.
+   * The max-width of each column.
    */
-  minCols: React.PropTypes.number,
+  maxItemWidth: React.PropTypes.number,
+
+  /**
+   * The min-width of each column.
+   */
+  minItemWidth: React.PropTypes.number,
 
   /**
    * The scroll container to use. Defaults to window.
@@ -309,9 +296,8 @@ Grid.propTypes = {
   scrollContainer: React.PropTypes.object,
 };
 
-Grid.defaultProps = {
-  columnWidth: 236,
-  gutterWidth: 14,
-  minCols: 3,
+FlexibleGrid.defaultProps = {
+  minItemWidth: 236,
+  maxItemWidth: 300,
   scrollContainer: typeof window !== 'undefined' ? window : null,
 };

@@ -10,11 +10,16 @@
     </style>
     <script>
         window.initialPins = <%- initialPins %>
+        window.componentTest = '<%- componentTest %>'
     </script>
     <script defer src="http://localhost:8080/bundle.js"></script>
     <div id="react-main-mount"><%- reactOutput %></div>
     <style type="text/css">
-        <%- serverStyles %>
+      <%if (componentTest === 'ClassicGrid') { %>
+        <%- classicGridServerStyles %>
+      <% } else if (componentTest === 'FlexibleGrid') { %>
+        <%- flexibleGridServerStyles %>
+      <% } %>
     </style>
   </body>
 </html>

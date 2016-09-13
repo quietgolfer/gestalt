@@ -1,5 +1,5 @@
-import Grid from '../src/Grid/Grid';
-import Item from '../src/Grid/__docs__/Item';
+import ClassicGrid from '../src/ClassicGrid/ClassicGrid';
+import Item from '../src/ClassicGrid/__docs__/Item';
 import React from 'react';
 
 function getRandomColor() {
@@ -39,7 +39,7 @@ const getPins = (meta = {}, collage) => {
   });
 };
 
-export default class ExampleGrid extends React.Component {
+export default class ClassicExampleGrid extends React.Component {
 
   constructor(props) {
     super(props);
@@ -97,7 +97,7 @@ export default class ExampleGrid extends React.Component {
 
     return (
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
-        <Grid
+        <ClassicGrid
           comp={Item}
           items={this.state.pins}
           {...dynamicGridProps}
@@ -108,7 +108,7 @@ export default class ExampleGrid extends React.Component {
   }
 }
 
-ExampleGrid.propTypes = {
+ClassicExampleGrid.propTypes = {
   // Test case: Sets up props to display a collage layout.
   collage: React.PropTypes.bool,
   // Test case: Constrains the width of the grid rendering.

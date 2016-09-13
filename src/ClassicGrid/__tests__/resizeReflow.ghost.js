@@ -32,7 +32,7 @@ const triggerReisze = async (resizeWidthTo) => {
   }, [resizeWidthTo]);
 };
 
-describe('Resize', () => {
+describe('ClassicGrid > Resize', () => {
   it('Reflows the grid after a resize', async () => {
     const GRID_WIDTH = 1000;
 

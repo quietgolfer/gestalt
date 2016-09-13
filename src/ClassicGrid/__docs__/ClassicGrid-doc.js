@@ -4,7 +4,7 @@ import ExampleGrid from './ExampleGrid';
 import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Grid');
+ns('ClassicGrid');
 
 card('Fixed width',
   md`With a set number of items, used as a collage component.`,

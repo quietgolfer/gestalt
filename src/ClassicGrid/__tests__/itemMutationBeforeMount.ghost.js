@@ -13,7 +13,7 @@ const selectors = {
  * This is a bad practice, but regardless the grid should be able to support when this happens.
  * This test tries to ensure that we don't break in that condition.
  */
-describe('Item Mutation', () => {
+describe('ClassicGrid > Item Mutation', () => {
   const staticMeasurements = [];
 
   it('items render appropriately when mutating between constructor and mounting', async () => {
