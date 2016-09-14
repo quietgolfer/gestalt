@@ -1,8 +1,11 @@
 :root {
   --styles: '../../styles.css';
-  --blue: #0084ff;
-  --light-gray: #efefef;
-  --red: #bd081c;
+  --blue-hover: color(#0084ff blackness(+ 6%));
+  --blue-active: color(#0084ff blackness(+ 10%));
+  --light-gray-hover: color(#efefef blackness(+ 6%));
+  --light-gray-active: color(#efefef blackness(+ 10%));
+  --red-hover: color(#bd081c blackness(+ 6%));
+  --red-active: color(#bd081c blackness(+ 10%));
 }
 
 .common {
@@ -43,11 +46,11 @@
 
 .gray:hover,
 .gray:focus {
-  background-color: color(var(--light-gray) blackness(+ 6%));
+  background-color: var(--light-gray-hover);
 }
 
 .gray:active {
-  background-color: color(var(--light-gray) blackness(+ 10%));
+  background-color: var(--light-gray-active);
 }
 
 .red {
@@ -57,11 +60,11 @@
 
 .red:hover,
 .red:focus {
-  background-color: color(var(--red) blackness(+ 6%));
+  background-color: var(--red-hover);
 }
 
 .red:active {
-  background-color: color(var(--red) blackness(+ 10%));
+  background-color: var(--red-active);
 }
 
 .blue {
@@ -71,9 +74,9 @@
 
 .blue:hover,
 .blue:focus {
-  background-color: color(var(--blue) blackness(+ 6%));
+  background-color: var(--blue-hover);
 }
 
 .blue:active {
-  background-color: color(var(--blue) blackness(+ 6%));
+  background-color: var(--blue-active);
 }
