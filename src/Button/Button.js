@@ -1,38 +1,61 @@
+/* TODO(juliac): Add the following items.
+ * Tests
+ */
+
+// @flow
 import React, { PropTypes } from 'react';
-import Text from '../Text/Text';
 import classnames from 'classnames/bind';
 import styles from './Button.css';
 
 const cx = classnames.bind(styles);
 
-export default function Button(props) {
-  const { disabled, onClick, text } = props;
-  let { type } = props;
+type Props = {
+  color?: 'gray' | 'red' | 'blue',
+  disabled?: boolean,
+  fullWidth?: boolean,
+  onClick?: () => void,
+  text: string,
+  type?: 'submit' | 'button',
+}
 
-  if (disabled) {
-    type = 'disabled';
-  }
-  const cs = cx('Button', `Button--${type}`);
+export default function Button(props: Props) {
+  const {
+    color = 'gray',
+    disabled = false,
+    fullWidth = false,
+    onClick,
+    text,
+    type = 'button',
+  } = props;
+
+  const classes = cx(
+    {
+      disabled,
+      [color]: !disabled,
+    },
+    type,
+    {
+      fullWidth,
+      variable: !fullWidth,
+    },
+  );
+
   return (
-    <button className={cs} onClick={onClick}>
-      <Text size="m">
-        {text}
-      </Text>
+    <button
+      className={classes}
+      onClick={onClick}
+      type={type}
+    >
+      {text}
     </button>
   );
 }
 
 Button.propTypes = {
-  block: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
+  color: PropTypes.oneOf(['blue', 'gray', 'red']),
+  disabled: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['default', 'red', 'blue']).isRequired,
-};
-
-Button.defaultProps = {
-  disabled: false,
-  onClick: () => {},
-  type: 'default',
-  block: false,
+  type: PropTypes.oneOf(['button', 'submit']),
 };
