@@ -11,6 +11,7 @@ const requireCard = require.context('../src', true, /\-doc\.js$/);
   'Heading',
   'Icon',
   'Layout',
+  'Switch',
   'Text',
   'Whitespace',
 ].forEach(component =>

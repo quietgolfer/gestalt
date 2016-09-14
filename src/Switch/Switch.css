@@ -1,0 +1,56 @@
+:root {
+  --styles: '../../styles.css';
+}
+
+.switchCommon {
+  composes: border-box from var(--styles);
+  composes: inline-block from var(--styles);
+  composes: relative from var(--styles);
+  composes: pointer from var(--styles);
+  border-radius: 48px;
+  height: 28px;
+  padding: 2px;
+  transition: background 0.2s ease;
+  width: 48px;
+}
+
+.switchedOn {
+  composes: switchCommon;
+  composes: bg-pine from var(--styles);
+}
+
+.switchedOff {
+  composes: switchCommon;
+  composes: bg-gray from var(--styles);
+}
+
+.sliderCommon {
+  composes: absolute from var(--styles);
+  composes: bg-white from var(--styles);
+  composes: circle from var(--styles);
+  height: 24px;
+  transition: left 0.2s sease;
+  width: 24px;
+}
+
+.sliderOn {
+  composes: sliderCommon;
+  left: 22px;
+}
+
+.sliderOff {
+  composes: sliderCommon;
+  left: 2px;
+}
+
+.checkbox {
+  composes: absolute from var(--styles);
+  composes: col-12 from var(--styles);
+  composes: m0 from var(--styles);
+  composes: no-border from var(--styles);
+  composes: p0 from var(--styles);
+  composes: pointer from var(--styles);
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}

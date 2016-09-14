@@ -14,8 +14,8 @@ card('PropTypes',
   md`
 \`\`\`js
 Switch.propTypes = {
-  id: PropTypes.string,
-  onChange: PropTypes.func,
+  id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   switched: PropTypes.bool,
 };
 \`\`\`
