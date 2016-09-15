@@ -17,7 +17,7 @@ The documentation will automatically open in your default browser.
 ## Releasing
 
 The following outlines our release process:
-
+* Make sure to add the new components you want to release to the index.js export list.
 * Bump the NPM package version, and land in master. This usually means opening up a pull request with a version change to package.json.
 * Once the version is bumped in master, checkout that commit locally.
 * Publish to NPM with `npm publish`.
