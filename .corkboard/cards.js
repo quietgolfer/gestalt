@@ -34,7 +34,6 @@ export function stylesTable(src) {
 
   card(
     'Table of Styles',
-    md``,
     <table className="col-12 border-bottom" style={{ borderCollapse: 'collapse' }}>
       <thead>
         <tr>
@@ -61,8 +60,6 @@ export function stylesTable(src) {
           </tr>
          ))}
       </tbody>
-    </table>,
-    {},
-    { stretch: true }
+    </table>
   );
 }

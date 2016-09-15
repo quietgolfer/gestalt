@@ -4,9 +4,6 @@ import { card, md, ns } from 'corkboard';
 
 ns('Divider');
 
-card('Divider',
-  md`# Divider`, <div />, {}, { heading: false });
-
 card('Divider usage',
   md`If you have two things that need to be separated, put a \`Divider\` between them.`,
   <div>

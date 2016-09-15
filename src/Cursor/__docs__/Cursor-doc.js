@@ -1,4 +1,4 @@
-import { card, md } from 'corkboard';
+import { card } from 'corkboard';
 import React from 'react';
 import styles from '../../../styles.css';
 import { ns, stylesTable } from '../../../.corkboard/cards';
@@ -12,7 +12,6 @@ with your design. These don't affect touch input devices.
 
 card(
   'Types',
-  md``,
   <div className="flex col-12 text-center">
     <div className={`col-4 mx2 p2 border ${styles.pointer}`}>
       <code>.pointer</code>
@@ -24,8 +23,7 @@ card(
       <code>.zoom-out</code>
     </div>
   </div>,
-  {},
-  { heading: false, stretch: true }
+  { heading: false }
 );
 
 stylesTable(require('!!raw!postcss!../Cursor.css'));
