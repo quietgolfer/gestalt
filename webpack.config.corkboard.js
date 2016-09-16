@@ -43,7 +43,6 @@ module.exports = {
         test: /\.css$/,
         include: [
           path.dirname(require.resolve('corkboard')),
-          path.join(__dirname, 'node_modules'),
         ],
         loaders: [
           'css?importLoaders=1',

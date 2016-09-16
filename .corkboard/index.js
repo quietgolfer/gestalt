@@ -1,3 +1,4 @@
+import '!!style!css?importLoaders=1!postcss!../styles.css';
 const requireCard = require.context('../src', true, /\-doc\.js$/);
 [
   'Borders',
