@@ -1,35 +1,49 @@
+// @flow
+
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Image.css';
 
 const cx = classnames.bind(styles);
 
-function preloadImg(src, cb) {
+function preloadImg(src, callback) {
   const img = new window.Image();
-  img.onload = cb;
+  img.onload = callback;
   img.src = src;
 }
 
-export function Placeholder(props) {
-  const { aspect, color, children } = props;
+type PlaceholderProps = {
+  aspect: number,
+  color: string,
+};
+
+export function Placeholder(props: PlaceholderProps) {
+  const { aspect, color } = props;
   return (
     <div
       className={cx('Image__placeholder')}
       style={{ backgroundColor: color, paddingBottom: `${aspect}%` }}
     >
-      <div className={cx('Image__placeholder--wrapper')}>
-        <div className={cx('Image__placeholder--text')}>
-          {children}
-        </div>
-      </div>
+      <div className={cx('Image__placeholder--wrapper')} />
     </div>
   );
 }
 
 Placeholder.propTypes = {
   aspect: PropTypes.number.isRequired,
-  children: PropTypes.node,
   color: PropTypes.string.isRequired,
+};
+
+type ImageProps = {
+  alt: string,
+  color: string,
+  height: number,
+  src: string,
+  width: number,
+};
+
+type ImageState = {
+  loaded: boolean,
 };
 
 export default class Image extends Component {
@@ -37,61 +51,41 @@ export default class Image extends Component {
     preloadingSupported: PropTypes.bool.isRequired,
   };
 
-  static defaultProps = {
-    color: '#EFEFEF',
-  }
-
-  static propTypes = {
-    alt: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    placeholder: PropTypes.node,
-    src: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
+  state: ImageState = {
+    loaded: !this.context.preloadingSupported,
   };
 
-  constructor(props, context) {
-    super(props);
-    this.state = {
-      loaded: !context.preloadingSupported,
-    };
-  }
-
   componentDidMount() {
-    this.handleLoad = this.handleLoad.bind(this);
-    this.handleError = this.handleError.bind(this);
     if (!this.state.loaded) {
       preloadImg(this.props.src, this.handleLoad);
     }
   }
 
-  handleLoad() {
+  props: ImageProps;
+
+  handleLoad = () => {
     this.setState({ loaded: true });
   }
 
-  handleError() {
+  handleError = () => {
     this.setState({ loaded: false });
   }
 
   render() {
     const {
-            alt,
-            color,
-            height,
-            placeholder,
-            src,
-            width,
-        } = this.props;
+      alt,
+      color,
+      height,
+      src,
+      width,
+    } = this.props;
 
     const aspect = (height / width) * 100;
 
     if (!this.state.loaded) {
-      const text = placeholder || alt;
       return (
         <div>
-          <Placeholder aspect={aspect} color={color}>
-            {text}
-          </Placeholder>
+          <Placeholder aspect={aspect} color={color} />
           <link href={src} rel="preload" />
         </div>
       );
@@ -114,3 +108,11 @@ export default class Image extends Component {
     );
   }
 }
+
+Image.propTypes = {
+  alt: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+};

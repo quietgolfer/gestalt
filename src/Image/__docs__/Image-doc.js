@@ -1,9 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Image, { Placeholder } from '../Image';
+import Image from '../Image';
 import { card, md } from 'corkboard';
 import Mask from '../../Mask/Mask';
-import Text from '../../Text/Text';
-import Heading from '../../Heading/Heading';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Image',
@@ -12,21 +10,27 @@ about collecting ideas, then images is how we choose to represent those ideas.
 In response, we've added a few extra super-powers to the regular Image tag to
 make it even more awesome.
 
+### PropTypes
+\`\`\`js
+Image.propTypes = {
+  alt: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
+  src: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
+};
+\`\`\`
+
 ### Dimensions
 
-One thing that might be unusual is that the width and the height of the
+One thing that might be unusual is that the \`width\` and the \`height\` of the
 component are required, yet the image will scale to the size of its container.
 This is so that the placeholder's size can be calculated before the image has
 rendered.
 
 While the exact dimensions supplied aren't used, (only the ratio between them is
 considered) you should always try to try to supply the exact dimensions of the
-source image requested.
-
-### Shapes
-
-You can compose images with [Masks](#/Mask) to produce different shapes like
-rounded rectangles or circles.`);
+source image requested.`);
 
 class PreloadImageContext extends Component {
   static childContextTypes = {
@@ -63,7 +67,6 @@ To test this out, adjust network throttling in your developer tools.`,
           alt="example.com"
           color="#CCC"
           height={750}
-          placeholder="example.com"
           src="https://s-media-cache-ak0.pinimg.com/564x/5a/da/e7/5adae7e3e6cd31a86f9a6608618f3a30.jpg"
           width={500}
         />
@@ -74,9 +77,8 @@ To test this out, adjust network throttling in your developer tools.`,
       <PreloadImageContext canPreloadImages>
         <Image
           alt="ynkim.com"
-          color="#CCC"
+          color="#fbb6ac"
           height={750}
-          placeholder="example.com"
           src="https://s-media-cache-ak0.pinimg.com/564x/5a/da/e7/5adae7e3e6cd31a86f9a6608618f3a30.jpg"
           width={500}
         />
@@ -85,27 +87,82 @@ To test this out, adjust network throttling in your developer tools.`,
   </div>);
 
 card('Placeholders',
-  md`You can add optional content to the middle of a placeholder that shows up as an image loads.`,
+  md`
+  The color you pass into \`Image\` will be used to fill the placeholder that shows up
+  as an image loads. The example shown has an empty \`src\` prop provided so it remains
+  a placeholder.
+
+  \`\`\`js
+  <Image
+    alt="example.com"
+    color="#018077"
+    height={354}
+    src=""
+    width={236}
+  />
+  \`\`\`
+  `,
   <div className="flex mxn2">
     <div className="col-6 px2">
-      <Placeholder
-        aspect={(314 / 216) * 100}
+      <Image
+        alt="example.com"
         color="#018077"
-      >
-        <Text size="s">{'example.com'}</Text>
-      </Placeholder>
-    </div>
-
-    <div className="col-6 px2">
-      <Mask height={60} type="circle" width={60}>
-        <Placeholder
-          aspect={100}
-          color="#CCC"
-        >
-          <Heading color="white" size="xs">
-            {'CL'}
-          </Heading>
-        </Placeholder>
-      </Mask>
+        height={354}
+        src=""
+        width={236}
+      />
     </div>
   </div>);
+
+card('Shapes',
+  md`
+  You can compose images with [Masks](#/Mask) to produce different shapes like
+  rounded rectangles or circles.
+  \`\`\`js
+  <Mask height="250" type="circle" width="250">
+    <Image
+      alt="placekitten.com"
+      color="#CCC"
+      height="250"
+      src="http://placekitten.com/250/250"
+      width="250"
+    />
+  </Mask>
+  \`\`\`
+  \`\`\`js
+  <Mask height="354" type="rounded" width="236">
+    <Image
+      alt="placekitten.com"
+      color="#fab904"
+      height="250"
+      src="http://placekitten.com/236/354"
+      width="250"
+    />
+  </Mask>
+  \`\`\`
+  `,
+  <div className="flex mxn2">
+    <div className="col-6 px2">
+      <Mask height="250" type="circle" width="250">
+        <Image
+          alt="placekitten.com"
+          color="#fab904"
+          height="250"
+          src="http://placekitten.com/250/250"
+          width="250"
+        />
+      </Mask>
+    </div>
+    <div className="col-6 px2">
+      <Mask height="354" type="rounded" width="236">
+        <Image
+          alt="placekitten.com"
+          color="#fab904"
+          height="250"
+          src="http://placekitten.com/236/354"
+          width="250"
+        />
+      </Mask>
+    </div>
+  </div>
+  );

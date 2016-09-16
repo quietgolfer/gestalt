@@ -1,7 +1,3 @@
-.Image {
-  composes: overflow-hidden from "../../styles.css";
-}
-
 .Image__placeholder {
   composes: fit relative from "../../styles.css";
 }
@@ -16,6 +12,6 @@
 }
 
 .Image__img {
-  composes: block fit from "../../styles.css";
+  composes: block fit overflow-hidden from "../../styles.css";
   height: auto;
 }
