@@ -1,28 +1,27 @@
-import React, { PropTypes } from 'react';
+// @flow
+
+import React, { Element, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Mask.css';
 
 const cx = classnames.bind(styles);
 
-export default function Mask(props) {
-  const { children, type, width, height } = props;
+type Props = {
+  children?: Element<any>,
+  height?: number,
+  shape?: 'circle' | 'rounded' | 'square',
+  width?: number,
+};
 
-  const cs = cx('Mask', {
-    'Mask--square': type === 'square',
-    'Mask--rounded': type === 'rounded',
-    'Mask--circle': type === 'circle',
-  });
+export default function Mask(props: Props) {
+  const { children, shape = 'square', width, height } = props;
 
-  return <div className={cs} style={{ width, height }}>{children}</div>;
+  return <div className={cx(shape)} style={{ width, height }}>{children}</div>;
 }
 
 Mask.propTypes = {
   children: PropTypes.node,
   height: PropTypes.number,
-  type: PropTypes.oneOf(['square', 'rounded', 'circle']),
+  shape: PropTypes.oneOf(['circle', 'rounded', 'square']),
   width: PropTypes.number,
-};
-
-Mask.defaultProps = {
-  type: 'square',
 };

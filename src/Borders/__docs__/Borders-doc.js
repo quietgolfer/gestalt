@@ -62,6 +62,7 @@ const borderRadii = [
   'rounded-bottom',
   'rounded-right',
   'rounded-left',
+  'square',
 ];
 
 card('Border Radii',
@@ -75,6 +76,7 @@ Adds those pretty border radiuses.
 <div class="rounded-bottom"> .rounded-bottom </div>
 <div class="rounded-right"> .rounded-right </div>
 <div class="rounded-left"> .rounded-left </div>
+<div class="square"> .square </div>
 \`\`\`
   `,
   <div className="flex mxn1 justify-center flex-wrap">

@@ -32,6 +32,10 @@
 
 /* Border radii */
 
+.square {
+  border-radius: 0;
+}
+
 .circle {
   border-radius: 50%;
 }

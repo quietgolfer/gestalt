@@ -5,28 +5,57 @@ import { ns } from '../../../.corkboard/cards';
 
 ns(
   'Mask',
-  'If you have stuff you need to fit into a shape, put a `Mask` on it.'
-);
+  `If you have an item you need to fit into a shape, you can achieve this by
+  putting a \`Mask\` on it.
+  `);
 
-card('Mask options',
+card('PropTypes',
   md`
-  \`\`\`js
-  <Mask height={80} type="circle" width={80}></Mask>
-  <Mask height={80} type="rounded" width={80}></Mask>
-  \`\`\`
+\`\`\`js
+Mask.propTypes = {
+  children: PropTypes.node,
+  height: PropTypes.number,
+  type: PropTypes.oneOf(['circle', 'rounded', 'square']),
+  width: PropTypes.number,
+};
+\`\`\`
+  `);
+
+card('Shapes',
+  md`
+There are 3 different shapes that you can achieve using a Mask. The default shape is \`Square\`.
+\`\`\`js
+<Mask height={70} shape="circle" width={70}>
+  <div style={{ backgroundColor: '#0084ff', width: 70, height: 70 }} />
+</Mask>
+\`\`\`
+\`\`\`js
+<Mask height={70} shape="rounded" width={70}>
+  <div style={{ backgroundColor: '#fbb6ac', width: 70, height: 70 }} />
+</Mask>
+\`\`\`
+\`\`\`js
+<Mask height={70} width={70}>
+  <div style={{ backgroundColor: '#fab904', width: 70, height: 70 }} />
+</Mask>
+\`\`\`
   `,
-  <div className="flex">
-    <div className="p1">
-      <h5 className="center">{'Circle'}</h5>
-      <Mask height={80} type="circle" width={80}>
-        <div style={{ backgroundColor: '#0084ff', width: 80, height: 80 }} />
+  <div>
+    <div className="p2">
+      <Mask height={70} shape="circle" width={70}>
+        <div style={{ backgroundColor: '#0084ff', width: 70, height: 70 }} />
       </Mask>
     </div>
 
-    <div className="p1">
-      <h5 className="center">{'Rounded'}</h5>
-      <Mask height={80} type="rounded" width={80}>
-        <div style={{ backgroundColor: '#0084ff', width: 80, height: 80 }} />
+    <div className="p2">
+      <Mask height={70} shape="rounded" width={70}>
+        <div style={{ backgroundColor: '#fbb6ac', width: 70, height: 70 }} />
+      </Mask>
+    </div>
+
+    <div className="p2">
+      <Mask height={70} width={70}>
+        <div style={{ backgroundColor: '#fab904', width: 70, height: 70 }} />
       </Mask>
     </div>
 
