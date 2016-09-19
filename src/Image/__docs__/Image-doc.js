@@ -119,7 +119,7 @@ card('Shapes',
   You can compose images with [Masks](#/Mask) to produce different shapes like
   rounded rectangles or circles.
   \`\`\`js
-  <Mask height="250" type="circle" width="250">
+  <Mask height="250" shape="circle" width="250">
     <Image
       alt="placekitten.com"
       color="#CCC"
@@ -130,7 +130,7 @@ card('Shapes',
   </Mask>
   \`\`\`
   \`\`\`js
-  <Mask height="354" type="rounded" width="236">
+  <Mask height="354" shape="rounded" width="236">
     <Image
       alt="placekitten.com"
       color="#fab904"
@@ -143,7 +143,7 @@ card('Shapes',
   `,
   <div className="flex mxn2">
     <div className="col-6 px2">
-      <Mask height="250" type="circle" width="250">
+      <Mask height="250" shape="circle" width="250">
         <Image
           alt="placekitten.com"
           color="#fab904"
@@ -154,7 +154,7 @@ card('Shapes',
       </Mask>
     </div>
     <div className="col-6 px2">
-      <Mask height="354" type="rounded" width="236">
+      <Mask height="354" shape="rounded" width="236">
         <Image
           alt="placekitten.com"
           color="#fab904"
