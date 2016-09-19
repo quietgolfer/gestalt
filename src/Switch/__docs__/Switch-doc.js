@@ -41,6 +41,9 @@ Switch.propTypes = {
 card('Example',
   md`
   \`\`\`html
+  <label htmlFor="switchExample">
+    <Text size="s">Live example</Text>
+  </label>
   <Switch
     onChange={() => atom.reset({ switched: !atom.deref().switched })}
     id="switchExample"
