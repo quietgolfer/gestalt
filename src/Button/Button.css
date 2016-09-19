@@ -13,8 +13,11 @@
   composes: bold from var(--styles);
   composes: border-box from var(--styles);
   composes: no-border from var(--styles);
-  composes: pointer from var(--styles);
   composes: rounded from var(--styles);
+}
+
+.enabled {
+  composes: pointer from var(--styles);
 }
 
 .variable {

@@ -32,6 +32,7 @@ export default function Button(props: Props) {
     {
       disabled,
       [color]: !disabled,
+      enabled: !disabled,
     },
     type,
     {
@@ -43,6 +44,7 @@ export default function Button(props: Props) {
   return (
     <button
       className={classes}
+      disabled={disabled}
       onClick={onClick}
       type={type}
     >
