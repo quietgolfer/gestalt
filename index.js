@@ -3,5 +3,8 @@ export ClassicGrid from './src/ClassicGrid/ClassicGrid';
 export Divider from './src/Divider/Divider';
 export FlexibleGrid from './src/FlexibleGrid/FlexibleGrid';
 export Heading from './src/Heading/Heading';
+export Icon from './src/Icon/Icon';
+export Image from './src/Image/Image';
+export Mask from './src/Mask/Mask';
 export Switch from './src/Switch/Switch';
 export Text from './src/Text/Text';
