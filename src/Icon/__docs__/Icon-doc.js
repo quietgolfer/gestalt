@@ -13,14 +13,14 @@ By default an icon is rendered in medium size and a gray color
 card('Colors',
   md`
   \`\`\`html
-  <Icon type="pin" label="Pin"></Icon>
-  <Icon type="pin" label="Pin" color="dark-gray"></Icon>
+  <Icon icon="pin" label="Pin"></Icon>
+  <Icon icon="pin" label="Pin" color="dark-gray"></Icon>
   \`\`\`
   `,
   <div>
     <div className="flex">
       <div className="col-2 px2 text-center border-box">
-        <h5>gray</h5>
+        <h5>gray (default)</h5>
         <Icon icon="pin" label="Pin" size={21} />
       </div>
       <div className="col-2 px2 text-center border-box">
@@ -36,8 +36,8 @@ card('Colors',
             borderRadius: '50%',
             boxSizing: 'border-box',
             height: 26,
+            margin: '0 auto',
             paddingTop: '4px',
-            textAlign: 'center',
             width: 26,
           }}
         >
@@ -55,17 +55,17 @@ card('Colors',
 card('Sizes',
   md`
   \`\`\`html
-  <Icon type="pin" label="Pin" size={16}></Icon>
-  <Icon type="pin" label="Pin" size={20}></Icon>
-  <Icon type="pin" label="Pin" size={24}></Icon>
-  <Icon type="pin" label="Pin" size={28}></Icon>
-  <Icon type="pin" label="Pin" size={32}></Icon>
+  <Icon icon="pin" label="Pin" size={16}></Icon>
+  <Icon icon="pin" label="Pin" size={20}></Icon>
+  <Icon icon="pin" label="Pin" size={24}></Icon>
+  <Icon icon="pin" label="Pin" size={28}></Icon>
+  <Icon icon="pin" label="Pin" size={32}></Icon>
   \`\`\`
   `,
   <div>
     <div className="flex mxn2 flex-wrap">
       <div className="col-2 px2 text-center border-box">
-        <h5>16</h5>
+        <h5>16 (default)</h5>
         <Icon icon="pin" label="Pin" size={16} />
       </div>
       <div className="col-2 px2 text-center border-box">
@@ -103,11 +103,11 @@ IconType.propTypes = {
 card('Types',
   md`
   \`\`\`html
-  <Icon type="add" label="Pin"></Icon>
-  <Icon type="add-circle" label="Add"></Icon>
-  <Icon type="add-pin" label="Add a Pin"</Icon>
-  <Icon type="arrow-back" label="Back"</Icon>
-  <Icon type="arrow-circle-forward" label="Forward"</Icon>
+  <Icon icon="pin" label="Pin"></Icon>
+  <Icon icon="add-circle" label="Add"></Icon>
+  <Icon icon="add-pin" label="Add a Pin"</Icon>
+  <Icon icon="arrow-back" label="Back"</Icon>
+  <Icon icon="arrow-circle-forward" label="Forward"</Icon>
   \`\`\`
   `,
   <div>
