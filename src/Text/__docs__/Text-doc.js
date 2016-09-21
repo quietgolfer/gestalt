@@ -143,27 +143,37 @@ You can apply the following \`size\` options to define the size of the text.
     <div className="mb2">
       <Text inline size="xs">{'Extra small'}</Text>
       {' '}
-      <Text inline locale="ja" size="xs">{'こんにちは'}</Text>
+      <span lang="ja">
+        <Text inline size="xs">{'こんにちは'}</Text>
+      </span>
     </div>
     <div className="mb2">
       <Text inline size="s">{'Small'}</Text>
       {' '}
-      <Text inline locale="ja" size="s">{'こんにちは'}</Text>
+      <span lang="ja">
+        <Text inline size="s">{'こんにちは'}</Text>
+      </span>
     </div>
     <div className="mb2">
       <Text inline size="m">{'Medium (default size)'}</Text>
       {' '}
-      <Text inline locale="ja" size="m">{'こんにちは'}</Text>
+      <span lang="ja">
+        <Text inline size="m">{'こんにちは'}</Text>
+      </span>
     </div>
     <div className="mb2">
       <Text inline size="l">{'Large'}</Text>
       {' '}
-      <Text inline locale="ja" size="l">{'こんにちは'}</Text>
+      <span lang="ja">
+        <Text inline size="l">{'こんにちは'}</Text>
+      </span>
     </div>
     <div className="mb2">
       <Text inline size="xl">{'Extra Large'}</Text>
       {' '}
-      <Text inline locale="ja" size="xl">{'こんにちは'}</Text>
+      <span lang="ja">
+        <Text inline size="xl">{'こんにちは'}</Text>
+      </span>
     </div>
   </div>);
 

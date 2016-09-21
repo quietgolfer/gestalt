@@ -12,25 +12,18 @@ const sizesToElementMap = {
   xl: 'h1',
 };
 
-type HeadingContext = {
-  locale?: string
-};
-
 type HeadingProps = {
   children: Element,
   color?: 'white' | 'gray' | 'dark-gray' | 'blue',
-  locale?: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl'
 };
 
-export default function Heading(props: HeadingProps, context: HeadingContext) {
+export default function Heading(props: HeadingProps) {
   const {
     children,
     color = 'dark-gray',
     size,
   } = props;
-
-  const locale = props.locale || context.locale;
 
   const cs = cx(
     'antialiased',
@@ -40,9 +33,6 @@ export default function Heading(props: HeadingProps, context: HeadingContext) {
     'sans-serif',
     `display-${size}`,
     color,
-    {
-      [`locale-${locale}`]: !!locale,
-    }
   );
   return createElement(sizesToElementMap[size], { className: cs }, children);
 }

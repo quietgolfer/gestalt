@@ -29,19 +29,29 @@ card('Sizes',
   <div>
     <Heading size="xs">{'Heading extra small'}</Heading>
     {' '}
-    <Heading locale="ja" size="xs">{'こんにちは'}</Heading>
+    <span lang="ja">
+      <Heading size="xs">{'こんにちは'}</Heading>
+    </span>
     <Heading size="s">{'Heading small'}</Heading>
     {' '}
-    <Heading locale="ja" size="s">{'こんにちは'}</Heading>
+    <span lang="ja">
+      <Heading size="s">{'こんにちは'}</Heading>
+    </span>
     <Heading size="m">{'Heading medium'}</Heading>
     {' '}
-    <Heading locale="ja" size="m">{'こんにちは'}</Heading>
+    <span lang="ja">
+      <Heading size="m">{'こんにちは'}</Heading>
+    </span>
     <Heading size="l">{'Heading large'}</Heading>
     {' '}
-    <Heading locale="ja" size="l">{'こんにちは'}</Heading>
+    <span lang="ja">
+      <Heading size="l">{'こんにちは'}</Heading>
+    </span>
     <Heading size="xl">{'Heading extra large'}</Heading>
     {' '}
-    <Heading locale="ja" size="xl">{'こんにちは'}</Heading>
+    <span lang="ja">
+      <Heading size="xl">{'こんにちは'}</Heading>
+    </span>
   </div>);
 
 card('Colors',
