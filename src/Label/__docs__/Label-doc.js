@@ -1,48 +1,27 @@
 // @flow
 import React from 'react';
-import Label from '../../Label/Label';
-import Switch from '../Switch';
+import Label from '../Label';
+import Switch from '../../Switch/Switch';
 import Text from '../../Text/Text';
 import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
-ns(
-  'Switch',
-  'Use the `Switch` component as an on/off control.'
-);
+ns('Label');
 
 card('PropTypes',
-  md`
+md`Use the \`Label\` component to make your features more accessible!
 \`\`\`js
-Switch.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  switched: PropTypes.bool,
+Label.propTypes = {
+  children: PropTypes.node.isRequired,
+  htmlFor: PropTypes.string.isRequired,
 };
 \`\`\`
-`,
-  (atom) => (
-    <div className="flex mxn1">
-      <div className="p1">
-        <Switch
-          onChange={() => atom.reset()}
-          id="ex1"
-        />
-      </div>
-      <div className="p1">
-        <Switch
-          onChange={() => atom.reset()}
-          id="ex1"
-          switched
-        />
-      </div>
-    </div>
-  ));
+`);
 
 card('Example',
-  md`
-Whenever you are using a \`Switch\` component, you should use a [Label](#/Label) with it to make
-your component accessible.
+md`
+Whenever you are using a [Switch](#/Switch) component, you should use a \`Label\` with it.
+To control the toggle, you can click on the Switch itself or the label 'Live example' above it.
 \`\`\`html
 <Label htmlFor="switchExample">
   <Text size="s">Live example</Text>

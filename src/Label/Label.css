@@ -1,0 +1,7 @@
+:root {
+  --styles: '../../styles.css';
+}
+
+.label {
+  composes: pointer from var(--styles);
+}
