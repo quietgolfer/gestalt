@@ -4,7 +4,7 @@ import ExampleGrid from './ExampleGrid';
 import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
-ns('FlexibleGrid');
+ns('Grid | FlexibleGrid');
 
 card('PropTypes',
   md`

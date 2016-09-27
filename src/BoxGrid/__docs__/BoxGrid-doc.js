@@ -3,7 +3,7 @@ import ExampleGrid from './ExampleGrid';
 import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
-ns('BoxGrid');
+ns('Grid | BoxGrid');
 
 card(
   md`

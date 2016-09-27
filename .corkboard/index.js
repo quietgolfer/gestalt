@@ -1,14 +1,14 @@
 import '!!style!css?importLoaders=1!postcss!../styles.css';
 const requireCard = require.context('../src', true, /\-doc\.js$/);
 [
-  'BoxGrid',
   'Borders',
   'Button',
-  'ClassicGrid',
   'Colors',
   'Columns',
   'Cursor',
   'Divider',
+  'BoxGrid',
+  'ClassicGrid',
   'FlexibleGrid',
   'Heading',
   'Icon',
