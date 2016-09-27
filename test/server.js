@@ -1,4 +1,5 @@
 import React from 'react';
+import BoxExampleGrid from './BoxExampleGrid';
 import ClassicExampleGrid from './ClassicExampleGrid';
 import FlexibleExampleGrid from './FlexibleExampleGrid';
 import ReactDOMServer from 'react-dom/server';
@@ -59,6 +60,37 @@ app.get('/flexible', (req, res) => {
     flexibleGridServerStyles,
     reactOutput: content,
     initialPins: JSON.stringify(initialPins),
+  });
+});
+
+// Endpoint for BoxGrid tests
+app.get('/boxpacking', (req, res) => {
+  const boxPackingInitialPins = [];
+  for (let i = 0; i < 20; i++) {
+    const r = Math.random();
+    let colSpan;
+    if (r > 0.95) colSpan = 4;
+    else if (r > 0.9) colSpan = 3;
+    else if (r > 0.7) colSpan = 2;
+    else colSpan = 1;
+
+    boxPackingInitialPins.push({
+      name: `foo ${i}`,
+      height: Math.floor(Math.random() * 200) + 300,
+      color: getRandomColor(),
+      colSpan,
+    });
+  }
+
+  const content = ReactDOMServer.renderToString(<BoxExampleGrid
+    constrained={!!req.query.constrained}
+    finiteLength={!!req.query.finiteLength}
+    initialPins={initialPins}
+  />);
+  res.render('index.ejs', {
+    componentTest: 'BoxGrid',
+    reactOutput: content,
+    initialPins: JSON.stringify(boxPackingInitialPins),
   });
 });
 

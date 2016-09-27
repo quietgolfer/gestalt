@@ -1,3 +1,4 @@
+export BoxGrid from './src/BoxGrid/BoxGrid';
 export Button from './src/Button/Button';
 export ClassicGrid from './src/ClassicGrid/ClassicGrid';
 export Divider from './src/Divider/Divider';

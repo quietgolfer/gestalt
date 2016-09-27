@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import BoxExampleGrid from '../BoxExampleGrid';
 import ClassicExampleGrid from '../ClassicExampleGrid';
 import FlexibleGrid from '../FlexibleExampleGrid';
 
@@ -20,6 +21,12 @@ window.addEventListener('trigger-mount', () => {
       collage={window.location.search.includes('collage')}
       constrained={window.location.search.includes('constrained')}
       constructorItemSplice={window.location.search.includes('constructorItemSplice')}
+      finiteLength={window.location.search.includes('finiteLength')}
+      initialPins={window.initialPins}
+    />, mountNode);
+  } else if (window.componentTest === 'BoxGrid') {
+    ReactDOM.render(<BoxExampleGrid
+      constrained={window.location.search.includes('constrained')}
       finiteLength={window.location.search.includes('finiteLength')}
       initialPins={window.initialPins}
     />, mountNode);
