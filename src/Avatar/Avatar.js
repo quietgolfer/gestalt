@@ -1,36 +1,73 @@
 // @flow
 import React, { PropTypes } from 'react';
+import classnames from 'classnames/bind';
+import Heading from '../Heading/Heading';
 import Image from '../Image/Image';
 import Mask from '../Mask/Mask';
+import styles from './Avatar.css';
 
-type Props = {
-  size: number,
-  src: string,
+const cx = classnames.bind(styles);
+
+type DefaultAvatarProps = {
+  initial?: string,
   name: string,
+  size: 'xs' | 's' | 'm' | 'l' | 'xl',
 };
 
-export default function Avatar(props: Props) {
-  const {
-    size,
-    src,
-    name,
-  } = props;
+function DefaultAvatar(props: DefaultAvatarProps) {
+  const { initial, name, size } = props;
+  const firstInitial = initial || name.charAt(0).toUpperCase();
+  const classes = cx(size, 'defaultAvatar');
 
   return (
-    <Mask height={size} type="circle" width={size}>
-      <Image
-        alt={name}
-        color="#EFEFEF"
-        height={size}
-        src={src}
-        width={size}
-      />
-    </Mask>
+    <div aria-label={name} className={classes}>
+      <Heading size={size}>{firstInitial}</Heading>
+    </div>
+  );
+}
+
+type AvatarProps = {
+  initial?: string,
+  name: string,
+  size: 'xs' | 's' | 'm' | 'l' | 'xl',
+  src?: string,
+}
+
+
+export default function Avatar(props: AvatarProps) {
+  const {
+    initial,
+    name,
+    size,
+    src,
+  } = props;
+
+  if (!src) {
+    return (
+      <DefaultAvatar initial={initial} name={name} size={size} />
+    );
+  }
+
+  const classes = cx(size);
+
+  return (
+    <div className={classes}>
+      <Mask shape="circle">
+        <Image
+          alt={name}
+          color={'#efefef'}
+          height={1}
+          src={src}
+          width={1}
+        />
+      </Mask>
+    </div>
   );
 }
 
 Avatar.propTypes = {
-  size: PropTypes.number.isRequired,
-  src: PropTypes.string.isRequired,
+  initial: PropTypes.string,
   name: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+  src: PropTypes.string,
 };

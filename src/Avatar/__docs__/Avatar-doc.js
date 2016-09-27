@@ -1,13 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import Avatar from '../Avatar';
+import Text from '../../Text/Text';
 import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Avatar');
+ns('Avatar',
+'You can use an `Avatar` to represent a user.');
 
 class PreloadImageContext extends Component {
   static childContextTypes = {
-    canPreloadImages: React.PropTypes.bool,
+    preloadingSupported: React.PropTypes.bool,
   }
 
   static propTypes = {
@@ -21,7 +23,7 @@ class PreloadImageContext extends Component {
 
   getChildContext() {
     return {
-      canPreloadImages: this.props.canPreloadImages,
+      preloadingSupported: this.props.canPreloadImages,
     };
   }
 
@@ -30,12 +32,87 @@ class PreloadImageContext extends Component {
   }
 }
 
-card('Example',
-  md`A simple avatar to visually represent a person.`,
-  <PreloadImageContext canPreloadImages>
-    <Avatar
-      size={74}
-      src="https://s-media-cache-ak0.pinimg.com/avatars/chrislloyd_1459403984_280.jpg"
-      name="Chris Lloyd"
-    />
-  </PreloadImageContext>);
+card('PropTypes',
+md`
+\`\`\`jsx
+Avatar.propTypes = {
+  initial: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+  src: PropTypes.string,
+};
+\`\`\`
+`
+);
+
+const sizes = ['xs', 's', 'm', 'l', 'xl'];
+
+type AvatarExProps = {
+  size: sizes,
+  src: string,
+};
+
+function AvatarEx(props: AvatarExProps) {
+  const name = 'Julia';
+  const initial = 'J';
+  const { size, src } = props;
+  return (
+    <div className="p1">
+      <Text bold align="center">{size}</Text>
+      <PreloadImageContext canPreloadImages>
+        <Avatar
+          initial={initial}
+          name={name}
+          size={size}
+          src={src}
+        />
+      </PreloadImageContext>
+    </div>
+  );
+}
+
+AvatarEx.propTypes = {
+  size: PropTypes.oneOf(sizes),
+  src: PropTypes.string,
+};
+
+const imageSrc = 'https://s-media-cache-ak0.pinimg.com/avatars/long_1468294555_444.jpg';
+
+card('Sizes',
+  md`
+There are 5 sizes you can choose for an \`Avatar\`. Avatar's are responsive so the image
+size will scale to appropriately match the size of your screen
+\`\`\`html
+<Avatar
+  size="m"
+  src="path/to/image"
+  name="Chris"
+/>
+\`\`\`
+  `,
+  <div className="flex">
+    {sizes.map((size, idx) =>
+      <AvatarEx size={size} src={imageSrc} key={idx} />
+    )}
+  </div>
+);
+
+card('Without an image',
+  md`
+If there is no image source provided to the \`Avatar\`, the \`initial\` prop
+will be used as a placeholder. We recommend using the \`initial\` prop in order
+to better handle special characters. In absence of providing an \`initial\` prop,
+the first character of the name will be used.
+\`\`\`html
+<Avatar
+  initial="J"
+  name="Julia"
+  size="xs"
+/>
+\`\`\`
+  `,
+  <div className="flex">
+    {sizes.map((size, idx) =>
+      <AvatarEx size={size} key={idx} />
+    )}
+  </div>);
