@@ -5,14 +5,15 @@
 
 Install dependencies.
 ```
-npm install
+npm i -g lerna
+lerna bootstrap
 ```
 
 Start the development server:
 ```
 npm start
 ```
-The documentation will automatically open in your default browser.
+Visit http://localhost:3000/#/ and click on a component to get view the docs.
 
 ## Releasing
 
