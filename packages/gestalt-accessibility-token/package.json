@@ -1,0 +1,5 @@
+{
+  "name": "gestalt-accessibility-token",
+  "version": "0.1.8",
+  "main": "./accessibilityToken.js"
+}

@@ -1,0 +1,18 @@
+.common {
+  composes: overflow-hidden relative from "gestalt-layout/Layout.css";
+}
+
+.square {
+  composes: common;
+  composes: square from "gestalt-borders/Borders.css";
+}
+
+.rounded {
+  composes: common;
+  composes: rounded from "gestalt-borders/Borders.css";
+}
+
+.circle {
+  composes: common;
+  composes: circle from "gestalt-borders/Borders.css";
+}

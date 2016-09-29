@@ -1,0 +1,15 @@
+{
+  "name": "gestalt-avatar",
+  "version": "0.1.8",
+  "main": "./Avatar.js",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "^15.3.1",
+    "gestalt-heading": "0.1.8",
+    "gestalt-image": "0.1.8",
+    "gestalt-mask": "0.1.8",
+    "gestalt-colors": "0.1.8",
+    "gestalt-borders": "0.1.8",
+    "gestalt-layout": "0.1.8"
+  }
+}

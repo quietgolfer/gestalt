@@ -1,5 +1,5 @@
-import FlexibleGrid from '../src/FlexibleGrid/FlexibleGrid';
-import Item from '../src/FlexibleGrid/__docs__/Item';
+import FlexibleGrid from '../packages/gestalt-flexible-grid/FlexibleGrid';
+import Item from '../packages/gestalt-flexible-grid/__docs__/Item';
 import React from 'react';
 
 function getRandomColor() {

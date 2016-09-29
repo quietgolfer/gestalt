@@ -1,0 +1,17 @@
+.iconButton {
+  composes: antialiased bold from "gestalt-typography/Typography.css";
+  composes: border-box from "gestalt-layout/Layout.css";
+  composes: circle no-border from "gestalt-borders/Borders.css";
+  composes: p0 from "gestalt-whitespace/Whitespace.css";
+  composes: pointer from "gestalt-cursor/Cursor.css";
+  background: transparent;
+}
+
+.iconButton:hover,
+.iconButton:focus {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.iconButton:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}

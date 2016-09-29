@@ -1,4 +1,4 @@
-const breakpoints = require('../src/breakpoints');
+const breakpoints = require('../packages/gestalt/breakpoints');
 const postcssImport = require('postcss-import');
 const postcssUrl = require('postcss-url');
 const postcssCssNext = require('postcss-cssnext');
@@ -7,6 +7,11 @@ module.exports = {
   entry: [
     './views/main.js',
   ],
+  resolve: {
+    alias: {
+      react: `${__dirname}/../node_modules/react`,
+    },
+  },
   module: {
     loaders: [
       {

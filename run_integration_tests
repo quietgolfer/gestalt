@@ -6,7 +6,7 @@ until $(curl --output /dev/null --silent --head --fail http://localhost:3000); d
     sleep 5
 done
 
-NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs-core $(find src -name '*.ghost.js')
+NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs-core $(find packages -name '*.ghost.js')
 STATUS=$?
 
 kill -9 $SERVER_PID || true

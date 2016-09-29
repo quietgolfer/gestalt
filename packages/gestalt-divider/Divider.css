@@ -1,0 +1,6 @@
+.divider {
+  composes: border-top from "gestalt-borders/Borders.css";
+  composes: m0 from "gestalt-whitespace/Whitespace.css";
+  border-bottom: 0;
+  border-left: 0;
+}

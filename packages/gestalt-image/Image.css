@@ -1,0 +1,17 @@
+.Image__placeholder {
+  composes: fit relative from "gestalt-layout/Layout.css";
+}
+
+.Image__placeholder--wrapper {
+  composes: absolute flex items-center justify-center top-0 left-0 bottom-0 right-0 from "gestalt-layout/Layout.css";
+}
+
+.Image__placeholder--text {
+  composes: text-center from "gestalt-typography/Typography.css";
+  opacity: 0.5;
+}
+
+.Image__img {
+  composes: block fit overflow-hidden from "gestalt-layout/Layout.css";
+  height: auto;
+}

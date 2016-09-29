@@ -1,0 +1,3 @@
+.label {
+  composes: pointer from "gestalt-cursor/Cursor.css";
+}

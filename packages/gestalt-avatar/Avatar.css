@@ -1,0 +1,112 @@
+:root {
+  /* small screens */
+
+  --sm-size-xs: 18px;
+  --sm-size-s: 30px;
+  --sm-size-m: 54px;
+  --sm-size-l: 78px;
+  --sm-size-xl: 99px;
+
+  /* medium screens */
+
+  --md-size-xs: 24px;
+  --md-size-s: 40px;
+  --md-size-m: 64px;
+  --md-size-l: 104px;
+  --md-size-xl: 132px;
+
+  /* large screens */
+
+  --lg-size-xs: 36px;
+  --lg-size-s: 60px;
+  --lg-size-m: 108px;
+  --lg-size-l: 156px;
+  --lg-size-xl: 198px;
+}
+
+.defaultAvatar {
+  composes: bg-light-gray from "gestalt-colors/Colors.css";
+  composes: circle from "gestalt-borders/Borders.css";
+  composes: flex items-center justify-center from "gestalt-layout/Layout.css";
+}
+
+@media (--sm) {
+  .xs {
+    height: var(--sm-size-xs);
+    width: var(--sm-size-xs);
+  }
+
+  .s {
+    height: var(--sm-size-s);
+    width: var(--sm-size-s);
+  }
+
+  .m {
+    height: var(--sm-size-m);
+    width: var(--sm-size-m);
+  }
+
+  .l {
+    height: var(--sm-size-l);
+    width: var(--sm-size-l);
+  }
+
+  .xl {
+    height: var(--sm-size-xl);
+    width: var(--sm-size-xl);
+  }
+}
+
+@media (--md) {
+  .xs {
+    height: var(--md-size-xs);
+    width: var(--md-size-xs);
+  }
+
+  .s {
+    height: var(--md-size-s);
+    width: var(--md-size-s);
+  }
+
+  .m {
+    height: var(--md-size-m);
+    width: var(--md-size-m);
+  }
+
+  .l {
+    height: var(--md-size-l);
+    width: var(--md-size-l);
+  }
+
+  .xl {
+    height: var(--md-size-xl);
+    width: var(--md-size-xl);
+  }
+}
+
+@media (--lg) {
+  .xs {
+    height: var(--lg-size-xs);
+    width: var(--lg-size-xs);
+  }
+
+  .s {
+    height: var(--lg-size-s);
+    width: var(--lg-size-s);
+  }
+
+  .m {
+    height: var(--lg-size-m);
+    width: var(--lg-size-m);
+  }
+
+  .l {
+    height: var(--lg-size-l);
+    width: var(--lg-size-l);
+  }
+
+  .xl {
+    height: var(--lg-size-xl);
+    width: var(--lg-size-xl);
+  }
+}

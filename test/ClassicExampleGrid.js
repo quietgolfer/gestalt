@@ -1,5 +1,5 @@
-import ClassicGrid from '../src/ClassicGrid/ClassicGrid';
-import Item from '../src/ClassicGrid/__docs__/Item';
+import ClassicGrid from '../packages/gestalt-classic-grid/ClassicGrid';
+import Item from '../packages/gestalt-classic-grid/__docs__/Item';
 import React from 'react';
 
 function getRandomColor() {

@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postcss = require('postcss-import');
 const postcssUrl = require('postcss-url');
 const postcssCssNext = require('postcss-cssnext');
-const breakpoints = require('../src/breakpoints');
+const breakpoints = require('../packages/gestalt/breakpoints');
 
 module.exports = {
   output: {

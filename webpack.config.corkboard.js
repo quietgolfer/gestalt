@@ -5,7 +5,7 @@ const postcssReporter = require('postcss-reporter');
 const postcssUrl = require('postcss-url');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const breakpoints = require('./src/breakpoints');
+const breakpoints = require('./packages/gestalt/breakpoints');
 
 module.exports = {
   devtool: 'source-map',
@@ -53,7 +53,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel',
         include: [
-          path.join(__dirname, 'src'),
+          path.join(__dirname, 'packages'),
           path.join(__dirname, '.corkboard'),
           path.dirname(require.resolve('corkboard')),
         ],

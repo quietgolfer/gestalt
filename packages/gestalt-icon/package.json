@@ -1,0 +1,11 @@
+{
+  "name": "gestalt-icon",
+  "version": "0.1.8",
+  "main": "./Icon.js",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "^15.3.1",
+    "gestalt-accessibility-token": "0.1.8",
+    "gestalt-colors": "0.1.8"
+  }
+}

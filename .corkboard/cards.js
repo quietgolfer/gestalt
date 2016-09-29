@@ -1,5 +1,5 @@
 import React from 'react';
-import { card, registerCard, md, ns as registerNamespace } from 'corkboard';
+import { card, registerCard, ns as registerNamespace } from 'corkboard';
 import cs from 'classnames';
 import Markdown from 'corkboard/lib/components/Markdown';
 import postcss from 'postcss';

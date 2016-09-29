@@ -1,5 +1,5 @@
-import BoxGrid from '../src/BoxGrid/BoxGrid';
-import Item from '../src/BoxGrid/__docs__/Item';
+import BoxGrid from '../packages/gestalt-box-grid/BoxGrid';
+import Item from '../packages/gestalt-box-grid/__docs__/Item';
 import React from 'react';
 
 function getRandomColor() {

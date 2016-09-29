@@ -1,0 +1,27 @@
+.Tabs {
+  composes: bg-light-gray from "gestalt-colors/Colors.css";
+  composes: flex from "gestalt-layout/Layout.css";
+  border-radius: 4px;
+  padding: 2px;
+  user-select: none;
+}
+
+.Tabs--item {
+  composes: no-border from "gestalt-borders/Borders.css";
+  composes: pointer from "gestalt-cursor/Cursor.css";
+  composes: col-12 from "gestalt-columns/Columns.css";
+  composes: p2 mt0 mb0 from "gestalt-whitespace/Whitespace.css";
+  border-radius: 4px;
+}
+
+.Tabs--item:focus {
+  position: relative;
+}
+
+.Tabs--item__isNotSelected {
+  background: transparent;
+}
+
+.Tabs--item__isSelected {
+  composes: bg-white from "gestalt-colors/Colors.css";
+}
