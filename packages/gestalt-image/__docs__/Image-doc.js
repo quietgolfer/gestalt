@@ -62,7 +62,7 @@ To test this out, adjust network throttling in your developer tools.`,
   <div className="flex mxn2">
     <div className="col-6 px2">
       <h5>{'Static'}</h5>
-      <PreloadImageContext>
+      <PreloadImageContext canPreloadImages={false}>
         <Image
           alt="example.com"
           color="#CCC"
@@ -88,80 +88,88 @@ To test this out, adjust network throttling in your developer tools.`,
 
 card('Placeholders',
   md`
-  The color you pass into \`Image\` will be used to fill the placeholder that shows up
-  as an image loads. The example shown has an empty \`src\` prop provided so it remains
-  a placeholder.
+The color you pass into \`Image\` will be used to fill the placeholder that shows up
+as an image loads. The example shown has an empty \`src\` prop provided so it remains
+a placeholder.
 
-  \`\`\`js
-  <Image
-    alt="example.com"
-    color="#018077"
-    height={354}
-    src=""
-    width={236}
-  />
-  \`\`\`
+\`\`\`js
+<Image
+  alt="example.com"
+  color="#018077"
+  height={354}
+  src=""
+  width={236}
+/>
+\`\`\`
   `,
   <div className="flex mxn2">
     <div className="col-6 px2">
-      <Image
-        alt="example.com"
-        color="#018077"
-        height={354}
-        src=""
-        width={236}
-      />
+      <PreloadImageContext canPreloadImages>
+        <Image
+          alt="example.com"
+          color="#018077"
+          height={354}
+          src=""
+          width={236}
+        />
+      </PreloadImageContext>
     </div>
   </div>);
 
 card('Shapes',
   md`
-  You can compose images with [Masks](#/Mask) to produce different shapes like
-  rounded rectangles or circles.
-  \`\`\`js
-  <Mask height={250} shape="circle" width={250}>
-    <Image
-      alt="placekitten.com"
-      color="#CCC"
-      height={250}
-      src="http://placekitten.com/250/250"
-      width={250}
-    />
-  </Mask>
-  \`\`\`
-  \`\`\`js
-  <Mask height={354} shape="rounded" width={236}>
-    <Image
-      alt="placekitten.com"
-      color="#fab904"
-      height={250}
-      src="http://placekitten.com/236/354"
-      width={250}
-    />
-  </Mask>
-  \`\`\`
+You can compose images with [Masks](#/Mask) to produce different shapes like
+rounded rectangles or circles.
+\`\`\`js
+<Mask shape="circle">
+  <Image
+    alt="placekitten.com"
+    color="#fab904"
+    height={369}
+    src="http://placekitten.com/400/400"
+    width={369}
+  />
+</Mask>
+\`\`\`
+\`\`\`js
+<Mask shape="rounded">
+  <Image
+    alt="placekitten.com"
+    color="#fbb6ac"
+    height={286}
+    src="http://placekitten.com/200/286"
+    width={200}
+  />
+</Mask>
+\`\`\`
   `,
   <div className="flex mxn2">
     <div className="col-6 px2">
-      <Mask height={250} shape="circle" width={250}>
-        <Image
-          alt="placekitten.com"
-          color="#fab904"
-          height={250}
-          src="http://placekitten.com/250/250"
-          width={250}
-        />
+      <h5>{'Circle'}</h5>
+      <Mask shape="circle">
+        <PreloadImageContext canPreloadImages>
+          <Image
+            alt="placekitten.com"
+            color="#fab904"
+            height={369}
+            src="http://placekitten.com/400/400"
+            width={369}
+          />
+        </PreloadImageContext>
       </Mask>
     </div>
     <div className="col-6 px2">
-      <Mask height={354} shape="rounded" width={236}>
-        <Image
-          alt="placekitten.com"
-          color="#fab904"
-          height={250}
-          src="http://placekitten.com/236/354"
-          width={250}
-        />
+      <h5>{'Rounded'}</h5>
+      <Mask shape="rounded" >
+        <PreloadImageContext canPreloadImages>
+          <Image
+            alt="placekitten.com"
+            color="#fbb6ac"
+            height={286}
+            src="http://placekitten.com/200/286"
+            width={200}
+          />
+        </PreloadImageContext>
       </Mask>
     </div>
   </div>

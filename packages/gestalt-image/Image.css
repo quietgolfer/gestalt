@@ -13,5 +13,6 @@
 
 .Image__img {
   composes: block fit overflow-hidden from "gestalt-layout/Layout.css";
+  composes: col-12 from "gestalt-columns/Columns.css";
   height: auto;
 }
