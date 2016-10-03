@@ -52,22 +52,23 @@ export default class BoxPacker {
   }
 
   findNextShortest(searchFromHeight) {
-    let lowestItem = null;
-    let lowestColIdx;
-    let lowestItemIdx;
+    let currLowestItem = null;
+    let lowestItems = [];
 
     for (let i = 0; i < this.columns.length; i++) {
       for (let j = 0; j < this.columns[i].length; j++) {
         const currItem = this.columns[i][j];
         if (currItem.startY > searchFromHeight &&
-          (lowestItem === null || currItem.startY < lowestItem.startY)) {
-          lowestItem = currItem;
-          lowestColIdx = i;
-          lowestItemIdx = j;
+          (lowestItems.length === 0 || currItem.startY <= currLowestItem.startY)) {
+          if (!currLowestItem || currItem.startY < currLowestItem.startY) {
+            currLowestItem = currItem;
+            lowestItems = [];
+          }
+          lowestItems.push([i, j]);
         }
       }
     }
-    return [lowestColIdx, lowestItemIdx];
+    return lowestItems;
   }
 
   columnHasSlotAt(colIdx, startFrom, requiredHeight) {
@@ -105,12 +106,15 @@ export default class BoxPacker {
     let searchFromHeight = -1;
     let usedSlots = [];
     /* eslint no-constant-condition:0 */
+    /* eslint no-labels:0 */
+    /* eslint no-restricted-syntax:0 */
+    slotSearch:
     while (true) {
       let itemSlotOffset = 0;
-      let [columnIdx, itemIdx] = this.findNextShortest(searchFromHeight);
+      let lowestItems = this.findNextShortest(searchFromHeight);
 
       // If we can't find the item, just stick it in the bottom left for now.
-      if (columnIdx === undefined || itemIdx === undefined) {
+      if (lowestItems.length === 0) {
         let tallestItem = 0;
         for (let i = 1; i < colSpan; i++) {
           const column = this.columns[i];
@@ -120,17 +124,26 @@ export default class BoxPacker {
           }
         }
 
-        columnIdx = 0;
-        itemIdx = this.columns[0].length - 1;
+        // TODO: Set offset to the tallest and continue.
+        const columnIdx = 0;
+        const itemIdx = this.columns[0].length - 1;
+        lowestItems = [
+          [columnIdx, itemIdx],
+        ];
         itemSlotOffset = tallestItem - this.columns[columnIdx][itemIdx].startY;
       }
 
-      usedSlots = this.findAvailableSlots(columnIdx, itemIdx, colSpan, height, itemSlotOffset);
-      if (usedSlots && usedSlots.length >= colSpan) {
-        break;
-      } else {
-        searchFromHeight = this.columns[columnIdx][itemIdx].startY;
+      for (let i = 0; i < lowestItems.length; i++) {
+        const [colIdx, itemIdx] = lowestItems[i];
+        usedSlots = this.findAvailableSlots(colIdx, itemIdx, colSpan, height, itemSlotOffset);
+        if (usedSlots && usedSlots.length >= colSpan) {
+          break slotSearch;
+        }
       }
+
+      // We start the next search from the any of the lowest items
+      // since they should all have the same start.
+      searchFromHeight = this.columns[lowestItems[0][0]][lowestItems[0][1]].startY;
     }
 
     // The item is positioned at the top left of the first slot.

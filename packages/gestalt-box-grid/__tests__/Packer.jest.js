@@ -6,9 +6,9 @@ jest.unmock('../Packer');
 
 import Packer from '../Packer';
 
-function getPacker() {
+function getPacker(colCount = 3) {
   const p = new Packer();
-  p.init({ colCount: 3, gridWidth: 300, itemWidth: 100 });
+  p.init({ colCount, gridWidth: colCount * 100, itemWidth: 100 });
   return p;
 }
 
@@ -49,29 +49,35 @@ describe('Packer', () => {
   describe('#findNextShortest', () => {
     const p = getPacker();
 
-    it('first column, first item', () => {
+    it('all columns, first item', () => {
       const result = p.findNextShortest(-1);
-      expect(result).toEqual([0, 0]);
+      expect(result).toEqual([
+        [0, 0], [1, 0], [2, 0],
+      ]);
     });
 
     it('first column, first item, after startY has increased', () => {
       p.columns[0][0].startY = 100;
       const result = p.findNextShortest(0);
-      expect(result).toEqual([0, 0]);
+      expect(result).toEqual([[0, 0]]);
     });
 
-    it('second column, first item', () => {
+    it('second and third columns, first item', () => {
       const result = p.findNextShortest(-1);
-      expect(result).toEqual([1, 0]);
+      expect(result).toEqual([
+        [1, 0], [2, 0],
+      ]);
     });
 
-    it('first column, first item, after heights have increased', () => {
+    it('first column, all items, after heights have increased', () => {
       p.columns[0][0].startY = 200;
       p.columns[1][0].startY = 200;
       p.columns[2][0].startY = 200;
 
       const result = p.findNextShortest(100);
-      expect(result).toEqual([0, 0]);
+      expect(result).toEqual([
+        [0, 0], [1, 0], [2, 0],
+      ]);
     });
   });
 
@@ -252,8 +258,8 @@ describe('Packer', () => {
 
       // Item 5
       itemPos = p.position(100, 200, 1);
-      expect(itemPos.top).toEqual(251);
       expect(itemPos.left).toEqual(0);
+      expect(itemPos.top).toEqual(251);
 
       expect(p.columns[1][0].startY).toEqual(100);
       expect(p.columns[1][0].endY).toEqual(150);
@@ -264,6 +270,31 @@ describe('Packer', () => {
       itemPos = p.position(100, 25, 1);
       expect(p.columns[1][0].startY).toEqual(126);
       expect(p.columns[1][0].endY).toEqual(150);
+    });
+
+    it('Checks for vertical gaps between two multi-column items', () => {
+      const p = getPacker(5);
+      const items = [
+        [200, 400, 2],
+        [100, 300, 1],
+        [400, 300, 4],
+        [200, 300, 2],
+        [100, 300, 1],
+      ];
+
+      let itemPos = p.position(...items[0]);
+      itemPos = p.position(...items[1]);
+      itemPos = p.position(...items[2]);
+      expect(itemPos.top).toEqual(401);
+      expect(itemPos.left).toEqual(0);
+
+      itemPos = p.position(...items[3]);
+      expect(itemPos.top).toEqual(0);
+      expect(itemPos.left).toEqual(300);
+
+      itemPos = p.position(...items[4]);
+      expect(itemPos.top).toEqual(301);
+      expect(itemPos.left).toEqual(400);
     });
   });
 });
