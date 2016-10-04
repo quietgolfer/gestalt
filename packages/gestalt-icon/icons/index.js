@@ -1,3 +1,4 @@
+// @flow
 import add from './add';
 import addCircle from './add-circle';
 import addPin from './add-pin';

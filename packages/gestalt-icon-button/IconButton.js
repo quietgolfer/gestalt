@@ -1,16 +1,22 @@
 // @flow
+/* global $Keys */
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import styles from './IconButton.css';
 import Icon from 'gestalt-icon';
+import icons from '../gestalt-icon/icons/index.js';
 
 const cx = classnames.bind(styles);
 
 type Props = {
-  icon: string,
+  /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
+   * This allows us to type check for a valid icon name based on the keys from the list of
+   * icons provided in gestalt-icon/icons/index.js.
+   */
+  icon: $Keys<typeof icons>,
   label: string,
   onClick?: () => void,
-  size: number,
+  size?: number,
 }
 
 export default function IconButton(props: Props) {
@@ -48,7 +54,8 @@ export default function IconButton(props: Props) {
 }
 
 IconButton.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  size: PropTypes.number,
 };

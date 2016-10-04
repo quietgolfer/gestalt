@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import classnames from 'classnames/bind';
 import colorStyles from 'gestalt-colors/Colors.css';
@@ -20,7 +21,7 @@ type IconWithIdProps = {
 };
 
 type IconProps = IconWithIdProps & {
-  id: string
+  id?: string
 };
 
 export function Icon(props: IconProps) {
