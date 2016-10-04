@@ -23,6 +23,7 @@ window.addEventListener('trigger-mount', () => {
       constructorItemSplice={window.location.search.includes('constructorItemSplice')}
       finiteLength={window.location.search.includes('finiteLength')}
       initialPins={window.initialPins}
+      maxCols={window.location.search.includes('maxCols')}
     />, mountNode);
   } else if (window.componentTest === 'BoxGrid') {
     ReactDOM.render(<BoxExampleGrid

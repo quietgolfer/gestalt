@@ -95,6 +95,10 @@ export default class FlexibleExampleGrid extends React.Component {
       dynamicGridProps.loadItems = this.loadItems;
     }
 
+    if (this.props.maxCols) {
+      dynamicGridProps.maxCols = 2;
+    }
+
     return (
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
         <FlexibleGrid
@@ -119,4 +123,6 @@ FlexibleExampleGrid.propTypes = {
   finiteLength: React.PropTypes.bool,
   // The initial data from the server side render.
   initialPins: React.PropTypes.array,
+  // Whether or not to set the maxCols prop.
+  maxCols: React.PropTypes.bool,
 };

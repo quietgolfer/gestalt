@@ -27,9 +27,7 @@ card('Fixed width container',
   </div>
 );
 
-card(
-  'Fluid width container',
-  md`The Pinterest grid.`,
+card('Fluid width container',
   <div>
     <ExampleGrid />
   </div>,

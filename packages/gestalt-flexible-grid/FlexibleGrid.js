@@ -126,7 +126,13 @@ export default class FlexibleGrid extends Component {
     }
 
     const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-    const newColCount = Math.floor(gridWidth / this.props.minItemWidth);
+
+    let newColCount = Math.floor(gridWidth / this.props.minItemWidth);
+
+    if (this.props.maxCols) {
+      newColCount = Math.min(this.props.maxCols, newColCount);
+    }
+
     const itemWidth = gridWidth / newColCount;
 
     this.setState({
@@ -279,6 +285,12 @@ FlexibleGrid.propTypes = {
    * to this component.
    */
   loadItems: React.PropTypes.func,
+
+  /**
+   * The maximum number of columns to display.
+   * If not passed in will render the highest amount of columns that can fit.
+   */
+  maxCols: React.PropTypes.number,
 
   /**
    * The max-width of each column.

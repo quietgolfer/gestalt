@@ -31,7 +31,6 @@ card('Fixed width',
 
 card(
   'Fluid width',
-  md`The Pinterest grid.`,
   <ExampleGrid />,
   {},
   { stretch: true },
