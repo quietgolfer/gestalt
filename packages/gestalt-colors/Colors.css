@@ -11,6 +11,18 @@
   --mustard: #fab904;
   --frost: rgba(#fff, 0.95);
   --shade: rgba(#000, 0.6);
+
+  /* darker versions of colors for hover states */
+  --blue-hover: color(var(--blue) blackness(+ 6%));
+  --blue-active: color(var(--blue) blackness(+ 10%));
+  --light-gray-hover: color(var(--light-gray) blackness(+ 6%));
+  --light-gray-active: color(var(--light-gray) blackness(+ 10%));
+  --gray-hover: color(var(--gray) blackness(+ 6%));
+  --gray-active: color(var(--gray) blackness(+ 10%));
+  --dark-gray-hover: color(var(--dark-gray) blackness(+ 6%));
+  --dark-gray-active: color(var(--dark-gray) blackness(+ 10%));
+  --red-hover: color(var(--red) blackness(+ 6%));
+  --red-active: color(var(--red) blackness(+ 10%));
 }
 
 /* blue */
@@ -27,8 +39,13 @@
   background-color: var(--blue);
 }
 
-.bg-blue-hover:hover {
-  background-color: var(--blue);
+.bg-blue-hover:hover,
+.bg-blue-focus:focus {
+  background-color: var(--blue-hover);
+}
+
+.bg-blue-active:active {
+  background-color: var(--blue-active);
 }
 
 /* dark-gray */
@@ -45,8 +62,13 @@
   background-color: var(--dark-gray);
 }
 
-.bg-dark-gray-hover:hover {
-  background-color: var(--dark-gray);
+.bg-dark-gray-hover:hover,
+.bg-dark-gray-focus:focus {
+  background-color: var(--dark-gray-hover);
+}
+
+.bg-dark-gray-active:active {
+  background-color: var(--dark-gray-active);
 }
 
 /* pine */
@@ -60,10 +82,6 @@
 }
 
 .bg-pine {
-  background-color: var(--pine);
-}
-
-.bg-pine-hover:hover {
   background-color: var(--pine);
 }
 
@@ -81,8 +99,13 @@
   background-color: var(--gray);
 }
 
-.bg-gray-hover:hover {
-  background-color: var(--gray);
+.bg-gray-hover:hover,
+.bg-gray-focus:focus {
+  background-color: var(--gray-hover);
+}
+
+.bg-gray-active:active {
+  background-color: var(--gray-active);
 }
 
 /* salmon */
@@ -96,10 +119,6 @@
 }
 
 .bg-salmon {
-  background-color: var(--salmon);
-}
-
-.bg-salmon-hover:hover {
   background-color: var(--salmon);
 }
 
@@ -117,8 +136,13 @@
   background-color: var(--red);
 }
 
-.bg-red-hover:hover {
-  background-color: var(--red);
+.bg-red-hover:hover,
+.bg-red-foucs:focus {
+  background-color: var(--red-hover);
+}
+
+.bg-red-active:active {
+  background-color: var(--red-active);
 }
 
 /* slate */
@@ -153,8 +177,13 @@
   background-color: var(--light-gray);
 }
 
-.bg-light-gray-hover:hover {
-  background-color: var(--light-gray);
+.bg-light-gray-hover:hover,
+.bg-light-gray-focus:focus {
+  background-color: var(--light-gray-hover);
+}
+
+.bg-light-gray-active:active {
+  background-color: var(--light-gray-active);
 }
 
 /* white */
@@ -168,10 +197,6 @@
 }
 
 .bg-white {
-  background-color: var(--white);
-}
-
-.bg-white-hover:hover {
   background-color: var(--white);
 }
 
@@ -189,26 +214,14 @@
   background-color: var(--mustard);
 }
 
-.bg-mustard-hover:hover {
-  background-color: var(--mustard);
-}
-
 /* frost */
 
 .bg-frost {
   background-color: var(--frost);
 }
 
-.bg-frost-hover:hover {
-  background-color: var(--frost);
-}
-
 /* darken */
 
 .bg-shade {
-  background-color: var(--shade);
-}
-
-.bg-shade-hover:hover {
   background-color: var(--shade);
 }
