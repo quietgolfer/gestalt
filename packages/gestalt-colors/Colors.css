@@ -3,12 +3,11 @@
   --dark-gray: #555;
   --pine: #364a4c;
   --gray: #b5b5b5;
-  --salmon: #fbb6ac;
   --red: #bd081c;
   --slate: #88a5ab;
   --light-gray: #efefef;
   --white: #fff;
-  --mustard: #fab904;
+  --yellow: #fab904;
   --frost: rgba(#fff, 0.95);
   --shade: rgba(#000, 0.6);
 
@@ -108,20 +107,6 @@
   background-color: var(--gray-active);
 }
 
-/* salmon */
-
-.salmon {
-  color: var(--salmon);
-}
-
-.salmon-hover:hover {
-  color: var(--salmon);
-}
-
-.bg-salmon {
-  background-color: var(--salmon);
-}
-
 /* red */
 
 .red {
@@ -200,18 +185,18 @@
   background-color: var(--white);
 }
 
-/* mustard */
+/* yellow */
 
-.mustard {
-  color: var(--mustard);
+.yellow {
+  color: var(--yellow);
 }
 
-.mustard-hover:hover {
-  color: var(--mustard);
+.yellow-hover:hover {
+  color: var(--yellow);
 }
 
-.bg-mustard {
-  background-color: var(--mustard);
+.bg-yellow {
+  background-color: var(--yellow);
 }
 
 /* frost */

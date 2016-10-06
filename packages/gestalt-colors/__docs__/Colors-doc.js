@@ -60,7 +60,7 @@ predominate.`,
       <Swatch color="blue" size="4rem" />
     </div>
     <div className="px2 col-3 mb2 border-box">
-      <Swatch color="mustard" size="4rem" />
+      <Swatch color="yellow" size="4rem" />
     </div>
     <div className="px2 col-3 mb2 border-box">
       <Swatch color="pine" size="4rem" />
