@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Text from '../Text';
 import { card, md } from 'corkboard';
@@ -8,6 +10,24 @@ ns('Text');
 const maxWidthStyle = {
   maxWidth: '400px',
 };
+
+card('PropTypes',
+md`
+\`\`\`jsx
+Text.propTypes = {
+  align: PropTypes.oneOf(['left', 'right', 'center', 'justify']), /* default: left */
+  bold: PropTypes.bool, /* default: false */
+  children: PropTypes.node.isRequired,
+  color: PropTypes.oneOf(['gray', 'dark-gray']), /* default: dark-gray */
+  inline: PropTypes.bool, /* default: false */
+  italic: PropTypes.bool, /* default: false */
+  overflow: PropTypes.oneOf(['break-word', 'normal']), /* default: normal */
+  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']), /* default: m */
+  truncate: PropTypes.bool, /* default: false */
+};
+\`\`\`
+`
+);
 
 card('Alignment',
   md`
