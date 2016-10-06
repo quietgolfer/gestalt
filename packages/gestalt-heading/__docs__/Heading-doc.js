@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import Heading from '../Heading';
 import { card, md } from 'corkboard';
@@ -5,6 +7,18 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Heading',
 '');
+
+card('PropTypes',
+md`
+\`\`\`jsx
+Heading.propTypes = {
+  children: PropTypes.node,
+  color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue']), /* default: dark-gray */
+  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+};
+\`\`\`
+`
+);
 
 card('Sizes',
   md`Comes in a variety of sizes:
@@ -37,7 +51,7 @@ card('Sizes',
     <span lang="ja">
       <Heading size="s">{'こんにちは'}</Heading>
     </span>
-    <Heading size="m">{'Heading medium'}</Heading>
+    <a><Heading size="m">{'Heading medium'}</Heading></a>
     {' '}
     <span lang="ja">
       <Heading size="m">{'こんにちは'}</Heading>

@@ -1,4 +1,6 @@
-import { createElement, Element } from 'react';
+// @flow
+
+import { createElement, Element, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import colorStyles from 'gestalt-colors/Colors.css';
 import typographyStyles from 'gestalt-typography/Typography.css';
@@ -21,7 +23,7 @@ const sizesToElementMap = {
 };
 
 type HeadingProps = {
-  children: Element,
+  children?: Element<any>,
   color?: 'white' | 'gray' | 'dark-gray' | 'blue',
   size: 'xs' | 's' | 'm' | 'l' | 'xl'
 };
@@ -44,3 +46,9 @@ export default function Heading(props: HeadingProps) {
   );
   return createElement(sizesToElementMap[size], { className: cs }, children);
 }
+
+Heading.propTypes = {
+  children: PropTypes.node,
+  color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue']),
+  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+};
