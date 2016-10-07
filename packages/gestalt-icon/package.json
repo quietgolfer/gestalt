@@ -6,6 +6,6 @@
     "classnames": "^2.2.5",
     "react": "^15.3.1",
     "gestalt-accessibility-token": "^0.1.10",
-    "gestalt-colors": "^0.1.10"
+    "gestalt-colors": "^0.1.11"
   }
 }

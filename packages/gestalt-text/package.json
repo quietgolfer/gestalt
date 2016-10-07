@@ -1,6 +1,6 @@
 {
   "name": "gestalt-text",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "main": "./Text.js",
   "dependencies": {
     "classnames": "^2.2.5",

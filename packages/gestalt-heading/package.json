@@ -1,11 +1,11 @@
 {
   "name": "gestalt-heading",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "main": "./Heading.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-colors": "^0.1.10",
+    "gestalt-colors": "^0.1.11",
     "gestalt-typography": "^0.1.10",
     "gestalt-whitespace": "^0.1.10"
   }
