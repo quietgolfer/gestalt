@@ -25,7 +25,8 @@ const sizesToElementMap = {
 type HeadingProps = {
   children?: Element<any>,
   color?: 'white' | 'gray' | 'dark-gray' | 'blue',
-  size: 'xs' | 's' | 'm' | 'l' | 'xl'
+  size: 'xs' | 's' | 'm' | 'l' | 'xl',
+  truncate?: bool,
 };
 
 export default function Heading(props: HeadingProps) {
@@ -33,6 +34,7 @@ export default function Heading(props: HeadingProps) {
     children,
     color = 'dark-gray',
     size,
+    truncate = false,
   } = props;
 
   const cs = cx(
@@ -43,6 +45,9 @@ export default function Heading(props: HeadingProps) {
     'sans-serif',
     `display-${size}`,
     color,
+    {
+      truncate,
+    },
   );
   return createElement(sizesToElementMap[size], { className: cs }, children);
 }
@@ -51,4 +56,5 @@ Heading.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue']),
   size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+  truncate: PropTypes.bool,
 };
