@@ -39,6 +39,7 @@ type ImageProps = {
   color: string,
   height: number,
   src: string,
+  wash?: bool,
   width: number,
 };
 
@@ -77,6 +78,7 @@ export default class Image extends Component {
       color,
       height,
       src,
+      wash = false,
       width,
     } = this.props;
 
@@ -96,6 +98,7 @@ export default class Image extends Component {
         className={cx('Image__placeholder')}
         style={{ backgroundColor: color, paddingBottom: `${aspect}%` }}
       >
+        <div className={cx({ wash })}></div>
         <img
           alt={alt}
           className={cx('Image__img')}
@@ -114,5 +117,6 @@ Image.propTypes = {
   color: PropTypes.string.isRequired,
   height: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
+  wash: PropTypes.bool,
   width: PropTypes.number.isRequired,
 };

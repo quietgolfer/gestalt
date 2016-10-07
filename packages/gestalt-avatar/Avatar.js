@@ -31,8 +31,8 @@ type AvatarProps = {
   name: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
   src?: string,
+  wash?: bool,
 }
-
 
 export default function Avatar(props: AvatarProps) {
   const {
@@ -40,6 +40,7 @@ export default function Avatar(props: AvatarProps) {
     name,
     size,
     src,
+    wash = false,
   } = props;
 
   if (!src) {
@@ -58,6 +59,7 @@ export default function Avatar(props: AvatarProps) {
           color={'#efefef'}
           height={1}
           src={src}
+          wash={wash}
           width={1}
         />
       </Mask>
@@ -70,4 +72,5 @@ Avatar.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
   src: PropTypes.string,
+  wash: PropTypes.bool,
 };

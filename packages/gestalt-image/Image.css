@@ -16,3 +16,11 @@
   composes: col-12 from "gestalt-columns/Columns.css";
   height: auto;
 }
+
+.wash {
+  background: rgba(0, 0, 0, 0.03);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}

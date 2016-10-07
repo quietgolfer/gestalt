@@ -40,6 +40,7 @@ Avatar.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
   src: PropTypes.string,
+  wash: PropTypes.bool, /* adds dim overlay over Avatar to retain circular shape. default: false */
 };
 \`\`\`
 `
@@ -76,7 +77,8 @@ AvatarEx.propTypes = {
   src: PropTypes.string,
 };
 
-const imageSrc = 'https://s-media-cache-ak0.pinimg.com/avatars/long_1468294555_444.jpg';
+// const imageSrc = 'https://s-media-cache-ak0.pinimg.com/avatars/long_1468294555_444.jpg';
+const imageSrc = 'http://images.cdn3.stockunlimited.net/clipart/person-wearing-peep-toe-high-heels-on-white-background_1236769.jpg';
 
 card('Sizes',
   md`

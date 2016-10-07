@@ -18,6 +18,7 @@ Image.propTypes = {
   height: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
+  wash: PropTypes.bool, /* adds dim overlay over Avatar to retain circular shape. default: false */
 };
 \`\`\`
 
