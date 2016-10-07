@@ -1,11 +1,11 @@
 {
   "name": "gestalt-button",
-  "version": "0.1.11",
+  "version": "0.1.10",
   "main": "./Button.js",
   "dependencies": {
     "react": "^15.3.1",
     "gestalt-borders": "^0.1.10",
-    "gestalt-colors": "^0.1.11",
+    "gestalt-colors": "^0.1.10",
     "gestalt-columns": "^0.1.10",
     "gestalt-cursor": "^0.1.10",
     "gestalt-layout": "^0.1.10",
