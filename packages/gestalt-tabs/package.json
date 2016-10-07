@@ -1,6 +1,5 @@
 {
   "name": "gestalt-tabs",
-  "private": true,
   "version": "0.1.10",
   "main": "./Tabs.js",
   "dependencies": {
