@@ -55,38 +55,6 @@ Adds those pretty lines that everybody likes.
     )}
   </div>);
 
-const borderRadii = [
-  'circle',
-  'rounded',
-  'rounded-top',
-  'rounded-bottom',
-  'rounded-right',
-  'rounded-left',
-  'square',
-];
-
-card('Border Radii',
-  md`
-Adds those pretty border radiuses.
-
-\`\`\`html
-<div class="circle"> .circle </div>
-<div class="rounded"> .rounded </div>
-<div class="rounded-top"> .rounded-top </div>
-<div class="rounded-bottom"> .rounded-bottom </div>
-<div class="rounded-right"> .rounded-right </div>
-<div class="rounded-left"> .rounded-left </div>
-<div class="square"> .square </div>
-\`\`\`
-  `,
-  <div className="flex mxn1 justify-center flex-wrap">
-    {borderRadii.map((border, i) =>
-      <div className="mx1 col-3 mb2" key={i}>
-        <Swatch border={border} hasFill />
-      </div>
-    )}
-  </div>);
-
 stylesTable(
   require('!!raw!postcss!../Borders.css')
 );

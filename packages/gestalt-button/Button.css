@@ -12,7 +12,7 @@
   composes: bold from "gestalt-typography/Typography.css";
   composes: border-box from "gestalt-layout/Layout.css";
   composes: no-border from "gestalt-borders/Borders.css";
-  composes: rounded from "gestalt-borders/Borders.css";
+  border-radius: 4px;
 }
 
 .enabled {
