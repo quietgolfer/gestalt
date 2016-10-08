@@ -5,15 +5,14 @@
 
 Install dependencies.
 ```
-npm i -g lerna
-lerna bootstrap
+npm run bootstrap
 ```
 
 Start the development server:
 ```
 npm start
 ```
-Visit http://localhost:3000/#/ and click on a component to get view the docs.
+Visit [http://localhost:3000/](http://localhost:3000) and click on a component to view the docs.
 
 ## Releasing
 
