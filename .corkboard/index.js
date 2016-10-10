@@ -1,4 +1,4 @@
-import '!!style!css?importLoaders=1!postcss!../packages/gestalt/styles.css';
+import '!!style!css?importLoaders=1!postcss!../packages/pinterest-gestalt/styles.css';
 const requireCard = require.context('../packages', true, /\-doc\.js$/);
 [
   ['gestalt-borders', 'Borders'],

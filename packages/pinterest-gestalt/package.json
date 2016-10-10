@@ -1,5 +1,5 @@
 {
-  "name": "gestalt",
+  "name": "pinterest-gestalt",
   "version": "0.1.11",
   "dependencies": {
     "classnames": "^2.2.5",

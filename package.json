@@ -1,8 +1,4 @@
 {
-  "name": "pinterest-gestalt",
-  "version": "0.1.9",
-  "description": "Pinterest web components written in React.",
-  "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "bootstrap": "npm i && lerna bootstrap",

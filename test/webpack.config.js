@@ -1,4 +1,4 @@
-const breakpoints = require('../packages/gestalt/breakpoints');
+const breakpoints = require('../packages/pinterest-gestalt/breakpoints');
 const postcssImport = require('postcss-import');
 const postcssUrl = require('postcss-url');
 const postcssCssNext = require('postcss-cssnext');
