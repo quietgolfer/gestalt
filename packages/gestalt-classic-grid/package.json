@@ -1,10 +1,10 @@
 {
   "name": "gestalt-classic-grid",
-  "version": "0.1.11",
+  "version": "0.1.15",
   "main": "./ClassicGrid.js",
   "dependencies": {
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "gestalt-layout": "^0.1.11"
+    "gestalt-layout": "^0.1.15"
   }
 }
