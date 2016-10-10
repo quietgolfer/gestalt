@@ -1,16 +1,17 @@
 {
   "name": "gestalt-tabs",
-  "version": "0.1.10",
+  "private": true,
+  "version": "0.1.11",
   "main": "./Tabs.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-text": "^0.1.10",
-    "gestalt-colors": "^0.1.10",
-    "gestalt-layout": "^0.1.10",
-    "gestalt-borders": "^0.1.10",
-    "gestalt-cursor": "^0.1.10",
-    "gestalt-columns": "^0.1.10",
-    "gestalt-whitespace": "^0.1.10"
+    "gestalt-text": "^0.1.11",
+    "gestalt-colors": "^0.1.11",
+    "gestalt-layout": "^0.1.11",
+    "gestalt-borders": "^0.1.11",
+    "gestalt-cursor": "^0.1.11",
+    "gestalt-columns": "^0.1.11",
+    "gestalt-whitespace": "^0.1.11"
   }
 }
