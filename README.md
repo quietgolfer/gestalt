@@ -18,9 +18,10 @@ Visit [http://localhost:3000/](http://localhost:3000) and click on a component t
 
 The following outlines our release process:
 * Make sure to add the new components you want to release to the index.js export list.
-* Bump the NPM package version, and land in master. This usually means opening up a pull request with a version change to package.json.
+* Bump package versions using lerna: `./node_modules/.bin/lerna publish --skip-npm`. This will prompt you for a version number.
+* Open a pull request with the new versions and land that in master.
 * Once the version is bumped in master, checkout that commit locally.
-* Publish to NPM with `npm publish`.
+* Publish to NPM with `lerna exec npm publish --registry http://sinopia.ec2.pin220.com:8080`.
 * Tag the commit with `git tag v(NPM version)`.
 * Push the tag to the respository with `git push upstream --tags`.
 * Draft a release from the tag and update the release notes at https://github.com/pinterest/gestalt/releases
