@@ -6,14 +6,13 @@
 const colors = [
   'blue',
   'dark-gray',
-  'pine',
   'gray',
-  'salmon',
+  'light-gray',
+  'pine',
   'red',
   'slate',
-  'light-gray',
   'white',
-  'mustard',
+  'yellow',
 ];
 
 colors.forEach((color) => {

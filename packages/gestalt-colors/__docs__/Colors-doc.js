@@ -68,9 +68,6 @@ predominate.`,
     <div className="px2 col-3 mb2 border-box">
       <Swatch color="slate" size="4rem" />
     </div>
-    <div className="px2 col-3 mb2 border-box">
-      <Swatch color="salmon" size="4rem" />
-    </div>
   </div>);
 
 stylesTable(require('!!raw!postcss!../Colors.css'));
