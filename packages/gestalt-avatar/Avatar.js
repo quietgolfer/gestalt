@@ -1,7 +1,6 @@
 // @flow
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
-import Heading from 'gestalt-heading';
 import Image from 'gestalt-image';
 import Mask from 'gestalt-mask';
 import styles from './Avatar.css';
@@ -19,9 +18,16 @@ function DefaultAvatar(props: DefaultAvatarProps) {
   const firstInitial = initial || name.charAt(0).toUpperCase();
   const classes = cx(size, 'defaultAvatar');
 
+  const noImageClasses = cx(
+    'bold',
+    'antialiased',
+    `initial-${size}`,
+    'white',
+  );
+
   return (
     <div aria-label={name} className={classes}>
-      <Heading size={size}>{firstInitial}</Heading>
+      <div className={noImageClasses} size={size}>{firstInitial}</div>
     </div>
   );
 }

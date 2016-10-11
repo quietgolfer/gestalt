@@ -54,8 +54,8 @@ type AvatarExProps = {
 };
 
 function AvatarEx(props: AvatarExProps) {
-  const name = 'Julia';
-  const initial = 'J';
+  const name = 'Long';
+  const initial = 'L';
   const { size, src } = props;
   return (
     <div className="p1">
@@ -77,8 +77,7 @@ AvatarEx.propTypes = {
   src: PropTypes.string,
 };
 
-// const imageSrc = 'https://s-media-cache-ak0.pinimg.com/avatars/long_1468294555_444.jpg';
-const imageSrc = 'http://images.cdn3.stockunlimited.net/clipart/person-wearing-peep-toe-high-heels-on-white-background_1236769.jpg';
+const imageSrc = 'https://s-media-cache-ak0.pinimg.com/avatars/long_1468294555_444.jpg';
 
 card('Sizes',
   md`
@@ -88,7 +87,7 @@ size will scale to appropriately match the size of your screen
 <Avatar
   size="m"
   src="path/to/image"
-  name="Chris"
+  name="Long"
 />
 \`\`\`
   `,
@@ -107,8 +106,8 @@ to better handle special characters. In absence of providing an \`initial\` prop
 the first character of the name will be used.
 \`\`\`html
 <Avatar
-  initial="J"
-  name="Julia"
+  initial="L"
+  name="Long"
   size="xs"
 />
 \`\`\`

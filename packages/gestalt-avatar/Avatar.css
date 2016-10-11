@@ -1,11 +1,13 @@
 :root {
+  /*** Avatar Sizing ***/
+
   /* small screens */
 
-  --sm-size-xs: 18px;
-  --sm-size-s: 30px;
-  --sm-size-m: 54px;
-  --sm-size-l: 78px;
-  --sm-size-xl: 99px;
+  --sm-size-xs: 24px;
+  --sm-size-s: 40px;
+  --sm-size-m: 64px;
+  --sm-size-l: 104px;
+  --sm-size-xl: 132px;
 
   /* medium screens */
 
@@ -22,10 +24,37 @@
   --lg-size-m: 108px;
   --lg-size-l: 156px;
   --lg-size-xl: 198px;
+
+  /*** Profile-less Text Sizing ***/
+
+  /* small screens */
+
+  --sm-text-xs: 12px;
+  --sm-text-s: 21px;
+  --sm-text-m: 38px;
+  --sm-text-l: 54px;
+  --sm-text-xl: 70px;
+  --sm-text-col: 88px;
+
+  /* medium screens */
+
+  --md-text-xs: 12px;
+  --md-text-s: 21px;
+  --md-text-m: 38px;
+  --md-text-l: 70px;
+  --md-text-xl: 88px;
+
+  /* large screens */
+
+  --lg-text-xs: 19px;
+  --lg-text-s: 32px;
+  --lg-text-m: 56px;
+  --lg-text-l: 82px;
+  --lg-text-xl: 106px;
 }
 
 .defaultAvatar {
-  composes: bg-light-gray from "gestalt-colors/Colors.css";
+  composes: bg-gray from "gestalt-colors/Colors.css";
   composes: circle from "gestalt-borders/Borders.css";
   composes: flex items-center justify-center from "gestalt-layout/Layout.css";
 }
@@ -36,9 +65,17 @@
     width: var(--sm-size-xs);
   }
 
+  .initial-xs {
+    font-size: var(--sm-text-xs);
+  }
+
   .s {
     height: var(--sm-size-s);
     width: var(--sm-size-s);
+  }
+
+  .initial-s {
+    font-size: var(--sm-text-s);
   }
 
   .m {
@@ -46,14 +83,26 @@
     width: var(--sm-size-m);
   }
 
+  .initial-m {
+    font-size: var(--sm-text-m);
+  }
+
   .l {
     height: var(--sm-size-l);
     width: var(--sm-size-l);
   }
 
+  .initial-l {
+    font-size: var(--sm-text-l);
+  }
+
   .xl {
     height: var(--sm-size-xl);
     width: var(--sm-size-xl);
+  }
+
+  .initial-xl {
+    font-size: var(--sm-text-xl);
   }
 }
 
@@ -63,9 +112,17 @@
     width: var(--md-size-xs);
   }
 
+  .initial-xs {
+    font-size: var(--md-text-xs);
+  }
+
   .s {
     height: var(--md-size-s);
     width: var(--md-size-s);
+  }
+
+  .initial-s {
+    font-size: var(--md-text-s);
   }
 
   .m {
@@ -73,14 +130,26 @@
     width: var(--md-size-m);
   }
 
+  .initial-m {
+    font-size: var(--md-text-m);
+  }
+
   .l {
     height: var(--md-size-l);
     width: var(--md-size-l);
   }
 
+  .initial-l {
+    font-size: var(--md-text-l);
+  }
+
   .xl {
     height: var(--md-size-xl);
     width: var(--md-size-xl);
+  }
+
+  .initial-xl {
+    font-size: var(--md-text-xl);
   }
 }
 
@@ -90,9 +159,17 @@
     width: var(--lg-size-xs);
   }
 
+  .initial-xs {
+    font-size: var(--lg-text-xs);
+  }
+
   .s {
     height: var(--lg-size-s);
     width: var(--lg-size-s);
+  }
+
+  .initial-s {
+    font-size: var(--lg-text-s);
   }
 
   .m {
@@ -100,13 +177,25 @@
     width: var(--lg-size-m);
   }
 
+  .initial-m {
+    font-size: var(--lg-text-m);
+  }
+
   .l {
     height: var(--lg-size-l);
     width: var(--lg-size-l);
   }
 
+  .initial-l {
+    font-size: var(--lg-text-l);
+  }
+
   .xl {
     height: var(--lg-size-xl);
     width: var(--lg-size-xl);
+  }
+
+  .initial-xl {
+    font-size: var(--lg-text-xl);
   }
 }
