@@ -2,9 +2,9 @@
 import React from 'react';
 import classnames from 'classnames/bind';
 import colorStyles from 'gestalt-colors/Colors.css';
-import iconStyles from './Icon.css';
-import paths from './icons/index.js';
 import accessibilityToken from 'gestalt-accessibility-token';
+import iconStyles from './Icon.css';
+import paths from './icons/index';
 
 const combinedStyles = {
   ...colorStyles,
@@ -13,18 +13,18 @@ const combinedStyles = {
 
 const cx = classnames.bind(combinedStyles);
 
-type IconWithIdProps = {
+type IconProps = {
   color?: 'white' | 'gray' | 'dark-gray' | 'blue',
   icon: string,
   label: string,
   size?: number
 };
 
-type IconProps = IconWithIdProps & {
+type IconWithoutIdProps = IconProps & {
   id?: string
 };
 
-export function Icon(props: IconProps) {
+export function IconWithoutId(props: IconWithoutIdProps) {
   const {
     color = 'gray',
     icon,
@@ -49,10 +49,10 @@ export function Icon(props: IconProps) {
   );
 }
 
-export default function IconWithId(props: IconWithIdProps) {
+export default function Icon(props: IconProps) {
   const id = accessibilityToken('icon_');
 
   return (
-    <Icon id={id} {...props} />
+    <IconWithoutId id={id} {...props} />
   );
 }

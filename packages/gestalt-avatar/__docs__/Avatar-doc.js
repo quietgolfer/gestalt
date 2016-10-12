@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { card, md } from 'corkboard';
 import Avatar from '../Avatar';
 import Text from '../../gestalt-text/Text';
-import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Avatar',
@@ -90,7 +90,7 @@ size will scale to appropriately match the size of your screen
   name="Long"
 />
 \`\`\`
-  `,
+`,
   <div className="flex">
     {sizes.map((size, idx) =>
       <AvatarEx size={size} src={imageSrc} key={idx} />
@@ -111,7 +111,7 @@ the first character of the name will be used.
   size="xs"
 />
 \`\`\`
-  `,
+`,
   <div className="flex">
     {sizes.map((size, idx) =>
       <AvatarEx size={size} key={idx} />

@@ -98,7 +98,7 @@ export default class Image extends Component {
         className={cx('Image__placeholder')}
         style={{ backgroundColor: color, paddingBottom: `${aspect}%` }}
       >
-        <div className={cx({ wash })}></div>
+        <div className={cx({ wash })} />
         <img
           alt={alt}
           className={cx('Image__img')}

@@ -125,6 +125,7 @@ export default class FlexibleGrid extends Component {
       return 0;
     }
 
+    /* eslint react/no-find-dom-node: 0 */
     const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
 
     let newColCount = Math.floor(gridWidth / this.props.minItemWidth);
@@ -195,7 +196,7 @@ export default class FlexibleGrid extends Component {
    */
   shortestColumn() {
     let min = 0;
-    for (let i = 1; i < this.currColHeights.length; i++) {
+    for (let i = 1; i < this.currColHeights.length; i += 1) {
       if (this.currColHeights[i] < this.currColHeights[min]) {
         min = i;
       }
@@ -239,28 +240,28 @@ export default class FlexibleGrid extends Component {
             layoutReady={this.state.layoutReady}
             processInfo={this.processInfo}
           >
-          {
-            (position = null) => {
-              const itemStyles = {};
-              if (position) {
-                itemStyles.style = {
-                  ...styles.gridItem,
-                  top: position.top,
-                  left: position.left,
-                  width: fluidWidth,
-                };
+            {
+              (position = null) => {
+                const itemStyles = {};
+                if (position) {
+                  itemStyles.style = {
+                    ...styles.gridItem,
+                    top: position.top,
+                    left: position.left,
+                    width: fluidWidth,
+                  };
+                }
+                return (
+                  <div
+                    className={(position ? styles.Grid__Item : 'static')}
+                    key={idx}
+                    {...itemStyles}
+                  >
+                    <this.props.comp data={item} itemIdx={idx} />
+                  </div>
+                );
               }
-              return (
-                <div
-                  className={(position ? styles.Grid__Item : 'static')}
-                  key={idx}
-                  {...itemStyles}
-                >
-                  <this.props.comp data={item} itemIdx={idx} />
-                </div>
-              );
             }
-          }
           </WithLayout>
         )}
       </div>
@@ -272,12 +273,13 @@ FlexibleGrid.propTypes = {
   /**
    * The component to render.
    */
+  /* eslint react/no-unused-prop-types: 0 */
   comp: React.PropTypes.func,
 
   /**
    * An array of all objects to display in the grid.
    */
-  items: React.PropTypes.array,
+  items: React.PropTypes.arrayOf(React.PropTypes.shape({})),
 
   /**
    * A callback which the grid calls when we need to load more items as the user scrolls.
@@ -295,6 +297,8 @@ FlexibleGrid.propTypes = {
   /**
    * The max-width of each column.
    */
+  /* TODO @KevinGrandon see whether we can remove this */
+  /* eslint react/no-unused-prop-types: 0 */
   maxItemWidth: React.PropTypes.number,
 
   /**
@@ -305,7 +309,10 @@ FlexibleGrid.propTypes = {
   /**
    * The scroll container to use. Defaults to window.
    */
-  scrollContainer: React.PropTypes.object,
+  scrollContainer: React.PropTypes.shape({
+    addEventListener: React.PropTypes.func,
+    removeEventListener: React.PropTypes.func,
+  }),
 };
 
 FlexibleGrid.defaultProps = {

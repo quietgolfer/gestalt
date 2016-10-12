@@ -1,11 +1,12 @@
+import React from 'react';
 import ClassicGrid from '../ClassicGrid';
 import Item from './Item';
-import React from 'react';
+
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF'.split('');
   let color = '#';
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i += 1) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
@@ -13,9 +14,9 @@ function getRandomColor() {
 
 const getPins = (meta = {}) => {
   const from = meta.from || 0;
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const pins = [];
-    for (let i = from; i < from + 20; i++) {
+    for (let i = from; i < from + 20; i += 1) {
       pins.push({
         name: `foo ${i}`,
         height: Math.floor(Math.random() * 200) + 300,
@@ -38,7 +39,7 @@ export default class ExampleGrid extends React.Component {
   }
 
   componentDidMount() {
-    getPins().then(startPins => {
+    getPins().then((startPins) => {
       this.setState({
         pins: startPins,
       });
@@ -47,7 +48,7 @@ export default class ExampleGrid extends React.Component {
 
   loadItems = (meta) => {
     getPins(meta)
-      .then(newPins => {
+      .then((newPins) => {
         this.setState({
           pins: this.state.pins.concat(newPins),
         });

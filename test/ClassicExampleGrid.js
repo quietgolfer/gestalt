@@ -1,11 +1,11 @@
+import React from 'react';
 import ClassicGrid from '../packages/gestalt-classic-grid/ClassicGrid';
 import Item from '../packages/gestalt-classic-grid/__docs__/Item';
-import React from 'react';
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF'.split('');
   let color = '#';
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i += 1) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
@@ -24,9 +24,9 @@ const getPins = (meta = {}, collage) => {
     heightMin = 40;
   }
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const pins = [];
-    for (let i = from; i < until; i++) {
+    for (let i = from; i < until; i += 1) {
       pins.push({
         name: `foo ${i}`,
         height: Math.floor(Math.random() * randHeight) + heightMin,
@@ -65,7 +65,7 @@ export default class ClassicExampleGrid extends React.Component {
 
   loadItems = (meta) => {
     getPins(meta, this.props.collage)
-      .then(newPins => {
+      .then((newPins) => {
         this.setState({
           pins: this.state.pins.concat(newPins),
         });
@@ -102,7 +102,7 @@ export default class ClassicExampleGrid extends React.Component {
           items={this.state.pins}
           {...dynamicGridProps}
         />
-        <div className="afterGrid"></div>
+        <div className="afterGrid" />
       </div>
     );
   }
@@ -118,5 +118,5 @@ ClassicExampleGrid.propTypes = {
   // Test case: Does not allow infinite scroll.
   finiteLength: React.PropTypes.bool,
   // The initial data from the server side render.
-  initialPins: React.PropTypes.array,
+  initialPins: React.PropTypes.arrayOf(React.PropTypes.shape({})),
 };

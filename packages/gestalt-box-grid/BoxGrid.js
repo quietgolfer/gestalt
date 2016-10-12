@@ -109,6 +109,7 @@ export default class BoxGrid extends Component {
       return 0;
     }
 
+    /* eslint react/no-find-dom-node: 0 */
     const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
     const colCount = Math.floor(gridWidth / this.props.minItemWidth);
     const itemWidth = gridWidth / colCount;
@@ -156,7 +157,7 @@ export default class BoxGrid extends Component {
 
     // Just find the lowest item to find the height.
     let height = 0;
-    for (let i = 0; i < this.packer.columns.length; i++) {
+    for (let i = 0; i < this.packer.columns.length; i += 1) {
       const item = this.packer.columns[i][this.packer.columns[i].length - 1];
       if (item.endY !== null && item.endY > height) {
         height = item.endY;
@@ -202,28 +203,28 @@ export default class BoxGrid extends Component {
             layoutReady={this.state.layoutReady}
             processInfo={this.processInfo}
           >
-          {
-            (position = null) => {
-              const itemStyles = {};
-              if (position) {
-                itemStyles.style = {
-                  ...styles.gridItem,
-                  top: position.top,
-                  left: position.left,
-                  width: this.state.itemWidth,
-                };
+            {
+              (position = null) => {
+                const itemStyles = {};
+                if (position) {
+                  itemStyles.style = {
+                    ...styles.gridItem,
+                    top: position.top,
+                    left: position.left,
+                    width: this.state.itemWidth,
+                  };
+                }
+                return (
+                  <div
+                    className={styles.Grid__Item}
+                    key={idx}
+                    {...itemStyles}
+                  >
+                    <this.props.comp columnWidth={this.state.itemWidth} data={item} itemIdx={idx} />
+                  </div>
+                );
               }
-              return (
-                <div
-                  className={styles.Grid__Item}
-                  key={idx}
-                  {...itemStyles}
-                >
-                  <this.props.comp columnWidth={this.state.itemWidth} data={item} itemIdx={idx} />
-                </div>
-              );
             }
-          }
           </WithLayout>
         )}
       </div>
@@ -240,7 +241,7 @@ BoxGrid.propTypes = {
   /**
    * An array of all objects to display in the grid.
    */
-  items: React.PropTypes.array,
+  items: React.PropTypes.arrayOf(React.PropTypes.shape({})),
 
   /**
    * A callback which the grid calls when we need to load more items as the user scrolls.
@@ -252,6 +253,8 @@ BoxGrid.propTypes = {
   /**
    * The max-width of each column.
    */
+  /* TODO @KevinGrandon see whether we can remove this */
+  /* eslint react/no-unused-prop-types: 0 */
   maxItemWidth: React.PropTypes.number,
 
   /**
@@ -262,7 +265,10 @@ BoxGrid.propTypes = {
   /**
    * The scroll container to use. Defaults to window.
    */
-  scrollContainer: React.PropTypes.object,
+  scrollContainer: React.PropTypes.shape({
+    addEventListener: React.PropTypes.func,
+    removeEventListener: React.PropTypes.func,
+  }),
 };
 
 BoxGrid.defaultProps = {

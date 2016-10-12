@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import Image from '../Image';
 import { card, md } from 'corkboard';
+import Image from '../Image';
 import Mask from '../../gestalt-mask/Mask';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Image',
-  `This component the workhorse of Pinterest. If you define Pinterest to be all
+  `
+This component the workhorse of Pinterest. If you define Pinterest to be all
 about collecting ideas, then images is how we choose to represent those ideas.
 In response, we've added a few extra super-powers to the regular Image tag to
 make it even more awesome.
@@ -55,7 +56,8 @@ class PreloadImageContext extends Component {
 }
 
 card('Preloading',
-    md`In environments where a DOM is available, \`Image\` has the ability to
+    md`
+In environments where a DOM is available, \`Image\` has the ability to
 pre-load its content and show a placeholder while it does so. Otherwise, it
 renders a static \`<img/>\` tag.
 

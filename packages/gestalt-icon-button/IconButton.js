@@ -2,9 +2,9 @@
 /* global $Keys */
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
-import styles from './IconButton.css';
 import Icon from 'gestalt-icon';
-import icons from '../gestalt-icon/icons/index.js';
+import styles from './IconButton.css';
+import icons from '../gestalt-icon/icons/index';
 
 const cx = classnames.bind(styles);
 
@@ -16,7 +16,6 @@ type Props = {
   icon: $Keys<typeof icons>,
   label: string,
   onClick?: () => void,
-  size?: number,
 }
 
 export default function IconButton(props: Props) {
@@ -57,5 +56,4 @@ IconButton.propTypes = {
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  size: PropTypes.number,
 };

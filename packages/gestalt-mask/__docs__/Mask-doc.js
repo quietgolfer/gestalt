@@ -1,6 +1,6 @@
 import React from 'react';
-import Mask from '../Mask';
 import { card, md } from 'corkboard';
+import Mask from '../Mask';
 import { ns } from '../../../.corkboard/cards';
 
 ns(

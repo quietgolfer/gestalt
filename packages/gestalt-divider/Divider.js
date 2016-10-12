@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Divider.css';
 import classnames from 'classnames/bind';
+import styles from './Divider.css';
 
 const cx = classnames.bind(styles);
 

@@ -35,8 +35,10 @@ export default function Switch(props: Props) {
         className={cx('checkbox')}
         id={id}
         onChange={
-          (e: { nativeEvent: { target: { checked: boolean}}}) =>
-            onChange(e.nativeEvent.target.checked)
+          (e: { nativeEvent: { target: { checked: boolean}}}) => {
+            const checked = e.nativeEvent.target.checked;
+            return onChange(checked);
+          }
         }
         type="checkbox"
       />

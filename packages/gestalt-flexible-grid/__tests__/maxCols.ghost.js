@@ -14,7 +14,7 @@ const getColumnPositions = async () => {
   const gridItems = await ghost.findElements(selectors.gridItem);
   const itemLeftMap = {};
 
-  for (let i = 0; i < gridItems.length; i++) {
+  for (let i = 0; i < gridItems.length; i += 1) {
     const itemRect = await gridItems[i].rect();
     itemLeftMap[itemRect.left] = itemLeftMap[itemRect.left] || [];
     itemLeftMap[itemRect.left].push(itemRect);

@@ -1,8 +1,8 @@
 // @flow
 
 import React from 'react';
-import Text from '../Text';
 import { card, md } from 'corkboard';
+import Text from '../Text';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Text');
@@ -47,7 +47,7 @@ You can apply the following to adjust the positioning of text within wrapper ele
   Justify
 </Text>
 \`\`\`
-  `,
+`,
   <div className="container" style={maxWidthStyle}>
     <Text align="left">Left (default)</Text>
     <Text align="right">Right</Text>
@@ -69,13 +69,14 @@ The Text component allows you to specifiy whether you want \`block\` or \`inline
   More inline text.
 </Text>
 \`\`\`
-  `,
+`,
   <div>
     <div className="mb2">
       <Text>Some content in a default block element. (default)</Text>
     </div>
     <div className="mb2">
-      <Text inline>Inline text with the "inline" prop.</Text> <Text inline>More inline text.</Text>
+      <Text inline>Inline text with the &quot;inline&quot; prop.</Text>
+      <Text inline>More inline text.</Text>
     </div>
   </div>);
 
@@ -91,7 +92,7 @@ You can specify which color you want for your text.
   Dark Gray (default)
 </Text>
 \`\`\`
-  `,
+`,
   <div>
     <div className="mb2">
       <Text color="gray">Gray</Text>
@@ -116,7 +117,7 @@ Gestalt provides utility options to deal with text overflow.
   Trunacte
 </Text>
 \`\`\`
-  `,
+`,
   <div style={maxWidthStyle}>
     <div className="mb2">
       <Text>
@@ -207,7 +208,7 @@ attach to the Text component.
 <Text italic>Italic</Text>
 <Text underline>Underline</Text>
 \`\`\`
-  `,
+`,
   <div>
     <div className="mb2">
       <Text bold>Bold</Text>

@@ -5,7 +5,7 @@ export default function Item(props) {
     data,
   } = props;
 
-  let pinStyles = {
+  const pinStyles = {
     border: '1px solid #fff',
     width: '234px',
     background: data.color,
@@ -20,5 +20,5 @@ export default function Item(props) {
 }
 
 Item.propTypes = {
-  data: React.PropTypes.object,
+  data: React.PropTypes.shape({}),
 };

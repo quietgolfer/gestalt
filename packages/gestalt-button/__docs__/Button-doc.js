@@ -1,9 +1,10 @@
 import React from 'react';
-import Button from '../Button';
 import { card, md } from 'corkboard';
+import Button from '../Button';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Button', `In Gestalt we have 3 main kinds of buttons: red, gray, and blue. You are able
+ns('Button', `
+In Gestalt we have 3 main kinds of buttons: red, gray, and blue. You are able
 to specify the color, type, and width of buttons to change their apperance (outlined below).
 \`\`\`js
 Button.propTypes = {
@@ -18,7 +19,8 @@ Button.propTypes = {
 `);
 
 card('Colors',
-md`There are 3 choices for button colors. The default color is \`gray\`.
+md`
+There are 3 choices for button colors. The default color is \`gray\`.
 \`\`\`html
 <Button
   color="red"
@@ -60,7 +62,8 @@ md`There are 3 choices for button colors. The default color is \`gray\`.
   </div>);
 
 card('Widths',
-md`There are two different width options for buttons. The variable width button widths are
+md`
+There are two different width options for buttons. The variable width button widths are
 determined by the width of the text within the button, whereas the full bleed button widths
 expand to the full width of the container in which they are placed. Full bleed buttons also
 contain slightly larger text and have more padding than their variable width counterparts.
@@ -102,7 +105,8 @@ The default \`fullWidth\` is false.
   </div>);
 
 card('Types',
-md`There are 2 types of buttons: button and submit. Use the \`submit\` type when you do not
+md`
+There are 2 types of buttons: button and submit. Use the \`submit\` type when you do not
 need to specify an \`onClick\` handler. The default type is \`button\`.
 \`\`\`html
 <Button
@@ -118,8 +122,6 @@ need to specify an \`onClick\` handler. The default type is \`button\`.
   type="submit"
 />
 \`\`\`
-
-
 `,
   <div>
     <div className="p2">
@@ -139,7 +141,8 @@ need to specify an \`onClick\` handler. The default type is \`button\`.
   </div>);
 
 card('Disabled',
-md`We also offer support for disabled buttons. The default value for \`disabled\` is false.
+md`
+We also offer support for disabled buttons. The default value for \`disabled\` is false.
 \`\`\`html
 <Button
   disabled

@@ -69,12 +69,12 @@ WithLayout.propTypes = {
   /**
    * Item renderer data.
    */
-  data: React.PropTypes.object,
+  data: React.PropTypes.shape({}),
 
   /**
    * Change this value to invalidate render cache.
    */
-  invalidateCacheKey: React.PropTypes.any,
+  invalidateCacheKey: React.PropTypes.string,
 
   /**
    * Whether or not we are ready to measure the layout of the children.

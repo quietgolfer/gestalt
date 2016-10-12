@@ -28,7 +28,7 @@ const Item = (props) => {
 
 Item.propTypes = {
   columnWidth: React.PropTypes.number,
-  data: React.PropTypes.object,
+  data: React.PropTypes.shape({}),
 };
 
 export default Item;

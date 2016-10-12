@@ -22,14 +22,14 @@ describe('ClassicGrid > Collage Layout', () => {
     // Record the left position of all items.
     const itemLeftMap = {};
 
-    for (let i = 0; i < gridItems.length; i++) {
+    for (let i = 0; i < gridItems.length; i += 1) {
       const itemRect = await gridItems[i].rect();
       itemLeftMap[itemRect.left] = itemLeftMap[itemRect.left] || [];
       itemLeftMap[itemRect.left].push(itemRect);
     }
 
     assert.equal(Object.keys(itemLeftMap).length, 2, 'There are two columns of pins.');
-    for (let i = 0; i < itemLeftMap.length; i++) {
+    for (let i = 0; i < itemLeftMap.length; i += 1) {
       assert.ok(itemLeftMap[i].length >= 2, 'there are at least two items in each column');
     }
   });

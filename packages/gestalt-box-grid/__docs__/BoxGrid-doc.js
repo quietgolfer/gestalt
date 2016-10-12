@@ -1,6 +1,6 @@
 import React from 'react';
-import ExampleGrid from './ExampleGrid';
 import { card, md } from 'corkboard';
+import ExampleGrid from './ExampleGrid';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Grid | BoxGrid');
@@ -17,17 +17,17 @@ This component is currently in testing and it may change drastically in the futu
 
 card('PropTypes',
   md`
-  \`\`\`js
-  BoxGrid.propTypes = {
-    comp: React.PropTypes.func, /* component to render */
-    items: React.PropTypes.array, /* objects to display in grid */
-    loadItems: React.PropTypes.func, /* callback when user scrolls and we need to load more items */
-    maxItemWidth: React.PropTypes.number, /* default: 300 */
-    minItemWidth: React.PropTypes.number, /* default: 236 */
-    scrollContainer: React.PropTypes.object, /* default: window */
-  };
-  \`\`\`
-  `);
+\`\`\`js
+BoxGrid.propTypes = {
+  comp: React.PropTypes.func, /* component to render */
+  items: React.PropTypes.array, /* objects to display in grid */
+  loadItems: React.PropTypes.func, /* callback when user scrolls and we need to load more items */
+  maxItemWidth: React.PropTypes.number, /* default: 300 */
+  minItemWidth: React.PropTypes.number, /* default: 236 */
+  scrollContainer: React.PropTypes.shape({}), /* default: window */
+};
+\`\`\`
+`);
 
 card('Fluid width container',
   <div>

@@ -20,7 +20,7 @@ describe('FlexibleGrid > Parent Sizing', () => {
     // Hard-coded in the ExampleGrid component.
     const EXPECTED_LEFT_MARGIN = 200;
 
-    for (let i = 0; i < gridItems.length; i++) {
+    for (let i = 0; i < gridItems.length; i += 1) {
       const itemRect = await gridItems[i].rect();
       assert.ok(itemRect.left >= EXPECTED_LEFT_MARGIN);
     }

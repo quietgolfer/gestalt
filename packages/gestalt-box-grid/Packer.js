@@ -3,7 +3,7 @@ export default class BoxPacker {
     this.colConfig = colConfig;
 
     this.columns = [];
-    for (let i = 0; i < this.colConfig.colCount; i++) {
+    for (let i = 0; i < this.colConfig.colCount; i += 1) {
       this.columns[i] = this.columns[i] || [];
       this.columns[i].push({
         startX: this.colConfig.itemWidth * i,
@@ -17,7 +17,7 @@ export default class BoxPacker {
    * Splits all given slots after an item has been inserted into it.
    */
   splitAllSlots(usedSlots, insertedItemHeight) {
-    for (let i = 0; i < usedSlots.length; i++) {
+    for (let i = 0; i < usedSlots.length; i += 1) {
       const [slotColIdx, slotItemIdx, slotItemOffset] = usedSlots[i];
 
       const thisSlot = this.columns[slotColIdx][slotItemIdx];
@@ -55,8 +55,8 @@ export default class BoxPacker {
     let currLowestItem = null;
     let lowestItems = [];
 
-    for (let i = 0; i < this.columns.length; i++) {
-      for (let j = 0; j < this.columns[i].length; j++) {
+    for (let i = 0; i < this.columns.length; i += 1) {
+      for (let j = 0; j < this.columns[i].length; j += 1) {
         const currItem = this.columns[i][j];
         if (currItem.startY > searchFromHeight &&
           (lowestItems.length === 0 || currItem.startY <= currLowestItem.startY)) {
@@ -72,7 +72,7 @@ export default class BoxPacker {
   }
 
   columnHasSlotAt(colIdx, startFrom, requiredHeight) {
-    for (let i = 0; i < this.columns[colIdx].length; i++) {
+    for (let i = 0; i < this.columns[colIdx].length; i += 1) {
       const item = this.columns[colIdx][i];
       if (item.startY <= startFrom &&
         (item.endY === null || item.endY >= startFrom + requiredHeight)) {
@@ -91,11 +91,11 @@ export default class BoxPacker {
       return null;
     }
 
-    for (let i = columnIdx; i < columnIdx + colSpan; i++) {
+    for (let i = columnIdx; i < columnIdx + colSpan; i += 1) {
       const itemSlotIdx = this.columnHasSlotAt(i, item.startY + itemSlotOffset, itemHeight);
       if (itemSlotIdx !== null) {
         const nextItem = this.columns[i][itemSlotIdx];
-        availableSlots.push([i, itemSlotIdx, item.startY + itemSlotOffset - nextItem.startY]);
+        availableSlots.push([i, itemSlotIdx, (item.startY + itemSlotOffset) - nextItem.startY]);
       }
     }
     return availableSlots;
@@ -116,7 +116,7 @@ export default class BoxPacker {
       // If we can't find the item, just stick it in the bottom left for now.
       if (lowestItems.length === 0) {
         let tallestItem = 0;
-        for (let i = 1; i < colSpan; i++) {
+        for (let i = 1; i < colSpan; i += 1) {
           const column = this.columns[i];
           const lastItem = column[column.length - 1];
           if (lastItem.startY > tallestItem) {
@@ -133,7 +133,7 @@ export default class BoxPacker {
         itemSlotOffset = tallestItem - this.columns[columnIdx][itemIdx].startY;
       }
 
-      for (let i = 0; i < lowestItems.length; i++) {
+      for (let i = 0; i < lowestItems.length; i += 1) {
         const [colIdx, itemIdx] = lowestItems[i];
         usedSlots = this.findAvailableSlots(colIdx, itemIdx, colSpan, height, itemSlotOffset);
         if (usedSlots && usedSlots.length >= colSpan) {

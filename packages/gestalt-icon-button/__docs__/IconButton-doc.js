@@ -1,12 +1,12 @@
 // @flow
 import React, { PropTypes } from 'react';
-import IconButton from '../IconButton';
 import { card, md } from 'corkboard';
+import IconButton from '../IconButton';
 import { ns } from '../../../.corkboard/cards';
 
 ns('IconButton', `
-  The IconButton component allows you to
-  define an action with an \`Icon\`.
+The IconButton component allows you to
+define an action with an \`Icon\`.
 \`\`\`js
 IconButton.propTypes = {
   icon: PropTypes.string.isRequired,
@@ -45,7 +45,8 @@ IconButtonExample.propTypes = {
 };
 
 card('Icons',
-md`You can use any icon defined in the <a href="#/Icon">Icon component</a>.
+md`
+You can use any icon defined in the <a href="#/Icon">Icon component</a>.
 \`\`\`html
 <IconButton
   icon="pin"

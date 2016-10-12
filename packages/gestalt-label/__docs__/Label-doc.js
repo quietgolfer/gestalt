@@ -1,15 +1,16 @@
 // @flow
 import React from 'react';
+import { card, md } from 'corkboard';
 import Label from '../Label';
 import Switch from '../../gestalt-switch/Switch';
 import Text from '../../gestalt-text/Text';
-import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Label');
 
 card('PropTypes',
-md`Use the \`Label\` component to make your features more accessible!
+md`
+Use the \`Label\` component to make your features more accessible!
 \`\`\`js
 Label.propTypes = {
   children: PropTypes.node.isRequired,
@@ -33,7 +34,7 @@ To control the toggle, you can click on the Switch itself or the label 'Live exa
 />
 \`\`\`
   `,
-  (atom) => (
+  atom => (
     <div>
       <Label htmlFor="switchExample">
         <Text size="s">Live example</Text>

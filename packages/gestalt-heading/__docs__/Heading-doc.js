@@ -1,8 +1,7 @@
 // @flow
-
 import React from 'react';
-import Heading from '../Heading';
 import { card, md } from 'corkboard';
+import Heading from '../Heading';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Heading',
@@ -22,24 +21,25 @@ Heading.propTypes = {
 );
 
 card('Sizes',
-  md`Comes in a variety of sizes:
-  \`\`\`html
-  <Heading size="xs">
-    {'Heading extra small'}
-  </Heading>
-  <Heading size="s">
-    {'Heading small'}
-  </Heading>
-  <Heading size="m">
-    {'Heading medium'}
-  </Heading>
-  <Heading size="l">
-    {'Heading large'}
-  </Heading>
-  <Heading size="xl">
-    {'Heading extra large'}
-  </Heading>
-  \`\`\`
+  md`
+Comes in a variety of sizes:
+\`\`\`html
+<Heading size="xs">
+  {'Heading extra small'}
+</Heading>
+<Heading size="s">
+  {'Heading small'}
+</Heading>
+<Heading size="m">
+  {'Heading medium'}
+</Heading>
+<Heading size="l">
+  {'Heading large'}
+</Heading>
+<Heading size="xl">
+  {'Heading extra large'}
+</Heading>
+\`\`\`
   `,
   <div>
     <Heading size="xs">{'Heading extra small'}</Heading>
@@ -70,22 +70,23 @@ card('Sizes',
   </div>);
 
 card('Colors',
-  md`And a variety of colors:
-  \`\`\`html
-  <Heading color="white">
-    {'White'}
-  </Heading>
-  <Heading>
-    {'Dark gray (default)'}
-  </Heading>
-  <Heading color="gray">
-    {'Gray'}
-  </Heading>
-  <Heading color="blue">
-    {'Blue'}
-  </Heading>
-  \`\`\`
-  `,
+  md`
+And a variety of colors:
+\`\`\`html
+<Heading color="white">
+  {'White'}
+</Heading>
+<Heading>
+  {'Dark gray (default)'}
+</Heading>
+<Heading color="gray">
+  {'Gray'}
+</Heading>
+<Heading color="blue">
+  {'Blue'}
+</Heading>
+\`\`\`
+`,
   <div>
     <div style={{ backgroundColor: '#555' }}>
       <Heading color="white" size="m">{'White'}</Heading>

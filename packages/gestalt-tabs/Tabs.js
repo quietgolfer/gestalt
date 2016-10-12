@@ -1,7 +1,7 @@
 import classnames from 'classnames/bind';
 import React, { PropTypes } from 'react';
-import styles from './Tabs.css';
 import Text from 'gestalt-text';
+import styles from './Tabs.css';
 
 const cx = classnames.bind(styles);
 
@@ -20,7 +20,7 @@ export default function Tabs(props) {
           'Tabs--item__isSelected': isSelected,
         });
         return (
-          <button className={cs} key={i} onClick={(e) => onChange && onChange(i, e)} role="tab">
+          <button className={cs} key={i} onClick={e => onChange && onChange(i, e)} role="tab">
             <Text bold color={isSelected ? 'black' : 'gray'} align="center" inline>{item}</Text>
           </button>
         );

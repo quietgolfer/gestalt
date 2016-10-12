@@ -2,6 +2,8 @@
 /* global expect */
 /* global jest */
 /* global it */
+
+/* eslint import/imports-first: 0 */
 jest.unmock('../Packer');
 
 import Packer from '../Packer';

@@ -1,12 +1,12 @@
-import FlexibleGrid from '../FlexibleGrid';
 import React from 'react';
+import FlexibleGrid from '../FlexibleGrid';
 
 function Item(props) {
   const {
     data,
   } = props;
 
-  let pinStyles = {
+  const pinStyles = {
     background: data.color,
     height: data.height,
   };
@@ -19,22 +19,22 @@ function Item(props) {
 }
 
 Item.propTypes = {
-  data: React.PropTypes.object,
+  data: React.PropTypes.shape({}),
 };
 
 
 function getRandomColor() {
   const letters = '0123456789ABCDEF'.split('');
   let color = '#';
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i += 1) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
 }
 
-const getPins = () => new Promise(resolve => {
+const getPins = () => new Promise((resolve) => {
   const pins = [];
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 8; i += 1) {
     pins.push({
       name: `foo ${i}`,
       height: Math.floor(Math.random() * 50) + 150,
@@ -54,7 +54,7 @@ export default class CollageGrid extends React.Component {
   }
 
   componentDidMount() {
-    getPins().then(startPins => {
+    getPins().then((startPins) => {
       this.setState({
         pins: startPins,
       });

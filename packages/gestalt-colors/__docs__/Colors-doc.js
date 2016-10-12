@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
-import colors from '../Colors.css';
 import { card, md } from 'corkboard';
+import colors from '../Colors.css';
 import { ns, stylesTable } from '../../../.corkboard/cards';
 
 ns('Colors');
@@ -33,7 +33,8 @@ Swatch.propTypes = {
 };
 
 card('Primary',
-  md`The BRIO color system relies on a primary neutral palette of grays and white,
+  md`
+The BRIO color system relies on a primary neutral palette of grays and white,
 with chief contrast provided by Pinterest's corporate identity red plus Commerce
 blue; red and blue buttons are used sparingly in order to draw attention. A
 limited set of less saturated colors: green and yellow are used consistently

@@ -46,7 +46,7 @@ Adds those pretty lines that everybody likes.
 <div class="border-left">border-left</div>
 <div class="no-border">no-border</div>
 \`\`\`
- `,
+`,
   <div className="flex mxn1 justify-center flex-wrap">
     {borderLines.map((border, i) =>
       <div className="mx1 col-3 mb2" key={i}>

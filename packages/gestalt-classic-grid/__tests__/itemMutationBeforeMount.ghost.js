@@ -27,7 +27,7 @@ describe('ClassicGrid > Item Mutation', () => {
     });
 
     const staticItems = await ghost.findElements(selectors.staticItem);
-    for (let i = 0; i < staticItems.length; i++) {
+    for (let i = 0; i < staticItems.length; i += 1) {
       const itemRect = await staticItems[i].rect();
       staticMeasurements.push(itemRect);
     }
@@ -41,7 +41,7 @@ describe('ClassicGrid > Item Mutation', () => {
 
   it('the top value should not change after a server hydration.', async () => {
     const hydratedItems = await ghost.findElements(selectors.gridItem);
-    for (let i = 0; i < staticMeasurements.length; i++) {
+    for (let i = 0; i < staticMeasurements.length; i += 1) {
       const hydratedItemRect = await hydratedItems[i].rect();
       assert.equal(staticMeasurements[i].height, hydratedItemRect.height);
       assert.equal(hydratedItemRect.top, 0);

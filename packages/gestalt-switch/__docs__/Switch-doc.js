@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
+import { card, md } from 'corkboard';
 import Label from '../../gestalt-label/Label';
 import Switch from '../Switch';
 import Text from '../../gestalt-text/Text';
-import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
 ns(
@@ -21,7 +21,7 @@ Switch.propTypes = {
 };
 \`\`\`
 `,
-  (atom) => (
+  atom => (
     <div className="flex mxn1">
       <div className="p1">
         <Switch
@@ -54,7 +54,7 @@ your component accessible.
 />
 \`\`\`
   `,
-  (atom) => (
+  atom => (
     <div>
       <Label htmlFor="switchExample">
         <Text size="s">Live example</Text>
