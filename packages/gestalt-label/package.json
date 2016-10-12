@@ -1,6 +1,6 @@
 {
   "name": "gestalt-label",
-  "version": "0.1.15",
+  "version": "0.1.17",
   "main": "./Label.js",
   "dependencies": {
     "classnames": "^2.2.5",

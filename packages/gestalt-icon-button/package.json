@@ -1,14 +1,14 @@
 {
   "name": "gestalt-icon-button",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "main": "./Icon.js",
   "dependencies": {
     "classnames": "^2.2.5",
-    "gestalt-icon": "^0.1.16",
+    "gestalt-icon": "^0.1.17",
     "gestalt-typography": "^0.1.15",
-    "gestalt-layout": "^0.1.15",
-    "gestalt-borders": "^0.1.15",
-    "gestalt-whitespace": "^0.1.15",
+    "gestalt-layout": "^0.1.17",
+    "gestalt-borders": "^0.1.17",
+    "gestalt-whitespace": "^0.1.17",
     "gestalt-cursor": "^0.1.15"
   }
 }
