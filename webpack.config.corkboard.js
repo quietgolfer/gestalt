@@ -20,6 +20,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/',
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   node: {
     // postcss needs to strip this out to compile clientside
     fs: 'empty',
