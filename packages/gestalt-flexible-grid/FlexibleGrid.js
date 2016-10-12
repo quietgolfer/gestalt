@@ -155,9 +155,6 @@ export default class FlexibleGrid extends Component {
       this.setState({
         // Recalculate width with new col count.
         gridWidth,
-        // Reset the height to 0.
-        // It will be re-calculated as we insert items into the grid.
-        containerHeight: 0,
       });
       this.forceUpdate();
       return true;

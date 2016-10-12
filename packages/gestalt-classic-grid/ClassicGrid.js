@@ -153,9 +153,6 @@ export default class ClassicGrid extends Component {
       this.setState({
         // Recalculate width with new col count.
         containerWidth: this.determineWidth(),
-        // Reset the height to 0.
-        // It will be re-calculated as we insert items into the grid.
-        containerHeight: 0,
       });
       this.forceUpdate();
       return true;
