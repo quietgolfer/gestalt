@@ -1,10 +1,10 @@
 {
   "name": "gestalt-icon-button",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "main": "./Icon.js",
   "dependencies": {
     "classnames": "^2.2.5",
-    "gestalt-icon": "^0.1.15",
+    "gestalt-icon": "^0.1.16",
     "gestalt-typography": "^0.1.15",
     "gestalt-layout": "^0.1.15",
     "gestalt-borders": "^0.1.15",
