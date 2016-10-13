@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import A11YCheck from './A11YCheck';
 import BoxExampleGrid from './BoxExampleGrid';
 import ClassicExampleGrid from './ClassicExampleGrid';
 import FlexibleExampleGrid from './FlexibleExampleGrid';
@@ -93,6 +94,16 @@ app.get('/boxpacking', (req, res) => {
     componentTest: 'BoxGrid',
     reactOutput: content,
     initialPins: JSON.stringify(boxPackingInitialPins),
+  });
+});
+
+// Endpoint for a11y tests
+app.get('/a11y/:component', (req, res) => {
+  const content = ReactDOMServer.renderToString(<A11YCheck component={req.params.component} />);
+  res.render('index.ejs', {
+    componentTest: 'A11YCheck',
+    reactOutput: content,
+    initialPins: '',
   });
 });
 

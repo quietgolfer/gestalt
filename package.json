@@ -58,6 +58,7 @@
     "postcss-url": "^5.1.2",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^15.1.0",
+    "react-axe": "^2.1.0",
     "react-hot-loader": "^1.3.0",
     "slimerjs-core": "^0.11.5",
     "style-loader": "^0.13.0",
