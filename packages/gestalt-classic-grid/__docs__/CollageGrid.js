@@ -1,6 +1,6 @@
 import React from 'react';
+import stringToColor from 'gestalt-string-to-color';
 import ClassicGrid from '../ClassicGrid';
-
 
 function Item(props) {
   const {
@@ -25,15 +25,7 @@ Item.propTypes = {
   data: React.PropTypes.shape({}),
 };
 
-
-function getRandomColor() {
-  const letters = '0123456789ABCDEF'.split('');
-  let color = '#';
-  for (let i = 0; i < 6; i += 1) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
 const getPins = () => new Promise((resolve) => {
   const pins = [];

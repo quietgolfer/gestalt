@@ -1,15 +1,9 @@
 import React from 'react';
 import BoxGrid from '../packages/gestalt-box-grid/BoxGrid';
 import Item from '../packages/gestalt-box-grid/__docs__/Item';
+import stringToColor from '../packages/gestalt-string-to-color';
 
-function getRandomColor() {
-  const letters = '0123456789ABCDEF'.split('');
-  let color = '#';
-  for (let i = 0; i < 6; i += 1) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
 const getPins = (meta = {}) => {
   const from = meta.from || 0;

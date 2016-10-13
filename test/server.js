@@ -6,6 +6,7 @@ import ClassicExampleGrid from './ClassicExampleGrid';
 import FlexibleExampleGrid from './FlexibleExampleGrid';
 import classicGridServerStyles from './classicGridServerStyles';
 import flexibleGridServerStyles from './flexibleGridServerStyles';
+import stringToColor from '../packages/gestalt-string-to-color';
 
 const express = require('express');
 
@@ -13,14 +14,7 @@ const app = express();
 
 app.use(express.static('views'));
 
-function getRandomColor() {
-  const letters = '0123456789ABCDEF'.split('');
-  let color = '#';
-  for (let i = 0; i < 6; i += 1) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
 const initialPins = [];
 for (let i = 0; i < 20; i += 1) {

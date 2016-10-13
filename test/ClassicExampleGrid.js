@@ -1,15 +1,9 @@
 import React from 'react';
 import ClassicGrid from '../packages/gestalt-classic-grid/ClassicGrid';
 import Item from '../packages/gestalt-classic-grid/__docs__/Item';
+import stringToColor from '../packages/gestalt-string-to-color';
 
-function getRandomColor() {
-  const letters = '0123456789ABCDEF'.split('');
-  let color = '#';
-  for (let i = 0; i < 6; i += 1) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
+const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
 const getPins = (meta = {}, collage) => {
   const from = meta.from || 0;
