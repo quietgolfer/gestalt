@@ -1,7 +1,7 @@
 /* eslint-env node */
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
-const breakpoints = require('./packages/pinterest-gestalt/breakpoints');
+const breakpoints = require('./packages/gestalt-media-query/breakpoints');
 const postcssCssNext = require('postcss-cssnext');
 const postcssImport = require('postcss-import');
 

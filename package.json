@@ -70,7 +70,8 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "react-responsive": "1.1.5"
   },
   "jest": {
     "automock": true,

@@ -1,0 +1,5 @@
+{
+  "name": "gestalt-media-query",
+  "main": "./MediaQuery.js",
+  "version": "0.1.17"
+}

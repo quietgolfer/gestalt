@@ -5,7 +5,7 @@ const postcssReporter = require('postcss-reporter');
 const postcssUrl = require('postcss-url');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const breakpoints = require('./packages/pinterest-gestalt/breakpoints');
+const breakpoints = require('./packages/gestalt-media-query/breakpoints');
 
 module.exports = {
   devtool: 'source-map',
