@@ -27,7 +27,7 @@ function DefaultAvatar(props: DefaultAvatarProps) {
 
   return (
     <div aria-label={name} className={classes}>
-      <div className={noImageClasses} size={size}>{firstInitial}</div>
+      <div className={noImageClasses}>{firstInitial}</div>
     </div>
   );
 }
@@ -51,7 +51,9 @@ export default function Avatar(props: AvatarProps) {
 
   if (!src) {
     return (
-      <DefaultAvatar initial={initial} name={name} size={size} />
+      <div className={cx(size)}>
+        <DefaultAvatar initial={initial} name={name} size={size} />
+      </div>
     );
   }
 

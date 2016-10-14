@@ -1,0 +1,10 @@
+{
+  "name": "gestalt-group-avatar",
+  "version": "0.1.17",
+  "main": "./Avatar.js",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "^15.3.1",
+    "gestalt-flexible-grid": "^0.1.17"
+  }
+}
