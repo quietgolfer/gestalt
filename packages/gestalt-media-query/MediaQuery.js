@@ -4,7 +4,7 @@ import ReactResponive from 'react-responsive';
 import breakpoints from './breakpoints';
 
 type Props = {
-  children: Element<any>,
+  children?: Element<any>,
   size: 'sm' | 'md' | 'lg',
 }
 
