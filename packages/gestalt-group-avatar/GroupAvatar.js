@@ -64,7 +64,7 @@ function DefaultAvatar(props: DefaultAvatarProps) {
 
   const initialStyles = {
     fontSize,
-    lineHeight: height,
+    lineHeight: `${height}px`,
     marginLeft,
     textAlign,
   };
