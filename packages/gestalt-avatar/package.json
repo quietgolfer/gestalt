@@ -3,8 +3,8 @@
   "version": "0.1.18",
   "main": "./Avatar.js",
   "dependencies": {
-    "classnames": "^2.2.5",
     "react": "^15.3.1",
+    "classnames": "^2.2.5",
     "gestalt-heading": "^0.1.18",
     "gestalt-image": "^0.1.18",
     "gestalt-mask": "^0.1.18",

@@ -1,11 +1,20 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import Avatar from '../gestalt-avatar';
 import classnames from 'classnames/bind';
-import FlexibleGrid from '../gestalt-flexible-grid';
-import Image from '../gestalt-image';
+import Avatar from 'gestalt-avatar';
+import FlexibleGrid from 'gestalt-flexible-grid';
+import Image from 'gestalt-image';
 
-import styles from '../pinterest-gestalt/styles.css';
+import colorStyles from 'gestalt-colors/Colors.css';
+import typographyStyles from 'gestalt-typography/Typography.css';
+import layoutStyles from 'gestalt-layout/Layout.css';
+
+const styles = {
+  ...colorStyles,
+  ...typographyStyles,
+  ...layoutStyles,
+};
+
 const cx = classnames.bind(styles);
 
 const GUTTER_WIDTH = 2;
@@ -26,11 +35,18 @@ const DEFAULT_AVATAR_TEXT_SIZES = {
   xl: 106,
 };
 
+/*
+  Temporarily disable unused-props rule until the following issues are addressed:
+  https://github.com/yannickcr/eslint-plugin-react/issues/819
+  https://github.com/yannickcr/eslint-plugin-react/issues/861
+*/
+/* eslint-disable react/no-unused-prop-types */
 type CollabProps = {
   initial?: string,
   name: string,
   src?: string,
 };
+/* eslint-enable react/no-unused-prop-types */
 
 type GridItemPropsType = {
   data: CollabProps,
@@ -154,7 +170,6 @@ export default class GroupAvatar extends Component {
     );
   }
 
-
   render() {
     const {
       collaborators,
@@ -201,6 +216,7 @@ export default class GroupAvatar extends Component {
   }
 }
 
+/* eslint-disable react/no-unused-prop-types */
 GroupAvatar.propTypes = {
   collaborators: PropTypes.arrayOf(PropTypes.shape({
     initial: PropTypes.string,
@@ -211,3 +227,4 @@ GroupAvatar.propTypes = {
     'xs', 's', 'm', 'l', 'xl',
   ]).isRequired,
 };
+/* eslint-enable react/no-unused-prop-types */

@@ -1,9 +1,9 @@
 // @flow
 
 import React from 'react';
+import { card, md } from 'corkboard';
 import GroupAvatar from '../GroupAvatar';
 import Text from '../../gestalt-text/Text';
-import { card, md } from 'corkboard';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Group Avatar',
