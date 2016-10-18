@@ -1,4 +1,5 @@
 {
   "name": "gestalt-cursor",
-  "version": "0.1.15"
+  "version": "0.1.15",
+  "main": "./Cursor.css"
 }

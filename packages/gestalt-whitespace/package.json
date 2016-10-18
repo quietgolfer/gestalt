@@ -1,4 +1,5 @@
 {
   "name": "gestalt-whitespace",
-  "version": "0.1.17"
+  "version": "0.1.17",
+  "main": "./Whitespace.css"
 }
