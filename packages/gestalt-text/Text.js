@@ -2,10 +2,12 @@
 
 import React, { Element, PropTypes } from 'react';
 import classnames from 'classnames/bind';
+import colorStyles from 'gestalt-colors/Colors.css';
 import typographyStyles from 'gestalt-typography/Typography.css';
 import layoutStyles from 'gestalt-layout/Layout.css';
 
 const styles = {
+  ...colorStyles,
   ...typographyStyles,
   ...layoutStyles,
 };

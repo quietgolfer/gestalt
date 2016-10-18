@@ -5,6 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
+    "gestalt-colors": "^0.1.18",
     "gestalt-typography": "^0.1.18",
     "gestalt-layout": "^0.1.18"
   }
