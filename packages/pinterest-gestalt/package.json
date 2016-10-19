@@ -1,8 +1,9 @@
 {
   "name": "pinterest-gestalt",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "dependencies": {
     "classnames": "^2.2.5",
+    "gestalt-avatar": "^0.1.19",
     "gestalt-borders": "^0.1.18",
     "gestalt-box-grid": "^0.1.18",
     "gestalt-button": "^0.1.18",
@@ -12,13 +13,16 @@
     "gestalt-cursor": "^0.1.18",
     "gestalt-divider": "^0.1.18",
     "gestalt-flexible-grid": "^0.1.18",
+    "gestalt-group-avatar": "^0.1.19",
     "gestalt-heading": "^0.1.18",
     "gestalt-icon": "^0.1.18",
     "gestalt-image": "^0.1.18",
+    "gestalt-label": "^0.1.18",
     "gestalt-layout": "^0.1.18",
     "gestalt-mask": "^0.1.18",
+    "gestalt-media-query": "^0.1.18",
     "gestalt-switch": "^0.1.18",
-    "gestalt-text": "^0.1.18",
+    "gestalt-text": "^0.1.19",
     "gestalt-typography": "^0.1.18",
     "gestalt-whitespace": "^0.1.18",
     "react": "^15.3.1"

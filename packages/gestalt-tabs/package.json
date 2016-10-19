@@ -1,11 +1,11 @@
 {
   "name": "gestalt-tabs",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "main": "./Tabs.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-text": "^0.1.18",
+    "gestalt-text": "^0.1.19",
     "gestalt-colors": "^0.1.18",
     "gestalt-layout": "^0.1.18",
     "gestalt-borders": "^0.1.18",

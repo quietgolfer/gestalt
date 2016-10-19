@@ -82,7 +82,7 @@ const imageSrc = 'https://s-media-cache-ak0.pinimg.com/avatars/long_1468294555_4
 card('Sizes',
   md`
 There are 5 sizes you can choose for an \`Avatar\`. Avatar's are responsive so the image
-size will scale to appropriately match the size of your screen
+size will scale to appropriately match the size of your screen.
 \`\`\`html
 <Avatar
   size="m"

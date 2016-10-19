@@ -72,7 +72,7 @@ function GroupAvatarEx(props: *) {
 
 card('Sizes',
 md`There are 5 different sizes of Group Avatars. Unlike [Avatar](#/Avatar),
-these are not responsive.If a \`collaborator\` is missing an image, their
+these are not responsive. If a \`collaborator\` is missing an image, their
 \`initial\` or first character of their \`name\` is used as a placeholder.`,
   <div>
     {sizes.map((size, idx) =>
