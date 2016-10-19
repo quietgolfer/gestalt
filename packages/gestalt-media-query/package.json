@@ -1,7 +1,7 @@
 {
   "name": "gestalt-media-query",
   "main": "./MediaQuery.js",
-  "version": "0.1.18",
+  "version": "0.1.20",
   "dependencies": {
     "react": "^15.3.1",
     "react-responsive": "1.1.5"
