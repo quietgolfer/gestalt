@@ -11,7 +11,7 @@ const getPins = (meta = {}) => {
     const pins = [];
     for (let i = from; i < from + 20; i += 1) {
       pins.push({
-        name: `foo ${i}`,
+        name: `Item: ${i}`,
         height: Math.floor(Math.random() * 200) + 300,
         color: getRandomColor(),
       });

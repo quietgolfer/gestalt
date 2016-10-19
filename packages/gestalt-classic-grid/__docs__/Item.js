@@ -6,15 +6,24 @@ export default function Item(props) {
   } = props;
 
   const pinStyles = {
-    border: '1px solid #fff',
+    padding: 1,
     width: '234px',
-    background: data.color,
     height: `${data.height}px`,
+    boxSizing: 'border-box',
+  };
+
+  const contentStyles = {
+    padding: 10,
+    height: '100%',
+    boxSizing: 'border-box',
+    background: data.color,
   };
 
   return (
     <div style={pinStyles}>
-      {data.name}
+      <div style={contentStyles}>
+        {data.name}
+      </div>
     </div>
   );
 }

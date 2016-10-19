@@ -12,6 +12,8 @@ function Item(props) {
     width: '195px',
     background: data.color,
     height: data.height,
+    padding: 10,
+    boxSizing: 'border-box',
   };
 
   return (
@@ -31,7 +33,7 @@ const getPins = () => new Promise((resolve) => {
   const pins = [];
   for (let i = 0; i < 5; i += 1) {
     pins.push({
-      name: `foo ${i}`,
+      name: `Item: ${i}`,
       height: Math.floor(Math.random() * 50) + 50,
       color: getRandomColor(),
     });

@@ -30,7 +30,7 @@ BoxGrid.propTypes = {
 `);
 
 card('Fluid width container',
-  <div>
+  <div className="dark-gray">
     <ExampleGrid />
   </div>,
   {},

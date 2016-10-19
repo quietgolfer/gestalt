@@ -6,22 +6,31 @@ const Item = (props) => {
     data,
   } = props;
 
-  let pinStyles = {};
+  let containerStyles = {};
+  let contentStyles = {};
 
   if (columnWidth) {
-    pinStyles = {
-      border: '1px solid #fff',
+    containerStyles = {
+      padding: 1,
       width: columnWidth * data.colSpan,
-      background: data.color,
       height: `${data.height}px`,
+      boxSizing: 'border-box',
+    };
+    contentStyles = {
+      padding: 10,
+      height: '100%',
+      boxSizing: 'border-box',
+      background: data.color,
     };
   }
 
   return (
-    <div data-cols={data.colSpan} style={pinStyles}>
-      Item: {data.name}<br />
-      Columns: {data.colSpan}<br />
-      ItemWidth: {columnWidth}
+    <div data-cols={data.colSpan} style={containerStyles}>
+      <div style={contentStyles}>
+        Item: {data.name}<br />
+        Columns: {data.colSpan}<br />
+        Column Width: {columnWidth}
+      </div>
     </div>
   );
 };

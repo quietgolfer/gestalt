@@ -24,14 +24,16 @@ ClassicGrid.propTypes = {
 
 card('Fixed width',
   md`With a set number of items, used as a collage component.`,
-  <div style={{ width: 400 }}>
+  <div className="dark-gray" style={{ width: 400 }}>
     <CollageGrid />
   </div>
 );
 
 card(
   'Fluid width',
-  <ExampleGrid />,
+    <div className="dark-gray">
+      <ExampleGrid />
+    </div>,
   {},
   { stretch: true },
 );
