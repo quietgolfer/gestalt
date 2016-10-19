@@ -7,6 +7,8 @@
     "lint:stylelint": "stylelint packages/**/*.css",
     "lint": "npm run lint:eslint ; npm run lint:stylelint",
     "build_docs": "webpack --config webpack.config.corkboard.js --colors --progress --optimize-minimize --output-public-path '/gestalt' --output-path docs",
+    "release:publish": "lerna exec npm publish --registry http://sinopia.ec2.pin220.com:8080",
+    "release:version": "lerna publish --skip-npm --force-publish=*",
     "start": "corkboard src --config webpack.config.corkboard.js",
     "test:integration": "./run_integration_tests",
     "test": "jest && npm run test:integration"
