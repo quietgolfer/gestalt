@@ -54,11 +54,11 @@ describe('BoxGrid > Resize', () => {
     const expectedColumns = Math.floor(GRID_WIDTH / PIN_SIZE);
     assert.equal(await countColumns(), expectedColumns, `expected ${expectedColumns} columns`);
 
-    await triggerReisze(GRID_WIDTH - PIN_SIZE);
+    await triggerReisze(GRID_WIDTH - (PIN_SIZE * 2));
 
     // Wait for the resize debounce to complete.
     await ghost.wait(RESIZE_DEBOUNCE);
-    assert.equal(await countColumns(), expectedColumns - 1,
-      `expected ${expectedColumns - 1} columns after resize`);
+    assert.notEqual(await countColumns(), expectedColumns,
+      'expected column count to change after resize');
   });
 });
