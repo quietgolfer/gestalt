@@ -31,9 +31,9 @@ card('Fixed width',
 
 card(
   'Fluid width',
-    <div className="dark-gray">
-      <ExampleGrid />
-    </div>,
+  <div className="dark-gray">
+    <ExampleGrid />
+  </div>,
   {},
   { stretch: true },
 );

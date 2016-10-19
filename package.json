@@ -11,7 +11,7 @@
     "release:version": "lerna publish --skip-npm --force-publish=*",
     "start": "corkboard src --config webpack.config.corkboard.js",
     "test:integration": "./run_integration_tests",
-    "test": "jest && npm run test:integration"
+    "test": "npm run lint:stylelint && npm run lint:eslint && npm run flow && npm run test:integration && jest"
   },
   "author": "Pinterest",
   "license": "MIT",
