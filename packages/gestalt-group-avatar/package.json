@@ -1,7 +1,7 @@
 {
   "name": "gestalt-group-avatar",
   "version": "0.1.19",
-  "main": "./Avatar.js",
+  "main": "./GroupAvatar.js",
   "dependencies": {
     "react": "^15.3.1",
     "classnames": "^2.2.5",
