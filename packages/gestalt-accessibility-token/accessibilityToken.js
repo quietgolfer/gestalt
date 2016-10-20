@@ -1,3 +1,4 @@
+// @flow
 export type AccessibilityToken = string;
 
 let idCounter = 0;

@@ -1,5 +1,4 @@
 // @flow
-
 import React, { Element, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Mask.css';

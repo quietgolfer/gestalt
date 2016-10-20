@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from 'react';
 import { card, md } from 'corkboard';
 import Image from '../Image';
@@ -48,6 +49,11 @@ class PreloadImageContext extends Component {
     return {
       preloadingSupported: this.props.canPreloadImages,
     };
+  }
+
+  props: {
+    canPreloadImages: boolean,
+    children?: React.Element<any>,
   }
 
   render() {

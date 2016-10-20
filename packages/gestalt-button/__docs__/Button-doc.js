@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { card, md } from 'corkboard';
 import Button from '../Button';
@@ -126,7 +127,7 @@ need to specify an \`onClick\` handler. The default type is \`button\`.
   <div>
     <div className="p2">
       <Button
-        onClick={() => null}
+        onClick={() => undefined}
         text="Clear"
         type="button"
       />

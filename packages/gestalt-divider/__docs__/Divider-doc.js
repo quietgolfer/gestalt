@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { card, md, ns } from 'corkboard';
 import Divider from '../Divider';

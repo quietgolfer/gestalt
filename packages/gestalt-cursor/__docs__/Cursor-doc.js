@@ -1,3 +1,4 @@
+// @flow
 import { card } from 'corkboard';
 import React from 'react';
 import styles from '../Cursor.css';

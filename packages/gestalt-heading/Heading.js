@@ -1,5 +1,4 @@
 // @flow
-
 import { createElement, Element, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import colorStyles from 'gestalt-colors/Colors.css';

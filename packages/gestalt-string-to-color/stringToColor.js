@@ -1,3 +1,4 @@
+// @flow
 // Generate a semi-random color based on
 // a string from a specified list of colors
 // e.g. 'Julia' returns '#a9ba95'
@@ -16,7 +17,7 @@ export const colorList = [
   'd3b3ab', 'bf9d94', 'caa89e', 'd19e90', 'd4b6ae',
   'ceaba1', 'dbb6ab', 'e8bcaf', 'e6a299', 'c99e92'];
 
-export default function stringToColor(input = '') {
+export default function stringToColor(input:string = '') {
   if (input === '') {
     return '#efefef';
   }

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import stringToColor from 'gestalt-string-to-color';
 import ClassicGrid from '../ClassicGrid';
@@ -24,11 +25,19 @@ const getPins = (meta = {}) => {
 
 export default class ExampleGrid extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       pins: [],
     };
+  }
+
+  state: {
+    pins: Array<{
+      color: string,
+      height: number,
+      name: string
+    }>
   }
 
   componentDidMount() {
@@ -39,7 +48,9 @@ export default class ExampleGrid extends React.Component {
     });
   }
 
-  loadItems = (meta) => {
+  loadItems = (meta:{
+    from: number
+  }) => {
     getPins(meta)
       .then((newPins) => {
         this.setState({
