@@ -1,0 +1,21 @@
+steps:
+  - command: npm run eslint
+    label: ":eslint:"
+    env:
+      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
+  - command: npm run stylelint
+    label: ":stylelint:"
+    env:
+      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
+  - command: npm run flow
+    label: ":flowtype:"
+    env:
+      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
+  - command: npm test
+    label: ":jest:"
+    env:
+      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
+  - command: bash -c "/etc/init.d/xvfb start && npm run ghost"
+    label: ":node: ghost"
+    env:
+      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "ghost"
