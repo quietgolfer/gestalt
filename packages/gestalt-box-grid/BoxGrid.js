@@ -1,12 +1,9 @@
+/* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Packer from './Packer';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
-
-// Buffer of pixels before we load more items when scrolling.
-// TODO: This should by dynamic, based on the size of the container and resource response time.
-const SCROLL_BUFFER = 400;
 
 export default class BoxGrid extends Component {
 
@@ -19,6 +16,7 @@ export default class BoxGrid extends Component {
 
     this.state = {
       containerWidth: '100%',
+      containerHeight: 0,
     };
   }
 
@@ -41,20 +39,29 @@ export default class BoxGrid extends Component {
     });
   }
 
+  componentDidUpdate() {
+    setTimeout(() => {
+      const longestColumn = this.highestColumn();
+      if (this.state.containerHeight !== longestColumn) {
+        this.setState({
+          containerHeight: longestColumn,
+        });
+      }
+
+      // Set the scrollBuffer if we haven't yet.
+      if (!this.scrollBuffer) {
+        const parentNode = ReactDOM.findDOMNode(this).parentNode;
+        this.scrollBuffer = parentNode.clientHeight;
+      }
+    });
+  }
+
   /**
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
-  }
-
-  /**
-   * Returns the container height.
-   */
-  getContainerHeight() {
-    const container = this.props.scrollContainer;
-    return container.clientHeight || container.innerHeight;
   }
 
   /**
@@ -110,7 +117,9 @@ export default class BoxGrid extends Component {
     }
 
     /* eslint react/no-find-dom-node: 0 */
-    const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+    const parentNode = ReactDOM.findDOMNode(this).parentNode;
+    const gridWidth = parentNode.clientWidth;
+
     const colCount = Math.floor(gridWidth / this.props.minItemWidth);
     const itemWidth = gridWidth / colCount;
 
@@ -141,6 +150,22 @@ export default class BoxGrid extends Component {
   }
 
   /**
+   * Use the item endY or highest available startY to find the grid height.
+   */
+  highestColumn() {
+    let height = 0;
+    for (let i = 0; i < this.packer.columns.length; i += 1) {
+      const item = this.packer.columns[i][this.packer.columns[i].length - 1];
+      if (item.endY !== null && item.endY > height) {
+        height = item.endY;
+      } else if (item.startY > height) {
+        height = item.startY;
+      }
+    }
+    return height;
+  }
+
+  /**
    * Fetches additional items if needed.
    */
   handleScroll = () => {
@@ -155,18 +180,7 @@ export default class BoxGrid extends Component {
       return;
     }
 
-    // Just find the lowest item to find the height.
-    let height = 0;
-    for (let i = 0; i < this.packer.columns.length; i += 1) {
-      const item = this.packer.columns[i][this.packer.columns[i].length - 1];
-      if (item.endY !== null && item.endY > height) {
-        height = item.endY;
-      } else if (item.startY > height) {
-        height = item.startY;
-      }
-    }
-
-    if (height - this.getScrollPos() - SCROLL_BUFFER < this.getContainerHeight()) {
+    if (this.getScrollPos() + this.scrollBuffer > this.highestColumn()) {
       this.fetchingWith = this.props.items.length;
       this.props.loadItems({
         from: this.props.items.length,
@@ -193,7 +207,7 @@ export default class BoxGrid extends Component {
     return (
       <div
         className={styles.Grid}
-        style={{ width: this.state.containerWidth }}
+        style={{ width: this.state.containerWidth, height: this.state.containerHeight }}
       >
         {this.props.items.map((item, idx) =>
           <WithLayout

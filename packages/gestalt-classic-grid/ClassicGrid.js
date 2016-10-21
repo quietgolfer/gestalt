@@ -1,11 +1,8 @@
+/* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
-
-// Buffer of pixels before we load more items when scrolling.
-// TODO: This should by dynamic, based on the size of the container and resource response time.
-const SCROLL_BUFFER = 400;
 
 export default class ClassicGrid extends Component {
 
@@ -54,6 +51,12 @@ export default class ClassicGrid extends Component {
           containerHeight: longestColumn,
         });
       }
+
+      // Set the scrollBuffer if we haven't yet.
+      if (!this.scrollBuffer) {
+        const parentNode = ReactDOM.findDOMNode(this).parentNode;
+        this.scrollBuffer = parentNode.clientHeight;
+      }
     });
   }
 
@@ -63,14 +66,6 @@ export default class ClassicGrid extends Component {
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
-  }
-
-  /**
-   * Returns the container height.
-   */
-  getContainerHeight() {
-    const container = this.props.scrollContainer;
-    return container.clientHeight || container.innerHeight;
   }
 
   /**
@@ -130,7 +125,9 @@ export default class ClassicGrid extends Component {
 
     const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
     /* eslint react/no-find-dom-node: 0 */
-    const parentWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+    const parentNode = ReactDOM.findDOMNode(this).parentNode;
+    const parentWidth = parentNode.clientWidth;
+
     let newColCount = Math.floor(parentWidth / eachItemWidth);
 
     if (newColCount < this.props.minCols) {
@@ -178,7 +175,7 @@ export default class ClassicGrid extends Component {
     const column = this.shortestColumn();
     const height = this.currColHeights[column];
 
-    if (height - this.getScrollPos() - SCROLL_BUFFER < this.getContainerHeight()) {
+    if (this.getScrollPos() + this.scrollBuffer > height) {
       this.fetchingWith = this.props.items.length;
       this.props.loadItems({
         from: this.props.items.length,
