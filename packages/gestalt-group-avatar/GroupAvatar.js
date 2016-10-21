@@ -1,7 +1,6 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames/bind';
-import Avatar from 'gestalt-avatar';
 import FlexibleGrid from 'gestalt-flexible-grid';
 import Image from 'gestalt-image';
 
@@ -64,13 +63,14 @@ type DefaultAvatarProps = {
   height: number,
   fontSize: number,
   itemIdx: number,
+  numCollabs: number,
 };
 
 function DefaultAvatar(props: DefaultAvatarProps) {
-  const { initial, name, height, fontSize, itemIdx } = props;
+  const { initial, name, height, fontSize, itemIdx, numCollabs } = props;
   const firstInitial = initial || name.charAt(0).toUpperCase();
-  const marginLeft = itemIdx > 0 ? '15%' : '0';
-  const textAlign = itemIdx > 0 ? 'none' : 'center';
+  const marginLeft = itemIdx > 0 && numCollabs !== 2 ? '15%' : '0';
+  const textAlign = itemIdx > 0 && numCollabs !== 2 ? 'none' : 'center';
 
   const initialClasses = cx(
     'antialiased',
@@ -100,7 +100,7 @@ function DefaultAvatar(props: DefaultAvatarProps) {
   );
 }
 
-function getQuarterAvatarStyles(size: string) {
+const getQuarterAvatarStyles = (size: string) => {
   const dimensions = (AVATAR_SIZES[size] - GUTTER_WIDTH) / 2;
 
   return {
@@ -109,9 +109,9 @@ function getQuarterAvatarStyles(size: string) {
     overflow: 'hidden',
     width: dimensions,
   };
-}
+};
 
-function getHalfAvatarStyles(size: string) {
+const getHalfAvatarStyles = (size: string) => {
   const dimensions = AVATAR_SIZES[size];
   const visibleWidth = (dimensions - GUTTER_WIDTH) / 2;
   const leftValue = (visibleWidth - dimensions) / 2;
@@ -122,7 +122,17 @@ function getHalfAvatarStyles(size: string) {
     position: 'relative',
     width: dimensions,
   };
-}
+};
+
+const getFullAvatarStyles = (size: string) => {
+  const dimensions = AVATAR_SIZES[size];
+
+  return {
+    height: dimensions,
+    position: 'relative',
+    width: dimensions,
+  };
+};
 
 export default class GroupAvatar extends Component {
   props: GroupAvatarProps;
@@ -133,10 +143,12 @@ export default class GroupAvatar extends Component {
     const size = this.props.size;
 
     let avatarStyles;
-    if (itemIdx === 0 || numCollabs === 2) {
-      avatarStyles = getHalfAvatarStyles(size);
+    if (numCollabs === 1) {
+      avatarStyles = getFullAvatarStyles(size);
+    } else if (itemIdx === 0 || numCollabs === 2) {
+      avatarStyles = getHalfAvatarStyles(size, itemIdx);
     } else {
-      avatarStyles = getQuarterAvatarStyles(size, itemIdx);
+      avatarStyles = getQuarterAvatarStyles(size);
     }
     const fontSize = DEFAULT_AVATAR_TEXT_SIZES[size] / 2;
     const containerStyles = {
@@ -159,6 +171,7 @@ export default class GroupAvatar extends Component {
       height={avatarStyles.height}
       fontSize={fontSize}
       itemIdx={itemIdx}
+      numCollabs={numCollabs}
     />;
 
     return (
@@ -175,20 +188,6 @@ export default class GroupAvatar extends Component {
       collaborators,
       size = 'm',
     } = this.props;
-    const numCollabs = collaborators.length;
-
-    if (numCollabs === 1) {
-      const data = collaborators[0];
-      return (
-        <Avatar
-          initial={data.initial}
-          name={data.name}
-          size={size}
-          src={data.src}
-          wash
-        />
-      );
-    }
 
     const MAX_AVATAR_DIM = AVATAR_SIZES[size];
     const HALF_AVATAR_DIM = (MAX_AVATAR_DIM - GUTTER_WIDTH) / 2;
@@ -208,7 +207,7 @@ export default class GroupAvatar extends Component {
             comp={this.renderAvatarItem}
             items={collaborators}
             maxItemWidth={MAX_AVATAR_DIM}
-            minItemWidth={HALF_AVATAR_DIM}
+            minItemWidth={collaborators.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
           />
         </div>
       </div>
