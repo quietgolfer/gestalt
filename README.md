@@ -1,5 +1,5 @@
 # Gestalt
-[![Build Status](https://travis-ci.com/pinterest/gestalt.svg?token=yfARxv3oq7ZT3ZbmJWVN&branch=master)](https://travis-ci.com/pinterest/gestalt)
+[![Build status](https://badge.buildkite.com/2c6b6e9f79054095354cc061876e4885f4b9212e1dbebda270.svg&branch=master)](https://buildkite.com/pinterest/gestalt)
 
 ## Development
 
