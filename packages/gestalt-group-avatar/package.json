@@ -1,14 +1,14 @@
 {
   "name": "gestalt-group-avatar",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "main": "./GroupAvatar.js",
   "dependencies": {
     "react": "^15.3.1",
     "classnames": "^2.2.5",
-    "gestalt-colors": "^0.1.20",
-    "gestalt-flexible-grid": "^0.1.20",
-    "gestalt-image": "^0.1.20",
-    "gestalt-layout": "^0.1.20",
-    "gestalt-typography": "^0.1.20"
+    "gestalt-colors": "^0.1.21",
+    "gestalt-flexible-grid": "^0.1.21",
+    "gestalt-image": "^0.1.21",
+    "gestalt-layout": "^0.1.21",
+    "gestalt-typography": "^0.1.21"
   }
 }
