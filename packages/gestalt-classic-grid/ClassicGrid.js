@@ -50,12 +50,8 @@ export default class ClassicGrid extends Component {
         this.setState({
           containerHeight: longestColumn,
         });
-      }
 
-      // Set the scrollBuffer if we haven't yet.
-      if (!this.scrollBuffer) {
-        const parentNode = ReactDOM.findDOMNode(this).parentNode;
-        this.scrollBuffer = parentNode.clientHeight;
+        this.scrollBuffer = this.getContainerHeight();
       }
     });
   }
@@ -66,6 +62,14 @@ export default class ClassicGrid extends Component {
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
+  }
+
+  /**
+   * Returns the container height.
+   */
+  getContainerHeight() {
+    const container = this.props.scrollContainer;
+    return container.clientHeight || container.innerHeight;
   }
 
   /**

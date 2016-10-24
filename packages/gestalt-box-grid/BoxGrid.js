@@ -27,6 +27,7 @@ export default class BoxGrid extends Component {
     // We calculate columns and offset after the component mounts so we can measure our container.
     this.calculateColumns();
     this.reflow();
+    this.scrollBuffer = this.getContainerHeight();
 
     this.boundResizeHandler = () => this.handleResize();
 
@@ -46,12 +47,8 @@ export default class BoxGrid extends Component {
         this.setState({
           containerHeight: longestColumn,
         });
-      }
 
-      // Set the scrollBuffer if we haven't yet.
-      if (!this.scrollBuffer) {
-        const parentNode = ReactDOM.findDOMNode(this).parentNode;
-        this.scrollBuffer = parentNode.clientHeight;
+        this.scrollBuffer = this.getContainerHeight();
       }
     });
   }
@@ -62,6 +59,14 @@ export default class BoxGrid extends Component {
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
+  }
+
+  /**
+   * Returns the container height.
+   */
+  getContainerHeight() {
+    const container = this.props.scrollContainer;
+    return container.clientHeight || container.innerHeight;
   }
 
   /**
@@ -180,7 +185,7 @@ export default class BoxGrid extends Component {
       return;
     }
 
-    if (this.getScrollPos() + this.scrollBuffer > this.highestColumn()) {
+    if (this.getScrollPos() + (this.scrollBuffer * 2) > this.highestColumn()) {
       this.fetchingWith = this.props.items.length;
       this.props.loadItems({
         from: this.props.items.length,

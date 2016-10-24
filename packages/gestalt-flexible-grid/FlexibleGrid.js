@@ -24,6 +24,7 @@ export default class FlexibleGrid extends Component {
   componentDidMount() {
     // We calculate columns and offset after the component mounts so we can measure our container.
     this.reflow(this.calculateColumns());
+    this.scrollBuffer = this.getContainerHeight();
 
     this.boundResizeHandler = () => this.handleResize();
 
@@ -47,12 +48,8 @@ export default class FlexibleGrid extends Component {
         this.setState({
           containerHeight: longestColumn,
         });
-      }
 
-      // Set the scrollBuffer if we haven't yet.
-      if (!this.scrollBuffer) {
-        const parentNode = ReactDOM.findDOMNode(this).parentNode;
-        this.scrollBuffer = parentNode.clientHeight;
+        this.scrollBuffer = this.getContainerHeight();
       }
     });
   }
@@ -63,6 +60,14 @@ export default class FlexibleGrid extends Component {
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
+  }
+
+  /**
+   * Returns the container height.
+   */
+  getContainerHeight() {
+    const container = this.props.scrollContainer;
+    return container.clientHeight || container.innerHeight;
   }
 
   /**
