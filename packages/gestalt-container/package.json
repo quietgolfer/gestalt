@@ -1,6 +1,6 @@
 {
   "name": "gestalt-container",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "main": "./Container.js",
   "dependencies": {
     "react": "^15.3.1"

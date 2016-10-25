@@ -1,14 +1,14 @@
 {
   "name": "gestalt-button",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "main": "./Button.js",
   "dependencies": {
     "react": "^15.3.1",
-    "gestalt-borders": "^0.1.21",
-    "gestalt-colors": "^0.1.21",
-    "gestalt-columns": "^0.1.21",
-    "gestalt-cursor": "^0.1.21",
-    "gestalt-layout": "^0.1.21",
-    "gestalt-typography": "^0.1.21"
+    "gestalt-borders": "^0.1.22",
+    "gestalt-colors": "^0.1.22",
+    "gestalt-columns": "^0.1.22",
+    "gestalt-cursor": "^0.1.22",
+    "gestalt-layout": "^0.1.22",
+    "gestalt-typography": "^0.1.22"
   }
 }
