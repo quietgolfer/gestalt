@@ -1,17 +1,18 @@
 // @flow
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import FlexibleGrid from 'gestalt-flexible-grid';
-import Image from 'gestalt-image';
 
 import colorStyles from 'gestalt-colors/Colors.css';
 import typographyStyles from 'gestalt-typography/Typography.css';
 import layoutStyles from 'gestalt-layout/Layout.css';
+import imageStyles from 'gestalt-image/Image.css';
 
 const styles = {
   ...colorStyles,
   ...typographyStyles,
   ...layoutStyles,
+  ...imageStyles,
 };
 
 const cx = classnames.bind(styles);
@@ -34,22 +35,24 @@ const DEFAULT_AVATAR_TEXT_SIZES = {
   xl: 106,
 };
 
-/*
-  Temporarily disable unused-props rule until the following issues are addressed:
-  https://github.com/yannickcr/eslint-plugin-react/issues/819
-  https://github.com/yannickcr/eslint-plugin-react/issues/861
-*/
-/* eslint-disable react/no-unused-prop-types */
+const PLACEMENT = {
+  full: 'FULL',
+  half: 'HALF',
+  quarter: 'QUARTER',
+};
+
+
 type CollabProps = {
   initial?: string,
   name: string,
   src?: string,
+  wash?: bool,
 };
-/* eslint-enable react/no-unused-prop-types */
 
-type GridItemPropsType = {
-  data: CollabProps,
-  itemIdx: number, /* idx of the data item in the grid */
+type ModifiedAvatarProps = CollabProps & {
+  numCollabs: number,
+  placement: 'FULL' | 'HALF' | 'QUARTER',
+  size: 'xs' | 's' | 'm' | 'l' | 'xl',
 };
 
 type GroupAvatarProps = {
@@ -57,170 +60,177 @@ type GroupAvatarProps = {
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
 };
 
+type GridItemPropsType = {
+  data: ModifiedAvatarProps,
+};
+
 type DefaultAvatarProps = {
-  initial?: string,
-  name: string,
+  data: ModifiedAvatarProps,
   height: number,
-  fontSize: number,
-  itemIdx: number,
-  numCollabs: number,
 };
 
 function DefaultAvatar(props: DefaultAvatarProps) {
-  const { initial, name, height, fontSize, itemIdx, numCollabs } = props;
-  const firstInitial = initial || name.charAt(0).toUpperCase();
-  const marginLeft = itemIdx > 0 && numCollabs !== 2 ? '15%' : '0';
-  const textAlign = itemIdx > 0 && numCollabs !== 2 ? 'none' : 'center';
-
-  const initialClasses = cx(
-    'antialiased',
-    'bold',
-    'white',
-  );
+  const { data, height } = props;
+  const fontSize = DEFAULT_AVATAR_TEXT_SIZES[data.size] / 2;
+  const firstInitial = data.initial || data.name.charAt(0).toUpperCase();
+  const additionalStyles = data.placement === 'QUARTER' ?
+  {
+    marginLeft: '15%',
+    textAlign: 'none',
+  } : {
+    marginLeft: '0',
+    textAlign: 'center',
+  };
 
   const initialStyles = {
+    ...additionalStyles,
     fontSize,
     lineHeight: `${height}px`,
-    marginLeft,
-    textAlign,
   };
 
   const container = cx(
+    'antialiased',
     'bg-gray',
+    'bold',
     'overflow-hidden',
-    'relative'
+    'relative',
+    'white'
   );
 
+  const containerStyles = {
+    height,
+    width: data.placement === 'HALF' ? height / 2 : height,
+  };
+
   return (
-    <div aria-label={name} className={container} style={{ height }}>
-      <div className={initialClasses} style={initialStyles}>
+    <div aria-label={data.name} className={container} style={containerStyles}>
+      <div style={initialStyles}>
         {firstInitial}
       </div>
     </div>
   );
 }
 
-const getQuarterAvatarStyles = (size: string) => {
-  const dimensions = (AVATAR_SIZES[size] - GUTTER_WIDTH) / 2;
-
-  return {
-    height: dimensions,
-    position: 'relative',
-    overflow: 'hidden',
-    width: dimensions,
-  };
-};
-
-const getHalfAvatarStyles = (size: string) => {
-  const dimensions = AVATAR_SIZES[size];
+const getAvatarStyles = (placement: string, size: string) => {
+  /* adjusted dimensions for avatar's only displaying in a quarter of the circle */
+  const dimensions = placement === 'QUARTER' ?
+    (AVATAR_SIZES[size] - GUTTER_WIDTH) / 2 : AVATAR_SIZES[size];
   const visibleWidth = (dimensions - GUTTER_WIDTH) / 2;
-  const leftValue = (visibleWidth - dimensions) / 2;
+  /* adjusted left offset for avatar's taking up half the circle to center image */
+  const left = placement === 'HALF' ? (visibleWidth - dimensions) / 2 : 0;
 
   return {
-    height: dimensions,
-    left: leftValue,
+    height: 'auto',
+    left,
     position: 'relative',
     width: dimensions,
   };
 };
 
-const getFullAvatarStyles = (size: string) => {
-  const dimensions = AVATAR_SIZES[size];
-
-  return {
-    height: dimensions,
-    position: 'relative',
-    width: dimensions,
-  };
-};
-
-export default class GroupAvatar extends Component {
-  props: GroupAvatarProps;
-
-  renderAvatarItem: (props: GridItemPropsType) => React.DOM.div = (props: GridItemPropsType) => {
-    const { data, itemIdx } = props;
-    const numCollabs = this.props.collaborators.length;
-    const size = this.props.size;
-
-    let avatarStyles;
+/* Adds numCollabs and size to each piece of data in the grid
+in order to have access to these attributes later on */
+const addPositionDataToCollabs = (collaborators: Array<CollabProps>, size: string) => {
+  const numCollabs = collaborators.length;
+  return collaborators.map((collab, i) => {
+    let placement;
     if (numCollabs === 1) {
-      avatarStyles = getFullAvatarStyles(size);
-    } else if (itemIdx === 0 || numCollabs === 2) {
-      avatarStyles = getHalfAvatarStyles(size, itemIdx);
+      placement = PLACEMENT.full;
+    } else if (i === 0 || numCollabs === 2) {
+      placement = PLACEMENT.half;
     } else {
-      avatarStyles = getQuarterAvatarStyles(size);
+      placement = PLACEMENT.quarter;
     }
-    const fontSize = DEFAULT_AVATAR_TEXT_SIZES[size] / 2;
-    const containerStyles = {
-      height: avatarStyles.height + GUTTER_WIDTH,
-      margin: GUTTER_WIDTH / 2,
+    return {
+      ...collab,
+      placement,
+      size,
     };
+  });
+};
 
-    const avatarSection = data.src ?
-      <Image
+/* Avatar component to display data in grid */
+function Avatar(props: GridItemPropsType) {
+  const { data } = props;
+
+  const avatarStyles = getAvatarStyles(data.placement, data.size);
+  const washStyles = cx({ wash: data.wash });
+  const backgroundColor = data.src ? 'bg-light-gray' : 'bg-gray';
+  const imgContainerStyles = {
+    height: avatarStyles.width,
+  };
+  const avatarSection = data.src ?
+    <div>
+      <div className={washStyles} />
+      <img
         alt={data.name}
-        color="#efefef"
         height={1}
         src={data.src}
-        wash
+        style={avatarStyles}
         width={1}
       />
-    : <DefaultAvatar
-      initial={data.initial}
-      name={data.name}
-      height={avatarStyles.height}
-      fontSize={fontSize}
-      itemIdx={itemIdx}
-      numCollabs={numCollabs}
+    </div>
+  :
+    <DefaultAvatar
+      data={data}
+      height={avatarStyles.width}
+      placement={data.placement}
     />;
 
-    return (
-      <div className={cx('overflow-hidden', 'relative')} style={containerStyles}>
-        <div style={avatarStyles}>
-          {avatarSection}
-        </div>
+  const containerStyles = {
+    height: avatarStyles.width + GUTTER_WIDTH,
+    margin: GUTTER_WIDTH / 2,
+    position: 'relative',
+  };
+
+  return (
+    <div className={cx('overflow-hidden', 'relative')} style={containerStyles}>
+      <div className={cx(backgroundColor, 'overflow-hidden')} style={imgContainerStyles}>
+        {avatarSection}
       </div>
-    );
-  }
-
-  render() {
-    const {
-      collaborators,
-      size = 'm',
-    } = this.props;
-
-    const MAX_AVATAR_DIM = AVATAR_SIZES[size];
-    const HALF_AVATAR_DIM = (MAX_AVATAR_DIM - GUTTER_WIDTH) / 2;
-    const borderBoxStyle = {
-      border: '2px solid #ffffff',
-      height: MAX_AVATAR_DIM,
-      width: MAX_AVATAR_DIM,
-    };
-
-    return (
-      <div
-        className={cx('bg-white', 'circle', 'overflow-hidden')}
-        style={borderBoxStyle}
-      >
-        <div style={{ margin: GUTTER_WIDTH / -2 }}>
-          <FlexibleGrid
-            comp={this.renderAvatarItem}
-            items={collaborators}
-            maxItemWidth={MAX_AVATAR_DIM}
-            minItemWidth={collaborators.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
-          />
-        </div>
-      </div>
+    </div>
   );
-  }
 }
 
+export default function GroupAvatar(props: GroupAvatarProps) {
+  const { collaborators, size } = props;
+  const collabs = addPositionDataToCollabs(collaborators, size).slice(0, 3);
+  const MAX_AVATAR_DIM = AVATAR_SIZES[props.size];
+  const HALF_AVATAR_DIM = (MAX_AVATAR_DIM - GUTTER_WIDTH) / 2;
+  const borderBoxStyle = {
+    border: '2px solid #ffffff',
+    height: MAX_AVATAR_DIM,
+    width: MAX_AVATAR_DIM,
+  };
+
+  return (
+    <div
+      className={cx('bg-white', 'circle', 'overflow-hidden')}
+      style={borderBoxStyle}
+    >
+      <div style={{ margin: GUTTER_WIDTH / -2 }}>
+        <FlexibleGrid
+          comp={Avatar}
+          items={collabs}
+          maxItemWidth={MAX_AVATAR_DIM}
+          minItemWidth={collabs.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
+        />
+      </div>
+    </div>
+);
+}
+
+/*
+  Temporarily disable unused-props rule until the following issues are addressed:
+  https://github.com/yannickcr/eslint-plugin-react/issues/819
+  https://github.com/yannickcr/eslint-plugin-react/issues/861
+*/
 /* eslint-disable react/no-unused-prop-types */
 GroupAvatar.propTypes = {
   collaborators: PropTypes.arrayOf(PropTypes.shape({
     initial: PropTypes.string,
     name: PropTypes.string.isRequired,
     src: PropTypes.string,
+    wash: PropTypes.bool,
   })).isRequired,
   size: PropTypes.oneOf([
     'xs', 's', 'm', 'l', 'xl',

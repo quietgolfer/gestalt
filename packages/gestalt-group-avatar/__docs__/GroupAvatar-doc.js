@@ -1,5 +1,4 @@
 // @flow
-
 import React from 'react';
 import { card, md } from 'corkboard';
 import GroupAvatar from '../GroupAvatar';
@@ -17,6 +16,7 @@ GroupAvatar.propTypes = {
     initial: PropTypes.string,
     name: PropTypes.string.isRequired,
     src: PropTypes.string,
+    wash: PropTypes.bool,
   })).isRequired,
   size: PropTypes.oneOf([
     'xs', 's', 'm', 'l', 'xl',
@@ -36,9 +36,10 @@ const tim = {
 const evan = {
   name: 'Evan S.',
   src: 'http://cdn.archinect.net/images/1200x/q4/q4lvjve1b3pelocx.jpg',
+  wash: true,
 };
 
-const collabsWithPhotos = [ben, evan, tim];
+const collabsWithPhotos = [ben, evan, tim, ben];
 const collabsWithoutPhotos = collabsWithPhotos.map(collab => ({
   name: collab.name,
 }));
@@ -75,15 +76,25 @@ these are not responsive. If a \`collaborator\` is missing an image, their
 );
 
 card('Number of collaborators',
-md`The layout automatically updates based on the number of collaborators. If you have more than 3 collaborators, only the first 3 are shown and the rest are discarded.`,
+md`The layout automatically updates based on the number of collaborators.
+If you have more than 3 collaborators, only the first 3 are shown and the
+rest are discarded.`,
   <div>
     {[1, 2, 3].map((count, key) => (
       <div className="flex px2">
         <div className="p1 self-center">
           <Text bold size="l">{count}</Text>
         </div>
-        <GroupAvatarEx collabs={collabsWithPhotos.slice(-count)} size={'m'} key={`count-with-${key}`} />
-        <GroupAvatarEx collabs={collabsWithoutPhotos.slice(-count)} size={'m'} key={`count-without-${key}`} />
+        <GroupAvatarEx
+          collabs={collabsWithPhotos.slice(-count)}
+          size={'m'}
+          key={`count-with-${key}`}
+        />
+        <GroupAvatarEx
+          collabs={collabsWithoutPhotos.slice(-count)}
+          size={'m'}
+          key={`count-without-${key}`}
+        />
       </div>
     )
     )}
