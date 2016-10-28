@@ -1,5 +1,5 @@
 # Gestalt
-[![Build status](https://badge.buildkite.com/2c6b6e9f79054095354cc061876e4885f4b9212e1dbebda270.svg&branch=master)](https://buildkite.com/pinterest/gestalt)
+[![Build status](https://badge.buildkite.com/2c6b6e9f79054095354cc061876e4885f4b9212e1dbebda270.svg?branch=master)](https://buildkite.com/pinterest/gestalt)
 
 ## Development
 
