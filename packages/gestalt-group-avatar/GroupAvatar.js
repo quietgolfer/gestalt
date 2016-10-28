@@ -1,5 +1,5 @@
 // @flow
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import FlexibleGrid from 'gestalt-flexible-grid';
 
@@ -58,6 +58,10 @@ type ModifiedAvatarProps = CollabProps & {
 type GroupAvatarProps = {
   collaborators: Array<CollabProps>,
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
+};
+
+type GridRefType = {
+  reflow: () => void,
 };
 
 type GridItemPropsType = {
@@ -191,32 +195,49 @@ function Avatar(props: GridItemPropsType) {
   );
 }
 
-export default function GroupAvatar(props: GroupAvatarProps) {
-  const { collaborators, size } = props;
-  const collabs = addPositionDataToCollabs(collaborators, size).slice(0, 3);
-  const MAX_AVATAR_DIM = AVATAR_SIZES[props.size];
-  const HALF_AVATAR_DIM = (MAX_AVATAR_DIM - GUTTER_WIDTH) / 2;
-  const borderBoxStyle = {
-    border: '2px solid #ffffff',
-    height: MAX_AVATAR_DIM,
-    width: MAX_AVATAR_DIM,
-  };
+export default class GroupAvatar extends Component {
+  gridRef: GridRefType;
+  props: GroupAvatarProps;
 
-  return (
-    <div
-      className={cx('bg-white', 'circle', 'overflow-hidden')}
-      style={borderBoxStyle}
-    >
-      <div style={{ margin: GUTTER_WIDTH / -2 }}>
-        <FlexibleGrid
-          comp={Avatar}
-          items={collabs}
-          maxItemWidth={MAX_AVATAR_DIM}
-          minItemWidth={collabs.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
-        />
+  /**
+   * Do not use this unless you know what you are doing.
+   * This is a private method and is intended to be removed in the future.
+   * This manually reflows the grid and clears the grid item cache.
+   */
+  reflowGrid() {
+    if (this.gridRef) {
+      this.gridRef.reflow();
+    }
+  }
+
+  render() {
+    const { collaborators, size } = this.props;
+    const collabs = addPositionDataToCollabs(collaborators, size).slice(0, 3);
+    const MAX_AVATAR_DIM = AVATAR_SIZES[this.props.size];
+    const HALF_AVATAR_DIM = (MAX_AVATAR_DIM - GUTTER_WIDTH) / 2;
+    const borderBoxStyle = {
+      border: '2px solid #ffffff',
+      height: MAX_AVATAR_DIM,
+      width: MAX_AVATAR_DIM,
+    };
+
+    return (
+      <div
+        className={cx('bg-white', 'circle', 'overflow-hidden')}
+        style={borderBoxStyle}
+      >
+        <div style={{ margin: GUTTER_WIDTH / -2 }}>
+          <FlexibleGrid
+            comp={Avatar}
+            items={collabs}
+            maxItemWidth={MAX_AVATAR_DIM}
+            minItemWidth={collabs.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
+            ref={(ref) => { this.gridRef = ref; }}
+          />
+        </div>
       </div>
-    </div>
-);
+    );
+  }
 }
 
 /*
