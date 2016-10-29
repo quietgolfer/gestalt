@@ -47,7 +47,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "flow-bin": "^0.29.0",
     "flow-status-webpack-plugin": "^0.1.5",
-    "ghostjs": "^1.6.0",
+    "ghostjs": "^1.7.1",
     "html-webpack-plugin": "^2.22.0",
     "jest": "^15.1.1",
     "lerna": "2.0.0-beta.28",
