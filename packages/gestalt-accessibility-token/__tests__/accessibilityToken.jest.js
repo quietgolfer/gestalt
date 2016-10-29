@@ -1,8 +1,4 @@
-/* global describe */
-/* global expect */
-/* global jest */
-/* global it */
-
+/* eslint-env jest */
 /* eslint import/imports-first: 0 */
 jest.unmock('../accessibilityToken');
 

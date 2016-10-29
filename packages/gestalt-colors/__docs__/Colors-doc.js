@@ -72,4 +72,5 @@ predominate.`,
     </div>
   </div>);
 
-stylesTable(require('!!raw!postcss!../Colors.css'));
+card('Styles Table',
+  stylesTable(require('!!raw!postcss!../Colors.css')));

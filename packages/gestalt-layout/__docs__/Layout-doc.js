@@ -177,4 +177,4 @@ to the **parent** container.
   </div>
 );
 
-stylesTable(require('!!raw!postcss!../Layout.css'));
+card('Styles Table', stylesTable(require('!!raw!postcss!../Layout.css')));

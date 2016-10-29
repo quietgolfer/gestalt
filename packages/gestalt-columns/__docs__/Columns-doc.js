@@ -1,22 +1,22 @@
 // @flow
 import React, { PropTypes } from 'react';
 import { card, md } from 'corkboard';
-import columns from '../Columns.css';
+import Col from '../Column';
 import { ns, stylesTable } from '../../../.corkboard/cards';
 
 ns('Columns');
 
-function Column(props: {size: number, children?: any}) {
+function Column(props: {size: *, children?: any}) {
   const {
     size,
   } = props;
 
-  const className = `col-${size}`;
-
   return (
-    <div className={`border p1 border-box ${columns[className]}`}>
-      {props.children ? props.children : `.col-${size}`}
-    </div>
+    <Col span={size}>
+      <div className={'border p1 border-box'}>
+        {props.children ? props.children : size}
+      </div>
+    </Col>
   );
 }
 
@@ -30,34 +30,40 @@ card(
 Gestalt supports a 12-column system with which you can build layouts by adding \`.col-{1-12}\`
 to your elements.
 
+\`\`\`javascript
+Column.propTypes = {
+  children: PropTypes.node,
+  span: PropTypes.number.isRequired,
+};
+\`\`\`
+
 \`\`\`html
 <div class="flex">
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
-  <div class="col-1">.col-1</div>
+  <Column span={1}>1</Column>
+  <Column span={2}>2</Column>
+  <Column span={3}>3</Column>
+  <Column span={4}>4</Column>
+  <Column span={5}>5</Column>
+  <Column span={6}>6</Column>
+  <Column span={7}>7</Column>
+  <Column span={8}>8</Column>
+  <Column span={9}>9</Column>
+  <Column span={10}>10</Column>
+  <Column span={11}>11</Column>
+  <Column span={12}>12</Column>
 </div>
 <div class="flex">
-  <div class="col-8">.col-8</div>
-  <div class="col-8">.col-8</div>
+  <Column span={8}>8</Column>
+  <Column span={4}>4</Column>
 </div>
 <div class="flex">
-  <div class="col-4">.col-4</div>
-  <div class="col-4">.col-4</div>
-  <div class="col-4">.col-4</div>
+  <Column span={4}>4</Column>
+  <Column span={4}>4</Column>
+  <Column span={4}>4</Column>
 </div>
 <div class="flex">
-  <div class="col-6">.col-6</div>
-  <div class="col-6">.col-6</div>
+  <Column span={6}>6</Column>
+  <Column span={6}>6</Column>
 </div>
 \`\`\`
 `,
@@ -94,30 +100,7 @@ to your elements.
     </div>
   </div>);
 
-card('Breakpoints',
-  md`
-There are breakpoints for small, medium, and large screens. Use the \`sm\`, \`md\`,
-and \`lg\` prefixes to achieve a responsive grid on various screen sizes.
-
-\`\`\`html
-<div class="md-col-12">
-  <div class="md-col-6"> .md-col-6 </div>
-  <div class="md-col-6"> .md-col-6 </div>
-</div>
-
-<div class="sm-col-12">
-  <div class="sm-col-4"> .sm-col-4 </div>
-  <div class="sm-col-4"> .sm-col-4 </div>
-  <div class="sm-col-4"> .sm-col-4 </div>
-</div>
-
-<div class="lg-col-12">
-  <div class="lg-col-7"> .lg-col-7 </div>
-  <div class="lg-col-5"> .lg-col-5 </div>
-</div>
-\`\`\`
-`,
-  <div />
-);
-
-stylesTable(require('!!raw!postcss!../Columns.css'));
+card('Styles Table',
+  <p className="red">These styles are deprecated. Please use the <code>Column</code> component instead.</p>,
+  stylesTable(require('!!raw!postcss!../Columns.css')),
+  { stacked: true });

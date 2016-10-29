@@ -55,6 +55,7 @@ Adds those pretty lines that everybody likes.
     )}
   </div>);
 
-stylesTable(
-  require('!!raw!postcss!../Borders.css')
+card(
+  'Styles Table',
+  stylesTable(require('!!raw!postcss!../Borders.css'))
 );

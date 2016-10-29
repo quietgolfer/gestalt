@@ -32,8 +32,7 @@ export function stylesTable(src) {
     });
   });
 
-  card(
-    'Table of Styles',
+  return (
     <table className="col-12 border-bottom" style={{ borderCollapse: 'collapse' }}>
       <thead>
         <tr>

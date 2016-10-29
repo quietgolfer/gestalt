@@ -27,4 +27,4 @@ card(
   { heading: false }
 );
 
-stylesTable(require('!!raw!postcss!../Cursor.css'));
+card('Styles Table', stylesTable(require('!!raw!postcss!../Cursor.css')));

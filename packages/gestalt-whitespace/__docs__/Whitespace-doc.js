@@ -68,4 +68,4 @@ So, if you need to apply symmetrical padding, use the corresponding \`px{1-6}\` 
 classnames.`
 );
 
-stylesTable(require('!!raw!postcss!../Whitespace.css'));
+card('Styles Table', stylesTable(require('!!raw!postcss!../Whitespace.css')));
