@@ -1,26 +1,24 @@
-.Image__placeholder {
+.container {
   composes: fit relative from "gestalt-layout/Layout.css";
 }
 
-.Image__placeholder--wrapper {
-  composes: absolute flex items-center justify-center top-0 left-0 bottom-0 right-0 from "gestalt-layout/Layout.css";
-}
-
-.Image__placeholder--text {
-  composes: text-center from "gestalt-typography/Typography.css";
-  opacity: 0.5;
-}
-
-.Image__img {
-  composes: block fit overflow-hidden from "gestalt-layout/Layout.css";
+.img {
+  composes: absolute fit overflow-hidden from "gestalt-layout/Layout.css";
   composes: col-12 from "gestalt-columns/Columns.css";
-  height: auto;
+}
+
+.pending {
+  display: none;
+}
+
+.loaded {
+  composes: block from "gestalt-layout/Layout.css";
 }
 
 .wash {
+  composes: absolute from "gestalt-layout/Layout.css";
+  composes: col-12 from "gestalt-columns/Columns.css";
   background: rgba(0, 0, 0, 0.03);
   height: 100%;
-  position: absolute;
-  width: 100%;
-  z-index: 2;
+  pointer-events: none;
 }

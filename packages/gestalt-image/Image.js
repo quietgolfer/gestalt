@@ -1,75 +1,41 @@
 // @flow
+/* global SyntheticEvent */
 
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import cx from 'classnames';
 import styles from './Image.css';
-
-const cx = classnames.bind(styles);
-
-function preloadImg(src, callback) {
-  const img = new window.Image();
-  img.onload = callback;
-  img.src = src;
-}
-
-type PlaceholderProps = {
-  aspect: number,
-  color: string,
-};
-
-export function Placeholder(props: PlaceholderProps) {
-  const { aspect, color } = props;
-  return (
-    <div
-      className={cx('Image__placeholder')}
-      style={{ backgroundColor: color, paddingBottom: `${aspect}%` }}
-    >
-      <div className={cx('Image__placeholder--wrapper')} />
-    </div>
-  );
-}
-
-Placeholder.propTypes = {
-  aspect: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired,
-};
 
 type ImageProps = {
   alt: string,
   color: string,
   height: number,
+  onError?: (e: SyntheticEvent) => {},
+  onLoad?: (e: SyntheticEvent) => {},
   src: string,
   wash?: bool,
   width: number,
 };
 
-type ImageState = {
-  loaded: boolean,
-};
-
 export default class Image extends Component {
-  static contextTypes = {
-    preloadingSupported: PropTypes.bool.isRequired,
-  };
 
-  state: ImageState = {
-    loaded: !this.context.preloadingSupported,
+  state = {
+    loaded: false,
   };
-
-  componentDidMount() {
-    if (!this.state.loaded) {
-      preloadImg(this.props.src, this.handleLoad);
-    }
-  }
 
   props: ImageProps;
 
-  handleLoad = () => {
+  handleLoad = (e: SyntheticEvent) => {
     this.setState({ loaded: true });
+    if (this.props.onLoad) {
+      this.props.onLoad(e);
+    }
   }
 
-  handleError = () => {
+  handleError = (e: SyntheticEvent) => {
     this.setState({ loaded: false });
+    if (this.props.onError) {
+      this.props.onError(e);
+    }
   }
 
   render() {
@@ -83,30 +49,25 @@ export default class Image extends Component {
     } = this.props;
 
     const aspect = (height / width) * 100;
+    const style = {
+      backgroundColor: color,
+      paddingBottom: `${aspect}%`,
+    };
 
-    if (!this.state.loaded) {
-      return (
-        <div>
-          <Placeholder aspect={aspect} color={color} />
-          <link href={src} rel="preload" />
-        </div>
-      );
-    }
+    const img = (
+      <img
+        alt={alt}
+        className={cx(styles.img, styles[this.state.loaded ? 'loaded' : 'pending'])}
+        onError={this.handleError}
+        onLoad={this.handleLoad}
+        src={src}
+      />
+    );
 
     return (
-      <div
-        className={cx('Image__placeholder')}
-        style={{ backgroundColor: color, paddingBottom: `${aspect}%` }}
-      >
-        <div className={cx({ wash })} />
-        <img
-          alt={alt}
-          className={cx('Image__img')}
-          onError={this.handleError}
-          onLoad={this.handleLoad}
-          src={src}
-          style={{ position: 'absolute' }}
-        />
+      <div className={styles.container} style={style}>
+        {src ? img : null}
+        {wash ? <div className={styles.wash} /> : null}
       </div>
     );
   }
@@ -115,6 +76,8 @@ export default class Image extends Component {
 Image.propTypes = {
   alt: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
+  onLoad: PropTypes.func,
+  onError: PropTypes.func,
   height: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
   wash: PropTypes.bool,
