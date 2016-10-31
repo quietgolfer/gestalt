@@ -36,7 +36,6 @@ card('PropTypes',
 md`
 \`\`\`jsx
 Avatar.propTypes = {
-  initial: PropTypes.string,
   name: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
   src: PropTypes.string,
@@ -55,14 +54,12 @@ type AvatarExProps = {
 
 function AvatarEx(props: AvatarExProps) {
   const name = 'Long';
-  const initial = 'L';
   const { size, src } = props;
   return (
     <div className="p1">
       <Text bold align="center">{size}</Text>
       <PreloadImageContext canPreloadImages>
         <Avatar
-          initial={initial}
           name={name}
           size={size}
           src={src}
@@ -100,13 +97,10 @@ size will scale to appropriately match the size of your screen.
 
 card('Without an image',
   md`
-If there is no image source provided to the \`Avatar\`, the \`initial\` prop
-will be used as a placeholder. We recommend using the \`initial\` prop in order
-to better handle special characters. In absence of providing an \`initial\` prop,
-the first character of the name will be used.
+If there is no image source provided to the \`Avatar\`, the first character of
+the name provided will be used as a placeholder.
 \`\`\`html
 <Avatar
-  initial="L"
   name="Long"
   size="xs"
 />

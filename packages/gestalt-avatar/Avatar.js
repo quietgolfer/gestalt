@@ -8,14 +8,14 @@ import styles from './Avatar.css';
 const cx = classnames.bind(styles);
 
 type DefaultAvatarProps = {
-  initial?: string,
   name: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
 };
 
 function DefaultAvatar(props: DefaultAvatarProps) {
-  const { initial, name, size } = props;
-  const firstInitial = initial || name.charAt(0).toUpperCase();
+  const { name, size } = props;
+  // $FlowIssue: String spread.
+  const firstInitial = [...name][0].toUpperCase();
   const classes = cx(size, 'defaultAvatar');
 
   const noImageClasses = cx(
@@ -33,7 +33,6 @@ function DefaultAvatar(props: DefaultAvatarProps) {
 }
 
 type AvatarProps = {
-  initial?: string,
   name: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl',
   src?: string,
@@ -42,7 +41,6 @@ type AvatarProps = {
 
 export default function Avatar(props: AvatarProps) {
   const {
-    initial,
     name,
     size,
     src,
@@ -52,7 +50,7 @@ export default function Avatar(props: AvatarProps) {
   if (!src) {
     return (
       <div className={cx(size)}>
-        <DefaultAvatar initial={initial} name={name} size={size} />
+        <DefaultAvatar name={name} size={size} />
       </div>
     );
   }
@@ -76,7 +74,6 @@ export default function Avatar(props: AvatarProps) {
 }
 
 Avatar.propTypes = {
-  initial: PropTypes.string,
   name: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
   src: PropTypes.string,
