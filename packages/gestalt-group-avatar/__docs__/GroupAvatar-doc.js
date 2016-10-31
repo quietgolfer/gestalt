@@ -13,7 +13,6 @@ md`
 \`\`\`jsx
 GroupAvatar.propTypes = {
   collaborators: PropTypes.arrayOf(PropTypes.shape({
-    initial: PropTypes.string,
     name: PropTypes.string.isRequired,
     src: PropTypes.string,
     wash: PropTypes.bool,

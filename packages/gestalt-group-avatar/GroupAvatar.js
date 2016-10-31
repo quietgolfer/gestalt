@@ -43,7 +43,6 @@ const PLACEMENT = {
 
 
 type CollabProps = {
-  initial?: string,
   name: string,
   src?: string,
   wash?: bool,
@@ -76,7 +75,8 @@ type DefaultAvatarProps = {
 function DefaultAvatar(props: DefaultAvatarProps) {
   const { data, height } = props;
   const fontSize = DEFAULT_AVATAR_TEXT_SIZES[data.size] / 2;
-  const firstInitial = data.initial || data.name.charAt(0).toUpperCase();
+  // $FlowIssue: String spread.
+  const firstInitial = [...data.name][0].toUpperCase();
   const additionalStyles = data.placement === 'QUARTER' ?
   {
     marginLeft: '15%',
@@ -248,7 +248,6 @@ export default class GroupAvatar extends Component {
 /* eslint-disable react/no-unused-prop-types */
 GroupAvatar.propTypes = {
   collaborators: PropTypes.arrayOf(PropTypes.shape({
-    initial: PropTypes.string,
     name: PropTypes.string.isRequired,
     src: PropTypes.string,
     wash: PropTypes.bool,
