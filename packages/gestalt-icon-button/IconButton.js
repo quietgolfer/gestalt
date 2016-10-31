@@ -1,14 +1,13 @@
 // @flow
 /* global $Keys */
 import React, { PropTypes } from 'react';
-import classnames from 'classnames/bind';
 import Icon from 'gestalt-icon';
 import styles from './IconButton.css';
 import icons from '../gestalt-icon/icons/index';
 
-const cx = classnames.bind(styles);
-
 type Props = {
+  bgColor?: 'transparent' | 'light-gray',
+  iconColor?: 'gray' | 'dark-gray' | 'red' | 'blue',
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons provided in gestalt-icon/icons/index.js.
@@ -16,28 +15,43 @@ type Props = {
   icon: $Keys<typeof icons>,
   label: string,
   onClick?: () => void,
+  size?: 'xs' | 's' | 'm' | 'l' | 'xl',
 }
+
+const defaultIconButtonIconColors = {
+  transparent: 'gray',
+  'light-gray': 'gray',
+};
+
+const buttonSize = {
+  xs: 24,
+  s: 32,
+  m: 40,
+  l: 48,
+  xl: 56,
+};
 
 export default function IconButton(props: Props) {
   const {
+    bgColor = 'transparent',
+    iconColor = defaultIconButtonIconColors[bgColor],
     icon,
     label,
     onClick,
+    size = 'm',
   } = props;
 
-  const classes = cx(
-    'iconButton',
-  );
-
   const inlineStyle = {
-    height: 50,
-    width: 50,
+    height: buttonSize[size],
+    width: buttonSize[size],
   };
+
+  const iconSize = buttonSize[size] / 2;
 
   return (
     <button
       aria-label={label}
-      className={classes}
+      className={styles[bgColor]}
       onClick={onClick}
       style={inlineStyle}
     >
@@ -47,13 +61,22 @@ export default function IconButton(props: Props) {
         This is similar to having empty `alt` attributes:
         https://davidwalsh.name/accessibility-tip-empty-alt-attributes
       */}
-      <Icon icon={icon} size={25} label="" />
+      <Icon color={iconColor} icon={icon} size={iconSize} label="" />
     </button>
   );
 }
 
 IconButton.propTypes = {
+  bgColor: PropTypes.oneOf(
+    ['transparent', 'light-gray']
+  ),
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
+  iconColor: PropTypes.oneOf(
+    ['gray', 'dark-gray', 'red', 'blue']
+  ),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  size: PropTypes.oneOf(
+    ['xs', 's', 'm', 'l', 'xl']
+  ),
 };

@@ -3,7 +3,6 @@
   "version": "0.1.23",
   "main": "./Icon.js",
   "dependencies": {
-    "classnames": "^2.2.5",
     "gestalt-icon": "^0.1.23",
     "gestalt-typography": "^0.1.23",
     "gestalt-layout": "^0.1.23",

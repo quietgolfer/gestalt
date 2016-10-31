@@ -1,5 +1,6 @@
 // @flow
-import React from 'react';
+/* global $Keys */
+import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import colorStyles from 'gestalt-colors/Colors.css';
 import accessibilityToken from 'gestalt-accessibility-token';
@@ -14,10 +15,14 @@ const combinedStyles = {
 const cx = classnames.bind(combinedStyles);
 
 type IconProps = {
-  color?: 'white' | 'gray' | 'dark-gray' | 'blue',
-  icon: string,
+  color?: 'white' | 'gray' | 'dark-gray' | 'blue' | 'red',
+  /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
+   * This allows us to type check for a valid icon name based on the keys from the list of
+   * icons provided in gestalt-icon/icons/index.js.
+   */
+  icon: $Keys<typeof paths>,
   label: string,
-  size?: number
+  size?: number,
 };
 
 type IconWithoutIdProps = IconProps & {
@@ -56,3 +61,10 @@ export default function Icon(props: IconProps) {
     <IconWithoutId id={id} {...props} />
   );
 }
+
+Icon.propTypes = {
+  color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue', 'red']),
+  icon: PropTypes.oneOf(Object.keys(paths)).isRequired,
+  label: PropTypes.string.isRequired,
+  size: PropTypes.number,
+};

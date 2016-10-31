@@ -5,11 +5,20 @@ import Icon from '../Icon';
 import icons from '../icons/index';
 import { ns } from '../../../.corkboard/cards';
 
-ns(
-  'Icon',
-  `
-By default an icon is rendered in medium size and a gray color
-`);
+ns('Icon');
+
+card('PropTypes',
+md`
+\`\`\`jsx
+Icon.propTypes = {
+  color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue', 'red']),
+  icon: PropTypes.oneOf(Object.keys(paths)).isRequired,
+  label: PropTypes.string.isRequired,
+  size: PropTypes.number,
+};
+\`\`\`
+`
+);
 
 card('Colors',
   md`
@@ -22,11 +31,11 @@ card('Colors',
     <div className="flex">
       <div className="col-2 px2 text-center border-box">
         <h5>gray (default)</h5>
-        <Icon icon="pin" label="Pin" size={21} />
+        <Icon icon="pin" label="Pin" />
       </div>
       <div className="col-2 px2 text-center border-box">
         <h5>dark-gray</h5>
-        <Icon icon="pin" label="Pin" size={21} color="dark-gray" />
+        <Icon icon="pin" label="Pin" color="dark-gray" />
       </div>
       <div className="col-2 px2 text-center border-box">
         <h5>white</h5>
@@ -42,12 +51,16 @@ card('Colors',
             width: 26,
           }}
         >
-          <Icon icon="pin" label="Pin" size={21} color="white" />
+          <Icon icon="pin" label="Pin" color="white" />
         </div>
       </div>
       <div className="col-2 px2 text-center border-box">
         <h5>blue</h5>
-        <Icon icon="pin" label="Pin" size={21} color="blue" />
+        <Icon icon="pin" label="Pin" color="blue" />
+      </div>
+      <div className="col-2 px2 text-center border-box">
+        <h5>red</h5>
+        <Icon icon="pin" label="Pin" color="red" />
       </div>
     </div>
   </div>
@@ -56,6 +69,7 @@ card('Colors',
 
 card('Sizes',
   md`
+Currently, icons can be any size desired. The default size is 16.
 \`\`\`html
 <Icon icon="pin" label="Pin" size={16}></Icon>
 <Icon icon="pin" label="Pin" size={20}></Icon>
@@ -67,7 +81,7 @@ card('Sizes',
   <div>
     <div className="flex mxn2 flex-wrap">
       <div className="col-2 px2 text-center border-box">
-        <h5>16 (default)</h5>
+        <h5>16</h5>
         <Icon icon="pin" label="Pin" size={16} />
       </div>
       <div className="col-2 px2 text-center border-box">
@@ -94,7 +108,7 @@ function IconType({ iconName }) {
   return (
     <div className="col-6 sm-col-3 px2 text-center border-box">
       <h5>{iconName}</h5>
-      <Icon icon={iconName} label={iconName.replace(/-/g, ' ')} size={21} color="gray" />
+      <Icon icon={iconName} label={iconName.replace(/-/g, ' ')} color="gray" />
     </div>
   );
 }
