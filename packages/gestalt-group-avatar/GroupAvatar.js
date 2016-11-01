@@ -125,6 +125,9 @@ const getAvatarStyles = (placement: string, size: string) => {
   return {
     height: 'auto',
     left,
+    /* Fixes issue where parent element using GroupAvatar has maxWidth: 100% set and images
+    no longer expand to fill space properly */
+    maxWidth: 'none',
     position: 'relative',
     width: dimensions,
   };
