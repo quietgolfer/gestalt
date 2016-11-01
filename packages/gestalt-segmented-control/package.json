@@ -1,7 +1,7 @@
 {
-  "name": "gestalt-tabs",
+  "name": "gestalt-segmented-control",
   "version": "0.1.23",
-  "main": "./Tabs.js",
+  "main": "./SegmentedControl.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
@@ -10,7 +10,6 @@
     "gestalt-layout": "^0.1.23",
     "gestalt-borders": "^0.1.23",
     "gestalt-cursor": "^0.1.23",
-    "gestalt-columns": "^0.1.23",
     "gestalt-whitespace": "^0.1.23"
   }
 }

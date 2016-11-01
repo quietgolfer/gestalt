@@ -1,0 +1,40 @@
+.SegmentedControl {
+  composes: bg-light-gray from "gestalt-colors/Colors.css";
+  composes: flex justify-between from "gestalt-layout/Layout.css";
+  border-radius: 4px;
+  padding: 2px;
+  user-select: none;
+}
+
+.SegmentedControl--item {
+  composes: flex-auto from "gestalt-layout/Layout.css";
+  composes: no-border from "gestalt-borders/Borders.css";
+  composes: pointer from "gestalt-cursor/Cursor.css";
+  composes: px2 m0 from "gestalt-whitespace/Whitespace.css";
+  border-radius: 3px;
+  height: 36px;
+}
+
+.SegmentedControl--item:focus {
+  position: relative;
+}
+
+.SegmentedControl--item__isNotSelected {
+  background: transparent;
+}
+
+.SegmentedControl--item__isSelected {
+  composes: bg-white from "gestalt-colors/Colors.css";
+}
+
+@media (--md) {
+  .SegmentedControl {
+    composes: rounded from "gestalt-borders/Borders.css";
+    padding: 4px;
+  }
+
+  .SegmentedControl--item {
+    border-radius: 6px;
+    height: 48px;
+  }
+}

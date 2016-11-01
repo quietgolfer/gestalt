@@ -1,27 +1,37 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
-import Tabs from '../Tabs';
+import SegmentedControl from '../SegmentedControl';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Tabs',
+ns('Segmented Control',
   `
-Tabs may be used to group between multiple selections.
+Segmented Controls may be used to group between multiple selections.
 The controls display the current state and related state.
 
 Create layout to convey clear sense of information hierarchy.
 When control is engaged, information below the control should get updated.
+
+\`\`\`javascript
+SegmentedControl.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func,
+  selectedItemIndex: PropTypes.number.isRequired,
+};
+\`\`\`
+
 `);
 
 card('Example',
   md`
-Tabs are dumb components, meaning you need to write up the behavior when you click on an item.
+Segmented Controls are naive components, meaning you need to write up the behavior when you click on an item.
 
 If you'd like the tabs to control hiding or showing content that state should
 live in a parent component.
 
 \`\`\`js
-<Tabs
+<SegmentedControl
+  selectedItemIndex={0}
   items={['News', 'You', 'Messages']}
 />
 \`\`\`
@@ -29,8 +39,9 @@ live in a parent component.
   (atom) => {
     const state = atom.deref();
     return (
-      <Tabs
+      <SegmentedControl
         items={['News', 'You', 'Messages']}
+        selectedItemIndex={0}
         {...state}
         onChange={i => atom.set(props => ({
           ...props,
@@ -38,6 +49,4 @@ live in a parent component.
         }))}
       />
     );
-  },
-  { selectedItemIndex: 0 },
-  { inspectData: true, history: true });
+  });
