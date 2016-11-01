@@ -1,36 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { card, md } from 'corkboard';
 import Avatar from '../Avatar';
 import Text from '../../gestalt-text/Text';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Avatar',
-'You can use an `Avatar` to represent a user.');
-
-class PreloadImageContext extends Component {
-  static childContextTypes = {
-    preloadingSupported: React.PropTypes.bool,
-  }
-
-  static propTypes = {
-    canPreloadImages: PropTypes.bool.isRequired,
-    children: PropTypes.node.isRequired,
-  }
-
-  static defaultProps = {
-    canPreloadImages: false,
-  }
-
-  getChildContext() {
-    return {
-      preloadingSupported: this.props.canPreloadImages,
-    };
-  }
-
-  render() {
-    return this.props.children;
-  }
-}
+'You can use an `Avatar` to represent a user. Every Avatar image has a subtle color wash.');
 
 card('PropTypes',
 md`
@@ -39,7 +14,6 @@ Avatar.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
   src: PropTypes.string,
-  wash: PropTypes.bool, /* adds dim overlay over Avatar to retain circular shape. default: false */
 };
 \`\`\`
 `
@@ -58,13 +32,11 @@ function AvatarEx(props: AvatarExProps) {
   return (
     <div className="p1">
       <Text bold align="center">{size}</Text>
-      <PreloadImageContext canPreloadImages>
-        <Avatar
-          name={name}
-          size={size}
-          src={src}
-        />
-      </PreloadImageContext>
+      <Avatar
+        name={name}
+        size={size}
+        src={src}
+      />
     </div>
   );
 }
