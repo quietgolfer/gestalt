@@ -1,10 +1,10 @@
 {
   "name": "gestalt-label",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "main": "./Label.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-cursor": "^0.1.24"
+    "gestalt-cursor": "^0.1.25"
   }
 }
