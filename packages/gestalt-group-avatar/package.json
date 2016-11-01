@@ -1,15 +1,15 @@
 {
   "name": "gestalt-group-avatar",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "main": "./GroupAvatar.js",
   "dependencies": {
     "react": "^15.3.1",
     "classnames": "^2.2.5",
-    "gestalt-colors": "^0.1.23",
-    "gestalt-columns": "^0.1.23",
-    "gestalt-flexible-grid": "^0.1.23",
-    "gestalt-image": "^0.1.23",
-    "gestalt-layout": "^0.1.23",
-    "gestalt-typography": "^0.1.23"
+    "gestalt-colors": "^0.1.24",
+    "gestalt-columns": "^0.1.24",
+    "gestalt-flexible-grid": "^0.1.24",
+    "gestalt-image": "^0.1.24",
+    "gestalt-layout": "^0.1.24",
+    "gestalt-typography": "^0.1.24"
   }
 }
