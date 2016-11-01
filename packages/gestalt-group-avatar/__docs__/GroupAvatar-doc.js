@@ -6,7 +6,8 @@ import Text from '../../gestalt-text/Text';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Group Avatar',
-'You can use an `GroupAvatar` to represent a group of users.');
+`You can use an \`GroupAvatar\` to represent a group of users. A light wash is automatically
+applied to each collaborator image to ensure the component retains a circular appeareance`);
 
 card('PropTypes',
 md`
@@ -15,7 +16,6 @@ GroupAvatar.propTypes = {
   collaborators: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     src: PropTypes.string,
-    wash: PropTypes.bool,
   })).isRequired,
   size: PropTypes.oneOf([
     'xs', 's', 'm', 'l', 'xl',
@@ -35,7 +35,6 @@ const tim = {
 const evan = {
   name: 'Evan S.',
   src: 'http://cdn.archinect.net/images/1200x/q4/q4lvjve1b3pelocx.jpg',
-  wash: true,
 };
 
 const collabsWithPhotos = [ben, evan, tim, ben];

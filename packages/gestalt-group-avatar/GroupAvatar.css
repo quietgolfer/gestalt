@@ -1,0 +1,8 @@
+.wash {
+  composes: absolute from "gestalt-layout/Layout.css";
+  composes: col-12 from "gestalt-columns/Columns.css";
+  background: rgba(0, 0, 0, 0.03);
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}

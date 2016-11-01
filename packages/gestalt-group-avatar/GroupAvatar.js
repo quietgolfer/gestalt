@@ -6,13 +6,13 @@ import FlexibleGrid from 'gestalt-flexible-grid';
 import colorStyles from 'gestalt-colors/Colors.css';
 import typographyStyles from 'gestalt-typography/Typography.css';
 import layoutStyles from 'gestalt-layout/Layout.css';
-import imageStyles from 'gestalt-image/Image.css';
+import groupAvatarStyles from './GroupAvatar.css';
 
 const styles = {
   ...colorStyles,
   ...typographyStyles,
   ...layoutStyles,
-  ...imageStyles,
+  ...groupAvatarStyles,
 };
 
 const cx = classnames.bind(styles);
@@ -45,7 +45,6 @@ const PLACEMENT = {
 type CollabProps = {
   name: string,
   src?: string,
-  wash?: bool,
 };
 
 type ModifiedAvatarProps = CollabProps & {
@@ -157,14 +156,13 @@ function Avatar(props: GridItemPropsType) {
   const { data } = props;
 
   const avatarStyles = getAvatarStyles(data.placement, data.size);
-  const washStyles = cx({ wash: data.wash });
   const backgroundColor = data.src ? 'bg-light-gray' : 'bg-gray';
   const imgContainerStyles = {
     height: avatarStyles.width,
   };
   const avatarSection = data.src ?
     <div>
-      <div className={washStyles} />
+      <div className={styles.wash} />
       <img
         alt={data.name}
         height={1}
@@ -250,7 +248,6 @@ GroupAvatar.propTypes = {
   collaborators: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     src: PropTypes.string,
-    wash: PropTypes.bool,
   })).isRequired,
   size: PropTypes.oneOf([
     'xs', 's', 'm', 'l', 'xl',
