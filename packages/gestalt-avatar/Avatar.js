@@ -32,6 +32,8 @@ function DefaultAvatar(props: DefaultAvatarProps) {
   );
 }
 
+export { DefaultAvatar };
+
 type AvatarProps = {
   name: string,
   size: 'xs' | 's' | 'm' | 'l' | 'xl',

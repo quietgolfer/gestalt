@@ -196,6 +196,8 @@ function Avatar(props: GridItemPropsType) {
   );
 }
 
+export { Avatar, DefaultAvatar };
+
 export default class GroupAvatar extends Component {
   gridRef: GridRefType;
   props: GroupAvatarProps;

@@ -75,12 +75,17 @@
   "jest": {
     "automock": true,
     "unmockedModulePathPatterns": [
+      "enzyme",
       "react",
       "react-test-renderer"
     ],
+    "preprocessorIgnorePatterns": ["/node_modules/^gestalt-*"],
     "modulePathIgnorePatterns": [
       "\\.ghost\\.js$"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css)$": "<rootDir>/test/__mocks__/styleMock.js"
+    }
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
