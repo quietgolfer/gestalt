@@ -23,8 +23,8 @@ Icon.propTypes = {
 card('Colors',
   md`
 \`\`\`html
-<Icon icon="pin" label="Pin"></Icon>
-<Icon icon="pin" label="Pin" color="dark-gray"></Icon>
+<Icon icon="pin" label="Pin" />
+<Icon icon="pin" label="Pin" color="dark-gray" />
 \`\`\`
 `,
   <div>
@@ -71,11 +71,11 @@ card('Sizes',
   md`
 Currently, icons can be any size desired. The default size is 16.
 \`\`\`html
-<Icon icon="pin" label="Pin" size={16}></Icon>
-<Icon icon="pin" label="Pin" size={20}></Icon>
-<Icon icon="pin" label="Pin" size={24}></Icon>
-<Icon icon="pin" label="Pin" size={28}></Icon>
-<Icon icon="pin" label="Pin" size={32}></Icon>
+<Icon icon="pin" label="Pin" size={16} />
+<Icon icon="pin" label="Pin" size={20} />
+<Icon icon="pin" label="Pin" size={24} />
+<Icon icon="pin" label="Pin" size={28} />
+<Icon icon="pin" label="Pin" size={32} />
 \`\`\`
 `,
   <div>
@@ -120,11 +120,11 @@ IconType.propTypes = {
 card('Types',
   md`
 \`\`\`html
-<Icon icon="pin" label="Pin"></Icon>
-<Icon icon="add-circle" label="Add"></Icon>
-<Icon icon="add-pin" label="Add a Pin"</Icon>
-<Icon icon="arrow-back" label="Back"</Icon>
-<Icon icon="arrow-circle-forward" label="Forward"</Icon>
+<Icon icon="pin" label="Pin" />
+<Icon icon="add-circle" label="Add" />
+<Icon icon="add-pin" label="Add a Pin" />
+<Icon icon="arrow-back" label="Back" />
+<Icon icon="arrow-circle-forward" label="Forward" />
 \`\`\`
 `,
   <div>
