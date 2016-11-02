@@ -16,7 +16,7 @@ card('PropTypes',
 Mask.propTypes = {
   children: PropTypes.node,
   height: PropTypes.number,
-  type: PropTypes.oneOf(['circle', 'rounded', 'square']),
+  shape: PropTypes.oneOf(['circle', 'rounded', 'square']),
   width: PropTypes.number,
 };
 \`\`\`
