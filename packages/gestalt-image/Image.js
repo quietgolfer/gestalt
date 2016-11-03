@@ -1,5 +1,6 @@
 // @flow
 /* global SyntheticEvent */
+/* eslint-disable react/no-did-mount-set-state */
 
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
@@ -22,6 +23,13 @@ export default class Image extends Component {
     loaded: false,
   };
 
+  componentDidMount() {
+    if (this.img && this.img.complete) {
+      this.setState({ loaded: true });
+    }
+  }
+
+  img: HTMLElement;
   props: ImageProps;
 
   handleLoad = (e: SyntheticEvent) => {
@@ -61,6 +69,7 @@ export default class Image extends Component {
         onError={this.handleError}
         onLoad={this.handleLoad}
         src={src}
+        ref={(el) => { this.img = el; }}
       />
     );
 
