@@ -9,7 +9,7 @@ const cx = classnames.bind(styles);
 
 type DefaultAvatarProps = {
   name: string,
-  size: 'xs' | 's' | 'm' | 'l' | 'xl',
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
 };
 
 function DefaultAvatar(props: DefaultAvatarProps) {
@@ -36,7 +36,7 @@ export { DefaultAvatar };
 
 type AvatarProps = {
   name: string,
-  size: 'xs' | 's' | 'm' | 'l' | 'xl',
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   src?: string,
 }
 
@@ -75,6 +75,6 @@ export default function Avatar(props: AvatarProps) {
 
 Avatar.propTypes = {
   name: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   src: PropTypes.string,
 };

@@ -27,13 +27,13 @@ Comes in a variety of sizes:
 <Heading size="xs">
   {'Heading extra small'}
 </Heading>
-<Heading size="s">
+<Heading size="sm">
   {'Heading small'}
 </Heading>
-<Heading size="m">
+<Heading size="md">
   {'Heading medium'}
 </Heading>
-<Heading size="l">
+<Heading size="lg">
   {'Heading large'}
 </Heading>
 <Heading size="xl">
@@ -47,20 +47,20 @@ Comes in a variety of sizes:
     <span lang="ja">
       <Heading size="xs">{'こんにちは'}</Heading>
     </span>
-    <Heading size="s">{'Heading small'}</Heading>
+    <Heading size="sm">{'Heading small'}</Heading>
     {' '}
     <span lang="ja">
-      <Heading size="s">{'こんにちは'}</Heading>
+      <Heading size="sm">{'こんにちは'}</Heading>
     </span>
-    <a><Heading size="m">{'Heading medium'}</Heading></a>
+    <a><Heading size="md">{'Heading medium'}</Heading></a>
     {' '}
     <span lang="ja">
-      <Heading size="m">{'こんにちは'}</Heading>
+      <Heading size="md">{'こんにちは'}</Heading>
     </span>
-    <Heading size="l">{'Heading large'}</Heading>
+    <Heading size="lg">{'Heading large'}</Heading>
     {' '}
     <span lang="ja">
-      <Heading size="l">{'こんにちは'}</Heading>
+      <Heading size="lg">{'こんにちは'}</Heading>
     </span>
     <Heading size="xl">{'Heading extra large'}</Heading>
     {' '}
@@ -89,9 +89,9 @@ And a variety of colors:
 `,
   <div>
     <div style={{ backgroundColor: '#555' }}>
-      <Heading color="white" size="m">{'White'}</Heading>
+      <Heading color="white" size="md">{'White'}</Heading>
     </div>
-    <Heading size="m">{'Dark gray (default)'}</Heading>
-    <Heading color="gray" size="m">{'Gray'}</Heading>
-    <Heading color="blue" size="m">{'Blue'}</Heading>
+    <Heading size="md">{'Dark gray (default)'}</Heading>
+    <Heading color="gray" size="md">{'Gray'}</Heading>
+    <Heading color="blue" size="md">{'Blue'}</Heading>
   </div>);

@@ -21,17 +21,17 @@ const GUTTER_WIDTH = 2;
 
 const AVATAR_SIZES = {
   xs: 36,
-  s: 60,
-  m: 108,
-  l: 156,
+  sm: 60,
+  md: 108,
+  lg: 156,
   xl: 198,
 };
 
 const DEFAULT_AVATAR_TEXT_SIZES = {
   xs: 20,
-  s: 32,
-  m: 56,
-  l: 90,
+  sm: 32,
+  md: 56,
+  lg: 90,
   xl: 106,
 };
 
@@ -50,12 +50,12 @@ type CollabProps = {
 type ModifiedAvatarProps = CollabProps & {
   numCollabs: number,
   placement: 'FULL' | 'HALF' | 'QUARTER',
-  size: 'xs' | 's' | 'm' | 'l' | 'xl',
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
 };
 
 type GroupAvatarProps = {
   collaborators: Array<CollabProps>,
-  size: 'xs' | 's' | 'm' | 'l' | 'xl',
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
 };
 
 type GridRefType = {
@@ -255,7 +255,7 @@ GroupAvatar.propTypes = {
     src: PropTypes.string,
   })).isRequired,
   size: PropTypes.oneOf([
-    'xs', 's', 'm', 'l', 'xl',
+    'xs', 'sm', 'md', 'lg', 'xl',
   ]).isRequired,
 };
 /* eslint-enable react/no-unused-prop-types */

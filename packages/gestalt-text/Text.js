@@ -22,7 +22,7 @@ type TextProps = {
   inline?: bool,
   italic?: bool,
   overflow?: 'break-word' | 'normal',
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl',
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
 };
 
@@ -34,7 +34,7 @@ export default function Text(props: TextProps) {
     color = 'dark-gray',
     inline = false,
     italic = false,
-    size = 'm',
+    size = 'md',
     overflow = 'normal',
     truncate = false,
   } = props;
@@ -64,6 +64,6 @@ Text.propTypes = {
   inline: PropTypes.bool,
   italic: PropTypes.bool,
   overflow: PropTypes.oneOf(['break-word', 'normal']),
-  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']),
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   truncate: PropTypes.bool,
 };

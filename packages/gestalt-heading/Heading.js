@@ -15,16 +15,16 @@ const cx = classnames.bind(styles);
 
 const sizesToElementMap = {
   xs: 'h5',
-  s: 'h4',
-  m: 'h3',
-  l: 'h2',
+  sm: 'h4',
+  md: 'h3',
+  lg: 'h2',
   xl: 'h1',
 };
 
 type HeadingProps = {
   children?: Element<any>,
   color?: 'white' | 'gray' | 'dark-gray' | 'blue',
-  size: 'xs' | 's' | 'm' | 'l' | 'xl',
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
 };
 
@@ -54,6 +54,6 @@ export default function Heading(props: HeadingProps) {
 Heading.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue']),
-  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   truncate: PropTypes.bool,
 };

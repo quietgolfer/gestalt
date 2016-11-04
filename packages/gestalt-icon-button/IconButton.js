@@ -15,7 +15,7 @@ type Props = {
   icon: $Keys<typeof icons>,
   label: string,
   onClick?: () => void,
-  size?: 'xs' | 's' | 'm' | 'l' | 'xl',
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
 }
 
 const defaultIconButtonIconColors = {
@@ -25,9 +25,9 @@ const defaultIconButtonIconColors = {
 
 const buttonSize = {
   xs: 24,
-  s: 32,
-  m: 40,
-  l: 48,
+  sm: 32,
+  md: 40,
+  lg: 48,
   xl: 56,
 };
 
@@ -38,7 +38,7 @@ export default function IconButton(props: Props) {
     icon,
     label,
     onClick,
-    size = 'm',
+    size = 'md',
   } = props;
 
   const inlineStyle = {
@@ -77,6 +77,6 @@ IconButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(
-    ['xs', 's', 'm', 'l', 'xl']
+    ['xs', 'sm', 'md', 'lg', 'xl']
   ),
 };

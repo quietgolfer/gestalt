@@ -25,7 +25,7 @@ Whenever you are using a [Switch](#/Switch) component, you should use a \`Label\
 To control the toggle, you can click on the Switch itself or the label 'Live example' above it.
 \`\`\`html
 <Label htmlFor="switchExample">
-  <Text size="s">Live example</Text>
+  <Text size="sm">Live example</Text>
 </Label>
 <Switch
   onChange={() => atom.reset({ switched: !atom.deref().switched })}
@@ -37,7 +37,7 @@ To control the toggle, you can click on the Switch itself or the label 'Live exa
   atom => (
     <div>
       <Label htmlFor="switchExample">
-        <Text size="s">Live example</Text>
+        <Text size="sm">Live example</Text>
       </Label>
       <Switch
         onChange={() => atom.reset({ switched: !atom.deref().switched })}

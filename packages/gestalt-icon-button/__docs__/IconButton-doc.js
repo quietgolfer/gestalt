@@ -37,7 +37,7 @@ const icons = [
   'person',
 ];
 
-const sizes = ['xs', 's', 'm', 'l', 'xl'];
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 const colors = ['transparent', 'light-gray'];
 
 function IconButtonEx(props: *) {
@@ -64,7 +64,7 @@ size beyond what we currently have available, please file an issue on Github!
   bgColor="light-gray"
   icon="cancel"
   label="cancel"
-  size="s"
+  size="sm"
 />
 \`\`\`
 `,
@@ -110,7 +110,7 @@ If you need an additional color beyond what we currently have available, please 
         <div className="col-12 px2 mb1 border-box flex">
           {colors.map((color, idx) =>
             <div className="px1">
-              <IconButtonEx bgColor={color} icon={icon} size="m" key={idx} />
+              <IconButtonEx bgColor={color} icon={icon} size="md" key={idx} />
             </div>
           )}
         </div>

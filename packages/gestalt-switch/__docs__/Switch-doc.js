@@ -45,7 +45,7 @@ Whenever you are using a \`Switch\` component, you should use a [Label](#/Label)
 your component accessible.
 \`\`\`html
 <Label htmlFor="switchExample">
-  <Text size="s">Live example</Text>
+  <Text size="sm">Live example</Text>
 </Label>
 <Switch
   onChange={() => atom.reset({ switched: !atom.deref().switched })}
@@ -57,7 +57,7 @@ your component accessible.
   atom => (
     <div>
       <Label htmlFor="switchExample">
-        <Text size="s">Live example</Text>
+        <Text size="sm">Live example</Text>
       </Label>
       <Switch
         onChange={() => atom.reset({ switched: !atom.deref().switched })}

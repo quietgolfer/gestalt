@@ -22,7 +22,7 @@ Text.propTypes = {
   inline: PropTypes.bool, /* default: false */
   italic: PropTypes.bool, /* default: false */
   overflow: PropTypes.oneOf(['break-word', 'normal']), /* default: normal */
-  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']), /* default: m */
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), /* default: m */
   truncate: PropTypes.bool, /* default: false */
 };
 \`\`\`
@@ -146,13 +146,13 @@ You can apply the following \`size\` options to define the size of the text.
 <Text size="xs">
   {'Extra small'}
 </Text>
-<Text size="s">
+<Text size="sm">
   {'Small'}
 </Text>
-<Text size="m">
+<Text size="md">
   {'Medium (default)'}
 </Text>
-<Text size="l">
+<Text size="lg">
   {'Large'}
 </Text>
 <Text size="xl">
@@ -169,24 +169,24 @@ You can apply the following \`size\` options to define the size of the text.
       </span>
     </div>
     <div className="mb2">
-      <Text inline size="s">{'Small'}</Text>
+      <Text inline size="sm">{'Small'}</Text>
       {' '}
       <span lang="ja">
-        <Text inline size="s">{'こんにちは'}</Text>
+        <Text inline size="sm">{'こんにちは'}</Text>
       </span>
     </div>
     <div className="mb2">
-      <Text inline size="m">{'Medium (default size)'}</Text>
+      <Text inline size="md">{'Medium (default size)'}</Text>
       {' '}
       <span lang="ja">
-        <Text inline size="m">{'こんにちは'}</Text>
+        <Text inline size="md">{'こんにちは'}</Text>
       </span>
     </div>
     <div className="mb2">
-      <Text inline size="l">{'Large'}</Text>
+      <Text inline size="lg">{'Large'}</Text>
       {' '}
       <span lang="ja">
-        <Text inline size="l">{'こんにちは'}</Text>
+        <Text inline size="lg">{'こんにちは'}</Text>
       </span>
     </div>
     <div className="mb2">

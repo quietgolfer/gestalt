@@ -18,7 +18,7 @@ GroupAvatar.propTypes = {
     src: PropTypes.string,
   })).isRequired,
   size: PropTypes.oneOf([
-    'xs', 's', 'm', 'l', 'xl',
+    'xs', 's', 'md', 'l', 'xl',
   ]).isRequired,
 };
 \`\`\`
@@ -42,7 +42,7 @@ const collabsWithoutPhotos = collabsWithPhotos.map(collab => ({
   name: collab.name,
 }));
 
-const sizes = ['xs', 's', 'm', 'l', 'xl'];
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 function GroupAvatarEx(props: *) {
   const { collabs, size } = props;
@@ -64,7 +64,7 @@ these are not responsive. If a \`collaborator\` is missing an image, their
     {sizes.map((size, key) =>
       <div className="flex px2">
         <div className="p1 self-center">
-          <Text bold size="l">{size}</Text>
+          <Text bold size="lg">{size}</Text>
         </div>
         <GroupAvatarEx collabs={collabsWithPhotos} size={size} key={`with-${key}`} />
         <GroupAvatarEx collabs={collabsWithoutPhotos} size={size} key={`without-${key}`} />
@@ -81,16 +81,16 @@ rest are discarded.`,
     {[1, 2, 3].map((count, key) => (
       <div className="flex px2">
         <div className="p1 self-center">
-          <Text bold size="l">{count}</Text>
+          <Text bold size="lg">{count}</Text>
         </div>
         <GroupAvatarEx
           collabs={collabsWithPhotos.slice(-count)}
-          size={'m'}
+          size={'md'}
           key={`count-with-${key}`}
         />
         <GroupAvatarEx
           collabs={collabsWithoutPhotos.slice(-count)}
-          size={'m'}
+          size={'md'}
           key={`count-without-${key}`}
         />
       </div>

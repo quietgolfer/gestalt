@@ -12,14 +12,14 @@ md`
 \`\`\`jsx
 Avatar.propTypes = {
   name: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   src: PropTypes.string,
 };
 \`\`\`
 `
 );
 
-const sizes = ['xs', 's', 'm', 'l', 'xl'];
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 type AvatarExProps = {
   size: sizes,
@@ -54,7 +54,7 @@ There are 5 sizes you can choose for an \`Avatar\`. Avatar's are responsive so t
 size will scale to appropriately match the size of your screen.
 \`\`\`html
 <Avatar
-  size="m"
+  size="md"
   src="path/to/image"
   name="Long"
 />
