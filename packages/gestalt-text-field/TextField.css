@@ -1,0 +1,31 @@
+.common {
+  composes: bg-light-gray from "gestalt-colors/Colors.css";
+  composes: bold from "gestalt-typography/Typography.css";
+  composes: border-box from "gestalt-borders/Borders.css";
+  composes: col-12 from "gestalt-columns/Columns.css";
+  composes: dark-gray from "gestalt-colors/Colors.css";
+  composes: px1 from "gestalt-whitespace/Whitespace.css";
+  composes: py2 from "gestalt-whitespace/Whitespace.css";
+  composes: rounded from "gestalt-borders/Borders.css";
+  composes: text-m from "gestalt-typography/Typography.css";
+  cursor: text;
+  outline: 0;
+}
+
+.textfield {
+  composes: common;
+  composes: border from "gestalt-borders/Borders.css";
+}
+
+.textfield:focus {
+  background-color: #fff;
+}
+
+.errored {
+  composes: common;
+  border: 1px solid #bd081c;
+}
+
+.errored:focus {
+  background-color: #fff;
+}
