@@ -25,6 +25,7 @@
     "gestalt-segmented-control": "^0.1.25",
     "gestalt-switch": "^0.1.25",
     "gestalt-text": "^0.1.25",
+    "gestalt-text-field": "^0.1.25",
     "gestalt-typography": "^0.1.25",
     "gestalt-whitespace": "^0.1.25",
     "react": "^15.3.1"

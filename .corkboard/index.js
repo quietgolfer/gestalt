@@ -23,6 +23,7 @@ const requireCard = require.context('../packages', true, /\-doc\.js$/);
   ['gestalt-segmented-control', 'SegmentedControl'],
   ['gestalt-switch', 'Switch'],
   ['gestalt-text', 'Text'],
+  ['gestalt-text-field', 'TextField'],
   ['gestalt-whitespace', 'Whitespace'],
 ].forEach(pair =>
   requireCard(`./${pair[0]}/__docs__/${pair[1]}-doc.js`)
