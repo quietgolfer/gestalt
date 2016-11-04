@@ -1,12 +1,12 @@
 {
   "name": "gestalt-text",
-  "version": "0.1.25",
+  "version": "0.2.0",
   "main": "./Text.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-colors": "^0.1.25",
-    "gestalt-typography": "^0.1.25",
-    "gestalt-layout": "^0.1.25"
+    "gestalt-colors": "^0.2.0",
+    "gestalt-typography": "^0.2.0",
+    "gestalt-layout": "^0.2.0"
   }
 }

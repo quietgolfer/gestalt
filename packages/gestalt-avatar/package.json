@@ -1,15 +1,15 @@
 {
   "name": "gestalt-avatar",
-  "version": "0.1.25",
+  "version": "0.2.0",
   "main": "./Avatar.js",
   "dependencies": {
     "react": "^15.3.1",
     "classnames": "^2.2.5",
-    "gestalt-heading": "^0.1.25",
-    "gestalt-image": "^0.1.25",
-    "gestalt-mask": "^0.1.25",
-    "gestalt-colors": "^0.1.25",
-    "gestalt-borders": "^0.1.25",
-    "gestalt-layout": "^0.1.25"
+    "gestalt-heading": "^0.2.0",
+    "gestalt-image": "^0.2.0",
+    "gestalt-mask": "^0.2.0",
+    "gestalt-colors": "^0.2.0",
+    "gestalt-borders": "^0.2.0",
+    "gestalt-layout": "^0.2.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "gestalt-column",
-  "version": "0.1.25",
+  "version": "0.2.0",
   "main": "./Column.css",
   "dependencies": {
     "react": "^15.3.1"
