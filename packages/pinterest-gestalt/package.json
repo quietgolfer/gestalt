@@ -9,7 +9,7 @@
     "gestalt-button": "^0.1.25",
     "gestalt-classic-grid": "^0.1.25",
     "gestalt-colors": "^0.1.25",
-    "gestalt-columns": "^0.1.25",
+    "gestalt-column": "^0.1.25",
     "gestalt-cursor": "^0.1.25",
     "gestalt-divider": "^0.1.25",
     "gestalt-flexible-grid": "^0.1.25",

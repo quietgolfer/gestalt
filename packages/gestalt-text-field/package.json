@@ -7,7 +7,7 @@
     "classnames": "^2.2.5",
     "gestalt-borders": "^0.1.25",
     "gestalt-colors": "^0.1.25",
-    "gestalt-columns": "^0.1.25",
+    "gestalt-column": "^0.1.25",
     "gestalt-typography": "^0.1.25",
     "gestalt-layout": "^0.1.25",
     "gestalt-whitespace": "^0.1.25"

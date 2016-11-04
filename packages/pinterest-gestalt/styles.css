@@ -2,7 +2,7 @@
 
 @import "gestalt-borders/Borders.css";
 @import "gestalt-colors/Colors.css";
-@import "gestalt-columns/Columns.css";
+@import "gestalt-column/Column.css";
 @import "gestalt-cursor/Cursor.css";
 @import "gestalt-layout/Layout.css";
 @import "gestalt-typography/Typography.css";

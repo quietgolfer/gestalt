@@ -1,6 +1,6 @@
 .wash {
   composes: absolute from "gestalt-layout/Layout.css";
-  composes: col-12 from "gestalt-columns/Columns.css";
+  composes: col-12 from "gestalt-column/Column.css";
   background: rgba(0, 0, 0, 0.03);
   height: 100%;
   pointer-events: none;

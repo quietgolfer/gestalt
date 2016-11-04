@@ -5,7 +5,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-columns": "^0.1.25",
+    "gestalt-column": "^0.1.25",
     "gestalt-layout": "^0.1.25",
     "gestalt-typography": "^0.1.25"
   }

@@ -4,7 +4,7 @@ import { card, md } from 'corkboard';
 import Col from '../Column';
 import { ns, stylesTable } from '../../../.corkboard/cards';
 
-ns('Columns');
+ns('Column');
 
 function Column(props: {size: *, children?: any}) {
   const {
@@ -102,5 +102,5 @@ Column.propTypes = {
 
 card('Styles Table',
   <p className="red">These styles are deprecated. Please use the <code>Column</code> component instead.</p>,
-  stylesTable(require('!!raw!postcss!../Columns.css')),
+  stylesTable(require('!!raw!postcss!../Column.css')),
   { stacked: true });

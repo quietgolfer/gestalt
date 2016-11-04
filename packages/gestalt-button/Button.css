@@ -26,7 +26,7 @@
 
 .fullWidth {
   composes: common;
-  composes: col-12 from "gestalt-columns/Columns.css";
+  composes: col-12 from "gestalt-column/Column.css";
   composes: text-l from "gestalt-typography/Typography.css";
   padding: 12px 16px;
 }

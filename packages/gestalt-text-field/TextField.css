@@ -2,7 +2,7 @@
   composes: bg-light-gray from "gestalt-colors/Colors.css";
   composes: bold from "gestalt-typography/Typography.css";
   composes: border-box from "gestalt-borders/Borders.css";
-  composes: col-12 from "gestalt-columns/Columns.css";
+  composes: col-12 from "gestalt-column/Column.css";
   composes: dark-gray from "gestalt-colors/Colors.css";
   composes: px1 from "gestalt-whitespace/Whitespace.css";
   composes: py2 from "gestalt-whitespace/Whitespace.css";

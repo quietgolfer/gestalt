@@ -41,7 +41,7 @@
 
 .checkbox {
   composes: absolute from "gestalt-layout/Layout.css";
-  composes: col-12 from "gestalt-columns/Columns.css";
+  composes: col-12 from "gestalt-column/Column.css";
   composes: m0 from "gestalt-whitespace/Whitespace.css";
   composes: no-border from "gestalt-borders/Borders.css";
   composes: p0 from "gestalt-whitespace/Whitespace.css";

@@ -6,7 +6,7 @@
     "react": "^15.3.1",
     "classnames": "^2.2.5",
     "gestalt-colors": "^0.1.25",
-    "gestalt-columns": "^0.1.25",
+    "gestalt-column": "^0.1.25",
     "gestalt-flexible-grid": "^0.1.25",
     "gestalt-image": "^0.1.25",
     "gestalt-layout": "^0.1.25",
