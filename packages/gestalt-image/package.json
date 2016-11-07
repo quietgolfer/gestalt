@@ -1,12 +1,12 @@
 {
   "name": "gestalt-image",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "./Image.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-column": "^0.2.2",
-    "gestalt-layout": "^0.2.2",
-    "gestalt-typography": "^0.2.2"
+    "gestalt-column": "^0.2.3",
+    "gestalt-layout": "^0.2.3",
+    "gestalt-typography": "^0.2.3"
   }
 }

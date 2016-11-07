@@ -1,11 +1,11 @@
 {
   "name": "gestalt-divider",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "./Divider.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-borders": "^0.2.2",
-    "gestalt-whitespace": "^0.2.2"
+    "gestalt-borders": "^0.2.3",
+    "gestalt-whitespace": "^0.2.3"
   }
 }
