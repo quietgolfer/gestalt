@@ -1,15 +1,15 @@
 {
   "name": "gestalt-text-field",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "./TextField.js",
   "dependencies": {
     "react": "^15.3.1",
     "classnames": "^2.2.5",
-    "gestalt-borders": "^0.2.1",
-    "gestalt-colors": "^0.2.1",
-    "gestalt-column": "^0.2.1",
-    "gestalt-typography": "^0.2.1",
-    "gestalt-layout": "^0.2.1",
-    "gestalt-whitespace": "^0.2.1"
+    "gestalt-borders": "^0.2.2",
+    "gestalt-colors": "^0.2.2",
+    "gestalt-column": "^0.2.2",
+    "gestalt-typography": "^0.2.2",
+    "gestalt-layout": "^0.2.2",
+    "gestalt-whitespace": "^0.2.2"
   }
 }

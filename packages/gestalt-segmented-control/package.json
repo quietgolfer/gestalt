@@ -1,15 +1,15 @@
 {
   "name": "gestalt-segmented-control",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "./SegmentedControl.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-text": "^0.2.1",
-    "gestalt-colors": "^0.2.1",
-    "gestalt-layout": "^0.2.1",
-    "gestalt-borders": "^0.2.1",
-    "gestalt-cursor": "^0.2.1",
-    "gestalt-whitespace": "^0.2.1"
+    "gestalt-text": "^0.2.2",
+    "gestalt-colors": "^0.2.2",
+    "gestalt-layout": "^0.2.2",
+    "gestalt-borders": "^0.2.2",
+    "gestalt-cursor": "^0.2.2",
+    "gestalt-whitespace": "^0.2.2"
   }
 }
