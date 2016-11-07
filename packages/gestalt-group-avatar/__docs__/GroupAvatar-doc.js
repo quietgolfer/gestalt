@@ -18,7 +18,7 @@ GroupAvatar.propTypes = {
     src: PropTypes.string,
   })).isRequired,
   size: PropTypes.oneOf([
-    'xs', 's', 'md', 'l', 'xl',
+    'xs', 'sm', 'md', 'lg', 'xl',
   ]).isRequired,
 };
 \`\`\`

@@ -22,7 +22,7 @@ IconButton.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(
-    ['xs', 's', 'm', 'l', 'xl'] /* default size: m */
+    ['xs', 'sm', 'md', 'lg', 'xl'] /* default size: md */
   ),
 };
 \`\`\`

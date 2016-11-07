@@ -22,7 +22,7 @@ Text.propTypes = {
   inline: PropTypes.bool, /* default: false */
   italic: PropTypes.bool, /* default: false */
   overflow: PropTypes.oneOf(['break-word', 'normal']), /* default: normal */
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), /* default: m */
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), /* default: md */
   truncate: PropTypes.bool, /* default: false */
 };
 \`\`\`

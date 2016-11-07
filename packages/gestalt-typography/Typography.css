@@ -143,36 +143,36 @@
   font-size: var(--size-locale-ja-1);
 }
 
-.text-s {
+.text-sm {
   font-size: var(--size-2);
   letter-spacing: var(--tracking-2);
   line-height: var(--leading-2);
   word-spacing: var(--word-spacing-2);
 }
 
-:lang(ja) .text-s {
+:lang(ja) .text-sm {
   font-size: var(--size-locale-ja-2);
 }
 
-.text-m {
+.text-md {
   font-size: var(--size-3);
   letter-spacing: var(--tracking-3);
   line-height: var(--leading-3);
   word-spacing: var(--word-spacing-3);
 }
 
-:lang(ja) .text-m {
+:lang(ja) .text-md {
   font-size: var(--size-locale-ja-3);
 }
 
-.text-l {
+.text-lg {
   font-size: var(--size-4);
   letter-spacing: var(--tracking-4);
   line-height: var(--leading-4);
   word-spacing: var(--word-spacing-4);
 }
 
-:lang(ja) .text-l {
+:lang(ja) .text-lg {
   font-size: var(--size-locale-ja-4);
 }
 
@@ -254,36 +254,36 @@
     font-size: var(--size-locale-ja-2);
   }
 
-  .text-s {
+  .text-sm {
     font-size: var(--size-3);
     letter-spacing: var(--tracking-3);
     line-height: var(--leading-3);
     word-spacing: var(--word-spacing-3);
   }
 
-  :lang(ja) .text-s {
+  :lang(ja) .text-sm {
     font-size: var(--size-locale-ja-3);
   }
 
-  .text-m {
+  .text-md {
     font-size: var(--size-4);
     letter-spacing: var(--tracking-4);
     line-height: var(--leading-4);
     word-spacing: var(--word-spacing-4);
   }
 
-  :lang(ja) .text-m {
+  :lang(ja) .text-md {
     font-size: var(--size-locale-ja-4);
   }
 
-  .text-l {
+  .text-lg {
     font-size: var(--size-5);
     letter-spacing: var(--tracking-5);
     line-height: var(--leading-5);
     word-spacing: var(--word-spacing-5);
   }
 
-  :lang(ja) .text-l {
+  :lang(ja) .text-lg {
     font-size: var(--size-locale-ja-5);
   }
 
@@ -366,36 +366,36 @@
     font-size: var(--size-locale-ja-3);
   }
 
-  .text-s {
+  .text-sm {
     font-size: var(--size-4);
     letter-spacing: var(--tracking-4);
     line-height: var(--leading-4);
     word-spacing: var(--word-spacing-4);
   }
 
-  :lang(ja) .text-s {
+  :lang(ja) .text-sm {
     font-size: var(--size-locale-ja-4);
   }
 
-  .text-m {
+  .text-md {
     font-size: var(--size-5);
     letter-spacing: var(--tracking-5);
     line-height: var(--leading-5);
     word-spacing: var(--word-spacing-5);
   }
 
-  :lang(ja) .text-m {
+  :lang(ja) .text-md {
     font-size: var(--size-locale-ja-5);
   }
 
-  .text-l {
+  .text-lg {
     font-size: var(--size-6);
     letter-spacing: var(--tracking-6);
     line-height: var(--leading-6);
     word-spacing: var(--word-spacing-6);
   }
 
-  :lang(ja) .text-l {
+  :lang(ja) .text-lg {
     font-size: var(--size-locale-ja-6);
   }
 
