@@ -9,7 +9,7 @@ export function ns(name, text = '') {
   registerNamespace(name);
   registerCard(
     <div>
-      <h1 className="mt0 mb6 display-l dark-gray">{name}</h1>
+      <h1 className="mt0 mb6 display-lg dark-gray">{name}</h1>
       <div className="md-col-8 lg-col-6">
         <Markdown text={text} />
       </div>

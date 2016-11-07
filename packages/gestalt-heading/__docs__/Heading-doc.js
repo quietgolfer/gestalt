@@ -13,7 +13,7 @@ md`
 Heading.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue']), /* default: dark-gray */
-  size: PropTypes.oneOf(['xs', 's', 'm', 'l', 'xl']).isRequired,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   truncate: PropTypes.bool, /* default: false */
 };
 \`\`\`

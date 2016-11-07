@@ -198,36 +198,36 @@
   font-size: var(--size-locale-ja-6);
 }
 
-.display-s {
+.display-sm {
   font-size: var(--size-7);
   letter-spacing: var(--tracking-7);
   line-height: var(--leading-7);
   word-spacing: var(--word-spacing-7);
 }
 
-:lang(ja) .display-s {
+:lang(ja) .display-sm {
   font-size: var(--size-locale-ja-7);
 }
 
-.display-m {
+.display-md {
   font-size: var(--size-8);
   letter-spacing: var(--tracking-8);
   line-height: var(--leading-8);
   word-spacing: var(--word-spacing-8);
 }
 
-:lang(ja) .display-m {
+:lang(ja) .display-md {
   font-size: var(--size-locale-ja-8);
 }
 
-.display-l {
+.display-lg {
   font-size: var(--size-9);
   letter-spacing: var(--tracking-9);
   line-height: var(--leading-9);
   word-spacing: var(--word-spacing-9);
 }
 
-:lang(ja) .display-l {
+:lang(ja) .display-lg {
   font-size: var(--size-locale-ja-9);
 }
 
@@ -309,36 +309,36 @@
     font-size: var(--size-locale-ja-7);
   }
 
-  .display-s {
+  .display-sm {
     font-size: var(--size-8);
     letter-spacing: var(--tracking-8);
     line-height: var(--leading-8);
     word-spacing: var(--word-spacing-8);
   }
 
-  :lang(ja) .display-s {
+  :lang(ja) .display-sm {
     font-size: var(--size-locale-ja-8);
   }
 
-  .display-m {
+  .display-md {
     font-size: var(--size-9);
     letter-spacing: var(--tracking-9);
     line-height: var(--leading-9);
     word-spacing: var(--word-spacing-9);
   }
 
-  :lang(ja) .display-m {
+  :lang(ja) .display-md {
     font-size: var(--size-locale-ja-9);
   }
 
-  .display-l {
+  .display-lg {
     font-size: var(--size-10);
     letter-spacing: var(--tracking-10);
     line-height: var(--leading-10);
     word-spacing: var(--word-spacing-10);
   }
 
-  :lang(ja) .display-l {
+  :lang(ja) .display-lg {
     font-size: var(--size-locale-ja-10);
   }
 
@@ -421,36 +421,36 @@
     font-size: var(--size-locale-ja-8);
   }
 
-  .display-s {
+  .display-sm {
     font-size: var(--size-9);
     letter-spacing: var(--tracking-9);
     line-height: var(--leading-9);
     word-spacing: var(--word-spacing-9);
   }
 
-  :lang(ja) .display-s {
+  :lang(ja) .display-sm {
     font-size: var(--size-locale-ja-9);
   }
 
-  .display-m {
+  .display-md {
     font-size: var(--size-10);
     letter-spacing: var(--tracking-10);
     line-height: var(--leading-10);
     word-spacing: var(--word-spacing-10);
   }
 
-  :lang(ja) .display-m {
+  :lang(ja) .display-md {
     font-size: var(--size-locale-ja-10);
   }
 
-  .display-l {
+  .display-lg {
     font-size: var(--size-11);
     letter-spacing: var(--tracking-11);
     line-height: var(--leading-11);
     word-spacing: var(--word-spacing-11);
   }
 
-  :lang(ja) .display-l {
+  :lang(ja) .display-lg {
     font-size: var(--size-locale-ja-11);
   }
 
