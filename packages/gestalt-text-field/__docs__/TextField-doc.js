@@ -29,13 +29,13 @@ They will expand to fill the width of their parent container and the text within
 is responsive.
 
 \`\`\`jsx
-<TextFieldEx id="email" placeholder="Email Address" />
+<TextField id="email" placeholder="Email Address" />
 \`\`\`
 \`\`\`jsx
-<TextFieldEx hasError id="name" />
+<TextField hasError id="name" />
 \`\`\`
 \`\`\`jsx
-<TextFieldEx id="password" type="password" value="abcdef" />
+<TextField id="password" type="password" value="abcdef" />
 \`\`\`
 `,
 atom => (
