@@ -2,7 +2,9 @@ export DISPLAY=:99.0
 /etc/init.d/xvfb start
 
 cd test && npm start &
-SERVER_PID=$!
+
+PID=$!                    # get the Parent Process ID
+PGID=$(ps opgid= "$PID")  # get the Process Group ID
 
 until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
     printf '.'
@@ -12,5 +14,7 @@ done
 NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs-core $(find packages -name '*.ghost.js')
 STATUS=$?
 
-kill -9 $SERVER_PID || true
+# Kill the process group and all children of that process group.
+kill -- -$PGID
+
 exit $STATUS
