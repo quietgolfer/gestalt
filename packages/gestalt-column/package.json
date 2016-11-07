@@ -1,7 +1,7 @@
 {
   "name": "gestalt-column",
   "version": "0.2.0",
-  "main": "./Column.css",
+  "main": "./Column.js",
   "dependencies": {
     "react": "^15.3.1"
   }

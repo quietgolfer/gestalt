@@ -174,12 +174,11 @@ function Avatar(props: GridItemPropsType) {
         width={1}
       />
     </div>
-  :
-    <DefaultAvatar
-      data={data}
-      height={avatarStyles.width}
-      placement={data.placement}
-    />;
+  : <DefaultAvatar
+    data={data}
+    height={avatarStyles.width}
+    placement={data.placement}
+  />;
 
   const containerStyles = {
     height: avatarStyles.width + GUTTER_WIDTH,

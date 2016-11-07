@@ -1,3 +1,4 @@
+// @flow
 import React, { PropTypes } from 'react';
 import { card, md } from 'corkboard';
 import Avatar from '../Avatar';
@@ -22,7 +23,7 @@ Avatar.propTypes = {
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 type AvatarExProps = {
-  size: sizes,
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   src: string,
 };
 
@@ -80,6 +81,6 @@ the name provided will be used as a placeholder.
 `,
   <div className="flex">
     {sizes.map((size, idx) =>
-      <AvatarEx size={size} key={idx} />
+      <AvatarEx size={size} key={idx} src="" />
     )}
   </div>);
