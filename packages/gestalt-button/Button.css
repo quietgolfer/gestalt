@@ -27,13 +27,13 @@
 .fullWidth {
   composes: common;
   composes: col-12 from "gestalt-column/Column.css";
-  composes: text-l from "gestalt-typography/Typography.css";
+  composes: text-lg from "gestalt-typography/Typography.css";
   padding: 12px 16px;
 }
 
 .button,
 .submit {
-  composes: text-m from "gestalt-typography/Typography.css";
+  composes: text-md from "gestalt-typography/Typography.css";
 }
 
 .disabled {

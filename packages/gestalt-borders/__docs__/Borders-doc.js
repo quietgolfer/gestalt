@@ -19,7 +19,7 @@ function Swatch({ border, hasFill }: Props) {
         }}
       />
       <div className="h6 py1 dark-gray text-center">
-        <code className="text-s">{border}</code>
+        <code className="text-sm">{border}</code>
       </div>
     </div>
   );

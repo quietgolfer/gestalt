@@ -7,7 +7,7 @@
   composes: px1 from "gestalt-whitespace/Whitespace.css";
   composes: py2 from "gestalt-whitespace/Whitespace.css";
   composes: rounded from "gestalt-borders/Borders.css";
-  composes: text-m from "gestalt-typography/Typography.css";
+  composes: text-md from "gestalt-typography/Typography.css";
   cursor: text;
   outline: 0;
 }
