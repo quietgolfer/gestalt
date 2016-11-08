@@ -1,5 +1,5 @@
 {
   "name": "gestalt-string-to-color",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "./stringToColor.js"
 }
