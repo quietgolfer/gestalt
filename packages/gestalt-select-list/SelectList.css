@@ -1,0 +1,59 @@
+:root {
+  --colors: "gestalt-colors/Colors.css";
+  --typography: "gestalt-typography/Typography.css";
+  --borders: "gestalt-borders/Borders.css";
+  --column: "gestalt-column/Column.css";
+  --layout: "gestalt-layout/Layout.css";
+  --cursor: "gestalt-cursor/Cursor.css";
+  --whitespace: "gestalt-whitespace/Whitespace.css";
+}
+
+.text {
+  composes: bold from from var(--typography);
+  composes: dark-gray from var(--colors);
+  composes: text-md from var(--typography);
+}
+
+.common {
+  composes: bg-light-gray from var(--colors);
+  composes: block from var(--layout);
+  composes: border-box from var(--borders);
+  composes: col-12 from var(--column);
+  composes: pointer from var(--cursor);
+  composes: rounded from var(--borders);
+}
+
+.container {
+  composes: common;
+  composes: relative from var(--layout);
+}
+
+.select {
+  composes: common;
+  composes: text;
+  composes: no-border from var(--borders);
+  composes: p2 from var(--whitespace);
+  appearance: none;
+  padding-right: 20%; /* prevents option.name from running into arrow */
+}
+
+.dropdownArrow {
+  composes: absolute from var(--layout);
+  composes: block from var(--layout);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 7px solid #555;
+  height: 0;
+  margin-top: -3px;
+  pointer-events: none;
+  right: 16px;
+  top: 50%;
+  width: 0;
+  z-index: 2;
+}
+
+.options {
+  composes: relative from var(--layout);
+  composes: mr3 from var(--whitespace);
+  width: 80%;
+}

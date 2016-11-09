@@ -1,0 +1,15 @@
+{
+  "name": "gestalt-select-list",
+  "version": "0.2.3",
+  "main": "./SelectList.js",
+  "dependencies": {
+    "react": "^15.3.1",
+    "gestalt-borders": "^0.2.3",
+    "gestalt-colors": "^0.2.3",
+    "gestalt-column": "^0.2.3",
+    "gestalt-cursor": "^0.2.3",
+    "gestalt-typography": "^0.2.3",
+    "gestalt-layout": "^0.2.3",
+    "gestalt-whitespace": "^0.2.3"
+  }
+}
