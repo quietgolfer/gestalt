@@ -163,7 +163,7 @@ function Avatar(props: GridItemPropsType) {
   const imgContainerStyles = {
     height: avatarStyles.width,
   };
-  const avatarSection = data.src ?
+  const avatarSection = data.src ? (
     <div>
       <div className={styles.wash} />
       <img
@@ -174,11 +174,13 @@ function Avatar(props: GridItemPropsType) {
         width={1}
       />
     </div>
-  : <DefaultAvatar
-    data={data}
-    height={avatarStyles.width}
-    placement={data.placement}
-  />;
+  ) : (
+    <DefaultAvatar
+      data={data}
+      height={avatarStyles.width}
+      placement={data.placement}
+    />
+  );
 
   const containerStyles = {
     height: avatarStyles.width + GUTTER_WIDTH,

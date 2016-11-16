@@ -1,21 +1,31 @@
 steps:
   - command: npm run eslint
     label: ":eslint:"
+    agents:
+      queue: runners
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
   - command: npm run stylelint
     label: ":stylelint:"
+    agents:
+      queue: runners
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
   - command: npm run flow
     label: ":flowtype:"
+    agents:
+      queue: runners
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
   - command: npm test
     label: ":jest:"
+    agents:
+      queue: runners
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
   - command: bash -c "/etc/init.d/xvfb start && npm run ghost"
     label: ":node: ghost"
+    agents:
+      queue: runners
     env:
       BUILDKITE_DOCKER_COMPOSE_CONTAINER: "ghost"
