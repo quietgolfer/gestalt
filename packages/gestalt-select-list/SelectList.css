@@ -16,8 +16,7 @@
 
 .common {
   composes: bg-light-gray from var(--colors);
-  composes: block from var(--layout);
-  composes: border-box from var(--borders);
+  composes: block border-box from var(--layout);
   composes: col-12 from var(--column);
   composes: pointer from var(--cursor);
   composes: rounded from var(--borders);

@@ -1,13 +1,10 @@
 .common {
-  composes: bg-light-gray from "gestalt-colors/Colors.css";
-  composes: bold from "gestalt-typography/Typography.css";
-  composes: border-box from "gestalt-borders/Borders.css";
+  composes: bg-light-gray dark-gray from "gestalt-colors/Colors.css";
+  composes: bold text-md from "gestalt-typography/Typography.css";
+  composes: border-box from "gestalt-layout/Layout.css";
   composes: col-12 from "gestalt-column/Column.css";
-  composes: dark-gray from "gestalt-colors/Colors.css";
-  composes: px1 from "gestalt-whitespace/Whitespace.css";
-  composes: py2 from "gestalt-whitespace/Whitespace.css";
+  composes: px1 py2 from "gestalt-whitespace/Whitespace.css";
   composes: rounded from "gestalt-borders/Borders.css";
-  composes: text-md from "gestalt-typography/Typography.css";
   cursor: text;
   outline: 0;
 }
