@@ -8,6 +8,7 @@ const expectedReturns = {
   Chris: '#ceaba1',
   Julia: '#a9ba95',
   Kevin: '#a9ba97',
+  'Chris Lloyd': '#a5bbc2',
   'Shrimp!': '#e6a299',
   'Web Dev': '#b4cad0',
 };

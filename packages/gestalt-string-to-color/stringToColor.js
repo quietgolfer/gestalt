@@ -29,7 +29,7 @@ export default function stringToColor(input:string = '') {
   }
 
   // Take the modulo based on the hash & length of the specified list of colors
-  const mod = hash % colorList.length;
+  const mod = Math.abs(hash) % colorList.length;
 
   return `#${colorList[mod]}`;
 }
