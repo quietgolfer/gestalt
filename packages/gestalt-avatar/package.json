@@ -9,7 +9,9 @@
     "gestalt-image": "^0.2.4",
     "gestalt-mask": "^0.2.4",
     "gestalt-colors": "^0.2.4",
+    "gestalt-column": "^0.2.4",
     "gestalt-borders": "^0.2.4",
-    "gestalt-layout": "^0.2.4"
+    "gestalt-layout": "^0.2.4",
+    "gestalt-typography": "^0.2.4"
   }
 }

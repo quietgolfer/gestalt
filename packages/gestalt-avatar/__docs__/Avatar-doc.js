@@ -2,6 +2,7 @@
 import React, { PropTypes } from 'react';
 import { card, md } from 'corkboard';
 import Avatar from '../Avatar';
+import Column from '../../gestalt-column/Column';
 import Text from '../../gestalt-text/Text';
 import { ns } from '../../../.corkboard/cards';
 
@@ -13,7 +14,7 @@ md`
 \`\`\`jsx
 Avatar.propTypes = {
   name: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
+  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   src: PropTypes.string,
 };
 \`\`\`
@@ -52,7 +53,8 @@ const imageSrc = 'https://s-media-cache-ak0.pinimg.com/avatars/long_1468294555_4
 card('Sizes',
   md`
 There are 5 sizes you can choose for an \`Avatar\`. Avatar's are responsive so the image
-size will scale to appropriately match the size of your screen.
+size will scale to appropriately match the size of your screen. For certain designs you may
+need a column-based or block sized Avatar. More information on that option is below.
 \`\`\`html
 <Avatar
   size="md"
@@ -65,6 +67,37 @@ size will scale to appropriately match the size of your screen.
     {sizes.map((size, idx) =>
       <AvatarEx size={size} src={imageSrc} key={idx} />
     )}
+  </div>
+);
+
+card('Column-based Sizing',
+md`
+Avatars that are not given a \`size\` prop will be expand to fit to the width of their
+parent container. These can be used if you need to achieve column-based sizing. Resize
+the browser to see these Avatar change to match the width of the \`Column\` they
+have been placed in.
+\`\`\`html
+<Column span={2}>
+  <Avatar name="Julia" />
+</Column>
+<Column span={4}>
+  <Avatar name="Long" src="path/to/image" />
+</Column>
+<Column span={6}>
+  <Avatar name="Julia" />
+</Column>
+\`\`\`
+`,
+  <div className="flex">
+    <Column span={2}>
+      <Avatar name="Julia" src="" key={123} />
+    </Column>
+    <Column span={4}>
+      <Avatar name="Long" src={imageSrc} key={123} />
+    </Column>
+    <Column span={6}>
+      <Avatar name="Julia" src="" key={123} />
+    </Column>
   </div>
 );
 
@@ -83,4 +116,5 @@ the name provided will be used as a placeholder.
     {sizes.map((size, idx) =>
       <AvatarEx size={size} key={idx} src="" />
     )}
-  </div>);
+  </div>
+  );

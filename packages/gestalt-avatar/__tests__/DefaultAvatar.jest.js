@@ -1,10 +1,13 @@
 /* eslint-env jest */
 /* eslint import/imports-first: 0 */
-jest.unmock('../Avatar');
+jest.unmock('../DefaultAvatar');
+jest.unmock('gestalt-mask');
+
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { DefaultAvatar } from '../Avatar';
+import DefaultAvatar from '../DefaultAvatar';
+import Mask from 'gestalt-mask';
 
 describe('DefaultAvatar', () => {
   it('renders multi-byte character initials', () => {
@@ -12,7 +15,8 @@ describe('DefaultAvatar', () => {
       name: '💩 astral',
     };
     const wrapper = shallow(<DefaultAvatar {...avatarProps} />);
-    expect(wrapper.text()).toEqual('💩');
+    const withMask = wrapper.find(Mask).shallow();
+    expect(withMask.text()).toEqual('💩');
   });
 
   it('renders single-byte character initials', () => {
@@ -20,6 +24,7 @@ describe('DefaultAvatar', () => {
       name: 'Hello!',
     };
     const wrapper = shallow(<DefaultAvatar {...avatarProps} />);
-    expect(wrapper.text()).toEqual('H');
+    const withMask = wrapper.find(Mask).shallow();
+    expect(withMask.text()).toEqual('H');
   });
 });
