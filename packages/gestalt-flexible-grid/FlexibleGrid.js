@@ -24,7 +24,6 @@ export default class FlexibleGrid extends Component {
   componentDidMount() {
     // We calculate columns and offset after the component mounts so we can measure our container.
     this.reflow(this.calculateColumns());
-    this.scrollBuffer = this.getContainerHeight();
 
     this.boundResizeHandler = () => this.handleResize();
 
@@ -49,7 +48,7 @@ export default class FlexibleGrid extends Component {
           containerHeight: longestColumn,
         });
 
-        this.scrollBuffer = this.getContainerHeight();
+        this.scrollBuffer = this.getContainerHeight() * 2;
       }
     });
   }

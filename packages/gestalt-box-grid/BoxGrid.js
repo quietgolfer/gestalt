@@ -27,7 +27,6 @@ export default class BoxGrid extends Component {
     // We calculate columns and offset after the component mounts so we can measure our container.
     this.calculateColumns();
     this.reflow();
-    this.scrollBuffer = this.getContainerHeight();
 
     this.boundResizeHandler = () => this.handleResize();
 
@@ -48,7 +47,7 @@ export default class BoxGrid extends Component {
           containerHeight: longestColumn,
         });
 
-        this.scrollBuffer = this.getContainerHeight();
+        this.scrollBuffer = this.getContainerHeight() * 2;
       }
     });
   }
