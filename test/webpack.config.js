@@ -10,6 +10,7 @@ module.exports = {
   resolve: {
     alias: {
       react: `${__dirname}/../node_modules/react`,
+      'react-dom': `${__dirname}/../node_modules/react-dom`,
     },
   },
   module: {
