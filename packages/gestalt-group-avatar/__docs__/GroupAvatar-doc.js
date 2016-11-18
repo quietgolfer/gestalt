@@ -62,12 +62,12 @@ these are not responsive. If a \`collaborator\` is missing an image, their
 \`initial\` or first character of their \`name\` is used as a placeholder.`,
   <div>
     {sizes.map((size, key) =>
-      <div className="flex px2">
+      <div className="flex px2" key={key}>
         <div className="p1 self-center">
           <Text bold size="lg">{size}</Text>
         </div>
-        <GroupAvatarEx collabs={collabsWithPhotos} size={size} key={`with-${key}`} />
-        <GroupAvatarEx collabs={collabsWithoutPhotos} size={size} key={`without-${key}`} />
+        <GroupAvatarEx collabs={collabsWithPhotos} size={size} />
+        <GroupAvatarEx collabs={collabsWithoutPhotos} size={size} />
       </div>
     )}
   </div>
@@ -79,19 +79,17 @@ If you have more than 3 collaborators, only the first 3 are shown and the
 rest are discarded.`,
   <div>
     {[1, 2, 3].map((count, key) => (
-      <div className="flex px2">
+      <div className="flex px2" key={key}>
         <div className="p1 self-center">
           <Text bold size="lg">{count}</Text>
         </div>
         <GroupAvatarEx
           collabs={collabsWithPhotos.slice(-count)}
           size={'md'}
-          key={`count-with-${key}`}
         />
         <GroupAvatarEx
           collabs={collabsWithoutPhotos.slice(-count)}
           size={'md'}
-          key={`count-without-${key}`}
         />
       </div>
     )

@@ -70,9 +70,9 @@ size beyond what we currently have available, please file an issue on Github!
 `,
   <div className="flex mxn2 flex-wrap">
     {sizes.map((size, key) =>
-      <div className="col-2 px2 text-center border-box">
+      <div className="col-2 px2 text-center border-box" key={key}>
         <h5>{size}</h5>
-        <IconButtonEx icon="heart" size={size} key={key} />
+        <IconButtonEx icon="heart" size={size} />
       </div>
     )}
   </div>
@@ -106,11 +106,11 @@ If you need an additional color beyond what we currently have available, please 
 `,
   <div>
     <div className="flex mxn2 flex-wrap">
-      {icons.map(icon =>
-        <div className="col-12 px2 mb1 border-box flex">
+      {icons.map((icon, i) =>
+        <div className="col-12 px2 mb1 border-box flex" key={i}>
           {colors.map((color, idx) =>
-            <div className="px1">
-              <IconButtonEx bgColor={color} icon={icon} size="md" key={idx} />
+            <div className="px1" key={idx}>
+              <IconButtonEx bgColor={color} icon={icon} size="md" />
             </div>
           )}
         </div>
