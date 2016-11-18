@@ -1,11 +1,11 @@
 {
   "name": "gestalt-mask",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "main": "./Mask.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-layout": "^0.2.4",
-    "gestalt-borders": "^0.2.4"
+    "gestalt-layout": "^0.3.0",
+    "gestalt-borders": "^0.3.0"
   }
 }

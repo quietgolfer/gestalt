@@ -1,12 +1,12 @@
 {
   "name": "gestalt-heading",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "main": "./Heading.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-colors": "^0.2.4",
-    "gestalt-typography": "^0.2.4",
-    "gestalt-whitespace": "^0.2.4"
+    "gestalt-colors": "^0.3.0",
+    "gestalt-typography": "^0.3.0",
+    "gestalt-whitespace": "^0.3.0"
   }
 }

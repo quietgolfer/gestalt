@@ -15,10 +15,10 @@ import Label from 'gestalt-label';
 import Mask from 'gestalt-mask';
 import MediaQuery from 'gestalt-media-query';
 import SegmentedControl from 'gestalt-segmented-control';
+import SelectList from 'gestalt-select-list';
 import Switch from 'gestalt-switch';
 import Text from 'gestalt-text';
 import TextField from 'gestalt-text-field';
-
 
 export {
   Avatar,
@@ -37,6 +37,7 @@ export {
   Mask,
   MediaQuery,
   SegmentedControl,
+  SelectList,
   Switch,
   Text,
   TextField,
