@@ -1,44 +1,34 @@
-:root {
-  --colors: "gestalt-colors/Colors.css";
-  --typography: "gestalt-typography/Typography.css";
-  --borders: "gestalt-borders/Borders.css";
-  --column: "gestalt-column/Column.css";
-  --layout: "gestalt-layout/Layout.css";
-  --cursor: "gestalt-cursor/Cursor.css";
-  --whitespace: "gestalt-whitespace/Whitespace.css";
-}
-
 .text {
-  composes: bold from from var(--typography);
-  composes: dark-gray from var(--colors);
-  composes: text-md from var(--typography);
+  composes: bold from from "gestalt-typography/Typography.css";
+  composes: dark-gray from "gestalt-colors/Colors.css";
+  composes: text-md from "gestalt-typography/Typography.css";
 }
 
 .common {
-  composes: bg-light-gray from var(--colors);
-  composes: block border-box from var(--layout);
-  composes: col-12 from var(--column);
-  composes: pointer from var(--cursor);
-  composes: rounded from var(--borders);
+  composes: bg-light-gray from "gestalt-colors/Colors.css";
+  composes: block border-box from "gestalt-layout/Layout.css";
+  composes: col-12 from "gestalt-column/Column.css";
+  composes: pointer from "gestalt-cursor/Cursor.css";
+  composes: rounded from "gestalt-borders/Borders.css";
 }
 
 .container {
   composes: common;
-  composes: relative from var(--layout);
+  composes: relative from "gestalt-layout/Layout.css";
 }
 
 .select {
   composes: common;
   composes: text;
-  composes: no-border from var(--borders);
-  composes: p2 from var(--whitespace);
+  composes: no-border from "gestalt-borders/Borders.css";
+  composes: p2 from "gestalt-whitespace/Whitespace.css";
   appearance: none;
   padding-right: 20%; /* prevents option.name from running into arrow */
 }
 
 .dropdownArrow {
-  composes: absolute from var(--layout);
-  composes: block from var(--layout);
+  composes: absolute from "gestalt-layout/Layout.css";
+  composes: block from "gestalt-layout/Layout.css";
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 7px solid #555;
@@ -52,7 +42,7 @@
 }
 
 .options {
-  composes: relative from var(--layout);
-  composes: mr3 from var(--whitespace);
+  composes: relative from "gestalt-layout/Layout.css";
+  composes: mr3 from "gestalt-whitespace/Whitespace.css";
   width: 80%;
 }

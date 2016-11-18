@@ -47,7 +47,7 @@ export default function SelectList(props: Props) {
 
 SelectList.propTypes = {
   id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired, /* will be passed value returned rather than native event */
   options: PropTypes.arrayOf(PropTypes.shape({
     key: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
