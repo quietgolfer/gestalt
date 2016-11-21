@@ -4,6 +4,7 @@ const Item = (props) => {
   const {
     columnWidth,
     data,
+    itemIdx,
   } = props;
 
   let containerStyles = {};
@@ -22,6 +23,10 @@ const Item = (props) => {
       boxSizing: 'border-box',
       background: data.color,
     };
+
+    if (typeof window !== 'undefined' && window.itemHeightOverrides && window.itemHeightOverrides[itemIdx]) {
+      containerStyles.height = `${window.itemHeightOverrides[itemIdx]}px`;
+    }
   }
 
   return (
@@ -38,6 +43,7 @@ const Item = (props) => {
 Item.propTypes = {
   columnWidth: React.PropTypes.number,
   data: React.PropTypes.shape({}),
+  itemIdx: React.PropTypes.number,
 };
 
 export default Item;

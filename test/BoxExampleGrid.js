@@ -44,6 +44,11 @@ export default class BoxExampleGrid extends React.Component {
     this.setState({
       pins: this.props.initialPins,
     });
+
+    window.addEventListener('trigger-reflow', () => {
+      this.gridRef.reflow();
+      this.forceUpdate();
+    });
   }
 
   loadItems = (meta) => {
@@ -76,6 +81,7 @@ export default class BoxExampleGrid extends React.Component {
         <BoxGrid
           comp={Item}
           items={this.state.pins}
+          ref={(ref) => { this.gridRef = ref; }}
           {...dynamicGridProps}
         />
       </div>

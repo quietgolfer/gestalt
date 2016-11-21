@@ -55,6 +55,11 @@ export default class ClassicExampleGrid extends React.Component {
         pins: this.props.initialPins,
       });
     }
+
+    window.addEventListener('trigger-reflow', () => {
+      this.gridRef.reflow();
+      this.forceUpdate();
+    });
   }
 
   loadItems = (meta) => {
@@ -94,6 +99,7 @@ export default class ClassicExampleGrid extends React.Component {
         <ClassicGrid
           comp={Item}
           items={this.state.pins}
+          ref={(ref) => { this.gridRef = ref; }}
           {...dynamicGridProps}
         />
         <div className="afterGrid" />
