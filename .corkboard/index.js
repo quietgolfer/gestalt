@@ -6,6 +6,7 @@ const requireCard = require.context('../packages', true, /\-doc\.js$/);
   ['gestalt-button', 'Button'],
   ['gestalt-colors', 'Colors'],
   ['gestalt-column', 'Column'],
+  ['gestalt-container', 'Container'],
   ['gestalt-cursor', 'Cursor'],
   ['gestalt-divider', 'Divider'],
   ['gestalt-box-grid', 'BoxGrid'],

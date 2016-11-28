@@ -1,8 +1,10 @@
+// @flow
 import React, { PropTypes } from 'react';
+import styles from './Container.css';
 
-export default function Container({ children }) {
+export default function Container({ children }: { children?: any }) {
   return (
-    <div style={{ maxWidth: '40rem', marginLeft: 'auto', marginRight: 'auto' }}>
+    <div className={styles.container}>
       {children}
     </div>
   );
