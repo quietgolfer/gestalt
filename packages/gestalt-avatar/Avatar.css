@@ -33,7 +33,6 @@
 
 .responsive {
   composes: col-12 from "gestalt-column/Column.css";
-  padding-bottom: 100%;
 }
 
 .xs {
