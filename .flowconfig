@@ -1,9 +1,7 @@
 [version]
-0.34.0
+0.36.0
 
 [ignore]
-.*/test/*
-.*/node_modules/fbjs/*
 .*/corkboard/node_modules/pinterest-gestalt/*
 
 [options]
@@ -11,4 +9,5 @@ suppress_comment= \\(.\\|\n\\)*\\$FlowIssue
 esproposal.class_instance_fields=enable
 esproposal.class_static_fields=enable
 unsafe.enable_getters_and_setters=true
+# necessary for webpack loader syntax.
 module.name_mapper='^.*\.css$' -> '<PROJECT_ROOT>/flow/stubs/CSSModuleStub.js'
