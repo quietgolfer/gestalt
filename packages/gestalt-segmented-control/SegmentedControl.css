@@ -29,8 +29,8 @@
 
 @media (--md) {
   .SegmentedControl {
-    composes: rounded from "gestalt-borders/Borders.css";
-    padding: 6px;
+    border-radius: 6px;
+    padding: 4px;
   }
 
   .SegmentedControl--item {
