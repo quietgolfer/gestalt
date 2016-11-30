@@ -17,7 +17,7 @@ type Props = {
   id: string,
   onChange: (value: string) => void,
   placeholder?: string,
-  type?: 'text' | 'password',
+  type?: 'email' | 'password' | 'text' | 'url',
   value?: string,
 };
 
@@ -55,6 +55,6 @@ TextField.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'password']),
+  type: PropTypes.oneOf(['email', 'password', 'text', 'url']),
   value: PropTypes.string,
 };

@@ -14,9 +14,9 @@ md`
 TextField.propTypes = {
   hasError: PropTypes.bool,
   id: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func.isRequired, /* should handle value rather than event itself */
   placeholder: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'password']) /* default: text */
+  type: PropTypes.oneOf(['email', 'password', 'text', 'url']), /* default: text */
   value: PropTypes.string,
 };
 \`\`\`
@@ -29,10 +29,10 @@ They will expand to fill the width of their parent container and the text within
 is responsive.
 
 \`\`\`jsx
-<TextField id="email" placeholder="Email Address" />
+<TextField id="email" placeholder="Email Address" type="email" />
 \`\`\`
 \`\`\`jsx
-<TextField hasError id="name" />
+<TextField hasError id="lastName" />
 \`\`\`
 \`\`\`jsx
 <TextField id="password" type="password" value="abcdef" />
@@ -43,10 +43,11 @@ atom => (
     <div className="py2">
       <Text>{'With a placeholder'}</Text>
       <TextField
-        id="test"
+        id="email"
         onChange={newValue => atom.reset({ placeholderValue: newValue })}
-        placeholder="Email address"
+        placeholder="Email Address"
         value={atom.deref().placeholderValue}
+        type="email"
       />
     </div>
     <div className="py2">
@@ -80,3 +81,9 @@ atom => (
     </div>
   );
 });
+
+card('Error Validation',
+md`We currently don't handle client side validation. If you are doing any custom validation,
+we strongly recommend adding \`novalidate\` to your form component to ensure the browser does
+not display the default input validation messages in addition to your custom ones.`
+);
