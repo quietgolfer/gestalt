@@ -1,31 +1,51 @@
 steps:
-  - command: npm run eslint
-    label: ":eslint:"
+  - name: ":docker: :package:"
+    plugins:
+      docker-compose:
+        build: app
+        image-repository: 053722134931.dkr.ecr.us-east-1.amazonaws.com/pinterest
     agents:
-      queue: runners
-    env:
-      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
-  - command: npm run stylelint
-    label: ":stylelint:"
+      queue: elastic-builders
+  - name: ":docker: :package: ghost"
+    plugins:
+      docker-compose:
+        build: ghost
+        image-repository: 053722134931.dkr.ecr.us-east-1.amazonaws.com/pinterest
     agents:
-      queue: runners
-    env:
-      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
-  - command: npm run flow
-    label: ":flowtype:"
+      queue: elastic-builders
+  - wait
+  - name: ":eslint:"
+    command: npm run eslint
     agents:
-      queue: runners
-    env:
-      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
-  - command: npm test
-    label: ":jest:"
+      queue: elastic
+    plugins:
+      docker-compose:
+        run: app
+  - name: ":stylelint:"
+    command: npm run stylelint
     agents:
-      queue: runners
-    env:
-      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "app"
-  - command: bash -c "/etc/init.d/xvfb start && npm run ghost"
-    label: ":node: ghost"
+      queue: elastic
+    plugins:
+      docker-compose:
+        run: app
+  - name: ":flowtype:"
+    command: npm run flow
     agents:
-      queue: runners
-    env:
-      BUILDKITE_DOCKER_COMPOSE_CONTAINER: "ghost"
+      queue: elastic
+    plugins:
+      docker-compose:
+        run: app
+  - name: ":jest:"
+    command: npm test
+    agents:
+      queue: elastic
+    plugins:
+      docker-compose:
+        run: app
+  - name: ":node: ghost"
+    command: ./run_integration_tests
+    agents:
+      queue: elastic
+    plugins:
+      docker-compose:
+        run: ghost
