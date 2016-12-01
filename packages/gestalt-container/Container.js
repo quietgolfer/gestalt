@@ -1,8 +1,13 @@
 // @flow
-import React, { PropTypes } from 'react';
+import React, { Element, PropTypes } from 'react';
 import styles from './Container.css';
 
-export default function Container({ children }: { children?: any }) {
+type Props = {
+  children?: Element<any>,
+}
+
+export default function Container(props: Props) {
+  const { children } = props;
   return (
     <div className={styles.container}>
       {children}
