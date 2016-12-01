@@ -33,7 +33,7 @@ const triggerReisze = async (resizeWidthTo) => {
 };
 
 describe('BoxGrid > Resize', () => {
-  it('Reflows the grid after a resize', async () => {
+  it.skip('Reflows the grid after a resize', async () => {
     const GRID_WIDTH = 1000;
 
     // This test cares about page size, so close the previous instance to ensure
