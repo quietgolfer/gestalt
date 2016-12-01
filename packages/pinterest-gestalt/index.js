@@ -4,6 +4,7 @@ import BoxGrid from 'gestalt-box-grid';
 import Button from 'gestalt-button';
 import ClassicGrid from 'gestalt-classic-grid';
 import Column from 'gestalt-column';
+import Container from 'gestalt-container';
 import Divider from 'gestalt-divider';
 import FlexibleGrid from 'gestalt-flexible-grid';
 import GroupAvatar from 'gestalt-group-avatar';
@@ -26,6 +27,7 @@ export {
   Button,
   ClassicGrid,
   Column,
+  Container,
   Divider,
   FlexibleGrid,
   GroupAvatar,
