@@ -22,6 +22,14 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
+
+    // De-dupe module includes for fast development builds
+    alias: {
+      'classnames/bind': `${__dirname}/node_modules/classnames`,
+      corkboard: `${__dirname}/node_modules/corkboard`,
+      react: `${__dirname}/node_modules/react`,
+      'react-dom': `${__dirname}/node_modules/react-dom`,
+    },
   },
   node: {
     // postcss needs to strip this out to compile clientside
