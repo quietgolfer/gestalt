@@ -65,6 +65,7 @@ export default class ExampleGrid extends React.Component {
         comp={Item}
         items={this.state.pins}
         loadItems={this.loadItems}
+        minCols={1}
       />
     );
   }

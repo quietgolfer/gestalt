@@ -65,7 +65,6 @@ export default class CollageGrid extends React.Component {
         columnWidth={195}
         gutterWidth={5}
         items={this.state.pins}
-        minCols={1}
       />
     );
   }
