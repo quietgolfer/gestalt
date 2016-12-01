@@ -21,14 +21,14 @@ const sizesToElementMap = {
   xl: 'h1',
 };
 
-type HeadingProps = {
+type Props = {
   children?: Element<any>,
   color?: 'white' | 'gray' | 'dark-gray' | 'blue',
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
 };
 
-export default function Heading(props: HeadingProps) {
+export default function Heading(props: Props) {
   const {
     children,
     color = 'dark-gray',

@@ -9,17 +9,17 @@ ns('Group Avatar',
 `You can use an \`GroupAvatar\` to represent a group of users. A light wash is automatically
 applied to each collaborator image to ensure the component retains a circular appeareance`);
 
-card('PropTypes',
+card('FlowTypes',
 md`
 \`\`\`jsx
-GroupAvatar.propTypes = {
-  collaborators: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    src: PropTypes.string,
-  })).isRequired,
-  size: PropTypes.oneOf([
-    'xs', 'sm', 'md', 'lg', 'xl',
-  ]).isRequired,
+type CollabProps = {
+  name: string,
+  src?: string,
+};
+
+type Props = {
+  collaborators: Array<CollabProps>,
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
 };
 \`\`\`
 `);

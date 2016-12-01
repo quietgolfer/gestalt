@@ -9,14 +9,14 @@ import { ns } from '../../../.corkboard/cards';
 ns('Avatar',
 'You can use an `Avatar` to represent a user. Every Avatar image has a subtle color wash.');
 
-card('PropTypes',
+card('FlowType',
 md`
 \`\`\`jsx
-Avatar.propTypes = {
-  name: PropTypes.string.isRequired,
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-  src: PropTypes.string,
-};
+type AvatarProps = {
+  name: string,
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
+  src?: string,
+}
 \`\`\`
 `
 );

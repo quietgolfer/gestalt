@@ -11,6 +11,16 @@ The MediaQuery component allows you to render certain components on specific scr
 `
 );
 
+card('FlowType',
+md`
+\`\`\`js
+type Props = {
+  children?: Element<any>,
+  size: 'sm' | 'md' | 'lg',
+}
+\`\`\`
+`);
+
 card('Usage',
   md`
 \`\`\`js

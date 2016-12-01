@@ -7,13 +7,13 @@ import styles from './SegmentedControl.css';
 
 const cx = classnames.bind(styles);
 
-type SegmentedControlProps = {
+type Props = {
   items: Array<string>,
   onChange: (i: number, e: Event) => {},
   selectedItemIndex: number
 };
 
-export default function SegmentedControl(props: SegmentedControlProps) {
+export default function SegmentedControl(props: Props) {
   const {
     items,
     onChange,

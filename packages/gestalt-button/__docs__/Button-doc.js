@@ -7,15 +7,19 @@ import { ns } from '../../../.corkboard/cards';
 ns('Button', `
 In Gestalt we have 3 main kinds of buttons: red, gray, and blue. You are able
 to specify the color, type, and width of buttons to change their apperance (outlined below).
-\`\`\`js
-Button.propTypes = {
-  color: PropTypes.oneOf(['blue', 'gray', 'red']),
-  disabled: PropTypes.bool,
-  fullWidth: PropTypes.bool,
-  onClick: PropTypes.func,
-  text: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['button', 'submit']),
-};
+`);
+
+card('FlowType',
+md`
+\`\`\`jsx
+type Props = {
+  color?: 'gray' | 'red' | 'blue', /* default: gray */
+  disabled?: boolean, /* default: false */
+  fullWidth?: boolean, /* default: false */
+  onClick?: () => void,
+  text: string,
+  type?: 'submit' | 'button', /* default: button */
+}
 \`\`\`
 `);
 

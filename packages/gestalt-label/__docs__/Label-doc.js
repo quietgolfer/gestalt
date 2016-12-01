@@ -6,15 +6,15 @@ import Switch from '../../gestalt-switch/Switch';
 import Text from '../../gestalt-text/Text';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Label');
+ns('Label',
+'Use the Label component to make your features more accessible!');
 
-card('PropTypes',
+card('FlowType',
 md`
-Use the \`Label\` component to make your features more accessible!
 \`\`\`js
-Label.propTypes = {
-  children: PropTypes.node.isRequired,
-  htmlFor: PropTypes.string.isRequired,
+type Props = {
+  children?: Element<any>,
+  htmlFor: string,
 };
 \`\`\`
 `);

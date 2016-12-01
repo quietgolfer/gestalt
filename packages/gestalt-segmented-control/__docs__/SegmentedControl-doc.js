@@ -11,15 +11,17 @@ The controls display the current state and related state.
 
 Create layout to convey clear sense of information hierarchy.
 When control is engaged, information below the control should get updated.
+`);
 
-\`\`\`javascript
-SegmentedControl.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onChange: PropTypes.func,
-  selectedItemIndex: PropTypes.number.isRequired,
+card('FlowType',
+md`
+\`\`\`js
+type Props = {
+  items: Array<string>,
+  onChange: (i: number, e: Event) => {},
+  selectedItemIndex: number
 };
 \`\`\`
-
 `);
 
 card('Example',

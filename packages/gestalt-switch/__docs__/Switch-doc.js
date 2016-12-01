@@ -11,14 +11,14 @@ ns(
   'Use the `Switch` component as an on/off control.'
 );
 
-card('PropTypes',
+card('FlowType',
   md`
 \`\`\`js
-Switch.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  switched: PropTypes.bool,
-};
+type Props = {
+  id: string,
+  onChange: (value: boolean) => void,
+  switched?: boolean, /* default: false */
+}
 \`\`\`
 `,
   atom => (

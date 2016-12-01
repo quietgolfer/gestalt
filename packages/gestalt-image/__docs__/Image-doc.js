@@ -11,24 +11,25 @@ This component the workhorse of Pinterest. If you define Pinterest to be all
 about collecting ideas, then images is how we choose to represent those ideas.
 In response, we've added a few extra super-powers to the regular Image tag to
 make it even more awesome.
+`);
 
-### PropTypes
-\`\`\`js
-Image.propTypes = {
-  alt: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  onLoad: PropTypes.func,
-  onError: PropTypes.func,
-  height: PropTypes.number.isRequired,
-  src: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  wash: PropTypes.bool, /* adds dim overlay over Avatar to retain circular shape. default: false */
+card('FlowType',
+md`\`\`\`js
+type ImageProps = {
+  alt: string,
+  color: string,
+  height: number,
+  onError?: (e: SyntheticEvent) => {},
+  onLoad?: (e: SyntheticEvent) => {},
+  src: string,
+  wash?: bool, /* default: false */
+  width: number,
 };
 \`\`\`
+`);
 
-### Dimensions
-
-One thing that might be unusual is that the \`width\` and the \`height\` of the
+card('Dimensions',
+md`One thing that might be unusual is that the \`width\` and the \`height\` of the
 component are required, yet the image will scale to the size of its container.
 This is so that the placeholder's size can be calculated before the image has
 rendered.

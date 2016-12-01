@@ -6,12 +6,12 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Container');
 
-card('PropTypes',
+card('FlowType',
 md`
 \`\`\`javascript
-Container.propTypes = {
-  children: PropTypes.node,
-};
+type Props = {
+  children?: Element<any>,
+}
 \`\`\`
 `);
 

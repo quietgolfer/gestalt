@@ -14,7 +14,7 @@ const styles = {
 
 const cx = classnames.bind(styles);
 
-type TextProps = {
+type Props = {
   align?: 'left' | 'right' | 'center' | 'justify',
   bold?: bool,
   children?: Element<any>,
@@ -26,7 +26,7 @@ type TextProps = {
   truncate?: bool,
 };
 
-export default function Text(props: TextProps) {
+export default function Text(props: Props) {
   const {
     align = 'left',
     bold = false,

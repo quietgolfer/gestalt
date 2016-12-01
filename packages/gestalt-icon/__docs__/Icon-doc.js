@@ -7,14 +7,18 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Icon');
 
-card('PropTypes',
+card('FlowType',
 md`
 \`\`\`jsx
-Icon.propTypes = {
-  color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue', 'red']),
-  icon: PropTypes.oneOf(Object.keys(paths)).isRequired,
-  label: PropTypes.string.isRequired,
-  size: PropTypes.number,
+type IconProps = {
+  color?: 'white' | 'gray' | 'dark-gray' | 'blue' | 'red', /* default: gray */
+  /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
+   * This allows us to type check for a valid icon name based on the keys from the list of
+   * icons shown below.
+   */
+  icon: $Keys<typeof paths>,
+  label: string,
+  size?: number, /* default: 16 */
 };
 \`\`\`
 `

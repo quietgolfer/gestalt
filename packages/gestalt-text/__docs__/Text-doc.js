@@ -11,19 +11,19 @@ const maxWidthStyle = {
   maxWidth: '400px',
 };
 
-card('PropTypes',
+card('FlowType',
 md`
 \`\`\`jsx
-Text.propTypes = {
-  align: PropTypes.oneOf(['left', 'right', 'center', 'justify']), /* default: left */
-  bold: PropTypes.bool, /* default: false */
-  children: PropTypes.node.isRequired,
-  color: PropTypes.oneOf(['gray', 'dark-gray']), /* default: dark-gray */
-  inline: PropTypes.bool, /* default: false */
-  italic: PropTypes.bool, /* default: false */
-  overflow: PropTypes.oneOf(['break-word', 'normal']), /* default: normal */
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), /* default: md */
-  truncate: PropTypes.bool, /* default: false */
+type Props = {
+  align?: 'left' | 'right' | 'center' | 'justify', /*default: left */
+  bold?: bool, /* default: false */
+  children?: Element<any>,
+  color?: 'gray' | 'dark-gray', /* default: dark-gray */
+  inline?: bool, /* default: false */
+  italic?: bool, /* default: false */
+  overflow?: 'break-word' | 'normal', /* default: normal */
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl', /* default: md */
+  truncate?: bool, /* default: false */
 };
 \`\`\`
 `

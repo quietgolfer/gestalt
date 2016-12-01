@@ -4,27 +4,25 @@ import { card, md } from 'corkboard';
 import IconButton from '../IconButton';
 import { ns } from '../../../.corkboard/cards';
 
-ns('IconButton');
+ns('IconButton',
+'The IconButton component allows you to define an action with a specific Icon.'
+);
 
-card('PropTypes',
+card('FlowType',
 md`
-The IconButton component allows you to define an action with a specific [Icon](#/Icon) .
-
 \`\`\`jsx
-IconButton.propTypes = {
-  bgColor: PropTypes.oneOf(
-    ['transparent', 'light-gray'] /* default bgColor: transparent */
-  ),
-  icon: PropTypes.oneOf(Object.keys(icons)).isRequired, /* name of an icon defined in the Icon component */
-  iconColor: PropTypes.oneOf(
-    ['light-gray', 'gray', 'dark-gray', 'red', 'blue'] /* default iconColor: gray */
-  ),
-  label: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-  size: PropTypes.oneOf(
-    ['xs', 'sm', 'md', 'lg', 'xl'] /* default size: md */
-  ),
-};
+type Props = {
+  bgColor?: 'transparent' | 'light-gray', /* default: transparent */
+  iconColor?: 'gray' | 'dark-gray' | 'red' | 'blue', /* default: gray */
+  /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
+   * This allows us to type check for a valid icon name based on the keys from the list of
+   * icons provided in gestalt-icon/icons/index.js.
+   */
+  icon: $Keys<typeof icons>,
+  label: string,
+  onClick?: () => void,
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl', /* default: md */
+}
 \`\`\`
 `);
 

@@ -7,17 +7,19 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('SelectList');
 
-card('PropTypes',
+card('FlowTypes',
 md`
 \`\`\`jsx
-SelectList.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired, /* will be passed value returned rather than native event */
-  options: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  })).isRequired,
-  selectedKey: PropTypes.string.isRequired,
+type OptionType = {
+  key: string,
+  value: string,
+};
+
+type Props = {
+  id: string,
+  onChange: (value: string) => void,
+  options?: Array<OptionType>,
+  selectedKey: string,
 };
 \`\`\`
 `);

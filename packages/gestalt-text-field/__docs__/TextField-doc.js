@@ -8,16 +8,16 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('TextField');
 
-card('PropTypes',
+card('FlowType',
 md`
 \`\`\`jsx
-TextField.propTypes = {
-  hasError: PropTypes.bool,
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired, /* should handle value rather than event itself */
-  placeholder: PropTypes.string,
-  type: PropTypes.oneOf(['email', 'password', 'text', 'url']), /* default: text */
-  value: PropTypes.string,
+type Props = {
+  hasError?: boolean, /* default: false */
+  id: string,
+  onChange: (value: string) => void,
+  placeholder?: string,
+  type?: 'email' | 'password' | 'text' | 'url', /* default: text */
+  value?: string,
 };
 \`\`\`
 `

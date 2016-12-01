@@ -7,14 +7,14 @@ import { ns } from '../../../.corkboard/cards';
 ns('Heading',
 '');
 
-card('PropTypes',
+card('FlowType',
 md`
 \`\`\`jsx
-Heading.propTypes = {
-  children: PropTypes.node,
-  color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue']), /* default: dark-gray */
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
-  truncate: PropTypes.bool, /* default: false */
+type Props = {
+  children?: Element<any>,
+  color?: 'white' | 'gray' | 'dark-gray' | 'blue', /* default: dark-gray */
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
+  truncate?: bool, /* default: false */
 };
 \`\`\`
 `

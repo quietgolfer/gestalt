@@ -10,14 +10,14 @@ ns(
   putting a \`Mask\` on it.
   `);
 
-card('PropTypes',
+card('FlowType',
   md`
 \`\`\`js
-Mask.propTypes = {
-  children: PropTypes.node,
-  height: PropTypes.number,
-  shape: PropTypes.oneOf(['circle', 'rounded', 'square']),
-  width: PropTypes.number,
+type Props = {
+  children?: Element<any>,
+  height?: number,
+  shape?: 'circle' | 'rounded' | 'square', /* default: square */
+  width?: number,
 };
 \`\`\`
   `);
