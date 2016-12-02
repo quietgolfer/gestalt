@@ -25,7 +25,7 @@ module.exports = {
 
     // De-dupe module includes for fast development builds
     alias: {
-      'classnames/bind': `${__dirname}/node_modules/classnames`,
+      'classnames/bind': `${__dirname}/node_modules/classnames/bind`,
       corkboard: `${__dirname}/node_modules/corkboard`,
       react: `${__dirname}/node_modules/react`,
       'react-dom': `${__dirname}/node_modules/react-dom`,
