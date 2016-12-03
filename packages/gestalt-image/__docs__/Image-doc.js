@@ -21,9 +21,11 @@ type ImageProps = {
   height: number,
   onError?: (e: SyntheticEvent) => {},
   onLoad?: (e: SyntheticEvent) => {},
+  sizes?: string,
   src: string,
-  wash?: bool, /* default: false */
-  width: number,
+  srcSet?: {[key: string]: string},
+  wash?: bool,
+  width: number, /* default: false */
 };
 \`\`\`
 `);

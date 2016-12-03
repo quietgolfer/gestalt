@@ -12,7 +12,9 @@ type ImageProps = {
   height: number,
   onError?: (e: SyntheticEvent) => {},
   onLoad?: (e: SyntheticEvent) => {},
+  sizes?: string,
   src: string,
+  srcSet?: {[key: string]: string},
   wash?: bool,
   width: number,
 };
@@ -51,7 +53,9 @@ export default class Image extends Component {
       alt,
       color,
       height,
+      sizes,
       src,
+      srcSet,
       wash = false,
       width,
     } = this.props;
@@ -68,8 +72,10 @@ export default class Image extends Component {
         className={cx(styles.img, styles[this.state.loaded ? 'loaded' : 'pending'])}
         onError={this.handleError}
         onLoad={this.handleLoad}
-        src={src}
         ref={(el) => { this.img = el; }}
+        sizes={sizes}
+        src={src}
+        srcSet={srcSet}
       />
     );
 
@@ -85,10 +91,12 @@ export default class Image extends Component {
 Image.propTypes = {
   alt: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
-  onLoad: PropTypes.func,
-  onError: PropTypes.func,
   height: PropTypes.number.isRequired,
+  onError: PropTypes.func,
+  onLoad: PropTypes.func,
+  sizes: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
+  srcSet: PropTypes.string.isRequired,
   wash: PropTypes.bool,
   width: PropTypes.number.isRequired,
 };
