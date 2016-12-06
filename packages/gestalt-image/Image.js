@@ -15,7 +15,6 @@ type ImageProps = {
   sizes?: string,
   src: string,
   srcSet?: {[key: string]: string},
-  wash?: bool,
   width: number,
 };
 
@@ -56,20 +55,14 @@ export default class Image extends Component {
       sizes,
       src,
       srcSet,
-      wash = false,
       width,
     } = this.props;
-
-    const aspect = (height / width) * 100;
-    const style = {
-      backgroundColor: color,
-      paddingBottom: `${aspect}%`,
-    };
+    const { loaded } = this.state;
 
     const img = (
       <img
         alt={alt}
-        className={cx(styles.img, styles[this.state.loaded ? 'loaded' : 'pending'])}
+        className={cx(styles.img, styles[loaded ? 'loaded' : 'pending'])}
         onError={this.handleError}
         onLoad={this.handleLoad}
         ref={(el) => { this.img = el; }}
@@ -79,10 +72,19 @@ export default class Image extends Component {
       />
     );
 
+    if (loaded) {
+      return img;
+    }
+
+    const aspect = (height / width) * 100;
+    const style = {
+      backgroundColor: color,
+      paddingBottom: `${aspect}%`,
+    };
+
     return (
       <div className={styles.container} style={style}>
         {src ? img : null}
-        {wash ? <div className={styles.wash} /> : null}
       </div>
     );
   }
@@ -94,9 +96,8 @@ Image.propTypes = {
   height: PropTypes.number.isRequired,
   onError: PropTypes.func,
   onLoad: PropTypes.func,
-  sizes: PropTypes.string.isRequired,
+  sizes: PropTypes.string,
   src: PropTypes.string.isRequired,
-  srcSet: PropTypes.string.isRequired,
-  wash: PropTypes.bool,
+  srcSet: PropTypes.string,
   width: PropTypes.number.isRequired,
 };

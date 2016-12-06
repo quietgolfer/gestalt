@@ -1,18 +1,21 @@
-.common {
+.Mask {
   composes: overflow-hidden relative from "gestalt-layout/Layout.css";
 }
 
 .square {
-  composes: common;
   composes: square from "gestalt-borders/Borders.css";
 }
 
 .rounded {
-  composes: common;
   composes: rounded from "gestalt-borders/Borders.css";
 }
 
 .circle {
-  composes: common;
   composes: circle from "gestalt-borders/Borders.css";
+}
+
+.wash {
+  composes: absolute top-0 left-0 right-0 bottom-0 from "gestalt-layout/Layout.css";
+  background: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
 }

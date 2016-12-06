@@ -1,10 +1,5 @@
-.container {
-  composes: fit relative from "gestalt-layout/Layout.css";
-}
-
 .img {
-  composes: absolute fit overflow-hidden from "gestalt-layout/Layout.css";
-  composes: col-12 from "gestalt-column/Column.css";
+  composes: fit from "gestalt-layout/Layout.css";
 }
 
 .pending {
@@ -15,10 +10,6 @@
   composes: block from "gestalt-layout/Layout.css";
 }
 
-.wash {
-  composes: absolute from "gestalt-layout/Layout.css";
-  composes: col-12 from "gestalt-column/Column.css";
-  background: rgba(0, 0, 0, 0.03);
-  height: 100%;
-  pointer-events: none;
+.container {
+  composes: fit relative from "gestalt-layout/Layout.css";
 }

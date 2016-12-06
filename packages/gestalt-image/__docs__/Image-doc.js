@@ -58,112 +58,14 @@ a placeholder.
   `,
   <div className="flex mxn2">
     <div className="col-6 px2">
-      <Image
-        alt="example.com"
-        color="#018077"
-        height={354}
-        src=""
-        width={236}
-      />
+      <Mask shape="rounded">
+        <Image
+          alt="example.com"
+          color="#018077"
+          height={354}
+          src=""
+          width={236}
+        />
+      </Mask>
     </div>
   </div>);
-
-card('Shapes',
-  md`
-You can compose images with [Masks](#/Mask) to produce different shapes like
-rounded rectangles or circles.
-\`\`\`js
-<Mask shape="circle">
-  <Image
-    alt="placekitten.com"
-    color="#fab904"
-    height={369}
-    src="http://placekitten.com/400/400"
-    width={369}
-  />
-</Mask>
-\`\`\`
-\`\`\`js
-<Mask shape="rounded">
-  <Image
-    alt="placekitten.com"
-    color="#fbb6ac"
-    height={286}
-    src="http://placekitten.com/200/286"
-    width={200}
-  />
-</Mask>
-\`\`\`
-  `,
-  <div className="flex mxn2">
-    <div className="col-6 px2">
-      <h5>{'Circle'}</h5>
-      <Mask shape="circle">
-        <Image
-          alt="placekitten.com"
-          color="#fab904"
-          height={369}
-          src="http://placekitten.com/400/400"
-          width={369}
-        />
-      </Mask>
-    </div>
-    <div className="col-6 px2">
-      <h5>{'Rounded'}</h5>
-      <Mask shape="rounded" >
-        <Image
-          alt="placekitten.com"
-          color="#fbb6ac"
-          height={286}
-          src="http://placekitten.com/200/286"
-          width={200}
-        />
-      </Mask>
-    </div>
-  </div>
-  );
-
-card('Washes',
-    md`
-  If you expect source images to have near-white dominant colors and are masking them in a shape, you can apply a wash to the image to darken it slightly. This has the effect of accentuating the borders of the mask.
-  \`\`\`js
-  <Mask shape="rounded">
-    <Image
-      alt="accompanyus.com"
-      color="#ffffff"
-      height={354}
-      src="https://s-media-cache-ak0.pinimg.com/..."
-      width={236}
-      wash
-    />
-  </Mask>
-  \`\`\`
-    `,
-
-  <div>
-    <h5>{'Unwashed'}</h5>
-    <Mask shape="rounded">
-      <Image
-        alt="accompanyus.com"
-        color="#ffffff"
-        height={354}
-        src="https://s-media-cache-ak0.pinimg.com/474x/a6/18/e8/a618e806e57c0f0b811a128fe190f9fe.jpg"
-        width={236}
-      />
-    </Mask>
-  </div>
-    ,
-  <div>
-    <h5>{'Washed'}</h5>
-    <Mask shape="rounded">
-      <Image
-        alt="accompanyus.com"
-        color="#ffffff"
-        height={354}
-        src="https://s-media-cache-ak0.pinimg.com/474x/a6/18/e8/a618e806e57c0f0b811a128fe190f9fe.jpg"
-        width={236}
-        wash
-      />
-    </Mask>
-  </div>
-    );
