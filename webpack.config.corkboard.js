@@ -6,13 +6,14 @@ const postcssUrl = require('postcss-url');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const breakpoints = require('./packages/gestalt-media-query/breakpoints');
+const webpack = require('webpack');
 
 module.exports = {
-  devtool: 'source-map',
   entry: [
     'corkboard/init',
     './.corkboard/index.js',
     'corkboard/start',
+    'webpack/hot/only-dev-server',
   ],
   output: {
     path: path.join(__dirname, 'docs'),
@@ -34,6 +35,11 @@ module.exports = {
   node: {
     // postcss needs to strip this out to compile clientside
     fs: 'empty',
+  },
+  devServer: {
+    hot: true,
+    inline: true,
+    stats: 'normal',
   },
   module: {
     loaders: [
@@ -62,20 +68,20 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loaders: ['react-hot', 'babel?cacheDirectory'],
         include: [
           path.join(__dirname, 'packages'),
           path.join(__dirname, '.corkboard'),
           path.dirname(require.resolve('corkboard')),
         ],
-        exclude: 'node_modules',
+        exclude: /node_modules\/(?!(corkboard)\/).*/,
       },
     ],
   },
-  postcss(webpack) {
+  postcss(wp) {
     return [
       postcssImport({
-        addDependencyTo: webpack,
+        addDependencyTo: wp,
       }),
       postcssUrl(),
       postcssCssNext({
@@ -90,6 +96,7 @@ module.exports = {
     ];
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Gestalt',
       inject: true,

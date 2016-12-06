@@ -9,7 +9,7 @@
     "lint": "npm run eslint && npm run stylelint",
     "release:publish": "lerna exec npm publish --registry http://sinopia.ec2.pin220.com:8080",
     "release:version": "lerna publish --skip-npm --force-publish=*",
-    "start": "corkboard src --config webpack.config.corkboard.js",
+    "start": "webpack-dev-server --config webpack.config.corkboard.js --progress --colors",
     "stylelint": "stylelint packages/**/*.css",
     "test:integration": "./run_integration_tests",
     "test": "jest",

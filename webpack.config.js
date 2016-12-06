@@ -7,7 +7,7 @@ const postcssImport = require('postcss-import');
 
 
 module.exports = {
-  entry: './packages/gestalt/styles.css',
+  entry: './packages/pinterest-gestalt/styles.css',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
