@@ -11,7 +11,7 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
-  children?: Element<any>,
+  children?: any,
   color?: 'white' | 'gray' | 'dark-gray' | 'blue', /* default: dark-gray */
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool, /* default: false */

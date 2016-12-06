@@ -17,7 +17,7 @@ md`
 type Props = {
   align?: 'left' | 'right' | 'center' | 'justify', /*default: left */
   bold?: bool, /* default: false */
-  children?: Element<any>,
+  children?: any,
   color?: 'gray' | 'dark-gray', /* default: dark-gray */
   inline?: bool, /* default: false */
   italic?: bool, /* default: false */

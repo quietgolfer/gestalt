@@ -1,10 +1,10 @@
 // @flow
-import React, { Element, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import ReactResponive from 'react-responsive';
 import breakpoints from './breakpoints';
 
 type Props = {
-  children?: Element<any>,
+  children?: any,
   size: 'sm' | 'md' | 'lg',
 }
 

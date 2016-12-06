@@ -15,7 +15,7 @@ card('FlowType',
 md`
 \`\`\`js
 type Props = {
-  children?: Element<any>,
+  children?: any,
   size: 'sm' | 'md' | 'lg',
 }
 \`\`\`

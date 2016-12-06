@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Element, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import colorStyles from 'gestalt-colors/Colors.css';
 import typographyStyles from 'gestalt-typography/Typography.css';
@@ -17,7 +17,7 @@ const cx = classnames.bind(styles);
 type Props = {
   align?: 'left' | 'right' | 'center' | 'justify',
   bold?: bool,
-  children?: Element<any>,
+  children?: any,
   color?: 'gray' | 'dark-gray',
   inline?: bool,
   italic?: bool,

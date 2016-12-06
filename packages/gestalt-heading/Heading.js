@@ -1,5 +1,5 @@
 // @flow
-import { createElement, Element, PropTypes } from 'react';
+import { createElement, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import colorStyles from 'gestalt-colors/Colors.css';
 import typographyStyles from 'gestalt-typography/Typography.css';
@@ -22,7 +22,7 @@ const sizesToElementMap = {
 };
 
 type Props = {
-  children?: Element<any>,
+  children?: any,
   color?: 'white' | 'gray' | 'dark-gray' | 'blue',
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,

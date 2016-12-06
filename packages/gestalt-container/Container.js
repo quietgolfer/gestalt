@@ -1,9 +1,9 @@
 // @flow
-import React, { Element, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import styles from './Container.css';
 
 type Props = {
-  children?: Element<any>,
+  children?: any,
 }
 
 export default function Container(props: Props) {

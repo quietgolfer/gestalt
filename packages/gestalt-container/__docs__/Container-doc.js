@@ -10,7 +10,7 @@ card('FlowType',
 md`
 \`\`\`javascript
 type Props = {
-  children?: Element<any>,
+  children?: any,
 }
 \`\`\`
 `);

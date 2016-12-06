@@ -13,7 +13,7 @@ card('FlowType',
 md`
 \`\`\`js
 type Props = {
-  children?: Element<any>,
+  children?: any,
   htmlFor: string,
 };
 \`\`\`
