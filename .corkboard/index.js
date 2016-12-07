@@ -19,6 +19,7 @@ const requireCard = require.context('../packages', true, /\-doc\.js$/);
   ['gestalt-image', 'Image'],
   ['gestalt-label', 'Label'],
   ['gestalt-layout', 'Layout'],
+  ['gestalt-letterbox', 'Letterbox'],
   ['gestalt-mask', 'Mask'],
   ['gestalt-media-query', 'MediaQuery'],
   ['gestalt-segmented-control', 'SegmentedControl'],

@@ -13,6 +13,7 @@ import Icon from 'gestalt-icon';
 import IconButton from 'gestalt-icon-button';
 import Image from 'gestalt-image';
 import Label from 'gestalt-label';
+import Letterbox from 'gestalt-letterbox';
 import Mask from 'gestalt-mask';
 import MediaQuery from 'gestalt-media-query';
 import SegmentedControl from 'gestalt-segmented-control';
@@ -36,6 +37,7 @@ export {
   IconButton,
   Image,
   Label,
+  Letterbox,
   Mask,
   MediaQuery,
   SegmentedControl,

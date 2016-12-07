@@ -1,15 +1,15 @@
 {
   "name": "gestalt-switch",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "./Switch.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.3.1",
-    "gestalt-borders": "^0.4.0",
-    "gestalt-layout": "^0.4.0",
-    "gestalt-cursor": "^0.4.0",
-    "gestalt-colors": "^0.4.0",
-    "gestalt-column": "^0.4.0",
-    "gestalt-whitespace": "^0.4.0"
+    "gestalt-borders": "^0.5.0",
+    "gestalt-layout": "^0.5.0",
+    "gestalt-cursor": "^0.5.0",
+    "gestalt-colors": "^0.5.0",
+    "gestalt-column": "^0.5.0",
+    "gestalt-whitespace": "^0.5.0"
   }
 }

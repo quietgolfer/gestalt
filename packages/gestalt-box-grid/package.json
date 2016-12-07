@@ -1,13 +1,13 @@
 {
   "name": "gestalt-box-grid",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "main": "./BoxGrid.js",
   "dependencies": {
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
-    "gestalt-layout": "^0.4.0"
+    "gestalt-layout": "^0.5.0"
   },
   "devDependencies": {
-    "gestalt-string-to-color": "^0.4.0"
+    "gestalt-string-to-color": "^0.5.0"
   }
 }
