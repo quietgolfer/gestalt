@@ -3,7 +3,8 @@
 }
 
 .col {
-  float: left;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .col-1 {

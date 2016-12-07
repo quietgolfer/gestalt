@@ -22,7 +22,7 @@
     "babel-cli": "^6.6.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.2",
-    "babel-jest": "^10.0.2",
+    "babel-jest": "^17.0.2",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-flow-strip-types": "^6.8.0",
     "babel-plugin-webpack-loaders": "^0.5.0",
@@ -51,7 +51,8 @@
     "ghost-axe": "0.0.2",
     "ghostjs": "^1.7.1",
     "html-webpack-plugin": "^2.22.0",
-    "jest": "^16.0.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^17.0.3",
     "lerna": "2.0.0-beta.28",
     "open-browser-webpack-plugin": "0.0.2",
     "postcss": "^5.1.2",
@@ -78,16 +79,17 @@
     "unmockedModulePathPatterns": [
       "enzyme",
       "react",
+      "classnames",
       "react-test-renderer"
     ],
-    "preprocessorIgnorePatterns": [
+    "transformIgnorePatterns": [
       "/node_modules/^gestalt-*"
     ],
     "modulePathIgnorePatterns": [
       "\\.ghost\\.js$"
     ],
     "moduleNameMapper": {
-      "^.+\\.(css)$": "<rootDir>/test/__mocks__/styleMock.js"
+      "^.+\\.css$": "identity-obj-proxy"
     }
   },
   "stylelint": {

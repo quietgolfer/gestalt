@@ -3,6 +3,7 @@
   "version": "0.4.0",
   "main": "./Column.js",
   "dependencies": {
-    "react": "^15.3.1"
+    "react": "^15.3.1",
+    "classnames": "^2.2.5"
   }
 }

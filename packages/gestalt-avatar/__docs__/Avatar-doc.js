@@ -89,13 +89,13 @@ have been placed in.
 \`\`\`
 `,
   <div className="flex">
-    <Column span={2}>
+    <Column xs={2}>
       <Avatar name="Julia" src="" key={123} />
     </Column>
-    <Column span={4}>
+    <Column xs={4}>
       <Avatar name="Long" src={imageSrc} key={123} />
     </Column>
-    <Column span={6}>
+    <Column xs={6}>
       <Avatar name="Julia" src="" key={123} />
     </Column>
   </div>
