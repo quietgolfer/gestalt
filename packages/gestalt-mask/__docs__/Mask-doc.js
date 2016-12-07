@@ -113,13 +113,18 @@ card('Washes',
 If you expect the masked content to be nearly white, you can apply a wash to emphasize the edge of the mask.
 \`\`\`js
 <Mask shape="rounded">
-  <Image
-    alt="accompanyus.com"
-    color="#ffffff"
-    height={354}
+  <img
+    alt="subliming.tumblr.com"
     src="https://s-media-cache-ak0.pinimg.com/..."
-    width={236}
-    wash
+    style={{ maxWidth: '100%', display: 'block' }}
+  />
+</Mask>
+
+<Mask shape="rounded" wash>
+  <img
+    alt="subliming.tumblr.com"
+    src="https://s-media-cache-ak0.pinimg.com/..."
+    style={{ maxWidth: '100%', display: 'block' }}
   />
 </Mask>
 \`\`\`

@@ -29,13 +29,12 @@ export default function Avatar(props: AvatarProps) {
 
   return (
     <div className={classes}>
-      <Mask shape="circle">
+      <Mask shape="circle" wash>
         <Image
           alt={name}
           color={'#efefef'}
           height={1}
           src={src}
-          wash
           width={1}
         />
       </Mask>

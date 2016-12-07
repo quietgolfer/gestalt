@@ -11,11 +11,11 @@ type Props = {
   wash?: bool,
 };
 
-export default function Mask(props: Props = { shape: 'square', wash: false }) {
-  const { children, shape, width, height, wash } = props;
+export default function Mask(props: Props) {
+  const { children, shape = 'square', width, height, wash = false } = props;
   return (
     <div
-      className={cx(styles.Mask, styles[shape || 'square'])}
+      className={cx(styles.Mask, styles[shape])}
       style={{ width, height }}
     >
       {children}
@@ -27,7 +27,7 @@ export default function Mask(props: Props = { shape: 'square', wash: false }) {
 Mask.propTypes = {
   children: PropTypes.node,
   height: PropTypes.number,
-  shape: PropTypes.oneOf(['circle', 'rounded', 'square']).isRequired,
+  shape: PropTypes.oneOf(['circle', 'rounded', 'square']),
   width: PropTypes.number,
-  wash: PropTypes.bool.isRequired,
+  wash: PropTypes.bool,
 };

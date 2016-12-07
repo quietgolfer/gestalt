@@ -24,7 +24,6 @@ type ImageProps = {
   sizes?: string,
   src: string,
   srcSet?: {[key: string]: string},
-  wash?: bool,
   width: number, /* default: false */
 };
 \`\`\`
