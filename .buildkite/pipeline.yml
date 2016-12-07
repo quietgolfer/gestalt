@@ -6,13 +6,6 @@ steps:
         image-repository: 053722134931.dkr.ecr.us-east-1.amazonaws.com/pinterest
     agents:
       queue: elastic-builders
-  - name: ":docker: :package: ghost"
-    plugins:
-      docker-compose:
-        build: ghost
-        image-repository: 053722134931.dkr.ecr.us-east-1.amazonaws.com/pinterest
-    agents:
-      queue: elastic-builders
   - wait
   - name: ":eslint:"
     command: npm run eslint
@@ -48,4 +41,4 @@ steps:
       queue: elastic
     plugins:
       docker-compose:
-        run: ghost
+        run: app

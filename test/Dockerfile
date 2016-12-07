@@ -11,7 +11,7 @@ RUN echo "deb http://mozilla.debian.net/ jessie-backports firefox-release" > /et
     wget mozilla.debian.net/pkg-mozilla-archive-keyring_1.1_all.deb && \
     dpkg -i pkg-mozilla-archive-keyring_1.1_all.deb && \
     apt-get update -yy && \
-    apt-get install -t jessie-backports firefox -yy
+    apt-get install -t jessie-backports firefox -yy --fix-missing
 
 # app
 
