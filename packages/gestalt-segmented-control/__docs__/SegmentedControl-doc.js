@@ -17,7 +17,7 @@ card('FlowType',
 md`
 \`\`\`js
 type Props = {
-  items: Array<string>,
+  items: Array<Element<any>>,
   onChange: (i: number, e: Event) => {},
   selectedItemIndex: number
 };

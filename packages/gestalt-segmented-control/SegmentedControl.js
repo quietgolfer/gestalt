@@ -1,14 +1,14 @@
 // @flow
 
 import classnames from 'classnames/bind';
-import React, { PropTypes } from 'react';
+import React, { Element, PropTypes } from 'react';
 import Text from 'gestalt-text';
 import styles from './SegmentedControl.css';
 
 const cx = classnames.bind(styles);
 
 type Props = {
-  items: Array<string>,
+  items: Array<Element<any>>,
   onChange: (i: number, e: Event) => {},
   selectedItemIndex: number
 };
@@ -53,7 +53,7 @@ export default function SegmentedControl(props: Props) {
 }
 
 SegmentedControl.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  items: PropTypes.arrayOf(PropTypes.node).isRequired,
   onChange: PropTypes.func.isRequired,
   selectedItemIndex: PropTypes.number.isRequired,
 };
