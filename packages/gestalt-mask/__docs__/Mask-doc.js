@@ -18,6 +18,7 @@ type Props = {
   height?: number,
   shape?: 'circle' | 'rounded' | 'square', /* default: square */
   width?: number,
+  wash?: bool,
 };
 \`\`\`
   `);
