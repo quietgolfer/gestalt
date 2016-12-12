@@ -11,7 +11,12 @@ const selectors = {
 describe('ClassicGrid > Server Render Layout', () => {
   it('items rendered on the server maintain position after mounting', async () => {
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000');
+    await ghost.open('http://localhost:3000', {
+      viewportSize: {
+        width: 1000,
+        height: 1000,
+      },
+    });
 
     const serverItems = await ghost.findElements(selectors.staticItem);
 

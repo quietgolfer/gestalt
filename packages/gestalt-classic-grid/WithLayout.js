@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 export default class WithLayout extends Component {
   constructor(props, context) {
@@ -7,56 +6,46 @@ export default class WithLayout extends Component {
     if (typeof document !== 'undefined') {
       this.measuringNode = document.createElement('div');
     }
-    this.state = {
-      cache: null,
-    };
+    this.lastProcessedIdx = 0;
   }
 
-  componentDidMount() {
-    if (this.props.layoutReady) {
+  componentDidUpdate() {
+    if (this.props.layoutReady && this.props.invalidateCacheKey !== this.lastInvalidateCacheKey) {
+      this.lastProcessedIdx = 0;
+      this.lastInvalidateCacheKey = this.props.invalidateCacheKey;
+      this.renderToCache();
+    } else if (this.props.data.length > this.lastProcessedIdx) {
       this.renderToCache();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.layoutReady && this.props.invalidateCacheKey !== nextProps.invalidateCacheKey) {
-      this.renderToCache(true);
-    }
-  }
-
-  renderToCache(invalidate) {
-    // If we don't have the item in cache yet, render it.
-    if (!this.state.cache || invalidate) {
+  renderToCache() {
+    if (this.props.data.length > this.lastProcessedIdx) {
       // Append a temporary node to the dom to measure it.
       document.body.appendChild(this.measuringNode);
-      const child = this.props.children();
-      const rendered = ReactDOM.unstable_renderSubtreeIntoContainer(
-          this, child, this.measuringNode);
-      const { clientWidth, clientHeight } = rendered;
-      ReactDOM.unmountComponentAtNode(this.measuringNode);
-      document.body.removeChild(this.measuringNode);
 
-      // Trigger the prop fn to determine layout using layout information.
-      let processedLayoutInfo;
-      if (typeof document === 'undefined') {
-        processedLayoutInfo = { top: 0, left: 0 };
-      } else {
-        processedLayoutInfo = this.props.processInfo(this.props.data, clientWidth, clientHeight);
+      // Measure all items at once.
+      const allItemMeasurements = [];
+      for (let i = 0; i < this.childRefs.children.length; i += 1) {
+        const child = this.childRefs.children[i];
+        allItemMeasurements.push([child.clientWidth, child.clientHeight]);
       }
 
-      this.setState({
-        cache: this.props.children(processedLayoutInfo),
-      });
+      // Batch update items with processInfo().
+      for (let i = this.lastProcessedIdx; i < this.childRefs.children.length; i += 1) {
+        const child = this.childRefs.children[i];
+        this.props.processInfo(child, allItemMeasurements[i][0], allItemMeasurements[i][1]);
+      }
+      this.lastProcessedIdx = this.childRefs.children.length;
     }
   }
 
   render() {
-    if (this.state.cache) {
-      return this.state.cache;
+    if (this.props.data.length === 0) {
+      return null;
     }
 
-    // Return nothing until we're ready to render.
-    return this.props.children();
+    return <div ref={(ref) => { this.childRefs = ref; }}>{this.props.children}</div>;
   }
 }
 
@@ -64,12 +53,12 @@ WithLayout.propTypes = {
   /**
    * A function to render the child with layout information.
    */
-  children: React.PropTypes.func,
+  children: React.PropTypes.arrayOf(React.PropTypes.node),
 
   /**
    * Item renderer data.
    */
-  data: React.PropTypes.shape({}),
+  data: React.PropTypes.arrayOf(React.PropTypes.shape({})),
 
   /**
    * Change this value to invalidate render cache.

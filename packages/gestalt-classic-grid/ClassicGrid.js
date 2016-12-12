@@ -14,7 +14,6 @@ export default class ClassicGrid extends Component {
 
     this.state = {
       containerWidth: '100%',
-      containerHeight: 0,
     };
   }
 
@@ -30,11 +29,12 @@ export default class ClassicGrid extends Component {
     this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
 
+    // Since items are positioned absolutely, we can't rely on margin or padding to center
+    // an arbitrary number of columns. Calculate the width in order to center the grid.
+    this.gridWrapper.style.width = this.determineWidth();
+
     /* eslint react/no-did-mount-set-state:0 */
     this.setState({
-      // Since items are positioned absolutely, we can't rely on margin or padding to center
-      // an arbitrary number of columns. Calculate the width in order to center the grid.
-      containerWidth: this.determineWidth(),
       layoutReady: true,
     });
   }
@@ -47,10 +47,7 @@ export default class ClassicGrid extends Component {
     setTimeout(() => {
       const longestColumn = Math.max.apply(null, this.currColHeights);
       if (this.state.containerHeight !== longestColumn) {
-        this.setState({
-          containerHeight: longestColumn,
-        });
-
+        this.gridWrapper.style.height = `${longestColumn}px`;
         this.scrollBuffer = this.getContainerHeight() * 2;
       }
     });
@@ -117,6 +114,7 @@ export default class ClassicGrid extends Component {
     // Whether or not we have requested new items.
     // This is used as a flag to signal that we need to wait before loading additional items.
     this.fetchingWith = false;
+    this.forceUpdate();
   }
 
   /**
@@ -151,10 +149,7 @@ export default class ClassicGrid extends Component {
     if (newColCount !== this.currColHeights.length
       || this.state.containerWidth !== containerWidth) {
       this.reflow(newColCount);
-      this.setState({
-        // Recalculate width with new col count.
-        containerWidth: this.determineWidth(),
-      });
+      this.gridWrapper.style.width = this.determineWidth();
       this.forceUpdate();
       return true;
     }
@@ -211,16 +206,15 @@ export default class ClassicGrid extends Component {
   /**
    * Processes height information for an item based on width and height.
    */
-  processInfo = (data, width, height) => {
+  processInfo = (element, width, height) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
     const left = (column * this.props.columnWidth) + (this.props.gutterWidth * column);
     this.currColHeights[column] += height + this.props.gutterWidth;
-
-    return {
-      top,
-      left,
-    };
+    /* eslint no-param-reassign: 0 */
+    element.style.top = `${top}px`;
+    element.style.left = `${left}px`;
+    element.className = styles.Grid__Item;
   }
 
   render() {
@@ -231,39 +225,23 @@ export default class ClassicGrid extends Component {
     return (
       <div
         className={styles.Grid}
-        style={{ width: this.state.containerWidth, height: this.state.containerHeight }}
+        ref={(ref) => { this.gridWrapper = ref; }}
       >
-        {this.props.items.map((item, idx) =>
-          <WithLayout
-            data={item}
-            invalidateCacheKey={this.cacheKey}
-            key={idx}
-            layoutReady={this.state.layoutReady}
-            processInfo={this.processInfo}
-          >
-            {
-              (position = null) => {
-                const itemStyles = {};
-                if (position) {
-                  itemStyles.style = {
-                    ...styles.gridItem,
-                    top: position.top,
-                    left: position.left,
-                  };
-                }
-                return (
-                  <div
-                    className={(position ? styles.Grid__Item : 'static')}
-                    key={idx}
-                    {...itemStyles}
-                  >
-                    <this.props.comp data={item} itemIdx={idx} />
-                  </div>
-                );
-              }
-            }
-          </WithLayout>
-        )}
+        <WithLayout
+          data={this.props.items}
+          invalidateCacheKey={this.cacheKey}
+          layoutReady={this.state.layoutReady}
+          processInfo={this.processInfo}
+        >
+          {this.props.items.map((item, idx) =>
+            <div
+              className="static"
+              key={idx}
+            >
+              <this.props.comp data={this.props.items[idx]} itemIdx={idx} />
+            </div>
+          )}
+        </WithLayout>
       </div>
     );
   }
