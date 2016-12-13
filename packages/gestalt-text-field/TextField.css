@@ -20,7 +20,7 @@
 
 .errored {
   composes: common;
-  border: 1px solid #bd081c;
+  border: 1px solid #fab904;
 }
 
 .errored:focus {
