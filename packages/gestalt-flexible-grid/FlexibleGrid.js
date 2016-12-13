@@ -11,10 +11,10 @@ export default class FlexibleGrid extends Component {
 
     this.currColHeights = [];
     this.setCacheKey();
+    this.gridWrapperHeight = 0;
 
     this.state = {
-      containerWidth: '100%',
-      containerHeight: 0,
+      layoutReady: false,
     };
   }
 
@@ -43,11 +43,9 @@ export default class FlexibleGrid extends Component {
   componentDidUpdate() {
     setTimeout(() => {
       const longestColumn = Math.max.apply(null, this.currColHeights);
-      if (this.state.containerHeight !== longestColumn) {
-        this.setState({
-          containerHeight: longestColumn,
-        });
-
+      if (this.gridWrapperHeight !== longestColumn) {
+        this.gridWrapperHeight = longestColumn;
+        this.gridWrapper.style.height = `${longestColumn}px`;
         this.scrollBuffer = this.getContainerHeight() * 2;
       }
     });
@@ -114,6 +112,7 @@ export default class FlexibleGrid extends Component {
     // Whether or not we have requested new items.
     // This is used as a flag to signal that we need to wait before loading additional items.
     this.fetchingWith = false;
+    this.forceUpdate();
   }
 
   /**
@@ -203,21 +202,21 @@ export default class FlexibleGrid extends Component {
   /**
    * Processes height information for an item based on width and height.
    */
-  processInfo = (data, width, height) => {
+  processInfo = (element, width, height) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
     const left = column * (this.state.gridWidth / this.currColHeights.length);
+    const fluidWidth = this.state.gridWidth / this.currColHeights.length;
     this.currColHeights[column] += height;
 
-    return {
-      top,
-      left,
-    };
+    /* eslint no-param-reassign: 0 */
+    element.style.top = `${top}px`;
+    element.style.left = `${left}px`;
+    element.style.width = `${fluidWidth}px`;
+    element.className = styles.Grid__Item;
   }
 
   render() {
-    const fluidWidth = this.state.gridWidth / this.currColHeights.length;
-
     if (this.fetchingWith !== false && this.fetchingWith !== this.props.items.length) {
       this.fetchingWith = false;
     }
@@ -225,41 +224,23 @@ export default class FlexibleGrid extends Component {
     return (
       <div
         className={styles.Grid}
-        style={{ width: this.state.containerWidth, height: this.state.containerHeight }}
+        ref={(ref) => { this.gridWrapper = ref; }}
       >
-        {this.props.items.map((item, idx) =>
-          <WithLayout
-            constrainWidth={this.state.itemWidth}
-            data={item}
-            invalidateCacheKey={this.cacheKey}
-            key={idx}
-            layoutReady={this.state.layoutReady}
-            processInfo={this.processInfo}
-          >
-            {
-              (position = null) => {
-                const itemStyles = {};
-                if (position) {
-                  itemStyles.style = {
-                    ...styles.gridItem,
-                    top: position.top,
-                    left: position.left,
-                    width: fluidWidth,
-                  };
-                }
-                return (
-                  <div
-                    className={(position ? styles.Grid__Item : 'static')}
-                    key={idx}
-                    {...itemStyles}
-                  >
-                    <this.props.comp data={item} itemIdx={idx} />
-                  </div>
-                );
-              }
-            }
-          </WithLayout>
-        )}
+        <WithLayout
+          data={this.props.items}
+          invalidateCacheKey={this.cacheKey}
+          layoutReady={this.state.layoutReady}
+          processInfo={this.processInfo}
+        >
+          {this.props.items.map((item, idx) =>
+            <div
+              className="static"
+              key={idx}
+            >
+              <this.props.comp data={this.props.items[idx]} itemIdx={idx} />
+            </div>
+          )}
+        </WithLayout>
       </div>
     );
   }

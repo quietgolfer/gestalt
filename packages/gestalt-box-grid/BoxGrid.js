@@ -13,10 +13,10 @@ export default class BoxGrid extends Component {
     this.packer = new Packer();
 
     this.setCacheKey();
+    this.gridWrapperHeight = 0;
 
     this.state = {
-      containerWidth: '100%',
-      containerHeight: 0,
+      layoutReady: false,
     };
   }
 
@@ -42,10 +42,9 @@ export default class BoxGrid extends Component {
   componentDidUpdate() {
     setTimeout(() => {
       const longestColumn = this.highestColumn();
-      if (this.state.containerHeight !== longestColumn) {
-        this.setState({
-          containerHeight: longestColumn,
-        });
+      if (this.gridWrapperHeight !== longestColumn) {
+        this.gridWrapperHeight = longestColumn;
+        this.gridWrapper.style.height = `${longestColumn}px`;
 
         this.scrollBuffer = this.getContainerHeight() * 2;
       }
@@ -110,6 +109,7 @@ export default class BoxGrid extends Component {
     // Whether or not we have requested new items.
     // This is used as a flag to signal that we need to wait before loading additional items.
     this.fetchingWith = false;
+    this.forceUpdate();
   }
 
   /**
@@ -195,12 +195,19 @@ export default class BoxGrid extends Component {
   /**
    * Processes height information for an item based on width and height.
    */
-  processInfo = (data, width, height) => {
-    const { top, left } = this.packer.position(width, height, data.colSpan);
-    return {
-      top,
-      left,
-    };
+  processInfo = (element, width, height) => {
+    const { top, left } = this.packer.position(
+      width,
+      height,
+      // TODO: Find a better way to extract child column count from the component.
+      parseInt(element.children[0].dataset.cols, 10)
+    );
+
+    /* eslint no-param-reassign: 0 */
+    element.style.top = `${top}px`;
+    element.style.left = `${left}px`;
+    element.style.width = `${this.state.itemWidth}px`;
+    element.className = styles.Grid__Item;
   }
 
   render() {
@@ -211,40 +218,27 @@ export default class BoxGrid extends Component {
     return (
       <div
         className={styles.Grid}
-        style={{ width: this.state.containerWidth, height: this.state.containerHeight }}
+        ref={(ref) => { this.gridWrapper = ref; }}
       >
-        {this.props.items.map((item, idx) =>
-          <WithLayout
-            data={item}
-            invalidateCacheKey={this.cacheKey}
-            key={idx}
-            layoutReady={this.state.layoutReady}
-            processInfo={this.processInfo}
-          >
-            {
-              (position = null) => {
-                const itemStyles = {};
-                if (position) {
-                  itemStyles.style = {
-                    ...styles.gridItem,
-                    top: position.top,
-                    left: position.left,
-                    width: this.state.itemWidth,
-                  };
-                }
-                return (
-                  <div
-                    className={styles.Grid__Item}
-                    key={idx}
-                    {...itemStyles}
-                  >
-                    <this.props.comp columnWidth={this.state.itemWidth} data={item} itemIdx={idx} />
-                  </div>
-                );
-              }
-            }
-          </WithLayout>
-        )}
+        <WithLayout
+          data={this.props.items}
+          invalidateCacheKey={this.cacheKey}
+          layoutReady={this.state.layoutReady}
+          processInfo={this.processInfo}
+        >
+          {this.props.items.map((item, idx) =>
+            <div
+              className="static"
+              key={idx}
+            >
+              <this.props.comp
+                columnWidth={this.state.itemWidth}
+                data={this.props.items[idx]}
+                itemIdx={idx}
+              />
+            </div>
+          )}
+        </WithLayout>
       </div>
     );
   }
