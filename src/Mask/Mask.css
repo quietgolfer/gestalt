@@ -1,0 +1,21 @@
+.Mask {
+  composes: overflow-hidden relative from "../Layout.css";
+}
+
+.square {
+  composes: square from "../Borders.css";
+}
+
+.rounded {
+  composes: rounded from "../Borders.css";
+}
+
+.circle {
+  composes: circle from "../Borders.css";
+}
+
+.wash {
+  composes: absolute top-0 left-0 right-0 bottom-0 from "../Layout.css";
+  background: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+}

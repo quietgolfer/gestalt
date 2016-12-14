@@ -1,0 +1,15 @@
+.img {
+  composes: fit from "../Layout.css";
+}
+
+.pending {
+  display: none;
+}
+
+.loaded {
+  composes: block from "../Layout.css";
+}
+
+.container {
+  composes: fit relative from "../Layout.css";
+}

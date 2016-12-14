@@ -1,9 +1,0 @@
-{
-  "name": "gestalt-letterbox",
-  "version": "0.5.0",
-  "main": "./Letterbox.js",
-  "dependencies": {
-    "react": "^15.3.1",
-    "gestalt-mask": "^0.5.0"
-  }
-}

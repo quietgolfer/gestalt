@@ -1,0 +1,84 @@
+:root {
+  --blue-hover: color(#0084ff blackness(+ 6%));
+  --blue-active: color(#0084ff blackness(+ 10%));
+  --light-gray-hover: color(#efefef blackness(+ 6%));
+  --light-gray-active: color(#efefef blackness(+ 10%));
+  --red-hover: color(#bd081c blackness(+ 6%));
+  --red-active: color(#bd081c blackness(+ 10%));
+}
+
+.common {
+  composes: antialiased from "../Typography.css";
+  composes: bold from "../Typography.css";
+  composes: border-box from "../Layout.css";
+  composes: no-border from "../Borders.css";
+  border-radius: 4px;
+}
+
+.enabled {
+  composes: pointer from "../Cursor.css";
+}
+
+.variable {
+  composes: common;
+  padding: 10px 14px;
+}
+
+.fullWidth {
+  composes: common;
+  composes: col-12 from "../Column/Column.css";
+  composes: text-lg from "../Typography.css";
+  padding: 12px 16px;
+}
+
+.button,
+.submit {
+  composes: text-md from "../Typography.css";
+}
+
+.disabled {
+  composes: bg-light-gray from "../Colors.css";
+  composes: gray from "../Colors.css";
+}
+
+.gray {
+  composes: bg-light-gray from "../Colors.css";
+  composes: dark-gray from "../Colors.css";
+}
+
+.gray:hover,
+.gray:focus {
+  background-color: var(--light-gray-hover);
+}
+
+.gray:active {
+  background-color: var(--light-gray-active);
+}
+
+.red {
+  composes: bg-red from "../Colors.css";
+  composes: white from "../Colors.css";
+}
+
+.red:hover,
+.red:focus {
+  background-color: var(--red-hover);
+}
+
+.red:active {
+  background-color: var(--red-active);
+}
+
+.blue {
+  composes: bg-blue from "../Colors.css";
+  composes: white from "../Colors.css";
+}
+
+.blue:hover,
+.blue:focus {
+  background-color: var(--blue-hover);
+}
+
+.blue:active {
+  background-color: var(--blue-active);
+}

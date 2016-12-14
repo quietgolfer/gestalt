@@ -1,7 +1,7 @@
 import React from 'react';
-import BoxGrid from '../packages/gestalt-box-grid/BoxGrid';
-import Item from '../packages/gestalt-box-grid/__docs__/Item';
-import stringToColor from '../packages/gestalt-string-to-color';
+import BoxGrid from '../src/BoxGrid/BoxGrid';
+import Item from '../src/BoxGrid/__docs__/Item';
+import stringToColor from '../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 

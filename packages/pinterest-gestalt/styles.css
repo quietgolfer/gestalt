@@ -1,9 +1,0 @@
-@charset "utf-8";
-
-@import "gestalt-borders/Borders.css";
-@import "gestalt-colors/Colors.css";
-@import "gestalt-column/Column.css";
-@import "gestalt-cursor/Cursor.css";
-@import "gestalt-layout/Layout.css";
-@import "gestalt-typography/Typography.css";
-@import "gestalt-whitespace/Whitespace.css";

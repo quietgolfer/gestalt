@@ -1,8 +1,7 @@
 // @flow
 import React, { PropTypes } from 'react';
-import Icon from '../../packages/gestalt-icon/Icon';
-import icons from '../../packages/gestalt-icon/icons/index';
-
+import Icon from '../../src/Icon/Icon';
+import icons from '../../src/Icon/icons';
 
 function IconType({ iconName }) {
   return (

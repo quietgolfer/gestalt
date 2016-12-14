@@ -1,9 +1,0 @@
-.Grid {
-  composes: relative from "gestalt-layout/Layout.css";
-  height: 100%;
-  margin: 0 auto;
-}
-
-.Grid__Item {
-  composes: absolute from "gestalt-layout/Layout.css";
-}

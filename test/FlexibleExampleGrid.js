@@ -1,7 +1,7 @@
 import React from 'react';
-import FlexibleGrid from '../packages/gestalt-flexible-grid/FlexibleGrid';
+import FlexibleGrid from '../src/FlexibleGrid/FlexibleGrid';
 import Item from './ExampleGridItem';
-import stringToColor from '../packages/gestalt-string-to-color';
+import stringToColor from '../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 

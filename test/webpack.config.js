@@ -1,4 +1,4 @@
-const breakpoints = require('../packages/gestalt-media-query/breakpoints');
+const breakpoints = require('../src/breakpoints');
 const postcssImport = require('postcss-import');
 const postcssUrl = require('postcss-url');
 const postcssCssNext = require('postcss-cssnext');

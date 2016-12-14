@@ -6,7 +6,7 @@ import ClassicExampleGrid from './ClassicExampleGrid';
 import FlexibleExampleGrid from './FlexibleExampleGrid';
 import classicGridServerStyles from './classicGridServerStyles';
 import flexibleGridServerStyles from './flexibleGridServerStyles';
-import stringToColor from '../packages/gestalt-string-to-color';
+import stringToColor from '../src/stringToColor';
 
 const express = require('express');
 

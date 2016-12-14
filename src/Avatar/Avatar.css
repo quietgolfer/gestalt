@@ -1,0 +1,88 @@
+:root {
+  /*** Avatar Sizing ***/
+
+  /* small screens */
+
+  --sm-size-xs: 24px;
+  --sm-size-sm: 40px;
+  --sm-size-md: 72px;
+  --sm-size-lg: 104px;
+  --sm-size-xl: 132px;
+
+  /* add medium screens when design adds third breakpoint option for avatars */
+
+  /* large screens */
+
+  --lg-size-xs: 36px;
+  --lg-size-sm: 60px;
+  --lg-size-md: 108px;
+  --lg-size-lg: 156px;
+  --lg-size-xl: 198px;
+}
+
+.defaultAvatar {
+  composes: bg-gray from "../Colors.css";
+  composes: relative flex items-center justify-center from "../Layout.css";
+  composes: circle from "../Borders.css";
+}
+
+.initial {
+  composes: antialiased bold from "../Typography.css";
+  composes: white from "../Colors.css";
+}
+
+.responsive {
+  composes: col-12 from "../Column/Column.css";
+}
+
+.xs {
+  height: var(--sm-size-xs);
+  width: var(--sm-size-xs);
+}
+
+.sm {
+  height: var(--sm-size-sm);
+  width: var(--sm-size-sm);
+}
+
+.md {
+  height: var(--sm-size-md);
+  width: var(--sm-size-md);
+}
+
+.lg {
+  height: var(--sm-size-lg);
+  width: var(--sm-size-lg);
+}
+
+.xl {
+  height: var(--sm-size-xl);
+  width: var(--sm-size-xl);
+}
+
+@media (--lg) {
+  .xs {
+    height: var(--lg-size-xs);
+    width: var(--lg-size-xs);
+  }
+
+  .sm {
+    height: var(--lg-size-sm);
+    width: var(--lg-size-sm);
+  }
+
+  .md {
+    height: var(--lg-size-md);
+    width: var(--lg-size-md);
+  }
+
+  .lg {
+    height: var(--lg-size-lg);
+    width: var(--lg-size-lg);
+  }
+
+  .xl {
+    height: var(--lg-size-xl);
+    width: var(--lg-size-xl);
+  }
+}

@@ -1,0 +1,48 @@
+.text {
+  composes: bold from from "../Typography.css";
+  composes: dark-gray from "../Colors.css";
+  composes: text-md from "../Typography.css";
+}
+
+.common {
+  composes: bg-light-gray from "../Colors.css";
+  composes: block border-box from "../Layout.css";
+  composes: col-12 from "../Column/Column.css";
+  composes: pointer from "../Cursor.css";
+  composes: rounded from "../Borders.css";
+}
+
+.container {
+  composes: common;
+  composes: relative from "../Layout.css";
+}
+
+.select {
+  composes: common;
+  composes: text;
+  composes: no-border from "../Borders.css";
+  composes: p2 from "../Whitespace.css";
+  appearance: none;
+  padding-right: 20%; /* prevents option.name from running into arrow */
+}
+
+.dropdownArrow {
+  composes: absolute from "../Layout.css";
+  composes: block from "../Layout.css";
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 7px solid #555;
+  height: 0;
+  margin-top: -3px;
+  pointer-events: none;
+  right: 16px;
+  top: 50%;
+  width: 0;
+  z-index: 2;
+}
+
+.options {
+  composes: relative from "../Layout.css";
+  composes: mr3 from "../Whitespace.css";
+  width: 80%;
+}

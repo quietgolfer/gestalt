@@ -5,7 +5,7 @@ const postcssReporter = require('postcss-reporter');
 const postcssUrl = require('postcss-url');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const breakpoints = require('./packages/gestalt-media-query/breakpoints');
+const breakpoints = require('./src/breakpoints');
 const webpack = require('webpack');
 
 module.exports = {
@@ -70,7 +70,7 @@ module.exports = {
         test: /\.js$/,
         loaders: ['react-hot', 'babel?cacheDirectory'],
         include: [
-          path.join(__dirname, 'packages'),
+          path.join(__dirname, 'src'),
           path.join(__dirname, '.corkboard'),
           path.dirname(require.resolve('corkboard')),
         ],
