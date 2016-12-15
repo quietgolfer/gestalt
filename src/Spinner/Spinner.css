@@ -1,0 +1,25 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Spinner {
+  composes: flex justify-around from '../Layout.css';
+}
+
+.icon {
+  composes: block from '../Layout.css';
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-name: spin;
+  animation-timing-function: linear;
+}
+
+.hidden {
+  visibility: hidden;
+}
