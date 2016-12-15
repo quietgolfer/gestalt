@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 export default class WithLayout extends Component {
   constructor(props, context) {
     super(props, context);
-    if (typeof document !== 'undefined') {
-      this.measuringNode = document.createElement('div');
-    }
     this.lastProcessedIdx = 0;
   }
 
@@ -21,9 +18,6 @@ export default class WithLayout extends Component {
 
   renderToCache() {
     if (this.props.data.length > this.lastProcessedIdx) {
-      // Append a temporary node to the dom to measure it.
-      document.body.appendChild(this.measuringNode);
-
       // Measure all items at once.
       const allItemMeasurements = [];
       for (let i = 0; i < this.childRefs.children.length; i += 1) {

@@ -11,8 +11,10 @@ export default class ClassicGrid extends Component {
 
     this.currColHeights = [];
     this.setCacheKey();
+    this.gridWrapperHeight = 0;
 
     this.state = {
+      layoutReady: false,
       containerWidth: '100%',
     };
   }
@@ -46,7 +48,8 @@ export default class ClassicGrid extends Component {
   componentDidUpdate() {
     setTimeout(() => {
       const longestColumn = Math.max.apply(null, this.currColHeights);
-      if (this.state.containerHeight !== longestColumn) {
+      if (this.gridWrapperHeight !== longestColumn) {
+        this.gridWrapperHeight = longestColumn;
         this.gridWrapper.style.height = `${longestColumn}px`;
         this.scrollBuffer = this.getContainerHeight() * 2;
       }

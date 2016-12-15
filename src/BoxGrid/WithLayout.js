@@ -3,12 +3,6 @@ import React, { Component } from 'react';
 export default class WithLayout extends Component {
   constructor(props, context) {
     super(props, context);
-    if (typeof document !== 'undefined') {
-      this.measuringNode = document.createElement('div');
-      if (props.constrainWidth) {
-        this.measuringNode.style.width = props.constrainWidth;
-      }
-    }
     this.lastProcessedIdx = 0;
   }
 
@@ -24,9 +18,6 @@ export default class WithLayout extends Component {
 
   renderToCache() {
     if (this.props.data.length > this.lastProcessedIdx) {
-      // Append a temporary node to the dom to measure it.
-      document.body.appendChild(this.measuringNode);
-
       // Measure all items at once.
       const allItemMeasurements = [];
       for (let i = 0; i < this.childRefs.children.length; i += 1) {
@@ -57,13 +48,6 @@ WithLayout.propTypes = {
    * A function to render the child with layout information.
    */
   children: React.PropTypes.arrayOf(React.PropTypes.node),
-
-  /**
-   * What to constrain item width to when measuring.
-   */
-  constrainWidth: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string]),
 
   /**
    * Item renderer data.
