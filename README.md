@@ -5,7 +5,7 @@
 
 Install dependencies.
 ```
-npm run bootstrap
+yarn
 ```
 
 Start the development server:
