@@ -35,7 +35,7 @@ describe('FlexibleGrid > Server Render Layout', () => {
     });
 
     const gridItems = await ghost.findElements(selectors.gridItem);
-    assert.equal(gridItems.length, 20);
+    assert.ok(gridItems.length >= 20);
 
     const gridItem1Rect = await gridItems[0].rect();
     const gridItem2Rect = await gridItems[1].rect();

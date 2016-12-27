@@ -52,6 +52,7 @@ export default class ClassicGrid extends Component {
         this.gridWrapperHeight = longestColumn;
         this.gridWrapper.style.height = `${longestColumn}px`;
         this.scrollBuffer = this.getContainerHeight() * 2;
+        this.handleScroll();
       }
     });
   }

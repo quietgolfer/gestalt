@@ -47,6 +47,7 @@ export default class BoxGrid extends Component {
         this.gridWrapper.style.height = `${longestColumn}px`;
 
         this.scrollBuffer = this.getContainerHeight() * 2;
+        this.handleScroll();
       }
     });
   }
