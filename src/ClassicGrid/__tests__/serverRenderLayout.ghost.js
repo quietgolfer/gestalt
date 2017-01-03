@@ -8,9 +8,9 @@ const selectors = {
   staticItem: '.static',
 };
 
-// TODO: This test is failing on CI for some reason.
-describe.skip('ClassicGrid > Server Render Layout', () => {
+describe('ClassicGrid > Server Render Layout', () => {
   it('items rendered on the server maintain position after mounting', async () => {
+    ghost.close();
     // First load the page with javascript disabled to get the item position
     await ghost.open('http://localhost:3000', {
       viewportSize: {
