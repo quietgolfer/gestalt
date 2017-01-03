@@ -37,6 +37,12 @@ steps:
         run: app
   - name: ":ghost:"
     command: npm run ghost
+    parallelism: 2
+    concurrency: 2
+    concurrency_group: 'pinterest/integration_tests'
+    env:
+      BUILDKITE_PARALLEL_JOB_COUNT: $BUILDKITE_PARALLEL_JOB_COUNT
+      BUILDKITE_PARALLEL_JOB: $BUILDKITE_PARALLEL_JOB
     agents:
       queue: elastic
     plugins:

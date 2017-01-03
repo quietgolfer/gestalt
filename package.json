@@ -18,7 +18,7 @@
     "build": "webpack --config webpack.config.js",
     "eslint": "eslint . --ext js",
     "flow": "flow .",
-    "ghost": "./run_integration_tests",
+    "ghost": "BUILDKITE_PARALLEL_JOB_COUNT=${BUILDKITE_PARALLEL_JOB_COUNT} BUILDKITE_PARALLEL_JOB=${BUILDKITE_PARALLEL_JOB} ./run_integration_tests",
     "lint": "npm run eslint && npm run stylelint",
     "start": "webpack-dev-server --config webpack.config.corkboard.js --progress --colors",
     "stylelint": "stylelint src/**/*.css",

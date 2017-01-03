@@ -13,7 +13,10 @@ until $(curl --output /dev/null --silent --head --fail http://localhost:3000); d
     sleep 5
 done
 
-NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs-core $(find src -name '*.ghost.js')
+total_chunks=${BUILDKITE_PARALLEL_JOB_COUNT:=1}
+this_chunk=$((${BUILDKITE_PARALLEL_JOB:=0} + 1))
+
+NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs-core $(./node_modules/.bin/babel-node ./scripts/chunk.js ${total_chunks} ${this_chunk} $(find src -name '*.ghost.js') $@)
 STATUS=$?
 
 # Kill the process group and all children of that process group.
