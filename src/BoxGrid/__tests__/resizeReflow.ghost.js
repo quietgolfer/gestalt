@@ -4,7 +4,7 @@ import assert from 'assert';
 import ghost from 'ghostjs';
 
 const PIN_SIZE = 235;
-const RESIZE_DEBOUNCE = 100;
+const RESIZE_DEBOUNCE = 200;
 
 const selectors = {
   gridItem: '[class^="Grid__Grid__Item"]',
@@ -33,8 +33,8 @@ const triggerReisze = async (resizeWidthTo) => {
 };
 
 describe('BoxGrid > Resize', () => {
-  it.skip('Reflows the grid after a resize', async () => {
-    const GRID_WIDTH = 1000;
+  it('Reflows the grid after a resize', async () => {
+    const GRID_WIDTH = 1600;
 
     // This test cares about page size, so close the previous instance to ensure
     // we open a new window with the correct dimensions.
@@ -54,11 +54,14 @@ describe('BoxGrid > Resize', () => {
     const expectedColumns = Math.floor(GRID_WIDTH / PIN_SIZE);
     assert.equal(await countColumns(), expectedColumns, `expected ${expectedColumns} columns`);
 
-    await triggerReisze(GRID_WIDTH - (PIN_SIZE * 2));
+    await ghost.wait(RESIZE_DEBOUNCE);
+
+    await triggerReisze(GRID_WIDTH - (PIN_SIZE * 3));
 
     // Wait for the resize debounce to complete.
     await ghost.wait(RESIZE_DEBOUNCE);
-    assert.notEqual(await countColumns(), expectedColumns,
+    const newColCount = await countColumns();
+    assert.notEqual(newColCount, expectedColumns,
       'expected column count to change after resize');
   });
 });
