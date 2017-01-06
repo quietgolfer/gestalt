@@ -1,3 +1,4 @@
+// @flow
 /* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -5,10 +6,20 @@ import Packer from './Packer';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
-export default class BoxGrid extends Component {
+type Props<T> = {|
+  comp: () => void,
+  items: T[],
+  maxItemWidth: number,
+  minItemWidth: number,
+  loadItems: () => void,
+  scrollContainer: HTMLElement,
+|};
 
-  constructor(props, context) {
-    super(props, context);
+export default class BoxGrid extends Component {
+  static defaultProps: {};
+
+  constructor(props: Props<*>) {
+    super(props);
 
     this.packer = new Packer();
 
@@ -16,9 +27,17 @@ export default class BoxGrid extends Component {
     this.gridWrapperHeight = 0;
 
     this.state = {
+      gridWidth: 0,
+      itemWidth: 0,
       layoutReady: false,
     };
   }
+
+  state: {
+    gridWidth: number,
+    itemWidth: number,
+    layoutReady: bool
+  };
 
   /**
    * Adds hooks after the component mounts.
@@ -85,6 +104,15 @@ export default class BoxGrid extends Component {
     this.cacheKey = `${this.state && this.state.gridWidth} - ${Date.now()}`;
   }
 
+  boundResizeHandler: () => void;
+  cacheKey: string;
+  fetchingWith: bool | number;
+  gridWrapper: HTMLElement;
+  gridWrapperHeight: number;
+  packer: Packer;
+  resizeTimeout: ?number;
+  scrollBuffer: number;
+
   /**
    * Delays resize handling in case the scroll container is still being resized.
    */
@@ -116,11 +144,11 @@ export default class BoxGrid extends Component {
   /**
    * Determines the number of columns to display.
    */
-  calculateColumns() {
-    if (!this.props.scrollContainer) {
-      return 0;
-    }
-
+  calculateColumns(): {
+    colCount: number,
+    gridWidth: number,
+    itemWidth: number,
+  } {
     /* eslint react/no-find-dom-node: 0 */
     const parentNode = ReactDOM.findDOMNode(this).parentNode;
     const gridWidth = parentNode.clientWidth;
@@ -157,11 +185,11 @@ export default class BoxGrid extends Component {
   /**
    * Use the item endY or highest available startY to find the grid height.
    */
-  highestColumn() {
+  highestColumn(): number {
     let height = 0;
     for (let i = 0; i < this.packer.columns.length; i += 1) {
       const item = this.packer.columns[i][this.packer.columns[i].length - 1];
-      if (item.endY !== null && item.endY > height) {
+      if (item.endY != null && item.endY > height) {
         height = item.endY;
       } else if (item.startY > height) {
         height = item.startY;
@@ -196,7 +224,7 @@ export default class BoxGrid extends Component {
   /**
    * Processes height information for an item based on width and height.
    */
-  processInfo = (element, width, height) => {
+  processInfo = (element: HTMLElement, width: number, height: number) => {
     const { top, left } = this.packer.position(
       width,
       height,

@@ -1,8 +1,16 @@
+// @flow
 import React, { Component } from 'react';
 
+type Props<T> = {|
+  invalidateCacheKey: string,
+  layoutReady: bool,
+  data: T[],
+  processInfo: () => void,
+|};
+
 export default class WithLayout extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props: Props<*>) {
+    super(props);
     this.lastProcessedIdx = 0;
   }
 
@@ -15,6 +23,12 @@ export default class WithLayout extends Component {
       this.renderToCache();
     }
   }
+
+  childRefs: {
+    children: Array<HTMLElement>
+  };
+  lastProcessedIdx: number;
+  lastInvalidateCacheKey: string;
 
   renderToCache() {
     if (this.props.data.length > this.lastProcessedIdx) {

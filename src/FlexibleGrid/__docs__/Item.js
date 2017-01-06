@@ -1,7 +1,20 @@
+// @flow
 import React from 'react';
 import Image from '../../Image/Image';
 
-export default function Item(props) {
+/* disable until eslint issue is fixed https://github.com/yannickcr/eslint-plugin-react/issues/819 */
+/* eslint-disable react/no-unused-prop-types */
+type Props = {|
+  data: {
+    height: number,
+    color: string,
+    name: string,
+    src: string,
+    width: number,
+  },
+|};
+
+export default function Item(props: Props) {
   const {
     data,
   } = props;

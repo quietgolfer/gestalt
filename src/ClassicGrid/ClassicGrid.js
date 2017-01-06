@@ -1,13 +1,25 @@
+// @flow
 /* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
-export default class ClassicGrid extends Component {
+type Props<T> = {|
+  columnWidth: number,
+  comp: () => void,
+  gutterWidth: number,
+  items: T[],
+  minCols: number,
+  loadItems: () => void,
+  scrollContainer: HTMLElement,
+|};
 
-  constructor(props, context) {
-    super(props, context);
+export default class ClassicGrid extends Component {
+  static defaultProps: {};
+
+  constructor(props: Props<*>) {
+    super(props);
 
     this.currColHeights = [];
     this.setCacheKey();
@@ -18,6 +30,11 @@ export default class ClassicGrid extends Component {
       containerWidth: '100%',
     };
   }
+
+  state: {
+    containerWidth: number | string,
+    layoutReady: bool
+  };
 
   /**
    * Adds hooks after the component mounts.
@@ -90,6 +107,15 @@ export default class ClassicGrid extends Component {
     this.cacheKey = `${this.currColHeights.length} - ${Date.now()}`;
   }
 
+  boundResizeHandler: () => void;
+  cacheKey: string;
+  currColHeights: Array<number>;
+  fetchingWith: bool | number;
+  gridWrapper: HTMLElement;
+  gridWrapperHeight: number;
+  resizeTimeout: ?number;
+  scrollBuffer: number;
+
   /**
    * Delays resize handling in case the scroll container is still being resized.
    */
@@ -104,7 +130,7 @@ export default class ClassicGrid extends Component {
   /**
    * Resets the local cache.
    */
-  reflow(columnCount) {
+  reflow(columnCount: number) {
     const columnCountOutput = columnCount || this.calculateColumns();
 
     // Sets the columns heights as an array, each member corresponding to a column.
@@ -210,7 +236,7 @@ export default class ClassicGrid extends Component {
   /**
    * Processes height information for an item based on width and height.
    */
-  processInfo = (element, width, height) => {
+  processInfo = (element: HTMLElement, width: number, height: number) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
     const left = (column * this.props.columnWidth) + (this.props.gutterWidth * column);

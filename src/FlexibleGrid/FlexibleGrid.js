@@ -1,13 +1,25 @@
+// @flow
 /* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
-export default class FlexibleGrid extends Component {
+type Props<T> = {|
+  comp: () => void,
+  items: T[],
+  maxCols: number,
+  maxItemWidth: number,
+  minItemWidth: number,
+  loadItems: () => void,
+  scrollContainer: HTMLElement,
+|};
 
-  constructor(props, context) {
-    super(props, context);
+export default class FlexibleGrid extends Component {
+  static defaultProps: {};
+
+  constructor(props: Props<*>) {
+    super(props);
 
     this.currColHeights = [];
     this.setCacheKey();
@@ -17,6 +29,10 @@ export default class FlexibleGrid extends Component {
       layoutReady: false,
     };
   }
+
+  state: {
+    layoutReady: bool
+  };
 
   /**
    * Adds hooks after the component mounts.
@@ -85,6 +101,16 @@ export default class FlexibleGrid extends Component {
   setCacheKey() {
     this.cacheKey = `${this.state && this.gridWidth} - ${Date.now()}`;
   }
+
+  boundResizeHandler: () => void;
+  cacheKey: string;
+  currColHeights: Array<number>;
+  fetchingWith: bool | number;
+  gridWidth: number;
+  gridWrapper: HTMLElement;
+  gridWrapperHeight: number;
+  resizeTimeout: ?number;
+  scrollBuffer: number;
 
   /**
    * Delays resize handling in case the scroll container is still being resized.
@@ -188,7 +214,7 @@ export default class FlexibleGrid extends Component {
   /**
    * Processes height information for an item based on width and height.
    */
-  processInfo = (element, width, height) => {
+  processInfo = (element: HTMLElement, width: number, height: number) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
     const left = column * (this.gridWidth / this.currColHeights.length);

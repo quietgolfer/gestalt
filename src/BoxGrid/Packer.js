@@ -1,5 +1,22 @@
+// @flow
+type ColConfigType = {
+  colCount: number,
+  itemWidth: number,
+};
+
+type ColumnsType = Array<Array<{
+  startX: number,
+  startY: number,
+  endY: ?number
+}>>;
+
+type AvailableSlotType = Array<Array<number>>;
+
 export default class BoxPacker {
-  init(colConfig) {
+  colConfig: ColConfigType;
+  columns: ColumnsType;
+
+  init(colConfig: ColConfigType) {
     this.colConfig = colConfig;
 
     this.columns = [];
@@ -16,7 +33,7 @@ export default class BoxPacker {
   /**
    * Splits all given slots after an item has been inserted into it.
    */
-  splitAllSlots(usedSlots, insertedItemHeight) {
+  splitAllSlots(usedSlots: AvailableSlotType, insertedItemHeight: number) {
     for (let i = 0; i < usedSlots.length; i += 1) {
       const [slotColIdx, slotItemIdx, slotItemOffset] = usedSlots[i];
 
@@ -38,7 +55,7 @@ export default class BoxPacker {
       }
 
       // Populate the nextSlot after this item if there's still room.
-      if (currSlotEndY === null || currSlotEndY > newSlotEndY) {
+      if (currSlotEndY == null || currSlotEndY > newSlotEndY) {
         itemsToInsert.push({
           startX: thisSlot.startX,
           startY: newSlotEndY,
@@ -51,7 +68,7 @@ export default class BoxPacker {
     }
   }
 
-  findNextShortest(searchFromHeight) {
+  findNextShortest(searchFromHeight: number): Array<Array<number>> {
     let currLowestItem = null;
     let lowestItems = [];
 
@@ -59,7 +76,9 @@ export default class BoxPacker {
       for (let j = 0; j < this.columns[i].length; j += 1) {
         const currItem = this.columns[i][j];
         if (currItem.startY > searchFromHeight &&
-          (lowestItems.length === 0 || currItem.startY <= currLowestItem.startY)) {
+          (lowestItems.length === 0 ||
+            (currLowestItem != null && currItem.startY <= currLowestItem.startY)
+          )) {
           if (!currLowestItem || currItem.startY < currLowestItem.startY) {
             currLowestItem = currItem;
             lowestItems = [];
@@ -71,24 +90,25 @@ export default class BoxPacker {
     return lowestItems;
   }
 
-  columnHasSlotAt(colIdx, startFrom, requiredHeight) {
+  columnHasSlotAt(colIdx: number, startFrom: number, requiredHeight: number) {
     for (let i = 0; i < this.columns[colIdx].length; i += 1) {
       const item = this.columns[colIdx][i];
       if (item.startY <= startFrom &&
-        (item.endY === null || item.endY >= startFrom + requiredHeight)) {
+        (item.endY == null || item.endY >= startFrom + requiredHeight)) {
         return i;
       }
     }
     return null;
   }
 
-  findAvailableSlots(columnIdx, itemIdx, colSpan, itemHeight, itemSlotOffset = 0) {
+  findAvailableSlots(columnIdx: number, itemIdx: number, colSpan: number, itemHeight: number,
+    itemSlotOffset: number = 0): AvailableSlotType {
     const item = this.columns[columnIdx][itemIdx];
     const availableSlots = [];
 
     // Item is too wide for the current column.
     if (columnIdx + colSpan > this.columns.length) {
-      return null;
+      return availableSlots;
     }
 
     for (let i = columnIdx; i < columnIdx + colSpan; i += 1) {
@@ -101,7 +121,7 @@ export default class BoxPacker {
     return availableSlots;
   }
 
-  position(width, height, colSpan) {
+  position(width: number, height: number, colSpan: number) {
     // Find the lowest point where this item will fit.
     let searchFromHeight = -1;
     let usedSlots = [];
@@ -136,7 +156,7 @@ export default class BoxPacker {
       for (let i = 0; i < lowestItems.length; i += 1) {
         const [colIdx, itemIdx] = lowestItems[i];
         usedSlots = this.findAvailableSlots(colIdx, itemIdx, colSpan, height, itemSlotOffset);
-        if (usedSlots && usedSlots.length >= colSpan) {
+        if (usedSlots.length > 0 && usedSlots.length >= colSpan) {
           break slotSearch;
         }
       }

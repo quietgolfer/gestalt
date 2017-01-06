@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { card, md } from 'corkboard';
 import ExampleGrid from './ExampleGrid';

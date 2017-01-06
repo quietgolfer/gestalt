@@ -1,6 +1,20 @@
+// @flow
 import React from 'react';
 
-const Item = (props) => {
+/* disable until eslint issue is fixed https://github.com/yannickcr/eslint-plugin-react/issues/819 */
+/* eslint-disable react/no-unused-prop-types */
+type Props = {|
+  columnWidth: number,
+  data: {
+    colSpan: number,
+    height: number,
+    color: string,
+    name: string,
+  },
+  itemIdx: number,
+|};
+
+const Item = (props: Props) => {
   const {
     columnWidth,
     data,

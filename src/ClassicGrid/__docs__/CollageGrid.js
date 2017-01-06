@@ -1,8 +1,19 @@
+// @flow
 import React from 'react';
 import stringToColor from '../../../src/stringToColor';
 import ClassicGrid from '../ClassicGrid';
 
-function Item(props) {
+/* disable until eslint issue is fixed https://github.com/yannickcr/eslint-plugin-react/issues/819 */
+/* eslint-disable react/no-unused-prop-types */
+type ItemProps = {|
+  data: {
+    height: number,
+    color: string,
+    name: string,
+  },
+|};
+
+function Item(props: ItemProps) {
   const {
     data,
   } = props;
@@ -43,12 +54,20 @@ const getPins = () => new Promise((resolve) => {
 
 export default class CollageGrid extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       pins: [],
     };
   }
+
+  state: {
+    pins: Array<{
+      name: string,
+      height: number,
+      color: string,
+    }>
+  };
 
   componentDidMount() {
     getPins().then((startPins) => {

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import stringToColor from '../../stringToColor';
 import BoxGrid from '../BoxGrid';
@@ -32,12 +33,21 @@ const getPins = (meta = {}) => {
 
 export default class ExampleGrid extends React.Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       pins: [],
     };
   }
+
+  state: {
+    pins: Array<{
+      name: string,
+      height: number,
+      color: string,
+      colSpan: number,
+    }>
+  };
 
   componentDidMount() {
     getPins().then((startPins) => {
@@ -47,7 +57,7 @@ export default class ExampleGrid extends React.Component {
     });
   }
 
-  loadItems = (meta) => {
+  loadItems = (meta: {from: number}) => {
     getPins(meta)
       .then((newPins) => {
         this.setState({
