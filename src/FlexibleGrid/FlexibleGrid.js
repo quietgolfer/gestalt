@@ -23,7 +23,8 @@ export default class FlexibleGrid extends Component {
    */
   componentDidMount() {
     // We calculate columns and offset after the component mounts so we can measure our container.
-    this.reflow(this.calculateColumns());
+    this.gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+    this.reflow();
 
     this.boundResizeHandler = () => this.handleResize();
 
@@ -82,7 +83,7 @@ export default class FlexibleGrid extends Component {
    * This is consumed by the WithLayout component to cache grid item layout.
    */
   setCacheKey() {
-    this.cacheKey = `${this.state && this.state.gridWidth} - ${Date.now()}`;
+    this.cacheKey = `${this.state && this.gridWidth} - ${Date.now()}`;
   }
 
   /**
@@ -99,8 +100,8 @@ export default class FlexibleGrid extends Component {
   /**
    * Resets the local cache.
    */
-  reflow(columnCount) {
-    const columnCountOutput = columnCount || this.calculateColumns();
+  reflow() {
+    const columnCountOutput = this.calculateColumns();
 
     // Sets the columns heights as an array, each member corresponding to a column.
     if (typeof document === 'undefined') {
@@ -124,21 +125,12 @@ export default class FlexibleGrid extends Component {
       return 0;
     }
 
-    const parentNode = ReactDOM.findDOMNode(this).parentNode;
-    const gridWidth = parentNode.clientWidth;
-
-    let newColCount = Math.floor(gridWidth / this.props.minItemWidth);
+    let newColCount = Math.floor(this.gridWidth / this.props.minItemWidth);
 
     if (this.props.maxCols) {
       newColCount = Math.min(this.props.maxCols, newColCount);
     }
 
-    const itemWidth = gridWidth / newColCount;
-
-    this.setState({
-      gridWidth,
-      itemWidth,
-    });
     return newColCount;
   }
 
@@ -147,18 +139,11 @@ export default class FlexibleGrid extends Component {
    * We need to reflow items if the number of columns we would display should change.
    */
   reflowIfNeeded() {
-    const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-
-    if (this.state.gridWidth !== gridWidth) {
-      this.reflow(this.calculateColumns());
-      this.setState({
-        // Recalculate width with new col count.
-        gridWidth,
-      });
-      this.forceUpdate();
-      return true;
+    const newGridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+    if (this.gridWidth !== newGridWidth) {
+      this.gridWidth = newGridWidth;
+      this.reflow();
     }
-    return false;
   }
 
   /**
@@ -206,14 +191,13 @@ export default class FlexibleGrid extends Component {
   processInfo = (element, width, height) => {
     const column = this.shortestColumn();
     const top = this.currColHeights[column] || 0;
-    const left = column * (this.state.gridWidth / this.currColHeights.length);
-    const fluidWidth = this.state.gridWidth / this.currColHeights.length;
+    const left = column * (this.gridWidth / this.currColHeights.length);
+
     this.currColHeights[column] += height;
 
     /* eslint no-param-reassign: 0 */
     element.style.top = `${top}px`;
     element.style.left = `${left}px`;
-    element.style.width = `${fluidWidth}px`;
     element.className = styles.Grid__Item;
   }
 
@@ -221,6 +205,8 @@ export default class FlexibleGrid extends Component {
     if (this.fetchingWith !== false && this.fetchingWith !== this.props.items.length) {
       this.fetchingWith = false;
     }
+
+    const fluidWidth = this.gridWidth / this.currColHeights.length;
 
     return (
       <div
@@ -238,7 +224,9 @@ export default class FlexibleGrid extends Component {
               className="static"
               key={idx}
             >
-              <this.props.comp data={this.props.items[idx]} itemIdx={idx} />
+              <div style={{ width: fluidWidth }}>
+                <this.props.comp data={this.props.items[idx]} itemIdx={idx} />
+              </div>
             </div>
           )}
         </WithLayout>
