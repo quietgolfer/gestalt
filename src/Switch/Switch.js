@@ -7,12 +7,13 @@ const cx = classnames.bind(styles);
 
 type Props = {
   id: string,
+  name?: string,
   onChange: (value: boolean) => void,
   switched?: boolean,
 }
 
 export default function Switch(props: Props) {
-  const { id, onChange, switched = false } = props;
+  const { id, name, onChange, switched = false } = props;
 
   const switchStyles = cx(
     {
@@ -33,6 +34,7 @@ export default function Switch(props: Props) {
       <input
         checked={switched}
         className={cx('checkbox')}
+        name={name}
         id={id}
         onChange={
           (e: { nativeEvent: { target: { checked: boolean}}}) => {

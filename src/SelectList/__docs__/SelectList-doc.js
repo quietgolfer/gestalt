@@ -16,6 +16,7 @@ type OptionType = {
 
 type Props = {
   id: string,
+  name?: string,
   onChange: (value: string) => void,
   options?: Array<OptionType>,
   selectedKey: string,
@@ -49,6 +50,7 @@ a user to choose from.
 \`\`\`jsx
 <SelectList
   id="country"
+  name="country"
   onChange={(value) => this.setState({selectedKey: value})}
   options={options}
   selectedKey={'usa'}
@@ -58,15 +60,20 @@ a user to choose from.
 (atom) => {
   const state = atom.deref();
   return (
-    <SelectList
-      id="country"
-      options={options}
-      selectedKey={'usa'}
-      {...state}
-      onChange={key => atom.set(props => ({
-        ...props,
-        selectedKey: key,
-      }))}
-    />
+    <div>
+      <label htmlFor="country">Country:</label>
+      <SelectList
+        id="country"
+        name="country"
+        options={options}
+        selectedKey={'usa'}
+        {...state}
+        onChange={key => atom.set(props => ({
+          ...props,
+          selectedKey: key,
+        }))}
+      />
+    </div>
+
   );
 });

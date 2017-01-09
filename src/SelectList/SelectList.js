@@ -12,6 +12,7 @@ type OptionType = {
 
 type Props = {
   id: string,
+  name?: string,
   onChange: (value: string) => void,
   options?: Array<OptionType>,
   selectedKey: string,
@@ -20,6 +21,7 @@ type Props = {
 export default function SelectList(props: Props) {
   const {
     id,
+    name,
     onChange,
     options = [],
     selectedKey,
@@ -30,6 +32,7 @@ export default function SelectList(props: Props) {
       <select
         className={styles.select}
         id={id}
+        name={name}
         onBlur={e => onChange(e.target.value)}
         onChange={e => onChange(e.target.value)}
         value={selectedKey}

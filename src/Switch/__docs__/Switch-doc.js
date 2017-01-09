@@ -14,6 +14,7 @@ card('FlowType',
 \`\`\`js
 type Props = {
   id: string,
+  name?: string,
   onChange: (value: boolean) => void,
   switched?: boolean, /* default: false */
 }

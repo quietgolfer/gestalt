@@ -13,6 +13,7 @@ md`
 type Props = {
   hasError?: boolean, /* default: false */
   id: string,
+  name?: string,
   onChange: (value: string) => void,
   placeholder?: string,
   type?: 'email' | 'password' | 'text' | 'url', /* default: text */
@@ -31,7 +32,7 @@ is responsive.
 <TextField id="email" placeholder="Email Address" type="email" />
 \`\`\`
 \`\`\`jsx
-<TextField hasError id="lastName" />
+<TextField hasError id="lastName" name="lastName" />
 \`\`\`
 \`\`\`jsx
 <TextField id="password" type="password" value="abcdef" />
@@ -40,7 +41,7 @@ is responsive.
 atom => (
   <div className="px2">
     <div className="py2">
-      <div>With a placeholder</div>
+      <label htmlFor="email">With a placeholder</label>
       <TextField
         id="email"
         onChange={newValue => atom.reset({ placeholderValue: newValue })}
@@ -50,10 +51,11 @@ atom => (
       />
     </div>
     <div className="py2">
-      <div>With errors</div>
+      <label htmlFor="name">With errors</label>
       <TextField
         hasError
         id="name"
+        name="name"
         onChange={newValue => atom.reset({ errorValue: newValue })}
         value={atom.deref().errorValue}
       />
@@ -65,7 +67,7 @@ atom => (
   return (
     <div className="px2">
       <div className="py2">
-        <div>With a password</div>
+        <label htmlFor="password">With a password</label>
         <TextField
           id="password"
           type="password"
