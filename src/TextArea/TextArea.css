@@ -1,0 +1,29 @@
+.common {
+  composes: bg-light-gray dark-gray from "../Colors.css";
+  composes: bold text-md from "../Typography.css";
+  composes: border-box from "../Layout.css";
+  composes: col-12 from "../Column/Column.css";
+  composes: px1 py2 from "../Whitespace.css";
+  composes: rounded from "../Borders.css";
+  cursor: text;
+  outline: 0;
+  resize: none;
+}
+
+.textarea {
+  composes: common;
+  composes: border from "../Borders.css";
+}
+
+.textarea:focus {
+  background-color: #fff;
+}
+
+.errored {
+  composes: common;
+  border: 1px solid #fab904;
+}
+
+.errored:focus {
+  background-color: #fff;
+}

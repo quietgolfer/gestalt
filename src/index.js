@@ -20,6 +20,7 @@ import SegmentedControl from './SegmentedControl/SegmentedControl';
 import SelectList from './SelectList/SelectList';
 import Switch from './Switch/Switch';
 import Text from './Text/Text';
+import TextArea from './TextArea/TextArea';
 import TextField from './TextField/TextField';
 
 export {
@@ -44,5 +45,6 @@ export {
   SelectList,
   Switch,
   Text,
+  TextArea,
   TextField,
 };
