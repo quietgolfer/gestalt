@@ -11,7 +11,7 @@ md`
 \`\`\`javascript
 type Props = {
   label: string,
-  loading: bool,
+  show: bool,
 };
 \`\`\`
 `);
@@ -29,7 +29,7 @@ The label on a spinner is for accessibility. You should pick labels that relate 
     >
       {!atom.deref().show ? 'Show spinner' : 'Hide spinner'}
     </button>
-    <Spinner loading={atom.deref().show} label="Example spinner" />
+    <Spinner show={atom.deref().show} label="Example spinner" />
     <p>Data</p>
   </div>
 ), { heading: false, initialState: { show: true } });

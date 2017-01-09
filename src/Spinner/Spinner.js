@@ -8,13 +8,13 @@ const SIZE = 40;
 
 type Props = {|
   label: string,
-  loading: bool,
+  show: bool,
 |};
 
 export default class Spinner extends Component {
 
   static propTypes = {
-    loading: PropTypes.bool.isRequired,
+    show: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,
   }
 
@@ -35,7 +35,7 @@ export default class Spinner extends Component {
     }
 
     // toggle visibility if the desired state doesn't match props
-    if (this.props.loading !== this.state.visible) {
+    if (this.props.show !== this.state.visible) {
       this.toggleVisibility();
     }
   }
@@ -44,8 +44,8 @@ export default class Spinner extends Component {
   timeout: ?number;
 
   toggleVisibility() {
-    const { loading } = this.props;
-    if (loading) {
+    const { show } = this.props;
+    if (show) {
       this.timeout = setTimeout(() =>
         this.setState({ visible: true })
       , DELAY);
