@@ -9,6 +9,7 @@ steps:
   - wait
   - name: ":eslint:"
     command: npm run eslint
+    timeout_in_minutes: 10
     agents:
       queue: elastic
     plugins:
@@ -16,6 +17,7 @@ steps:
         run: app
   - name: ":stylelint:"
     command: npm run stylelint
+    timeout_in_minutes: 10
     agents:
       queue: elastic
     plugins:
@@ -23,6 +25,7 @@ steps:
         run: app
   - name: ":flowtype:"
     command: npm run flow
+    timeout_in_minutes: 10
     agents:
       queue: elastic
     plugins:
@@ -30,6 +33,7 @@ steps:
         run: app
   - name: ":jest:"
     command: npm test
+    timeout_in_minutes: 10
     agents:
       queue: elastic
     plugins:
@@ -37,6 +41,7 @@ steps:
         run: app
   - name: ":ghost:"
     command: npm run ghost
+    timeout_in_minutes: 10
     parallelism: 2
     concurrency: 2
     concurrency_group: 'pinterest/integration_tests'
