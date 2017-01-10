@@ -26,7 +26,7 @@ describe('FlexibleGrid > maxCols Prop', () => {
   it('Verifies col count with maxCols prop', async () => {
     ghost.close();
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000/flexible?maxCols=1', {
+    await ghost.open('http://localhost:3000/FlexibleGrid?maxCols=1', {
       viewportSize: {
         width: GRID_WIDTH,
         height: 800,
@@ -43,7 +43,7 @@ describe('FlexibleGrid > maxCols Prop', () => {
 
   it('Verifies col count without maxCols prop', async () => {
     // Validate column count without the maxCols test prop
-    await ghost.open('http://localhost:3000/flexible');
+    await ghost.open('http://localhost:3000/FlexibleGrid');
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });

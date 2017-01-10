@@ -8,7 +8,7 @@ cd test && npm start &
 PID=$!                    # get the Parent Process ID
 PGID=$(ps opgid= "$PID")  # get the Process Group ID
 
-until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+until $(curl --output /dev/null --silent --head --fail http://localhost:3000/__ping); do
     printf '.'
     sleep 5
 done

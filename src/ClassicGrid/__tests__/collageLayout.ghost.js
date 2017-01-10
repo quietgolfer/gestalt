@@ -9,7 +9,7 @@ const selectors = {
 
 describe('ClassicGrid > Collage Layout', () => {
   it('Verifies a collage layout', async () => {
-    await ghost.open('http://localhost:3000/?finiteLength=1&collage=1');
+    await ghost.open('http://localhost:3000/ClassicGrid?finiteLength=1&collage=1');
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });

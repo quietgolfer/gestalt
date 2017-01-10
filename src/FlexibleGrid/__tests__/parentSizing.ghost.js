@@ -9,7 +9,7 @@ const selectors = {
 
 describe('FlexibleGrid > Parent Sizing', () => {
   it('The grid starts from the left bounding box of the parent', async () => {
-    await ghost.open('http://localhost:3000/flexible/?finiteLength=1&constrained=1');
+    await ghost.open('http://localhost:3000/FlexibleGrid?finiteLength=1&constrained=1');
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });

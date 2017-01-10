@@ -12,7 +12,7 @@ describe('FlexibleGrid > Server Render Layout', () => {
   it('items rendered on the server maintain position after mounting', async () => {
     ghost.close();
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000/flexible', {
+    await ghost.open('http://localhost:3000/FlexibleGrid', {
       viewportSize: {
         width: 1200,
         height: 800,

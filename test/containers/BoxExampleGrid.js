@@ -1,7 +1,7 @@
 import React from 'react';
-import BoxGrid from '../src/BoxGrid/BoxGrid';
-import Item from '../src/BoxGrid/__docs__/Item';
-import stringToColor from '../src/stringToColor';
+import BoxGrid from '../../src/BoxGrid/BoxGrid';
+import Item from '../../src/BoxGrid/__docs__/Item';
+import stringToColor from '../../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
@@ -91,9 +91,9 @@ export default class BoxExampleGrid extends React.Component {
 
 BoxExampleGrid.propTypes = {
   // Test case: Constrains the width of the grid rendering.
-  constrained: React.PropTypes.bool,
+  constrained: React.PropTypes.string,
   // Test case: Does not allow infinite scroll.
-  finiteLength: React.PropTypes.bool,
+  finiteLength: React.PropTypes.string,
   // The initial data from the server side render.
   initialPins: React.PropTypes.arrayOf(React.PropTypes.shape({})),
 };

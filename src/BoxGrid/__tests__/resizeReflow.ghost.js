@@ -41,7 +41,7 @@ describe('BoxGrid > Resize', () => {
     ghost.close();
 
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000/boxpacking', {
+    await ghost.open('http://localhost:3000/BoxGrid', {
       viewportSize: {
         width: GRID_WIDTH,
         height: 800,

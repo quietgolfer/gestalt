@@ -1,7 +1,7 @@
 import React from 'react';
-import ClassicGrid from '../src/ClassicGrid/ClassicGrid';
+import ClassicGrid from '../../src/ClassicGrid/ClassicGrid';
 import Item from './ExampleGridItem';
-import stringToColor from '../src/stringToColor';
+import stringToColor from '../../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
@@ -110,13 +110,13 @@ export default class ClassicExampleGrid extends React.Component {
 
 ClassicExampleGrid.propTypes = {
   // Test case: Sets up props to display a collage layout.
-  collage: React.PropTypes.bool,
+  collage: React.PropTypes.string,
   // Test case: Constrains the width of the grid rendering.
-  constrained: React.PropTypes.bool,
+  constrained: React.PropTypes.string,
   // Test case: Slices items in the constructor, then sets the entire list in componentDidMount.
-  constructorItemSplice: React.PropTypes.bool,
+  constructorItemSplice: React.PropTypes.string,
   // Test case: Does not allow infinite scroll.
-  finiteLength: React.PropTypes.bool,
+  finiteLength: React.PropTypes.string,
   // The initial data from the server side render.
   initialPins: React.PropTypes.arrayOf(React.PropTypes.shape({})),
 };

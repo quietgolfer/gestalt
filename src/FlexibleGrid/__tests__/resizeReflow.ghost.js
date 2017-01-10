@@ -41,7 +41,7 @@ describe('FlexibleGrid > Resize', () => {
     ghost.close();
 
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000/flexible', {
+    await ghost.open('http://localhost:3000/FlexibleGrid', {
       viewportSize: {
         width: GRID_WIDTH,
         height: 800,

@@ -10,7 +10,7 @@ const selectors = {
 
 describe('BoxGrid > Cache invalidation', () => {
   it('Able to invalidate cache', async () => {
-    await ghost.open('http://localhost:3000/');
+    await ghost.open('http://localhost:3000/ClassicGrid');
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });

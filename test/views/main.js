@@ -1,41 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import BoxExampleGrid from '../BoxExampleGrid';
-import ClassicExampleGrid from '../ClassicExampleGrid';
-import FlexibleGrid from '../FlexibleExampleGrid';
-
-const query = location.search.substr(1).split('&').reduce((q, search) => {
-  const [key, value] = search.split('=');
-  return { ...q, [key]: value };
-}, {});
+import RenderConfig from '../utils/renderConfig';
 
 // Wait to mount until the test tells us to do so.
 window.addEventListener('trigger-mount', () => {
   const mountNode = document.getElementById('react-main-mount');
-
-  if (window.componentTest === 'ClassicGrid') {
-    ReactDOM.render(<ClassicExampleGrid
-      collage={window.location.search.includes('collage')}
-      constrained={window.location.search.includes('constrained')}
-      constructorItemSplice={window.location.search.includes('constructorItemSplice')}
-      finiteLength={window.location.search.includes('finiteLength')}
-      initialPins={window.initialPins}
-    />, mountNode);
-  } else if (window.componentTest === 'FlexibleGrid') {
-    ReactDOM.render(<FlexibleGrid
-      collage={window.location.search.includes('collage')}
-      constrained={window.location.search.includes('constrained')}
-      constructorItemSplice={window.location.search.includes('constructorItemSplice')}
-      finiteLength={window.location.search.includes('finiteLength')}
-      initialPins={window.initialPins}
-      maxCols={window.location.search.includes('maxCols')}
-      minCols={Number(query.minCols)}
-    />, mountNode);
-  } else if (window.componentTest === 'BoxGrid') {
-    ReactDOM.render(<BoxExampleGrid
-      constrained={window.location.search.includes('constrained')}
-      finiteLength={window.location.search.includes('finiteLength')}
-      initialPins={window.initialPins}
-    />, mountNode);
-  }
+  const { Component } = RenderConfig[window.COMPONENT_NAME];
+  ReactDOM.render(<Component {...window.COMPONENT_PROPS} />, mountNode);
 });

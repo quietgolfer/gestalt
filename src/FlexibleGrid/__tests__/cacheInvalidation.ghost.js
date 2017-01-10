@@ -10,7 +10,7 @@ const selectors = {
 
 describe('FlexibleGrid > Cache invalidation', () => {
   it('Able to invalidate cache', async () => {
-    await ghost.open('http://localhost:3000/flexible');
+    await ghost.open('http://localhost:3000/FlexibleGrid');
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });

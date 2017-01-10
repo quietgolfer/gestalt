@@ -1,7 +1,7 @@
 import React from 'react';
-import FlexibleGrid from '../src/FlexibleGrid/FlexibleGrid';
+import FlexibleGrid from '../../src/FlexibleGrid/FlexibleGrid';
 import Item from './ExampleGridItem';
-import stringToColor from '../src/stringToColor';
+import stringToColor from '../../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
@@ -99,7 +99,7 @@ export default class FlexibleExampleGrid extends React.Component {
     }
 
     if (this.props.minCols) {
-      dynamicGridProps.minCols = this.props.minCols;
+      dynamicGridProps.minCols = Number(this.props.minCols);
     }
 
     return (
@@ -118,17 +118,17 @@ export default class FlexibleExampleGrid extends React.Component {
 
 FlexibleExampleGrid.propTypes = {
   // Test case: Sets up props to display a collage layout.
-  collage: React.PropTypes.bool,
+  collage: React.PropTypes.string,
   // Test case: Constrains the width of the grid rendering.
-  constrained: React.PropTypes.bool,
+  constrained: React.PropTypes.string,
   // Test case: Slices items in the constructor, then sets the entire list in componentDidMount.
-  constructorItemSplice: React.PropTypes.bool,
+  constructorItemSplice: React.PropTypes.string,
   // Test case: Does not allow infinite scroll.
-  finiteLength: React.PropTypes.bool,
+  finiteLength: React.PropTypes.string,
   // The initial data from the server side render.
   initialPins: React.PropTypes.arrayOf(React.PropTypes.shape({})),
   // Whether or not to set the maxCols prop.
-  maxCols: React.PropTypes.bool,
+  maxCols: React.PropTypes.string,
   // Optional minimum number of columns.
-  minCols: React.PropTypes.number,
+  minCols: React.PropTypes.string,
 };

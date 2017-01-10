@@ -10,7 +10,7 @@ const selectors = {
 
 describe('ClassicGrid > Render Height', () => {
   it('Items can be positioned under the grid', async () => {
-    await ghost.open('http://localhost:3000/?finiteLength=1');
+    await ghost.open('http://localhost:3000/ClassicGrid?finiteLength=1');
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });
