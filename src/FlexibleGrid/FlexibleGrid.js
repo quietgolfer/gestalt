@@ -7,10 +7,10 @@ import WithLayout from './WithLayout';
 
 type Props<T> = {|
   comp: () => void,
+  idealItemWidth: number,
   items: T[],
   maxCols: number,
-  maxItemWidth: number,
-  minItemWidth: number,
+  minCols: number,
   loadItems: () => void,
   scrollContainer: HTMLElement,
 |};
@@ -151,10 +151,14 @@ export default class FlexibleGrid extends Component {
       return 0;
     }
 
-    let newColCount = Math.floor(this.gridWidth / this.props.minItemWidth);
+    let newColCount = Math.floor(this.gridWidth / this.props.idealItemWidth);
 
     if (this.props.maxCols) {
       newColCount = Math.min(this.props.maxCols, newColCount);
+    }
+
+    if (this.props.minCols) {
+      newColCount = Math.max(this.props.minCols, newColCount);
     }
 
     return newColCount;
@@ -269,6 +273,12 @@ FlexibleGrid.propTypes = {
   comp: React.PropTypes.func,
 
   /**
+   * The preferred/target item width. Item width will grow to fill
+   * column space, and shrink to fit if below min columns.
+   */
+  idealItemWidth: React.PropTypes.number,
+
+  /**
    * An array of all objects to display in the grid.
    */
   items: React.PropTypes.arrayOf(React.PropTypes.shape({})),
@@ -287,16 +297,9 @@ FlexibleGrid.propTypes = {
   maxCols: React.PropTypes.number,
 
   /**
-   * The max-width of each column.
+   * The minimum number of columns to display.
    */
-  /* TODO @KevinGrandon see whether we can remove this */
-  /* eslint react/no-unused-prop-types: 0 */
-  maxItemWidth: React.PropTypes.number,
-
-  /**
-   * The min-width of each column.
-   */
-  minItemWidth: React.PropTypes.number,
+  minCols: React.PropTypes.number,
 
   /**
    * The scroll container to use. Defaults to window.
@@ -308,7 +311,6 @@ FlexibleGrid.propTypes = {
 };
 
 FlexibleGrid.defaultProps = {
-  minItemWidth: 236,
-  maxItemWidth: 300,
+  idealItemWidth: 236,
   scrollContainer: typeof window !== 'undefined' ? window : null,
 };

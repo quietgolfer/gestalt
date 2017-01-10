@@ -98,6 +98,10 @@ export default class FlexibleExampleGrid extends React.Component {
       dynamicGridProps.maxCols = 2;
     }
 
+    if (this.props.minCols) {
+      dynamicGridProps.minCols = this.props.minCols;
+    }
+
     return (
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
         <FlexibleGrid
@@ -125,4 +129,6 @@ FlexibleExampleGrid.propTypes = {
   initialPins: React.PropTypes.arrayOf(React.PropTypes.shape({})),
   // Whether or not to set the maxCols prop.
   maxCols: React.PropTypes.bool,
+  // Optional minimum number of columns.
+  minCols: React.PropTypes.number,
 };

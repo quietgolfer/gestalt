@@ -51,6 +51,7 @@ app.get('/flexible', (req, res) => {
     finiteLength={!!req.query.finiteLength}
     initialPins={initialPins}
     maxCols={!!req.query.maxCols}
+    minCols={Number(req.query.minCols)}
   />);
   res.render('index.ejs', {
     componentTest: 'FlexibleGrid',
