@@ -11,9 +11,6 @@ const selectors = {
 describe('ClassicGrid > Cache invalidation', () => {
   it('Able to invalidate cache', async () => {
     await ghost.open('http://localhost:3000/ClassicGrid');
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
 
     const beforeReflowGridItems = await ghost.findElements(selectors.gridItem);
     const beforeReflowItemLeftMap = {};

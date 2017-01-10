@@ -11,9 +11,6 @@ const selectors = {
 describe('FlexibleGrid > Render Height', () => {
   it('Items can be positioned under the grid', async () => {
     await ghost.open('http://localhost:3000/FlexibleGrid?finiteLength=1');
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
 
     const gridItems = await ghost.findElements(selectors.gridItem);
     assert.equal(gridItems.length, 20);

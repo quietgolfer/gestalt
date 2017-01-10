@@ -10,9 +10,6 @@ const selectors = {
 describe('BoxGrid > Parent Sizing', () => {
   it('The grid starts from the left bounding box of the parent', async () => {
     await ghost.open('http://localhost:3000/BoxGrid?finiteLength=1&constrained=1');
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
 
     // Assert that all items follow the indentation of the grid.
     const gridItems = await ghost.findElements(selectors.gridItem);

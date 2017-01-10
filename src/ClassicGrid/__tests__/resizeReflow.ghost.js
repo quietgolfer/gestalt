@@ -47,9 +47,6 @@ describe('ClassicGrid > Resize', () => {
         height: 800,
       },
     });
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
 
     const expectedColumns = Math.floor(GRID_WIDTH / PIN_SIZE);
     assert.equal(await countColumns(), expectedColumns, `expected ${expectedColumns} columns`);

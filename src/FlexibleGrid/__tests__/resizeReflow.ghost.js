@@ -23,7 +23,7 @@ const countColumns = async () => {
   return Object.keys(itemLeftMap).length;
 };
 
-const triggerReisze = async (resizeWidthTo) => {
+const triggerResize = async (resizeWidthTo) => {
   await ghost.script((newWidth) => {
     // Mock out the window width for the next resize calculation.
     const gridWrapper = document.getElementById('gridWrapper');
@@ -47,14 +47,11 @@ describe('FlexibleGrid > Resize', () => {
         height: 800,
       },
     });
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
 
     const expectedColumns = Math.floor(GRID_WIDTH / PIN_SIZE);
     assert.equal(await countColumns(), expectedColumns, `expected ${expectedColumns} columns`);
 
-    await triggerReisze(GRID_WIDTH - PIN_SIZE);
+    await triggerResize(GRID_WIDTH - PIN_SIZE);
 
     // Wait for the resize debounce to complete.
     await ghost.wait(RESIZE_DEBOUNCE);

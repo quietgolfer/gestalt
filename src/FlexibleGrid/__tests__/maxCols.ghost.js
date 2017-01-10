@@ -33,10 +33,6 @@ describe('FlexibleGrid > maxCols Prop', () => {
       },
     });
 
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
-
     const columnPositions = await getColumnPositions();
     assert.equal(columnPositions.length, 2, 'Two columns of pins when passing in maxCols.');
   });
@@ -44,9 +40,7 @@ describe('FlexibleGrid > maxCols Prop', () => {
   it('Verifies col count without maxCols prop', async () => {
     // Validate column count without the maxCols test prop
     await ghost.open('http://localhost:3000/FlexibleGrid');
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
+
     const columnPositions = await getColumnPositions();
     assert.equal(columnPositions.length, Math.floor(GRID_WIDTH / PIN_MIN_WIDTH),
       'Five columns of pins without maxCols.');

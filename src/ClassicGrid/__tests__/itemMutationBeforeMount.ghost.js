@@ -19,7 +19,7 @@ describe('ClassicGrid > Item Mutation', () => {
   it('items render appropriately when mutating between constructor and mounting', async () => {
     ghost.close();
 
-    await ghost.open('http://localhost:3000/ClassicGrid?constructorItemSplice=1', {
+    await ghost.open('http://localhost:3000/ClassicGrid?deferMount=1&constructorItemSplice=1', {
       viewportSize: {
         width: 1400,
         height: 800,
