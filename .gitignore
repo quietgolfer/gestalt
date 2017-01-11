@@ -3,3 +3,5 @@ coverage/
 dist/
 docs/
 npm-debug.log
+.*.swo
+.*.swp
