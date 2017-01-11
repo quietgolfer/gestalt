@@ -46,7 +46,7 @@ export default class ClassicGrid extends Component {
     this.boundResizeHandler = () => this.handleResize();
 
     this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
-    this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
+    window.addEventListener('resize', this.boundResizeHandler);
 
     // Since items are positioned absolutely, we can't rely on margin or padding to center
     // an arbitrary number of columns. Calculate the width in order to center the grid.
@@ -79,7 +79,7 @@ export default class ClassicGrid extends Component {
    */
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
-    this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
+    window.removeEventListener('resize', this.boundResizeHandler);
   }
 
   /**

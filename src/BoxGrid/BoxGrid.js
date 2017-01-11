@@ -50,7 +50,7 @@ export default class BoxGrid extends Component {
     this.boundResizeHandler = () => this.handleResize();
 
     this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
-    this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
+    window.addEventListener('resize', this.boundResizeHandler);
 
     /* eslint react/no-did-mount-set-state:0 */
     this.setState({
@@ -76,7 +76,7 @@ export default class BoxGrid extends Component {
    */
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
-    this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
+    window.removeEventListener('resize', this.boundResizeHandler);
   }
 
   /**
