@@ -18,7 +18,7 @@ type Props = {
   align?: 'left' | 'right' | 'center' | 'justify', /*default: left */
   bold?: bool, /* default: false */
   children?: any,
-  color?: 'gray' | 'dark-gray', /* default: dark-gray */
+  color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white', /* default: dark-gray */
   inline?: bool, /* default: false */
   italic?: bool, /* default: false */
   overflow?: 'break-word' | 'normal', /* default: normal */
@@ -85,20 +85,38 @@ card('Colors',
 You can specify which color you want for your text.
 
 \`\`\`html
+<Text color="white">
+  White
+</Text>
 <Text color="gray">
   Gray
 </Text>
 <Text color="dark-gray">
   Dark Gray (default)
 </Text>
+<Text color="blue">
+  Blue
+</Text>
+<Text color="red">
+  Red
+</Text>
 \`\`\`
 `,
   <div>
+    <div className="mb2" style={{ backgroundColor: '#555' }}>
+      <Text color="white">White</Text>
+    </div>
     <div className="mb2">
       <Text color="gray">Gray</Text>
     </div>
     <div className="mb2">
       <Text color="dark-gray">Dark Gray (default)</Text>
+    </div>
+    <div className="mb2">
+      <Text color="blue">Blue</Text>
+    </div>
+    <div className="mb2">
+      <Text color="red">Red</Text>
     </div>
   </div>);
 

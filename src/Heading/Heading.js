@@ -23,7 +23,7 @@ const sizesToElementMap = {
 
 type Props = {
   children?: any,
-  color?: 'white' | 'gray' | 'dark-gray' | 'blue',
+  color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white',
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
 };
@@ -53,7 +53,7 @@ export default function Heading(props: Props) {
 
 Heading.propTypes = {
   children: PropTypes.node,
-  color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue']),
+  color: PropTypes.oneOf(['blue', 'dark-gray', 'gray', 'red', 'white']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   truncate: PropTypes.bool,
 };

@@ -12,7 +12,7 @@ md`
 \`\`\`jsx
 type Props = {
   children?: any,
-  color?: 'white' | 'gray' | 'dark-gray' | 'blue', /* default: dark-gray */
+  color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white', /* default: dark-gray */
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool, /* default: false */
 };
@@ -85,6 +85,9 @@ And a variety of colors:
 <Heading color="blue">
   {'Blue'}
 </Heading>
+<Heading color="red">
+  {'Red'}
+</Heading>
 \`\`\`
 `,
   <div>
@@ -94,4 +97,5 @@ And a variety of colors:
     <Heading size="md">{'Dark gray (default)'}</Heading>
     <Heading color="gray" size="md">{'Gray'}</Heading>
     <Heading color="blue" size="md">{'Blue'}</Heading>
+    <Heading color="red" size="md">{'Red'}</Heading>
   </div>);
