@@ -7,15 +7,9 @@ const selectors = {
   gridItem: '[class^="Grid__Grid__Item"]',
 };
 
-describe('BoxGrid > Parent Sizing', () => {
+describe('TenzingGrid > Parent Sizing', () => {
   it('The grid starts from the left bounding box of the parent', async () => {
-    ghost.close();
-    await ghost.open('http://localhost:3000/BoxGrid?finiteLength=1&constrained=1', {
-      viewportSize: {
-        width: 3000,
-        height: 2000,
-      },
-    });
+    await ghost.open('http://localhost:3000/TenzingGrid?finiteLength=1&constrained=1');
 
     // Assert that all items follow the indentation of the grid.
     const gridItems = await ghost.findElements(selectors.gridItem);

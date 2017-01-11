@@ -19,6 +19,7 @@ import MediaQuery from './MediaQuery/MediaQuery';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
 import SelectList from './SelectList/SelectList';
 import Switch from './Switch/Switch';
+import TenzingGrid from './TenzingGrid/TenzingGrid';
 import Text from './Text/Text';
 import TextArea from './TextArea/TextArea';
 import TextField from './TextField/TextField';
@@ -44,6 +45,7 @@ export {
   SegmentedControl,
   SelectList,
   Switch,
+  TenzingGrid,
   Text,
   TextArea,
   TextField,
