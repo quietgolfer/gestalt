@@ -41,7 +41,6 @@ export default class TenzingGrid<T> extends Component {
     this.insertedItemsCount = 0;
 
     this.state = {
-      containerWidth: '100%',
       height: 0,
       gridItems: [],
       minHeight: 0,
@@ -49,7 +48,6 @@ export default class TenzingGrid<T> extends Component {
   }
 
   state: {
-    containerWidth: number | string,
     height: number,
     gridItems: Array<*>,
     minHeight: number,
@@ -332,10 +330,7 @@ export default class TenzingGrid<T> extends Component {
    */
   reflow() {
     const newColCount = this.calculateColumns();
-    const containerWidth = this.determineWidth();
-
-    if (newColCount !== this.state.gridItems.length
-      || this.state.containerWidth !== containerWidth) {
+    if (newColCount !== this.state.gridItems.length) {
       const items = this.allItems().sort((a, b) => a.key - b.key).map(item => item.itemData);
       this.itemKeyCounter = 0;
       this.setState({
@@ -481,4 +476,3 @@ TenzingGrid.defaultProps = {
   scrollContainer: typeof window !== 'undefined' ? window : null,
   loadItems: () => {},
 };
-

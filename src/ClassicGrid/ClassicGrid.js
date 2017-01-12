@@ -27,12 +27,10 @@ export default class ClassicGrid extends Component {
 
     this.state = {
       layoutReady: false,
-      containerWidth: '100%',
     };
   }
 
   state: {
-    containerWidth: number | string,
     layoutReady: bool
   };
 
@@ -174,10 +172,7 @@ export default class ClassicGrid extends Component {
    */
   reflowIfNeeded() {
     const newColCount = this.calculateColumns();
-    const containerWidth = this.determineWidth();
-
-    if (newColCount !== this.currColHeights.length
-      || this.state.containerWidth !== containerWidth) {
+    if (newColCount !== this.currColHeights.length) {
       this.reflow(newColCount);
       this.gridWrapper.style.width = this.determineWidth();
       this.forceUpdate();
