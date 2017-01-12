@@ -191,6 +191,16 @@ export default class TenzingGrid<T> extends Component {
     }
   }
 
+  handleAddRelatedItems(itemInfo: GridItemType<T>) {
+    return (items: Array<GridItemType<T>>) => {
+      const itemIndex = this.state.gridItems[itemInfo.column].indexOf(itemInfo);
+      const relatedItems = this.getItemsRelatedTo(itemInfo.column, itemIndex, items.length);
+      relatedItems.forEach(({ columnIdx, itemIdx, count }) => {
+        this.insertItems(items.splice(0, count), columnIdx, itemIdx);
+      });
+    };
+  }
+
   insertItems(items: Array<*>, colIdx?: (number | null) = null, itemIdx?: (number | null) = null) {
     // Append a temporary node to the dom to measure it.
     const measuringNode = document.createElement('div');
@@ -208,11 +218,22 @@ export default class TenzingGrid<T> extends Component {
     this.itemKeyCounter = this.itemKeyCounter || 0;
 
     items.forEach((itemData, insertedItemIdx) => {
-      const component = <this.props.comp data={itemData} />;
+      const itemInfo = {};
+      const component = (
+        <this.props.comp
+          data={itemData}
+          addRelatedItems={this.handleAddRelatedItems(itemInfo)}
+        />
+      );
       ReactDOM.unstable_renderSubtreeIntoContainer(
           this, component, measuringNode);
 
       const { clientWidth, clientHeight } = measuringNode;
+
+      itemInfo.component = component;
+      itemInfo.width = clientWidth;
+      itemInfo.height = clientHeight;
+      itemInfo.itemData = itemData;
 
       if (colIdx != null && itemIdx != null) {
         if (!gridItems[colIdx]) {
@@ -227,17 +248,13 @@ export default class TenzingGrid<T> extends Component {
         // This allows us to properly order items after a reflow when sorting on the key.
         const key = parseFloat(`${insertedItemIdx.toString()}.${this.itemKeyCounter}1`);
 
-        gridItems[colIdx].splice(itemIdx, 0, {
-          component,
-          itemData,
-          column: parseInt(colIdx, 10),
-          width: clientWidth,
-          height: clientHeight,
-          left,
-          top,
-          bottom: top + clientHeight + this.props.gutterWidth,
-          key,
-        });
+        itemInfo.column = parseInt(colIdx, 10);
+        itemInfo.left = left;
+        itemInfo.top = top;
+        itemInfo.bottom = top + clientHeight + this.props.gutterWidth;
+        itemInfo.key = key;
+
+        gridItems[colIdx].splice(itemIdx, 0, itemInfo);
 
         // Increase top values of other items
         for (let i = itemIdx + 1; i < gridItems[colIdx].length; i += 1) {
@@ -252,19 +269,16 @@ export default class TenzingGrid<T> extends Component {
         const top = (lastItemInColumn && lastItemInColumn.bottom) || 0;
         const left = (column * this.props.columnWidth) + (this.props.gutterWidth * column);
 
-        gridItems[column].push({
-          component,
-          itemData,
-          column,
-          width: clientWidth,
-          height: clientHeight,
-          left,
-          top,
-          appended: true,
-          bottom: top + clientHeight + this.props.gutterWidth,
-          key: String(this.itemKeyCounter),
-        });
+        itemInfo.column = column;
+        itemInfo.appended = true;
+        itemInfo.left = left;
+        itemInfo.top = top;
+        itemInfo.bottom = top + clientHeight + this.props.gutterWidth;
+        itemInfo.key = String(this.itemKeyCounter);
+
+        gridItems[column].push(itemInfo);
       }
+
       this.itemKeyCounter += 1;
 
       ReactDOM.unmountComponentAtNode(measuringNode);
