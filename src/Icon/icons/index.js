@@ -4,6 +4,7 @@ import addCircle from './add-circle';
 import addPin from './add-pin';
 import arrowBack from './arrow-back';
 import arrowCircleForward from './arrow-circle-forward';
+import arrowDown from './arrow-down';
 import arrowForward from './arrow-forward';
 import camera from './camera';
 import cancel from './cancel';
@@ -47,6 +48,7 @@ export default {
   'add-pin': addPin,
   'arrow-back': arrowBack,
   'arrow-circle-forward': arrowCircleForward,
+  'arrow-down': arrowDown,
   'arrow-forward': arrowForward,
   camera,
   cancel,

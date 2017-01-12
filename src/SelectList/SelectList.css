@@ -29,16 +29,12 @@
 .dropdownArrow {
   composes: absolute from "../Layout.css";
   composes: block from "../Layout.css";
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 7px solid #555;
-  height: 0;
-  margin-top: -3px;
+  align-items: center;
+  display: flex;
+  height: 100%;
   pointer-events: none;
   right: 16px;
-  top: 50%;
-  width: 0;
-  z-index: 2;
+  top: 1px;
 }
 
 .options {

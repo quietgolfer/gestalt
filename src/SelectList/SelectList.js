@@ -3,6 +3,7 @@
 /* eslint-disable react/no-unused-prop-types */
 
 import React, { PropTypes } from 'react';
+import Icon from '../Icon/Icon';
 import styles from './SelectList.css';
 
 type OptionType = {
@@ -43,7 +44,9 @@ export default function SelectList(props: Props) {
           </option>
         ))}
       </select>
-      <div className={styles.dropdownArrow} />
+      <div className={styles.dropdownArrow}>
+        <Icon icon="arrow-down" size={14} color="dark-gray" label="" />
+      </div>
     </div>
   );
 }
