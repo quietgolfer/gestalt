@@ -173,13 +173,13 @@ export default class BoxGrid extends Component {
    */
   reflowIfNeeded() {
     const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-
-    this.reflow(this.calculateColumns());
     this.setState({
       // Recalculate width with new col count.
       gridWidth,
+    }, () => {
+      // Reflow after setting grid width, needed for calculating columns.
+      this.reflow(this.calculateColumns());
     });
-    this.forceUpdate();
   }
 
   /**

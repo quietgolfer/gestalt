@@ -3,7 +3,7 @@
 import assert from 'assert';
 import ghost from 'ghostjs';
 
-const PIN_SIZE = 235;
+const PIN_SIZE = 236;
 const RESIZE_DEBOUNCE = 200;
 
 const selectors = {
@@ -53,7 +53,7 @@ describe('BoxGrid > Resize', () => {
 
     await ghost.wait(RESIZE_DEBOUNCE);
 
-    await triggerResize(GRID_WIDTH - (PIN_SIZE * 3));
+    await triggerResize(GRID_WIDTH - PIN_SIZE);
 
     // Wait for the resize debounce to complete.
     await ghost.wait(RESIZE_DEBOUNCE);

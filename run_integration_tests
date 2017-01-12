@@ -20,6 +20,6 @@ NODE_ENV=integration ./node_modules/.bin/ghostjs --ghost-runner slimerjs-core $(
 STATUS=$?
 
 # Kill the process group and all children of that process group.
-kill -- -$PGID
+kill -- -$PGID &> /dev/null
 
 exit $STATUS
