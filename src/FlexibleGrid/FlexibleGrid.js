@@ -16,7 +16,12 @@ type Props<T> = {|
 |};
 
 export default class FlexibleGrid extends Component {
-  static defaultProps: {};
+  static defaultProps = {
+    minCols: 1,
+    maxCols: Infinity,
+    idealItemWidth: 236,
+    scrollContainer: typeof window !== 'undefined' ? window : null,
+  };
 
   constructor(props: Props<*>) {
     super(props);
@@ -308,9 +313,4 @@ FlexibleGrid.propTypes = {
     addEventListener: React.PropTypes.func,
     removeEventListener: React.PropTypes.func,
   }),
-};
-
-FlexibleGrid.defaultProps = {
-  idealItemWidth: 236,
-  scrollContainer: typeof window !== 'undefined' ? window : null,
 };

@@ -234,8 +234,7 @@ export default class GroupAvatar extends Component {
           <FlexibleGrid
             comp={Avatar}
             items={collabs}
-            maxItemWidth={MAX_AVATAR_DIM}
-            minItemWidth={collabs.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
+            idealItemWidth={collabs.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
             ref={(ref) => { this.gridRef = ref; }}
           />
         </div>
