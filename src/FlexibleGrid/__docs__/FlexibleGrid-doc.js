@@ -12,10 +12,9 @@ card('PropTypes',
 \`\`\`js
 FlexibleGrid.propTypes = {
   comp: React.PropTypes.func, /* component to render */
+  idealItemWidth: React.PropTypes.number, /* The preferred/target item width. */
   items: React.PropTypes.array, /* objects to display in grid */
   loadItems: React.PropTypes.func, /* callback when user scrolls and we need to load more items */
-  maxItemWidth: React.PropTypes.number, /* default: 300 */
-  minItemWidth: React.PropTypes.number, /* default: 236 */
   scrollContainer: React.PropTypes.shape({}), /* default: window */
 };
 \`\`\`
