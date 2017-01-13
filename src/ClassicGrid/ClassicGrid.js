@@ -128,7 +128,7 @@ export default class ClassicGrid extends Component {
   /**
    * Resets the local cache.
    */
-  reflow(columnCount: number) {
+  reflow(columnCount?: number) {
     const columnCountOutput = columnCount || this.calculateColumns();
 
     // Sets the columns heights as an array, each member corresponding to a column.
