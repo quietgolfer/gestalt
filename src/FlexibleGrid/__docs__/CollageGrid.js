@@ -80,8 +80,7 @@ export default class CollageGrid extends React.Component {
       <div style={{ border: '1px solid #000', height: 400, width: 400, overflow: 'hidden' }}>
         <FlexibleGrid
           comp={Item}
-          minItemWidth={200}
-          maxItemWidth={200}
+          idealItemWidth={200}
           items={this.state.pins}
         />
       </div>

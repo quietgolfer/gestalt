@@ -241,7 +241,7 @@ export default class FlexibleGrid extends Component {
       this.fetchingWith = false;
     }
 
-    const fluidWidth = this.gridWidth / this.currColHeights.length;
+    const fluidWidth = this.gridWidth ? this.gridWidth / this.currColHeights.length : 'auto';
 
     return (
       <div

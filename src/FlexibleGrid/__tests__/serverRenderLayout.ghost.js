@@ -24,6 +24,12 @@ describe('FlexibleGrid > Server Render Layout', () => {
     // Hard-coded value for initial pins in server.js
     assert.equal(serverItems.length, 20);
 
+    // Server rendered inner items have a width of auto.
+    for (let i = 0; i < serverItems.length; i += 1) {
+      const width = await serverItems[i].script(el => el.children[0].style.width);
+      assert.equal(width, 'auto', `Width of "${width}" is not auto.`);
+    }
+
     const serverItem1Rect = await serverItems[0].rect();
     const serverItem2Rect = await serverItems[1].rect();
 
@@ -36,6 +42,12 @@ describe('FlexibleGrid > Server Render Layout', () => {
 
     const gridItems = await ghost.findElements(selectors.gridItem);
     assert.ok(gridItems.length >= 20);
+
+    // After mounting, inner items should have a width set.
+    for (let i = 0; i < gridItems.length; i += 1) {
+      const width = await gridItems[i].script(el => el.children[0].style.width);
+      assert.ok(parseInt(width, 10) > 0, `Width of "${width}" is a number greater than 0.`);
+    }
 
     const gridItem1Rect = await gridItems[0].rect();
     const gridItem2Rect = await gridItems[1].rect();
