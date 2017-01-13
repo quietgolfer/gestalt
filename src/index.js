@@ -18,6 +18,7 @@ import Mask from './Mask/Mask';
 import MediaQuery from './MediaQuery/MediaQuery';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
 import SelectList from './SelectList/SelectList';
+import Spinner from './Spinner/Spinner';
 import Switch from './Switch/Switch';
 import TenzingGrid from './TenzingGrid/TenzingGrid';
 import Text from './Text/Text';
@@ -44,6 +45,7 @@ export {
   MediaQuery,
   SegmentedControl,
   SelectList,
+  Spinner,
   Switch,
   TenzingGrid,
   Text,

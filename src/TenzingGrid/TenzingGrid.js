@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 
-type Props<T> = {|
+type Props<T> = {
   columnWidth: number,
   comp: () => void,
   gutterWidth: number,
@@ -12,9 +12,9 @@ type Props<T> = {|
   minCols: number,
   loadItems: () => void,
   scrollContainer: HTMLElement,
-|};
+};
 
-type GridItemType<T> = {|
+type GridItemType<T> = {
   component: {},
   key: number,
   itemData: T,
@@ -24,7 +24,7 @@ type GridItemType<T> = {|
   left: number,
   top: number,
   bottom: number,
-|};
+};
 
 function distance(a, b) {
   const x = a.x - b.x;

@@ -1,12 +1,12 @@
 // @flow
 import React, { Component } from 'react';
 
-type Props<T> = {|
+type Props<T> = {
   invalidateCacheKey: string,
   layoutReady: bool,
   data: T[],
   processInfo: () => void,
-|};
+};
 
 export default class WithLayout extends Component {
   constructor(props: Props<*>) {

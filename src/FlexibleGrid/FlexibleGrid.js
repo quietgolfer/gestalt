@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
-type Props<T> = {|
+type Props<T> = {
   comp: () => void,
   idealItemWidth: number,
   items: T[],
@@ -13,7 +13,7 @@ type Props<T> = {|
   minCols: number,
   loadItems: () => void,
   scrollContainer: HTMLElement,
-|};
+};
 
 export default class FlexibleGrid extends Component {
   static defaultProps = {

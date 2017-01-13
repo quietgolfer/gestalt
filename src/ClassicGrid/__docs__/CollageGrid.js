@@ -5,13 +5,13 @@ import ClassicGrid from '../ClassicGrid';
 
 /* disable until eslint issue is fixed https://github.com/yannickcr/eslint-plugin-react/issues/819 */
 /* eslint-disable react/no-unused-prop-types */
-type ItemProps = {|
+type ItemProps = {
   data: {
     height: number,
     color: string,
     name: string,
   },
-|};
+};
 
 function Item(props: ItemProps) {
   const {

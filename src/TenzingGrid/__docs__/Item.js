@@ -3,13 +3,13 @@ import React from 'react';
 
 /* disable until eslint issue is fixed https://github.com/yannickcr/eslint-plugin-react/issues/819 */
 /* eslint-disable react/no-unused-prop-types */
-type Props = {|
+type Props = {
   data: {
     height: number,
     color: string,
     name: string,
   },
-|};
+};
 
 export default function Item(props: Props) {
   const {

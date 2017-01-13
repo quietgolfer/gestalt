@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
-type Props<T> = {|
+type Props<T> = {
   columnWidth: number,
   comp: () => void,
   gutterWidth: number,
@@ -13,7 +13,7 @@ type Props<T> = {|
   minCols: number,
   loadItems: () => void,
   scrollContainer: HTMLElement,
-|};
+};
 
 export default class ClassicGrid extends Component {
   static defaultProps: {};
