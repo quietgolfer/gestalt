@@ -39,6 +39,7 @@
 .disabled {
   composes: bg-light-gray from "../Colors.css";
   composes: gray from "../Colors.css";
+  cursor: default;
 }
 
 .gray {
