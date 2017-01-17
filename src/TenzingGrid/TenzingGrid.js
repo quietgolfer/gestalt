@@ -158,10 +158,13 @@ export default class TenzingGrid<T> extends Component {
         B.top - (A.bottom + gutterWidth) - 1 :
         A.top - (B.bottom + gutterWidth) - 1;
     }
-    if (A.top === B.top) {
-      return A.left < B.left ?
-        B.left - (A.left + width) - 1 :
-        A.left - (B.left + width) - 1;
+    if (
+      ((A.top <= B.top) && (A.bottom >= B.top)) ||
+      ((A.top <= B.bottom) && (A.bottom >= B.bottom)) ||
+      ((B.top <= A.top) && (B.bottom >= A.top))) {
+      const columnWeight = 25;
+      const columnDistance = (Math.abs(A.column - B.column) - 1) * columnWeight;
+      return columnDistance + (Math.abs(A.top - B.top) / A.height);
     }
     if (A.top < B.top) {
       return A.left < B.left ?
