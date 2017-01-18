@@ -1,97 +1,97 @@
 /* floats */
 
-.pull-left { float: left; }
-.pull-right { float: right; }
+:global .pull-left { float: left; }
+:global .pull-right { float: right; }
 
-.clearfix::before,
-.clearfix::after {
+:global .clearfix::before,
+:global .clearfix::after {
   content: " ";
   display: table;
 }
 
-.clearfix::after {
+:global .clearfix::after {
   clear: both;
 }
 
 /* display */
 
-.block { display: block; }
-.inline { display: inline; }
-.inline-block { display: inline-block; }
-.table { display: table; }
-.table-cell { display: table-cell; }
+:global .block { display: block; }
+:global .inline { display: inline; }
+:global .inline-block { display: inline-block; }
+:global .table { display: table; }
+:global .table-cell { display: table-cell; }
 
 /* overflow */
 
-.overflow-hidden { overflow: hidden; }
-.overflow-scroll { overflow: scroll; }
-.overflow-auto { overflow: auto; }
-.fit { max-width: 100%; }
+:global .overflow-hidden { overflow: hidden; }
+:global .overflow-scroll { overflow: scroll; }
+:global .overflow-auto { overflow: auto; }
+:global .fit { max-width: 100%; }
 
 /* position */
 
-.relative { position: relative; }
-.fixed { position: fixed; }
-.absolute { position: absolute; }
+:global .relative { position: relative; }
+:global .fixed { position: fixed; }
+:global .absolute { position: absolute; }
 
-.top-0 { top: 0; }
-.right-0 { right: 0; }
-.bottom-0 { bottom: 0; }
-.left-0 { left: 0; }
+:global .top-0 { top: 0; }
+:global .right-0 { right: 0; }
+:global .bottom-0 { bottom: 0; }
+:global .left-0 { left: 0; }
 
 /* box model */
 
-.border-box { box-sizing: border-box; }
+:global .border-box { box-sizing: border-box; }
 
-.flex { display: flex; }
+:global .flex { display: flex; }
 
 @media (--sm) {
-  .sm-flex { display: flex; }
+  :global .sm-flex { display: flex; }
 }
 
 @media (--md) {
-  .md-flex { display: flex; }
+  :global .md-flex { display: flex; }
 }
 
 @media (--lg) {
-  .lg-flex { display: flex; }
+  :global .lg-flex { display: flex; }
 }
 
-.flex-column { flex-direction: column; }
-.flex-wrap { flex-wrap: wrap; }
+:global .flex-column { flex-direction: column; }
+:global .flex-wrap { flex-wrap: wrap; }
 
-.items-start { align-items: flex-start; }
-.items-end { align-items: flex-end; }
-.items-center { align-items: center; }
-.items-baseline { align-items: baseline; }
-.items-stretch { align-items: stretch; }
+:global .items-start { align-items: flex-start; }
+:global .items-end { align-items: flex-end; }
+:global .items-center { align-items: center; }
+:global .items-baseline { align-items: baseline; }
+:global .items-stretch { align-items: stretch; }
 
-.self-start { align-self: flex-start; }
-.self-end { align-self: flex-end; }
-.self-center { align-self: center; }
-.self-baseline { align-self: baseline; }
-.self-stretch { align-self: stretch; }
+:global .self-start { align-self: flex-start; }
+:global .self-end { align-self: flex-end; }
+:global .self-center { align-self: center; }
+:global .self-baseline { align-self: baseline; }
+:global .self-stretch { align-self: stretch; }
 
-.justify-start { justify-content: flex-start; }
-.justify-end { justify-content: flex-end; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.justify-around { justify-content: space-around; }
+:global .justify-start { justify-content: flex-start; }
+:global .justify-end { justify-content: flex-end; }
+:global .justify-center { justify-content: center; }
+:global .justify-between { justify-content: space-between; }
+:global .justify-around { justify-content: space-around; }
 
-.content-start { align-content: flex-start; }
-.content-end { align-content: flex-end; }
-.content-center { align-content: center; }
-.content-between { align-content: space-between; }
-.content-around { align-content: space-around; }
-.content-stretch { align-content: stretch; }
+:global .content-start { align-content: flex-start; }
+:global .content-end { align-content: flex-end; }
+:global .content-center { align-content: center; }
+:global .content-between { align-content: space-between; }
+:global .content-around { align-content: space-around; }
+:global .content-stretch { align-content: stretch; }
 
-/* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
-.flex-auto {
+/* Fix for Chrome 44 bug: https://code.google.com/p/chromium/issues/detail?id=506893 */
+:global .flex-auto {
   flex: 1 1 auto;
   min-height: 0; /* 1 */
   min-width: 0; /* 1 */
 }
-.flex-none { flex: none; }
+:global .flex-none { flex: none; }
 
-.order-first { order: -1; }
-.order-last { order: 99999; }
+:global .order-first { order: -1; }
+:global .order-last { order: 99999; }

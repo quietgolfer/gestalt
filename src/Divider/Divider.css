@@ -1,6 +1,6 @@
 .divider {
-  composes: border-top from "../Borders.css";
-  composes: m0 from "../Whitespace.css";
+  composes: border-top from global;
+  composes: m0 from global;
   border-bottom: 0;
   border-left: 0;
 }

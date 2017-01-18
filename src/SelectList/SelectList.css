@@ -1,34 +1,34 @@
 .text {
-  composes: bold from from "../Typography.css";
-  composes: dark-gray from "../Colors.css";
-  composes: text-md from "../Typography.css";
+  composes: bold from from global;
+  composes: dark-gray from global;
+  composes: text-md from global;
 }
 
 .common {
-  composes: bg-light-gray from "../Colors.css";
-  composes: block border-box from "../Layout.css";
-  composes: col-12 from "../Column/Column.css";
-  composes: pointer from "../Cursor.css";
-  composes: rounded from "../Borders.css";
+  composes: bg-light-gray from global;
+  composes: block border-box from global;
+  composes: col-12 from global;
+  composes: pointer from global;
+  composes: rounded from global;
 }
 
 .container {
   composes: common;
-  composes: relative from "../Layout.css";
+  composes: relative from global;
 }
 
 .select {
   composes: common;
   composes: text;
-  composes: no-border from "../Borders.css";
-  composes: p2 from "../Whitespace.css";
+  composes: no-border from global;
+  composes: p2 from global;
   appearance: none;
   padding-right: 20%; /* prevents option.name from running into arrow */
 }
 
 .dropdownArrow {
-  composes: absolute from "../Layout.css";
-  composes: block from "../Layout.css";
+  composes: absolute from global;
+  composes: block from global;
   align-items: center;
   display: flex;
   height: 100%;
@@ -38,7 +38,7 @@
 }
 
 .options {
-  composes: relative from "../Layout.css";
-  composes: mr3 from "../Whitespace.css";
+  composes: relative from global;
+  composes: mr3 from global;
   width: 80%;
 }

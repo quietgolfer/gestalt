@@ -1,19 +1,16 @@
 // @flow
 import React, { PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import classnames from 'classnames';
 import { card, md } from 'corkboard';
-import colors from '../Colors.css';
 import { ns, stylesTable } from '../../.corkboard/cards';
 
 ns('Colors');
-
-const cx = classnames.bind(colors);
 
 function Swatch({ color, size, shadow }) {
   return (
     <div className="flex flex-column items-center center">
       <div
-        className={`circle ${cx(`bg-${color}`)}`}
+        className={classnames('circle', `bg-${color}`)}
         style={{
           width: size,
           height: size,

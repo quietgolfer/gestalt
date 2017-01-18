@@ -49,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: __dirname,
+        include: path.join(__dirname, 'src'),
         exclude: path.join(__dirname, 'node_modules'),
         loaders: [
           'css?modules&importLoaders=1&localIdentName=[path][name]---[local]---[hash:base64:5]',

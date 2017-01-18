@@ -1,17 +1,6 @@
 // @flow
 import { createElement, PropTypes } from 'react';
-import classnames from 'classnames/bind';
-import colorStyles from '../Colors.css';
-import typographyStyles from '../Typography.css';
-import whitespaceStyles from '../Whitespace.css';
-
-const styles = {
-  ...colorStyles,
-  ...typographyStyles,
-  ...whitespaceStyles,
-};
-
-const cx = classnames.bind(styles);
+import cx from 'classnames';
 
 const sizesToElementMap = {
   xs: 'h5',

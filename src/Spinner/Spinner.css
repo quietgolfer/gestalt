@@ -9,11 +9,11 @@
 }
 
 .Spinner {
-  composes: flex justify-around from '../Layout.css';
+  composes: flex justify-around from global;
 }
 
 .icon {
-  composes: block from '../Layout.css';
+  composes: block from global;
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
   animation-name: spin;

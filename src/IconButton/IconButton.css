@@ -1,9 +1,9 @@
 .iconButton {
-  composes: antialiased bold from "../Typography.css";
-  composes: border-box from "../Layout.css";
-  composes: circle no-border from "../Borders.css";
-  composes: p0 from "../Whitespace.css";
-  composes: pointer from "../Cursor.css";
+  composes: antialiased bold from global;
+  composes: border-box from global;
+  composes: circle no-border from global;
+  composes: p0 from global;
+  composes: pointer from global;
 }
 
 .transparent {
@@ -22,40 +22,40 @@
 
 .red {
   composes: iconButton;
-  composes: bg-red from "../Colors.css";
-  composes: bg-red-hover from "../Colors.css";
-  composes: bg-red-focus from "../Colors.css";
-  composes: bg-red-active from "../Colors.css";
+  composes: bg-red from global;
+  composes: bg-red-hover from global;
+  composes: bg-red-focus from global;
+  composes: bg-red-active from global;
 }
 
 .blue {
   composes: iconButton;
-  composes: bg-blue from "../Colors.css";
-  composes: bg-blue-hover from "../Colors.css";
-  composes: bg-blue-focus from "../Colors.css";
-  composes: bg-blue-active from "../Colors.css";
+  composes: bg-blue from global;
+  composes: bg-blue-hover from global;
+  composes: bg-blue-focus from global;
+  composes: bg-blue-active from global;
 }
 
 .gray {
   composes: iconButton;
-  composes: bg-gray from "../Colors.css";
-  composes: bg-gray-hover from "../Colors.css";
-  composes: bg-gray-focus from "../Colors.css";
-  composes: bg-gray-active from "../Colors.css";
+  composes: bg-gray from global;
+  composes: bg-gray-hover from global;
+  composes: bg-gray-focus from global;
+  composes: bg-gray-active from global;
 }
 
 .light-gray {
   composes: iconButton;
-  composes: bg-light-gray from "../Colors.css";
-  composes: bg-light-gray-hover from "../Colors.css";
-  composes: bg-light-gray-focus from "../Colors.css";
-  composes: bg-light-gray-active from "../Colors.css";
+  composes: bg-light-gray from global;
+  composes: bg-light-gray-hover from global;
+  composes: bg-light-gray-focus from global;
+  composes: bg-light-gray-active from global;
 }
 
 .dark-gray {
   composes: iconButton;
-  composes: bg-dark-gray  from "../Colors.css";
-  composes: bg-dark-gray-hover from "../Colors.css";
-  composes: bg-dark-gray-focus from "../Colors.css";
-  composes: bg-dark-gray-active from "../Colors.css";
+  composes: bg-dark-gray  from global;
+  composes: bg-dark-gray-hover from global;
+  composes: bg-dark-gray-focus from global;
+  composes: bg-dark-gray-active from global;
 }

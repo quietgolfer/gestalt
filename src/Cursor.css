@@ -1,11 +1,11 @@
-.pointer {
+:global .pointer {
   cursor: pointer;
 }
 
-.zoom-in {
+:global .zoom-in {
   cursor: zoom-in;
 }
 
-.zoom-out {
+:global .zoom-out {
   cursor: zoom-out;
 }

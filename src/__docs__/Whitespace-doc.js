@@ -3,7 +3,6 @@
 import React from 'react';
 import { card, md } from 'corkboard';
 import { ns, stylesTable } from '../../.corkboard/cards';
-import ws from '../Whitespace.css';
 
 ns('Whitespace',
   `
@@ -53,9 +52,9 @@ browser to see the respsoniveness take place.
 \`\`\`
 `,
   <div className="container">
-    <div className={`${ws.mb1} ${ws.p3} border`}> {'margin-bottom: 1bt, padding: 3bts'} </div>
-    <div className={`${ws.m2} ${ws.pl4} border`}> {'margin: 2bt, padding-left: 4bts'} </div>
-    <div className={`${ws.mt2} ${ws.pb2} border`}> {'margin-top: 2bt, padding-bottom: 2bt'} </div>
+    <div className={'mb1 p3 border'}> {'margin-bottom: 1bt, padding: 3bts'} </div>
+    <div className={'m2 pl4 border'}> {'margin: 2bt, padding-left: 4bts'} </div>
+    <div className={'mt2 pb2 border'}> {'margin-top: 2bt, padding-bottom: 2bt'} </div>
   </div>
 );
 

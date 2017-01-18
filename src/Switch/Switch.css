@@ -1,8 +1,8 @@
 .switchCommon {
-  composes: border-box from "../Layout.css";
-  composes: inline-block from "../Layout.css";
-  composes: relative from "../Layout.css";
-  composes: pointer from "../Cursor.css";
+  composes: border-box from global;
+  composes: inline-block from global;
+  composes: relative from global;
+  composes: pointer from global;
   border-radius: 48px;
   height: 28px;
   padding: 2px;
@@ -12,18 +12,18 @@
 
 .switchedOn {
   composes: switchCommon;
-  composes: bg-pine from "../Colors.css";
+  composes: bg-pine from global;
 }
 
 .switchedOff {
   composes: switchCommon;
-  composes: bg-gray from "../Colors.css";
+  composes: bg-gray from global;
 }
 
 .sliderCommon {
-  composes: absolute from "../Layout.css";
-  composes: bg-white from "../Colors.css";
-  composes: circle from "../Borders.css";
+  composes: absolute from global;
+  composes: bg-white from global;
+  composes: circle from global;
   height: 24px;
   transition: left 0.2s sease;
   width: 24px;
@@ -40,12 +40,12 @@
 }
 
 .checkbox {
-  composes: absolute from "../Layout.css";
-  composes: col-12 from "../Column/Column.css";
-  composes: m0 from "../Whitespace.css";
-  composes: no-border from "../Borders.css";
-  composes: p0 from "../Whitespace.css";
-  composes: pointer from "../Cursor.css";
+  composes: absolute from global;
+  composes: col-12 from global;
+  composes: m0 from global;
+  composes: no-border from global;
+  composes: p0 from global;
+  composes: pointer from global;
   height: 100%;
   opacity: 0;
   z-index: 2;

@@ -8,8 +8,8 @@
   --light-gray: #efefef;
   --white: #fff;
   --yellow: #fab904;
-  --frost: rgba(#fff, 0.95);
-  --shade: rgba(#000, 0.6);
+  --frost: rgba(#fff, 0:global .95);
+  --shade: rgba(#000, 0:global .6);
 
   /* darker versions of colors for hover states */
   --blue-hover: color(var(--blue) blackness(+ 6%));
@@ -26,187 +26,187 @@
 
 /* blue */
 
-.blue {
+:global .blue {
   color: var(--blue);
 }
 
-.blue-hover:hover {
+:global .blue-hover:hover {
   color: var(--blue);
 }
 
-.bg-blue {
+:global .bg-blue {
   background-color: var(--blue);
 }
 
-.bg-blue-hover:hover,
-.bg-blue-focus:focus {
+:global .bg-blue-hover:hover,
+:global .bg-blue-focus:focus {
   background-color: var(--blue-hover);
 }
 
-.bg-blue-active:active {
+:global .bg-blue-active:active {
   background-color: var(--blue-active);
 }
 
 /* dark-gray */
 
-.dark-gray {
+:global .dark-gray {
   color: var(--dark-gray);
 }
 
-.dark-gray-hover:hover {
+:global .dark-gray-hover:hover {
   color: var(--dark-gray);
 }
 
-.bg-dark-gray {
+:global .bg-dark-gray {
   background-color: var(--dark-gray);
 }
 
-.bg-dark-gray-hover:hover,
-.bg-dark-gray-focus:focus {
+:global .bg-dark-gray-hover:hover,
+:global .bg-dark-gray-focus:focus {
   background-color: var(--dark-gray-hover);
 }
 
-.bg-dark-gray-active:active {
+:global .bg-dark-gray-active:active {
   background-color: var(--dark-gray-active);
 }
 
 /* pine */
 
-.pine {
+:global .pine {
   color: var(--pine);
 }
 
-.pine-hover:hover {
+:global .pine-hover:hover {
   color: var(--pine);
 }
 
-.bg-pine {
+:global .bg-pine {
   background-color: var(--pine);
 }
 
 /* gray */
 
-.gray {
+:global .gray {
   color: var(--gray);
 }
 
-.gray-hover:hover {
+:global .gray-hover:hover {
   color: var(--gray);
 }
 
-.bg-gray {
+:global .bg-gray {
   background-color: var(--gray);
 }
 
-.bg-gray-hover:hover,
-.bg-gray-focus:focus {
+:global .bg-gray-hover:hover,
+:global .bg-gray-focus:focus {
   background-color: var(--gray-hover);
 }
 
-.bg-gray-active:active {
+:global .bg-gray-active:active {
   background-color: var(--gray-active);
 }
 
 /* red */
 
-.red {
+:global .red {
   color: var(--red);
 }
 
-.red-hover:hover {
+:global .red-hover:hover {
   color: var(--red);
 }
 
-.bg-red {
+:global .bg-red {
   background-color: var(--red);
 }
 
-.bg-red-hover:hover,
-.bg-red-foucs:focus {
+:global .bg-red-hover:hover,
+:global .bg-red-foucs:focus {
   background-color: var(--red-hover);
 }
 
-.bg-red-active:active {
+:global .bg-red-active:active {
   background-color: var(--red-active);
 }
 
 /* slate */
 
-.slate {
+:global .slate {
   color: var(--slate);
 }
 
-.slate-hover:hover {
+:global .slate-hover:hover {
   color: var(--slate);
 }
 
-.bg-slate {
+:global .bg-slate {
   background-color: var(--slate);
 }
 
-.bg-slate-hover:hover {
+:global .bg-slate-hover:hover {
   background-color: var(--slate);
 }
 
 /* light-gray */
 
-.light-gray {
+:global .light-gray {
   color: var(--light-gray);
 }
 
-.light-gray-hover:hover {
+:global .light-gray-hover:hover {
   color: var(--light-gray);
 }
 
-.bg-light-gray {
+:global .bg-light-gray {
   background-color: var(--light-gray);
 }
 
-.bg-light-gray-hover:hover,
-.bg-light-gray-focus:focus {
+:global .bg-light-gray-hover:hover,
+:global .bg-light-gray-focus:focus {
   background-color: var(--light-gray-hover);
 }
 
-.bg-light-gray-active:active {
+:global .bg-light-gray-active:active {
   background-color: var(--light-gray-active);
 }
 
 /* white */
 
-.white {
+:global .white {
   color: var(--white);
 }
 
-.white-hover:hover {
+:global .white-hover:hover {
   color: var(--white);
 }
 
-.bg-white {
+:global .bg-white {
   background-color: var(--white);
 }
 
 /* yellow */
 
-.yellow {
+:global .yellow {
   color: var(--yellow);
 }
 
-.yellow-hover:hover {
+:global .yellow-hover:hover {
   color: var(--yellow);
 }
 
-.bg-yellow {
+:global .bg-yellow {
   background-color: var(--yellow);
 }
 
 /* frost */
 
-.bg-frost {
+:global .bg-frost {
   background-color: var(--frost);
 }
 
 /* darken */
 
-.bg-shade {
+:global .bg-shade {
   background-color: var(--shade);
 }

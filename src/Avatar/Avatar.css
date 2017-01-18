@@ -21,18 +21,18 @@
 }
 
 .defaultAvatar {
-  composes: bg-gray from "../Colors.css";
-  composes: relative flex items-center justify-center from "../Layout.css";
-  composes: circle from "../Borders.css";
+  composes: bg-gray from global;
+  composes: relative flex items-center justify-center from global;
+  composes: circle from global;
 }
 
 .initial {
-  composes: antialiased bold from "../Typography.css";
-  composes: white from "../Colors.css";
+  composes: antialiased bold from global;
+  composes: white from global;
 }
 
 .responsive {
-  composes: col-12 from "../Column/Column.css";
+  composes: col-12 from global;
 }
 
 .xs {

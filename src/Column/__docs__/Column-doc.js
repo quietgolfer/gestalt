@@ -197,5 +197,5 @@ Column gutters can be created through composition and negative margins.
 
 card('Styles Table',
   <p className="red">These styles are deprecated. Please use the <code>Column</code> component instead.</p>,
-  stylesTable(require('!!raw!postcss!../Column.css')),
+  stylesTable(require('!!raw!postcss!../../Column.css')),
   { stacked: true });

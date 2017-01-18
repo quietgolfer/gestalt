@@ -1,5 +1,5 @@
 .img {
-  composes: fit from "../Layout.css";
+  composes: fit from global;
 }
 
 .pending {
@@ -7,9 +7,9 @@
 }
 
 .loaded {
-  composes: block from "../Layout.css";
+  composes: block from global;
 }
 
 .container {
-  composes: fit relative from "../Layout.css";
+  composes: fit relative from global;
 }

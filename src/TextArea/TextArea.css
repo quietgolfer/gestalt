@@ -1,10 +1,10 @@
 .common {
-  composes: bg-light-gray dark-gray from "../Colors.css";
-  composes: bold text-md from "../Typography.css";
-  composes: border-box from "../Layout.css";
-  composes: col-12 from "../Column/Column.css";
-  composes: px1 py2 from "../Whitespace.css";
-  composes: rounded from "../Borders.css";
+  composes: bg-light-gray dark-gray from global;
+  composes: bold text-md from global;
+  composes: border-box from global;
+  composes: col-12 from global;
+  composes: px1 py2 from global;
+  composes: rounded from global;
   cursor: text;
   outline: 0;
   resize: none;
@@ -12,7 +12,7 @@
 
 .textarea {
   composes: common;
-  composes: border from "../Borders.css";
+  composes: border from global;
 }
 
 .textarea:focus {

@@ -1,6 +1,6 @@
 .wash {
-  composes: absolute from "../Layout.css";
-  composes: col-12 from "../Column/Column.css";
+  composes: absolute from global;
+  composes: col-12 from global;
   background: rgba(0, 0, 0, 0.03);
   height: 100%;
   pointer-events: none;

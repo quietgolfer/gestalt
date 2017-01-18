@@ -2,18 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import FlexibleGrid from '../FlexibleGrid/FlexibleGrid';
-
-import colorStyles from '../Colors.css';
-import typographyStyles from '../Typography.css';
-import layoutStyles from '../Layout.css';
-import groupAvatarStyles from './GroupAvatar.css';
-
-const styles = {
-  ...colorStyles,
-  ...typographyStyles,
-  ...layoutStyles,
-  ...groupAvatarStyles,
-};
+import styles from './GroupAvatar.css';
 
 const cx = classnames.bind(styles);
 

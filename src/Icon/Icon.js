@@ -2,17 +2,11 @@
 /* global $Keys */
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
-import colorStyles from '../Colors.css';
 import accessibilityToken from '../accessibilityToken';
-import iconStyles from './Icon.css';
+import styles from './Icon.css';
 import paths from './icons';
 
-const combinedStyles = {
-  ...colorStyles,
-  ...iconStyles,
-};
-
-const cx = classnames.bind(combinedStyles);
+const cx = classnames.bind(styles);
 
 type IconProps = {
   color?: 'white' | 'gray' | 'dark-gray' | 'blue' | 'red',

@@ -1,16 +1,13 @@
 .SegmentedControl {
-  composes: bg-light-gray from "../Colors.css";
-  composes: flex justify-between from "../Layout.css";
+  composes: bg-light-gray from global;
+  composes: flex justify-between from global;
   border-radius: 4px;
   padding: 2px;
   user-select: none;
 }
 
 .SegmentedControl--item {
-  composes: flex-auto from "../Layout.css";
-  composes: no-border from "../Borders.css";
-  composes: pointer from "../Cursor.css";
-  composes: px2 m0 from "../Whitespace.css";
+  composes: flex-auto no-border pointer px2 m0 from global;
   border-radius: 3px;
   height: 36px;
 }
@@ -24,7 +21,7 @@
 }
 
 .SegmentedControl--item__isSelected {
-  composes: bg-white from "../Colors.css";
+  composes: bg-white from global;
 }
 
 @media (--md) {

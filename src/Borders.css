@@ -6,56 +6,56 @@
 
 /* Border lines */
 
-.no-border {
-  border: 0;
-}
-
-.border {
+:global .border {
   border: var(--border-width) solid var(--border-color);
 }
 
-.border-top {
+:global .border-top {
   border-top: var(--border-width) solid var(--border-color);
 }
 
-.border-right {
+:global .border-right {
   border-right: var(--border-width) solid var(--border-color);
 }
 
-.border-bottom {
+:global .border-bottom {
   border-bottom: var(--border-width) solid var(--border-color);
 }
 
-.border-left {
+:global .border-left {
   border-left: var(--border-width) solid var(--border-color);
 }
 
 /* Border radii */
 
-.square {
+:global .square {
   border-radius: 0;
 }
 
-.circle {
+:global .circle {
   border-radius: 50%;
 }
 
-.rounded {
+:global .rounded {
   border-radius: var(--border-radius);
 }
 
-.rounded-top {
+:global .rounded-top {
   border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
 
-.rounded-right {
+:global .rounded-right {
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
-.rounded-bottom {
+:global .rounded-bottom {
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
-.rounded-left {
+:global .rounded-left {
   border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+:global .no-border {
+  border: 0;
 }

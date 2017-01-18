@@ -1,18 +1,7 @@
 // @flow
 
 import React, { PropTypes } from 'react';
-import classnames from 'classnames/bind';
-import colorStyles from '../Colors.css';
-import typographyStyles from '../Typography.css';
-import layoutStyles from '../Layout.css';
-
-const styles = {
-  ...colorStyles,
-  ...typographyStyles,
-  ...layoutStyles,
-};
-
-const cx = classnames.bind(styles);
+import cx from 'classnames';
 
 type Props = {
   align?: 'left' | 'right' | 'center' | 'justify',

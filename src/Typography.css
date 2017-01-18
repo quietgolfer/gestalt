@@ -79,31 +79,31 @@
 
 /* formatting */
 
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-.text-center { text-align: center; }
-.text-justify { text-align: justify; }
+:global .text-left { text-align: left; }
+:global .text-right { text-align: right; }
+:global .text-center { text-align: center; }
+:global .text-justify { text-align: justify; }
 
-.bold { font-weight: var(--bold-font-weight); }
-.regular { font-style: normal; }
-.italic { font-style: italic; }
+:global .bold { font-weight: var(--bold-font-weight); }
+:global .regular { font-style: normal; }
+:global .italic { font-style: italic; }
 
-.underline { text-decoration: underline; }
-.no-underline { text-decoration: none; }
+:global .underline { text-decoration: underline; }
+:global .no-underline { text-decoration: none; }
 
 /* lists */
 
-.list-style-none {
+:global .list-style-none {
   list-style: none;
 }
 
 /* text overflow */
 
-.break-word {
+:global .break-word {
   word-wrap: break-word;
 }
 
-.truncate {
+:global .truncate {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -112,7 +112,7 @@
 
 /* styles */
 
-.sans-serif {
+:global .sans-serif {
   font-family:
     "Helvetica Neue",
     Helvetica,
@@ -125,343 +125,343 @@
     sans-serif;
 }
 
-.antialiased {
+:global .antialiased {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 
 /* scale */
 
-.text-xs {
+:global .text-xs {
   font-size: var(--size-1);
   letter-spacing: var(--tracking-1);
   line-height: var(--leading-1);
   word-spacing: var(--word-spacing-1);
 }
 
-:lang(ja) .text-xs {
+:global :lang(ja) .text-xs {
   font-size: var(--size-locale-ja-1);
 }
 
-.text-sm {
+:global .text-sm {
   font-size: var(--size-2);
   letter-spacing: var(--tracking-2);
   line-height: var(--leading-2);
   word-spacing: var(--word-spacing-2);
 }
 
-:lang(ja) .text-sm {
+:global :lang(ja) .text-sm {
   font-size: var(--size-locale-ja-2);
 }
 
-.text-md {
+:global .text-md {
   font-size: var(--size-3);
   letter-spacing: var(--tracking-3);
   line-height: var(--leading-3);
   word-spacing: var(--word-spacing-3);
 }
 
-:lang(ja) .text-md {
+:global :lang(ja) .text-md {
   font-size: var(--size-locale-ja-3);
 }
 
-.text-lg {
+:global .text-lg {
   font-size: var(--size-4);
   letter-spacing: var(--tracking-4);
   line-height: var(--leading-4);
   word-spacing: var(--word-spacing-4);
 }
 
-:lang(ja) .text-lg {
+:global :lang(ja) .text-lg {
   font-size: var(--size-locale-ja-4);
 }
 
-.text-xl {
+:global .text-xl {
   font-size: var(--size-5);
   letter-spacing: var(--tracking-5);
   line-height: var(--leading-5);
   word-spacing: var(--word-spacing-5);
 }
 
-:lang(ja) .text-xl {
+:global :lang(ja) .text-xl {
   font-size: var(--size-locale-ja-5);
 }
 
-.display-xs {
+:global .display-xs {
   font-size: var(--size-6);
   letter-spacing: var(--tracking-6);
   line-height: var(--leading-6);
   word-spacing: var(--word-spacing-6);
 }
 
-:lang(ja) .display-xs {
+:global :lang(ja) .display-xs {
   font-size: var(--size-locale-ja-6);
 }
 
-.display-sm {
+:global .display-sm {
   font-size: var(--size-7);
   letter-spacing: var(--tracking-7);
   line-height: var(--leading-7);
   word-spacing: var(--word-spacing-7);
 }
 
-:lang(ja) .display-sm {
+:global :lang(ja) .display-sm {
   font-size: var(--size-locale-ja-7);
 }
 
-.display-md {
+:global .display-md {
   font-size: var(--size-8);
   letter-spacing: var(--tracking-8);
   line-height: var(--leading-8);
   word-spacing: var(--word-spacing-8);
 }
 
-:lang(ja) .display-md {
+:global :lang(ja) .display-md {
   font-size: var(--size-locale-ja-8);
 }
 
-.display-lg {
+:global .display-lg {
   font-size: var(--size-9);
   letter-spacing: var(--tracking-9);
   line-height: var(--leading-9);
   word-spacing: var(--word-spacing-9);
 }
 
-:lang(ja) .display-lg {
+:global :lang(ja) .display-lg {
   font-size: var(--size-locale-ja-9);
 }
 
-.display-xl {
+:global .display-xl {
   font-size: var(--size-10);
   letter-spacing: var(--tracking-10);
   line-height: var(--leading-10);
   word-spacing: var(--word-spacing-10);
 }
 
-:lang(ja) .display-xl {
+:global :lang(ja) .display-xl {
   font-size: var(--size-locale-ja-10);
 }
 
 @media (--sm) {
-  .text-xs {
+  :global .text-xs {
     font-size: var(--size-2);
     letter-spacing: var(--tracking-2);
     line-height: var(--leading-2);
     word-spacing: var(--word-spacing-2);
   }
 
-  :lang(ja) .text-xs {
+  :global :lang(ja) .text-xs {
     font-size: var(--size-locale-ja-2);
   }
 
-  .text-sm {
+  :global .text-sm {
     font-size: var(--size-3);
     letter-spacing: var(--tracking-3);
     line-height: var(--leading-3);
     word-spacing: var(--word-spacing-3);
   }
 
-  :lang(ja) .text-sm {
+  :global :lang(ja) .text-sm {
     font-size: var(--size-locale-ja-3);
   }
 
-  .text-md {
+  :global .text-md {
     font-size: var(--size-4);
     letter-spacing: var(--tracking-4);
     line-height: var(--leading-4);
     word-spacing: var(--word-spacing-4);
   }
 
-  :lang(ja) .text-md {
+  :global :lang(ja) .text-md {
     font-size: var(--size-locale-ja-4);
   }
 
-  .text-lg {
+  :global .text-lg {
     font-size: var(--size-5);
     letter-spacing: var(--tracking-5);
     line-height: var(--leading-5);
     word-spacing: var(--word-spacing-5);
   }
 
-  :lang(ja) .text-lg {
+  :global :lang(ja) .text-lg {
     font-size: var(--size-locale-ja-5);
   }
 
-  .text-xl {
+  :global .text-xl {
     font-size: var(--size-6);
     letter-spacing: var(--tracking-6);
     line-height: var(--leading-6);
     word-spacing: var(--word-spacing-6);
   }
 
-  :lang(ja) .text-xl {
+  :global :lang(ja) .text-xl {
     font-size: var(--size-locale-ja-6);
   }
 
-  .display-xs {
+  :global .display-xs {
     font-size: var(--size-7);
     letter-spacing: var(--tracking-7);
     line-height: var(--leading-7);
     word-spacing: var(--word-spacing-7);
   }
 
-  :lang(ja) .display-xs {
+  :global :lang(ja) .display-xs {
     font-size: var(--size-locale-ja-7);
   }
 
-  .display-sm {
+  :global .display-sm {
     font-size: var(--size-8);
     letter-spacing: var(--tracking-8);
     line-height: var(--leading-8);
     word-spacing: var(--word-spacing-8);
   }
 
-  :lang(ja) .display-sm {
+  :global :lang(ja) .display-sm {
     font-size: var(--size-locale-ja-8);
   }
 
-  .display-md {
+  :global .display-md {
     font-size: var(--size-9);
     letter-spacing: var(--tracking-9);
     line-height: var(--leading-9);
     word-spacing: var(--word-spacing-9);
   }
 
-  :lang(ja) .display-md {
+  :global :lang(ja) .display-md {
     font-size: var(--size-locale-ja-9);
   }
 
-  .display-lg {
+  :global .display-lg {
     font-size: var(--size-10);
     letter-spacing: var(--tracking-10);
     line-height: var(--leading-10);
     word-spacing: var(--word-spacing-10);
   }
 
-  :lang(ja) .display-lg {
+  :global :lang(ja) .display-lg {
     font-size: var(--size-locale-ja-10);
   }
 
-  .display-xl {
+  :global .display-xl {
     font-size: var(--size-11);
     letter-spacing: var(--tracking-11);
     line-height: var(--leading-11);
     word-spacing: var(--word-spacing-11);
   }
 
-  :lang(ja) .display-xl {
+  :global :lang(ja) .display-xl {
     font-size: var(--size-locale-ja-11);
   }
 }
 
 @media (--lg) {
-  .text-xs {
+  :global .text-xs {
     font-size: var(--size-3);
     letter-spacing: var(--tracking-3);
     line-height: var(--leading-3);
     word-spacing: var(--word-spacing-3);
   }
 
-  :lang(ja) .text-xs {
+  :global :lang(ja) .text-xs {
     font-size: var(--size-locale-ja-3);
   }
 
-  .text-sm {
+  :global .text-sm {
     font-size: var(--size-4);
     letter-spacing: var(--tracking-4);
     line-height: var(--leading-4);
     word-spacing: var(--word-spacing-4);
   }
 
-  :lang(ja) .text-sm {
+  :global :lang(ja) .text-sm {
     font-size: var(--size-locale-ja-4);
   }
 
-  .text-md {
+  :global .text-md {
     font-size: var(--size-5);
     letter-spacing: var(--tracking-5);
     line-height: var(--leading-5);
     word-spacing: var(--word-spacing-5);
   }
 
-  :lang(ja) .text-md {
+  :global :lang(ja) .text-md {
     font-size: var(--size-locale-ja-5);
   }
 
-  .text-lg {
+  :global .text-lg {
     font-size: var(--size-6);
     letter-spacing: var(--tracking-6);
     line-height: var(--leading-6);
     word-spacing: var(--word-spacing-6);
   }
 
-  :lang(ja) .text-lg {
+  :global :lang(ja) .text-lg {
     font-size: var(--size-locale-ja-6);
   }
 
-  .text-xl {
+  :global .text-xl {
     font-size: var(--size-7);
     letter-spacing: var(--tracking-7);
     line-height: var(--leading-7);
     word-spacing: var(--word-spacing-7);
   }
 
-  :lang(ja) .text-xl {
+  :global :lang(ja) .text-xl {
     font-size: var(--size-locale-ja-7);
   }
 
-  .display-xs {
+  :global .display-xs {
     font-size: var(--size-8);
     letter-spacing: var(--tracking-8);
     line-height: var(--leading-8);
     word-spacing: var(--word-spacing-8);
   }
 
-  :lang(ja) .display-xs {
+  :global :lang(ja) .display-xs {
     font-size: var(--size-locale-ja-8);
   }
 
-  .display-sm {
+  :global .display-sm {
     font-size: var(--size-9);
     letter-spacing: var(--tracking-9);
     line-height: var(--leading-9);
     word-spacing: var(--word-spacing-9);
   }
 
-  :lang(ja) .display-sm {
+  :global :lang(ja) .display-sm {
     font-size: var(--size-locale-ja-9);
   }
 
-  .display-md {
+  :global .display-md {
     font-size: var(--size-10);
     letter-spacing: var(--tracking-10);
     line-height: var(--leading-10);
     word-spacing: var(--word-spacing-10);
   }
 
-  :lang(ja) .display-md {
+  :global :lang(ja) .display-md {
     font-size: var(--size-locale-ja-10);
   }
 
-  .display-lg {
+  :global .display-lg {
     font-size: var(--size-11);
     letter-spacing: var(--tracking-11);
     line-height: var(--leading-11);
     word-spacing: var(--word-spacing-11);
   }
 
-  :lang(ja) .display-lg {
+  :global :lang(ja) .display-lg {
     font-size: var(--size-locale-ja-11);
   }
 
-  .display-xl {
+  :global .display-xl {
     font-size: var(--size-12);
     letter-spacing: var(--tracking-12);
     line-height: var(--leading-12);
     word-spacing: var(--word-spacing-12);
   }
 
-  :lang(ja) .display-xl {
+  :global :lang(ja) .display-xl {
     font-size: var(--size-locale-ja-12);
   }
 }

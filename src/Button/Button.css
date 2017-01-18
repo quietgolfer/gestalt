@@ -8,15 +8,15 @@
 }
 
 .common {
-  composes: antialiased from "../Typography.css";
-  composes: bold from "../Typography.css";
-  composes: border-box from "../Layout.css";
-  composes: no-border from "../Borders.css";
+  composes: antialiased from global;
+  composes: bold from global;
+  composes: border-box from global;
+  composes: no-border from global;
   border-radius: 4px;
 }
 
 .enabled {
-  composes: pointer from "../Cursor.css";
+  composes: pointer from global;
 }
 
 .variable {
@@ -26,25 +26,25 @@
 
 .fullWidth {
   composes: common;
-  composes: col-12 from "../Column/Column.css";
-  composes: text-lg from "../Typography.css";
+  composes: col-12 from global;
+  composes: text-lg from global;
   padding: 12px 16px;
 }
 
 .button,
 .submit {
-  composes: text-md from "../Typography.css";
+  composes: text-md from global;
 }
 
 .disabled {
-  composes: bg-light-gray from "../Colors.css";
-  composes: gray from "../Colors.css";
+  composes: bg-light-gray from global;
+  composes: gray from global;
   cursor: default;
 }
 
 .gray {
-  composes: bg-light-gray from "../Colors.css";
-  composes: dark-gray from "../Colors.css";
+  composes: bg-light-gray from global;
+  composes: dark-gray from global;
 }
 
 .gray:hover,
@@ -57,8 +57,8 @@
 }
 
 .red {
-  composes: bg-red from "../Colors.css";
-  composes: white from "../Colors.css";
+  composes: bg-red from global;
+  composes: white from global;
 }
 
 .red:hover,
@@ -71,8 +71,8 @@
 }
 
 .blue {
-  composes: bg-blue from "../Colors.css";
-  composes: white from "../Colors.css";
+  composes: bg-blue from global;
+  composes: white from global;
 }
 
 .blue:hover,
