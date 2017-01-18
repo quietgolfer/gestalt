@@ -17,6 +17,7 @@ import edit from './edit';
 import ellipsis from './ellipsis';
 import ellipsisCircleOutline from './ellipsis-circle-outline';
 import facebook from './facebook';
+import faceHappy from './face-happy';
 import faceSad from './face-sad';
 import filter from './filter';
 import flag from './flag';
@@ -61,6 +62,7 @@ export default {
   ellipsis,
   'ellipsis-circle-outline': ellipsisCircleOutline,
   facebook,
+  'face-happy': faceHappy,
   'face-sad': faceSad,
   filter,
   flag,
