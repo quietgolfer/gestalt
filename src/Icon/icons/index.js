@@ -29,6 +29,7 @@ import heartBroken from './heart-broken';
 import link from './link';
 import location from './location';
 import lock from './lock';
+import move from './move';
 import people from './people';
 import personAdd from './person-add';
 import person from './person';
@@ -74,6 +75,7 @@ export default {
   link,
   location,
   lock,
+  move,
   people,
   'person-add': personAdd,
   person,
