@@ -125,6 +125,8 @@ export default class BoxPacker {
     // Find the lowest point where this item will fit.
     let searchFromHeight = -1;
     let usedSlots = [];
+    let renderedColSpan = colSpan;
+
     /* eslint no-constant-condition:0 */
     /* eslint no-labels:0 */
     /* eslint no-restricted-syntax:0 */
@@ -133,10 +135,16 @@ export default class BoxPacker {
       let itemSlotOffset = 0;
       let lowestItems = this.findNextShortest(searchFromHeight);
 
+      // If the colspan is greater than the number of available columns,
+      // render the item in the widest space.
+      if (renderedColSpan > this.columns.length) {
+        renderedColSpan = this.columns.length;
+      }
+
       // If we can't find the item, just stick it in the bottom left for now.
       if (lowestItems.length === 0) {
         let tallestItem = 0;
-        for (let i = 1; i < colSpan; i += 1) {
+        for (let i = 1; i < renderedColSpan; i += 1) {
           const column = this.columns[i];
           const lastItem = column[column.length - 1];
           if (lastItem.startY > tallestItem) {
@@ -155,8 +163,14 @@ export default class BoxPacker {
 
       for (let i = 0; i < lowestItems.length; i += 1) {
         const [colIdx, itemIdx] = lowestItems[i];
-        usedSlots = this.findAvailableSlots(colIdx, itemIdx, colSpan, height, itemSlotOffset);
-        if (usedSlots.length > 0 && usedSlots.length >= colSpan) {
+        usedSlots = this.findAvailableSlots(
+          colIdx,
+          itemIdx,
+          renderedColSpan,
+          height,
+          itemSlotOffset
+        );
+        if (usedSlots.length > 0 && usedSlots.length >= renderedColSpan) {
           break slotSearch;
         }
       }
@@ -174,6 +188,7 @@ export default class BoxPacker {
     this.splitAllSlots(usedSlots, height);
 
     return {
+      renderedColSpan,
       top: firstSlot.startY + slotHeightOffset,
       left: firstSlot.startX,
     };

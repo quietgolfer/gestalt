@@ -225,7 +225,7 @@ export default class BoxGrid extends Component {
    * Processes height information for an item based on width and height.
    */
   processInfo = (element: HTMLElement, width: number, height: number) => {
-    const { top, left } = this.packer.position(
+    const { top, left, renderedColSpan } = this.packer.position(
       width,
       height,
       // TODO: Find a better way to extract child column count from the component.
@@ -235,7 +235,7 @@ export default class BoxGrid extends Component {
     /* eslint no-param-reassign: 0 */
     element.style.top = `${top}px`;
     element.style.left = `${left}px`;
-    element.style.width = `${this.state.itemWidth}px`;
+    element.style.width = `${this.state.itemWidth * renderedColSpan}px`;
     element.className = styles.Grid__Item;
   }
 

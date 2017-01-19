@@ -293,5 +293,29 @@ describe('Packer', () => {
       expect(itemPos.top).toEqual(301);
       expect(itemPos.left).toEqual(400);
     });
+
+    it('Renders columns into the smaller containers if they don’t fit', () => {
+      const p = getPacker(3);
+      const items = [
+        [200, 400, 2],
+        [400, 300, 4],
+        [400, 300, 2],
+      ];
+
+      const firstItem = p.position(...items[0]);
+      expect(firstItem.top).toEqual(0);
+      expect(firstItem.left).toEqual(0);
+      expect(firstItem.renderedColSpan).toEqual(items[0][2]);
+
+      const secondItem = p.position(...items[1]);
+      expect(secondItem.top).toEqual(401);
+      expect(secondItem.left).toEqual(0);
+      expect(secondItem.renderedColSpan).toEqual(items[1][2] - 1);
+
+      const thirdItem = p.position(...items[2]);
+      expect(thirdItem.top).toEqual(702);
+      expect(thirdItem.left).toEqual(0);
+      expect(thirdItem.renderedColSpan).toEqual(items[2][2]);
+    });
   });
 });

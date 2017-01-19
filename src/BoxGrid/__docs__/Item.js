@@ -27,7 +27,7 @@ const Item = (props: Props) => {
   if (columnWidth) {
     containerStyles = {
       padding: 1,
-      width: columnWidth * data.colSpan,
+      width: '100%',
       height: `${data.height}px`,
       boxSizing: 'border-box',
     };
