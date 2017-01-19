@@ -7,6 +7,7 @@ import Column from './Column/Column';
 import Container from './Container/Container';
 import Divider from './Divider/Divider';
 import FlexibleGrid from './FlexibleGrid/FlexibleGrid';
+import Flyout from './Flyout/Flyout';
 import GroupAvatar from './GroupAvatar/GroupAvatar';
 import Heading from './Heading/Heading';
 import Icon from './Icon/Icon';
@@ -34,6 +35,7 @@ export {
   Container,
   Divider,
   FlexibleGrid,
+  Flyout,
   GroupAvatar,
   Heading,
   Icon,

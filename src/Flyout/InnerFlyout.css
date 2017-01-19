@@ -1,0 +1,23 @@
+.Flyout-dimensions {
+  max-height: 90vh;
+  max-width: 500px;
+  min-height: 50px;
+  min-width: 80px;
+}
+
+.Flyout-caret {
+  fill: #fff;
+  stroke: #efefef;
+}
+
+.Flyout-mobile {
+  max-height: 70vh;
+  width: 100vw;
+}
+
+.Flyout-overlay {
+  background-color: #000;
+  height: 100%;
+  opacity: 0.5;
+  width: 100%;
+}
