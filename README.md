@@ -10,7 +10,7 @@ yarn
 
 Start the development server:
 ```
-npm start
+yarn start
 ```
 Visit [http://localhost:8080/](http://localhost:8080) and click on a component to view the docs.
 
