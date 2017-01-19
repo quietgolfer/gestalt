@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "react": "^15.4.1",
-    "react-responsive": "^1.2.5"
+    "react": "^15.4.1"
   },
   "scripts": {
     "build_docs": "webpack --config webpack.config.corkboard.js --colors --progress --optimize-minimize --output-public-path '/gestalt' --output-path docs",

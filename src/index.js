@@ -16,7 +16,6 @@ import Image from './Image/Image';
 import Label from './Label/Label';
 import Letterbox from './Letterbox/Letterbox';
 import Mask from './Mask/Mask';
-import MediaQuery from './MediaQuery/MediaQuery';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
 import SelectList from './SelectList/SelectList';
 import Spinner from './Spinner/Spinner';
@@ -44,7 +43,6 @@ export {
   Label,
   Letterbox,
   Mask,
-  MediaQuery,
   SegmentedControl,
   SelectList,
   Spinner,
