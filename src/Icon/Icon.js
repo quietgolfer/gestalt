@@ -2,7 +2,6 @@
 /* global $Keys */
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
-import accessibilityToken from '../accessibilityToken';
 import styles from './Icon.css';
 import paths from './icons';
 
@@ -19,15 +18,10 @@ type IconProps = {
   size?: number,
 };
 
-type IconWithoutIdProps = IconProps & {
-  id?: string
-};
-
-export function IconWithoutId(props: IconWithoutIdProps) {
+export default function Icon(props: IconProps) {
   const {
     color = 'gray',
     icon,
-    id,
     label,
     size = 16,
   } = props;
@@ -41,18 +35,10 @@ export function IconWithoutId(props: IconWithoutIdProps) {
   const path = paths[icon];
 
   return (
-    <svg className={cs} height={size} width={size} viewBox="0 0 16 16" aria-labelledby={id}>
-      <title id={id}>{label}</title>
+    <svg className={cs} height={size} width={size} viewBox="0 0 16 16" aria-label={label} role="img">
+      <title>{label}</title>
       <path d={path} />
     </svg>
-  );
-}
-
-export default function Icon(props: IconProps) {
-  const id = accessibilityToken('icon_');
-
-  return (
-    <IconWithoutId id={id} {...props} />
   );
 }
 
