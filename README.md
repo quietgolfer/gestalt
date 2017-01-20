@@ -17,9 +17,8 @@ Visit [http://localhost:8080/](http://localhost:8080) and click on a component t
 ## Releasing
 
 The following outlines our release process:
-* Make sure to add the new components you want to release to the index.js export list.
-* Checkout a new branch
-* Bump package version in package.json.
+* Checkout a new branch.
+* Bump package version in `package.json`.
 * Open a pull request with the new version and land that in master.
 * Once the version is bumped in master, checkout that commit locally.
 * Publish to NPM with `npm publish`.
