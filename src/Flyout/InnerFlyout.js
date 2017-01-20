@@ -279,7 +279,7 @@ export default class InnerFlyout extends Component {
     // to something smaller than normal in order
     if (triggerRect.top < CARET_OFFSET_FROM_SIDE
         || window.innerHeight - triggerRect.bottom < CARET_OFFSET_FROM_SIDE) {
-      flyoutVerticalShift = BORDER_RADIUS;
+      flyoutVerticalShift = BORDER_RADIUS + triggerRect.height;
       caretVerticalShift = ((triggerRect.height - CARET_HEIGHT) / 2) + BORDER_RADIUS;
     }
     if (triggerRect.left < CARET_OFFSET_FROM_SIDE
