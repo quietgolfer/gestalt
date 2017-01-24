@@ -24,11 +24,12 @@ const DIR_INDEX_MAP = {
 };
 
 const MARGIN = 24;
-const CARET_HEIGHT = 24;
+export const CARET_HEIGHT = 24;
 const CARET_OFFSET_FROM_SIDE = 24;
 const BORDER_RADIUS = 8;
 
-type MainDir = 'up' | 'right' | 'down' | 'left' | 'none';
+type IdealDir = ?('up' | 'right' | 'down' | 'left');
+type MainDir = IdealDir | 'none';
 type SubDir = 'up' | 'right' | 'down' | 'left' | 'middle';
 
 type ClientRect = {
@@ -40,10 +41,15 @@ type ClientRect = {
   width: number,
 };
 
+type Size = {
+  height: number,
+  width: number,
+};
+
 type Props = {
   children?: any,
   closeLabel: string,
-  idealDirection?: 'up' | 'right' | 'down' | 'left',
+  idealDirection?: IdealDir,
   onClick: () => void,
   triggerRect: ClientRect,
   width: number,
@@ -64,6 +70,174 @@ type State = {
   },
   mainDir: ?MainDir,
   subDir: ?SubDir,
+}
+
+/**
+ * Determines the main direction the flyout opens
+ */
+export function getMainDir(flyoutSize: Size, idealDirection: IdealDir,
+                           triggerRect: ClientRect, windowSize: Size) {
+  // Calculates the available space if we were to place the flyout in the 4 main directions
+  // to determine which 'quadrant' to position the flyout inside of
+  let up = triggerRect.top - flyoutSize.height - CARET_HEIGHT;
+  let right = windowSize.width - flyoutSize.width - CARET_HEIGHT - triggerRect.right;
+  let down = windowSize.height - flyoutSize.height - CARET_HEIGHT - triggerRect.bottom;
+  let left = triggerRect.left - flyoutSize.width - CARET_HEIGHT;
+
+  // overrides available space when the trigger is close to the edge of the screen
+  // trigger is too close to top/bottom of screen for left & right flyouts
+  if (triggerRect.top < BORDER_RADIUS
+    || windowSize.height - triggerRect.bottom < BORDER_RADIUS) {
+    left = 0;
+    right = 0;
+  }
+
+  // trigger is too close to the left/right of screen for up & down flyouts
+  if (triggerRect.left < BORDER_RADIUS
+    || windowSize.width - triggerRect.right < BORDER_RADIUS) {
+    up = 0;
+    down = 0;
+  }
+
+  const spaces = [up, right, down, left];
+
+  // Identify best direction of available spaces
+  const max = Math.max(...spaces);
+
+  // Chose the main direction for the flyout based on available spaces & user preference
+  let mainDir;
+  if (max <= 0) { // flyout will not fit on the screen, return 'none' for mobile version
+    mainDir = 'none';
+  } else if (idealDirection && spaces[DIR_INDEX_MAP[idealDirection]] > 0) { // user pref
+    mainDir = idealDirection;
+  } else { // If no direction pref, chose the direction in which there is the most space available
+    mainDir = SPACES_INDEX_MAP[spaces.indexOf(max)];
+  }
+  return mainDir;
+}
+
+/**
+ * Determines the sub direction of how the flyout is positioned within the main dir
+ */
+export function getSubDir(flyoutSize: Size, mainDir: MainDir,
+                          triggerRect: ClientRect, windowSize: Size) {
+  // Now that we have the main direction, chose from 3 caret placements for that direction
+  let offset;
+  let triggerMid;
+  let windowSpaceAvailable;
+
+  if (mainDir === 'right' || mainDir === 'left') {
+    offset = flyoutSize.height / 2;
+    triggerMid = triggerRect.top + ((triggerRect.bottom - triggerRect.top) / 2);
+    windowSpaceAvailable = windowSize.height;
+  } else { // (mainDir === 'up' || mainDir === 'down')
+    offset = flyoutSize.width / 2;
+    triggerMid = triggerRect.left + ((triggerRect.right - triggerRect.left) / 2);
+    windowSpaceAvailable = windowSize.width;
+  }
+
+  const aboveOrLeft = triggerMid - offset - MARGIN;
+  const belowOrRight = windowSpaceAvailable - triggerMid - offset - MARGIN;
+  let subDir;
+  if (aboveOrLeft > 0 && belowOrRight > 0) { // caret should go in middle b/c it can
+    subDir = 'middle';
+  } else if (belowOrRight > 0) { // caret should go at top for left/right and left for up/down
+    subDir = mainDir === 'left' || mainDir === 'right' ? 'up' : 'left';
+  } else { // caret should go at bottom for left/right and right for up/down
+    subDir = mainDir === 'left' || mainDir === 'right' ? 'down' : 'right';
+  }
+  return subDir;
+}
+
+/**
+ * Calculates the amount the flyout & caret need to shift over to align with designs
+ */
+export function calcEdgeShifts(subDir: SubDir, triggerRect: ClientRect, windowSize: Size) {
+  // Target values for flyout and caret shifts
+  let flyoutVerticalShift = CARET_OFFSET_FROM_SIDE - ((triggerRect.height - CARET_HEIGHT) / 2);
+  let flyoutHorizontalShift = CARET_OFFSET_FROM_SIDE - ((triggerRect.width - CARET_HEIGHT) / 2);
+  let caretVerticalShift = CARET_HEIGHT;
+  let caretHorizontalShift = CARET_HEIGHT;
+
+  if (subDir === 'up') {
+    flyoutVerticalShift += triggerRect.height;
+  }
+
+  // Covers edge case where trigger is in a corner and we need to adjust the offset of the caret
+  // to something smaller than normal in order
+  if (triggerRect.top < CARET_OFFSET_FROM_SIDE
+      || windowSize.height - triggerRect.bottom < CARET_OFFSET_FROM_SIDE) {
+    flyoutVerticalShift = BORDER_RADIUS + triggerRect.height;
+    caretVerticalShift = ((triggerRect.height - CARET_HEIGHT) / 2) + BORDER_RADIUS;
+  }
+  if (triggerRect.left < CARET_OFFSET_FROM_SIDE
+      || windowSize.width - triggerRect.right < CARET_OFFSET_FROM_SIDE) {
+    flyoutHorizontalShift = BORDER_RADIUS;
+    caretHorizontalShift = ((triggerRect.width - CARET_HEIGHT) / 2) + BORDER_RADIUS;
+  }
+  return {
+    flyoutShift: {
+      x: flyoutHorizontalShift,
+      y: flyoutVerticalShift,
+    },
+    caretShift: {
+      x: caretHorizontalShift,
+      y: caretVerticalShift,
+    },
+  };
+}
+
+/**
+ * Calculates flyout and caret offsets for styling
+ */
+export function calcOffsets(flyoutSize: Size, mainDir: MainDir, subDir: SubDir,
+                            triggerRect: ClientRect, windowSize: Size) {
+  let flyoutTop = mainDir === 'down' ? CARET_HEIGHT / 2 : null;
+  let flyoutRight = mainDir === 'left' ? triggerRect.width + (CARET_HEIGHT / 2) : null;
+  let flyoutBottom = mainDir === 'up' ? triggerRect.height + (CARET_HEIGHT / 2) : null;
+  let flyoutLeft = mainDir === 'right' ? triggerRect.width + (CARET_HEIGHT / 2) : null;
+
+  let caretTop = mainDir === 'down' ? -CARET_HEIGHT : null;
+  let caretRight = mainDir === 'left' ? -CARET_HEIGHT : null;
+  let caretBottom = null;
+  let caretLeft = mainDir === 'right' ? -CARET_HEIGHT : null;
+
+  const { caretShift, flyoutShift } = calcEdgeShifts(subDir, triggerRect, windowSize);
+
+  if (subDir === 'left') {
+    flyoutLeft = -flyoutShift.x;
+    caretLeft = caretShift.x;
+  } else if (subDir === 'right') {
+    flyoutRight = -flyoutShift.x;
+    caretRight = caretShift.x;
+  } else if (subDir === 'up') {
+    flyoutTop = -flyoutShift.y;
+    caretTop = caretShift.y;
+  } else if (subDir === 'down') {
+    flyoutBottom = -flyoutShift.y;
+    caretBottom = caretShift.y;
+  } else if (subDir === 'middle' && (mainDir === 'left' || mainDir === 'right')) {
+    flyoutTop = -(flyoutSize.height + triggerRect.height) / 2;
+    caretTop = (flyoutSize.height - CARET_HEIGHT) / 2;
+  } else if (subDir === 'middle' && (mainDir === 'up' || mainDir === 'down')) {
+    flyoutRight = -(flyoutSize.width - triggerRect.width) / 2;
+    caretRight = (flyoutSize.width - CARET_HEIGHT) / 2;
+  }
+
+  return {
+    flyoutOffset: {
+      top: flyoutTop,
+      right: flyoutRight,
+      bottom: flyoutBottom,
+      left: flyoutLeft,
+    },
+    caretOffset: {
+      top: caretTop,
+      right: caretRight,
+      bottom: caretBottom,
+      left: caretLeft,
+    },
+  };
 }
 
 export default class InnerFlyout extends Component {
@@ -98,8 +272,18 @@ export default class InnerFlyout extends Component {
    * to correctly position the offset
    */
   setFlyoutPosition = () => {
+    const { idealDirection, width, triggerRect } = this.props;
+    const windowSize = {
+      height: window.innerHeight,
+      width: window.innerWidth,
+    };
+    const flyoutSize = {
+      height: this.flyout.clientHeight,
+      width,
+    };
+
     // First choose one of 4 main direction
-    const mainDir = this.getMainDir();
+    const mainDir = getMainDir(flyoutSize, idealDirection, triggerRect, windowSize);
 
     // Flyout will not fit in any direction, so we skip calculating the offsets
     // and subDir and just set the state for main since that is all we need to know
@@ -109,10 +293,12 @@ export default class InnerFlyout extends Component {
     }
 
     // Now that we have the main direction, chose from 3 caret placements for that direction
-    const subDir = this.getSubDir(mainDir);
+    const subDir = getSubDir(flyoutSize, mainDir, triggerRect, windowSize);
 
     // Then calculate the correct offsets to place the flyout in the right position
-    const { flyoutOffset, caretOffset } = this.calcFlyoutOffset(mainDir, subDir);
+    const {
+      flyoutOffset,
+      caretOffset } = calcOffsets(flyoutSize, mainDir, subDir, triggerRect, windowSize);
 
     this.setState({
       caretOffset,
@@ -120,183 +306,6 @@ export default class InnerFlyout extends Component {
       mainDir,
       subDir,
     });
-  }
-
-  /**
-   * Determines the main direction the flyout opens
-   */
-  getMainDir = () => {
-    const { idealDirection, width, triggerRect } = this.props;
-    const height = this.flyout.clientHeight;
-
-    // Calculates the available space if we were to place the flyout in the 4 main directions
-    // to determine which 'quadrant' to position the flyout inside of
-    let up = triggerRect.top - height - CARET_HEIGHT;
-    let right = window.innerWidth - width - CARET_HEIGHT - triggerRect.right;
-    let down = window.innerHeight - height - CARET_HEIGHT - triggerRect.bottom;
-    let left = triggerRect.left - width - CARET_HEIGHT;
-
-    // overrides available space when the trigger is close to the edge of the screen
-    // trigger is too close to top/bottom of screen for left & right flyouts
-    if (triggerRect.top < BORDER_RADIUS
-      || window.innerHeight - triggerRect.bottom < BORDER_RADIUS) {
-      left = 0;
-      right = 0;
-    }
-
-    // trigger is too close to the left/right of screen for up & down flyouts
-    if (triggerRect.left < BORDER_RADIUS
-      || window.innerWidth - triggerRect.right < BORDER_RADIUS) {
-      up = 0;
-      down = 0;
-    }
-
-    const spaces = [up, right, down, left];
-
-    // Identify best direction of available spaces
-    const max = Math.max(...spaces);
-
-    // Chose the main direction for the flyout based on available spaces & user preference
-    let mainDir;
-    if (max <= 0) { // flyout will not fit on the screen, return 'none' for mobile version
-      mainDir = 'none';
-    } else if (idealDirection && spaces[DIR_INDEX_MAP[idealDirection]] > 0) { // user pref
-      mainDir = idealDirection;
-    } else { // If no direction pref, chose the direction in which there is the most space available
-      mainDir = SPACES_INDEX_MAP[spaces.indexOf(max)];
-    }
-    return mainDir;
-  }
-
-  /**
-   * Determines the sub direction of how the flyout is positioned within the main dir
-   */
-  getSubDir = (mainDir: MainDir) => {
-    const { width, triggerRect } = this.props;
-    const height = this.flyout.clientHeight;
-
-    // Now that we have the main direction, chose from 3 caret placements for that direction
-    let flyoutSize;
-    let triggerMid;
-    let windowSize;
-
-    if (mainDir === 'right' || mainDir === 'left') {
-      flyoutSize = height;
-      triggerMid = triggerRect.top + ((triggerRect.bottom - triggerRect.top) / 2);
-      windowSize = window.innerHeight;
-    } else { // (mainDir === 'up' || mainDir === 'down')
-      flyoutSize = width;
-      triggerMid = triggerRect.left + ((triggerRect.right - triggerRect.left) / 2);
-      windowSize = window.innerWidth;
-    }
-
-    const offset = (flyoutSize / 2);
-    const aboveOrLeft = triggerMid - offset - MARGIN;
-    const belowOrRight = windowSize - triggerMid - offset - MARGIN;
-    let subDir;
-    if (aboveOrLeft > 0 && belowOrRight > 0) { // caret should go in middle b/c it can
-      subDir = 'middle';
-    } else if (belowOrRight > 0) { // caret should go at top for left/right and left for up/down
-      subDir = mainDir === 'left' || mainDir === 'right' ? 'up' : 'left';
-    } else { // caret should go at bottom for left/right and right for up/down
-      subDir = mainDir === 'left' || mainDir === 'right' ? 'down' : 'right';
-    }
-    return subDir;
-  }
-
-  /**
-   * Calculates flyout and caret offsets for styling
-   */
-  calcFlyoutOffset = (mainDir: MainDir, subDir: SubDir) => {
-    const { triggerRect } = this.props;
-    const height = this.flyout.getBoundingClientRect().height;
-
-    let flyoutTop = mainDir === 'down' ? CARET_HEIGHT / 2 : null;
-    let flyoutRight = mainDir === 'left' ? triggerRect.width + (CARET_HEIGHT / 2) : null;
-    let flyoutBottom = mainDir === 'up' ? triggerRect.height + (CARET_HEIGHT / 2) : null;
-    let flyoutLeft = mainDir === 'right' ? triggerRect.width + (CARET_HEIGHT / 2) : null;
-
-    let caretTop = mainDir === 'down' ? -CARET_HEIGHT : null;
-    let caretRight = mainDir === 'left' ? -CARET_HEIGHT : null;
-    let caretBottom;
-    let caretLeft = mainDir === 'right' ? -CARET_HEIGHT : null;
-
-    const { caretShift, flyoutShift } = this.calcFlyoutEdgeShifts(subDir);
-
-    if (subDir === 'left') {
-      flyoutLeft = -flyoutShift.x;
-      caretLeft = caretShift.x;
-    } else if (subDir === 'right') {
-      flyoutRight = -flyoutShift.x;
-      caretRight = caretShift.x;
-    } else if (subDir === 'up') {
-      flyoutTop = -flyoutShift.y;
-      caretTop = caretShift.y;
-    } else if (subDir === 'down') {
-      flyoutBottom = -flyoutShift.y;
-      caretBottom = caretShift.y;
-    } else if (subDir === 'middle' && (mainDir === 'left' || mainDir === 'right')) {
-      flyoutTop = -(height + triggerRect.height) / 2;
-      caretTop = (height - CARET_HEIGHT) / 2;
-    } else if (subDir === 'middle' && (mainDir === 'up' || mainDir === 'down')) {
-      flyoutRight = -(this.props.width - triggerRect.width) / 2;
-      caretRight = (this.props.width - CARET_HEIGHT) / 2;
-    }
-
-    return {
-      flyoutOffset: {
-        top: flyoutTop,
-        right: flyoutRight,
-        bottom: flyoutBottom,
-        left: flyoutLeft,
-      },
-      caretOffset: {
-        top: caretTop,
-        right: caretRight,
-        bottom: caretBottom,
-        left: caretLeft,
-      },
-    };
-  }
-
-  /**
-   * Calculates the amount the flyout & caret need to shift over to align with designs
-   */
-  calcFlyoutEdgeShifts = (subDir: SubDir) => {
-    const { triggerRect } = this.props;
-
-    // Target values for flyout and caret shifts
-    let flyoutVerticalShift = CARET_OFFSET_FROM_SIDE - ((triggerRect.height - CARET_HEIGHT) / 2);
-    let flyoutHorizontalShift = CARET_OFFSET_FROM_SIDE - ((triggerRect.width - CARET_HEIGHT) / 2);
-    let caretVerticalShift = CARET_HEIGHT;
-    let caretHorizontalShift = CARET_HEIGHT;
-
-    if (subDir === 'up') {
-      flyoutVerticalShift += triggerRect.height;
-    }
-
-    // Covers edge case where trigger is in a corner and we need to adjust the offset of the caret
-    // to something smaller than normal in order
-    if (triggerRect.top < CARET_OFFSET_FROM_SIDE
-        || window.innerHeight - triggerRect.bottom < CARET_OFFSET_FROM_SIDE) {
-      flyoutVerticalShift = BORDER_RADIUS + triggerRect.height;
-      caretVerticalShift = ((triggerRect.height - CARET_HEIGHT) / 2) + BORDER_RADIUS;
-    }
-    if (triggerRect.left < CARET_OFFSET_FROM_SIDE
-        || window.innerWidth - triggerRect.right < CARET_OFFSET_FROM_SIDE) {
-      flyoutHorizontalShift = BORDER_RADIUS;
-      caretHorizontalShift = ((triggerRect.width - CARET_HEIGHT) / 2) + BORDER_RADIUS;
-    }
-    return {
-      flyoutShift: {
-        x: flyoutHorizontalShift,
-        y: flyoutVerticalShift,
-      },
-      caretShift: {
-        x: caretHorizontalShift,
-        y: caretVerticalShift,
-      },
-    };
   }
 
   props: Props;
