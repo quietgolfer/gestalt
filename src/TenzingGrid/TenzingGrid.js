@@ -222,10 +222,17 @@ export default class TenzingGrid<T> extends Component {
 
     items.forEach((itemData, insertedItemIdx) => {
       const itemInfo = {};
+
+
+      const key = colIdx != null && itemIdx != null ?
+        parseFloat(`${insertedItemIdx.toString()}.${this.itemKeyCounter}1`) :
+        this.itemKeyCounter;
+
       const component = (
         <this.props.comp
           data={itemData}
           addRelatedItems={this.handleAddRelatedItems(itemInfo)}
+          itemIdx={key}
         />
       );
       ReactDOM.unstable_renderSubtreeIntoContainer(
@@ -249,7 +256,6 @@ export default class TenzingGrid<T> extends Component {
 
         // Construct a more specific render key for inserted items.
         // This allows us to properly order items after a reflow when sorting on the key.
-        const key = parseFloat(`${insertedItemIdx.toString()}.${this.itemKeyCounter}1`);
 
         itemInfo.column = parseInt(colIdx, 10);
         itemInfo.left = left;
@@ -277,7 +283,7 @@ export default class TenzingGrid<T> extends Component {
         itemInfo.left = left;
         itemInfo.top = top;
         itemInfo.bottom = top + clientHeight + this.props.gutterWidth;
-        itemInfo.key = String(this.itemKeyCounter);
+        itemInfo.key = key;
 
         gridItems[column].push(itemInfo);
       }
