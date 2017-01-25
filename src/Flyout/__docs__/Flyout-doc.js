@@ -14,10 +14,12 @@ md`
 \`\`\`jsx
 type Props = {
   children?: any,
-  closeLabel: string, /* needed for accessibility  and internationalization */
+  closeLabel: string, // needed for accessibility  and internationalization
   idealDirection?: 'up' | 'right' | 'down' | 'left',
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl', /* default: sm */
-  trigger: () => React$Element<any>,
+  isOpen?: boolean,
+  onDismiss: () => void,
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl', // default: sm
+  trigger: React$Element<any>,
 };
 \`\`\`
 `);
@@ -42,20 +44,12 @@ We encourage you to resize your browser now to observe the examples below to ful
 this behavior!
 `);
 
-card('Trigger',
+card('isOpen & onDismiss',
 md`
-The Flyout component handles the open/closed state associated with it. Any element
-that takes an \`onClick\` prop can act as the trigger for a Flyout. What you will need to do
-is provide the trigger as a function which consumes the \`onToggle\` returned upon clicking
-on the trigger, as shown below.
-\`\`\`jsx
-<Flyout
-  closeLabel="close"
-  trigger={onToggle => <IconButton label="More" icon="ellipsis" onClick={onToggle} />}
-  >
-  {children}
-</Flyout>
-\`\`\`
+The parent element utilizing the Flyout component handles the open/closed state associated with it.
+To manage this, you must provide that state in the \`isOpen\` prop of Flyout. You also must specify
+an \`onDismiss\` callback that is called in the following scenarios when a user clicks on the page outside
+of the Flyout and when a user presses the escape key.
 `);
 
 card('Sizes',
@@ -145,79 +139,106 @@ const helpFlyout = (
 
 card('Examples',
 md`
+Below are several sample code snippets with corresponding live Flyout examples on the right.
+
+<b>#1</b>
 \`\`\`jsx
 <Flyout
   closeLabel="close"
   idealDirection="down"
-  trigger={onToggle => <IconButton label="More" icon="ellipsis" onClick={onToggle} />}
+  isOpen={this.state.isOpen}
+  onDismiss={() => this.setState({ isOpen: false })}
+  trigger={<IconButton label="More options" icon="ellipsis" onClick={() => this.setState({ isOpen: !this.state.isOpen }) />}
   size="xs"
 >
   {children}
 </Flyout>
 \`\`\`
+<b>#2</b>
 \`\`\`jsx
 <Flyout
   closeLabel="close"
   idealDirection="right"
-  trigger={onToggle => <IconButton label="profile" icon="person" onClick={onToggle} />}
+  isOpen={this.state.isOpen}
+  onDismiss={() => this.setState({ isOpen: false })}
+  trigger={<IconButton label="Profile options" icon="person" onClick={() => this.setState({ isOpen: !this.state.isOpen }) />}
 >
   {children}
 </Flyout>
 \`\`\`
+<b>#3</b>
 \`\`\`jsx
 <Flyout
   closeLabel="close"
-  trigger={onToggle => <IconButton label="Add pin" icon="add" onClick={onToggle} />}
+  isOpen={this.state.isOpen}
+  onDismiss={() => this.setState({ isOpen: false })}
+  trigger={<IconButton label="Add pin" icon="plus" onClick={() => this.setState({ isOpen: !this.state.isOpen }) />}
 >
   {children}
 </Flyout>
 \`\`\`
+<b>#4</b>
 \`\`\`jsx
 <Flyout
   closeLabel="close"
   idealDirection="up"
-  trigger={onToggle => <Button text="Help" onClick={onToggle} />}
+  isOpen={this.state.isOpen}
+  onDismiss={() => this.setState({ isOpen: false })}
+  trigger={<Button text="Help" onClick={() => this.setState({ isOpen: !this.state.isOpen })/>}
 >
   {children}
 </Flyout>
 \`\`\`
 `,
+atom => (
   <div>
-    <div>
+    <div className="py2">
+      <span className="px1"><Text bold inline>#1</Text></span>
       <Flyout
         closeLabel="close"
         idealDirection="down"
-        trigger={onToggle => <IconButton label="More" icon="ellipsis" onClick={onToggle} />}
+        isOpen={atom.deref().more}
+        onDismiss={() => atom.reset({ more: !atom.deref().more })}
+        trigger={<IconButton label="More options" icon="ellipsis" onClick={() => atom.reset({ more: !atom.deref().more })} />}
         size="xs"
       >
         {moreFlyout}
       </Flyout>
     </div>
-    <div>
+    <div className="py2">
+      <span className="px1"><Text bold inline>#2</Text></span>
       <Flyout
         closeLabel="close"
         idealDirection="right"
-        trigger={onToggle => <IconButton label="profile" icon="person" onClick={onToggle} />}
+        isOpen={atom.deref().profile}
+        onDismiss={() => atom.reset({ profile: !atom.deref().profile })}
+        trigger={<IconButton label="Profile options" icon="person" onClick={() => atom.reset({ profile: !atom.deref().profile })} />}
       >
         {profileFlyout}
       </Flyout>
     </div>
-    <div>
+    <div className="py2">
+      <span className="px1"><Text bold inline>#3</Text></span>
       <Flyout
         closeLabel="close"
-        trigger={onToggle => <IconButton label="Add pin" icon="add" onClick={onToggle} />}
+        isOpen={atom.deref().add}
+        onDismiss={() => atom.reset({ add: !atom.deref().add })}
+        trigger={<IconButton label="Add pin" icon="add" onClick={() => atom.reset({ add: !atom.deref().add })} />}
       >
         {plusFlyout}
       </Flyout>
     </div>
-    <div>
+    <div className="py2">
+      <span className="px1"><Text bold inline>#4</Text></span>
       <Flyout
         closeLabel="close"
         idealDirection="up"
-        trigger={onToggle => <Button text="Help" onClick={onToggle} />}
+        isOpen={atom.deref().help}
+        onDismiss={() => atom.reset({ help: !atom.deref().help })}
+        trigger={<Button text="Help" onClick={() => atom.reset({ help: !atom.deref().help })} />}
       >
         {helpFlyout}
       </Flyout>
     </div>
   </div>
-);
+));

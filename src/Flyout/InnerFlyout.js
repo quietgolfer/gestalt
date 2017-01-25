@@ -49,8 +49,11 @@ type Size = {
 type Props = {
   children?: any,
   closeLabel: string,
-  idealDirection?: IdealDir,
-  onClick: () => void,
+  idealDirection?: 'up' | 'right' | 'down' | 'left',
+  onClick: (e: Event) => void,
+  onDismiss: () => void,
+  onKeyDown: (e: { keyCode: number }) => void,
+  onResize: () => void,
   triggerRect: ClientRect,
   width: number,
 };
@@ -261,10 +264,19 @@ export default class InnerFlyout extends Component {
 
   componentDidMount() {
     this.setFlyoutPosition();
+    document.addEventListener('click', this.props.onClick);
+    window.addEventListener('resize', this.props.onResize);
+    window.addEventListener('keydown', this.props.onKeyDown);
   }
 
   componentWillReceiveProps() {
     this.setFlyoutPosition();
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.props.onClick);
+    window.removeEventListener('resize', this.props.onResize);
+    window.removeEventListener('keydown', this.props.onKeyDown);
   }
 
   /**
@@ -327,7 +339,7 @@ export default class InnerFlyout extends Component {
             ref={(c) => { this.flyout = c; }}
           >
             <div className={cx('absolute', 'right-0', 'top-0')}>
-              <IconButton icon="cancel" label={closeLabel} onClick={this.props.onClick} />
+              <IconButton icon="cancel" label={closeLabel} onClick={this.props.onDismiss} />
             </div>
             <div style={{ width }}>
               {children}
@@ -362,7 +374,10 @@ InnerFlyout.propTypes = {
   children: PropTypes.node,
   closeLabel: PropTypes.string.isRequired,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
+  onDismiss: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func.isRequired,
+  onResize: PropTypes.func.isRequired,
   triggerRect: PropTypes.shape({
     bottom: PropTypes.number,
     height: PropTypes.number,

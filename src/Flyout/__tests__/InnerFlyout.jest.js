@@ -145,7 +145,17 @@ describe('InnerFlyout', () => {
   describe('Regular & mobile version display checks', () => {
     it('Renders caret in if screen is large enough to render normal flyout', () => {
       const triggerRect = centerTriggerRect();
-      const wrapper = shallow(<InnerFlyout closeLabel="close" triggerRect={triggerRect} width={flyoutSize.width} />);
+      const wrapper = shallow(
+        <InnerFlyout
+          closeLabel="close"
+          onClick={jest.fn()}
+          onDismiss={jest.fn()}
+          onKeyDown={jest.fn()}
+          onResize={jest.fn()}
+          triggerRect={triggerRect}
+          width={flyoutSize.width}
+        />
+      );
       wrapper.instance().setState({ mainDir: 'left' });
       expect(wrapper.find('IconButton').length).toEqual(0);
       expect(wrapper.find('Caret').length).toEqual(1);
@@ -153,7 +163,17 @@ describe('InnerFlyout', () => {
 
     it('Renders IconButton if mobile version of flyout is needed', () => {
       const triggerRect = centerTriggerRect();
-      const wrapper = shallow(<InnerFlyout closeLabel="close" triggerRect={triggerRect} width={flyoutSize.width} />);
+      const wrapper = shallow(
+        <InnerFlyout
+          closeLabel="close"
+          onClick={jest.fn()}
+          onDismiss={jest.fn()}
+          onKeyDown={jest.fn()}
+          onResize={jest.fn()}
+          triggerRect={triggerRect}
+          width={flyoutSize.width}
+        />
+      );
       wrapper.instance().setState({ mainDir: 'none' });
       expect(wrapper.find('Caret').length).toEqual(0);
       expect(wrapper.find('IconButton').length).toEqual(1);

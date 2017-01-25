@@ -7,11 +7,12 @@ type Props = {
   children?: any,
   closeLabel: string,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
+  isOpen: boolean,
+  onDismiss: () => void,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
-  trigger: () => React$Element<any>,
+  trigger: React$Element<any>,
 };
 
-// TODO: get input from design on these sizes
 const SIZE_WIDTH_MAP = {
   xs: 185,
   sm: 230,
@@ -32,16 +33,11 @@ type ClientRect = {
 };
 
 type State = {
-  isOpen: bool,
-  flyoutContent: ?Node,
   triggerBoundingRect: ClientRect,
 }
 
 export default class Flyout extends Component {
-
   state:State = {
-    isOpen: false,
-    flyoutContent: null,
     triggerBoundingRect: {
       bottom: 0,
       height: 0,
@@ -52,17 +48,8 @@ export default class Flyout extends Component {
     },
   };
 
-  componentDidMount() {
+  componentWillReceiveProps() {
     this.updateTriggerRect();
-    document.addEventListener('click', this.handlePageClick);
-    window.addEventListener('resize', this.updateTriggerRect);
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handlePageClick);
-    window.removeEventListener('resize', this.updateTriggerRect);
-    window.removeEventListener('keydown', this.handleKeyDown);
   }
 
   props: Props;
@@ -71,20 +58,15 @@ export default class Flyout extends Component {
 
   handleKeyDown = (e: { keyCode: number }) => {
     if (e.keyCode === ESCAPE_KEY_CODE) {
-      this.setState({ isOpen: false });
+      this.props.onDismiss();
     }
   }
 
   handlePageClick = (e: Event) => {
     if (e.target instanceof Node
       && !this.triggerButton.contains(e.target) && !this.innerFlyout.contains(e.target)) {
-      this.setState({ isOpen: false });
+      this.props.onDismiss();
     }
-  };
-
-  handleTriggerClick = () => {
-    this.updateTriggerRect();
-    this.setState({ isOpen: !this.state.isOpen });
   }
 
   updateTriggerRect = () => {
@@ -93,20 +75,23 @@ export default class Flyout extends Component {
   }
 
   render() {
-    const { children, closeLabel, idealDirection, trigger } = this.props;
+    const { children, closeLabel, idealDirection, isOpen, trigger } = this.props;
     const size = this.props.size ? this.props.size : 'sm';
     const width = SIZE_WIDTH_MAP[size];
     return (
       <div className="inline-block">
         <div ref={(c) => { this.triggerButton = c; }}>
-          {trigger(this.handleTriggerClick)}
+          {trigger}
         </div>
         <div ref={(c) => { this.innerFlyout = c; }}>
-          {this.state.isOpen ?
+          {isOpen ?
             <InnerFlyout
               closeLabel={closeLabel}
               idealDirection={idealDirection}
-              onClick={() => this.setState({ isOpen: false })}
+              onClick={this.handlePageClick}
+              onDismiss={this.props.onDismiss}
+              onKeyDown={this.handleKeyDown}
+              onResize={this.updateTriggerRect}
               triggerRect={this.state.triggerBoundingRect}
               width={width}
             >
@@ -124,6 +109,8 @@ Flyout.propTypes = {
   children: PropTypes.node,
   closeLabel: PropTypes.string.isRequired,  // needed for accessibility  and internationalization
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
+  isOpen: PropTypes.bool.isRequired,
+  onDismiss: PropTypes.func.isRequired,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), // default: sm
-  trigger: PropTypes.func.isRequired,
+  trigger: PropTypes.node.isRequired,
 };

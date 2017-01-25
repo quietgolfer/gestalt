@@ -15,31 +15,30 @@ describe('Flyout', () => {
     ...extras,
   });
 
-  const mockInnerFlyout = (extras = {}) => ({
-    contains: jest.fn(),
-    ...extras,
-  });
-
-  it('renders InnerFlyout after the trigger clicked', () => {
-    const wrapper = shallow(<Flyout closeLabel="close" trigger={(onToggle => <button onClick={onToggle}> test </button>)} />);
+  it('does not render InnerFlyout when isOpen is false', () => {
+    const wrapper = shallow(
+      <Flyout
+        closeLabel="close"
+        isOpen={false}
+        onDismiss={() => null}
+        trigger={<button onClick={() => null}> test </button>}
+      />
+    );
     expect(wrapper.find(InnerFlyout).length).toEqual(0);
-    expect(wrapper.instance().state.isOpen).toEqual(false);
-
-    wrapper.instance().triggerButton = mockTrigger();
-
-    wrapper.instance().handleTriggerClick();
-    expect(wrapper.find(InnerFlyout).length).toEqual(1);
-    expect(wrapper.instance().state.isOpen).toEqual(true);
   });
 
-  it('closes an open InnerFlyout after the trigger is clicked', () => {
-    const wrapper = shallow(<Flyout closeLabel="close" trigger={(onToggle => <button onClick={onToggle}> test </button>)} />);
-    wrapper.instance().triggerButton = mockTrigger();
-    wrapper.instance().innerFlyout = mockInnerFlyout();
 
-    wrapper.instance().handleTriggerClick();
-    expect(wrapper.instance().state.isOpen).toEqual(true);
-    wrapper.instance().handleTriggerClick();
-    expect(wrapper.instance().state.isOpen).toEqual(false);
+  it('renders InnerFlyout when isOpen is true', () => {
+    const wrapper = shallow(
+      <Flyout
+        closeLabel="close"
+        isOpen
+        onDismiss={() => null}
+        trigger={<button onClick={() => null}> test </button>}
+      />
+    );
+
+    wrapper.instance().triggerButton = mockTrigger();
+    expect(wrapper.find(InnerFlyout).length).toEqual(1);
   });
 });
