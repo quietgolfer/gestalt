@@ -352,7 +352,7 @@ export default class InnerFlyout extends Component {
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
         >
-          <div className={cx('overflow-scroll', 'dimensions')} style={{ width }}>
+          <div className={cx('overflow-scroll', 'Flyout-dimensions')} style={{ width }}>
             {children}
           </div>
           <div className={cx('absolute', 'Flyout-caret')} style={this.state.caretOffset}>
