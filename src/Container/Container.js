@@ -1,6 +1,6 @@
 // @flow
 import React, { PropTypes } from 'react';
-import styles from './Container.css';
+import Box from '../Box/Box';
 
 type Props = {
   children?: any,
@@ -9,9 +9,12 @@ type Props = {
 export default function Container(props: Props) {
   const { children } = props;
   return (
-    <div className={styles.container}>
+    <Box
+      margin={{ left: 'auto', right: 'auto' }}
+      dangerouslySetInlineStyle={{ __style: { maxWidth: 800 } }}
+    >
       {children}
-    </div>
+    </Box>
   );
 }
 

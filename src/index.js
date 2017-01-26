@@ -1,5 +1,6 @@
 // @flow
 import Avatar from './Avatar/Avatar';
+import Box from './Box/Box';
 import BoxGrid from './BoxGrid/BoxGrid';
 import Button from './Button/Button';
 import ClassicGrid from './ClassicGrid/ClassicGrid';
@@ -27,6 +28,7 @@ import TextField from './TextField/TextField';
 
 export {
   Avatar,
+  Box,
   BoxGrid,
   Button,
   ClassicGrid,

@@ -1,6 +1,11 @@
 exports[`test Column matches snapshot 1`] = `
 <div
-  className="col col-1">
+  className="box xs-col-1 xs-inline-block"
+  style={
+    Object {
+      "verticalAlign": "top",
+    }
+  }>
   Hello world
 </div>
 `;

@@ -3,7 +3,9 @@ import React from 'react';
 import { card, md } from 'corkboard';
 import { ns, stylesTable } from '../../.corkboard/cards';
 
-ns('Borders');
+ns('Borders', `
+<font style="color:red">**Deprecated.** Please use [Divider](#/Divider) and [Box](#/Box) instead.</font>
+`);
 
 type Props = {border: string, hasFill?: boolean}
 

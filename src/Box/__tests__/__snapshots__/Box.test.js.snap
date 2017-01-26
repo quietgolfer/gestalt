@@ -1,0 +1,4 @@
+exports[`test Box renders 1`] = `
+<div
+  className="box" />
+`;

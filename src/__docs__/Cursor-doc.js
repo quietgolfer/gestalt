@@ -3,9 +3,9 @@ import { card } from 'corkboard';
 import React from 'react';
 import { ns, stylesTable } from '../../.corkboard/cards';
 
-ns(
-  'Cursor',
-  `
+ns('Cursor', `
+<font style="color:red">**Deprecated.** Please use other components directly instead.</font>
+
 Collection of different cursor options to help users interface
 with your design. These don't affect touch input devices.
 `);

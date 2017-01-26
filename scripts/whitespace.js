@@ -27,23 +27,23 @@ const breakpoints = ['', 'sm', 'md', 'lg'];
 const scale = [0, 1, 2, 3, 4, 5, 6];
 
 function margins(i, hbt, vbt) {
-  return `.m${i} {
+  return `:global .m${i} {
   margin: ${vbt} ${hbt};
 }
 
-.mt${i} {
+:global .mt${i} {
   margin-top: ${vbt};
 }
 
-.mr${i} {
+:global .mr${i} {
   margin-right: ${hbt};
 }
 
-.mb${i} {
+:global .mb${i} {
   margin-bottom: ${vbt};
 }
 
-.ml${i} {
+:global .ml${i} {
   margin-left: ${hbt};
 }`;
 }
@@ -51,12 +51,32 @@ function margins(i, hbt, vbt) {
 
 function negativeMargins(i, nhbt, nvbt) {
   return `
-.mxn${i} {
+:global .mn${i} {
+  margin: ${nvbt} ${nhbt};
+}
+
+:global .mtn${i} {
+  margin-top: ${nvbt};
+}
+
+:global .mbn${i} {
+  margin-bottom: ${nvbt};
+}
+
+:global .mln${i} {
+  margin-left: ${nhbt};
+}
+
+:global .mrn${i} {
+  margin-right: ${nhbt};
+}
+
+:global .mxn${i} {
   margin-left: ${nhbt};
   margin-right: ${nhbt};
 }
 
-.myn${i} {
+:global .myn${i} {
   margin-bottom: ${nvbt};
   margin-top: ${nvbt};
 }`;
@@ -64,16 +84,16 @@ function negativeMargins(i, nhbt, nvbt) {
 
 function padding(i, hbt, vbt) {
   return `
-.p${i} {
+:global .p${i} {
   padding: ${vbt} ${hbt};
 }
 
-.px${i} {
+:global .px${i} {
   padding-left: ${hbt};
   padding-right: ${hbt};
 }
 
-.py${i} {
+:global .py${i} {
   padding-bottom: ${vbt};
   padding-top: ${vbt};
 }`;

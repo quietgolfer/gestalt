@@ -4,8 +4,9 @@ import React from 'react';
 import { card, md } from 'corkboard';
 import { ns, stylesTable } from '../../.corkboard/cards';
 
-ns('Whitespace',
-  `
+ns('Whitespace', `
+<font style="color:red">**Deprecated.** Please use [Box](#/Box) instead.</font>
+
 Gestalt uses a simple short-hand way to apply *responsive* margin and padding to elements.
 Margin and padding classnames take the form of \`{m, p}{x, y, t, b, l, r}{n}{0-6}\`.
 

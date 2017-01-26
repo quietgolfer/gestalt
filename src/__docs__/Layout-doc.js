@@ -69,15 +69,14 @@ function FlexItem(props : ItemProps) {
   );
 }
 
-ns(
-  'Layout',
-  `
+ns('Layout', `
+<font style="color:red">**Deprecated.** Please use [Box](#/Box) instead.</font>
+
 Most classes needed to layout elements correspond to their CSS
 properties/values pretty tightly. For example:
 
 \`.pull-left\` and \`.pull-right\` correspond to \`float: left\` and \`float: right\`.
-  `
-);
+`);
 
 card('Positioning',
   md`

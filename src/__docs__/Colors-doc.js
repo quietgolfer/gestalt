@@ -4,7 +4,9 @@ import classnames from 'classnames';
 import { card, md } from 'corkboard';
 import { ns, stylesTable } from '../../.corkboard/cards';
 
-ns('Colors');
+ns('Colors', `
+<font style="color:red">**Deprecated.** Please use [Text](#/Text), [Heading](#/Heading) and [Box](#/Box) instead.</font>
+`);
 
 function Swatch({ color, size, shadow }) {
   return (
