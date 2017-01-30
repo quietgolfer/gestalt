@@ -85,6 +85,16 @@ describe('InnerFlyout', () => {
       const mainDir = getMainDir(flyoutSize, null, triggerRect, windowSize);
       expect(mainDir).toEqual('down');
     });
+
+    it('Chooses mobile version when the flyout width is larger than window width', () => {
+      const triggerRect = upperLeftTriggerRect();
+      const smallWindowSize = {
+        height: 900,
+        width: flyoutSize.width - 5,
+      };
+      const mainDir = getMainDir(flyoutSize, null, triggerRect, smallWindowSize);
+      expect(mainDir).toEqual('none');
+    });
   });
 
 

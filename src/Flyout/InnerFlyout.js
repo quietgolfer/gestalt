@@ -80,6 +80,10 @@ type State = {
  */
 export function getMainDir(flyoutSize: Size, idealDirection: IdealDir,
                            triggerRect: ClientRect, windowSize: Size) {
+  // Should display mobile version if flyout width is larger than the window width
+  if (flyoutSize.width > windowSize.width) {
+    return 'none';
+  }
   // Calculates the available space if we were to place the flyout in the 4 main directions
   // to determine which 'quadrant' to position the flyout inside of
   let up = triggerRect.top - flyoutSize.height - CARET_HEIGHT;
