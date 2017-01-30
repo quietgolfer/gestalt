@@ -19,7 +19,7 @@
     "flow": "flow",
     "ghost": "BUILDKITE_PARALLEL_JOB_COUNT=${BUILDKITE_PARALLEL_JOB_COUNT} BUILDKITE_PARALLEL_JOB=${BUILDKITE_PARALLEL_JOB} ./run_integration_tests",
     "lint": "npm run eslint && npm run stylelint",
-    "start": "webpack-dev-server --config webpack.config.corkboard.js --progress --colors",
+    "start": "webpack-dev-server --config webpack.config.corkboard.js --progress --colors --open",
     "stylelint": "stylelint src/**/*.css",
     "test": "jest",
     "test:all": "npm run stylelint && npm run eslint && npm run flow && npm test && npm run ghost"
