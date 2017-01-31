@@ -12,6 +12,10 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
+  aria?: { /* Accessibility */
+    expanded?: boolean,
+    haspopup?: boolean,
+  },
   bgColor?: 'transparent' | 'light-gray', /* default: transparent */
   iconColor?: 'gray' | 'dark-gray' | 'red' | 'blue', /* default: gray */
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.

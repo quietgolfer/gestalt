@@ -3,6 +3,7 @@
  */
 
 // @flow
+/* eslint-disable react/no-unused-prop-types */
 import React, { PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Button.css';
@@ -10,6 +11,10 @@ import styles from './Button.css';
 const cx = classnames.bind(styles);
 
 type Props = {
+  aria?: {
+    expanded?: boolean,
+    haspopup?: boolean,
+  },
   color?: 'gray' | 'red' | 'blue',
   disabled?: boolean,
   fullWidth?: boolean,
@@ -20,6 +25,7 @@ type Props = {
 
 export default function Button(props: Props) {
   const {
+    aria = {},
     color = 'gray',
     disabled = false,
     fullWidth = false,
@@ -43,6 +49,8 @@ export default function Button(props: Props) {
 
   return (
     <button
+      aria-expanded={aria.expanded}
+      aria-haspopup={aria.haspopup}
       className={classes}
       disabled={disabled}
       onClick={onClick}
@@ -54,6 +62,10 @@ export default function Button(props: Props) {
 }
 
 Button.propTypes = {
+  aria: PropTypes.shape({
+    expanded: PropTypes.bool,
+    haspopup: PropTypes.bool,
+  }),
   color: PropTypes.oneOf(['blue', 'gray', 'red']),
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,

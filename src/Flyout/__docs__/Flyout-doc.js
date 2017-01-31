@@ -52,6 +52,14 @@ an \`onDismiss\` callback that is called in the following scenarios when a user 
 of the Flyout and when a user presses the escape key.
 `);
 
+card('Accessibility',
+md`
+We recommend passing in the following ARIA attributes to the trigger element:
+
+* \`aria.haspopup\` lets the screenreader know that there is a flyout linked to the tigger.
+* \`aria.expanded\` informs the screenreader whether the flyout is currently open or closed.
+`);
+
 card('Sizes',
 md`
 The \`size\` you specify controls the width of the Flyout. The height of the flyout will adjust to fit
@@ -148,7 +156,17 @@ Below are several sample code snippets with corresponding live Flyout examples o
   idealDirection="down"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
-  trigger={<IconButton label="More options" icon="ellipsis" onClick={() => this.setState({ isOpen: !this.state.isOpen }) />}
+  trigger={
+    <IconButton
+      aria={{
+        expanded: this.state.isOpen,
+        haspopup: true,
+      }}
+      label="More options"
+      icon="ellipsis"
+      onClick={() => this.setState({ isOpen: !this.state.isOpen })}
+    />
+  }
   size="xs"
 >
   {children}
@@ -161,7 +179,17 @@ Below are several sample code snippets with corresponding live Flyout examples o
   idealDirection="right"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
-  trigger={<IconButton label="Profile options" icon="person" onClick={() => this.setState({ isOpen: !this.state.isOpen }) />}
+  trigger={
+    <IconButton
+      aria={{
+        expanded: this.state.isOpen,
+        haspopup: true,
+      }}
+      label="Profile options"
+      icon="person"
+      onClick={() => this.setState({ isOpen: !this.state.isOpen })}
+    />
+  }
 >
   {children}
 </Flyout>
@@ -172,7 +200,17 @@ Below are several sample code snippets with corresponding live Flyout examples o
   closeLabel="close"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
-  trigger={<IconButton label="Add pin" icon="plus" onClick={() => this.setState({ isOpen: !this.state.isOpen }) />}
+  trigger={
+    <IconButton
+      aria={{
+        expanded: this.state.isOpen,
+        haspopup: true,
+      }}
+      label="Add pin"
+      icon="plus"
+      onClick={() => this.setState({ isOpen: !this.state.isOpen })}
+    />
+  }
 >
   {children}
 </Flyout>
@@ -184,7 +222,16 @@ Below are several sample code snippets with corresponding live Flyout examples o
   idealDirection="up"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
-  trigger={<Button text="Help" onClick={() => this.setState({ isOpen: !this.state.isOpen })/>}
+  trigger={
+    <Button
+      aria={{
+        expanded: this.state.isOpen,
+        haspopup: true,
+      }}
+      text="Help"
+      onClick={() => this.setState({ isOpen: !this.state.isOpen })}
+    />
+  }
 >
   {children}
 </Flyout>
@@ -197,9 +244,19 @@ atom => (
       <Flyout
         closeLabel="close"
         idealDirection="down"
-        isOpen={atom.deref().more}
+        isOpen={!!atom.deref().more}
         onDismiss={() => atom.reset({ more: !atom.deref().more })}
-        trigger={<IconButton label="More options" icon="ellipsis" onClick={() => atom.reset({ more: !atom.deref().more })} />}
+        trigger={
+          <IconButton
+            aria={{
+              expanded: !!atom.deref().more,
+              haspopup: true,
+            }}
+            label="More options"
+            icon="ellipsis"
+            onClick={() => atom.reset({ more: !atom.deref().more })}
+          />
+        }
         size="xs"
       >
         {moreFlyout}
@@ -210,9 +267,19 @@ atom => (
       <Flyout
         closeLabel="close"
         idealDirection="right"
-        isOpen={atom.deref().profile}
+        isOpen={!!atom.deref().profile}
         onDismiss={() => atom.reset({ profile: !atom.deref().profile })}
-        trigger={<IconButton label="Profile options" icon="person" onClick={() => atom.reset({ profile: !atom.deref().profile })} />}
+        trigger={
+          <IconButton
+            aria={{
+              expanded: !!atom.deref().profile,
+              haspopup: true,
+            }}
+            label="Profile options"
+            icon="person"
+            onClick={() => atom.reset({ profile: !atom.deref().profile })}
+          />
+        }
       >
         {profileFlyout}
       </Flyout>
@@ -221,9 +288,19 @@ atom => (
       <span className="px1"><Text bold inline>#3</Text></span>
       <Flyout
         closeLabel="close"
-        isOpen={atom.deref().add}
+        isOpen={!!atom.deref().add}
         onDismiss={() => atom.reset({ add: !atom.deref().add })}
-        trigger={<IconButton label="Add pin" icon="add" onClick={() => atom.reset({ add: !atom.deref().add })} />}
+        trigger={
+          <IconButton
+            aria={{
+              expanded: !!atom.deref().add,
+              haspopup: true,
+            }}
+            label="Add pin"
+            icon="add"
+            onClick={() => atom.reset({ add: !atom.deref().add })}
+          />
+        }
       >
         {plusFlyout}
       </Flyout>
@@ -233,9 +310,18 @@ atom => (
       <Flyout
         closeLabel="close"
         idealDirection="up"
-        isOpen={atom.deref().help}
+        isOpen={!!atom.deref().help}
         onDismiss={() => atom.reset({ help: !atom.deref().help })}
-        trigger={<Button text="Help" onClick={() => atom.reset({ help: !atom.deref().help })} />}
+        trigger={
+          <Button
+            aria={{
+              expanded: !!atom.deref().help,
+              haspopup: true,
+            }}
+            text="Help"
+            onClick={() => atom.reset({ help: !atom.deref().help })}
+          />
+        }
       >
         {helpFlyout}
       </Flyout>
