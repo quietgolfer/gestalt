@@ -37,7 +37,9 @@ const fromClassName = (...classNames): Style => new Set(classNames);
 const identity = (): Style => new Set();
 // TODO: Array.from is just to appease flow
 // https://github.com/facebook/flow/issues/1059
-const concat = (a: Style, b: Style): Style => new Set([...Array.from(a), ...Array.from(b)]);
+const concat = (...stylesToConcat: Array<Style>): Style => new Set(
+  stylesToConcat.map(s => Array.from(s)).reduce((acc, s) => acc.concat(s), [])
+);
 const map = (fn: ((x: string) => string), style: Style): Style => (
   new Set(Array.from(style).map(fn))
 );
@@ -121,30 +123,34 @@ type Margin = IntBoint | {
 
 const formatIntBoint = x => (x < 0 ? `n${Math.abs(x)}` : x.toString());
 const margin = (value: Margin) => {
-  let mt;
-  let mb;
-  let ml;
-  let mr;
+  let mt = identity();
+  let mb = identity();
+  let ml = identity();
+  let mr = identity();
   switch (typeof value) {
     case 'number':
       return fromClassName(`m${formatIntBoint(value)}`);
     case 'object':
       if (value.top) {
-        mt = `mt${formatIntBoint(value.top)}`;
+        mt = fromClassName(`mt${formatIntBoint(value.top)}`);
       }
 
       if (value.bottom) {
-        mb = `mb${formatIntBoint(value.bottom)}`;
+        mb = fromClassName(`mb${formatIntBoint(value.bottom)}`);
       }
 
       if (value.left) {
-        mb = (value.left === 'auto') ? styles['ml-auto'] : `ml${formatIntBoint(value.left)}`;
+        ml = fromClassName(
+          value.left === 'auto' ? styles['ml-auto'] : `ml${formatIntBoint(value.left)}`
+        );
       }
 
       if (value.right) {
-        mr = (value.right === 'auto') ? styles['mr-auto'] : `mr${formatIntBoint(value.right)}`;
+        mr = fromClassName(
+          value.right === 'auto' ? styles['mr-auto'] : `mr${formatIntBoint(value.right)}`
+        );
       }
-      return fromClassName(mt, mb, ml, mr);
+      return concat(mt, mb, ml, mr);
     default:
       return identity();
   }
@@ -157,9 +163,9 @@ const padding = (value: Padding): Style => {
     case 'number':
       return fromClassName(`p${value}`);
     case 'object':
-      return fromClassName(
-        (value.x ? `px${value.x}` : null),
-        (value.y ? `py${value.y}` : null)
+      return concat(
+        (value.x ? fromClassName(`px${value.x}`) : identity()),
+        (value.y ? fromClassName(`py${value.y}`) : identity())
       );
     default:
       return identity();

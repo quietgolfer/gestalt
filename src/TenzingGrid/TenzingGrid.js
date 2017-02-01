@@ -207,7 +207,10 @@ export default class TenzingGrid<T> extends Component {
   insertItems(items: Array<*>, colIdx?: (number | null) = null, itemIdx?: (number | null) = null) {
     // Append a temporary node to the dom to measure it.
     const measuringNode = document.createElement('div');
-    document.body.appendChild(measuringNode);
+
+    if (document.body) {
+      document.body.appendChild(measuringNode);
+    }
 
     const gridItems = this.state.gridItems;
 
@@ -292,7 +295,10 @@ export default class TenzingGrid<T> extends Component {
 
       ReactDOM.unmountComponentAtNode(measuringNode);
     });
-    document.body.removeChild(measuringNode);
+
+    if (document.body) {
+      document.body.removeChild(measuringNode);
+    }
 
     // The grid height is the longest of all columns.
     let height = 0;
