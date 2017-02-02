@@ -48,6 +48,10 @@ export default class Flyout extends Component {
     },
   };
 
+  componentDidMount() {
+    this.updateTriggerRect();
+  }
+
   componentWillReceiveProps() {
     this.updateTriggerRect();
   }
@@ -84,7 +88,7 @@ export default class Flyout extends Component {
           {trigger}
         </div>
         <div ref={(c) => { this.innerFlyout = c; }}>
-          {isOpen ?
+          {isOpen && this.triggerButton ?
             <InnerFlyout
               closeLabel={closeLabel}
               idealDirection={idealDirection}

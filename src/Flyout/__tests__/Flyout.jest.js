@@ -3,7 +3,7 @@
 jest.unmock('../Flyout');
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Flyout from '../Flyout';
 import InnerFlyout from '../InnerFlyout';
 
@@ -29,7 +29,7 @@ describe('Flyout', () => {
 
 
   it('renders InnerFlyout when isOpen is true', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Flyout
         closeLabel="close"
         isOpen
