@@ -46,6 +46,29 @@ card('Justify Content',
   { heading: false }
 );
 
+card('Responsive Design',
+md`
+Box allows you to specify media queries in order to have more control over the responsive behavior of your layout for
+\`display\` and \`column\` properties. *Note these properties can **only** be set with a breakpoint attached to them.*
+
+It's good to think about the responsive properties with an "and up" attached to them. If you specify \`xs={}\`,
+those styles are applied to \`xs and up\` screens. If you also happen to specify another set of properties at (\`sm\`, \`md\`, or \`lg\`),
+those will take over when the screen width has reached their respective breakpoints.
+
+For example, if you have both \`xs\` and \`md\` properties specified, the \`xs\` ones will be applied from screen sizes \`0 - md\`
+and the \`md\` ones will be applied to sizes \`md and up\`.
+
+\`\`\`jsx
+<Box xs={{ display: 'flex', column: 6 }} md={{ column: 3 }} color="gray" />
+<Box xs={{ display: 'flex', column: 6 }} md={{ column: 9 }} color="blue" />
+\`\`\`
+`,
+  <div>
+    <Box xs={{ display: 'flex', column: 6 }} md={{ column: 3 }} color="gray" dangerouslySetInlineStyle={{ __style: { height: 25 } }} />
+    <Box xs={{ display: 'flex', column: 6 }} md={{ column: 9 }} color="blue" dangerouslySetInlineStyle={{ __style: { height: 25 } }} />
+  </div>
+);
+
 
 const PaddingSwatch = (props: *) => (
   <Box {...props} dangerouslySetInlineStyle={{ __style: { backgroundColor: 'rgba(0, 0, 255, 0.2)' } }}>
@@ -54,12 +77,12 @@ const PaddingSwatch = (props: *) => (
 );
 
 card('Padding', md`
-Margins are applied in boints and are always symmetric. You should try to use margins before you use margins as they compose better and don't collapse.
+Padding is applied in boints and is always symmetric. You should try to use padding before you use margins as they compose better and don't collapse.
 
 \`\`\`jsx
 <Box padding={1} />
 <Box padding={{ x: 1 }} />
-<Box margin={{ y: 1 }} />
+<Box padding={{ y: 1 }} />
 \`\`\`
 `,
   <Box xs={{ display: 'flex' }} justifyContent="between" alignItems="center" wrap>
@@ -78,7 +101,7 @@ const MarginSwatch = (props: { margin: * }) => (
 card('Margins', md`
 Margins are applied in boints and are asymmetric. Margins can be -6 to 6 boints. You can set margin to be auto in the left and right axis.
 
-In the examplse on the right the outer \`Box\` is in transparent red, and the inner \`Box\` is transparent blue.
+In the example on the right the outer \`Box\` is in transparent red, and the inner \`Box\` is transparent blue.
 
 \`\`\`jsx
 <Box margin={1} />
