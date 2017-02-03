@@ -339,9 +339,9 @@ const overflow = (value: Overflow): Style => {
     case 'auto':
       return fromClassName('overflow-auto');
     case 'scrollX':
-      return fromClassName('overflow-scroll-x');
+      return fromClassName(styles['overflow-scroll-x']);
     case 'scrollY':
-      return fromClassName('overflow-scroll-y');
+      return fromClassName(styles['overflow-scroll-y']);
     default /* visible */:
       return identity();
   }
