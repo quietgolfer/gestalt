@@ -166,15 +166,11 @@ export function calcEdgeShifts(subDir: SubDir, triggerRect: ClientRect, windowSi
   let caretVerticalShift = CARET_HEIGHT;
   let caretHorizontalShift = CARET_HEIGHT;
 
-  if (subDir === 'up') {
-    flyoutVerticalShift += triggerRect.height;
-  }
-
   // Covers edge case where trigger is in a corner and we need to adjust the offset of the caret
   // to something smaller than normal in order
   if (triggerRect.top < CARET_OFFSET_FROM_SIDE
       || windowSize.height - triggerRect.bottom < CARET_OFFSET_FROM_SIDE) {
-    flyoutVerticalShift = BORDER_RADIUS + triggerRect.height;
+    flyoutVerticalShift = BORDER_RADIUS;
     caretVerticalShift = ((triggerRect.height - CARET_HEIGHT) / 2) + BORDER_RADIUS;
   }
   if (triggerRect.left < CARET_OFFSET_FROM_SIDE
@@ -182,6 +178,11 @@ export function calcEdgeShifts(subDir: SubDir, triggerRect: ClientRect, windowSi
     flyoutHorizontalShift = BORDER_RADIUS;
     caretHorizontalShift = ((triggerRect.width - CARET_HEIGHT) / 2) + BORDER_RADIUS;
   }
+
+  if (subDir === 'up') {
+    flyoutVerticalShift += triggerRect.height;
+  }
+
   return {
     flyoutShift: {
       x: flyoutHorizontalShift,
