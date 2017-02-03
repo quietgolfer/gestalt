@@ -7,7 +7,7 @@ import styles from './TextArea.css';
 const cx = classnames.bind(styles);
 
 function handleChange(e: Event, onChange) {
-  if (e.target instanceof HTMLInputElement) {
+  if (e.target instanceof HTMLTextAreaElement) {
     onChange(e.target.value);
   }
 }
