@@ -1,0 +1,17 @@
+.Modal-overlay {
+  height: 100%;
+  opacity: 0.9;
+  overflow-y: scroll;
+}
+
+.Modal-container {
+  height: 100%;
+}
+
+.Modal-wrapper {
+  max-height: 90%;
+}
+
+.Modal-wrapper-xs {
+  border-radius: 0;
+}

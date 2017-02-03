@@ -17,6 +17,7 @@ import Image from './Image/Image';
 import Label from './Label/Label';
 import Letterbox from './Letterbox/Letterbox';
 import Mask from './Mask/Mask';
+import Modal from './Modal/Modal';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
 import SelectList from './SelectList/SelectList';
 import Spinner from './Spinner/Spinner';
@@ -45,6 +46,7 @@ export {
   Label,
   Letterbox,
   Mask,
+  Modal,
   SegmentedControl,
   SelectList,
   Spinner,
