@@ -1,4 +1,4 @@
-.common {
+.textArea {
   composes: bg-light-gray dark-gray from global;
   composes: bold text-md from global;
   composes: border-box from global;
@@ -10,17 +10,15 @@
   resize: none;
 }
 
-.textarea {
-  composes: common;
+.normal {
   composes: border from global;
 }
 
-.textarea:focus {
+.textArea:focus {
   background-color: #fff;
 }
 
 .errored {
-  composes: common;
   border: 1px solid #fab904;
 }
 

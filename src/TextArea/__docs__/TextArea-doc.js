@@ -52,7 +52,6 @@ atom => (
         onChange={newValue => atom.reset({ errorValue: newValue })}
         value={atom.deref().errorValue}
       />
-      {atom.deref().errorValue}
     </div>
   </div>
 ));
