@@ -1,60 +1,62 @@
 // @flow
 
-import React, { PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 import styles from './TextField.css';
 
-const cx = classnames.bind(styles);
+export default class TextField extends Component {
+  propTypes = {
+    hasError: PropTypes.bool,
+    id: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    type: PropTypes.oneOf(['email', 'password', 'text', 'url']),
+    value: PropTypes.string,
+  };
 
-function handleChange(e: Event, onChange) {
-  if (e.target instanceof HTMLInputElement) {
-    onChange(e.target.value);
+  defaultProps = {
+    hasError: false,
+    type: 'text',
+  };
+
+  props: {
+    hasError?: boolean,
+    id: string,
+    onChange: (value: string) => void,
+    placeholder?: string,
+    type?: 'email' | 'password' | 'text' | 'url',
+    value?: string,
+  };
+
+  handleChange = (e: Event) => {
+    if (e.target instanceof HTMLInputElement) {
+      this.props.onChange(e.target.value);
+    }
   }
-}
 
-type Props = {
-  hasError?: boolean,
-  id: string,
-  onChange: (value: string) => void,
-  placeholder?: string,
-  type?: 'email' | 'password' | 'text' | 'url',
-  value?: string,
-};
+  render() {
+    const {
+      hasError,
+      id,
+      placeholder,
+      type,
+      value,
+    } = this.props;
 
-export default function TextField(props: Props) {
-  const {
-    hasError = false,
-    id,
-    onChange,
-    placeholder,
-    type = 'text',
-    value,
-  } = props;
+    const classes = classnames(styles.textField, {
+      [styles.normal]: !hasError,
+      [styles.errored]: hasError,
+    });
 
-  const classes = cx({
-    textfield: !hasError,
-    errored: hasError,
-  });
-
-  return (
-    <div>
+    return (
       <input
         className={classes}
         id={id}
-        onChange={(e: Event) => { handleChange(e, onChange); }}
+        onChange={this.handleChange}
         placeholder={placeholder}
         type={type}
         value={value}
       />
-    </div>
-  );
+    );
+  }
 }
-
-TextField.propTypes = {
-  hasError: PropTypes.bool,
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  type: PropTypes.oneOf(['email', 'password', 'text', 'url']),
-  value: PropTypes.string,
-};
