@@ -13,6 +13,7 @@ import checkCircleLight from './check-circle-light';
 import circleOutline from './circle-outline';
 import clear from './clear';
 import cog from './cog';
+import compass from './compass';
 import edit from './edit';
 import ellipsis from './ellipsis';
 import ellipsisCircleOutline from './ellipsis-circle-outline';
@@ -59,6 +60,7 @@ export default {
   'circle-outline': circleOutline,
   clear,
   cog,
+  compass,
   edit,
   ellipsis,
   'ellipsis-circle-outline': ellipsisCircleOutline,
