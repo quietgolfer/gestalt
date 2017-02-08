@@ -7,7 +7,7 @@ const PIN_SIZE = 235;
 const RESIZE_DEBOUNCE = 100;
 
 const selectors = {
-  gridItem: '[class^="Grid__Grid__Item"]',
+  gridItem: '[class*="Grid__Grid__Item"]',
   staticItem: '.static',
 };
 

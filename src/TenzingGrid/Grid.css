@@ -6,6 +6,9 @@
 
 .Grid__Item {
   composes: absolute from global;
+}
+
+.Grid__Item__Mounted {
   transition: transform 0.2s;
 }
 

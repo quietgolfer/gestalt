@@ -4,12 +4,13 @@ import assert from 'assert';
 import ghost from 'ghostjs';
 
 const selectors = {
-  gridItem: '[class^="Grid__Grid__Item"]',
+  gridItem: '[class*="Grid__Grid__Item"]',
   afterGrid: '.afterGrid',
 };
 
 describe('TenzingGrid > Render Height', () => {
   it('Items can be positioned under the grid', async () => {
+    ghost.close();
     await ghost.open('http://localhost:3000/TenzingGrid?finiteLength=1');
 
     const gridItems = await ghost.findElements(selectors.gridItem);

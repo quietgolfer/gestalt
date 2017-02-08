@@ -44,14 +44,18 @@ export default class TenzingGrid<T> extends Component {
     this.state = {
       height: 0,
       gridItems: [],
+      serverItems: this.serverItems(props.items),
       minHeight: 0,
+      mounted: false,
     };
   }
 
   state: {
     height: number,
     gridItems: Array<*>,
+    serverItems: Array<*> | null,
     minHeight: number,
+    mounted: boolean,
   };
 
   /**
@@ -63,6 +67,11 @@ export default class TenzingGrid<T> extends Component {
     this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
 
     this.updateItems(this.props.items);
+    setTimeout(() => {
+      this.setState({
+        mounted: true,
+      });
+    });
   }
 
   componentWillReceiveProps({ items }: { items: Array<*> }) {
@@ -203,6 +212,28 @@ export default class TenzingGrid<T> extends Component {
     };
   }
 
+  serverItems(items: Array<*>) {
+    const serverItems = items.map((itemData, key) => {
+      const itemInfo = {};
+
+      const component = (
+        <this.props.comp
+          data={itemData}
+          addRelatedItems={this.handleAddRelatedItems(itemInfo)}
+          itemIdx={key}
+        />
+      );
+
+      return {
+        component,
+        key,
+        top: 0,
+        left: 0,
+      };
+    });
+    return serverItems;
+  }
+
   insertItems(items: Array<*>, colIdx?: (number | null) = null, itemIdx?: (number | null) = null) {
     // Append a temporary node to the dom to measure it.
     const measuringNode = document.createElement('div');
@@ -317,6 +348,7 @@ export default class TenzingGrid<T> extends Component {
       gridItems,
       height,
       minHeight: minHeight || this.state.minHeight,
+      serverItems: null,
     });
   }
 
@@ -446,13 +478,19 @@ export default class TenzingGrid<T> extends Component {
           isFetching={this.fetchingWith}
           renderHeight={this.renderHeight}
         />
-        {this.allItems().map(item =>
+        {(this.state.serverItems || this.allItems()).map(item =>
           <div
-            className={styles.Grid__Item}
+            className={`
+              ${styles.Grid__Item}
+              ${this.state.serverItems ? 'static ' : ''}
+              ${this.state.mounted ? styles.Grid__Item__Mounted : ''}
+            `}
             key={item.key}
             style={{ top: 0, left: 0, transform: `translateX(${item.left}px) translateY(${item.top}px)` }}
           >
-            <div className={item.appended ? null : styles.Grid__Item__Animated}>
+            <div
+              className={item.appended || !this.state.mounted ? null : styles.Grid__Item__Animated}
+            >
               {item.component}
             </div>
           </div>,
