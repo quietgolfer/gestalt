@@ -2,6 +2,7 @@
 /* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Grid.css';
 
 type Props<T> = {
@@ -59,7 +60,6 @@ export default class TenzingGrid<T> extends Component {
   componentDidMount() {
     this.boundResizeHandler = () => this.handleResize();
 
-    this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
 
     this.updateItems(this.props.items);
@@ -83,7 +83,6 @@ export default class TenzingGrid<T> extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
-    this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
   }
 
@@ -144,7 +143,7 @@ export default class TenzingGrid<T> extends Component {
   /**
    * Returns the scroll position of the scroll container.
    */
-  getScrollPos() {
+  getScrollPos = () => {
     // Try accessing scrollY, as the grid will generally be scrolled by the window.
     const el = this.props.scrollContainer;
     return el.scrollY !== undefined ? el.scrollY : el.scrollTop;
@@ -373,26 +372,20 @@ export default class TenzingGrid<T> extends Component {
   }
 
   /**
-   * Fetches additional items if needed.
-   */
-  handleScroll = () => {
-    // Only load items if props.loadItems is defined.
-    if (!this.props.loadItems) {
-      return;
-    }
-
-    if (this.getScrollPos() + this.scrollBuffer > this.state.minHeight) {
-      this.fetchingWith = this.state.gridItems.length;
-      this.props.loadItems({ from: this.insertedItemsCount });
-    }
-  }
-
-  /**
    * # of columns * total item width - 1 item margin
    */
   determineWidth() {
     const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
     return `${(this.state.gridItems.length * eachItemWidth) - this.props.gutterWidth}px`;
+  }
+
+  fetchMore = () => {
+    if (this.props.loadItems) {
+      this.fetchingWith = this.allItems().length;
+      this.props.loadItems({
+        from: this.state.gridItems.length,
+      });
+    }
   }
 
   /**
@@ -428,8 +421,16 @@ export default class TenzingGrid<T> extends Component {
     return allItems;
   }
 
+  renderHeight = () => {
+    const { gridItems } = this.state;
+    const colIdx = this.shortestColumn();
+    const column = gridItems[colIdx];
+    const lastItemInColumn = column && column[column.length - 1];
+    return lastItemInColumn ? lastItemInColumn.bottom : null;
+  }
+
   render() {
-    if (this.fetchingWith !== false && this.fetchingWith !== this.state.gridItems.length) {
+    if (this.fetchingWith !== false && this.fetchingWith !== this.allItems().length) {
       this.fetchingWith = false;
     }
 
@@ -439,6 +440,12 @@ export default class TenzingGrid<T> extends Component {
         ref={(ref) => { this.gridWrapper = ref; }}
         style={{ height: this.state.height, width: this.determineWidth() }}
       >
+        <ScrollFetch
+          container={this.props.scrollContainer}
+          fetchMore={this.fetchMore}
+          isFetching={this.fetchingWith}
+          renderHeight={this.renderHeight}
+        />
         {this.allItems().map(item =>
           <div
             className={styles.Grid__Item}

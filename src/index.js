@@ -18,6 +18,7 @@ import Label from './Label/Label';
 import Letterbox from './Letterbox/Letterbox';
 import Mask from './Mask/Mask';
 import Modal from './Modal/Modal';
+import ScrollFetch from './ScrollFetch/ScrollFetch';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
 import SelectList from './SelectList/SelectList';
 import Spinner from './Spinner/Spinner';
@@ -47,6 +48,7 @@ export {
   Letterbox,
   Mask,
   Modal,
+  ScrollFetch,
   SegmentedControl,
   SelectList,
   Spinner,

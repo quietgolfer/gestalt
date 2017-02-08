@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Packer from './Packer';
+import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
@@ -49,7 +50,6 @@ export default class BoxGrid extends Component {
 
     this.boundResizeHandler = () => this.handleResize();
 
-    this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.boundResizeHandler);
 
     /* eslint react/no-did-mount-set-state:0 */
@@ -64,9 +64,6 @@ export default class BoxGrid extends Component {
       if (this.gridWrapperHeight !== longestColumn) {
         this.gridWrapperHeight = longestColumn;
         this.gridWrapper.style.height = `${longestColumn}px`;
-
-        this.scrollBuffer = this.getContainerHeight() * 2;
-        this.handleScroll();
       }
     });
   }
@@ -75,7 +72,6 @@ export default class BoxGrid extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
-    this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.boundResizeHandler);
   }
 
@@ -185,7 +181,7 @@ export default class BoxGrid extends Component {
   /**
    * Use the item endY or highest available startY to find the grid height.
    */
-  highestColumn(): number {
+  highestColumn = () => {
     let height = 0;
     for (let i = 0; i < this.packer.columns.length; i += 1) {
       const item = this.packer.columns[i][this.packer.columns[i].length - 1];
@@ -198,22 +194,8 @@ export default class BoxGrid extends Component {
     return height;
   }
 
-  /**
-   * Fetches additional items if needed.
-   */
-  handleScroll = () => {
-    // Only fetch more items if we already have some items loaded.
-    // The initial render should be supplied through props.
-    if (!this.props.items.length || this.fetchingWith) {
-      return;
-    }
-
-    // Only load items if props.loadItems is defined.
-    if (!this.props.loadItems) {
-      return;
-    }
-
-    if (this.getScrollPos() + (this.scrollBuffer * 2) > this.highestColumn()) {
+  fetchMore = () => {
+    if (this.props.loadItems) {
       this.fetchingWith = this.props.items.length;
       this.props.loadItems({
         from: this.props.items.length,
@@ -249,6 +231,12 @@ export default class BoxGrid extends Component {
         className={styles.Grid}
         ref={(ref) => { this.gridWrapper = ref; }}
       >
+        <ScrollFetch
+          container={this.props.scrollContainer}
+          fetchMore={this.fetchMore}
+          isFetching={this.fetchingWith}
+          renderHeight={this.highestColumn}
+        />
         <WithLayout
           data={this.props.items}
           invalidateCacheKey={this.cacheKey}

@@ -2,6 +2,7 @@
 /* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
@@ -43,7 +44,6 @@ export default class ClassicGrid extends Component {
 
     this.boundResizeHandler = () => this.handleResize();
 
-    this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.boundResizeHandler);
 
     // Since items are positioned absolutely, we can't rely on margin or padding to center
@@ -66,8 +66,6 @@ export default class ClassicGrid extends Component {
       if (this.gridWrapperHeight !== longestColumn) {
         this.gridWrapperHeight = longestColumn;
         this.gridWrapper.style.height = `${longestColumn}px`;
-        this.scrollBuffer = this.getContainerHeight() * 2;
-        this.handleScroll();
       }
     });
   }
@@ -76,25 +74,7 @@ export default class ClassicGrid extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
-    this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.boundResizeHandler);
-  }
-
-  /**
-   * Returns the container height.
-   */
-  getContainerHeight() {
-    const container = this.props.scrollContainer;
-    return container.clientHeight || container.innerHeight;
-  }
-
-  /**
-   * Returns the scroll position of the scroll container.
-   */
-  getScrollPos() {
-    // Try accessing scrollY, as the grid will generally be scrolled by the window.
-    const el = this.props.scrollContainer;
-    return el.scrollY !== undefined ? el.scrollY : el.scrollTop;
   }
 
   /**
@@ -112,7 +92,6 @@ export default class ClassicGrid extends Component {
   gridWrapper: HTMLElement;
   gridWrapperHeight: number;
   resizeTimeout: ?number;
-  scrollBuffer: number;
 
   /**
    * Delays resize handling in case the scroll container is still being resized.
@@ -182,37 +161,20 @@ export default class ClassicGrid extends Component {
   }
 
   /**
-   * Fetches additional items if needed.
-   */
-  handleScroll = () => {
-    // Only fetch more items if we already have some items loaded.
-    // The initial render should be supplied through props.
-    if (!this.props.items.length || this.fetchingWith) {
-      return;
-    }
-
-    // Only load items if props.loadItems is defined.
-    if (!this.props.loadItems) {
-      return;
-    }
-
-    const column = this.shortestColumn();
-    const height = this.currColHeights[column];
-
-    if (this.getScrollPos() + this.scrollBuffer > height) {
-      this.fetchingWith = this.props.items.length;
-      this.props.loadItems({
-        from: this.props.items.length,
-      });
-    }
-  }
-
-  /**
    * # of columns * total item width - 1 item margin
    */
   determineWidth() {
     const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
     return `${(this.currColHeights.length * eachItemWidth) - this.props.gutterWidth}px`;
+  }
+
+  fetchMore = () => {
+    if (this.props.loadItems) {
+      this.fetchingWith = this.props.items.length;
+      this.props.loadItems({
+        from: this.props.items.length,
+      });
+    }
   }
 
   /**
@@ -242,6 +204,11 @@ export default class ClassicGrid extends Component {
     element.className = styles.Grid__Item;
   }
 
+  renderHeight = () => {
+    const column = this.shortestColumn();
+    return this.currColHeights[column];
+  }
+
   render() {
     if (this.fetchingWith !== false && this.fetchingWith !== this.props.items.length) {
       this.fetchingWith = false;
@@ -252,6 +219,12 @@ export default class ClassicGrid extends Component {
         className={styles.Grid}
         ref={(ref) => { this.gridWrapper = ref; }}
       >
+        <ScrollFetch
+          container={this.props.scrollContainer}
+          fetchMore={this.fetchMore}
+          isFetching={this.fetchingWith}
+          renderHeight={this.renderHeight}
+        />
         <WithLayout
           data={this.props.items}
           invalidateCacheKey={this.cacheKey}

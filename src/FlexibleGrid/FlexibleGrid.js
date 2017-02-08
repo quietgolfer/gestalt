@@ -2,6 +2,7 @@
 /* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
@@ -49,7 +50,6 @@ export default class FlexibleGrid extends Component {
 
     this.boundResizeHandler = () => this.handleResize();
 
-    this.props.scrollContainer.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.boundResizeHandler);
 
     /* eslint react/no-did-mount-set-state:0 */
@@ -68,8 +68,6 @@ export default class FlexibleGrid extends Component {
       if (this.gridWrapperHeight !== longestColumn) {
         this.gridWrapperHeight = longestColumn;
         this.gridWrapper.style.height = `${longestColumn}px`;
-        this.scrollBuffer = this.getContainerHeight() * 2;
-        this.handleScroll();
       }
     });
   }
@@ -78,7 +76,6 @@ export default class FlexibleGrid extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
-    this.props.scrollContainer.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.boundResizeHandler);
   }
 
@@ -182,32 +179,6 @@ export default class FlexibleGrid extends Component {
   }
 
   /**
-   * Fetches additional items if needed.
-   */
-  handleScroll = () => {
-    // Only fetch more items if we already have some items loaded.
-    // The initial render should be supplied through props.
-    if (!this.props.items.length || this.fetchingWith) {
-      return;
-    }
-
-    // Only load items if props.loadItems is defined.
-    if (!this.props.loadItems) {
-      return;
-    }
-
-    const column = this.shortestColumn();
-    const height = this.currColHeights[column];
-
-    if (this.getScrollPos() + this.scrollBuffer > height) {
-      this.fetchingWith = this.props.items.length;
-      this.props.loadItems({
-        from: this.props.items.length,
-      });
-    }
-  }
-
-  /**
    * Returns the index of the shortest column.
    */
   shortestColumn() {
@@ -218,6 +189,15 @@ export default class FlexibleGrid extends Component {
       }
     }
     return min;
+  }
+
+  fetchMore = () => {
+    if (this.props.loadItems) {
+      this.fetchingWith = this.props.items.length;
+      this.props.loadItems({
+        from: this.props.items.length,
+      });
+    }
   }
 
   /**
@@ -236,6 +216,11 @@ export default class FlexibleGrid extends Component {
     element.className = styles.Grid__Item;
   }
 
+  renderHeight = () => {
+    const column = this.shortestColumn();
+    return this.currColHeights[column];
+  }
+
   render() {
     if (this.fetchingWith !== false && this.fetchingWith !== this.props.items.length) {
       this.fetchingWith = false;
@@ -248,6 +233,12 @@ export default class FlexibleGrid extends Component {
         className={styles.Grid}
         ref={(ref) => { this.gridWrapper = ref; }}
       >
+        <ScrollFetch
+          container={this.props.scrollContainer}
+          fetchMore={this.fetchMore}
+          isFetching={this.fetchingWith}
+          renderHeight={this.renderHeight}
+        />
         <WithLayout
           data={this.props.items}
           invalidateCacheKey={this.cacheKey}
