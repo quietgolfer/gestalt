@@ -1,10 +1,10 @@
 /* eslint-env jest */
 /* eslint import/imports-first: 0 */
-jest.unmock('../InnerFlyout');
+jest.unmock('../Contents');
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import InnerFlyout, { getMainDir, getSubDir, calcEdgeShifts, calcOffsets, CARET_HEIGHT } from '../InnerFlyout';
+import Contents, { getMainDir, getSubDir, calcEdgeShifts, calcOffsets, CARET_HEIGHT } from '../Contents';
 
 const windowSize = {
   height: 900,
@@ -49,7 +49,7 @@ const upperLeftTriggerRect = (props = {}) => ({
 
 const idealDirections = ['up', 'right', 'down', 'left'];
 
-describe('InnerFlyout', () => {
+describe('Contents', () => {
   describe('Main Direction chosen correctly', () => {
     it('Chooses the main direction as idealDirection when it fits on screen', () => {
       const triggerRect = centerTriggerRect();
@@ -156,7 +156,7 @@ describe('InnerFlyout', () => {
     it('Renders caret in if screen is large enough to render normal flyout', () => {
       const triggerRect = centerTriggerRect();
       const wrapper = shallow(
-        <InnerFlyout
+        <Contents
           closeLabel="close"
           onClick={jest.fn()}
           onDismiss={jest.fn()}
@@ -174,7 +174,7 @@ describe('InnerFlyout', () => {
     it('Renders IconButton if mobile version of flyout is needed', () => {
       const triggerRect = centerTriggerRect();
       const wrapper = shallow(
-        <InnerFlyout
+        <Contents
           closeLabel="close"
           onClick={jest.fn()}
           onDismiss={jest.fn()}

@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import Caret from './Caret';
 import IconButton from '../IconButton/IconButton';
-import styles from './InnerFlyout.css';
+import styles from './Contents.css';
 
 const cx = classnames.bind(styles);
 
@@ -248,7 +248,7 @@ export function calcOffsets(flyoutSize: Size, mainDir: MainDir, subDir: SubDir,
   };
 }
 
-export default class InnerFlyout extends Component {
+export default class Contents extends Component {
 
   state: State = {
     flyoutOffset: {
@@ -302,7 +302,7 @@ export default class InnerFlyout extends Component {
     // First choose one of 4 main direction
     const mainDir = getMainDir(flyoutSize, idealDirection, triggerRect, windowSize);
 
-    // Flyout will not fit in any direction, so we skip calculating the offsets
+    // Controller will not fit in any direction, so we skip calculating the offsets
     // and subDir and just set the state for main since that is all we need to know
     if (mainDir === 'none') {
       this.setState({ mainDir });
@@ -338,9 +338,9 @@ export default class InnerFlyout extends Component {
     const flyout = this.state.mainDir === 'none' ?
       (
         <div>
-          <div className={cx('fixed', 'left-0', 'top-0', 'Flyout-overlay')} />
+          <div className={cx('fixed', 'left-0', 'top-0', 'Controller-overlay')} />
           <div
-            className={cx('bg-white', 'block', 'border', 'border-box', 'bottom-0', 'fixed', 'left-0', 'Flyout-mobile', 'overflow-scroll')}
+            className={cx('bg-white', 'block', 'border', 'border-box', 'bottom-0', 'fixed', 'left-0', 'Controller-mobile', 'overflow-scroll')}
             ref={(c) => { this.flyout = c; }}
           >
             <div className={cx('absolute', 'right-0', 'top-0')}>
@@ -353,14 +353,14 @@ export default class InnerFlyout extends Component {
         </div>
       ) : (// regular flyout with caret and positioning
         <div
-          className={cx('absolute', 'bg-white', 'block', 'border', 'border-box', 'rounded', 'Flyout-dimensions')}
+          className={cx('absolute', 'bg-white', 'block', 'border', 'border-box', 'rounded', 'Controller-dimensions')}
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
         >
-          <div className={cx('overflow-scroll', 'Flyout-dimensions')} style={{ width }}>
+          <div className={cx('overflow-scroll', 'Controller-dimensions')} style={{ width }}>
             {children}
           </div>
-          <div className={cx('absolute', 'Flyout-caret')} style={this.state.caretOffset}>
+          <div className={cx('absolute', 'Controller-caret')} style={this.state.caretOffset}>
             <Caret direction={this.state.mainDir} />
           </div>
         </div>
@@ -375,7 +375,7 @@ export default class InnerFlyout extends Component {
 }
 
 /* eslint react/no-unused-prop-types: 0 */
-InnerFlyout.propTypes = {
+Contents.propTypes = {
   children: PropTypes.node,
   closeLabel: PropTypes.string.isRequired,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
