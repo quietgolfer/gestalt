@@ -340,7 +340,7 @@ export default class Contents extends Component {
         <div>
           <div className={cx('fixed', 'left-0', 'top-0', 'Controller-overlay')} />
           <div
-            className={cx('bg-white', 'block', 'border', 'border-box', 'bottom-0', 'fixed', 'left-0', 'Controller-mobile', 'overflow-scroll')}
+            className={cx('bg-white', 'block', 'border', 'border-box', 'bottom-0', 'fixed', 'left-0', 'Controller-mobile', 'overflow-auto')}
             ref={(c) => { this.flyout = c; }}
           >
             <div className={cx('absolute', 'right-0', 'top-0')}>
@@ -357,7 +357,7 @@ export default class Contents extends Component {
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
         >
-          <div className={cx('overflow-scroll', 'Controller-dimensions')} style={{ width }}>
+          <div className={cx('overflow-auto', 'Controller-dimensions')} style={{ width }}>
             {children}
           </div>
           <div className={cx('absolute', 'Controller-caret')} style={this.state.caretOffset}>
