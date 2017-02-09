@@ -49,6 +49,13 @@ export default class TenzingExampleGrid extends React.Component {
     });
   }
 
+  handleInsertItem = (e) => {
+    e.preventDefault();
+    this.gridRef.insertItems([
+      { name: 'Inserted', height: 300, color: '#f00' },
+    ], 0 /* colIdx */, 0 /* itemIdx */);
+  }
+
   loadItems = (meta) => {
     getPins(meta, this.props.collage)
       .then((newPins) => {
@@ -83,6 +90,7 @@ export default class TenzingExampleGrid extends React.Component {
 
     return (
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
+        <button id="insert-item" onClick={this.handleInsertItem}>Insert 1 item into grid</button>
         <TenzingGrid
           comp={Item}
           items={this.state.pins}

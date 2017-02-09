@@ -8,7 +8,7 @@ const selectors = {
   staticItem: '.static',
 };
 
-describe.skip('TenzingGrid > Scrolls', () => {
+describe('TenzingGrid > Scrolls', () => {
   it('Loads more when it gets to the bottom of the viewport', async () => {
     // First load the page with javascript disabled to get the item position
     ghost.close();

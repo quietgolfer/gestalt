@@ -485,6 +485,7 @@ export default class TenzingGrid<T> extends Component {
               ${this.state.serverItems ? 'static ' : ''}
               ${this.state.mounted ? styles.Grid__Item__Mounted : ''}
             `}
+            data-grid-item
             key={item.key}
             style={{ top: 0, left: 0, transform: `translateX(${item.left}px) translateY(${item.top}px)` }}
           >
