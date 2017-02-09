@@ -27,10 +27,32 @@ type GridItemType<T> = {
   bottom: number,
 };
 
+// Multiplied against container height.
+// The amount of extra buffer space for populating visible items.
+const VIRTUAL_BUFFER_FACTOR = 0.7;
+
 function distance(a, b) {
   const x = a.x - b.x;
   const y = a.y - b.y;
   return Math.sqrt((x * x) + (y * y));
+}
+
+function throttle(fn, threshhold = 100) {
+  let last;
+  let deferTimer;
+  return (...args) => {
+    const now = Date.now();
+    if (last && now < last + threshhold) {
+      clearTimeout(deferTimer);
+      deferTimer = setTimeout(() => {
+        last = now;
+        fn(...args);
+      }, threshhold);
+    } else {
+      last = now;
+      fn(...args);
+    }
+  };
 }
 
 export default class TenzingGrid<T> extends Component {
@@ -47,6 +69,8 @@ export default class TenzingGrid<T> extends Component {
       serverItems: this.serverItems(props.items),
       minHeight: 0,
       mounted: false,
+      viewportBottom: 0,
+      viewportTop: 0,
     };
   }
 
@@ -56,6 +80,8 @@ export default class TenzingGrid<T> extends Component {
     serverItems: Array<*> | null,
     minHeight: number,
     mounted: boolean,
+    viewportBottom: number,
+    viewportTop: number,
   };
 
   /**
@@ -64,9 +90,11 @@ export default class TenzingGrid<T> extends Component {
   componentDidMount() {
     this.boundResizeHandler = () => this.handleResize();
 
+    this.props.scrollContainer.addEventListener('scroll', throttle(this.updateVirtualBounds));
     this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
 
     this.updateItems(this.props.items);
+    this.updateVirtualBounds();
     setTimeout(() => {
       this.setState({
         mounted: true,
@@ -84,7 +112,7 @@ export default class TenzingGrid<T> extends Component {
    */
   componentDidUpdate() {
     setTimeout(() => {
-      this.scrollBuffer = this.getContainerHeight() * 2;
+      this.measureContainer();
     });
   }
 
@@ -92,6 +120,7 @@ export default class TenzingGrid<T> extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
+    this.props.scrollContainer.removeEventListener('scroll', this.updateVirtualBounds);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
   }
 
@@ -185,6 +214,8 @@ export default class TenzingGrid<T> extends Component {
   }
 
   boundResizeHandler: () => void;
+  containerHeight: number;
+  containerOffset: number;
   fetchingFrom: bool | number;
   gridWrapper: HTMLElement;
   insertedItemsCount: number;
@@ -363,6 +394,18 @@ export default class TenzingGrid<T> extends Component {
     this.resizeTimeout = setTimeout(this.reflow.bind(this), 100);
   }
 
+  updateVirtualBounds = () => {
+    const scrollPos = this.props.scrollContainer.scrollY
+      || this.props.scrollContainer.scrollTop
+      || 0;
+    const virtualBuffer = this.containerHeight * VIRTUAL_BUFFER_FACTOR;
+    const offsetScrollPos = scrollPos - this.containerOffset;
+    this.setState({
+      viewportTop: offsetScrollPos - virtualBuffer,
+      viewportBottom: offsetScrollPos + this.containerHeight + virtualBuffer,
+    });
+  }
+
   /**
    * Determines the number of columns to display.
    */
@@ -384,11 +427,19 @@ export default class TenzingGrid<T> extends Component {
     return newColCount;
   }
 
+  measureContainer() {
+    this.containerHeight = this.getContainerHeight();
+    this.containerOffset = ReactDOM.findDOMNode(this).offsetTop;
+    this.scrollBuffer = this.containerHeight * 2;
+  }
+
   /**
    * Reflows items if needed after a resize.
    * We need to reflow items if the number of columns we would display should change.
    */
   reflow() {
+    this.measureContainer();
+
     const newColCount = this.calculateColumns();
     if (newColCount !== this.state.gridItems.length) {
       const items = this.allItems().sort((a, b) => a.key - b.key).map(item => item.itemData);
@@ -413,7 +464,8 @@ export default class TenzingGrid<T> extends Component {
 
   fetchMore = () => {
     if (this.props.loadItems) {
-      this.fetchingFrom = this.allItems().length;
+      const allItems = this.allItems();
+      this.fetchingFrom = allItems.length;
       this.props.loadItems({
         from: this.fetchingFrom,
       });
@@ -453,6 +505,13 @@ export default class TenzingGrid<T> extends Component {
     return allItems;
   }
 
+  visibleItems() : Array<GridItemType<T>> {
+    const allItems = this.allItems();
+    return allItems.filter(item => !(
+      item.bottom < this.state.viewportTop || item.top > this.state.viewportBottom
+    ));
+  }
+
   renderHeight = () => {
     const { gridItems } = this.state;
     const colIdx = this.shortestColumn();
@@ -478,7 +537,7 @@ export default class TenzingGrid<T> extends Component {
           isFetching={this.fetchingFrom}
           renderHeight={this.renderHeight}
         />
-        {(this.state.serverItems || this.allItems()).map(item =>
+        {(this.state.serverItems || this.visibleItems()).map(item =>
           <div
             className={`
               ${styles.Grid__Item}
@@ -541,6 +600,8 @@ TenzingGrid.propTypes = {
   scrollContainer: React.PropTypes.shape({
     addEventListener: React.PropTypes.func,
     removeEventListener: React.PropTypes.func,
+    scrollTop: React.PropTypes.number,
+    scrollY: React.PropTypes.number,
   }),
 };
 

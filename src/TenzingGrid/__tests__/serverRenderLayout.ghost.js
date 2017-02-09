@@ -35,7 +35,7 @@ describe('TenzingGrid > Server Render Layout', () => {
     });
 
     const gridItems = await ghost.findElements(selectors.gridItem);
-    assert.ok(gridItems.length >= 20);
+    assert.ok(gridItems.length > 2);
 
     const gridItem1Rect = await gridItems[0].rect();
     const gridItem2Rect = await gridItems[1].rect();
