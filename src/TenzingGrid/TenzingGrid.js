@@ -185,7 +185,7 @@ export default class TenzingGrid<T> extends Component {
   }
 
   boundResizeHandler: () => void;
-  fetchingWith: bool | number;
+  fetchingFrom: bool | number;
   gridWrapper: HTMLElement;
   insertedItemsCount: number;
   itemKeyCounter: number;
@@ -413,9 +413,9 @@ export default class TenzingGrid<T> extends Component {
 
   fetchMore = () => {
     if (this.props.loadItems) {
-      this.fetchingWith = this.allItems().length;
+      this.fetchingFrom = this.allItems().length;
       this.props.loadItems({
-        from: this.state.gridItems.length,
+        from: this.fetchingFrom,
       });
     }
   }
@@ -462,8 +462,8 @@ export default class TenzingGrid<T> extends Component {
   }
 
   render() {
-    if (this.fetchingWith !== false && this.fetchingWith !== this.allItems().length) {
-      this.fetchingWith = false;
+    if (this.fetchingFrom !== false && this.fetchingFrom !== this.allItems().length) {
+      this.fetchingFrom = false;
     }
 
     return (
@@ -475,7 +475,7 @@ export default class TenzingGrid<T> extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.fetchingWith}
+          isFetching={this.fetchingFrom}
           renderHeight={this.renderHeight}
         />
         {(this.state.serverItems || this.allItems()).map(item =>

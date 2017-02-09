@@ -88,7 +88,7 @@ export default class ClassicGrid extends Component {
   boundResizeHandler: () => void;
   cacheKey: string;
   currColHeights: Array<number>;
-  fetchingWith: bool | number;
+  fetchingFrom: bool | number;
   gridWrapper: HTMLElement;
   gridWrapperHeight: number;
   resizeTimeout: ?number;
@@ -120,7 +120,7 @@ export default class ClassicGrid extends Component {
 
     // Whether or not we have requested new items.
     // This is used as a flag to signal that we need to wait before loading additional items.
-    this.fetchingWith = false;
+    this.fetchingFrom = false;
     this.forceUpdate();
   }
 
@@ -170,7 +170,7 @@ export default class ClassicGrid extends Component {
 
   fetchMore = () => {
     if (this.props.loadItems) {
-      this.fetchingWith = this.props.items.length;
+      this.fetchingFrom = this.props.items.length;
       this.props.loadItems({
         from: this.props.items.length,
       });
@@ -210,8 +210,8 @@ export default class ClassicGrid extends Component {
   }
 
   render() {
-    if (this.fetchingWith !== false && this.fetchingWith !== this.props.items.length) {
-      this.fetchingWith = false;
+    if (this.fetchingFrom !== false && this.fetchingFrom !== this.props.items.length) {
+      this.fetchingFrom = false;
     }
 
     return (
@@ -222,7 +222,7 @@ export default class ClassicGrid extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.fetchingWith}
+          isFetching={this.fetchingFrom}
           renderHeight={this.renderHeight}
         />
         <WithLayout

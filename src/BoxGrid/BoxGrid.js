@@ -102,7 +102,7 @@ export default class BoxGrid extends Component {
 
   boundResizeHandler: () => void;
   cacheKey: string;
-  fetchingWith: bool | number;
+  fetchingFrom: bool | number;
   gridWrapper: HTMLElement;
   gridWrapperHeight: number;
   packer: Packer;
@@ -133,7 +133,7 @@ export default class BoxGrid extends Component {
 
     // Whether or not we have requested new items.
     // This is used as a flag to signal that we need to wait before loading additional items.
-    this.fetchingWith = false;
+    this.fetchingFrom = false;
     this.forceUpdate();
   }
 
@@ -196,7 +196,7 @@ export default class BoxGrid extends Component {
 
   fetchMore = () => {
     if (this.props.loadItems) {
-      this.fetchingWith = this.props.items.length;
+      this.fetchingFrom = this.props.items.length;
       this.props.loadItems({
         from: this.props.items.length,
       });
@@ -222,8 +222,8 @@ export default class BoxGrid extends Component {
   }
 
   render() {
-    if (this.fetchingWith !== false && this.fetchingWith !== this.props.items.length) {
-      this.fetchingWith = false;
+    if (this.fetchingFrom !== false && this.fetchingFrom !== this.props.items.length) {
+      this.fetchingFrom = false;
     }
 
     return (
@@ -234,7 +234,7 @@ export default class BoxGrid extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.fetchingWith}
+          isFetching={this.fetchingFrom}
           renderHeight={this.highestColumn}
         />
         <WithLayout
