@@ -1,5 +1,6 @@
 // @flow
 import React, { PropTypes, Component } from 'react';
+import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 import styles from './Spinner.css';
 
@@ -62,11 +63,11 @@ export default class Spinner extends Component {
     }
 
     return (
-      <div className={styles.Spinner}>
+      <Box xs={{ display: 'flex' }} justifyContent="around" overflow="hidden">
         <div className={styles.icon}>
           <Icon icon="knoop" label={label} size={SIZE} />
         </div>
-      </div>
+      </Box>
     );
   }
 }
