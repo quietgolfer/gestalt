@@ -3,7 +3,7 @@ exports[`test Avatar renders multibyte names 1`] = `
   className="col-12">
   <div
     aria-label="💩 astral"
-    className="box xs-flex items-center justify-center bg-gray circle"
+    className="box xs-flex items-center bg-gray justify-center circle"
     postition="relative"
     style={
       Object {

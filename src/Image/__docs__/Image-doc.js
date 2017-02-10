@@ -44,7 +44,7 @@ The color you pass into \`Image\` will be used to fill the placeholder that show
 as an image loads. The example shown has an empty \`src\` prop provided so it remains
 a placeholder.
 
-\`\`\`js
+\`\`\`jsx
 <Image
   alt="example.com"
   color="#018077"
@@ -65,3 +65,39 @@ a placeholder.
       />
     </div>
   </div>);
+
+card('Overlay',
+md`
+You can overlay content on an Image by passing it children.
+
+\`\`\`jsx
+<Image
+  alt="..."
+  color="#000"
+  height={760}
+  src="..."
+  width={564}
+>
+  <div className="white p2">
+    M.C. Escher  Phosphorescent Sea (1933)
+  </div>
+</Image>
+\`\`\`
+
+`,
+  <div className="flex mxn2">
+    <div className="col-6 px2">
+      <Image
+        alt="M.C. Escher  Phosphorescent Sea (1933)"
+        color="#000"
+        height={760}
+        src="https://s-media-cache-ak0.pinimg.com/564x/f6/30/6a/f6306abfb1e548f54682f1326da9fb14.jpg"
+        width={564}
+      >
+        <div className="white p2">
+          M.C. Escher  Phosphorescent Sea (1933)
+        </div>
+      </Image>
+    </div>
+  </div>
+);

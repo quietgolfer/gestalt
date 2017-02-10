@@ -9,7 +9,3 @@
 .loaded {
   composes: block from global;
 }
-
-.container {
-  composes: fit relative from global;
-}

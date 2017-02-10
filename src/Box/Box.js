@@ -370,6 +370,12 @@ const shape = (value: Shape): Style => {
   }
 };
 
+type Fit = boolean;
+
+const fit = (value: Fit): Style => (
+  value ? fromClassName('fit') : identity()
+);
+
 // --
 
 type PropType = {
@@ -386,6 +392,7 @@ type PropType = {
   alignSelf?: AlignSelf,
   bottom?: Bottom,
   color?: Color,
+  fit?: Fit,
   grow?: Grow,
   justifyContent?: JustifyContent,
   left?: Left,
@@ -406,23 +413,24 @@ const propToFn = {
   sm,
   md,
   lg,
+  alignContent,
+  alignItems,
+  alignSelf,
+  bottom,
+  color,
+  fit,
+  grow,
+  justifyContent,
+  left,
   margin,
+  overflow,
   padding,
   position,
-  top,
-  bottom,
-  left,
   right,
-  alignItems,
-  justifyContent,
-  alignContent,
-  alignSelf,
-  wrap,
-  grow,
-  shrink,
-  color,
-  overflow,
   shape,
+  shrink,
+  top,
+  wrap,
 };
 
 const blacklistedProps = Object.keys(propToFn).concat([
@@ -538,6 +546,7 @@ Box.propTypes = {
     'yellow',
     'transparent',
   ]),
+  fit: PropTypes.bool,
   grow: PropTypes.bool,
   justifyContent: PropTypes.oneOf([
     'start',

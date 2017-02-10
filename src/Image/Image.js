@@ -1,24 +1,24 @@
 // @flow
 /* global SyntheticEvent */
-/* eslint-disable react/no-did-mount-set-state */
-
 import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
+import Box from '../Box/Box';
 import styles from './Image.css';
 
-type ImageProps = {
-  alt: string,
-  color: string,
-  height: number,
-  onError?: (e: SyntheticEvent) => void,
-  onLoad?: (e: SyntheticEvent) => void,
-  sizes?: string,
-  src: string,
-  srcSet?: {[key: string]: string},
-  width: number,
-};
-
 export default class Image extends Component {
+
+  static propTypes = {
+    alt: PropTypes.string.isRequired,
+    children: PropTypes.node,
+    color: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
+    onError: PropTypes.func,
+    onLoad: PropTypes.func,
+    sizes: PropTypes.string,
+    src: PropTypes.string.isRequired,
+    srcSet: PropTypes.string,
+    width: PropTypes.number.isRequired,
+  };
 
   state = {
     loaded: false,
@@ -26,12 +26,24 @@ export default class Image extends Component {
 
   componentDidMount() {
     if (this.img && this.img.complete) {
+      // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({ loaded: true });
     }
   }
 
   img: HTMLElement;
-  props: ImageProps;
+  props: {
+    alt: string,
+    children?: any,
+    color: string,
+    height: number,
+    onError?: (e: SyntheticEvent) => void,
+    onLoad?: (e: SyntheticEvent) => void,
+    sizes?: string,
+    src: string,
+    srcSet?: {[key: string]: string},
+    width: number,
+  };
 
   handleLoad = (e: SyntheticEvent) => {
     this.setState({ loaded: true });
@@ -51,6 +63,7 @@ export default class Image extends Component {
     const {
       alt,
       color,
+      children,
       height,
       sizes,
       src,
@@ -73,6 +86,14 @@ export default class Image extends Component {
     );
 
     if (loaded) {
+      if (children) {
+        return (
+          <Box position="relative">
+            <Box position="absolute">{img}</Box>
+            <Box position="relative">{children}</Box>
+          </Box>
+        );
+      }
       return img;
     }
 
@@ -83,21 +104,13 @@ export default class Image extends Component {
     };
 
     return (
-      <div className={styles.container} style={style}>
+      <Box
+        dangerouslySetInlineStyle={{ __style: style }}
+        fit
+        position="relative"
+      >
         {src ? img : null}
-      </div>
+      </Box>
     );
   }
 }
-
-Image.propTypes = {
-  alt: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  height: PropTypes.number.isRequired,
-  onError: PropTypes.func,
-  onLoad: PropTypes.func,
-  sizes: PropTypes.string,
-  src: PropTypes.string.isRequired,
-  srcSet: PropTypes.string,
-  width: PropTypes.number.isRequired,
-};
