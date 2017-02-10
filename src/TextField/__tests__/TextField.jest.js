@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 import TextField from '../TextField';
 
 describe('TextField', () => {
-  it('Renders an Error if one is passed in', () => {
+  it('Renders an ErrorFlyout if one is passed in', () => {
     const wrapper = shallow(
       <TextField
         errorMessage="test"
@@ -15,16 +15,16 @@ describe('TextField', () => {
         onChange={jest.fn()}
       />
     );
-    expect(wrapper.find('Error').length).toEqual(1);
+    expect(wrapper.find('ErrorFlyout').length).toEqual(1);
   });
 
-  it('Does not render an Error when errorMessage is null', () => {
+  it('Does not render an ErrorFlyout when errorMessage is null', () => {
     const wrapper = shallow(
       <TextField
         id="test"
         onChange={jest.fn()}
       />
     );
-    expect(wrapper.find('Error').length).toEqual(0);
+    expect(wrapper.find('ErrorFlyout').length).toEqual(0);
   });
 });

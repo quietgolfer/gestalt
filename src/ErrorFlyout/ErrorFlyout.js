@@ -8,14 +8,14 @@ import Text from '../Text/Text';
 type Props = {
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
+  message: string,
   onDismiss: () => void,
   size?: 'xs' | 'sm' | 'md', /* default sm */
-  text: string,
   trigger: React$Element<any>,
 };
 
-export default function Error(props: Props) {
-  const { idealDirection, isOpen, onDismiss, size, text, trigger } = props;
+export default function ErrorFlyout(props: Props) {
+  const { idealDirection, isOpen, message, onDismiss, size, trigger } = props;
 
   return (
     <Controller
@@ -27,7 +27,7 @@ export default function Error(props: Props) {
       trigger={trigger}
     >
       <Box padding={2}>
-        <Text bold color="white" size="md">{text}</Text>
+        <Text bold color="white" size="md">{message}</Text>
       </Box>
     </Controller>
   );

@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import Error from '../Error/Error';
+import ErrorFlyout from '../ErrorFlyout/ErrorFlyout';
 import styles from './TextField.css';
 
 type State = {
@@ -82,12 +82,12 @@ export default class TextField extends Component {
     );
 
     return errorMessage ? (
-      <Error
+      <ErrorFlyout
         idealDirection="right"
         isOpen={this.state.errorIsOpen}
+        message={errorMessage}
         onDismiss={() => this.setState({ errorIsOpen: false })}
         size="sm"
-        text={errorMessage}
         trigger={textField(this.handleBlur)}
       />
     ) : textField();
