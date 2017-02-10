@@ -1,0 +1,29 @@
+exports[`test Avatar renders multibyte names 1`] = `
+<div
+  className="col-12">
+  <div
+    aria-label="💩 astral"
+    className="box xs-flex items-center justify-center bg-gray circle"
+    postition="relative"
+    style={
+      Object {
+        "fontSize": 50,
+      }
+    }>
+    <div
+      className="box relative"
+      style={
+        Object {
+          "paddingBottom": "100%",
+        }
+      } />
+    <div
+      className="box">
+      <span
+        className="white bold antialiased">
+        💩
+      </span>
+    </div>
+  </div>
+</div>
+`;

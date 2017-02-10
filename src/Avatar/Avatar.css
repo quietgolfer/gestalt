@@ -20,21 +20,6 @@
   --lg-size-xl: 198px;
 }
 
-.defaultAvatar {
-  composes: bg-gray from global;
-  composes: relative flex items-center justify-center from global;
-  composes: circle from global;
-}
-
-.initial {
-  composes: antialiased bold from global;
-  composes: white from global;
-}
-
-.responsive {
-  composes: col-12 from global;
-}
-
 .xs {
   height: var(--sm-size-xs);
   width: var(--sm-size-xs);
