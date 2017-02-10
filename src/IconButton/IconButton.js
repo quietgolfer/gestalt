@@ -21,6 +21,7 @@ type Props = {
   label: string,
   onClick?: () => void,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
+  tabIndex?: -1 | 0,
 }
 
 const defaultIconButtonIconColors = {
@@ -45,6 +46,7 @@ export default function IconButton(props: Props) {
     label,
     onClick,
     size = 'md',
+    tabIndex,
   } = props;
 
   const inlineStyle = {
@@ -62,6 +64,7 @@ export default function IconButton(props: Props) {
       className={styles[bgColor]}
       onClick={onClick}
       style={inlineStyle}
+      tabIndex={tabIndex}
     >
       {/*
         We're explicitly setting an empty string as a label on the Icon since we
@@ -91,4 +94,5 @@ IconButton.propTypes = {
   size: PropTypes.oneOf(
     ['xs', 'sm', 'md', 'lg', 'xl']
   ),
+  tabIndex: PropTypes.oneOf([-1, 0]),
 };

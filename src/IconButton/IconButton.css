@@ -1,9 +1,9 @@
 .iconButton {
-  composes: antialiased bold from global;
   composes: border-box from global;
   composes: circle no-border from global;
   composes: p0 from global;
   composes: pointer from global;
+  composes: flex items-center justify-center from global;
 }
 
 .transparent {

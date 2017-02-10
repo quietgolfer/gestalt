@@ -14,6 +14,7 @@ type IconProps = {
    * icons provided in gestalt-icon/icons/index.js.
    */
   icon: $Keys<typeof paths>,
+  inline?: boolean,
   label: string,
   size?: number,
 };
@@ -22,6 +23,7 @@ export default function Icon(props: IconProps) {
   const {
     color = 'gray',
     icon,
+    inline,
     label,
     size = 16,
   } = props;
@@ -29,7 +31,8 @@ export default function Icon(props: IconProps) {
   const cs = cx(
     'Icon',
     `Icon--${icon}`,
-    color
+    color,
+    (!inline && 'block'),
   );
 
   const path = paths[icon];
@@ -45,6 +48,7 @@ export default function Icon(props: IconProps) {
 Icon.propTypes = {
   color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue', 'red']),
   icon: PropTypes.oneOf(Object.keys(paths)).isRequired,
+  inline: PropTypes.bool,
   label: PropTypes.string.isRequired,
   size: PropTypes.number,
 };

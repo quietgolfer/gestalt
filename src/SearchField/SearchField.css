@@ -1,0 +1,48 @@
+.input {
+  composes: col-12 bg-light-gray dark-gray from global;
+  composes: bold text-md from global;
+  composes: border from global;
+  composes: py2 from global;
+  border-radius: 999px;
+}
+
+.input::-ms-clear {
+  display: none;
+}
+
+.input::-webkit-search-decoration,
+.input::-webkit-search-cancel-button,
+.input::-webkit-search-results-button,
+.input::-webkit-search-results-decoration {
+  appearance: none;
+}
+
+.input:focus {
+  background-color: #fff;
+}
+
+/*
+Assumptions here:
+  - icons are 16px wide
+  - there is 2bt of horizontal padding inside the field
+  - there's 2bt of extra padding between icons and text
+
+This is definitely CSS calculation soup. The differences between sm and md are largely perceptual. If it follows a rule it just ends up looking weird.
+*/
+
+@media (--sm) {
+  .input {
+    /* 1 hbt + 1 hbt + icon + 1 hbt + 1 hbt */
+    padding-left: calc(3px + 3px + 16px + 3px + 3px);
+
+    /* 1 hbt + 1 hbt + icon + 1 hbt + 1 hbt + */
+    padding-right: calc(3px + 3px + 16px + 3px + 3px + 6px);
+  }
+}
+
+@media (--md) {
+  .input {
+    padding-left: calc(8px + 8px + 16px + 8px + 8px);
+    padding-right: calc(8px + 8px + 16px + 8px + 8px);
+  }
+}
