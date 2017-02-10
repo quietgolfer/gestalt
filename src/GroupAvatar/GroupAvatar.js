@@ -63,7 +63,6 @@ type DefaultAvatarProps = {
 function DefaultAvatar(props: DefaultAvatarProps) {
   const { data, height } = props;
   const fontSize = DEFAULT_AVATAR_TEXT_SIZES[data.size] / 2;
-  // $FlowIssue: String spread.
   const firstInitial = [...data.name][0].toUpperCase();
   const additionalStyles = data.placement === 'QUARTER' ?
   {

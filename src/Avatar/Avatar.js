@@ -14,7 +14,6 @@ const Square = (props: *) => (
 );
 
 const DefaultAvatar = ({ name, size }: { name: string, size: number }) => {
-  // $FlowIssue: String spread.
   const firstInitial = [...name][0].toUpperCase();
   return (
     <Square

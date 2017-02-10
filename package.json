@@ -53,7 +53,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
-    "flow-bin": "^0.38.0",
+    "flow-bin": "^0.39.0",
     "flow-status-webpack-plugin": "^0.1.5",
     "ghost-axe": "^0.0.3",
     "ghostjs": "^1.7.1",
