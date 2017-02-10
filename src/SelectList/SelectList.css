@@ -28,7 +28,6 @@
 
 .dropdownArrow {
   composes: absolute from global;
-  composes: block from global;
   align-items: center;
   display: flex;
   height: 100%;
