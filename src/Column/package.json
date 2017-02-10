@@ -1,9 +1,0 @@
-{
-  "name": "gestalt-column",
-  "version": "0.5.0",
-  "main": "./Column.js",
-  "dependencies": {
-    "react": "^15.3.1",
-    "classnames": "^2.2.5"
-  }
-}
