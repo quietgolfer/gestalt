@@ -27,6 +27,10 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel',
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-path-loader',
+      },
     ],
   },
   postcss(webpack) {

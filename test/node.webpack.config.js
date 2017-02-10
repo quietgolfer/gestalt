@@ -22,7 +22,11 @@ module.exports = {
             'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]--[hash:base64:5]',
             'postcss-loader',
           ]
-                ),
+        ),
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-path-loader',
       },
     ],
   },

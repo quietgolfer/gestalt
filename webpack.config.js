@@ -20,6 +20,10 @@ module.exports = {
           'css?modules&importLoaders=1&localIdentName=[local]!postcss'
         ),
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-path-loader',
+      },
     ],
   },
   postcss(webpack) {

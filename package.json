@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "react": "^15.4.1"
+    "react": "^15.4.1",
+    "svg-path-loader": "^0.0.2"
   },
   "scripts": {
     "build_docs": "webpack --config webpack.config.corkboard.js --colors --progress --optimize-minimize --output-public-path '/gestalt' --output-path docs",
@@ -98,7 +99,8 @@
       "\\.ghost\\.js$"
     ],
     "moduleNameMapper": {
-      "^.+\\.css$": "identity-obj-proxy"
+      "\\.(svg)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "\\.(css)$": "identity-obj-proxy"
     }
   },
   "stylelint": {

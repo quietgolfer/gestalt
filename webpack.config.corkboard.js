@@ -76,6 +76,10 @@ module.exports = {
         ],
         exclude: /node_modules\/(?!(corkboard)\/).*/,
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-path-loader',
+      },
     ],
   },
   postcss(wp) {
