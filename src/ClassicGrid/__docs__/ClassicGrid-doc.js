@@ -5,7 +5,7 @@ import CollageGrid from './CollageGrid';
 import ExampleGrid from './ExampleGrid';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Grid | ClassicGrid');
+ns('ClassicGrid');
 
 card('PropTypes',
   md`

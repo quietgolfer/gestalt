@@ -4,7 +4,7 @@ import { card, md } from 'corkboard';
 import ExampleGrid from './ExampleGrid';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Grid | BoxGrid',
+ns('BoxGrid',
 `
 The BoxGrid is a simple 2D box packing grid with support for displaying items across multiple
 columns. The box grid is able to deterministicly render given a fixed dataset, but it is
