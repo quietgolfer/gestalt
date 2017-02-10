@@ -2,7 +2,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames/bind';
 import Caret from './Caret';
-import IconButton from '../IconButton/IconButton';
 import styles from './Contents.css';
 
 const cx = classnames.bind(styles);
@@ -28,8 +27,7 @@ export const CARET_HEIGHT = 24;
 const CARET_OFFSET_FROM_SIDE = 24;
 const BORDER_RADIUS = 8;
 
-type IdealDir = ?('up' | 'right' | 'down' | 'left');
-type MainDir = IdealDir | 'none';
+type MainDir = ?('up' | 'right' | 'down' | 'left');
 type SubDir = 'up' | 'right' | 'down' | 'left' | 'middle';
 
 type ClientRect = {
@@ -47,8 +45,8 @@ type Size = {
 };
 
 type Props = {
+  bgColor: 'dark-gray' | 'white' | 'yellow',
   children?: any,
-  closeLabel: string,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   onClick: (e: Event) => void,
   onDismiss: () => void,
@@ -78,12 +76,8 @@ type State = {
 /**
  * Determines the main direction the flyout opens
  */
-export function getMainDir(flyoutSize: Size, idealDirection: IdealDir,
+export function getMainDir(flyoutSize: Size, idealDirection: MainDir,
                            triggerRect: ClientRect, windowSize: Size) {
-  // Should display mobile version if flyout width is larger than the window width
-  if (flyoutSize.width > windowSize.width) {
-    return 'none';
-  }
   // Calculates the available space if we were to place the flyout in the 4 main directions
   // to determine which 'quadrant' to position the flyout inside of
   let up = triggerRect.top - flyoutSize.height - CARET_HEIGHT;
@@ -113,9 +107,7 @@ export function getMainDir(flyoutSize: Size, idealDirection: IdealDir,
 
   // Chose the main direction for the flyout based on available spaces & user preference
   let mainDir;
-  if (max <= 0) { // flyout will not fit on the screen, return 'none' for mobile version
-    mainDir = 'none';
-  } else if (idealDirection && spaces[DIR_INDEX_MAP[idealDirection]] > 0) { // user pref
+  if (idealDirection && spaces[DIR_INDEX_MAP[idealDirection]] > 0) { // user pref
     mainDir = idealDirection;
   } else { // If no direction pref, chose the direction in which there is the most space available
     mainDir = SPACES_INDEX_MAP[spaces.indexOf(max)];
@@ -302,13 +294,6 @@ export default class Contents extends Component {
     // First choose one of 4 main direction
     const mainDir = getMainDir(flyoutSize, idealDirection, triggerRect, windowSize);
 
-    // Controller will not fit in any direction, so we skip calculating the offsets
-    // and subDir and just set the state for main since that is all we need to know
-    if (mainDir === 'none') {
-      this.setState({ mainDir });
-      return;
-    }
-
     // Now that we have the main direction, chose from 3 caret placements for that direction
     const subDir = getSubDir(flyoutSize, mainDir, triggerRect, windowSize);
 
@@ -329,46 +314,27 @@ export default class Contents extends Component {
   flyout: HTMLElement;
 
   render() {
-    const { children, closeLabel, width } = this.props;
+    const { bgColor, children, width } = this.props;
 
     // Needed to prevent UI thrashing
     const visibility = this.state.mainDir === null ? 'hidden' : 'visible';
+    const background = `bg-${bgColor}`;
+    const stroke = bgColor === 'white' ? '#efefef' : null;
 
-    // show mobile flyout if it won't fit on a normal screen
-    const flyout = this.state.mainDir === 'none' ?
-      (
-        <div>
-          <div className={cx('fixed', 'left-0', 'top-0', 'Controller-overlay')} />
-          <div
-            className={cx('bg-white', 'block', 'border', 'border-box', 'bottom-0', 'fixed', 'left-0', 'Controller-mobile', 'overflow-auto')}
-            ref={(c) => { this.flyout = c; }}
-          >
-            <div className={cx('absolute', 'right-0', 'top-0')}>
-              <IconButton icon="cancel" label={closeLabel} onClick={this.props.onDismiss} />
-            </div>
-            <div style={{ width }}>
-              {children}
-            </div>
-          </div>
-        </div>
-      ) : (// regular flyout with caret and positioning
+    return (
+      <div className={cx('relative')} style={{ visibility }}>
         <div
-          className={cx('absolute', 'bg-white', 'block', 'border', 'border-box', 'rounded', 'Controller-dimensions')}
+          className={cx('absolute', background, { border: bgColor === 'white' }, 'block', 'border-box', 'rounded', 'Flyout', 'Flyout-dimensions')}
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
         >
           <div className={cx('overflow-auto', 'Controller-dimensions')} style={{ width }}>
             {children}
           </div>
-          <div className={cx('absolute', 'Controller-caret')} style={this.state.caretOffset}>
+          <div className={cx('absolute', bgColor, 'Contents-caret')} style={{ stroke, ...this.state.caretOffset }}>
             <Caret direction={this.state.mainDir} />
           </div>
         </div>
-    );
-
-    return (
-      <div className={cx('relative')} style={{ visibility }}>
-        {flyout}
       </div>
     );
   }
@@ -376,8 +342,8 @@ export default class Contents extends Component {
 
 /* eslint react/no-unused-prop-types: 0 */
 Contents.propTypes = {
+  bgColor: PropTypes.oneOf(['dark-gray', 'white', 'yellow']),
   children: PropTypes.node,
-  closeLabel: PropTypes.string.isRequired,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   onClick: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,

@@ -11,7 +11,7 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
-  hasError?: boolean, /* default: false */
+  errorMessage?: string,
   id: string,
   name?: string,
   onChange: (value: string) => void,
@@ -23,6 +23,7 @@ type Props = {
 `
 );
 
+
 card('Options',
 md`Shown to the right are some of the various options that \`TextField\` supports.
 They will expand to fill the width of their parent container and the text within
@@ -32,40 +33,23 @@ is responsive.
 <TextField id="email" placeholder="Email Address" type="email" />
 \`\`\`
 \`\`\`jsx
-<TextField hasError id="lastName" name="lastName" />
-\`\`\`
-\`\`\`jsx
 <TextField id="password" type="password" value="abcdef" />
 \`\`\`
 `,
-atom => (
-  <div className="px2">
-    <div className="py2">
-      <label htmlFor="email">With a placeholder</label>
-      <TextField
-        id="email"
-        onChange={newValue => atom.reset({ placeholderValue: newValue })}
-        placeholder="Email Address"
-        value={atom.deref().placeholderValue}
-        type="email"
-      />
-    </div>
-    <div className="py2">
-      <label htmlFor="name">With errors</label>
-      <TextField
-        hasError
-        id="name"
-        name="name"
-        onChange={newValue => atom.reset({ errorValue: newValue })}
-        value={atom.deref().errorValue}
-      />
-    </div>
-  </div>
-),
 (atom) => {
   const state = atom.deref();
   return (
     <div className="px2">
+      <div className="py2">
+        <label htmlFor="email">With a placeholder</label>
+        <TextField
+          id="email"
+          onChange={newValue => atom.reset({ placeholderValue: newValue })}
+          placeholder="Email Address"
+          value={atom.deref().placeholderValue}
+          type="email"
+        />
+      </div>
       <div className="py2">
         <label htmlFor="password">With a password</label>
         <TextField
@@ -82,6 +66,32 @@ atom => (
     </div>
   );
 });
+
+card('Errors',
+md`TextField's can display their own error messages if you'd like them to.
+To use our errors, simply pass in an \`errorMessage\` when there is an error present and we will
+handle the rest.
+
+\`\`\`jsx
+<TextField
+  errorMessage="This field can't be blank!"
+  id="firstName"
+/>
+\`\`\`
+`,
+atom => (
+  <div className="px2">
+    <div className="py2">
+      <label htmlFor="firstName">With error message</label>
+      <TextField
+        errorMessage="This field can't be blank!"
+        id="firstName"
+        onChange={newValue => atom.reset({ firstName: newValue })}
+        value={atom.deref().firstName}
+      />
+    </div>
+  </div>
+));
 
 card('Error Validation',
 md`We currently don't handle client side validation. If you are doing any custom validation,

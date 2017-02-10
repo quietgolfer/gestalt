@@ -2,11 +2,18 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Error from '../Error/Error';
 import styles from './TextField.css';
 
+type State = {
+  focused: boolean,
+  errorIsOpen: boolean,
+};
+
 export default class TextField extends Component {
-  propTypes = {
-    hasError: PropTypes.bool,
+
+  static propTypes = {
+    errorMessage: PropTypes.string,
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
@@ -15,12 +22,16 @@ export default class TextField extends Component {
   };
 
   defaultProps = {
-    hasError: false,
     type: 'text',
   };
 
+  state:State = {
+    focused: false,
+    errorIsOpen: false,
+  };
+
   props: {
-    hasError?: boolean,
+    errorMessage?: string,
     id: string,
     onChange: (value: string) => void,
     placeholder?: string,
@@ -34,9 +45,13 @@ export default class TextField extends Component {
     }
   }
 
+  handleBlur = () => {
+    this.setState({ errorIsOpen: true });
+  }
+
   render() {
     const {
-      hasError,
+      errorMessage,
       id,
       placeholder,
       type,
@@ -44,19 +59,33 @@ export default class TextField extends Component {
     } = this.props;
 
     const classes = classnames(styles.textField, {
-      [styles.normal]: !hasError,
-      [styles.errored]: hasError,
+      [styles.normal]: !errorMessage,
+      [styles.errored]: errorMessage,
     });
 
-    return (
+    const textField = onBlur => (
       <input
+        aria-invalid={errorMessage ? 'true' : 'false'}
         className={classes}
         id={id}
+        onBlur={onBlur}
         onChange={this.handleChange}
+        onFocus={onBlur}
         placeholder={placeholder}
         type={type}
         value={value}
       />
     );
+
+    return errorMessage ? (
+      <Error
+        idealDirection="right"
+        isOpen={this.state.errorIsOpen}
+        onDismiss={() => this.setState({ errorIsOpen: false })}
+        size="sm"
+        text={errorMessage}
+        trigger={textField(this.handleBlur)}
+      />
+    ) : textField();
   }
 }

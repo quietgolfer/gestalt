@@ -85,16 +85,6 @@ describe('Contents', () => {
       const mainDir = getMainDir(flyoutSize, null, triggerRect, windowSize);
       expect(mainDir).toEqual('down');
     });
-
-    it('Chooses mobile version when the flyout width is larger than window width', () => {
-      const triggerRect = upperLeftTriggerRect();
-      const smallWindowSize = {
-        height: 900,
-        width: flyoutSize.width - 5,
-      };
-      const mainDir = getMainDir(flyoutSize, null, triggerRect, smallWindowSize);
-      expect(mainDir).toEqual('none');
-    });
   });
 
 
@@ -110,7 +100,7 @@ describe('Contents', () => {
 
 
   describe('Offsets chosen correctly', () => {
-    it('Calculates flyout offsets correctly for left-middle flyouts', () => {
+    it('Calculates Container offsets correctly for left-middle flyouts', () => {
       const triggerRect = centerTriggerRect();
       const mainDir = 'left';
       const subDir = 'middle';
@@ -136,14 +126,14 @@ describe('Contents', () => {
 
 
   describe('Edge shifts calculated correctly', () => {
-    it('Keeps flyout on screen when trigger is on the edge', () => {
+    it('Keeps Container on screen when trigger is on the edge', () => {
       const triggerRect = upperLeftTriggerRect();
       const subDir = 'up';
       const { flyoutShift } = calcEdgeShifts(subDir, triggerRect, windowSize);
       expect(triggerRect.bottom - flyoutShift.y).toBeGreaterThan(0);
     });
 
-    it('Shifts flyout at least the height of the trigger for up sub direction', () => {
+    it('Shifts Container at least the height of the trigger for up sub direction', () => {
       const triggerRect = centerTriggerRect();
       const subDir = 'up';
       const { flyoutShift } = calcEdgeShifts(subDir, triggerRect, windowSize);
@@ -152,8 +142,8 @@ describe('Contents', () => {
   });
 
 
-  describe('Regular & mobile version display checks', () => {
-    it('Renders caret in if screen is large enough to render normal flyout', () => {
+  describe('Regular version display checks', () => {
+    it('Renders caret in if screen is large enough to render normal Container', () => {
       const triggerRect = centerTriggerRect();
       const wrapper = shallow(
         <Contents
@@ -169,24 +159,6 @@ describe('Contents', () => {
       wrapper.instance().setState({ mainDir: 'left' });
       expect(wrapper.find('IconButton').length).toEqual(0);
       expect(wrapper.find('Caret').length).toEqual(1);
-    });
-
-    it('Renders IconButton if mobile version of flyout is needed', () => {
-      const triggerRect = centerTriggerRect();
-      const wrapper = shallow(
-        <Contents
-          closeLabel="close"
-          onClick={jest.fn()}
-          onDismiss={jest.fn()}
-          onKeyDown={jest.fn()}
-          onResize={jest.fn()}
-          triggerRect={triggerRect}
-          width={flyoutSize.width}
-        />
-      );
-      wrapper.instance().setState({ mainDir: 'none' });
-      expect(wrapper.find('Caret').length).toEqual(0);
-      expect(wrapper.find('IconButton').length).toEqual(1);
     });
   });
 });

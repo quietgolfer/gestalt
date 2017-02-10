@@ -8,7 +8,7 @@ import Controller from '../Controller';
 import Contents from '../Contents';
 
 
-describe('Controller', () => {
+describe('Flyout', () => {
   const mockTrigger = (extras = {}) => ({
     getBoundingClientRect: jest.fn(),
     contains: jest.fn(),

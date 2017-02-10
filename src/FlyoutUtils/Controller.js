@@ -4,8 +4,8 @@ import React, { Component, PropTypes } from 'react';
 import Contents from './Contents';
 
 type Props = {
+  bgColor: 'dark-gray' | 'white' | 'yellow',
   children?: any,
-  closeLabel: string,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
   onDismiss: () => void,
@@ -58,7 +58,7 @@ export default class Controller extends Component {
 
   props: Props;
   triggerButton: HTMLElement;
-  innerFlyout: HTMLElement;
+  contents: HTMLElement;
 
   handleKeyDown = (e: { keyCode: number }) => {
     if (e.keyCode === ESCAPE_KEY_CODE) {
@@ -68,7 +68,7 @@ export default class Controller extends Component {
 
   handlePageClick = (e: Event) => {
     if (e.target instanceof Node
-      && !this.triggerButton.contains(e.target) && !this.innerFlyout.contains(e.target)) {
+      && !this.triggerButton.contains(e.target) && !this.contents.contains(e.target)) {
       this.props.onDismiss();
     }
   }
@@ -79,18 +79,18 @@ export default class Controller extends Component {
   }
 
   render() {
-    const { children, closeLabel, idealDirection, isOpen, trigger } = this.props;
+    const { bgColor, children, idealDirection, isOpen, trigger } = this.props;
     const size = this.props.size ? this.props.size : 'sm';
     const width = SIZE_WIDTH_MAP[size];
     return (
-      <div className="inline-block">
+      <div>
         <div ref={(c) => { this.triggerButton = c; }}>
           {trigger}
         </div>
-        <div ref={(c) => { this.innerFlyout = c; }}>
+        <div ref={(c) => { this.contents = c; }}>
           {isOpen && this.triggerButton ?
             <Contents
-              closeLabel={closeLabel}
+              bgColor={bgColor}
               idealDirection={idealDirection}
               onClick={this.handlePageClick}
               onDismiss={this.props.onDismiss}
@@ -110,8 +110,8 @@ export default class Controller extends Component {
 }
 
 Controller.propTypes = {
+  bgColor: PropTypes.oneOf(['dark-gray', 'white', 'yellow']),
   children: PropTypes.node,
-  closeLabel: PropTypes.string.isRequired,  // needed for accessibility  and internationalization
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   isOpen: PropTypes.bool.isRequired,
   onDismiss: PropTypes.func.isRequired,

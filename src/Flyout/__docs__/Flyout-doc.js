@@ -2,6 +2,8 @@
 import React from 'react';
 import { card, md } from 'corkboard';
 import Button from '../../Button/Button';
+import Divider from '../../Divider/Divider';
+import Heading from '../../Heading/Heading';
 import Flyout from '../Flyout';
 import IconButton from '../../IconButton/IconButton';
 import Text from '../../Text/Text';
@@ -22,9 +24,27 @@ type Props = {
   trigger: React$Element<any>,
 };
 \`\`\`
-`);
+`,
+  <div>
+    <div className="py2">
+      <Heading size="xs">Sizes</Heading>
+      <Divider />
+      <Text><b>xs:</b> 185px</Text>
+      <Text><b>sm:</b> 230px</Text>
+      <Text><b>md:</b> 320px</Text>
+      <Text><b>lg:</b> 350px</Text>
+      <Text><b>xl:</b> 496px</Text>
+      <div className="py2">
+        <Text italic>
+          Sizes are subject to change as we continue to gather input from design. For the time
+          being, these sizes cover the 5 most common flyout usecases for web.
+        </Text>
+      </div>
+    </div>
+  </div>
+);
 
-card('Open Direction Preference',
+card('Ideal Direction Preference',
 md`
 The \`Flyout\` component gives you the ability to *influence* the preferred direction that it
 opens. This may be a useful property to specify if you have a page with many potential flyouts
@@ -59,24 +79,6 @@ We recommend passing in the following ARIA attributes to the trigger element:
 * \`aria.haspopup\` lets the screenreader know that there is a flyout linked to the tigger.
 * \`aria.expanded\` informs the screenreader whether the flyout is currently open or closed.
 `);
-
-card('Sizes',
-md`
-The \`size\` you specify controls the width of the Flyout. The height of the flyout will adjust to fit
-the content you specify in \`children\`.
-
-*Note: sizes subject to change as we continue to gather input from design. For the time being,
-these sizes cover the 5 most common flyout usecases for web.*
-`,
-  <div>
-    <Text bold size="lg"> Size chart </Text>
-    <Text><b>xs:</b> 185px</Text>
-    <Text><b>sm:</b> 230px</Text>
-    <Text><b>md:</b> 320px</Text>
-    <Text><b>lg:</b> 350px</Text>
-    <Text><b>xl:</b> 496px</Text>
-  </div>
-);
 
 const moreFlyout = (
   <ul style={{ padding: 0, margin: 0, display: 'inline-block', listStyle: 'none' }}>
@@ -116,7 +118,7 @@ const profileFlyout = (
 );
 
 const plusFlyout = (
-  <ul style={{ padding: 10, margin: 0, display: 'inline-block', listStyle: 'none' }}>
+  <ul style={{ padding: 10, margin: 0, listStyle: 'none' }}>
     <li className="p2">
       <Text color="gray" bold>
         <a href="http://pinterest.com">Get our browser button to save ideas even faster</a>
@@ -243,9 +245,9 @@ atom => (
       <span className="px1"><Text bold inline>#1</Text></span>
       <Flyout
         closeLabel="close"
-        idealDirection="down"
+        idealDirection="right"
         isOpen={!!atom.deref().more}
-        onDismiss={() => atom.reset({ more: !atom.deref().more })}
+        onDismiss={() => atom.reset({ more: false })}
         trigger={
           <IconButton
             aria={{
@@ -257,7 +259,7 @@ atom => (
             onClick={() => atom.reset({ more: !atom.deref().more })}
           />
         }
-        size="xs"
+        size="xl"
       >
         {moreFlyout}
       </Flyout>
@@ -268,7 +270,7 @@ atom => (
         closeLabel="close"
         idealDirection="right"
         isOpen={!!atom.deref().profile}
-        onDismiss={() => atom.reset({ profile: !atom.deref().profile })}
+        onDismiss={() => atom.reset({ profile: false })}
         trigger={
           <IconButton
             aria={{
@@ -289,7 +291,7 @@ atom => (
       <Flyout
         closeLabel="close"
         isOpen={!!atom.deref().add}
-        onDismiss={() => atom.reset({ add: !atom.deref().add })}
+        onDismiss={() => atom.reset({ add: false })}
         trigger={
           <IconButton
             aria={{
@@ -311,7 +313,7 @@ atom => (
         closeLabel="close"
         idealDirection="up"
         isOpen={!!atom.deref().help}
-        onDismiss={() => atom.reset({ help: !atom.deref().help })}
+        onDismiss={() => atom.reset({ help: false })}
         trigger={
           <Button
             aria={{

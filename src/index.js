@@ -27,6 +27,7 @@ import TenzingGrid from './TenzingGrid/TenzingGrid';
 import Text from './Text/Text';
 import TextArea from './TextArea/TextArea';
 import TextField from './TextField/TextField';
+import Tooltip from './Tooltip/Tooltip';
 
 export {
   Avatar,
@@ -57,4 +58,5 @@ export {
   Text,
   TextArea,
   TextField,
+  Tooltip,
 };

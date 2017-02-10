@@ -1,23 +1,9 @@
-.Controller-dimensions {
+.Contents-dimensions {
   max-height: 90vh;
-  max-width: 500px;
-  min-height: 50px;
-  min-width: 80px;
+  max-width: 90vw;
+  min-height: 40px;
 }
 
-.Controller-caret {
-  fill: #fff;
-  stroke: #efefef;
-}
-
-.Controller-mobile {
-  max-height: 70vh;
-  width: 100vw;
-}
-
-.Controller-overlay {
-  background-color: #000;
-  height: 100%;
-  opacity: 0.5;
-  width: 100%;
+.Contents-caret {
+  fill: currentColor;
 }

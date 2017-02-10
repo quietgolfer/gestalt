@@ -2,23 +2,30 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import Error from '../Error/Error';
 import styles from './TextArea.css';
 
+type State = {
+  focused: boolean,
+  errorIsOpen: boolean,
+};
+
 export default class TextArea extends Component {
-  propTypes = {
-    hasError: PropTypes.bool,
+  static propTypes = {
+    errorMessage: PropTypes.string,
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     value: PropTypes.string,
   };
 
-  defaultProps = {
-    hasError: false,
+  state:State = {
+    focused: false,
+    errorIsOpen: false,
   };
 
   props: {
-    hasError?: boolean,
+    errorMessage?: string,
     id: string,
     name?: string,
     onChange: (value: string) => void,
@@ -32,9 +39,13 @@ export default class TextArea extends Component {
     }
   }
 
+  handleBlur = () => {
+    this.setState({ errorIsOpen: true });
+  }
+
   render() {
     const {
-      hasError,
+      errorMessage,
       id,
       name,
       placeholder,
@@ -42,22 +53,34 @@ export default class TextArea extends Component {
     } = this.props;
 
     const classes = classnames(styles.textArea, {
-      [styles.normal]: !hasError,
-      [styles.errored]: hasError,
+      [styles.normal]: !errorMessage,
+      [styles.errored]: errorMessage,
     });
 
-    return (
-      <div>
-        <textarea
-          className={classes}
-          id={id}
-          name={name}
-          onChange={this.handleChange}
-          placeholder={placeholder}
-          rows={3}
-          value={value}
-        />
-      </div>
+    const textArea = onBlur => (
+      <textarea
+        aria-invalid={errorMessage ? 'true' : 'false'}
+        className={classes}
+        id={id}
+        name={name}
+        onBlur={onBlur}
+        onChange={this.handleChange}
+        onFocus={onBlur}
+        placeholder={placeholder}
+        rows={3}
+        value={value}
+      />
     );
+
+    return errorMessage ? (
+      <Error
+        idealDirection="right"
+        isOpen={this.state.errorIsOpen}
+        onDismiss={() => this.setState({ errorIsOpen: false })}
+        size="sm"
+        text={errorMessage}
+        trigger={textArea(this.handleBlur)}
+      />
+    ) : textArea();
   }
 }

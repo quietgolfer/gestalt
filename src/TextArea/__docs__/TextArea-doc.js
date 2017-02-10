@@ -11,7 +11,7 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
-  hasError?: boolean,
+  errorMessage?: string,
   id: string,
   name?: string,
   onChange: (value: string) => void,
@@ -30,7 +30,11 @@ the text within it is responsive.
 <TextArea id="aboutme" placeholder="Write something about yourself..." />
 \`\`\`
 \`\`\`jsx
-<TextArea hasError id="comment" />
+<TextArea
+  errorMessage="This field can't be blank!"
+  hasError
+  id="comment"
+/>
 \`\`\`
 `,
 atom => (
@@ -44,13 +48,30 @@ atom => (
         value={atom.deref().placeholderValue}
       />
     </div>
+  </div>
+));
+
+card('Errors',
+md`TextArea's can display their own error messages if you'd like them to.
+To use our errors, simply pass in an \`errorMessage\` when there is an error present and we will
+handle the rest.
+
+\`\`\`jsx
+<TextArea
+  errorMessage="This field can't be blank!"
+  id="comment"
+/>
+\`\`\`
+`,
+atom => (
+  <div className="px2">
     <div className="py2">
-      <label htmlFor="comment">With errors</label>
+      <label htmlFor="comment">With error message </label>
       <TextArea
-        hasError={!atom.deref().errorValue}
+        errorMessage="This field can't be blank!"
         id="comment"
-        onChange={newValue => atom.reset({ errorValue: newValue })}
-        value={atom.deref().errorValue}
+        onChange={newValue => atom.reset({ errorMsgValue: newValue })}
+        value={atom.deref().errorMsgValue}
       />
     </div>
   </div>
