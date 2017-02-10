@@ -14,6 +14,7 @@ export default class TextField extends Component {
 
   static propTypes = {
     errorMessage: PropTypes.string,
+    hasError: PropTypes.bool,
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
@@ -22,6 +23,7 @@ export default class TextField extends Component {
   };
 
   defaultProps = {
+    hasError: false,
     type: 'text',
   };
 
@@ -32,6 +34,7 @@ export default class TextField extends Component {
 
   props: {
     errorMessage?: string,
+    hasError?: bool,
     id: string,
     onChange: (value: string) => void,
     placeholder?: string,
@@ -52,6 +55,7 @@ export default class TextField extends Component {
   render() {
     const {
       errorMessage,
+      hasError,
       id,
       placeholder,
       type,
@@ -59,13 +63,13 @@ export default class TextField extends Component {
     } = this.props;
 
     const classes = classnames(styles.textField, {
-      [styles.normal]: !errorMessage,
-      [styles.errored]: errorMessage,
+      [styles.normal]: !hasError || !errorMessage,
+      [styles.errored]: hasError || errorMessage,
     });
 
     const textField = onBlur => (
       <input
-        aria-invalid={errorMessage ? 'true' : 'false'}
+        aria-invalid={(errorMessage || hasError) ? 'true' : 'false'}
         className={classes}
         id={id}
         onBlur={onBlur}
