@@ -52,7 +52,6 @@ export default class Avatar extends Component {
 
   registerEl = (el: HTMLElement) => {
     this.el = el;
-    return;
   }
 
   props: {

@@ -77,7 +77,7 @@ type State = {
  * Determines the main direction the flyout opens
  */
 export function getMainDir(flyoutSize: Size, idealDirection: MainDir,
-                           triggerRect: ClientRect, windowSize: Size) {
+  triggerRect: ClientRect, windowSize: Size) {
   // Calculates the available space if we were to place the flyout in the 4 main directions
   // to determine which 'quadrant' to position the flyout inside of
   let up = triggerRect.top - flyoutSize.height - CARET_HEIGHT;
@@ -119,7 +119,7 @@ export function getMainDir(flyoutSize: Size, idealDirection: MainDir,
  * Determines the sub direction of how the flyout is positioned within the main dir
  */
 export function getSubDir(flyoutSize: Size, mainDir: MainDir,
-                          triggerRect: ClientRect, windowSize: Size) {
+  triggerRect: ClientRect, windowSize: Size) {
   // Now that we have the main direction, chose from 3 caret placements for that direction
   let offset;
   let triggerMid;
@@ -191,7 +191,7 @@ export function calcEdgeShifts(subDir: SubDir, triggerRect: ClientRect, windowSi
  * Calculates flyout and caret offsets for styling
  */
 export function calcOffsets(flyoutSize: Size, mainDir: MainDir, subDir: SubDir,
-                            triggerRect: ClientRect, windowSize: Size) {
+  triggerRect: ClientRect, windowSize: Size) {
   let flyoutTop = mainDir === 'down' ? CARET_HEIGHT / 2 : null;
   let flyoutRight = mainDir === 'left' ? triggerRect.width + (CARET_HEIGHT / 2) : null;
   let flyoutBottom = mainDir === 'up' ? triggerRect.height + (CARET_HEIGHT / 2) : null;

@@ -77,9 +77,6 @@ export default class SearchField extends Component {
           id={id}
           onChange={this.handleChange}
           placeholder={placeholder}
-          // role="searchbox" is a feature of ARIA 1.1 which the linter
-          // hasn't enabled yet
-          // eslint-disable-next-line jsx-a11y/aria-role
           role="searchbox"
           type="search"
           value={value}
