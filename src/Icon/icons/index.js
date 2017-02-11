@@ -8,6 +8,7 @@ import arrowDown from './arrow-down.svg';
 import arrowForward from './arrow-forward.svg';
 import camera from './camera.svg';
 import cancel from './cancel.svg';
+import check from './check.svg';
 import checkCircleBold from './check-circle-bold.svg';
 import checkCircleLight from './check-circle-light.svg';
 import circleOutline from './circle-outline.svg';
@@ -55,6 +56,7 @@ export default {
   'arrow-forward': arrowForward,
   camera,
   cancel,
+  check,
   'check-circle-bold': checkCircleBold,
   'check-circle-light': checkCircleLight,
   'circle-outline': circleOutline,
