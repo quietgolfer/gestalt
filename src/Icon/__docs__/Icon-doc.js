@@ -1,8 +1,10 @@
 // @flow
 import React, { PropTypes } from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
 import Icon from '../Icon';
 import icons from '../icons/index';
+import Text from '../../Text/Text';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Icon');
@@ -24,6 +26,27 @@ type IconProps = {
 `
 );
 
+const colorMap = {
+  gray: 'gray (default)',
+  'dark-gray': 'dark-gray',
+  white: 'white',
+  blue: 'blue',
+  red: 'red'
+};
+
+const colorItem = (color) => {
+  if (color !== 'white') {
+    return (
+      <Icon icon="pin" label="Pin" color={color} />
+    );
+  }
+  return (
+    <Box xs={{ display: 'flexColumn' }} alignItems="center" color="darkGray" shape="circle" justifyContent="center" dangerouslySetInlineStyle={{ __style: { minWidth: 26, minHeight: 26 } }}>
+      <Icon icon="pin" label="Pin" color="white" />
+    </Box>
+  );
+};
+
 card('Colors',
   md`
 \`\`\`html
@@ -31,43 +54,16 @@ card('Colors',
 <Icon icon="pin" label="Pin" color="dark-gray" />
 \`\`\`
 `,
-  <div>
-    <div className="flex">
-      <div className="col-2 px2 text-center border-box">
-        <h5>gray (default)</h5>
-        <Icon icon="pin" label="Pin" />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>dark-gray</h5>
-        <Icon icon="pin" label="Pin" color="dark-gray" />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>white</h5>
-        <div
-          className="flex flex-column items-center"
-          style={{
-            backgroundColor: '#555',
-            borderRadius: '50%',
-            boxSizing: 'border-box',
-            height: 26,
-            margin: '0 auto',
-            paddingTop: '4px',
-            width: 26,
-          }}
-        >
-          <Icon icon="pin" label="Pin" color="white" />
-        </div>
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>blue</h5>
-        <Icon icon="pin" label="Pin" color="blue" />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>red</h5>
-        <Icon icon="pin" label="Pin" color="red" />
-      </div>
-    </div>
-  </div>
+  <Box xs={{ display: 'flex' }}>
+    {Object.keys(colorMap).map((color, idx) =>
+      <Box xs={{ display: 'flexColumn', column: 2 }} padding={{ x: 2 }} alignItems="center" key={idx}>
+        <Box padding={{ y: 3 }}>
+          <Text align="center" bold color="dark-gray">{colorMap[color]}</Text>
+        </Box>
+        {colorItem(color)}
+      </Box>
+    )}
+  </Box>
 );
 
 
@@ -82,38 +78,26 @@ Currently, icons can be any size desired. The default size is 16.
 <Icon icon="pin" label="Pin" size={32} />
 \`\`\`
 `,
-  <div>
-    <div className="flex mxn2 flex-wrap">
-      <div className="col-2 px2 text-center border-box">
-        <h5>16</h5>
-        <Icon icon="pin" label="Pin" size={16} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>20</h5>
-        <Icon icon="pin" label="Pin" size={20} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>24</h5>
-        <Icon icon="pin" label="Pin" size={24} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>28</h5>
-        <Icon icon="pin" label="Pin" size={28} />
-      </div>
-      <div className="col-2 px2 text-center border-box">
-        <h5>32</h5>
-        <Icon icon="pin" label="Pin" size={32} />
-      </div>
-    </div>
-  </div>
+  <Box xs={{ display: 'flex' }} wrap>
+    {[16, 20, 24, 28, 32].map((size, idx) =>
+      <Box xs={{ display: 'flexColumn', column: 2 }} padding={{ x: 2 }} alignItems="center" key={idx}>
+        <Box padding={{ y: 3 }}>
+          <Text align="center" bold color="dark-gray">{size}</Text>
+        </Box>
+        <Icon icon="pin" label="Pin" size={size} />
+      </Box>
+    )}
+  </Box>
 );
 
 function IconType({ iconName }) {
   return (
-    <div className="col-6 sm-col-3 px2 text-center border-box">
-      <h5>{iconName}</h5>
+    <Box xs={{ column: 6, display: 'flexColumn' }} sm={{ column: 3 }} alignItems="center">
+      <Box padding={{ y: 3 }}>
+        <Text align="center" bold color="dark-gray">{iconName}</Text>
+      </Box>
       <Icon icon={iconName} label={iconName.replace(/-/g, ' ')} color="gray" />
-    </div>
+    </Box>
   );
 }
 
@@ -131,10 +115,8 @@ card('Types',
 <Icon icon="arrow-circle-forward" label="Forward" />
 \`\`\`
 `,
-  <div>
-    <div className="flex mxn2 flex-wrap">
-      {Object.keys(icons).map((iconName, idx) =>
-        <IconType iconName={iconName} key={idx} />
-      )}
-    </div>
-  </div>);
+  <Box xs={{ display: 'flex' }} wrap>
+    {Object.keys(icons).map((iconName, idx) =>
+      <IconType iconName={iconName} key={idx} />
+    )}
+  </Box>);
