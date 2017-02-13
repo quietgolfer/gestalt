@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unused-prop-types */
 /* global $Keys */
 import React, { PropTypes } from 'react';
+import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 import styles from './IconButton.css';
 import icons from '../Icon/icons';
@@ -66,13 +67,15 @@ export default function IconButton(props: Props) {
       style={inlineStyle}
       tabIndex={tabIndex}
     >
-      {/*
-        We're explicitly setting an empty string as a label on the Icon since we
-        already have an aria-label on the button container.
-        This is similar to having empty `alt` attributes:
-        https://davidwalsh.name/accessibility-tip-empty-alt-attributes
-      */}
-      <Icon color={iconColor} icon={icon} size={iconSize} label="" />
+      <Box xs={{ display: 'flex' }} alignItems="center" justifyContent="center">
+        {/*
+          We're explicitly setting an empty string as a label on the Icon since we
+          already have an aria-label on the button container.
+          This is similar to having empty `alt` attributes:
+          https://davidwalsh.name/accessibility-tip-empty-alt-attributes
+        */}
+        <Icon color={iconColor} icon={icon} size={iconSize} label="" />
+      </Box>
     </button>
   );
 }

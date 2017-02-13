@@ -72,7 +72,7 @@ size beyond what we currently have available, please file an issue on Github!
 `,
   <div className="flex mxn2 flex-wrap">
     {sizes.map((size, key) =>
-      <div className="col-2 px2 text-center border-box" key={key}>
+      <div className="col-2 text-center border-box" key={key}>
         <h5>{size}</h5>
         <IconButtonEx icon="heart" size={size} />
       </div>
