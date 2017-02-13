@@ -44,6 +44,7 @@ export default class Modal extends Component {
     document.addEventListener('click', this.handlePageClick);
     window.addEventListener('keydown', this.handleKeyDown);
     window.addEventListener('resize', this.updateBreakpoint);
+    document.addEventListener('focus', this.restrictFocus, true);
     this.priorFocus = document.activeElement;
     this.updateBreakpoint();
     if (document.body) {
@@ -56,6 +57,8 @@ export default class Modal extends Component {
     document.removeEventListener('click', this.handlePageClick);
     window.removeEventListener('keydown', this.handleKeyDown);
     window.removeEventListener('resize', this.updateBreakpoint);
+    document.removeEventListener('focus', this.restrictFocus);
+
     if (document.body) {
       document.body.style.overflow = ''; // Reenables background scrolling
     }
@@ -79,8 +82,7 @@ export default class Modal extends Component {
   }
 
   handlePageClick = (e: Event) => {
-    if (e.target instanceof Node
-      && !this.modal.contains(e.target)) {
+    if (e.target instanceof Node && !this.modal.contains(e.target)) {
       this.handleClose();
     }
   }
@@ -98,12 +100,16 @@ export default class Modal extends Component {
     }
   }
 
+  restrictFocus = (e: Event) => {
+    if (e.target instanceof Node && !this.modal.contains(e.target)) {
+      e.stopPropagation();
+      this.modal.focus();
+    }
+  }
+
   props: Props;
   modal: HTMLElement;
   priorFocus: ?HTMLElement;
-  header: HTMLElement;
-  footer: HTMLElement;
-  content: HTMLElement;
 
   render() {
     const { children, closeLabel, footer, header, modalLabel, role = 'dialog', size = 'sm' } = this.props;
@@ -134,17 +140,17 @@ export default class Modal extends Component {
           style={{ width }}
         >
           <div className="flex flex-column relative" style={{ maxHeight: '90vh' }}>
-            <div className="border-box fit" ref={(c) => { this.header = c; }}>
+            <div className="border-box fit">
               <div className="flex py3 px2 justify-between">
                 {header}
                 {role === 'dialog' ? <IconButton label={closeLabel} icon="cancel" onClick={this.handleClose} /> : null }
               </div>
               {role === 'dialog' ? <Divider /> : null}
             </div>
-            <div className="overflow-auto flex-auto relative" ref={(c) => { this.content = c; }}>
+            <div className="overflow-auto flex-auto relative">
               {children}
             </div>
-            <div className="border-box fit" ref={(c) => { this.footer = c; }}>
+            <div className="border-box fit">
               {footer ? (
                 <div>
                   {role === 'dialog' ? <Divider /> : null}
