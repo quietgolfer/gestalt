@@ -105,7 +105,18 @@ export default class TenzingGrid<T> extends Component {
   }
 
   componentWillReceiveProps({ items }: { items: Array<*> }) {
-    this.updateItems(items);
+    if (items.length > this.props.items.length) {
+      // Insert new items.
+      this.updateItems(items);
+    } else {
+      // Shallow compare all items, if any change reflow the grid.
+      for (let i = 0; i < items.length; i += 1) {
+        if (items[i] !== this.props.items[i]) {
+          this.insertedItemsCount = 0;
+          this.setGridItems(items);
+        }
+      }
+    }
   }
 
   /**
@@ -187,6 +198,17 @@ export default class TenzingGrid<T> extends Component {
     // Try accessing scrollY, as the grid will generally be scrolled by the window.
     const el = this.props.scrollContainer;
     return el.scrollY !== undefined ? el.scrollY : el.scrollTop;
+  }
+
+  /**
+   * Sets all grid items in the grid.
+   */
+  setGridItems(items: Array<*>) {
+    this.setState({
+      gridItems: [],
+    }, () => {
+      this.insertItems(items);
+    });
   }
 
   calculateDistance(A:GridItemType<*>, B:GridItemType<*>) {
@@ -289,7 +311,6 @@ export default class TenzingGrid<T> extends Component {
 
     items.forEach((itemData, insertedItemIdx) => {
       const itemInfo = {};
-
 
       const key = colIdx != null && itemIdx != null ?
         parseFloat(`${insertedItemIdx.toString()}.${this.itemKeyCounter}1`) :
@@ -452,19 +473,9 @@ export default class TenzingGrid<T> extends Component {
    */
   reflow() {
     this.measureContainer();
-
-    const newColCount = this.calculateColumns();
-    if (newColCount !== this.state.gridItems.length) {
-      const items = this.allItems().sort((a, b) => a.key - b.key).map(item => item.itemData);
-      this.itemKeyCounter = 0;
-      this.setState({
-        gridItems: [],
-      }, () => {
-        this.insertItems(items);
-      });
-      return true;
-    }
-    return false;
+    const items = this.allItems().sort((a, b) => a.key - b.key).map(item => item.itemData);
+    this.itemKeyCounter = 0;
+    this.setGridItems(items);
   }
 
   /**
