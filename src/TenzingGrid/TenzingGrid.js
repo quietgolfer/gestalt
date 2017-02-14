@@ -61,7 +61,9 @@ export default class TenzingGrid<T> extends Component {
   constructor(props: Props<*>) {
     super(props);
 
+    this.fetchingFrom = false;
     this.insertedItemsCount = 0;
+    this.serverRefs = [];
 
     this.state = {
       height: 0,
@@ -222,6 +224,7 @@ export default class TenzingGrid<T> extends Component {
   itemKeyCounter: number;
   resizeTimeout: ?number;
   scrollBuffer: number;
+  serverRefs: Array<HTMLElement>;
 
   updateItems(items: Array<*>) {
     if (!items) {
@@ -299,10 +302,19 @@ export default class TenzingGrid<T> extends Component {
           itemIdx={key}
         />
       );
-      ReactDOM.unstable_renderSubtreeIntoContainer(
-          this, component, measuringNode);
 
-      const { clientWidth, clientHeight } = measuringNode;
+      let clientHeight;
+      let clientWidth;
+      if (this.serverRefs && this.serverRefs[insertedItemIdx]) {
+        const serverRendered = this.serverRefs[insertedItemIdx];
+        clientHeight = serverRendered.clientHeight;
+        clientWidth = serverRendered.clientWidth;
+      } else {
+        ReactDOM.unstable_renderSubtreeIntoContainer(
+          this, component, measuringNode);
+        clientHeight = measuringNode.clientHeight;
+        clientWidth = measuringNode.clientWidth;
+      }
 
       itemInfo.component = component;
       itemInfo.width = clientWidth;
@@ -375,6 +387,7 @@ export default class TenzingGrid<T> extends Component {
       }
     }
 
+    this.serverRefs = [];
     this.setState({
       gridItems,
       height,
@@ -534,7 +547,7 @@ export default class TenzingGrid<T> extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.fetchingFrom}
+          isFetching={this.fetchingFrom !== false}
           renderHeight={this.renderHeight}
         />
         {(this.state.serverItems || this.visibleItems()).map(item =>
@@ -547,6 +560,7 @@ export default class TenzingGrid<T> extends Component {
             data-grid-item
             key={item.key}
             style={{ top: 0, left: 0, transform: `translateX(${item.left}px) translateY(${item.top}px)` }}
+            {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
           >
             <div
               className={item.appended || !this.state.mounted ? null : styles.Grid__Item__Animated}
