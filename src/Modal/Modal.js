@@ -30,14 +30,14 @@ type Props = {
 
 type State = {
   breakpoint: 'xs' | 'sm' | 'md' | 'lg',
-  windowHeight: number,
+  windowHeight: ?number,
 };
 
 export default class Modal extends Component {
 
   state:State = {
     breakpoint: 'xs',
-    windowHeight: window.innerHeight,
+    windowHeight: undefined,
   };
 
   componentDidMount() {
