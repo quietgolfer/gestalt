@@ -68,7 +68,12 @@ export default class SearchField extends Component {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
       >
-        <Box position="absolute" left margin={{ left: 2 }}>
+        <Box
+          dangerouslySetInlineStyle={{ __style: { pointerEvents: 'none' } }}
+          position="absolute"
+          left
+          margin={{ left: 2 }}
+        >
           <Icon icon="search" label="" />
         </Box>
         <input
