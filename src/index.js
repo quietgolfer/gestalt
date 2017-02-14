@@ -21,6 +21,7 @@ import Mask from './Mask/Mask';
 import Modal from './Modal/Modal';
 import ScrollFetch from './ScrollFetch/ScrollFetch';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
+import SearchField from './SearchField/SearchField';
 import SelectList from './SelectList/SelectList';
 import Spinner from './Spinner/Spinner';
 import Switch from './Switch/Switch';
@@ -52,6 +53,7 @@ export {
   Mask,
   Modal,
   ScrollFetch,
+  SearchField,
   SegmentedControl,
   SelectList,
   Spinner,
