@@ -29,7 +29,7 @@ export default class ScrollFetch extends Component {
   /**
    * Returns the container height.
    */
-  getContainerHeight() {
+  getContainerHeight = () => {
     const { container } = this.props;
     return container.clientHeight || container.innerHeight;
   }
@@ -48,13 +48,16 @@ export default class ScrollFetch extends Component {
    * Fetches additional items if needed.
    */
   check = () => {
+    const { isFetching, fetchMore, renderHeight } = this.props;
+
     // Only fetch more items if we are not fetching and we have a fetchMore prop.
-    if (this.props.isFetching || !this.props.fetchMore) {
+    if (isFetching || !fetchMore) {
       return;
     }
 
-    if (this.getScrollPos() + this.scrollBuffer > this.props.renderHeight()) {
-      this.props.fetchMore();
+    const containerHeight = renderHeight || this.getContainerHeight;
+    if (this.getScrollPos() + this.scrollBuffer > containerHeight()) {
+      fetchMore();
     }
   }
 
