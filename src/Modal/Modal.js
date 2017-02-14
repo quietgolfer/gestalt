@@ -82,7 +82,9 @@ export default class Modal extends Component {
   }
 
   handlePageClick = (e: Event) => {
-    if (e.target instanceof Node && !this.modal.contains(e.target)) {
+    if (e.target instanceof Node
+      && this.container.contains(e.target)
+      && !this.modal.contains(e.target)) {
       this.handleClose();
     }
   }
@@ -108,6 +110,7 @@ export default class Modal extends Component {
   }
 
   props: Props;
+  container: HTMLElement;
   modal: HTMLElement;
   priorFocus: ?HTMLElement;
 
@@ -130,6 +133,7 @@ export default class Modal extends Component {
       <div
         aria-label={modalLabel}
         className={containerClasses}
+        ref={(c) => { this.container = c; }}
         role={role}
       >
         <div className={overlayClasses} />
