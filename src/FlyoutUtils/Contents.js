@@ -52,6 +52,7 @@ type Props = {
   onDismiss: () => void,
   onKeyDown: (e: { keyCode: number }) => void,
   onResize: () => void,
+  shouldFocus?: boolean,
   triggerRect: ClientRect,
   width: number,
 };
@@ -261,9 +262,18 @@ export default class Contents extends Component {
 
   componentDidMount() {
     this.setFlyoutPosition();
+    if (document.activeElement) {
+      this.priorFocus = document.activeElement;
+    }
+    setTimeout(() => {
+      if (this.props.shouldFocus) {
+        this.flyout.focus();
+      }
+    });
     document.addEventListener('click', this.props.onClick);
     window.addEventListener('resize', this.props.onResize);
     window.addEventListener('keydown', this.props.onKeyDown);
+    document.addEventListener('focus', this.restrictFocus, true);
   }
 
   componentWillReceiveProps() {
@@ -271,9 +281,15 @@ export default class Contents extends Component {
   }
 
   componentWillUnmount() {
+    setTimeout(() => {
+      if (this.priorFocus) {
+        this.priorFocus.focus();
+      }
+    });
     document.removeEventListener('click', this.props.onClick);
     window.removeEventListener('resize', this.props.onResize);
     window.removeEventListener('keydown', this.props.onKeyDown);
+    document.removeEventListener('focus', this.restrictFocus);
   }
 
   /**
@@ -310,8 +326,16 @@ export default class Contents extends Component {
     });
   }
 
+  restrictFocus = (e: Event) => {
+    if (this.flyout && e.target instanceof Node && !this.flyout.contains(e.target)) {
+      e.stopPropagation();
+      this.flyout.focus();
+    }
+  }
+
   props: Props;
   flyout: HTMLElement;
+  priorFocus: HTMLElement;
 
   render() {
     const { bgColor, children, width } = this.props;
@@ -322,16 +346,17 @@ export default class Contents extends Component {
     const stroke = bgColor === 'white' ? '#efefef' : null;
 
     return (
-      <div className={cx('relative')} style={{ visibility }}>
+      <div className={cx('relative')} style={{ stroke, visibility }}>
         <div
-          className={cx('absolute', background, { border: bgColor === 'white' }, 'block', 'border-box', 'rounded', 'Flyout', 'Flyout-dimensions')}
+          className={cx('absolute', background, { border: bgColor === 'white' }, 'block', 'border-box', 'rounded', 'Flyout', 'Contents-dimensions', 'Contents')}
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
+          tabIndex={-1}
         >
-          <div className={cx('overflow-auto', 'Controller-dimensions')} style={{ width }}>
+          <div className={cx('overflow-auto', 'Contents-dimensions')} style={{ width }}>
             {children}
           </div>
-          <div className={cx('absolute', bgColor, 'Contents-caret')} style={{ stroke, ...this.state.caretOffset }}>
+          <div className={cx('absolute', bgColor, 'Contents-caret')} style={{ ...this.state.caretOffset }}>
             <Caret direction={this.state.mainDir} />
           </div>
         </div>
@@ -349,6 +374,7 @@ Contents.propTypes = {
   onDismiss: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,
   onResize: PropTypes.func.isRequired,
+  shouldFocus: PropTypes.bool,
   triggerRect: PropTypes.shape({
     bottom: PropTypes.number,
     height: PropTypes.number,

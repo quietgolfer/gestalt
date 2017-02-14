@@ -1,3 +1,9 @@
+.Contents:focus {
+  border: 1px solid #555;
+  outline: none;
+  stroke: #555;
+}
+
 .Contents-dimensions {
   max-height: 90vh;
   max-width: 90vw;

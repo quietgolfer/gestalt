@@ -9,6 +9,7 @@ type Props = {
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
   onDismiss: () => void,
+  shouldFocus?: boolean,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   trigger: React$Element<any>,
 };
@@ -57,8 +58,12 @@ export default class Controller extends Component {
   }
 
   props: Props;
-  triggerButton: HTMLElement;
+  triggerWrapper: HTMLElement;
   contents: HTMLElement;
+
+  handleDismiss = () => {
+    this.props.onDismiss();
+  }
 
   handleKeyDown = (e: { keyCode: number }) => {
     if (e.keyCode === ESCAPE_KEY_CODE) {
@@ -68,27 +73,27 @@ export default class Controller extends Component {
 
   handlePageClick = (e: Event) => {
     if (e.target instanceof Node
-      && !this.triggerButton.contains(e.target) && !this.contents.contains(e.target)) {
+      && !this.triggerWrapper.contains(e.target) && !this.contents.contains(e.target)) {
       this.props.onDismiss();
     }
   }
 
   updateTriggerRect = () => {
-    const triggerBoundingRect = this.triggerButton.getBoundingClientRect();
+    const triggerBoundingRect = this.triggerWrapper.getBoundingClientRect();
     this.setState({ triggerBoundingRect });
   }
 
   render() {
-    const { bgColor, children, idealDirection, isOpen, trigger } = this.props;
+    const { bgColor, children, idealDirection, isOpen, shouldFocus, trigger } = this.props;
     const size = this.props.size ? this.props.size : 'sm';
     const width = SIZE_WIDTH_MAP[size];
     return (
       <div>
-        <div ref={(c) => { this.triggerButton = c; }}>
+        <div ref={(c) => { this.triggerWrapper = c; }}>
           {trigger}
         </div>
         <div ref={(c) => { this.contents = c; }}>
-          {isOpen && this.triggerButton ?
+          {isOpen && this.triggerWrapper ?
             <Contents
               bgColor={bgColor}
               idealDirection={idealDirection}
@@ -96,6 +101,7 @@ export default class Controller extends Component {
               onDismiss={this.props.onDismiss}
               onKeyDown={this.handleKeyDown}
               onResize={this.updateTriggerRect}
+              shouldFocus={shouldFocus}
               triggerRect={this.state.triggerBoundingRect}
               width={width}
             >
@@ -115,6 +121,7 @@ Controller.propTypes = {
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   isOpen: PropTypes.bool.isRequired,
   onDismiss: PropTypes.func.isRequired,
+  shouldFocus: PropTypes.bool,
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']), // default: sm
   trigger: PropTypes.node.isRequired,
 };

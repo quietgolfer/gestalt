@@ -77,6 +77,7 @@ export default class Flyout extends Component {
           idealDirection={idealDirection}
           isOpen={isOpen}
           onDismiss={onDismiss}
+          shouldFocus
           size={size}
           trigger={trigger}
         >
