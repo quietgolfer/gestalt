@@ -11,6 +11,7 @@ export default function Container(props: Props) {
   return (
     <Box
       margin={{ left: 'auto', right: 'auto' }}
+      xs={{ column: 12 }}
       dangerouslySetInlineStyle={{ __style: { maxWidth: 800 } }}
     >
       {children}
