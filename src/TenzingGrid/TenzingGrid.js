@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Grid.css';
+import throttle from '../throttle';
 
 type Props<T> = {
   columnWidth: number,
@@ -35,24 +36,6 @@ function distance(a, b) {
   const x = a.x - b.x;
   const y = a.y - b.y;
   return Math.sqrt((x * x) + (y * y));
-}
-
-function throttle(fn, threshhold = 100) {
-  let last;
-  let deferTimer;
-  return (...args) => {
-    const now = Date.now();
-    if (last && now < last + threshhold) {
-      clearTimeout(deferTimer);
-      deferTimer = setTimeout(() => {
-        last = now;
-        fn(...args);
-      }, threshhold);
-    } else {
-      last = now;
-      fn(...args);
-    }
-  };
 }
 
 export default class TenzingGrid<T> extends Component {

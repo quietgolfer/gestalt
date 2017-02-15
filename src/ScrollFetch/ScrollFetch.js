@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import throttle from '../throttle';
 
 export default class ScrollFetch extends Component {
   static defaultProps: {};
@@ -47,7 +48,7 @@ export default class ScrollFetch extends Component {
   /**
    * Fetches additional items if needed.
    */
-  check = () => {
+  check = throttle(() => {
     const { isFetching, fetchMore, renderHeight } = this.props;
 
     // Only fetch more items if we are not fetching and we have a fetchMore prop.
@@ -59,7 +60,7 @@ export default class ScrollFetch extends Component {
     if (this.getScrollPos() + this.scrollBuffer > containerHeight()) {
       fetchMore();
     }
-  }
+  })
 
   render() {
     return null;
