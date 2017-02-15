@@ -69,6 +69,7 @@ export default class TextField extends Component {
 
     const textField = onBlur => (
       <input
+        aria-describedby={`${id}-gestalt-error`}
         aria-invalid={(errorMessage || hasError) ? 'true' : 'false'}
         className={classes}
         id={id}
@@ -83,6 +84,7 @@ export default class TextField extends Component {
 
     return errorMessage ? (
       <ErrorFlyout
+        id={`${id}-gestalt-error`}
         idealDirection="right"
         isOpen={this.state.errorIsOpen}
         message={errorMessage}

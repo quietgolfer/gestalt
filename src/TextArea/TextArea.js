@@ -59,6 +59,7 @@ export default class TextArea extends Component {
 
     const textArea = onBlur => (
       <textarea
+        aria-describedby={`${id}-gestalt-error`}
         aria-invalid={errorMessage ? 'true' : 'false'}
         className={classes}
         id={id}
@@ -74,6 +75,7 @@ export default class TextArea extends Component {
 
     return errorMessage ? (
       <ErrorFlyout
+        id={`${id}-gestalt-error`}
         idealDirection="right"
         isOpen={this.state.errorIsOpen}
         message={errorMessage}

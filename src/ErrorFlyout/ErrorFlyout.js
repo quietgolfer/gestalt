@@ -6,6 +6,7 @@ import Controller from '../FlyoutUtils/Controller';
 import Text from '../Text/Text';
 
 type Props = {
+  id?: string,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
   message: string,
@@ -15,7 +16,7 @@ type Props = {
 };
 
 export default function ErrorFlyout(props: Props) {
-  const { idealDirection, isOpen, message, onDismiss, size, trigger } = props;
+  const { id, idealDirection, isOpen, message, onDismiss, size, trigger } = props;
 
   return (
     <Controller
@@ -27,7 +28,9 @@ export default function ErrorFlyout(props: Props) {
       trigger={trigger}
     >
       <Box padding={2}>
-        <Text bold color="white" size="md">{message}</Text>
+        <Text bold color="white" size="md">
+          <span id={id}>{message}</span>
+        </Text>
       </Box>
     </Controller>
   );

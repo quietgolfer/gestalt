@@ -262,7 +262,7 @@ export default class Contents extends Component {
 
   componentDidMount() {
     this.setFlyoutPosition();
-    if (document.activeElement) {
+    if (document.activeElement && this.props.shouldFocus) {
       this.priorFocus = document.activeElement;
     }
     setTimeout(() => {
