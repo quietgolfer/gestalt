@@ -17,7 +17,8 @@ export default class ScrollFetch extends Component {
    */
   componentDidUpdate() {
     this.scrollBuffer = this.scrollBuffer || this.getContainerHeight() * 2;
-    this.check();
+    // setTimeout so the parent component can calculate renderHeight().
+    setTimeout(() => this.check());
   }
 
   /**
