@@ -25,7 +25,7 @@ export default class ScrollFetch extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
-    this.props.container.removeEventListener('scroll', this.check);
+    this.removeScrollListener();
   }
 
   /**
@@ -33,7 +33,18 @@ export default class ScrollFetch extends Component {
    */
   getContainerHeight = () => {
     const { container } = this.props;
-    return container.clientHeight || container.innerHeight;
+    return container.clientHeight !== undefined ?
+      container.clientHeight : container.innerHeight;
+  }
+
+  /**
+   * Returns the scrollable content height.
+   */
+  getScrollHeight = () => {
+    const { container } = this.props;
+    return container.scrollHeight !== undefined ?
+      container.scrollHeight :
+      document.body && document.body.scrollHeight;
   }
 
   /**
@@ -44,21 +55,34 @@ export default class ScrollFetch extends Component {
     return container.scrollY !== undefined ? container.scrollY : container.scrollTop;
   }
 
+  /**
+   * Removes the scroll event listener
+   */
+  removeScrollListener() {
+    this.props.container.removeEventListener('scroll', this.check);
+  }
+
   scrollBuffer: number;
 
   /**
    * Fetches additional items if needed.
    */
   check = throttle(() => {
-    const { isFetching, fetchMore, renderHeight } = this.props;
+    const { isAtEnd, isFetching, fetchMore, renderHeight } = this.props;
+
+    // Remove event listener if there are no more items to fetch
+    if (isAtEnd) {
+      this.removeScrollListener();
+      return;
+    }
 
     // Only fetch more items if we are not fetching and we have a fetchMore prop.
     if (isFetching || !fetchMore) {
       return;
     }
 
-    const containerHeight = renderHeight || this.getContainerHeight;
-    if (this.getScrollPos() + this.scrollBuffer > containerHeight()) {
+    const scrollHeight = renderHeight || this.getScrollHeight;
+    if (this.getScrollPos() + this.scrollBuffer > scrollHeight()) {
       fetchMore();
     }
   })
@@ -77,6 +101,7 @@ ScrollFetch.propTypes = {
     removeEventListener: React.PropTypes.func,
   }),
   renderHeight: React.PropTypes.func,
+  isAtEnd: React.PropTypes.bool,
   isFetching: React.PropTypes.bool,
   fetchMore: React.PropTypes.func,
 };
