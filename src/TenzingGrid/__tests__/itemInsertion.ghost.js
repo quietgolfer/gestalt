@@ -9,7 +9,7 @@ const selectors = {
   insertItem: '#insert-item',
 };
 
-describe('TenzingGrid > Insert items', () => {
+describe.skip('TenzingGrid > Insert items', () => {
   it('Can insert items into the grid', async () => {
     ghost.close();
     await ghost.open('http://localhost:3000/TenzingGrid?deferMount=1', {
