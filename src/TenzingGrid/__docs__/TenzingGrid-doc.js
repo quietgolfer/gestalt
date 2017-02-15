@@ -4,7 +4,7 @@ import { card, md } from 'corkboard';
 import ExampleGrid from './ExampleGrid';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Grid | TenzingGrid');
+ns('TenzingGrid');
 
 card('PropTypes',
   md`
