@@ -32,7 +32,7 @@ const triggerResize = async (resizeWidthTo) => {
   }, [resizeWidthTo]);
 };
 
-describe.skip('BoxGrid > Resize', () => {
+describe('BoxGrid > Resize', () => {
   it('Reflows the grid after a resize', async () => {
     const GRID_WIDTH = 1600;
 

@@ -9,13 +9,11 @@ const getPins = (meta = {}, collage) => {
   const from = meta.from || 0;
   let until = from + 20;
 
-  let randHeight = 200;
-  let heightMin = 300;
+  let baseHeight = 200;
 
   if (collage) {
     until = 5;
-    randHeight = 40;
-    heightMin = 40;
+    baseHeight = 40;
   }
 
   return new Promise((resolve) => {
@@ -23,7 +21,7 @@ const getPins = (meta = {}, collage) => {
     for (let i = from; i < until; i += 1) {
       pins.push({
         name: `foo ${i}`,
-        height: Math.floor(Math.random() * randHeight) + heightMin,
+        height: baseHeight + i,
         color: getRandomColor(),
       });
     }

@@ -4,7 +4,7 @@ export const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 
 
 export const classicPins = Array.from({ length: 20 }).map((_, i) => ({
   name: `foo ${i}`,
-  height: Math.floor(Math.random() * 200) + 300,
+  height: 200 + i,
   color: getRandomColor(),
 }));
 
@@ -17,7 +17,7 @@ export const boxPackingPins = Array.from({ length: 20 }).map((_, i) => {
   else colSpan = 1;
   return {
     name: `foo ${i}`,
-    height: Math.floor(Math.random() * 200) + 300,
+    height: 200 + i,
     color: getRandomColor(),
     colSpan,
   };

@@ -19,7 +19,7 @@ const getPins = (meta = {}) => {
 
       pins.push({
         name: `${i}`,
-        height: Math.floor(Math.random() * 200) + 300,
+        height: 100 + i,
         color: getRandomColor(),
         colSpan,
       });

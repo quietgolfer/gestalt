@@ -9,27 +9,40 @@ const selectors = {
   insertItem: '#insert-item',
 };
 
-describe.skip('TenzingGrid > Insert items', () => {
+const getItemColumnMap = async () => {
+  const gridItems = await ghost.findElements(selectors.gridItem);
+  const itemLeftMap = {};
+  for (let i = 0; i < gridItems.length; i += 1) {
+    const itemRect = await gridItems[i].rect();
+    itemLeftMap[itemRect.left] = itemLeftMap[itemRect.left] || [];
+    itemLeftMap[itemRect.left].push(itemRect);
+  }
+  return itemLeftMap;
+};
+
+describe('TenzingGrid > Insert items', () => {
   it('Can insert items into the grid', async () => {
     ghost.close();
-    await ghost.open('http://localhost:3000/TenzingGrid?deferMount=1', {
+    await ghost.open('http://localhost:3000/TenzingGrid', {
       viewportSize: {
         width: 3000,
         height: 2000,
       },
     });
 
-    await ghost.script(() => {
-      window.dispatchEvent(new CustomEvent('trigger-mount'));
-    });
-
-    const gridItems = await ghost.findElements(selectors.gridItem);
-    const initialLength = gridItems.length;
+    const originalItemMap = await getItemColumnMap();
 
     const insertTrigger = await ghost.findElement(selectors.insertItem);
     await insertTrigger.click();
 
-    const insertedGridItems = await ghost.findElements(selectors.gridItem);
-    assert.equal(insertedGridItems.length, initialLength + 1);
+    const newItemMap = await getItemColumnMap();
+
+    const firstCol = Object.keys(originalItemMap)[0];
+    assert.ok(newItemMap[firstCol][1].top > newItemMap[firstCol][0].height);
+    assert.ok(newItemMap[firstCol][0].height > originalItemMap[firstCol][0].height);
+
+    const gridItems = await ghost.findElements(selectors.gridItem);
+    const insertedItemText = await gridItems[0].text();
+    assert.equal(insertedItemText, 'Inserted');
   });
 });
