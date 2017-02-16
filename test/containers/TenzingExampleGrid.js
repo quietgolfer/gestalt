@@ -5,32 +5,6 @@ import stringToColor from '../../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
-const getPins = (meta = {}, collage) => {
-  const from = meta.from || 0;
-  let until = from + 20;
-
-  let baseHeight = 200;
-
-  if (collage) {
-    until = 5;
-    baseHeight = 40;
-  }
-
-  return new Promise((resolve) => {
-    const pins = [];
-    for (let i = from; i < until; i += 1) {
-      pins.push({
-        name: `foo ${i}`,
-        height: baseHeight + i,
-        color: getRandomColor(),
-      });
-    }
-    setTimeout(() => {
-      resolve(pins);
-    }, 5);
-  });
-};
-
 export default class TenzingExampleGrid extends React.Component {
 
   constructor(props) {
@@ -47,6 +21,37 @@ export default class TenzingExampleGrid extends React.Component {
     });
   }
 
+  getPins = (meta = {}, collage) => {
+    const from = meta.from || 0;
+    let until = from + 20;
+
+    let baseHeight = 200;
+
+    if (collage) {
+      until = 5;
+      baseHeight = 40;
+    }
+
+    return new Promise((resolve) => {
+      const pins = [];
+      for (let i = from; i < until; i += 1) {
+        pins.push({
+          name: `foo ${i}`,
+          height: baseHeight + i,
+          color: getRandomColor(),
+        });
+      }
+      window.TEST_FETCH_COUNTS = window.TEST_FETCH_COUNTS || 0;
+      window.TEST_FETCH_COUNTS += 1;
+      window.NEXT_FETCH = () => {
+        resolve(pins);
+      };
+      if (!this.props.manualFetch) {
+        window.NEXT_FETCH();
+      }
+    });
+  }
+
   handleInsertItem = (e) => {
     e.preventDefault();
     this.gridRef.insertItems([
@@ -54,8 +59,9 @@ export default class TenzingExampleGrid extends React.Component {
     ], 0 /* colIdx */, 0 /* itemIdx */);
   }
 
+
   loadItems = (meta) => {
-    getPins(meta, this.props.collage)
+    this.getPins(meta, this.props.collage)
       .then((newPins) => {
         this.setState({
           pins: this.state.pins.concat(newPins),
@@ -106,6 +112,8 @@ TenzingExampleGrid.propTypes = {
   collage: React.PropTypes.string,
   // Test case: Constrains the width of the grid rendering.
   constrained: React.PropTypes.string,
+  // Whether or not to require tests to trigger fetch completion manually.
+  manualFetch: React.PropTypes.string,
   // Test case: Does not allow infinite scroll.
   finiteLength: React.PropTypes.string,
   // The initial data from the server side render.

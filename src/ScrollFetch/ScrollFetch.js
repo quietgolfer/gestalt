@@ -69,7 +69,6 @@ export default class ScrollFetch extends Component {
    */
   check = throttle(() => {
     const { isAtEnd, isFetching, fetchMore, renderHeight } = this.props;
-
     // Remove event listener if there are no more items to fetch
     if (isAtEnd) {
       this.removeScrollListener();

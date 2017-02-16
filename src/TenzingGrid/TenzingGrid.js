@@ -44,11 +44,11 @@ export default class TenzingGrid<T> extends Component {
   constructor(props: Props<*>) {
     super(props);
 
-    this.fetchingFrom = false;
     this.insertedItemsCount = 0;
     this.serverRefs = [];
 
     this.state = {
+      fetchingFrom: false,
       height: 0,
       gridItems: [],
       serverItems: this.serverItems(props.items),
@@ -60,6 +60,7 @@ export default class TenzingGrid<T> extends Component {
   }
 
   state: {
+    fetchingFrom: bool | number,
     height: number,
     gridItems: Array<*>,
     serverItems: Array<*> | null,
@@ -88,6 +89,12 @@ export default class TenzingGrid<T> extends Component {
   }
 
   componentWillReceiveProps({ items }: { items: Array<*> }) {
+    if (this.state.fetchingFrom !== false && this.state.fetchingFrom !== items.length) {
+      this.setState({
+        fetchingFrom: false,
+      });
+    }
+
     if (items.length > this.props.items.length) {
       // Insert new items.
       this.updateItems(items);
@@ -223,7 +230,6 @@ export default class TenzingGrid<T> extends Component {
   boundResizeHandler: () => void;
   containerHeight: number;
   containerOffset: number;
-  fetchingFrom: bool | number;
   gridWrapper: HTMLElement;
   insertedItemsCount: number;
   itemKeyCounter: number;
@@ -472,9 +478,11 @@ export default class TenzingGrid<T> extends Component {
   fetchMore = () => {
     if (this.props.loadItems) {
       const allItems = this.allItems();
-      this.fetchingFrom = allItems.length;
+      this.setState({
+        fetchingFrom: allItems.length,
+      });
       this.props.loadItems({
-        from: this.fetchingFrom,
+        from: allItems.length,
       });
     }
   }
@@ -528,10 +536,6 @@ export default class TenzingGrid<T> extends Component {
   }
 
   render() {
-    if (this.fetchingFrom !== false && this.fetchingFrom !== this.allItems().length) {
-      this.fetchingFrom = false;
-    }
-
     return (
       <div
         className={styles.Grid}
@@ -541,7 +545,7 @@ export default class TenzingGrid<T> extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.fetchingFrom !== false}
+          isFetching={this.state.fetchingFrom !== false}
           renderHeight={this.renderHeight}
         />
         {(this.state.serverItems || this.visibleItems()).map(item =>

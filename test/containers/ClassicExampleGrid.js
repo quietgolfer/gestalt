@@ -5,32 +5,6 @@ import stringToColor from '../../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
-const getPins = (meta = {}, collage) => {
-  const from = meta.from || 0;
-  let until = from + 20;
-
-  let baseHeight = 200;
-
-  if (collage) {
-    until = 5;
-    baseHeight = 40;
-  }
-
-  return new Promise((resolve) => {
-    const pins = [];
-    for (let i = from; i < until; i += 1) {
-      pins.push({
-        name: `foo ${i}`,
-        height: baseHeight + i,
-        color: getRandomColor(),
-      });
-    }
-    setTimeout(() => {
-      resolve(pins);
-    }, 5);
-  });
-};
-
 export default class ClassicExampleGrid extends React.Component {
 
   constructor(props) {
@@ -60,14 +34,46 @@ export default class ClassicExampleGrid extends React.Component {
     });
   }
 
+  getPins = (meta = {}, collage) => {
+    const from = meta.from || 0;
+    let until = from + 20;
+
+    let baseHeight = 200;
+
+    if (collage) {
+      until = 5;
+      baseHeight = 40;
+    }
+
+    return new Promise((resolve) => {
+      const pins = [];
+      for (let i = from; i < until; i += 1) {
+        pins.push({
+          name: `foo ${i}`,
+          height: baseHeight + i,
+          color: getRandomColor(),
+        });
+      }
+      window.TEST_FETCH_COUNTS = window.TEST_FETCH_COUNTS || 0;
+      window.TEST_FETCH_COUNTS += 1;
+      window.NEXT_FETCH = () => {
+        resolve(pins);
+      };
+      if (!this.props.manualFetch) {
+        window.NEXT_FETCH();
+      }
+    });
+  }
+
   loadItems = (meta) => {
-    getPins(meta, this.props.collage)
+    this.getPins(meta, this.props.collage)
       .then((newPins) => {
         this.setState({
           pins: this.state.pins.concat(newPins),
         });
       });
   }
+
   /* eslint react/jsx-no-bind:0 */
   render() {
     const dynamicGridProps = {};
@@ -113,6 +119,8 @@ ClassicExampleGrid.propTypes = {
   constrained: React.PropTypes.string,
   // Test case: Slices items in the constructor, then sets the entire list in componentDidMount.
   constructorItemSplice: React.PropTypes.string,
+  // Whether or not to require tests to trigger fetch completion manually.
+  manualFetch: React.PropTypes.string,
   // Test case: Does not allow infinite scroll.
   finiteLength: React.PropTypes.string,
   // The initial data from the server side render.

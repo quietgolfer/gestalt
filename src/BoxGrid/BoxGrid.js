@@ -28,6 +28,7 @@ export default class BoxGrid extends Component {
     this.gridWrapperHeight = 0;
 
     this.state = {
+      fetchingFrom: false,
       gridWidth: 0,
       itemWidth: 0,
       layoutReady: false,
@@ -35,6 +36,7 @@ export default class BoxGrid extends Component {
   }
 
   state: {
+    fetchingFrom: bool | number,
     gridWidth: number,
     itemWidth: number,
     layoutReady: bool
@@ -56,6 +58,14 @@ export default class BoxGrid extends Component {
     this.setState({
       layoutReady: true,
     });
+  }
+
+  componentWillReceiveProps(nextProps: Props<*>) {
+    if (this.state.fetchingFrom !== false && this.state.fetchingFrom !== nextProps.items.length) {
+      this.setState({
+        fetchingFrom: false,
+      });
+    }
   }
 
   componentDidUpdate() {
@@ -102,7 +112,6 @@ export default class BoxGrid extends Component {
 
   boundResizeHandler: () => void;
   cacheKey: string;
-  fetchingFrom: bool | number;
   gridWrapper: HTMLElement;
   gridWrapperHeight: number;
   packer: Packer;
@@ -133,7 +142,9 @@ export default class BoxGrid extends Component {
 
     // Whether or not we have requested new items.
     // This is used as a flag to signal that we need to wait before loading additional items.
-    this.fetchingFrom = false;
+    this.setState({
+      fetchingFrom: false,
+    });
     this.forceUpdate();
   }
 
@@ -196,7 +207,9 @@ export default class BoxGrid extends Component {
 
   fetchMore = () => {
     if (this.props.loadItems) {
-      this.fetchingFrom = this.props.items.length;
+      this.setState({
+        fetchingFrom: this.props.items.length,
+      });
       this.props.loadItems({
         from: this.props.items.length,
       });
@@ -222,10 +235,6 @@ export default class BoxGrid extends Component {
   }
 
   render() {
-    if (this.fetchingFrom !== false && this.fetchingFrom !== this.props.items.length) {
-      this.fetchingFrom = false;
-    }
-
     return (
       <div
         className={styles.Grid}
@@ -234,7 +243,7 @@ export default class BoxGrid extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.fetchingFrom}
+          isFetching={this.state.fetchingFrom !== false}
           renderHeight={this.highestColumn}
         />
         <WithLayout

@@ -12,7 +12,7 @@ describe('TenzingGrid > Scrolls', () => {
   it('Loads more when it gets to the bottom of the viewport', async () => {
     // First load the page with javascript disabled to get the item position
     ghost.close();
-    await ghost.open('http://localhost:3000/TenzingGrid?deferMount=1', {
+    await ghost.open('http://localhost:3000/TenzingGrid?deferMount=1&manualFetch=1', {
       viewportSize: {
         width: 3000,
         height: 2000,
@@ -30,6 +30,7 @@ describe('TenzingGrid > Scrolls', () => {
     });
 
     // We should fetch more items on render to fill the viewport.
+    await ghost.script(() => window.NEXT_FETCH());
     let afterLoadItemCount;
     let gridItems;
     await ghost.wait(async () => {
@@ -37,10 +38,21 @@ describe('TenzingGrid > Scrolls', () => {
       afterLoadItemCount = gridItems.length;
       return afterLoadItemCount > initialServerItemCount;
     });
+    await ghost.script(() => window.NEXT_FETCH());
 
-    await ghost.script(() => {
-      window.scrollTo(0, window.scrollMaxY);
-    });
+    const initialFetchCount = await ghost.script(() => window.TEST_FETCH_COUNTS);
+    assert.ok(initialFetchCount >= 1);
+
+    // Scroll a few times to triggle multiple scrolls.
+    await ghost.script(() => window.scrollTo(0, window.scrollMaxY));
+    await ghost.wait(50);
+    await ghost.script(() => window.scrollTo(0, window.scrollMaxY - 50));
+    await ghost.wait(50);
+    await ghost.script(() => window.scrollTo(0, window.scrollMaxY));
+    await ghost.script(() => window.NEXT_FETCH());
+
+    const newFetchCount = await ghost.script(() => window.TEST_FETCH_COUNTS);
+    assert.equal(newFetchCount, initialFetchCount + 1);
 
     await ghost.wait(async () => {
       gridItems = await ghost.findElements(selectors.gridItem);

@@ -32,11 +32,13 @@ export default class FlexibleGrid extends Component {
     this.gridWrapperHeight = 0;
 
     this.state = {
+      fetchingFrom: false,
       layoutReady: false,
     };
   }
 
   state: {
+    fetchingFrom: bool | number,
     layoutReady: bool
   };
 
@@ -56,6 +58,14 @@ export default class FlexibleGrid extends Component {
     this.setState({
       layoutReady: true,
     });
+  }
+
+  componentWillReceiveProps(nextProps: Props<*>) {
+    if (this.state.fetchingFrom !== false && this.state.fetchingFrom !== nextProps.items.length) {
+      this.setState({
+        fetchingFrom: false,
+      });
+    }
   }
 
   /**
@@ -107,7 +117,6 @@ export default class FlexibleGrid extends Component {
   boundResizeHandler: () => void;
   cacheKey: string;
   currColHeights: Array<number>;
-  fetchingFrom: bool | number;
   gridWidth: number;
   gridWrapper: HTMLElement;
   gridWrapperHeight: number;
@@ -141,7 +150,9 @@ export default class FlexibleGrid extends Component {
 
     // Whether or not we have requested new items.
     // This is used as a flag to signal that we need to wait before loading additional items.
-    this.fetchingFrom = false;
+    this.setState({
+      fetchingFrom: false,
+    });
     this.forceUpdate();
   }
 
@@ -193,7 +204,9 @@ export default class FlexibleGrid extends Component {
 
   fetchMore = () => {
     if (this.props.loadItems) {
-      this.fetchingFrom = this.props.items.length;
+      this.setState({
+        fetchingFrom: this.props.items.length,
+      });
       this.props.loadItems({
         from: this.props.items.length,
       });
@@ -222,10 +235,6 @@ export default class FlexibleGrid extends Component {
   }
 
   render() {
-    if (this.fetchingFrom !== false && this.fetchingFrom !== this.props.items.length) {
-      this.fetchingFrom = false;
-    }
-
     const fluidWidth = this.gridWidth ? this.gridWidth / this.currColHeights.length : 'auto';
 
     return (
@@ -236,7 +245,7 @@ export default class FlexibleGrid extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.fetchingFrom}
+          isFetching={this.state.fetchingFrom !== false}
           renderHeight={this.renderHeight}
         />
         <WithLayout
