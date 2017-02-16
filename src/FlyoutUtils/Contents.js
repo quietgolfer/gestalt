@@ -344,11 +344,12 @@ export default class Contents extends Component {
     const visibility = this.state.mainDir === null ? 'hidden' : 'visible';
     const background = `bg-${bgColor}`;
     const stroke = bgColor === 'white' ? '#efefef' : null;
+    const borderColor = bgColor === 'white' ? 'light-gray ' : bgColor;
 
     return (
       <div className={cx('relative')} style={{ stroke, visibility }}>
         <div
-          className={cx('absolute', background, { border: bgColor === 'white' }, 'block', 'border-box', 'rounded', 'Flyout', 'Contents-dimensions', 'Contents')}
+          className={cx('absolute', background, 'block', 'border-box', borderColor, 'rounded', 'Flyout', 'Contents-dimensions', 'Contents')}
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
           tabIndex={-1}
