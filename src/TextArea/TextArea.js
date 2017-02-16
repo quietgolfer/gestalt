@@ -14,7 +14,9 @@ export default class TextArea extends Component {
   static propTypes = {
     errorMessage: PropTypes.string,
     id: PropTypes.string.isRequired,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
     placeholder: PropTypes.string,
     value: PropTypes.string,
   };
@@ -28,7 +30,9 @@ export default class TextArea extends Component {
     errorMessage?: string,
     id: string,
     name?: string,
+    onBlur?: (value: string) => void,
     onChange: (value: string) => void,
+    onFocus?: (value: string) => void,
     placeholder?: string,
     value?: string,
   };
@@ -39,8 +43,18 @@ export default class TextArea extends Component {
     }
   }
 
-  handleBlur = () => {
+  handleBlur = (e: Event) => {
+    this.setState({ errorIsOpen: false });
+    if (e.target instanceof HTMLTextAreaElement && this.props.onBlur) {
+      this.props.onBlur(e.target.value);
+    }
+  }
+
+  handleFocus = (e: Event) => {
     this.setState({ errorIsOpen: true });
+    if (e.target instanceof HTMLTextAreaElement && this.props.onFocus) {
+      this.props.onFocus(e.target.value);
+    }
   }
 
   render() {
@@ -57,7 +71,7 @@ export default class TextArea extends Component {
       [styles.errored]: errorMessage,
     });
 
-    const textArea = onBlur => (
+    const textArea = (onBlur, onFocus) => (
       <textarea
         aria-describedby={`${id}-gestalt-error`}
         aria-invalid={errorMessage ? 'true' : 'false'}
@@ -66,7 +80,7 @@ export default class TextArea extends Component {
         name={name}
         onBlur={onBlur}
         onChange={this.handleChange}
-        onFocus={onBlur}
+        onFocus={onFocus}
         placeholder={placeholder}
         rows={3}
         value={value}
@@ -81,7 +95,7 @@ export default class TextArea extends Component {
         message={errorMessage}
         onDismiss={() => this.setState({ errorIsOpen: false })}
         size="sm"
-        trigger={textArea(this.handleBlur)}
+        trigger={textArea(this.handleBlur, this.handleFocus)}
       />
     ) : textArea();
   }

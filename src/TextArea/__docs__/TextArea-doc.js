@@ -14,7 +14,9 @@ type Props = {
   errorMessage?: string,
   id: string,
   name?: string,
+  onBlur?: (value: string) => void,
   onChange: (value: string) => void,
+  onFocus?: (value: string) => void,
   placeholder?: string,
   value?: string,
 };

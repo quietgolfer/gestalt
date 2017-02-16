@@ -11,18 +11,19 @@ type State = {
 };
 
 export default class TextField extends Component {
-
   static propTypes = {
     errorMessage: PropTypes.string,
     hasError: PropTypes.bool,
     id: PropTypes.string.isRequired,
+    onBlur: PropTypes.func,
     onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
     placeholder: PropTypes.string,
     type: PropTypes.oneOf(['email', 'password', 'text', 'url']),
     value: PropTypes.string,
   };
 
-  defaultProps = {
+  static defaultProps = {
     hasError: false,
     type: 'text',
   };
@@ -36,7 +37,9 @@ export default class TextField extends Component {
     errorMessage?: string,
     hasError?: bool,
     id: string,
+    onBlur?: (value: string) => void,
     onChange: (value: string) => void,
+    onFocus?: (value: string) => void,
     placeholder?: string,
     type?: 'email' | 'password' | 'text' | 'url',
     value?: string,
@@ -48,8 +51,18 @@ export default class TextField extends Component {
     }
   }
 
-  handleBlur = () => {
+  handleBlur = (e: Event) => {
+    this.setState({ errorIsOpen: false });
+    if (e.target instanceof HTMLInputElement && this.props.onBlur) {
+      this.props.onBlur(e.target.value);
+    }
+  }
+
+  handleFocus = (e: Event) => {
     this.setState({ errorIsOpen: true });
+    if (e.target instanceof HTMLInputElement && this.props.onFocus) {
+      this.props.onFocus(e.target.value);
+    }
   }
 
   render() {
@@ -67,7 +80,7 @@ export default class TextField extends Component {
       [styles.errored]: hasError || errorMessage,
     });
 
-    const textField = onBlur => (
+    const textField = (onBlur, onFocus) => (
       <input
         aria-describedby={`${id}-gestalt-error`}
         aria-invalid={(errorMessage || hasError) ? 'true' : 'false'}
@@ -75,7 +88,7 @@ export default class TextField extends Component {
         id={id}
         onBlur={onBlur}
         onChange={this.handleChange}
-        onFocus={onBlur}
+        onFocus={onFocus}
         placeholder={placeholder}
         type={type}
         value={value}
@@ -90,7 +103,7 @@ export default class TextField extends Component {
         message={errorMessage}
         onDismiss={() => this.setState({ errorIsOpen: false })}
         size="sm"
-        trigger={textField(this.handleBlur)}
+        trigger={textField(this.handleBlur, this.handleFocus)}
       />
     ) : textField();
   }
