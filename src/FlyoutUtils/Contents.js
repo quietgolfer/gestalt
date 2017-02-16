@@ -25,7 +25,7 @@ const DIR_INDEX_MAP = {
 const MARGIN = 24;
 export const CARET_HEIGHT = 24;
 const CARET_OFFSET_FROM_SIDE = 24;
-const BORDER_RADIUS = 8;
+export const BORDER_RADIUS = 8;
 
 type MainDir = ?('up' | 'right' | 'down' | 'left');
 type SubDir = 'up' | 'right' | 'down' | 'left' | 'middle';
@@ -161,15 +161,20 @@ export function calcEdgeShifts(subDir: SubDir, triggerRect: ClientRect, windowSi
 
   // Covers edge case where trigger is in a corner and we need to adjust the offset of the caret
   // to something smaller than normal in order
-  if (triggerRect.top < CARET_OFFSET_FROM_SIDE
-      || windowSize.height - triggerRect.bottom < CARET_OFFSET_FROM_SIDE) {
-    flyoutVerticalShift = BORDER_RADIUS;
-    caretVerticalShift = ((triggerRect.height - CARET_HEIGHT) / 2) + BORDER_RADIUS;
+  const isCloseVertically = (
+    triggerRect.top - flyoutVerticalShift < 0 ||
+    triggerRect.bottom + flyoutVerticalShift > windowSize.height);
+  const isCloseHorizontally = (
+    triggerRect.left - flyoutHorizontalShift < 0 ||
+    triggerRect.right + flyoutHorizontalShift > windowSize.width
+  );
+  if (isCloseVertically) {
+    flyoutVerticalShift = BORDER_RADIUS - ((triggerRect.height - CARET_HEIGHT) / 2);
+    caretVerticalShift = BORDER_RADIUS;
   }
-  if (triggerRect.left < CARET_OFFSET_FROM_SIDE
-      || windowSize.width - triggerRect.right < CARET_OFFSET_FROM_SIDE) {
-    flyoutHorizontalShift = BORDER_RADIUS;
-    caretHorizontalShift = ((triggerRect.width - CARET_HEIGHT) / 2) + BORDER_RADIUS;
+  if (isCloseHorizontally) {
+    flyoutHorizontalShift = BORDER_RADIUS - ((triggerRect.width - CARET_HEIGHT) / 2);
+    caretHorizontalShift = BORDER_RADIUS;
   }
 
   if (subDir === 'up') {

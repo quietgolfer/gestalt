@@ -4,7 +4,7 @@ jest.unmock('../Contents');
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import Contents, { getMainDir, getSubDir, calcEdgeShifts, calcOffsets, CARET_HEIGHT } from '../Contents';
+import Contents, { getMainDir, getSubDir, calcEdgeShifts, calcOffsets, CARET_HEIGHT, BORDER_RADIUS } from '../Contents';
 
 const windowSize = {
   height: 900,
@@ -129,8 +129,11 @@ describe('Contents', () => {
     it('Keeps Container on screen when trigger is on the edge', () => {
       const triggerRect = upperLeftTriggerRect();
       const subDir = 'up';
-      const { flyoutShift } = calcEdgeShifts(subDir, triggerRect, windowSize);
+      const { flyoutShift, caretShift } = calcEdgeShifts(subDir, triggerRect, windowSize);
       expect(triggerRect.bottom - flyoutShift.y).toBeGreaterThan(0);
+      expect(flyoutShift.x).toBeLessThan(BORDER_RADIUS);
+      expect(caretShift.x).toEqual(caretShift.y);
+      expect(caretShift.x).toEqual(BORDER_RADIUS);
     });
 
     it('Shifts Container at least the height of the trigger for up sub direction', () => {
