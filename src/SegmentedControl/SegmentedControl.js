@@ -1,15 +1,15 @@
 // @flow
 
 import classnames from 'classnames/bind';
-import React, { Element, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Text from '../Text/Text';
 import styles from './SegmentedControl.css';
 
 const cx = classnames.bind(styles);
 
 type Props = {
-  items: Array<Element<any>>,
-  onChange: (i: number, e: Event) => {},
+  items: Array<any>,
+  onChange: (i: number, e: Event) => void,
   selectedItemIndex: number
 };
 

@@ -17,8 +17,8 @@ card('FlowType',
 md`
 \`\`\`js
 type Props = {
-  items: Array<Element<any>>,
-  onChange: (i: number, e: Event) => {},
+  items: Array<any>,
+  onChange: (i: number, e: Event) => void,
   selectedItemIndex: number
 };
 \`\`\`
