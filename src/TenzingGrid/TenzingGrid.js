@@ -76,7 +76,7 @@ export default class TenzingGrid<T> extends Component {
   componentDidMount() {
     this.boundResizeHandler = () => this.handleResize();
 
-    this.props.scrollContainer.addEventListener('scroll', throttle(this.updateVirtualBounds));
+    this.props.scrollContainer.addEventListener('scroll', this.updateVirtualBounds);
     this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
 
     this.updateItems(this.props.items);
@@ -417,7 +417,7 @@ export default class TenzingGrid<T> extends Component {
     this.resizeTimeout = setTimeout(this.reflow.bind(this), 100);
   }
 
-  updateVirtualBounds = () => {
+  updateVirtualBounds = throttle(() => {
     const scrollPos = this.props.scrollContainer.scrollY
       || this.props.scrollContainer.scrollTop
       || 0;
@@ -427,7 +427,7 @@ export default class TenzingGrid<T> extends Component {
       viewportTop: offsetScrollPos - virtualBuffer,
       viewportBottom: offsetScrollPos + this.containerHeight + virtualBuffer,
     });
-  }
+  })
 
   /**
    * Determines the number of columns to display.
