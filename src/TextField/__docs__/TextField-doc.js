@@ -82,7 +82,7 @@ handle the rest.
 \`\`\`
 `,
 atom => (
-  <div className="px2">
+  <div className="px2 flex">
     <div className="py2">
       <label htmlFor="firstName">With error message</label>
       <TextField

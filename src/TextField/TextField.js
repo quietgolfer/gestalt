@@ -76,7 +76,7 @@ export default class TextField extends Component {
     } = this.props;
 
     const classes = classnames(styles.textField, {
-      [styles.normal]: !hasError || !errorMessage,
+      [styles.normal]: !errorMessage,
       [styles.errored]: hasError || errorMessage,
     });
 

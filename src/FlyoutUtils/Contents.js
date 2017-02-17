@@ -49,7 +49,6 @@ type Props = {
   children?: any,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   onClick: (e: Event) => void,
-  onDismiss: () => void,
   onKeyDown: (e: { keyCode: number }) => void,
   onResize: () => void,
   shouldFocus?: boolean,
@@ -278,7 +277,10 @@ export default class Contents extends Component {
     document.addEventListener('click', this.props.onClick);
     window.addEventListener('resize', this.props.onResize);
     window.addEventListener('keydown', this.props.onKeyDown);
-    document.addEventListener('focus', this.restrictFocus, true);
+    if (this.props.shouldFocus) {
+      // not needed for errors and tooltips which don't receive immediate focus
+      document.addEventListener('focus', this.restrictFocus, true);
+    }
   }
 
   componentWillReceiveProps() {
@@ -294,7 +296,9 @@ export default class Contents extends Component {
     document.removeEventListener('click', this.props.onClick);
     window.removeEventListener('resize', this.props.onResize);
     window.removeEventListener('keydown', this.props.onKeyDown);
-    document.removeEventListener('focus', this.restrictFocus);
+    if (this.props.shouldFocus) {
+      document.removeEventListener('focus', this.restrictFocus);
+    }
   }
 
   /**
@@ -377,7 +381,6 @@ Contents.propTypes = {
   children: PropTypes.node,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   onClick: PropTypes.func.isRequired,
-  onDismiss: PropTypes.func.isRequired,
   onKeyDown: PropTypes.func.isRequired,
   onResize: PropTypes.func.isRequired,
   shouldFocus: PropTypes.bool,

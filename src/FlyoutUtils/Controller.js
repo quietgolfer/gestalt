@@ -61,10 +61,6 @@ export default class Controller extends Component {
   triggerWrapper: HTMLElement;
   contents: HTMLElement;
 
-  handleDismiss = () => {
-    this.props.onDismiss();
-  }
-
   handleKeyDown = (e: { keyCode: number }) => {
     if (e.keyCode === ESCAPE_KEY_CODE) {
       this.props.onDismiss();
@@ -98,7 +94,6 @@ export default class Controller extends Component {
               bgColor={bgColor}
               idealDirection={idealDirection}
               onClick={this.handlePageClick}
-              onDismiss={this.props.onDismiss}
               onKeyDown={this.handleKeyDown}
               onResize={this.updateTriggerRect}
               shouldFocus={shouldFocus}
