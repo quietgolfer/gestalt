@@ -52,7 +52,17 @@ export default class ScrollFetch extends Component {
    */
   getScrollPos() {
     const { container } = this.props;
-    return container.scrollY !== undefined ? container.scrollY : container.scrollTop;
+    if (container.scrollY !== undefined) {
+      // Modern browser.
+      return container.scrollY;
+    } else if (container.scrollTop !== undefined) {
+      // Non-window container elements.
+      return container.scrollTop;
+    } else if (document.documentElement && document.documentElement.scrollTop !== undefined) {
+      // IE support.
+      return document.documentElement.scrollTop;
+    }
+    return 0;
   }
 
   /**
