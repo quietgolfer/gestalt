@@ -1,0 +1,39 @@
+.link {
+  composes: bold from global;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus {
+  text-decoration: underline;
+}
+
+.inline {
+  /* dom default */
+}
+
+.block {
+  composes: block from global;
+}
+
+/* colors */
+
+.white {
+  composes: white from global;
+}
+
+.darkGray {
+  composes: dark-gray from global;
+}
+
+.gray {
+  composes: gray from global;
+}
+
+.red {
+  composes: red from global;
+}
+
+.blue {
+  composes: blue from global;
+}

@@ -1,0 +1,87 @@
+exports[`test blue 1`] = `
+<a
+  className="link blue block"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test blue inline 1`] = `
+<a
+  className="link blue inline"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test darkGray 1`] = `
+<a
+  className="link darkGray block"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test darkGray inline 1`] = `
+<a
+  className="link darkGray inline"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test default 1`] = `
+<a
+  className="link darkGray block"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test gray 1`] = `
+<a
+  className="link gray block"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test gray inline 1`] = `
+<a
+  className="link gray inline"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test red 1`] = `
+<a
+  className="link red block"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test red inline 1`] = `
+<a
+  className="link red inline"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test white 1`] = `
+<a
+  className="link white block"
+  href="https://example.com">
+  Link
+</a>
+`;
+
+exports[`test white inline 1`] = `
+<a
+  className="link white inline"
+  href="https://example.com">
+  Link
+</a>
+`;

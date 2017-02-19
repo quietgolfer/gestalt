@@ -17,6 +17,7 @@ import IconButton from './IconButton/IconButton';
 import Image from './Image/Image';
 import Label from './Label/Label';
 import Letterbox from './Letterbox/Letterbox';
+import Link from './Link/Link';
 import Mask from './Mask/Mask';
 import Modal from './Modal/Modal';
 import ScrollFetch from './ScrollFetch/ScrollFetch';
@@ -50,6 +51,7 @@ export {
   Image,
   Label,
   Letterbox,
+  Link,
   Mask,
   Modal,
   ScrollFetch,
