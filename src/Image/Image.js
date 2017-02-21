@@ -37,25 +37,25 @@ export default class Image extends Component {
     children?: any,
     color: string,
     height: number,
-    onError?: (e: SyntheticEvent) => void,
-    onLoad?: (e: SyntheticEvent) => void,
+    onError?: () => void,
+    onLoad?: () => void,
     sizes?: string,
     src: string,
     srcSet?: {[key: string]: string},
     width: number,
   };
 
-  handleLoad = (e: SyntheticEvent) => {
+  handleLoad = () => {
     this.setState({ loaded: true });
     if (this.props.onLoad) {
-      this.props.onLoad(e);
+      this.props.onLoad();
     }
   }
 
-  handleError = (e: SyntheticEvent) => {
+  handleError = () => {
     this.setState({ loaded: false });
     if (this.props.onError) {
-      this.props.onError(e);
+      this.props.onError();
     }
   }
 
@@ -89,8 +89,10 @@ export default class Image extends Component {
       if (children) {
         return (
           <Box position="relative">
-            <Box position="absolute">{img}</Box>
-            <Box position="relative">{children}</Box>
+            <Box position="relative">{img}</Box>
+            <Box position="absolute" top left bottom right overflow="hidden">
+              {children}
+            </Box>
           </Box>
         );
       }
