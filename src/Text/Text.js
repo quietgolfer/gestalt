@@ -48,7 +48,7 @@ export default function Text(props: Props) {
 Text.propTypes = {
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify']),
   bold: PropTypes.bool,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   color: PropTypes.oneOf(['blue', 'dark-gray', 'gray', 'red', 'white']),
   inline: PropTypes.bool,
   italic: PropTypes.bool,
