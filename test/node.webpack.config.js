@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postcss = require('postcss-import');
 const postcssUrl = require('postcss-url');
 const postcssCssNext = require('postcss-cssnext');
-const breakpoints = require('../src/breakpoints');
+const breakpoints = require('../src/breakpoints.json');
 
 module.exports = {
   output: {
@@ -15,9 +15,13 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
-                    'style-loader',
+          'style-loader',
           [
             'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]--[hash:base64:5]',
             'postcss-loader',

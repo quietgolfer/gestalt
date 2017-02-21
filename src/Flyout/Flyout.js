@@ -4,8 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import Box from '../Box/Box';
 import Controller from '../FlyoutUtils/Controller';
 import MobileFlyout from './MobileFlyout';
-
-const breakpoints = require('../breakpoints');
+import breakpoints from '../breakpoints.json';
 
 type Props = {
   children?: any,

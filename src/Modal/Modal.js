@@ -4,8 +4,7 @@ import classnames from 'classnames/bind';
 import Divider from '../Divider/Divider';
 import IconButton from '../IconButton/IconButton';
 import styles from './Modal.css';
-
-const breakpoints = require('../breakpoints');
+import breakpoints from '../breakpoints.json';
 
 const cx = classnames.bind(styles);
 

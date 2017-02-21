@@ -5,7 +5,7 @@ const postcssReporter = require('postcss-reporter');
 const postcssUrl = require('postcss-url');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const breakpoints = require('./src/breakpoints');
+const breakpoints = require('./src/breakpoints.json');
 const webpack = require('webpack');
 
 module.exports = {
@@ -43,6 +43,10 @@ module.exports = {
   },
   module: {
     loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
       {
         test: /\.css$/,
         loader: 'style',
