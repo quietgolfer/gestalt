@@ -28,6 +28,7 @@ import Letterbox from './Letterbox/Letterbox';
 import Link from './Link/Link';
 import Mask from './Mask/Mask';
 import Modal from './Modal/Modal';
+import RadioButton from './RadioButton/RadioButton';
 import ScrollFetch from './ScrollFetch/ScrollFetch';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
 import SearchField from './SearchField/SearchField';
@@ -62,6 +63,7 @@ export {
   Link,
   Mask,
   Modal,
+  RadioButton,
   ScrollFetch,
   SearchField,
   SegmentedControl,

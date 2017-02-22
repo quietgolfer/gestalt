@@ -1,0 +1,25 @@
+.radioButton {
+  composes: block circle pointer from global;
+  border: 7px solid transparent;
+  height: 10px;
+  width: 10px;
+}
+
+.unchecked {
+  composes: bg-light-gray from global;
+}
+
+.checked {
+  composes: bg-dark-gray from global;
+  border-color: #efefef;
+}
+
+.native {
+  composes: absolute m0 from global;
+  appearance: none;
+  cursor: pointer;
+  height: 24px;
+  opacity: 0;
+  outline: none;
+  width: 24px;
+}
