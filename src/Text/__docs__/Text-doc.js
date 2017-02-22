@@ -8,7 +8,7 @@ import { ns } from '../../../.corkboard/cards';
 ns('Text');
 
 const maxWidthStyle = {
-  maxWidth: '400px',
+  maxWidth: '8em',
 };
 
 card('FlowType',
@@ -21,7 +21,7 @@ type Props = {
   color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white', /* default: dark-gray */
   inline?: bool, /* default: false */
   italic?: bool, /* default: false */
-  overflow?: 'break-word' | 'normal', /* default: normal */
+  overflow?: 'normal' | 'breakWord', /* default: normal */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl', /* default: md */
   truncate?: bool, /* default: false */
 };
@@ -125,34 +125,31 @@ card('Overflow',
 Gestalt provides utility options to deal with text overflow.
 
 \`\`\`html
-<Text>
-  Normal
-</Text>
-<Text overflow="break-word">
-  Break-word
-</Text>
-<Text truncate>
-  Trunacte
-</Text>
+<Text>Normal</Text>
+<Text overflow="breakWord">BreakWord</Text>
+<Text truncate>Truncate</Text>
 \`\`\`
 `,
   <div style={maxWidthStyle}>
     <div className="mb2">
       <Text>
-        <strong>normal</strong> - Lorem ipsum dolor sit amet
-        Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+        <strong>normal:</strong>
+        This is a long and Supercalifragilisticexpialidocious
+        sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
       </Text>
     </div>
     <div className="mb2">
-      <Text overflow="break-word">
-        <strong>break-word</strong> - Lorem ipsum dolor sit amet
-        Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+      <Text overflow="breakWord">
+        <strong>breakWord:</strong>
+        This is a long and Supercalifragilisticexpialidocious
+        sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
       </Text>
     </div>
     <div className="mb2">
       <Text truncate>
-        <strong>truncate</strong> - Lorem ipsum dolor sit amet
-        Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+        <strong>truncate:</strong>
+        This is a long and Supercalifragilisticexpialidocious
+        sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
       </Text>
     </div>
   </div>);

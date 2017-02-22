@@ -13,6 +13,7 @@ const sizesToElementMap = {
 type Props = {
   children?: any,
   color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white',
+  overflow?: 'normal' | 'breakWord',
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
 };
@@ -22,6 +23,7 @@ export default function Heading(props: Props) {
     children,
     color = 'dark-gray',
     size,
+    overflow = 'normal',
     truncate = false,
   } = props;
 
@@ -34,6 +36,7 @@ export default function Heading(props: Props) {
     `display-${size}`,
     color,
     {
+      'break-word': overflow === 'breakWord',
       truncate,
     },
   );
@@ -43,6 +46,7 @@ export default function Heading(props: Props) {
 Heading.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(['blue', 'dark-gray', 'gray', 'red', 'white']),
+  overflow: PropTypes.oneOf(['normal', 'breakWord']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   truncate: PropTypes.bool,
 };

@@ -100,7 +100,9 @@
 /* text overflow */
 
 :global .break-word {
-  word-wrap: break-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 :global .truncate {

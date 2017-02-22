@@ -4,8 +4,7 @@ import { card, md } from 'corkboard';
 import Heading from '../Heading';
 import { ns } from '../../../.corkboard/cards';
 
-ns('Heading',
-'');
+ns('Heading');
 
 card('FlowType',
 md`
@@ -13,6 +12,7 @@ md`
 type Props = {
   children?: any,
   color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white', /* default: dark-gray */
+  overflow?: 'normal' | 'breakWord' /* default: normal */
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool, /* default: false */
 };
@@ -98,4 +98,29 @@ And a variety of colors:
     <Heading color="gray" size="md">{'Gray'}</Heading>
     <Heading color="blue" size="md">{'Blue'}</Heading>
     <Heading color="red" size="md">{'Red'}</Heading>
+  </div>);
+
+card('Overflow',
+  md`
+\`\`\`jsx
+<Heading>White</Heading>
+<Heading overflow="breakWord">WordWrap</Heading>
+<Heading truncate>WordWrap</Heading>
+\`\`\`
+`,
+  <div style={{ width: '16em' }}>
+    <Heading size="xs">
+      This is a long and Supercalifragilisticexpialidocious
+      sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
+    </Heading>
+    <br />
+    <Heading size="xs" overflow="breakWord">
+      This is a long and Supercalifragilisticexpialidocious
+      sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
+    </Heading>
+    <br />
+    <Heading size="xs" truncate>
+      This is a long and Supercalifragilisticexpialidocious
+      sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
+    </Heading>
   </div>);
