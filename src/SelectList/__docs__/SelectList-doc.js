@@ -9,37 +9,35 @@ ns('SelectList');
 card('FlowTypes',
 md`
 \`\`\`jsx
-type OptionType = {
-  key: string,
-  value: string,
-};
-
 type Props = {
   id: string,
   name?: string,
-  onChange: (value: string) => void,
-  options?: Array<OptionType>,
-  selectedKey: string,
+  onChange: (e: { +value: string }) => void,
+  options: Array<{
+    label: string,
+    value: string,
+  }>,
+  value?: ?string,
 };
 \`\`\`
 `);
 
 const options = [
   {
-    key: 'aus',
-    value: 'Australia',
+    value: 'aus',
+    label: 'Australia',
   },
   {
-    key: 'bel',
-    value: 'Belgium',
+    value: 'bel',
+    label: 'Belgium',
   },
   {
-    key: 'can',
-    value: 'Canada',
+    value: 'can',
+    label: 'Canada',
   },
   {
-    key: 'usa',
-    value: 'United States of America',
+    value: 'usa',
+    label: 'United States of America',
   },
 ];
 
@@ -51,29 +49,21 @@ a user to choose from.
 <SelectList
   id="country"
   name="country"
-  onChange={(value) => this.setState({selectedKey: value})}
+  onChange={({ value }) => this.setState({ value })}
   options={options}
-  selectedKey={'usa'}
+  value={this.state.value}
 />
 \`\`\`
 `,
-(atom) => {
-  const state = atom.deref();
-  return (
-    <div>
-      <label htmlFor="country">Country:</label>
-      <SelectList
-        id="country"
-        name="country"
-        options={options}
-        selectedKey={'usa'}
-        {...state}
-        onChange={key => atom.set(props => ({
-          ...props,
-          selectedKey: key,
-        }))}
-      />
-    </div>
-
-  );
-});
+atom => (
+  <div>
+    <label htmlFor="country">Country:</label>
+    <SelectList
+      id="country"
+      name="country"
+      onChange={({ value }) => atom.reset({ value })}
+      options={options}
+      value={atom.deref().value}
+    />
+  </div>
+));

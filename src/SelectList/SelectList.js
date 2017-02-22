@@ -1,62 +1,87 @@
 // @flow
-/* disable until eslint issue is fixed https://github.com/yannickcr/eslint-plugin-react/issues/819 */
-/* eslint-disable react/no-unused-prop-types */
-
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
+import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 import styles from './SelectList.css';
 
-type OptionType = {
-  key: string,
-  value: string,
-};
+export default class SelectList extends Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    options: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })).isRequired,
+    value: PropTypes.string,
+  };
 
-type Props = {
-  id: string,
-  name?: string,
-  onChange: (value: string) => void,
-  options?: Array<OptionType>,
-  selectedKey: string,
-};
+  static defaultProps = {
+    options: [],
+  }
 
-export default function SelectList(props: Props) {
-  const {
-    id,
-    name,
-    onChange,
-    options = [],
-    selectedKey,
-  } = props;
+  props: {
+    id: string,
+    name?: string,
+    onChange: (e: { +value: string }) => void,
+    options: Array<{
+      label: string,
+      value: string,
+    }>,
+    value?: ?string,
+  };
 
-  return (
-    <div className={styles.container}>
-      <select
-        className={styles.select}
-        id={id}
-        name={name}
-        onBlur={e => onChange(e.target.value)}
-        onChange={e => onChange(e.target.value)}
-        value={selectedKey}
+  handleOnChange = (e: Event) => {
+    if (
+      e.target instanceof HTMLSelectElement &&
+      this.props.value !== e.target.value
+    ) {
+      this.props.onChange({ value: e.target.value });
+    }
+  }
+
+  render() {
+    const {
+      id,
+      name,
+      options,
+      value,
+    } = this.props;
+
+    return (
+      <Box
+        color="lightGray"
+        position="relative"
+        shape="rounded"
+        xs={{ column: 12 }}
       >
-        {options.map((option, index) => (
-          <option className={styles.options} key={index} value={option.key}>
-            {option.value}
-          </option>
-        ))}
-      </select>
-      <div className={styles.dropdownArrow}>
-        <Icon icon="arrow-down" size={14} color="dark-gray" label="" />
-      </div>
-    </div>
-  );
+        <Box
+          alignItems="center"
+          bottom
+          dangerouslySetInlineStyle={{ __style: { paddingTop: 4 } }}
+          padding={{ x: 2 }}
+          position="absolute"
+          right
+          top
+          xs={{ display: 'flex' }}
+        >
+          <Icon icon="arrow-down" size={14} color="dark-gray" label="" />
+        </Box>
+        <select
+          className={styles.select}
+          id={id}
+          name={name}
+          onBlur={this.handleOnChange}
+          onChange={this.handleOnChange}
+          value={value}
+        >
+          {options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </Box>
+    );
+  }
 }
-
-SelectList.propTypes = {
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired, /* will be passed value returned rather than native event */
-  options: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  })).isRequired,
-  selectedKey: PropTypes.string.isRequired,
-};

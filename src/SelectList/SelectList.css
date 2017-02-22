@@ -1,43 +1,13 @@
-.text {
-  composes: bold from from global;
+.select {
+  composes: col-12 from global;
+  composes: bold from global;
   composes: dark-gray from global;
   composes: text-md from global;
-}
-
-.common {
-  composes: bg-light-gray from global;
-  composes: block border-box from global;
-  composes: col-12 from global;
-  composes: pointer from global;
-  composes: rounded from global;
-}
-
-.container {
-  composes: common;
-  composes: relative from global;
-}
-
-.select {
-  composes: common;
-  composes: text;
   composes: no-border from global;
   composes: p2 from global;
-  appearance: none;
-  padding-right: 20%; /* prevents option.name from running into arrow */
-}
-
-.dropdownArrow {
-  composes: absolute from global;
-  align-items: center;
-  display: flex;
-  height: 100%;
-  pointer-events: none;
-  right: 16px;
-  top: 1px;
-}
-
-.options {
   composes: relative from global;
-  composes: mr3 from global;
-  width: 80%;
+  composes: pointer from global;
+  appearance: none;
+  background-color: transparent;
+  padding-right: 20%; /* prevents option.name from running into arrow */
 }
