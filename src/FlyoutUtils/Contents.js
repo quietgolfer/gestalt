@@ -1,10 +1,8 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import classnames from 'classnames';
 import Caret from './Caret';
 import styles from './Contents.css';
-
-const cx = classnames.bind(styles);
 
 /* Needed until this Flow issue is fixed: https://github.com/facebook/flow/issues/380 */
 /* eslint quote-props: 0*/
@@ -356,17 +354,17 @@ export default class Contents extends Component {
     const borderColor = bgColor === 'white' ? 'light-gray ' : bgColor;
 
     return (
-      <div className={cx('relative')} style={{ stroke, visibility }}>
+      <div className={'relative'} style={{ stroke, visibility }}>
         <div
-          className={cx('absolute', background, 'block', 'border-box', borderColor, 'rounded', 'Flyout', 'Contents-dimensions', 'Contents')}
+          className={classnames('absolute', background, 'block', 'border-box', borderColor, 'rounded', 'Flyout', styles.dimensions, 'Contents')}
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
           tabIndex={-1}
         >
-          <div className={cx('overflow-auto', 'Contents-dimensions')} style={{ width }}>
+          <div className={classnames('overflow-auto', styles.dimensions)} style={{ width }}>
             {children}
           </div>
-          <div className={cx('absolute', bgColor, 'Contents-caret')} style={{ ...this.state.caretOffset }}>
+          <div className={classnames('absolute', bgColor, styles.caret)} style={{ ...this.state.caretOffset }}>
             <Caret direction={this.state.mainDir} />
           </div>
         </div>

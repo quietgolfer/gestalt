@@ -7,6 +7,10 @@
   --red-active: color(#bd081c blackness(+ 10%));
 }
 
+.button {
+  composes: text-md from global;
+}
+
 .common {
   composes: antialiased from global;
   composes: bold from global;
@@ -29,11 +33,6 @@
   composes: col-12 from global;
   composes: text-lg from global;
   padding: 12px 16px;
-}
-
-.button,
-.submit {
-  composes: text-md from global;
 }
 
 .disabled {

@@ -1,12 +1,10 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import classnames from 'classnames';
 import Divider from '../Divider/Divider';
 import IconButton from '../IconButton/IconButton';
 import styles from './Modal.css';
 import breakpoints from '../breakpoints.json';
-
-const cx = classnames.bind(styles);
 
 const SIZE_WIDTH_MAP = {
   sm: 435,
@@ -119,14 +117,14 @@ export default class Modal extends Component {
 
     const container = ['fixed', 'border-box', 'col-12', 'flex', 'justify-center', 'left-0', 'top-0'];
     const containerClasses = this.state.breakpoint === 'xs' ?
-      cx(container, 'items-end', 'bottom-0') : cx(container, 'items-center', 'Modal-container');
+      classnames(container, 'items-end', 'bottom-0') : classnames(container, 'items-center', styles.container);
 
-    const wrapper = ['bg-white', 'fit', 'relative', 'rounded'];
+    const wrapper = ['bg-white', 'fit', 'relative'];
     const wrapperClasses = this.state.breakpoint === 'xs' ?
-      cx(wrapper, 'm0', 'self-end', 'Modal-wrapper-xs') : cx(wrapper, 'my2', 'Modal-wrapper');
+      classnames(wrapper, 'm0', 'self-end') : classnames(wrapper, 'my2', 'rounded', styles.wrapper);
 
     const overlay = ['absolute', 'bg-dark-gray', 'col-12', 'left-0', 'top-0', 'zoom-out'];
-    const overlayClasses = cx(overlay, 'Modal-overlay');
+    const overlayClasses = classnames(overlay, styles.overlay);
 
     return (
       <div

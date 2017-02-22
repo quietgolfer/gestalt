@@ -1,4 +1,4 @@
-.switchCommon {
+.switch {
   composes: border-box from global;
   composes: inline-block from global;
   composes: relative from global;
@@ -10,17 +10,15 @@
   width: 48px;
 }
 
-.switchedOn {
-  composes: switchCommon;
+.switchOn {
   composes: bg-pine from global;
 }
 
-.switchedOff {
-  composes: switchCommon;
+.switchOff {
   composes: bg-gray from global;
 }
 
-.sliderCommon {
+.slider {
   composes: absolute from global;
   composes: bg-white from global;
   composes: circle from global;
@@ -30,12 +28,10 @@
 }
 
 .sliderOn {
-  composes: sliderCommon;
   left: 22px;
 }
 
 .sliderOff {
-  composes: sliderCommon;
   left: 2px;
 }
 

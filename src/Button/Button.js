@@ -1,14 +1,8 @@
-/* TODO(juliac): Add the following items.
- * Tests
- */
-
 // @flow
 /* eslint-disable react/no-unused-prop-types */
 import React, { PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import classnames from 'classnames';
 import styles from './Button.css';
-
-const cx = classnames.bind(styles);
 
 type Props = {
   aria?: {
@@ -34,18 +28,13 @@ export default function Button(props: Props) {
     type = 'button',
   } = props;
 
-  const classes = cx(
-    {
-      disabled,
-      [color]: !disabled,
-      enabled: !disabled,
-    },
-    type,
-    {
-      fullWidth,
-      variable: !fullWidth,
-    },
-  );
+  const classes = classnames(styles.button, {
+    [styles.disabled]: disabled,
+    [styles.enabled]: !disabled,
+    [styles[color]]: !disabled,
+    [styles.fullWidth]: fullWidth,
+    [styles.variable]: !fullWidth,
+  });
 
   return (
     <button

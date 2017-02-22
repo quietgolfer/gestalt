@@ -1,11 +1,8 @@
 // @flow
-
-import classnames from 'classnames/bind';
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 import Text from '../Text/Text';
 import styles from './SegmentedControl.css';
-
-const cx = classnames.bind(styles);
 
 type Props = {
   items: Array<any>,
@@ -21,12 +18,12 @@ export default function SegmentedControl(props: Props) {
   } = props;
   const itemWidth = 1 / items.length;
   return (
-    <div className={cx('SegmentedControl')} role="tablist">
+    <div className={styles.SegmentedControl} role="tablist">
       {items.map((item, i) => {
         const isSelected = i === selectedItemIndex;
-        const cs = cx('SegmentedControl--item', {
-          'SegmentedControl--item__isNotSelected': !isSelected,
-          'SegmentedControl--item__isSelected': isSelected,
+        const cs = classnames(styles.item, {
+          [styles.itemIsNotSelected]: !isSelected,
+          [styles.itemIsSelected]: isSelected,
         });
         return (
           <button

@@ -1,11 +1,9 @@
 // @flow
 /* global $Keys */
 import React, { PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import classnames from 'classnames';
 import styles from './Icon.css';
-import paths from './icons';
-
-const cx = classnames.bind(styles);
+import icons from './icons';
 
 type IconProps = {
   color?: 'white' | 'gray' | 'dark-gray' | 'blue' | 'red',
@@ -13,7 +11,7 @@ type IconProps = {
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons provided in gestalt-icon/icons/index.js.
    */
-  icon: $Keys<typeof paths>,
+  icon: $Keys<typeof icons>,
   inline?: boolean,
   label: string,
   size?: number,
@@ -28,14 +26,13 @@ export default function Icon(props: IconProps) {
     size = 16,
   } = props;
 
-  const cs = cx(
-    'Icon',
-    `Icon--${icon}`,
+  const cs = classnames(
+    styles.icon,
     color,
     (!inline && 'block'),
   );
 
-  const path = paths[icon];
+  const path = icons[icon];
 
   return (
     <svg className={cs} height={size} width={size} viewBox="0 0 16 16" aria-label={label} role="img">
@@ -47,7 +44,7 @@ export default function Icon(props: IconProps) {
 
 Icon.propTypes = {
   color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue', 'red']),
-  icon: PropTypes.oneOf(Object.keys(paths)).isRequired,
+  icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
   inline: PropTypes.bool,
   label: PropTypes.string.isRequired,
   size: PropTypes.number,

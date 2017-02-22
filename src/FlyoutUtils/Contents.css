@@ -8,13 +8,13 @@
   stroke: #555;
 }
 
-.Contents-dimensions {
+.dimensions {
   max-height: 90vh;
   max-width: 90vw;
   min-height: 40px;
 }
 
-.Contents-caret {
+.caret {
   fill: currentColor;
   height: 24px;
 }

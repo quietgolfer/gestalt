@@ -1,10 +1,8 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import classnames from 'classnames';
 import FlexibleGrid from '../FlexibleGrid/FlexibleGrid';
 import styles from './GroupAvatar.css';
-
-const cx = classnames.bind(styles);
 
 const GUTTER_WIDTH = 2;
 
@@ -79,7 +77,7 @@ function DefaultAvatar(props: DefaultAvatarProps) {
     lineHeight: `${height}px`,
   };
 
-  const container = cx(
+  const container = classnames(
     'antialiased',
     'bg-gray',
     'bold',
@@ -177,8 +175,8 @@ function Avatar(props: GridItemPropsType) {
   };
 
   return (
-    <div className={cx('overflow-hidden', 'relative')} style={containerStyles}>
-      <div className={cx(backgroundColor, 'overflow-hidden')} style={imgContainerStyles}>
+    <div className={classnames('overflow-hidden', 'relative')} style={containerStyles}>
+      <div className={classnames(backgroundColor, 'overflow-hidden')} style={imgContainerStyles}>
         {avatarSection}
       </div>
     </div>
@@ -215,7 +213,7 @@ export default class GroupAvatar extends Component {
 
     return (
       <div
-        className={cx('bg-white', 'circle', 'overflow-hidden')}
+        className={classnames('bg-white', 'circle', 'overflow-hidden')}
         style={borderBoxStyle}
       >
         <div style={{ margin: GUTTER_WIDTH / -2 }}>

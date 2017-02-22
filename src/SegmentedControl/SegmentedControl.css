@@ -6,21 +6,21 @@
   user-select: none;
 }
 
-.SegmentedControl--item {
+.item {
   composes: flex-auto no-border pointer px2 m0 from global;
   border-radius: 3px;
   height: 36px;
 }
 
-.SegmentedControl--item:focus {
+.item:focus {
   position: relative;
 }
 
-.SegmentedControl--item__isNotSelected {
+.itemIsNotSelected {
   background: transparent;
 }
 
-.SegmentedControl--item__isSelected {
+.itemIsSelected {
   composes: bg-white from global;
 }
 
@@ -30,7 +30,7 @@
     padding: 4px;
   }
 
-  .SegmentedControl--item {
+  .item {
     border-radius: 4px;
     height: 48px;
   }
