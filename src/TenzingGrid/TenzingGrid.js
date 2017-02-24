@@ -86,6 +86,7 @@ export default class TenzingGrid<T> extends Component {
         mounted: true,
       });
     });
+    this.gridWrapper.addEventListener('animationend', this.handleAnimationEnd);
   }
 
   componentWillReceiveProps({ items }: { items: Array<*> }) {
@@ -125,6 +126,7 @@ export default class TenzingGrid<T> extends Component {
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.updateVirtualBounds);
     this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
+    this.gridWrapper.removeEventListener('animationend', this.handleAnimationEnd);
   }
 
   /**
@@ -199,6 +201,20 @@ export default class TenzingGrid<T> extends Component {
     }, () => {
       this.insertItems(items);
     });
+  }
+
+  /**
+   * We need to remove the animation trigger for an element after it's finished animating.
+   * This is necessary because we virtualize the grid and don't want animations replaying.
+   */
+  handleAnimationEnd = (e: Event) => {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
+    const { classList } = e.target;
+    if (classList.contains(styles.Grid__Item__Animated)) {
+      classList.remove(styles.Grid__Item__Animated);
+    }
   }
 
   calculateDistance(A:GridItemType<*>, B:GridItemType<*>) {
@@ -423,6 +439,7 @@ export default class TenzingGrid<T> extends Component {
       || 0;
     const virtualBuffer = this.containerHeight * VIRTUAL_BUFFER_FACTOR;
     const offsetScrollPos = scrollPos - this.containerOffset;
+
     this.setState({
       viewportTop: offsetScrollPos - virtualBuffer,
       viewportBottom: offsetScrollPos + this.containerHeight + virtualBuffer,
@@ -520,11 +537,8 @@ export default class TenzingGrid<T> extends Component {
     return allItems;
   }
 
-  visibleItems() : Array<GridItemType<T>> {
-    const allItems = this.allItems();
-    return allItems.filter(item => !(
-      item.bottom < this.state.viewportTop || item.top > this.state.viewportBottom
-    ));
+  itemIsVisible(item: GridItemType<T>) {
+    return item.bottom < this.state.viewportTop || item.top > this.state.viewportBottom;
   }
 
   renderHeight = () => {
@@ -548,7 +562,7 @@ export default class TenzingGrid<T> extends Component {
           isFetching={this.state.fetchingFrom !== false}
           renderHeight={this.renderHeight}
         />
-        {(this.state.serverItems || this.visibleItems()).map(item =>
+        {(this.state.serverItems || this.allItems()).map(item =>
           <div
             className={`
               ${styles.Grid__Item}
@@ -557,7 +571,12 @@ export default class TenzingGrid<T> extends Component {
             `}
             data-grid-item
             key={item.key}
-            style={{ top: 0, left: 0, transform: `translateX(${item.left}px) translateY(${item.top}px)` }}
+            style={{
+              top: 0,
+              left: 0,
+              transform: `translateX(${item.left}px) translateY(${item.top}px)`,
+              ...(this.itemIsVisible(item) ? { display: 'none', transition: 'none' } : {})
+            }}
             {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
           >
             <div
