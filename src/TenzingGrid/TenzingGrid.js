@@ -208,7 +208,7 @@ export default class TenzingGrid<T> extends Component {
    * This is necessary because we virtualize the grid and don't want animations replaying.
    */
   handleAnimationEnd = (e: Event) => {
-    if (!(e.target instanceof HTMLInputElement)) {
+    if (!(e.target instanceof HTMLElement)) {
       return;
     }
     const { classList } = e.target;
