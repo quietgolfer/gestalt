@@ -11,6 +11,7 @@ import Avatar from './Avatar/Avatar';
 import Box from './Box/Box';
 import BoxGrid from './BoxGrid/BoxGrid';
 import Button from './Button/Button';
+import Card from './Card/Card';
 import ClassicGrid from './ClassicGrid/ClassicGrid';
 import Column from './Column/Column';
 import Container from './Container/Container';
@@ -46,6 +47,7 @@ export {
   Box,
   BoxGrid,
   Button,
+  Card,
   ClassicGrid,
   Column,
   Container,

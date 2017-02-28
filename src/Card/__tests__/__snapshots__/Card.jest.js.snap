@@ -1,0 +1,28 @@
+exports[`test renders a Card with text 1`] = `
+<div
+  aria-label="Chris Lloyd - founder of Box"
+  className="box relative"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  tabIndex="0">
+  <div
+    className="card" />
+  Chris Lloyd
+</div>
+`;
+
+exports[`test renders an empty Card 1`] = `
+<div
+  aria-label="Empty card"
+  className="box relative"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  tabIndex="0">
+  <div
+    className="card" />
+</div>
+`;
