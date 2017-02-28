@@ -1,3 +1,4 @@
 .label {
+  composes: block from global;
   composes: pointer from global;
 }

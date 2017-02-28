@@ -11,7 +11,7 @@ type Props = {
   },
   color?: 'gray' | 'red' | 'blue',
   disabled?: boolean,
-  fullWidth?: boolean,
+  inline?: boolean,
   onClick?: () => void,
   text: string,
   type?: 'submit' | 'button',
@@ -22,7 +22,7 @@ export default function Button(props: Props) {
     aria = {},
     color = 'gray',
     disabled = false,
-    fullWidth = false,
+    inline = false,
     onClick,
     text,
     type = 'button',
@@ -32,8 +32,8 @@ export default function Button(props: Props) {
     [styles.disabled]: disabled,
     [styles.enabled]: !disabled,
     [styles[color]]: !disabled,
-    [styles.fullWidth]: fullWidth,
-    [styles.variable]: !fullWidth,
+    [styles.inline]: inline,
+    [styles.block]: !inline,
   });
 
   return (
@@ -57,7 +57,7 @@ Button.propTypes = {
   }),
   color: PropTypes.oneOf(['blue', 'gray', 'red']),
   disabled: PropTypes.bool,
-  fullWidth: PropTypes.bool,
+  inline: PropTypes.bool,
   onClick: PropTypes.func,
   text: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['button', 'submit']),

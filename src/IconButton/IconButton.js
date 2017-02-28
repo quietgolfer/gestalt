@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unused-prop-types */
 /* global $Keys */
 import React, { PropTypes } from 'react';
+import cx from 'classnames';
 import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 import styles from './IconButton.css';
@@ -62,7 +63,7 @@ export default function IconButton(props: Props) {
       aria-expanded={aria.expanded}
       aria-haspopup={aria.haspopup}
       aria-label={label}
-      className={styles[bgColor]}
+      className={cx(styles.button, styles[bgColor])}
       onClick={onClick}
       style={inlineStyle}
       tabIndex={tabIndex}

@@ -19,7 +19,7 @@ type Props = {
   },
   color?: 'gray' | 'red' | 'blue', /* default: gray */
   disabled?: boolean, /* default: false */
-  fullWidth?: boolean, /* default: false */
+  inline?: boolean, /* default: false */
   onClick?: () => void,
   text: string,
   type?: 'submit' | 'button', /* default: button */
@@ -72,24 +72,24 @@ There are 3 choices for button colors. The default color is \`gray\`.
 
 card('Widths',
 md`
-There are two different width options for buttons. The variable width button widths are
-determined by the width of the text within the button, whereas the full bleed button widths
-expand to the full width of the container in which they are placed. Full bleed buttons also
-contain slightly larger text and have more padding than their variable width counterparts.
-The default \`fullWidth\` is false.
+There are two different width options for buttons. The inline buttons are
+are sized by the text within the button, whereas the default block buttons expand to the full width of their container. Inline buttons also
+have slightly smaller text and have less padding. The default \`inline\` is false.
+
 \`\`\`html
 <Button
   text="Wide button with lots of text"
+  inline
 />
 \`\`\`
 \`\`\`html
 <Button
   text="Less wide button"
+  inline
 />
 \`\`\`
 \`\`\`html
 <Button
-  fullWidth
   text="Full bleed width button"
 />
 \`\`\`
@@ -98,16 +98,17 @@ The default \`fullWidth\` is false.
     <div className="p2">
       <Button
         text="Wide button with lots of text"
+        inline
       />
     </div>
     <div className="p2">
       <Button
         text="Less wide button"
+        inline
       />
     </div>
     <div className="p2">
       <Button
-        fullWidth
         text="Full bleed width button"
       />
     </div>

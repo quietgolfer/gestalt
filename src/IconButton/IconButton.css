@@ -1,11 +1,12 @@
-.iconButton {
-  composes: circle no-border from global;
+.button {
+  composes: block from global;
+  composes: circle from global;
+  composes: no-border from global;
   composes: p0 from global;
   composes: pointer from global;
 }
 
 .transparent {
-  composes: iconButton;
   background: transparent;
 }
 
@@ -19,7 +20,6 @@
 }
 
 .red {
-  composes: iconButton;
   composes: bg-red from global;
   composes: bg-red-hover from global;
   composes: bg-red-focus from global;
@@ -27,7 +27,6 @@
 }
 
 .blue {
-  composes: iconButton;
   composes: bg-blue from global;
   composes: bg-blue-hover from global;
   composes: bg-blue-focus from global;
@@ -35,7 +34,6 @@
 }
 
 .gray {
-  composes: iconButton;
   composes: bg-gray from global;
   composes: bg-gray-hover from global;
   composes: bg-gray-focus from global;
@@ -43,7 +41,6 @@
 }
 
 .light-gray {
-  composes: iconButton;
   composes: bg-light-gray from global;
   composes: bg-light-gray-hover from global;
   composes: bg-light-gray-focus from global;
@@ -51,7 +48,6 @@
 }
 
 .dark-gray {
-  composes: iconButton;
   composes: bg-dark-gray  from global;
   composes: bg-dark-gray-hover from global;
   composes: bg-dark-gray-focus from global;

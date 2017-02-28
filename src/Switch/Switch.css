@@ -1,8 +1,8 @@
 .switch {
+  composes: block from global;
   composes: border-box from global;
-  composes: inline-block from global;
-  composes: relative from global;
   composes: pointer from global;
+  composes: relative from global;
   border-radius: 48px;
   height: 28px;
   padding: 2px;
