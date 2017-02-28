@@ -94,9 +94,10 @@
     "rollup-watch": "^3.2.2",
     "slimerjs-core": "^0.12.0",
     "style-loader": "^0.13.0",
-    "stylelint": "^7.2.0",
+    "stylelint": "^7.9.0",
     "stylelint-config-css-modules": "^0.1.0",
-    "stylelint-config-standard": "^13.0.0",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-order": "^0.3.0",
     "svg-path-loader": "^0.0.2",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.0"
@@ -125,6 +126,9 @@
       "stylelint-config-standard",
       "stylelint-config-css-modules"
     ],
+    "plugins": [
+      "stylelint-order"
+    ],
     "rules": {
       "color-named": [
         "never",
@@ -134,21 +138,12 @@
           ]
         }
       ],
-      "custom-property-no-outside-root": true,
       "declaration-block-no-duplicate-properties": [
         true,
         {
           "ignore": [
             "consecutive-duplicates"
           ]
-        }
-      ],
-      "declaration-block-properties-order": [
-        [
-          "composes"
-        ],
-        {
-          "unspecified": "bottomAlphabetical"
         }
       ],
       "declaration-no-important": true,
@@ -158,6 +153,14 @@
       "no-descending-specificity": true,
       "no-duplicate-selectors": true,
       "no-unknown-animations": true,
+      "order/declaration-block-properties-specified-order": [
+        [
+          "composes"
+        ],
+        {
+          "unspecified": "bottomAlphabetical"
+        }
+      ],
       "property-no-unknown": [
         true,
         {
@@ -167,8 +170,7 @@
         }
       ],
       "property-no-vendor-prefix": true,
-      "root-no-standard-properties": true,
-      "rule-nested-empty-line-before": [
+      "rule-empty-line-before": [
         "always",
         {
           "except": [
@@ -178,7 +180,6 @@
       ],
       "selector-no-id": true,
       "selector-no-vendor-prefix": true,
-      "stylelint-disable-reason": "always-before",
       "unit-blacklist": [
         "em"
       ],
