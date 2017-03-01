@@ -82,7 +82,7 @@ export default class TextField extends Component {
 
     const textField = (onBlur, onFocus) => (
       <input
-        aria-describedby={`${id}-gestalt-error`}
+        aria-describedby={errorMessage && this.state.focused ? `${id}-gestalt-error` : null}
         aria-invalid={(errorMessage || hasError) ? 'true' : 'false'}
         className={classes}
         id={id}

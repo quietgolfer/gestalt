@@ -73,7 +73,7 @@ export default class TextArea extends Component {
 
     const textArea = (onBlur, onFocus) => (
       <textarea
-        aria-describedby={`${id}-gestalt-error`}
+        aria-describedby={errorMessage && this.state.focused ? `${id}-gestalt-error` : null}
         aria-invalid={errorMessage ? 'true' : 'false'}
         className={classes}
         id={id}
