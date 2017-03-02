@@ -356,7 +356,7 @@ export default class Contents extends Component {
     return (
       <div className={'relative'} style={{ stroke, visibility }}>
         <div
-          className={classnames('absolute', background, 'block', 'border-box', borderColor, 'rounded', 'Flyout', styles.dimensions, 'Contents')}
+          className={classnames('absolute', background, 'block', 'border-box', borderColor, 'rounded', 'Flyout', styles.dimensions, styles.contents)}
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
           tabIndex={-1}

@@ -1,11 +1,11 @@
-.Contents {
+.contents {
   border: 1px solid currentColor;
 }
 
-.Contents:focus {
-  border: 1px solid #555;
+.contents:focus {
+  border: 1px solid #b5b5b5;
   outline: none;
-  stroke: #555;
+  stroke: #b5b5b5;
 }
 
 .dimensions {
