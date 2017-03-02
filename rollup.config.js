@@ -4,10 +4,13 @@ import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 import cssnano from 'cssnano';
 import postcss from 'postcss';
+import postcssCssnext from 'postcss-cssnext';
 import postcssModules from 'postcss-modules';
 import { readFileSync, writeFileSync } from 'fs';
 import { extname } from 'path';
 import { parseString } from 'xml2js';
+
+const breakpoints = require('./src/breakpoints.json');
 
 const svgPath = () => ({
   name: 'svgPath',
@@ -41,17 +44,13 @@ const svgPath = () => ({
   },
 });
 
-
-const breakpoints = require('./src/breakpoints.json');
-const cssnext = require('postcss-cssnext');
-
 const cssModules = (options = {}) => {
   const cssExportMap = {};
   const scopeNames = {};
   let css = '';
 
   const plugins = [
-    cssnext({
+    postcssCssnext({
       features: {
         customMedia: {
           extensions: breakpoints,
@@ -73,9 +72,6 @@ const cssModules = (options = {}) => {
       getJSON(path, exportTokens) {
         cssExportMap[path] = exportTokens;
       },
-    }),
-    cssnano({
-      autoprefixer: false,
     }),
   ];
 
@@ -109,7 +105,9 @@ const cssModules = (options = {}) => {
     },
 
     ongenerate() {
-      writeFileSync(options.output, css);
+      cssnano.process(css).then((result) => {
+        writeFileSync(options.output, result.css);
+      });
     }
   };
 };
