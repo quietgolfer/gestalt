@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Grid.css';
 import throttle from '../throttle';
+import ThrottleInsertion from './ThrottleInsertion';
 
 type Props<T> = {
   columnWidth: number,
@@ -38,7 +39,7 @@ function distance(a, b) {
   return Math.sqrt((x * x) + (y * y));
 }
 
-export default class TenzingGrid<T> extends Component {
+class TenzingGrid<T> extends Component {
   static defaultProps: {};
 
   constructor(props: Props<*>) {
@@ -559,7 +560,7 @@ export default class TenzingGrid<T> extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.state.fetchingFrom !== false}
+          isFetching={this.state.fetchingFrom !== false || this.props.insertionsQueued}
           renderHeight={this.renderHeight}
         />
         {(this.state.serverItems || this.allItems()).map(item =>
@@ -609,6 +610,11 @@ TenzingGrid.propTypes = {
   gutterWidth: React.PropTypes.number,
 
   /**
+   * Whether or not insertions are queued from <ThrottleInsertion>
+   */
+  insertionsQueued: React.PropTypes.bool,
+
+  /**
    * An array of all objects to display in the grid.
    */
   items: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
@@ -643,3 +649,7 @@ TenzingGrid.defaultProps = {
   scrollContainer: typeof window !== 'undefined' ? window : null,
   loadItems: () => {},
 };
+
+export { TenzingGrid as DefaultGrid };
+
+export default ThrottleInsertion(TenzingGrid);

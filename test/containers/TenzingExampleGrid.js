@@ -44,6 +44,7 @@ export default class TenzingExampleGrid extends React.Component {
       window.TEST_FETCH_COUNTS = window.TEST_FETCH_COUNTS || 0;
       window.TEST_FETCH_COUNTS += 1;
       window.NEXT_FETCH = () => {
+        window.NEXT_FETCH = null;
         resolve(pins);
       };
       if (!this.props.manualFetch) {

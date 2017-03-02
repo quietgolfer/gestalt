@@ -48,6 +48,8 @@ describe('TenzingGrid > Resize', () => {
       },
     });
 
+    await ghost.wait(1000);
+
     const expectedColumns = Math.floor(GRID_WIDTH / PIN_SIZE);
     assert.equal(await countColumns(), expectedColumns, `expected ${expectedColumns} columns`);
 
