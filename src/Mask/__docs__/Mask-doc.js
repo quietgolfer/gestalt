@@ -38,7 +38,7 @@ There are 3 different shapes that you can achieve using a Mask. The default shap
 \`\`\`
 \`\`\`js
 <Mask height={70} width={70}>
-  <div style={{ backgroundColor: '#fab904', width: 70, height: 70 }} />
+  <div style={{ backgroundColor: '#e3780c', width: 70, height: 70 }} />
 </Mask>
 \`\`\`
   `,
@@ -57,7 +57,7 @@ There are 3 different shapes that you can achieve using a Mask. The default shap
 
     <div className="p2">
       <Mask height={70} width={70}>
-        <div style={{ backgroundColor: '#fab904', width: 70, height: 70 }} />
+        <div style={{ backgroundColor: '#e3780c', width: 70, height: 70 }} />
       </Mask>
     </div>
 

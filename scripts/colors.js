@@ -12,7 +12,7 @@ const colors = [
   'red',
   'slate',
   'white',
-  'yellow',
+  'orange',
 ];
 
 colors.forEach((color) => {

@@ -20,7 +20,7 @@ export default function ErrorFlyout(props: Props) {
 
   return (
     <Controller
-      bgColor="yellow"
+      bgColor="orange"
       idealDirection={idealDirection}
       isOpen={isOpen}
       onDismiss={onDismiss}

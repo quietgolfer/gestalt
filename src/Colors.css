@@ -7,9 +7,9 @@
   --slate: #88a5ab;
   --light-gray: #efefef;
   --white: #fff;
-  --yellow: #fab904;
-  --frost: rgba(#fff, 0:global .95);
-  --shade: rgba(#000, 0:global .6);
+  --orange: #e3780c;
+  --frost: rgba(#fff, 0:global 0.95);
+  --shade: rgba(#000, 0:global 0.6);
 
   /* darker versions of colors for hover states */
   --blue-hover: color(var(--blue) blackness(+ 6%));
@@ -185,18 +185,18 @@
   background-color: var(--white);
 }
 
-/* yellow */
+/* orange */
 
-:global .yellow {
-  color: var(--yellow);
+:global .orange {
+  color: var(--orange);
 }
 
-:global .yellow-hover:hover {
-  color: var(--yellow);
+:global .orange-hover:hover {
+  color: var(--orange);
 }
 
-:global .bg-yellow {
-  background-color: var(--yellow);
+:global .bg-orange {
+  background-color: var(--orange);
 }
 
 /* frost */

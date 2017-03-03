@@ -18,7 +18,7 @@
 }
 
 .errored {
-  border: 1px solid #fab904;
+  border: 1px solid #e3780c;
 }
 
 .errored:focus {

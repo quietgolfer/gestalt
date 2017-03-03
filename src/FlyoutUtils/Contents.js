@@ -43,7 +43,7 @@ type Size = {
 };
 
 type Props = {
-  bgColor: 'dark-gray' | 'white' | 'yellow',
+  bgColor: 'dark-gray' | 'white' | 'orange',
   children?: any,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   onClick: (e: Event) => void,
@@ -375,7 +375,7 @@ export default class Contents extends Component {
 
 /* eslint react/no-unused-prop-types: 0 */
 Contents.propTypes = {
-  bgColor: PropTypes.oneOf(['dark-gray', 'white', 'yellow']),
+  bgColor: PropTypes.oneOf(['dark-gray', 'white', 'orange']),
   children: PropTypes.node,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   onClick: PropTypes.func.isRequired,

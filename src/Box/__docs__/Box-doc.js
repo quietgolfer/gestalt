@@ -185,7 +185,7 @@ Boxes are transparent by default.
 <Box color="blue" />
 <Box color="slate" />
 <Box color="pine" />
-<Box color="yellow" />
+<Box color="orange" />
 <Box color="transparent" />
 \`\`\`
 `,
@@ -198,7 +198,7 @@ Boxes are transparent by default.
     <ColorSwatch color="blue" />
     <ColorSwatch color="slate" />
     <ColorSwatch color="pine" />
-    <ColorSwatch color="yellow" />
+    <ColorSwatch color="orange" />
     <ColorSwatch color="transparent" />
   </Box>
 );
