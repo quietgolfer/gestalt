@@ -1,11 +1,5 @@
 .img {
-  composes: col-12 from global;
-}
-
-.pending {
-  display: none;
-}
-
-.loaded {
   composes: block from global;
+  composes: col-12 from global;
+  composes: absolute from global;
 }

@@ -47,10 +47,10 @@ a placeholder.
 \`\`\`jsx
 <Image
   alt="example.com"
-  color="#018077"
-  height={354}
-  src=""
-  width={236}
+  color="rgb(111, 91, 77)"
+  height={564}
+  src="..."
+  width={564}
 />
 \`\`\`
   `,
@@ -58,10 +58,10 @@ a placeholder.
     <div className="col-6 px2">
       <Image
         alt="example.com"
-        color="#018077"
-        height={354}
-        src=""
-        width={236}
+        color="rgb(111, 91, 77)"
+        height={564}
+        src="https://s-media-cache-ak0.pinimg.com/474x/b2/55/ed/b255edbf773ffb3985394e6efb9d2a49.jpg"
+        width={564}
       />
     </div>
   </div>);
@@ -88,14 +88,14 @@ You can overlay content on an Image by passing it children.
   <div className="flex mxn2">
     <div className="col-6 px2">
       <Image
-        alt="M.C. Escher  Phosphorescent Sea (1933)"
-        color="#000"
-        height={760}
-        src="https://s-media-cache-ak0.pinimg.com/564x/f6/30/6a/f6306abfb1e548f54682f1326da9fb14.jpg"
+        alt="Tropic greens: The taste of Petrol and Porcelain | Interior design, Vintage Sets and Unique Pieces agave"
+        color="rgb(231, 186, 176)"
+        height={751}
+        src="https://s-media-cache-ak0.pinimg.com/564x/19/f4/87/19f487a680f9fb1ecc8aa139b2afac7f.jpg"
         width={564}
       >
         <div className="white p2">
-          M.C. Escher  Phosphorescent Sea (1933)
+          Tropic greens: The taste of Petrol and Porcelain
         </div>
       </Image>
     </div>

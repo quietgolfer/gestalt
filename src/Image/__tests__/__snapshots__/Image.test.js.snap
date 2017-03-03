@@ -1,0 +1,43 @@
+exports[`test Image matches snapshot 1`] = `
+<div
+  className="box relative"
+  style={
+    Object {
+      "backgroundColor": "transparent",
+      "paddingBottom": "100%",
+    }
+  }>
+  <img
+    alt="foo"
+    className="img"
+    onError={[Function]}
+    onLoad={[Function]}
+    sizes={undefined}
+    src="foo.png"
+    srcSet={undefined} />
+</div>
+`;
+
+exports[`test Image with overlay matches snapshot 1`] = `
+<div
+  className="box relative"
+  style={
+    Object {
+      "backgroundColor": "transparent",
+      "paddingBottom": "100%",
+    }
+  }>
+  <img
+    alt="foo"
+    className="img"
+    onError={[Function]}
+    onLoad={[Function]}
+    sizes={undefined}
+    src="foo.png"
+    srcSet={undefined} />
+  <div
+    className="box bottom-0 left-0 overflow-hidden absolute right-0 top-0">
+    Foo.png
+  </div>
+</div>
+`;
