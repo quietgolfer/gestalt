@@ -74,7 +74,7 @@ export default class SearchField extends Component {
           left
           margin={{ left: 2 }}
         >
-          <Icon icon="search" label="" />
+          <Icon icon="search" ariaLabel="" />
         </Box>
         <input
           aria-label={label}

@@ -65,7 +65,7 @@ export default class Spinner extends Component {
     return (
       <Box xs={{ display: 'flex' }} justifyContent="around" overflow="hidden">
         <div className={styles.icon}>
-          <Icon icon="knoop" label={label} size={SIZE} />
+          <Icon icon="knoop" ariaLabel={label} size={SIZE} />
         </div>
       </Box>
     );

@@ -29,7 +29,7 @@ atom => (
   <div className="border">
     <Box padding={{ x: 1, y: 2 }} xs={{ display: 'flex' }} alignItems="center">
       <Box padding={2}>
-        <Icon icon="pinterest" color="red" size={20} label="Pinterest" />
+        <Icon icon="pinterest" color="red" size={20} ariaLabel="Pinterest" />
       </Box>
       <Box grow padding={{ x: 1 }}>
         <SearchField

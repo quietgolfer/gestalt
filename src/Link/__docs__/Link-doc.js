@@ -64,7 +64,7 @@ card(
 card(
   <Text>
     <Link color="blue" href="https://pinterest.com">
-      <Icon icon="pin" color="blue" inline label="pin" />
+      <Icon icon="pin" color="blue" inline ariaLabel="pin" />
       Pinterest.com
     </Link>
   </Text>,

@@ -75,7 +75,7 @@ export default function IconButton(props: Props) {
           This is similar to having empty `alt` attributes:
           https://davidwalsh.name/accessibility-tip-empty-alt-attributes
         */}
-        <Icon color={iconColor} icon={icon} size={iconSize} label="" />
+        <Icon color={iconColor} icon={icon} size={iconSize} ariaLabel="" />
       </Box>
     </button>
   );

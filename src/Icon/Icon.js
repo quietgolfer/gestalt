@@ -11,18 +11,18 @@ type IconProps = {
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons provided in gestalt-icon/icons/index.js.
    */
+  ariaLabel: string,
   icon: $Keys<typeof icons>,
   inline?: boolean,
-  label: string,
   size?: number,
 };
 
 export default function Icon(props: IconProps) {
   const {
+    ariaLabel,
     color = 'gray',
     icon,
     inline,
-    label,
     size = 16,
   } = props;
 
@@ -35,17 +35,17 @@ export default function Icon(props: IconProps) {
   const path = icons[icon];
 
   return (
-    <svg className={cs} height={size} width={size} viewBox="0 0 16 16" aria-label={label} role="img">
-      <title>{label}</title>
+    <svg className={cs} height={size} width={size} viewBox="0 0 16 16" aria-label={ariaLabel} role="img">
+      <title>{ariaLabel}</title>
       <path d={path} />
     </svg>
   );
 }
 
 Icon.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
   color: PropTypes.oneOf(['white', 'gray', 'dark-gray', 'blue', 'red']),
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
   inline: PropTypes.bool,
-  label: PropTypes.string.isRequired,
   size: PropTypes.number,
 };

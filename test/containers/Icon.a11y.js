@@ -7,7 +7,7 @@ function IconType({ iconName }) {
   return (
     <div>
       <h5>{iconName}</h5>
-      <Icon icon={iconName} label={iconName.replace(/-/g, ' ')} size={21} color="gray" />
+      <Icon icon={iconName} ariaLabel={iconName.replace(/-/g, ' ')} size={21} color="gray" />
     </div>
   );
 }
