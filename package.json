@@ -1,5 +1,5 @@
 {
-  "name": "pinterest-gestalt",
+  "name": "gestalt",
   "version": "0.15.0",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://pinterest.github.io/gestalt",
@@ -12,9 +12,6 @@
     "dist",
     "src"
   ],
-  "publishConfig": {
-    "registry": "http://sinopia.ec2.pin220.com:8080"
-  },
   "dependencies": {
     "classnames": "^2.2.5",
     "react": "^15.4.1"
