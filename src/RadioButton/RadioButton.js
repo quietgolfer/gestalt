@@ -8,6 +8,7 @@ export default class RadioButton extends Component {
   static propTypes = {
     checked: PropTypes.bool,
     id: PropTypes.string.isRequired,
+    name: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
   };
@@ -15,6 +16,7 @@ export default class RadioButton extends Component {
   props: {
     checked?: boolean,
     id: string,
+    name?: string,
     onChange: (e: { +checked: boolean }) => void,
     value: string,
   };
@@ -25,7 +27,7 @@ export default class RadioButton extends Component {
   }
 
   render() {
-    const { checked, id, value } = this.props;
+    const { checked, id, name, value } = this.props;
 
     const customRadioButton = classnames(styles.radioButton, {
       [styles.checked]: checked,
@@ -38,6 +40,7 @@ export default class RadioButton extends Component {
           checked={checked}
           className={styles.native}
           id={id}
+          name={name}
           onChange={this.handleChange}
           type="radio"
           value={value}

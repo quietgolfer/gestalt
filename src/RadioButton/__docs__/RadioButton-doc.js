@@ -16,6 +16,7 @@ md`
 type props: {
   checked?: boolean,
   id: string,
+  name?: string, // the name given for all radio buttons in a single group
   onChange: (e: { +checked: boolean }) => void,
   value: string,
 };
@@ -76,6 +77,7 @@ Here is an example of an accessible list of radio buttons.
       <RadioButton
         checked={this.state.checked === 'male'}
         id="male"
+        name="genderOptions"
         onChange={() => this.setState({ checked: 'male'})}
         value="male"
       />
@@ -89,6 +91,7 @@ Here is an example of an accessible list of radio buttons.
       <RadioButton
         checked={this.state.checked === 'female'}
         id="female"
+        name="genderOptions"
         onChange={() => this.setState({ checked: 'female'})}
         value="female"
       />
@@ -118,6 +121,7 @@ Here is an example of an accessible list of radio buttons.
             <RadioButton
               checked={atom.deref().checked === 'male'}
               id="male"
+              name="genderOptions"
               onChange={() => atom.reset({ checked: 'male' })}
               value="male"
             />
@@ -131,6 +135,7 @@ Here is an example of an accessible list of radio buttons.
             <RadioButton
               checked={atom.deref().checked === 'female'}
               id="female"
+              name="genderOptions"
               onChange={() => atom.reset({ checked: 'female' })}
               value="female"
             />
