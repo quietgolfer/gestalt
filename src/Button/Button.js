@@ -5,10 +5,8 @@ import classnames from 'classnames';
 import styles from './Button.css';
 
 type Props = {
-  aria?: {
-    expanded?: boolean,
-    haspopup?: boolean,
-  },
+  ariaExpanded?: boolean,
+  ariaHaspopup?: boolean,
   color?: 'gray' | 'red' | 'blue',
   disabled?: boolean,
   inline?: boolean,
@@ -19,7 +17,8 @@ type Props = {
 
 export default function Button(props: Props) {
   const {
-    aria = {},
+    ariaExpanded,
+    ariaHaspopup,
     color = 'gray',
     disabled = false,
     inline = false,
@@ -38,8 +37,8 @@ export default function Button(props: Props) {
 
   return (
     <button
-      aria-expanded={aria.expanded}
-      aria-haspopup={aria.haspopup}
+      aria-expanded={ariaExpanded}
+      aria-haspopup={ariaHaspopup}
       className={classes}
       disabled={disabled}
       onClick={onClick}
@@ -51,10 +50,8 @@ export default function Button(props: Props) {
 }
 
 Button.propTypes = {
-  aria: PropTypes.shape({
-    expanded: PropTypes.bool,
-    haspopup: PropTypes.bool,
-  }),
+  ariaExpanded: PropTypes.bool,
+  ariaHaspopup: PropTypes.bool,
   color: PropTypes.oneOf(['blue', 'gray', 'red']),
   disabled: PropTypes.bool,
   inline: PropTypes.bool,

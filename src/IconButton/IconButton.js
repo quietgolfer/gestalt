@@ -9,10 +9,8 @@ import styles from './IconButton.css';
 import icons from '../Icon/icons';
 
 type Props = {
-  aria?: {
-    expanded?: boolean,
-    haspopup?: boolean,
-  },
+  ariaExpanded?: boolean,
+  ariaHaspopup?: boolean,
   bgColor?: 'transparent' | 'light-gray',
   iconColor?: 'gray' | 'dark-gray' | 'red' | 'blue',
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
@@ -41,7 +39,8 @@ const buttonSize = {
 
 export default function IconButton(props: Props) {
   const {
-    aria = {},
+    ariaExpanded,
+    ariaHaspopup,
     bgColor = 'transparent',
     iconColor = defaultIconButtonIconColors[bgColor],
     icon,
@@ -60,8 +59,8 @@ export default function IconButton(props: Props) {
 
   return (
     <button
-      aria-expanded={aria.expanded}
-      aria-haspopup={aria.haspopup}
+      aria-expanded={ariaExpanded}
+      aria-haspopup={ariaHaspopup}
       aria-label={label}
       className={cx(styles.button, styles[bgColor])}
       onClick={onClick}
@@ -82,10 +81,8 @@ export default function IconButton(props: Props) {
 }
 
 IconButton.propTypes = {
-  aria: PropTypes.shape({
-    expanded: PropTypes.bool,
-    haspopup: PropTypes.bool,
-  }),
+  ariaExpanded: PropTypes.bool,
+  ariaHaspopup: PropTypes.bool,
   bgColor: PropTypes.oneOf(
     ['transparent', 'light-gray']
   ),

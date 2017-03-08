@@ -160,10 +160,8 @@ Below are several sample code snippets with corresponding live Flyout examples o
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <IconButton
-      aria={{
-        expanded: this.state.isOpen,
-        haspopup: true,
-      }}
+      aria-expanded={this.state.isOpen}
+      aria-haspopup
       label="More options"
       icon="ellipsis"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
@@ -183,10 +181,8 @@ Below are several sample code snippets with corresponding live Flyout examples o
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <IconButton
-      aria={{
-        expanded: this.state.isOpen,
-        haspopup: true,
-      }}
+      aria-expanded={this.state.isOpen}
+      aria-haspopup
       label="Profile options"
       icon="person"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
@@ -204,10 +200,8 @@ Below are several sample code snippets with corresponding live Flyout examples o
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <IconButton
-      aria={{
-        expanded: this.state.isOpen,
-        haspopup: true,
-      }}
+      aria-expanded={this.state.isOpen}
+      aria-haspopup
       label="Add pin"
       icon="plus"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
@@ -226,10 +220,8 @@ Below are several sample code snippets with corresponding live Flyout examples o
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <Button
-      aria={{
-        expanded: this.state.isOpen,
-        haspopup: true,
-      }}
+      aria-expanded={this.state.isOpen}
+      aria-haspopup
       text="Help"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
     />
@@ -250,12 +242,10 @@ atom => (
         onDismiss={() => atom.reset({ more: false })}
         trigger={
           <IconButton
-            aria={{
-              expanded: !!atom.deref().more,
-              haspopup: true,
-            }}
-            label="More options"
+            aria-expanded={!!atom.deref().more}
+            aria-haspopup
             icon="ellipsis"
+            label="More options"
             onClick={() => atom.reset({ more: !atom.deref().more })}
           />
         }
@@ -273,12 +263,10 @@ atom => (
         onDismiss={() => atom.reset({ profile: false })}
         trigger={
           <IconButton
-            aria={{
-              expanded: !!atom.deref().profile,
-              haspopup: true,
-            }}
-            label="Profile options"
+            aria-expanded={!!atom.deref().profile}
+            aria-haspopup
             icon="person"
+            label="Profile options"
             onClick={() => atom.reset({ profile: !atom.deref().profile })}
           />
         }
@@ -294,12 +282,10 @@ atom => (
         onDismiss={() => atom.reset({ add: false })}
         trigger={
           <IconButton
-            aria={{
-              expanded: !!atom.deref().add,
-              haspopup: true,
-            }}
-            label="Add pin"
+            aria-expanded={!!atom.deref().add}
+            aria-haspopup
             icon="add"
+            label="Add pin"
             onClick={() => atom.reset({ add: !atom.deref().add })}
           />
         }
@@ -316,12 +302,10 @@ atom => (
         onDismiss={() => atom.reset({ help: false })}
         trigger={
           <Button
-            aria={{
-              expanded: !!atom.deref().help,
-              haspopup: true,
-            }}
-            text="Help"
+            aria-expanded={!!atom.deref().help}
+            aria-haspopup
             onClick={() => atom.reset({ help: !atom.deref().help })}
+            text="Help"
           />
         }
       >
