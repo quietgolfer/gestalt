@@ -1,11 +1,11 @@
 import React from 'react';
-import TenzingGrid from '../../src/TenzingGrid/TenzingGrid';
+import Masonry from '../../src/Masonry/Masonry';
 import Item from './ExampleGridItem';
 import stringToColor from '../../src/stringToColor';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
 
-export default class TenzingExampleGrid extends React.Component {
+export default class MasonryExample extends React.Component {
 
   constructor(props) {
     super(props);
@@ -96,7 +96,7 @@ export default class TenzingExampleGrid extends React.Component {
     return (
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
         <button id="insert-item" onClick={this.handleInsertItem}>Insert 1 item into grid</button>
-        <TenzingGrid
+        <Masonry
           comp={Item}
           items={this.state.pins}
           ref={(ref) => { this.gridRef = ref; }}
@@ -108,7 +108,7 @@ export default class TenzingExampleGrid extends React.Component {
   }
 }
 
-TenzingExampleGrid.propTypes = {
+MasonryExample.propTypes = {
   // Test case: Sets up props to display a collage layout.
   collage: React.PropTypes.string,
   // Test case: Constrains the width of the grid rendering.

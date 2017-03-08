@@ -11,10 +11,10 @@ const selectors = {
 
 const getAnimationCount = async () => await ghost.script(() => window.TEST_ANIMATION_COUNT);
 
-describe('TenzingGrid > Limited inserted item animation', () => {
+describe('Masonry > Limited inserted item animation', () => {
   it('Can insert items into the grid', async () => {
     ghost.close();
-    await ghost.open('http://localhost:3000/TenzingGrid');
+    await ghost.open('http://localhost:3000/Masonry');
 
     await ghost.script(() => {
       window.TEST_ANIMATION_COUNT = 0;
@@ -39,7 +39,7 @@ describe('TenzingGrid > Limited inserted item animation', () => {
 
     // After scrolling to the top, we should not trigger additional animations.
     await ghost.script(() => window.scrollTo(0, 0));
-    // The wait needs to be greater than tenzing grid animation time.
+    // The wait needs to be greater than masonry animation time.
     await ghost.wait(500);
     assert.equal(animCount + 1, await getAnimationCount());
   });

@@ -8,9 +8,9 @@ const selectors = {
   afterGrid: '.afterGrid',
 };
 
-describe.skip('TenzingGrid > Cache invalidation', () => {
+describe.skip('Masonry > Cache invalidation', () => {
   it('Able to invalidate cache', async () => {
-    await ghost.open('http://localhost:3000/TenzingGrid');
+    await ghost.open('http://localhost:3000/Masonry');
 
     const beforeReflowGridItems = await ghost.findElements(selectors.gridItem);
     const beforeReflowItemLeftMap = {};

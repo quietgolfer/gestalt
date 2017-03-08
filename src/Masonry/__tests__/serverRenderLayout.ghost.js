@@ -8,11 +8,11 @@ const selectors = {
   staticItem: '.static',
 };
 
-describe('TenzingGrid > Server Render Layout', () => {
+describe('Masonry > Server Render Layout', () => {
   it('items rendered on the server maintain position after mounting', async () => {
     ghost.close();
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000/TenzingGrid?deferMount=1', {
+    await ghost.open('http://localhost:3000/Masonry?deferMount=1', {
       viewportSize: {
         width: 1000,
         height: 1000,
@@ -41,7 +41,7 @@ describe('TenzingGrid > Server Render Layout', () => {
     const gridItem2Rect = await gridItems[1].rect();
 
     assert.equal(gridItem1Rect.left, serverItem1Rect.left);
-    // Simple placement assertion for now because we position tenzing grid with transforms.
+    // Simple placement assertion for now because we position masonry with transforms.
     assert.ok(gridItem2Rect.left > 0);
   });
 });

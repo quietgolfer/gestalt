@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import stringToColor from '../../stringToColor';
-import TenzingGrid from '../TenzingGrid';
+import Masonry from '../Masonry';
 import Item from './Item';
 
 const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
@@ -61,7 +61,7 @@ export default class ExampleGrid extends React.Component {
 
   render() {
     return (
-      <TenzingGrid
+      <Masonry
         comp={Item}
         items={this.state.pins}
         loadItems={this.loadItems}

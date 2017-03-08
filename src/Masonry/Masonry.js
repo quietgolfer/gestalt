@@ -39,7 +39,7 @@ function distance(a, b) {
   return Math.sqrt((x * x) + (y * y));
 }
 
-class TenzingGrid<T> extends Component {
+class Masonry<T> extends Component {
   static defaultProps: {};
 
   constructor(props: Props<*>) {
@@ -592,7 +592,7 @@ class TenzingGrid<T> extends Component {
   }
 }
 
-TenzingGrid.propTypes = {
+Masonry.propTypes = {
   /**
    * The width of each column.
    */
@@ -642,7 +642,7 @@ TenzingGrid.propTypes = {
   }),
 };
 
-TenzingGrid.defaultProps = {
+Masonry.defaultProps = {
   columnWidth: 236,
   gutterWidth: 14,
   minCols: 3,
@@ -650,6 +650,6 @@ TenzingGrid.defaultProps = {
   loadItems: () => {},
 };
 
-export { TenzingGrid as DefaultGrid };
+export { Masonry as DefaultGrid };
 
-export default ThrottleInsertion(TenzingGrid);
+export default ThrottleInsertion(Masonry);

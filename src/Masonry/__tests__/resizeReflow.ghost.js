@@ -32,7 +32,7 @@ const triggerReisze = async (resizeWidthTo) => {
   }, [resizeWidthTo]);
 };
 
-describe('TenzingGrid > Resize', () => {
+describe('Masonry > Resize', () => {
   it('Reflows the grid after a resize', async () => {
     const GRID_WIDTH = 1000;
 
@@ -41,7 +41,7 @@ describe('TenzingGrid > Resize', () => {
     ghost.close();
 
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000/TenzingGrid', {
+    await ghost.open('http://localhost:3000/Masonry', {
       viewportSize: {
         width: GRID_WIDTH,
         height: 800,

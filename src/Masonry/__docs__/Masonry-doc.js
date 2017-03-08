@@ -4,12 +4,12 @@ import { card, md } from 'corkboard';
 import ExampleGrid from './ExampleGrid';
 import { ns } from '../../../.corkboard/cards';
 
-ns('TenzingGrid');
+ns('Masonry');
 
 card('PropTypes',
   md`
 \`\`\`js
-TenzingGrid.propTypes = {
+Masonry.propTypes = {
   columnWidth: React.PropTypes.number, /* default: 236 */
   comp: React.PropTypes.func,
   gutterWidth: React.PropTypes.number, /* default: 14 */
@@ -46,7 +46,7 @@ TenzingGrid.propTypes = {
 card('Fluid number of columns',
   md`The number of columns in this grid changes responsively based on the width of the parent.
   \`\`\`jsx
-    <TenzingGrid
+    <Masonry
       comp={Item}
       items={this.state.pins}
       loadItems={this.loadItems}

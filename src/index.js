@@ -28,6 +28,7 @@ import Label from './Label/Label';
 import Letterbox from './Letterbox/Letterbox';
 import Link from './Link/Link';
 import Mask from './Mask/Mask';
+import Masonry from './Masonry/Masonry';
 import Modal from './Modal/Modal';
 import RadioButton from './RadioButton/RadioButton';
 import ScrollFetch from './ScrollFetch/ScrollFetch';
@@ -36,7 +37,6 @@ import SearchField from './SearchField/SearchField';
 import SelectList from './SelectList/SelectList';
 import Spinner from './Spinner/Spinner';
 import Switch from './Switch/Switch';
-import TenzingGrid from './TenzingGrid/TenzingGrid';
 import Text from './Text/Text';
 import TextArea from './TextArea/TextArea';
 import TextField from './TextField/TextField';
@@ -72,7 +72,7 @@ export {
   SelectList,
   Spinner,
   Switch,
-  TenzingGrid,
+  Masonry,
   Text,
   TextArea,
   TextField,

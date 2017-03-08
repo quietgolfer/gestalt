@@ -2,7 +2,7 @@ import A11YCheck from '../containers/A11YCheck';
 import BoxExampleGrid from '../containers/BoxExampleGrid';
 import ClassicExampleGrid from '../containers/ClassicExampleGrid';
 import FlexibleExampleGrid from '../containers/FlexibleExampleGrid';
-import TenzingExampleGrid from '../containers/TenzingExampleGrid';
+import MasonryExample from '../containers/MasonryExample';
 import classicGridServerStyles from '../containers/classicGridServerStyles';
 import flexibleGridServerStyles from '../containers/flexibleGridServerStyles';
 import { classicPins, boxPackingPins } from './pins';
@@ -25,8 +25,8 @@ const RenderConfig = {
     styles: flexibleGridServerStyles,
     props: { initialPins: classicPins },
   },
-  TenzingGrid: {
-    Component: TenzingExampleGrid,
+  Masonry: {
+    Component: MasonryExample,
     styles: classicGridServerStyles,
     props: { initialPins: classicPins },
   },

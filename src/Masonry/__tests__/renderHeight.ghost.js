@@ -8,10 +8,10 @@ const selectors = {
   afterGrid: '.afterGrid',
 };
 
-describe('TenzingGrid > Render Height', () => {
+describe('Masonry > Render Height', () => {
   it('Items can be positioned under the grid', async () => {
     ghost.close();
-    await ghost.open('http://localhost:3000/TenzingGrid?finiteLength=1');
+    await ghost.open('http://localhost:3000/Masonry?finiteLength=1');
 
     const gridItems = await ghost.findElements(selectors.gridItem);
     assert.ok(gridItems.length > 0);
