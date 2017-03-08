@@ -33,8 +33,13 @@ const ThrottleInsertion = (Subject: ReactClass<*>) => {
       shownItems: Array<*>,
     };
 
-    componentWillReceiveProps() {
-      if (!this.state.insertionsQueued) {
+    componentWillReceiveProps({ items }: Props) {
+      if (items.length === this.props.items.length) {
+        // Refresh shownItems if the count does not change.
+        this.setState({
+          shownItems: items
+        });
+      } else if (!this.state.insertionsQueued) {
         this.setState({
           insertionsQueued: true,
         });
