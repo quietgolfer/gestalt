@@ -4,7 +4,7 @@ import assert from 'assert';
 import ghost from 'ghostjs';
 
 const selectors = {
-  gridItem: '[class*="Grid__Grid__Item"]',
+  gridItem: '[class*="Masonry__Masonry__Item"]',
   staticItem: '.static',
 };
 

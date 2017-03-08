@@ -1,18 +1,18 @@
-.Grid {
+.Masonry {
   composes: relative from global;
   height: 100%;
   margin: 0 auto;
 }
 
-.Grid__Item {
+.Masonry__Item {
   composes: absolute from global;
 }
 
-.Grid__Item__Mounted {
+.Masonry__Item__Mounted {
   transition: transform 0.2s;
 }
 
-.Grid__Item__Animated {
+.Masonry__Item__Animated {
   animation: itemFadeIn 0.33s forwards;
 }
 

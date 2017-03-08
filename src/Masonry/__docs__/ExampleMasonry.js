@@ -23,7 +23,7 @@ const getPins = (meta = {}) => {
   });
 };
 
-export default class ExampleGrid extends React.Component {
+export default class ExampleMasonry extends React.Component {
 
   constructor() {
     super();

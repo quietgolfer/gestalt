@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ScrollFetch from '../ScrollFetch/ScrollFetch';
-import styles from './Grid.css';
+import styles from './Masonry.css';
 import throttle from '../throttle';
 import ThrottleInsertion from './ThrottleInsertion';
 
@@ -75,10 +75,8 @@ class Masonry<T> extends Component {
    * Adds hooks after the component mounts.
    */
   componentDidMount() {
-    this.boundResizeHandler = () => this.handleResize();
-
     this.props.scrollContainer.addEventListener('scroll', this.updateVirtualBounds);
-    this.props.scrollContainer.addEventListener('resize', this.boundResizeHandler);
+    this.props.scrollContainer.addEventListener('resize', this.handleResize);
 
     this.updateItems(this.props.items);
     this.updateVirtualBounds();
@@ -126,7 +124,7 @@ class Masonry<T> extends Component {
    */
   componentWillUnmount() {
     this.props.scrollContainer.removeEventListener('scroll', this.updateVirtualBounds);
-    this.props.scrollContainer.removeEventListener('resize', this.boundResizeHandler);
+    this.props.scrollContainer.removeEventListener('resize', this.handleResize);
     this.gridWrapper.removeEventListener('animationend', this.handleAnimationEnd);
   }
 
@@ -213,8 +211,8 @@ class Masonry<T> extends Component {
       return;
     }
     const { classList } = e.target;
-    if (classList.contains(styles.Grid__Item__Animated)) {
-      classList.remove(styles.Grid__Item__Animated);
+    if (classList.contains(styles.Masonry__Item__Animated)) {
+      classList.remove(styles.Masonry__Item__Animated);
     }
   }
 
@@ -244,7 +242,6 @@ class Masonry<T> extends Component {
       distance({ x: A.top, y: A.left }, { x: B.bottom, y: B.left + width });
   }
 
-  boundResizeHandler: () => void;
   containerHeight: number;
   containerOffset: number;
   gridWrapper: HTMLElement;
@@ -426,7 +423,7 @@ class Masonry<T> extends Component {
   /**
    * Delays resize handling in case the scroll container is still being resized.
    */
-  handleResize() {
+  handleResize = () => {
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = null;
@@ -553,7 +550,7 @@ class Masonry<T> extends Component {
   render() {
     return (
       <div
-        className={styles.Grid}
+        className={styles.Masonry}
         ref={(ref) => { this.gridWrapper = ref; }}
         style={{ height: this.state.height, width: this.determineWidth() }}
       >
@@ -566,9 +563,9 @@ class Masonry<T> extends Component {
         {(this.state.serverItems || this.allItems()).map(item =>
           <div
             className={`
-              ${styles.Grid__Item}
+              ${styles.Masonry__Item}
               ${this.state.serverItems ? 'static ' : ''}
-              ${this.state.mounted ? styles.Grid__Item__Mounted : ''}
+              ${this.state.mounted ? styles.Masonry__Item__Mounted : ''}
             `}
             data-grid-item
             key={item.key}
@@ -581,7 +578,9 @@ class Masonry<T> extends Component {
             {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
           >
             <div
-              className={item.appended || !this.state.mounted ? null : styles.Grid__Item__Animated}
+              className={item.appended || !this.state.mounted ?
+                null :
+                styles.Masonry__Item__Animated}
             >
               {item.component}
             </div>
