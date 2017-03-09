@@ -4,7 +4,7 @@ import Box from '../Box/Box';
 import classnames from 'classnames';
 import styles from './Card.css';
 
-const HOVER_DELAY = 80;
+const HOVER_DELAY = 32;
 
 export default class Card extends Component {
   static PropTypes = {
