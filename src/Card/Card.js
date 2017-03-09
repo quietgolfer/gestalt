@@ -4,6 +4,8 @@ import Box from '../Box/Box';
 import classnames from 'classnames';
 import styles from './Card.css';
 
+const HOVER_DELAY = 80;
+
 export default class Card extends Component {
   static PropTypes = {
     ariaLabel: PropTypes.string.isRequired,
@@ -20,10 +22,22 @@ export default class Card extends Component {
     hovered: false
   };
 
+  hoverTimer: number;
+
   handleBlur = () => this.setState({ focused: false });
   handleFocus = () => { this.setState({ focused: true }); };
-  handleMouseEnter = () => this.setState({ hovered: true });
-  handleMouseLeave = () => this.setState({ hovered: false });
+  handleMouseEnter = () => this.handleHoverChange(true);
+  handleMouseLeave = () => this.handleHoverChange(false);
+
+  handleHoverChange = (hovered: boolean) => {
+    clearTimeout(this.hoverTimer);
+    this.hoverTimer = setTimeout(() => {
+      if (hovered === this.state.hovered) {
+        return;
+      }
+      this.setState({ hovered });
+    }, HOVER_DELAY);
+  }
 
   render() {
     const {
