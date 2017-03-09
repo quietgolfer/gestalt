@@ -1,6 +1,5 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
-import classnames from 'classnames';
 import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 import styles from './SelectList.css';
@@ -13,9 +12,7 @@ export default class SelectList extends Component {
     options: PropTypes.arrayOf(PropTypes.shape({
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
-      disabled: PropTypes.bool,
     })).isRequired,
-    placeholder: PropTypes.string,
     value: PropTypes.string,
   };
 
@@ -30,9 +27,7 @@ export default class SelectList extends Component {
     options: Array<{
       label: string,
       value: string,
-      disabled?: bool,
     }>,
-    placeholder?: string,
     value?: ?string,
   };
 
@@ -51,7 +46,6 @@ export default class SelectList extends Component {
       name,
       options,
       value,
-      placeholder,
     } = this.props;
 
     return (
@@ -74,23 +68,15 @@ export default class SelectList extends Component {
           <Icon icon="arrow-down" size={14} color="dark-gray" ariaLabel="" />
         </Box>
         <select
-          className={classnames(styles.select, {
-            [styles.empty]: placeholder && !value,
-            [styles.filled]: !placeholder || value,
-          })}
+          className={styles.select}
           id={id}
           name={name}
           onBlur={this.handleOnChange}
           onChange={this.handleOnChange}
           value={value}
         >
-          {
-            placeholder && (
-              <option key="_placeholder" disabled selected hidden>{placeholder}</option>
-            )
-          }
           {options.map(option => (
-            <option key={option.value} value={option.value} disabled={!!option.disabled}>
+            <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}

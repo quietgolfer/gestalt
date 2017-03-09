@@ -15,10 +15,8 @@ type Props = {
   onChange: (e: { +value: string }) => void,
   options: Array<{
     label: string,
-    value: ?string,
-    disabled?: bool,
+    value: string,
   }>,
-  placeholder?: string,
   value?: ?string,
 };
 \`\`\`
@@ -41,11 +39,6 @@ const options = [
     value: 'usa',
     label: 'United States of America',
   },
-  {
-    value: 'mars',
-    label: 'Mars',
-    disabled: true
-  },
 ];
 
 card('Example',
@@ -58,7 +51,6 @@ a user to choose from.
   name="country"
   onChange={({ value }) => this.setState({ value })}
   options={options}
-  placeholder="Please pick a country"
   value={this.state.value}
 />
 \`\`\`
@@ -71,7 +63,6 @@ atom => (
       name="country"
       onChange={({ value }) => atom.reset({ value })}
       options={options}
-      placeholder="Please pick a country"
       value={atom.deref().value}
     />
   </div>
