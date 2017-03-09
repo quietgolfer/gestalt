@@ -1,7 +1,6 @@
 .select {
   composes: col-12 from global;
   composes: bold from global;
-  composes: dark-gray from global;
   composes: text-md from global;
   composes: no-border from global;
   composes: p2 from global;
@@ -10,4 +9,12 @@
   appearance: none;
   background-color: transparent;
   padding-right: 20%; /* prevents option.name from running into arrow */
+}
+
+.filled {
+  composes: dark-gray from global;
+}
+
+.empty {
+  composes: gray from global;
 }
