@@ -69,7 +69,9 @@ export default class MasonryExample extends React.Component {
         });
       });
   }
-  /* eslint react/jsx-no-bind:0 */
+
+  renderItem = data => <Item flexible={Boolean(this.props.flexible)} {...data} />
+
   render() {
     const dynamicGridProps = {};
 
@@ -90,6 +92,7 @@ export default class MasonryExample extends React.Component {
 
     if (this.props.flexible) {
       gridStyleProps.style.width = '100%';
+      dynamicGridProps.gutterWidth = 0;
     }
 
     // Allow for infinite scroll if the test does not opt out with the finiteLength prop.
@@ -101,7 +104,7 @@ export default class MasonryExample extends React.Component {
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
         <button id="insert-item" onClick={this.handleInsertItem}>Insert 1 item into grid</button>
         <Masonry
-          comp={Item}
+          comp={this.renderItem}
           flexible={Boolean(this.props.flexible)}
           items={this.state.pins}
           ref={(ref) => { this.gridRef = ref; }}

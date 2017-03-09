@@ -25,6 +25,11 @@ const RenderConfig = {
     styles: flexibleGridServerStyles,
     props: { initialPins: classicPins },
   },
+  FlexibleMasonry: {
+    Component: MasonryExample,
+    styles: flexibleGridServerStyles,
+    props: { initialPins: classicPins },
+  },
   Masonry: {
     Component: MasonryExample,
     styles: classicGridServerStyles,

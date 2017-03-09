@@ -48,7 +48,7 @@ describe('Masonry > Server Render Layout', () => {
   it('[flexible] items rendered on the server start with columnWidth', async () => {
     ghost.close();
     // First load the page with javascript disabled to get the item position
-    await ghost.open('http://localhost:3000/Masonry?deferMount=1&flexible=1', {
+    await ghost.open('http://localhost:3000/FlexibleMasonry?deferMount=1&flexible=1', {
       viewportSize: {
         width: 1200,
         height: 1000,
@@ -56,16 +56,22 @@ describe('Masonry > Server Render Layout', () => {
     });
 
     const serverItems = await ghost.findElements(selectors.staticItem);
-    const serverItem = await serverItems[0].rect();
-    assert.equal(serverItem.width, 236);
+    const serverItem1Rect = await serverItems[0].rect();
+    const serverItem2Rect = await serverItems[1].rect();
+
+    assert(serverItem1Rect.left >= 0);
+    assert(serverItem2Rect.left >= serverItem1Rect.right);
 
     await ghost.script(() => {
       window.dispatchEvent(new CustomEvent('trigger-mount'));
     });
 
-    // Grew to fit available space
-    const clientItems = await ghost.findElements(selectors.gridItem);
-    const clientItem = await clientItems[0].rect();
-    assert.equal(clientItem.width, 286);
+    const gridItems = await ghost.findElements(selectors.gridItem);
+
+    const gridItem1Rect = await gridItems[0].rect();
+    const gridItem2Rect = await gridItems[1].rect();
+    assert.equal(gridItem1Rect.left, serverItem1Rect.left);
+    assert.equal(gridItem1Rect.width, serverItem1Rect.width);
+    assert.equal(gridItem2Rect.width, serverItem2Rect.width);
   });
 });

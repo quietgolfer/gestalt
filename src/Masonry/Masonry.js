@@ -577,8 +577,7 @@ class Masonry<T> extends Component {
         {(this.state.serverItems || this.allItems()).map(item =>
           <div
             className={`
-              ${styles.Masonry__Item}
-              ${this.state.serverItems ? 'static ' : ''}
+              ${this.state.serverItems ? 'static ' : styles.Masonry__Item}
               ${this.state.mounted ? styles.Masonry__Item__Mounted : ''}
             `}
             data-grid-item
@@ -587,7 +586,7 @@ class Masonry<T> extends Component {
               top: 0,
               left: 0,
               transform: `translateX(${item.left}px) translateY(${item.top}px)`,
-              width: `${this.itemWidth ? (this.itemWidth - this.props.gutterWidth) : this.props.columnWidth}px`,
+              ...(this.itemWidth ? { width: (this.itemWidth - this.props.gutterWidth) } : {}),
               ...(this.itemIsVisible(item) ? { display: 'none', transition: 'none' } : {})
             }}
             {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}

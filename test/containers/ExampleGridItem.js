@@ -9,8 +9,12 @@ export default function Item(props) {
   const pinStyles = {
     border: '1px solid #ff0000',
     background: data.color,
-    height: `${data.height}px`,
+    height: `${data.height}px`
   };
+
+  if (!props.flexible) {
+    pinStyles.width = 234;
+  }
 
   if (typeof window !== 'undefined' && window.itemHeightOverrides && window.itemHeightOverrides[itemIdx]) {
     pinStyles.height = `${window.itemHeightOverrides[itemIdx]}px`;
@@ -25,5 +29,6 @@ export default function Item(props) {
 
 Item.propTypes = {
   data: React.PropTypes.shape({}),
+  flexible: React.PropTypes.bool,
   itemIdx: React.PropTypes.number,
 };
