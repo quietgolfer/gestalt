@@ -5,7 +5,3 @@ services:
     environment:
       BUILDKITE_PARALLEL_JOB_COUNT:
       BUILDKITE_PARALLEL_JOB:
-  ghost:
-    build:
-      context: .
-      dockerfile: ./test/Dockerfile
