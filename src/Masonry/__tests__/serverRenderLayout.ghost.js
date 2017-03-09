@@ -44,4 +44,28 @@ describe('Masonry > Server Render Layout', () => {
     // Simple placement assertion for now because we position masonry with transforms.
     assert.ok(gridItem2Rect.left > 0);
   });
+
+  it('[flexible] items rendered on the server start with columnWidth', async () => {
+    ghost.close();
+    // First load the page with javascript disabled to get the item position
+    await ghost.open('http://localhost:3000/Masonry?deferMount=1&flexible=1', {
+      viewportSize: {
+        width: 1200,
+        height: 1000,
+      },
+    });
+
+    const serverItems = await ghost.findElements(selectors.staticItem);
+    const serverItem = await serverItems[0].rect();
+    assert.equal(serverItem.width, 236);
+
+    await ghost.script(() => {
+      window.dispatchEvent(new CustomEvent('trigger-mount'));
+    });
+
+    // Grew to fit available space
+    const clientItems = await ghost.findElements(selectors.gridItem);
+    const clientItem = await clientItems[0].rect();
+    assert.equal(clientItem.width, 286);
+  });
 });

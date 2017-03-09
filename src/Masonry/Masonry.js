@@ -10,6 +10,7 @@ import ThrottleInsertion from './ThrottleInsertion';
 type Props<T> = {
   columnWidth: number,
   comp: () => void,
+  flexible: boolean,
   gutterWidth: number,
   items: T[],
   minCols: number,
@@ -77,6 +78,12 @@ class Masonry<T> extends Component {
   componentDidMount() {
     this.props.scrollContainer.addEventListener('scroll', this.updateVirtualBounds);
     this.props.scrollContainer.addEventListener('resize', this.handleResize);
+
+    // Determine #columns and itemWidth
+    const { columnWidth, flexible, gutterWidth } = this.props;
+    const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+    this.columnCount = this.calculateColumns();
+    this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + gutterWidth);
 
     this.updateItems(this.props.items);
     this.updateVirtualBounds();
@@ -202,6 +209,9 @@ class Masonry<T> extends Component {
     });
   }
 
+  columnCount: number;
+  itemWidth: number;
+
   /**
    * We need to remove the animation trigger for an element after it's finished animating.
    * This is necessary because we virtualize the grid and don't want animations replaying.
@@ -304,8 +314,7 @@ class Masonry<T> extends Component {
     const gridItems = this.state.gridItems;
 
     if (!gridItems.length) {
-      const columnCount = this.calculateColumns();
-      for (let i = 0; i < columnCount; i += 1) {
+      for (let i = 0; i < this.columnCount; i += 1) {
         gridItems.push([]);
       }
     }
@@ -349,7 +358,7 @@ class Masonry<T> extends Component {
         if (!gridItems[colIdx]) {
           return;
         }
-        const left = (colIdx * this.props.columnWidth) + (this.props.gutterWidth * colIdx);
+        const left = colIdx * this.itemWidth;
         const previousItemInColumn = gridItems[colIdx] && gridItems[colIdx][itemIdx - 1] ?
           gridItems[colIdx][itemIdx - 1].bottom : 0;
         const top = previousItemInColumn || 0;
@@ -376,7 +385,7 @@ class Masonry<T> extends Component {
 
         const lastItemInColumn = gridItems[column][gridItems[column].length - 1];
         const top = (lastItemInColumn && lastItemInColumn.bottom) || 0;
-        const left = (column * this.props.columnWidth) + (this.props.gutterWidth * column);
+        const left = column * this.itemWidth;
 
         itemInfo.column = column;
         itemInfo.appended = true;
@@ -428,7 +437,13 @@ class Masonry<T> extends Component {
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = null;
     }
-    this.resizeTimeout = setTimeout(this.reflow.bind(this), 100);
+    this.resizeTimeout = setTimeout(() => {
+      const { columnWidth, flexible, gutterWidth } = this.props;
+      const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
+      this.columnCount = this.calculateColumns();
+      this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + gutterWidth);
+      this.reflow();
+    }, 100);
   }
 
   updateVirtualBounds = throttle(() => {
@@ -486,8 +501,7 @@ class Masonry<T> extends Component {
    * # of columns * total item width - 1 item margin
    */
   determineWidth() {
-    const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
-    return `${(this.state.gridItems.length * eachItemWidth) - this.props.gutterWidth}px`;
+    return `${(this.state.gridItems.length * this.itemWidth) - this.props.gutterWidth}px`;
   }
 
   fetchMore = () => {
@@ -573,6 +587,7 @@ class Masonry<T> extends Component {
               top: 0,
               left: 0,
               transform: `translateX(${item.left}px) translateY(${item.top}px)`,
+              width: `${this.itemWidth ? (this.itemWidth - this.props.gutterWidth) : this.props.columnWidth}px`,
               ...(this.itemIsVisible(item) ? { display: 'none', transition: 'none' } : {})
             }}
             {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
@@ -593,7 +608,8 @@ class Masonry<T> extends Component {
 
 Masonry.propTypes = {
   /**
-   * The width of each column.
+   * The preferred/target item width. If `flexible` is set, the item width will
+   * grow to fill column space, and shrink to fit if below min columns.
    */
   columnWidth: React.PropTypes.number,
 
@@ -602,6 +618,12 @@ Masonry.propTypes = {
    */
   /* eslint react/no-unused-prop-types: 0 */
   comp: React.PropTypes.func.isRequired,
+
+  /**
+   * The preferred/target item width. Item width will grow to fill
+   * column space, and shrink to fit if below min columns.
+   */
+  flexible: React.PropTypes.bool,
 
   /**
    * The amount of space between each item.

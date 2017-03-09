@@ -8,7 +8,6 @@ export default function Item(props) {
 
   const pinStyles = {
     border: '1px solid #ff0000',
-    width: '234px',
     background: data.color,
     height: `${data.height}px`,
   };

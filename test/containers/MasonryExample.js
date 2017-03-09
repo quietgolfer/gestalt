@@ -88,6 +88,10 @@ export default class MasonryExample extends React.Component {
       gridStyleProps.style.width = 500;
     }
 
+    if (this.props.flexible) {
+      gridStyleProps.style.width = '100%';
+    }
+
     // Allow for infinite scroll if the test does not opt out with the finiteLength prop.
     if (!this.props.finiteLength) {
       dynamicGridProps.loadItems = this.loadItems;
@@ -98,6 +102,7 @@ export default class MasonryExample extends React.Component {
         <button id="insert-item" onClick={this.handleInsertItem}>Insert 1 item into grid</button>
         <Masonry
           comp={Item}
+          flexible={Boolean(this.props.flexible)}
           items={this.state.pins}
           ref={(ref) => { this.gridRef = ref; }}
           {...dynamicGridProps}
@@ -113,6 +118,8 @@ MasonryExample.propTypes = {
   collage: React.PropTypes.string,
   // Test case: Constrains the width of the grid rendering.
   constrained: React.PropTypes.string,
+  // Grid items should have flexible width.
+  flexible: React.PropTypes.bool,
   // Whether or not to require tests to trigger fetch completion manually.
   manualFetch: React.PropTypes.string,
   // Test case: Does not allow infinite scroll.

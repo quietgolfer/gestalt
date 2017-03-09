@@ -8,7 +8,7 @@ const selectors = {
   staticItem: '.static',
 };
 
-describe('ClassicGrid > Server Render Layout', () => {
+describe.skip('ClassicGrid > Server Render Layout', () => {
   it('items rendered on the server maintain position after mounting', async () => {
     ghost.close();
     // First load the page with javascript disabled to get the item position
