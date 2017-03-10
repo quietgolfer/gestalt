@@ -59,8 +59,33 @@ card('Fluid number of columns',
   \`\`\`
   `);
 
+card('Flexible item width',
+  md`When the \`flexible\` property is set to true, the item width will shrink/grow to fill the container. This is great for responsive designs.
+  \`\`\`jsx
+  <Masonry
+    flexible
+    comp={Item}
+    items={items}
+    minCols={1}
+  />
+  \`\`\`
+  `,
+  <div className="dark-gray">
+    <ExampleMasonry flexible />
+  </div>,
+  {},
+);
 
-card('Example of fluid number of columns',
+card('Non-flexible item width',
+  md`When the \`flexible\` property is ommitted, the item width will be fixed to \`columnWidth\`.
+  \`\`\`jsx
+  <Masonry
+    comp={Item}
+    items={items}
+    minCols={1}
+  />
+  \`\`\`
+  `,
   <div className="dark-gray">
     <ExampleMasonry />
   </div>,

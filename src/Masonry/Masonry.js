@@ -314,6 +314,8 @@ class Masonry<T> extends Component {
   insertItems(items: Array<*>, colIdx?: (number | null) = null, itemIdx?: (number | null) = null) {
     // Append a temporary node to the dom to measure it.
     const measuringNode = document.createElement('div');
+    // Force width for flexible layouts
+    measuringNode.style.width = `${this.itemWidth}px`;
 
     if (document.body) {
       document.body.appendChild(measuringNode);
@@ -348,6 +350,7 @@ class Masonry<T> extends Component {
       let clientWidth;
       if (this.serverRefs && this.serverRefs[insertedItemIdx]) {
         const serverRendered = this.serverRefs[insertedItemIdx];
+        serverRendered.style.width = `${this.itemWidth}px`;
         clientHeight = serverRendered.clientHeight;
         clientWidth = serverRendered.clientWidth;
       } else {
@@ -490,7 +493,11 @@ class Masonry<T> extends Component {
 
   measureContainer() {
     this.containerHeight = this.getContainerHeight();
-    this.containerOffset = ReactDOM.findDOMNode(this).offsetTop;
+    if (typeof window !== 'undefined' && this.props.scrollContainer === window) {
+      this.containerOffset = ReactDOM.findDOMNode(this).offsetTop;
+    } else {
+      this.containerOffset = 0;
+    }
     this.scrollBuffer = this.containerHeight * 2;
   }
 
