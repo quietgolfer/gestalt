@@ -45,7 +45,7 @@ describe('Masonry > Server Render Layout', () => {
     assert.ok(gridItem2Rect.left > 0);
   });
 
-  it('[flexible] items rendered on the server start with columnWidth', async () => {
+  it.skip('[flexible] items rendered on the server start with columnWidth', async () => {
     ghost.close();
     // First load the page with javascript disabled to get the item position
     await ghost.open('http://localhost:3000/FlexibleMasonry?deferMount=1&flexible=1', {
