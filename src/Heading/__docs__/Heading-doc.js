@@ -10,6 +10,7 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
+  accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   children?: any,
   color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white', /* default: dark-gray */
   overflow?: 'normal' | 'breakWord' /* default: normal */
@@ -122,5 +123,28 @@ card('Overflow',
     <Heading size="xs" truncate>
       This is a long and Supercalifragilisticexpialidocious
       sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
+    </Heading>
+  </div>);
+
+card('Levels',
+  md`
+For accessibility purposes, we allow you to override the heading level.
+
+We should have one level 1 per page & levels should be appropriately nested. E.g. level 1 followed by level 2 & level 2 followed by level 2 or level 3.
+\`\`\`html
+<Heading size="sm" accessibilityLevel={2}>
+  {'Small heading level 2'}
+</Heading>
+<Heading size="xs" accessibilityLevel={3}>
+  {'Extra small heading level 3'}
+</Heading>
+\`\`\`
+`,
+  <div>
+    <Heading size="sm" accessibilityLevel={2}>
+      {'Small heading level 2'}
+    </Heading>
+    <Heading size="xs" accessibilityLevel={3}>
+      {'Extra small heading level 3'}
     </Heading>
   </div>);

@@ -2,15 +2,16 @@
 import { createElement, PropTypes } from 'react';
 import cx from 'classnames';
 
-const sizesToElementMap = {
-  xs: 'h5',
-  sm: 'h4',
-  md: 'h3',
-  lg: 'h2',
-  xl: 'h1',
+const defaultHeadingLevels = {
+  xs: 5,
+  sm: 4,
+  md: 3,
+  lg: 2,
+  xl: 1,
 };
 
 type Props = {
+  accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   children?: any,
   color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white',
   overflow?: 'normal' | 'breakWord',
@@ -20,6 +21,7 @@ type Props = {
 
 export default function Heading(props: Props) {
   const {
+    accessibilityLevel,
     children,
     color = 'dark-gray',
     size,
@@ -40,10 +42,13 @@ export default function Heading(props: Props) {
       truncate,
     },
   );
-  return createElement(sizesToElementMap[size], { className: cs }, children);
+
+  const headingLevel = accessibilityLevel || defaultHeadingLevels[size];
+  return createElement(`h${headingLevel}`, { className: cs }, children);
 }
 
 Heading.propTypes = {
+  accessibilityLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   children: PropTypes.node,
   color: PropTypes.oneOf(['blue', 'dark-gray', 'gray', 'red', 'white']),
   overflow: PropTypes.oneOf(['normal', 'breakWord']),
