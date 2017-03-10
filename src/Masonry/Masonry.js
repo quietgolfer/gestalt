@@ -54,6 +54,8 @@ class Masonry<T> extends Component {
       this.gutterWidth = 0;
     } else if (props.gutterWidth === null) {
       this.gutterWidth = 14;
+    } else {
+      this.gutterWidth = props.gutterWidth;
     }
 
     this.state = {
