@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import FlexibleGrid from '../FlexibleGrid/FlexibleGrid';
+import Masonry from '../Masonry/Masonry';
 import styles from './GroupAvatar.css';
 
 const GUTTER_WIDTH = 2;
@@ -217,10 +217,12 @@ export default class GroupAvatar extends Component {
         style={borderBoxStyle}
       >
         <div style={{ margin: GUTTER_WIDTH / -2 }}>
-          <FlexibleGrid
+          <Masonry
             comp={Avatar}
+            flexible
             items={collabs}
-            idealItemWidth={collabs.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
+            minCols={1}
+            columnWidth={collabs.length === 1 ? MAX_AVATAR_DIM : HALF_AVATAR_DIM}
             ref={(ref) => { this.gridRef = ref; }}
           />
         </div>

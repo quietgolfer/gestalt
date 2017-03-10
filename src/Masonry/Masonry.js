@@ -49,6 +49,13 @@ class Masonry<T> extends Component {
     this.insertedItemsCount = 0;
     this.serverRefs = [];
 
+    // Default to 0 gutterWidth when rendering flexibly.
+    if (props.flexible && props.gutterWidth === null) {
+      this.gutterWidth = 0;
+    } else if (props.gutterWidth === null) {
+      this.gutterWidth = 14;
+    }
+
     this.state = {
       fetchingFrom: false,
       height: 0,
@@ -80,10 +87,10 @@ class Masonry<T> extends Component {
     this.props.scrollContainer.addEventListener('resize', this.handleResize);
 
     // Determine #columns and itemWidth
-    const { columnWidth, flexible, gutterWidth } = this.props;
+    const { columnWidth, flexible } = this.props;
     const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
     this.columnCount = this.calculateColumns();
-    this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + gutterWidth);
+    this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + this.gutterWidth);
 
     this.updateItems(this.props.items);
     this.updateVirtualBounds();
@@ -210,6 +217,7 @@ class Masonry<T> extends Component {
   }
 
   columnCount: number;
+  gutterWidth: number;
   itemWidth: number;
 
   /**
@@ -228,7 +236,7 @@ class Masonry<T> extends Component {
 
   calculateDistance(A:GridItemType<*>, B:GridItemType<*>) {
     const width = this.props.columnWidth;
-    const gutterWidth = this.props.gutterWidth;
+    const gutterWidth = this.gutterWidth;
     if (A.column === B.column) {
       return A.top < B.top ?
         B.top - (A.bottom + gutterWidth) - 1 :
@@ -369,7 +377,7 @@ class Masonry<T> extends Component {
         itemInfo.column = parseInt(colIdx, 10);
         itemInfo.left = left;
         itemInfo.top = top;
-        itemInfo.bottom = top + clientHeight + this.props.gutterWidth;
+        itemInfo.bottom = top + clientHeight + this.gutterWidth;
         itemInfo.key = key;
 
         gridItems[colIdx].splice(itemIdx, 0, itemInfo);
@@ -378,7 +386,7 @@ class Masonry<T> extends Component {
         for (let i = itemIdx + 1; i < gridItems[colIdx].length; i += 1) {
           const gridItem = gridItems[colIdx][i];
           gridItem.top = gridItems[colIdx][i - 1].bottom;
-          gridItem.bottom = gridItem.top + gridItem.height + this.props.gutterWidth;
+          gridItem.bottom = gridItem.top + gridItem.height + this.gutterWidth;
         }
       } else {
         const column = this.shortestColumn();
@@ -391,7 +399,7 @@ class Masonry<T> extends Component {
         itemInfo.appended = true;
         itemInfo.left = left;
         itemInfo.top = top;
-        itemInfo.bottom = top + clientHeight + this.props.gutterWidth;
+        itemInfo.bottom = top + clientHeight + this.gutterWidth;
         itemInfo.key = key;
 
         gridItems[column].push(itemInfo);
@@ -438,10 +446,10 @@ class Masonry<T> extends Component {
       this.resizeTimeout = null;
     }
     this.resizeTimeout = setTimeout(() => {
-      const { columnWidth, flexible, gutterWidth } = this.props;
+      const { columnWidth, flexible } = this.props;
       const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
       this.columnCount = this.calculateColumns();
-      this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + gutterWidth);
+      this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + this.gutterWidth);
       this.reflow();
     }, 100);
   }
@@ -467,7 +475,7 @@ class Masonry<T> extends Component {
       return 0;
     }
 
-    const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
+    const eachItemWidth = this.props.columnWidth + this.gutterWidth;
     /* eslint react/no-find-dom-node: 0 */
     const parentNode = ReactDOM.findDOMNode(this).parentNode;
     const parentWidth = parentNode.clientWidth;
@@ -501,7 +509,7 @@ class Masonry<T> extends Component {
    * # of columns * total item width - 1 item margin
    */
   determineWidth() {
-    return `${(this.state.gridItems.length * this.itemWidth) - this.props.gutterWidth}px`;
+    return `${(this.state.gridItems.length * this.itemWidth) - this.gutterWidth}px`;
   }
 
   fetchMore = () => {
@@ -586,7 +594,7 @@ class Masonry<T> extends Component {
               top: 0,
               left: 0,
               transform: `translateX(${item.left}px) translateY(${item.top}px)`,
-              ...(this.itemWidth ? { width: (this.itemWidth - this.props.gutterWidth) } : {}),
+              ...(this.itemWidth ? { width: (this.itemWidth - this.gutterWidth) } : {}),
               ...(this.itemIsVisible(item) ? { display: 'none', transition: 'none' } : {})
             }}
             {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
@@ -664,7 +672,7 @@ Masonry.propTypes = {
 
 Masonry.defaultProps = {
   columnWidth: 236,
-  gutterWidth: 14,
+  gutterWidth: null,
   minCols: 3,
   scrollContainer: typeof window !== 'undefined' ? window : null,
   loadItems: () => {},
