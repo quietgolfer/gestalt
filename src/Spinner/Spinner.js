@@ -31,14 +31,17 @@ export default class Spinner extends Component {
 
   componentDidUpdate() {
     // cleanup any timeouts that cause dthe state change
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
+    clearTimeout(this.timeout);
 
     // toggle visibility if the desired state doesn't match props
     if (this.props.show !== this.state.visible) {
       this.toggleVisibility();
     }
+  }
+
+  componentWillUnmount() {
+    // cleanup any pending timeouts if the component is unmounting
+    clearTimeout(this.timeout);
   }
 
   props: Props;

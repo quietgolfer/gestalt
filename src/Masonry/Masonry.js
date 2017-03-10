@@ -130,7 +130,8 @@ class Masonry<T> extends Component {
    * This allows stacking of items under the grid due to absolutely positioned elements.
    */
   componentDidUpdate() {
-    setTimeout(() => {
+    clearTimeout(this.measureTimeout);
+    this.measureTimeout = setTimeout(() => {
       this.measureContainer();
     });
   }
@@ -139,6 +140,7 @@ class Masonry<T> extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
+    clearTimeout(this.measureTimeout);
     this.props.scrollContainer.removeEventListener('scroll', this.updateVirtualBounds);
     this.props.scrollContainer.removeEventListener('resize', this.handleResize);
     this.gridWrapper.removeEventListener('animationend', this.handleAnimationEnd);
@@ -221,6 +223,7 @@ class Masonry<T> extends Component {
   columnCount: number;
   gutterWidth: number;
   itemWidth: number;
+  measureTimeout: ?number;
 
   /**
    * We need to remove the animation trigger for an element after it's finished animating.

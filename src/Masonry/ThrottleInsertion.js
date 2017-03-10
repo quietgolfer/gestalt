@@ -43,8 +43,12 @@ const ThrottleInsertion = (Subject: ReactClass<*>) => {
         this.setState({
           insertionsQueued: true,
         });
-        setTimeout(this.insertOneItem);
+        this.insertTimeout = setTimeout(this.insertOneItem);
       }
+    }
+
+    componentWillUnmount() {
+      clearTimeout(this.insertTimeout);
     }
 
     /**
@@ -52,6 +56,7 @@ const ThrottleInsertion = (Subject: ReactClass<*>) => {
      * insertions into the DOM for incrementally rendering items in the grid.
      */
     insertOneItem = () => {
+      clearTimeout(this.insertTimeout);
       const shownItems = this.state.shownItems;
       if (shownItems.length >= this.props.items.length) {
         this.setState({
@@ -66,10 +71,12 @@ const ThrottleInsertion = (Subject: ReactClass<*>) => {
           shownItems: nextItems,
         },
         () => {
-          setTimeout(this.insertOneItem, INSERTION_THROTTLE_TIME);
+          this.insertTimeout = setTimeout(this.insertOneItem, INSERTION_THROTTLE_TIME);
         },
       );
     }
+
+    insertTimeout: ?number;
 
     render() {
       const props = {
