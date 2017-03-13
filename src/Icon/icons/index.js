@@ -13,6 +13,7 @@ import checkCircleBold from './check-circle-bold.svg';
 import checkCircleLight from './check-circle-light.svg';
 import circleOutline from './circle-outline.svg';
 import clear from './clear.svg';
+import clock from './clock.svg';
 import cog from './cog.svg';
 import compass from './compass.svg';
 import edit from './edit.svg';
@@ -61,6 +62,7 @@ export default {
   'check-circle-light': checkCircleLight,
   'circle-outline': circleOutline,
   clear,
+  clock,
   cog,
   compass,
   edit,
