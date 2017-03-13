@@ -1,6 +1,11 @@
-import stringToColor from '../../src/stringToColor';
-
-export const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i += 1) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 export const classicPins = Array.from({ length: 20 }).map((_, i) => ({
   name: `foo ${i}`,

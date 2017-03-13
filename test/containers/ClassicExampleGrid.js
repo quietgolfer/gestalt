@@ -1,9 +1,15 @@
 import React from 'react';
 import ClassicGrid from '../../src/ClassicGrid/ClassicGrid';
 import Item from './ExampleGridItem';
-import stringToColor from '../../src/stringToColor';
 
-const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i += 1) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 export default class ClassicExampleGrid extends React.Component {
 

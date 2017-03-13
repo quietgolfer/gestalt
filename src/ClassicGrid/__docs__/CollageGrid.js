@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import stringToColor from '../../../src/stringToColor';
 import ClassicGrid from '../ClassicGrid';
 
 /* disable until eslint issue is fixed https://github.com/yannickcr/eslint-plugin-react/issues/819 */
@@ -38,7 +37,14 @@ Item.propTypes = {
   data: React.PropTypes.shape({}),
 };
 
-const getRandomColor = () => stringToColor(`${Math.floor(Math.random() * 10000)}`);
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i += 1) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 const getPins = () => new Promise((resolve) => {
   const pins = [];
