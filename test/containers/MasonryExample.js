@@ -100,7 +100,7 @@ export default class MasonryExample extends React.Component {
       dynamicGridProps.loadItems = this.loadItems;
     }
 
-    return (
+    const gridContainer = (
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
         <button id="insert-item" onClick={this.handleInsertItem}>Insert 1 item into grid</button>
         <Masonry
@@ -113,6 +113,20 @@ export default class MasonryExample extends React.Component {
         <div className="afterGrid" />
       </div>
     );
+
+    // Render multiple relative ancestors to verify virtual bound calculation.
+    if (this.props.offsetTop) {
+      const top = parseInt(this.props.offsetTop / 2, 10);
+      return (
+        <div style={{ top, position: 'relative' }}>
+          <div style={{ top, position: 'relative' }}>
+            {gridContainer}
+          </div>
+        </div>
+      );
+    }
+
+    return gridContainer;
   }
 }
 
@@ -129,4 +143,6 @@ MasonryExample.propTypes = {
   finiteLength: React.PropTypes.string,
   // The initial data from the server side render.
   initialPins: React.PropTypes.arrayOf(React.PropTypes.shape({})),
+  // Test case: Positions the element inside of a relative container, offset from the top.
+  offsetTop: React.PropTypes.string,
 };
