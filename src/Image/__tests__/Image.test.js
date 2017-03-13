@@ -1,8 +1,4 @@
 /* eslint-env jest */
-/* eslint import/imports-first: 0 */
-jest.unmock('../Image');
-jest.unmock('../../Box/Box');
-
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Image from '../Image';

@@ -1,7 +1,4 @@
 /* eslint-env jest */
-/* eslint import/imports-first: 0 */
-jest.unmock('../../Link/Link');
-
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Link from '../Link';

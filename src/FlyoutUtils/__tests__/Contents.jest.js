@@ -1,7 +1,4 @@
 /* eslint-env jest */
-/* eslint import/imports-first: 0 */
-jest.unmock('../Contents');
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import Contents, { getMainDir, getSubDir, calcEdgeShifts, calcOffsets, CARET_HEIGHT, BORDER_RADIUS } from '../Contents';

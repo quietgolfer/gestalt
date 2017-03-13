@@ -1,6 +1,4 @@
 /* eslint-env jest */
-/* eslint import/imports-first: 0 */
-jest.unmock('../Packer');
 import Packer from '../Packer';
 
 function getPacker(colCount = 3) {

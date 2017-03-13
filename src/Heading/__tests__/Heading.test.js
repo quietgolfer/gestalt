@@ -3,8 +3,6 @@ import React from 'react';
 import { create } from 'react-test-renderer';
 import Heading from '../Heading';
 
-jest.unmock('../Heading');
-
 test('Heading small', () => {
   const tree = create(
     <Heading size="sm" />

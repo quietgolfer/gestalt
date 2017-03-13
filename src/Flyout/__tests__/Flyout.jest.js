@@ -1,7 +1,4 @@
 /* eslint-env jest */
-/* eslint import/imports-first: 0 */
-jest.unmock('../Flyout');
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import Flyout from '../Flyout';

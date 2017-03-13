@@ -100,16 +100,6 @@
     "webpack-dev-server": "^1.14.0"
   },
   "jest": {
-    "automock": true,
-    "unmockedModulePathPatterns": [
-      "enzyme",
-      "react",
-      "classnames",
-      "react-test-renderer"
-    ],
-    "transformIgnorePatterns": [
-      "/node_modules/^gestalt-*"
-    ],
     "modulePathIgnorePatterns": [
       "\\.ghost\\.js$"
     ],

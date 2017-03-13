@@ -1,10 +1,4 @@
 /* eslint-env jest */
-/* eslint import/imports-first: 0 */
-jest.unmock('../Avatar');
-jest.unmock('../../Box/Box');
-jest.unmock('../../Image/Image');
-jest.unmock('../../Mask/Mask');
-
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Avatar from '../Avatar';
