@@ -361,7 +361,7 @@ export default class Contents extends Component {
           ref={(c) => { this.flyout = c; }}
           tabIndex={-1}
         >
-          <div className={classnames('overflow-auto', styles.dimensions)} style={{ width }}>
+          <div className={classnames('items-center', 'flex', 'overflow-auto', styles.dimensions)} style={{ width }}>
             {children}
           </div>
           <div className={classnames('absolute', bgColor, styles.caret)} style={{ ...this.state.caretOffset }}>
