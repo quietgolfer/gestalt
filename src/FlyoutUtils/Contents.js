@@ -264,9 +264,6 @@ export default class Contents extends Component {
 
   componentDidMount() {
     this.setFlyoutPosition();
-    if (document.activeElement && this.props.shouldFocus) {
-      this.priorFocus = document.activeElement;
-    }
     setTimeout(() => {
       if (this.props.shouldFocus) {
         this.flyout.focus();
@@ -275,10 +272,6 @@ export default class Contents extends Component {
     document.addEventListener('click', this.props.onClick);
     window.addEventListener('resize', this.props.onResize);
     window.addEventListener('keydown', this.props.onKeyDown);
-    if (this.props.shouldFocus) {
-      // not needed for errors and tooltips which don't receive immediate focus
-      document.addEventListener('focus', this.restrictFocus, true);
-    }
   }
 
   componentWillReceiveProps() {
@@ -286,17 +279,9 @@ export default class Contents extends Component {
   }
 
   componentWillUnmount() {
-    setTimeout(() => {
-      if (this.priorFocus) {
-        this.priorFocus.focus();
-      }
-    });
     document.removeEventListener('click', this.props.onClick);
     window.removeEventListener('resize', this.props.onResize);
     window.removeEventListener('keydown', this.props.onKeyDown);
-    if (this.props.shouldFocus) {
-      document.removeEventListener('focus', this.restrictFocus);
-    }
   }
 
   /**
@@ -333,16 +318,9 @@ export default class Contents extends Component {
     });
   }
 
-  restrictFocus = (e: Event) => {
-    if (this.flyout && e.target instanceof Node && !this.flyout.contains(e.target)) {
-      e.stopPropagation();
-      this.flyout.focus();
-    }
-  }
 
   props: Props;
   flyout: HTMLElement;
-  priorFocus: HTMLElement;
 
   render() {
     const { bgColor, children, width } = this.props;
