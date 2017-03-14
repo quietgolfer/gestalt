@@ -10,13 +10,13 @@ export default class Image extends Component {
     alt: PropTypes.string.isRequired,
     children: PropTypes.node,
     color: PropTypes.string,
-    height: PropTypes.number.isRequired,
+    naturalHeight: PropTypes.number.isRequired,
+    naturalWidth: PropTypes.number.isRequired,
     onError: PropTypes.func,
     onLoad: PropTypes.func,
     sizes: PropTypes.string,
     src: PropTypes.string.isRequired,
     srcSet: PropTypes.string,
-    width: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
@@ -27,13 +27,13 @@ export default class Image extends Component {
     alt: string,
     children?: any,
     color: string,
-    height: number,
+    naturalHeight: number,
+    naturalWidth: number,
     onError?: () => void,
     onLoad?: () => void,
     sizes?: string,
     src: string,
     srcSet?: {[key: string]: string},
-    width: number,
   };
 
   handleLoad = () => {
@@ -53,14 +53,14 @@ export default class Image extends Component {
       alt,
       color,
       children,
-      height,
+      naturalHeight,
+      naturalWidth,
       sizes,
       src,
       srcSet,
-      width,
     } = this.props;
 
-    const aspect = (height / width) * 100;
+    const aspect = (naturalHeight / naturalWidth) * 100;
     const style = {
       backgroundColor: color,
       paddingBottom: `${aspect}%`,

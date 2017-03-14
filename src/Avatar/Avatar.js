@@ -87,9 +87,9 @@ export default class Avatar extends Component {
           <Image
             alt={name}
             color={'#efefef'}
-            height={1}
+            naturalHeight={1}
+            naturalWidth={1}
             src={src}
-            width={1}
           />
         </Mask>
       </div>

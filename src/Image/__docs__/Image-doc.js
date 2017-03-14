@@ -48,9 +48,9 @@ a placeholder.
 <Image
   alt="example.com"
   color="rgb(111, 91, 77)"
-  height={564}
+  naturalHeight={564}
+  naturalWidth={564}
   src="..."
-  width={564}
 />
 \`\`\`
   `,
@@ -59,9 +59,9 @@ a placeholder.
       <Image
         alt="example.com"
         color="rgb(111, 91, 77)"
-        height={564}
+        naturalHeight={564}
+        naturalWidth={564}
         src="https://s-media-cache-ak0.pinimg.com/474x/b2/55/ed/b255edbf773ffb3985394e6efb9d2a49.jpg"
-        width={564}
       />
     </div>
   </div>);
@@ -74,9 +74,9 @@ You can overlay content on an Image by passing it children.
 <Image
   alt="..."
   color="#000"
-  height={760}
+  naturalHeight={751}
+  naturalWidth={564}
   src="..."
-  width={564}
 >
   <div className="white p2">
     M.C. Escher  Phosphorescent Sea (1933)
@@ -90,9 +90,9 @@ You can overlay content on an Image by passing it children.
       <Image
         alt="Tropic greens: The taste of Petrol and Porcelain | Interior design, Vintage Sets and Unique Pieces agave"
         color="rgb(231, 186, 176)"
-        height={751}
+        naturalHeight={751}
+        naturalWidth={564}
         src="https://s-media-cache-ak0.pinimg.com/564x/19/f4/87/19f487a680f9fb1ecc8aa139b2afac7f.jpg"
-        width={564}
       >
         <div className="white p2">
           Tropic greens: The taste of Petrol and Porcelain

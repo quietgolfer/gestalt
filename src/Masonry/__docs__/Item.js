@@ -26,9 +26,9 @@ export default function Item(props: Props) {
       <Image
         alt={'Test'}
         color={data.color}
-        height={data.height}
+        naturalHeight={data.height}
+        naturalWidth={data.width}
         src={data.src}
-        width={data.width}
       />
       <Text size="xs">{data.name}</Text>
     </Box>
