@@ -31,8 +31,16 @@ steps:
     plugins:
       docker-compose:
         run: app
-  - name: ":jest:"
-    command: npm test
+  - name: ":jest: :chrome:"
+    command: npm test -- --env jsdom
+    timeout_in_minutes: 10
+    agents:
+      queue: elastic
+    plugins:
+      docker-compose:
+        run: app
+  - name: ":jest: :node:"
+    command: npm test -- --env node
     timeout_in_minutes: 10
     agents:
       queue: elastic
