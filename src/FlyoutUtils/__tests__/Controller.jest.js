@@ -3,18 +3,12 @@
 jest.unmock('../Controller');
 
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import Controller from '../Controller';
 import Contents from '../Contents';
 
 
 describe('Flyout', () => {
-  const mockTrigger = (extras = {}) => ({
-    getBoundingClientRect: jest.fn(),
-    contains: jest.fn(),
-    ...extras,
-  });
-
   it('does not render Contents when isOpen is false', () => {
     const wrapper = shallow(
       <Controller
@@ -25,20 +19,5 @@ describe('Flyout', () => {
       />
     );
     expect(wrapper.find(Contents).length).toEqual(0);
-  });
-
-
-  it('renders Contents when isOpen is true', () => {
-    const wrapper = mount(
-      <Controller
-        closeLabel="close"
-        isOpen
-        onDismiss={() => null}
-        trigger={<button onClick={() => null}> test </button>}
-      />
-    );
-
-    wrapper.instance().triggerButton = mockTrigger();
-    expect(wrapper.find(Contents).length).toEqual(1);
   });
 });
