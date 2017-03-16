@@ -25,6 +25,13 @@ export default class MasonryExample extends React.Component {
       this.gridRef.reflow();
       this.forceUpdate();
     });
+
+    // Trigger a re-render in case we need to render /w scrollContainer.
+    setTimeout(() => {
+      this.setState({
+        mounted: true
+      });
+    });
   }
 
   getPins = (meta = {}, collage) => {
@@ -106,7 +113,11 @@ export default class MasonryExample extends React.Component {
       dynamicGridProps.loadItems = this.loadItems;
     }
 
-    const gridContainer = (
+    if (this.props.scrollContainer && this.scrollContainer) {
+      dynamicGridProps.scrollContainer = this.scrollContainer;
+    }
+
+    let gridWrapper = (
       <div id="gridWrapper" className="gridCentered" {...gridStyleProps}>
         <button id="insert-item" onClick={this.handleInsertItem}>Insert 1 item into grid</button>
         <Masonry
@@ -123,32 +134,50 @@ export default class MasonryExample extends React.Component {
     // Render multiple relative ancestors to verify virtual bound calculation.
     if (this.props.offsetTop) {
       const top = parseInt(this.props.offsetTop / 2, 10);
-      return (
+      gridWrapper = (
         <div style={{ top, position: 'relative' }}>
           <div style={{ top, position: 'relative' }}>
-            {gridContainer}
+            {gridWrapper}
           </div>
         </div>
       );
     }
 
-    return gridContainer;
+    if (this.props.scrollContainer) {
+      const containerStyle = {
+        height: 400,
+        overflowY: 'scroll',
+      };
+      return (
+        <div
+          data-scroll-container
+          ref={(n) => { this.scrollContainer = n; }}
+          style={containerStyle}
+        >
+          { this.scrollContainer && gridWrapper }
+        </div>
+      );
+    }
+
+    return gridWrapper;
   }
 }
 
 MasonryExample.propTypes = {
-  // Test case: Sets up props to display a collage layout.
+  // Sets up props to display a collage layout.
   collage: React.PropTypes.string,
-  // Test case: Constrains the width of the grid rendering.
+  // Constrains the width of the grid rendering.
   constrained: React.PropTypes.string,
   // Grid items should have flexible width.
   flexible: React.PropTypes.bool,
   // Whether or not to require tests to trigger fetch completion manually.
   manualFetch: React.PropTypes.string,
-  // Test case: Does not allow infinite scroll.
+  // Does not allow infinite scroll.
   finiteLength: React.PropTypes.string,
   // The initial data from the server side render.
   initialPins: React.PropTypes.arrayOf(React.PropTypes.shape({})),
-  // Test case: Positions the element inside of a relative container, offset from the top.
+  // Positions the element inside of a relative container, offset from the top.
   offsetTop: React.PropTypes.string,
+  // If we should position the grid within a scrollContainer besides the window.
+  scrollContainer: React.PropTypes.string,
 };

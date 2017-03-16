@@ -497,12 +497,15 @@ class Masonry<T> extends Component {
   }
 
   measureContainer() {
+    const { scrollContainer } = this.props;
     this.containerHeight = this.getContainerHeight();
-    if (typeof window !== 'undefined' && this.props.scrollContainer === window) {
+    if (typeof window !== 'undefined' && scrollContainer === window) {
       this.containerOffset = ReactDOM.findDOMNode(this).getBoundingClientRect().top
         + window.scrollY;
     } else {
-      this.containerOffset = 0;
+      this.containerOffset = (ReactDOM.findDOMNode(this).getBoundingClientRect().top
+        + scrollContainer.scrollTop)
+        - scrollContainer.getBoundingClientRect().top;
     }
     this.scrollBuffer = this.containerHeight * 2;
   }
