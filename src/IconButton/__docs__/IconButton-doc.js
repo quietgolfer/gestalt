@@ -14,8 +14,8 @@ md`
 type Props = {
   ariaExpanded?: boolean, /* accessibility */
   ariaHaspopup?: boolean, /* accessibility */
-  bgColor?: 'transparent' | 'light-gray', /* default: transparent */
-  iconColor?: 'gray' | 'dark-gray' | 'red' | 'blue', /* default: gray */
+  bgColor?: 'transparent' | 'lightGray', /* default: transparent */
+  iconColor?: 'gray' | 'darkGray' | 'red' | 'blue', /* default: gray */
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons provided in gestalt-icon/icons/index.js.
@@ -38,10 +38,10 @@ const icons = [
 ];
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-const colors = ['transparent', 'light-gray'];
+const colors = ['transparent', 'lightGray'];
 
 function IconButtonEx(props: *) {
-  const { bgColor = 'light-gray', icon, size } = props;
+  const { bgColor = 'lightGray', icon, size } = props;
   return (
     <IconButton
       bgColor={bgColor}
@@ -61,7 +61,7 @@ These are subject to change as design recalibrates sizing. If you need a differe
 size beyond what we currently have available, please file an issue on Github!
 \`\`\`html
 <IconButton
-  bgColor="light-gray"
+  bgColor="lightGray"
   icon="cancel"
   label="cancel"
   size="sm"
@@ -83,7 +83,7 @@ md`
 Here are examples of the default icon color combinations for an \`IconButton\`.
 If no \`bgColor\` or \`iconColor\` prop is provided, the default
 \`bgColor\` is \`transparent\` and \`iconColor\` is \`gray\`. For a provided \`bgColor\`
-of \`light-gray\`, the default \`iconColor\` associated is \`gray\` if none is specified.
+of \`lightGray\`, the default \`iconColor\` associated is \`gray\` if none is specified.
 This occurs so that a button's \`iconColor\` will be set to coordinate correctly with the
 \`bgColor\` you provided (as shown) without having to explicitly define it.
 
@@ -97,7 +97,7 @@ If you need an additional color beyond what we currently have available, please 
 \`\`\`
 \`\`\`html
 <IconButton
-  bgColor="light-gray"
+  bgColor="lightGray"
   icon="cancel"
   label="cancel"
 />
@@ -134,7 +134,7 @@ depict the \`IconButton\` as selected.
 \`\`\`
 \`\`\`html
 <IconButton
-  bgColor="light-gray"
+  bgColor="lightGray"
   iconColor="red"
   icon="pinterest"
   label="pinterest"
@@ -158,7 +158,7 @@ depict the \`IconButton\` as selected.
     </div>
     <div className="px1">
       <IconButton
-        bgColor="light-gray"
+        bgColor="lightGray"
         iconColor="red"
         icon="pinterest"
         label="pinterest"

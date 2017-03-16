@@ -12,7 +12,7 @@ md`
 type Props = {
   accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   children?: any,
-  color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white', /* default: dark-gray */
+  color?: 'blue' | 'darkGray' | 'gray' | 'red' | 'white', /* default: darkGray */
   overflow?: 'normal' | 'breakWord' /* default: normal */
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool, /* default: false */

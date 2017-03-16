@@ -10,10 +10,20 @@ const defaultHeadingLevels = {
   xl: 1,
 };
 
+type Color = 'blue' | 'darkGray' | 'gray' | 'red' | 'white';
+const headingColor = (color: Color) => {
+  switch (color) {
+    case 'darkGray':
+      return 'dark-gray';
+    default:
+      return color;
+  }
+};
+
 type Props = {
   accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   children?: any,
-  color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white',
+  color?: Color,
   overflow?: 'normal' | 'breakWord',
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
@@ -23,7 +33,7 @@ export default function Heading(props: Props) {
   const {
     accessibilityLevel,
     children,
-    color = 'dark-gray',
+    color = 'darkGray',
     size,
     overflow = 'normal',
     truncate = false,
@@ -36,7 +46,7 @@ export default function Heading(props: Props) {
     'mt0',
     'sans-serif',
     `display-${size}`,
-    color,
+    headingColor(color),
     {
       'break-word': overflow === 'breakWord',
       truncate,
@@ -50,7 +60,7 @@ export default function Heading(props: Props) {
 Heading.propTypes = {
   accessibilityLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   children: PropTypes.node,
-  color: PropTypes.oneOf(['blue', 'dark-gray', 'gray', 'red', 'white']),
+  color: PropTypes.oneOf(['blue', 'darkGray', 'gray', 'red', 'white']),
   overflow: PropTypes.oneOf(['normal', 'breakWord']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   truncate: PropTypes.bool,

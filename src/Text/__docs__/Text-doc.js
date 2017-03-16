@@ -18,7 +18,7 @@ type Props = {
   align?: 'left' | 'right' | 'center' | 'justify', /*default: left */
   bold?: bool, /* default: false */
   children?: any,
-  color?: 'blue' | 'dark-gray' | 'gray' | 'red' | 'white', /* default: dark-gray */
+  color?: 'blue' | 'darkGray' | 'gray' | 'red' | 'white', /* default: darkGray */
   inline?: bool, /* default: false */
   italic?: bool, /* default: false */
   overflow?: 'normal' | 'breakWord', /* default: normal */
@@ -91,7 +91,7 @@ You can specify which color you want for your text.
 <Text color="gray">
   Gray
 </Text>
-<Text color="dark-gray">
+<Text color="darkGray">
   Dark Gray (default)
 </Text>
 <Text color="blue">
@@ -110,7 +110,7 @@ You can specify which color you want for your text.
       <Text color="gray">Gray</Text>
     </div>
     <div className="mb2">
-      <Text color="dark-gray">Dark Gray (default)</Text>
+      <Text color="darkGray">Dark Gray (default)</Text>
     </div>
     <div className="mb2">
       <Text color="blue">Blue</Text>

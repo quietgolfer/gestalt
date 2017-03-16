@@ -35,7 +35,7 @@ export default function SegmentedControl(props: Props) {
           >
             <Text
               bold
-              color={isSelected ? 'dark-gray' : 'gray'}
+              color={isSelected ? 'darkGray' : 'gray'}
               align="center"
               truncate
               size="lg"

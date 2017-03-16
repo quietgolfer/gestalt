@@ -14,7 +14,7 @@ md`
 \`\`\`jsx
 type IconProps = {
   ariaLabel: string,
-  color?: 'white' | 'gray' | 'dark-gray' | 'blue' | 'red', /* default: gray */
+  color?: 'white' | 'gray' | 'darkGray' | 'blue' | 'red', /* default: gray */
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons shown below.
@@ -28,7 +28,7 @@ type IconProps = {
 
 const colorMap = {
   gray: 'gray (default)',
-  'dark-gray': 'dark-gray',
+  darkGray: 'darkGray',
   white: 'white',
   blue: 'blue',
   red: 'red'
@@ -49,14 +49,14 @@ card('Colors',
   md`
 \`\`\`html
 <Icon icon="pin" ariaLabel="Pin" />
-<Icon icon="pin" ariaLabel="Pin" color="dark-gray" />
+<Icon icon="pin" ariaLabel="Pin" color="darkGray" />
 \`\`\`
 `,
   <Box xs={{ display: 'flex' }}>
     {Object.keys(colorMap).map((color, idx) =>
       <Box xs={{ display: 'flexColumn', column: 2 }} padding={{ x: 2 }} alignItems="center" key={idx}>
         <Box padding={{ y: 3 }}>
-          <Text align="center" bold color="dark-gray">{colorMap[color]}</Text>
+          <Text align="center" bold color="darkGray">{colorMap[color]}</Text>
         </Box>
         {colorItem(color)}
       </Box>
@@ -80,7 +80,7 @@ Currently, icons can be any size desired. The default size is 16.
     {[16, 20, 24, 28, 32].map((size, idx) =>
       <Box xs={{ display: 'flexColumn', column: 2 }} padding={{ x: 2 }} alignItems="center" key={idx}>
         <Box padding={{ y: 3 }}>
-          <Text align="center" bold color="dark-gray">{size}</Text>
+          <Text align="center" bold color="darkGray">{size}</Text>
         </Box>
         <Icon icon="pin" ariaLabel="Pin" size={size} />
       </Box>
@@ -92,7 +92,7 @@ function IconType({ iconName }) {
   return (
     <Box xs={{ column: 6, display: 'flexColumn' }} sm={{ column: 3 }} alignItems="center">
       <Box padding={{ y: 3 }}>
-        <Text align="center" bold color="dark-gray">{iconName}</Text>
+        <Text align="center" bold color="darkGray">{iconName}</Text>
       </Box>
       <Icon icon={iconName} ariaLabel={iconName.replace(/-/g, ' ')} color="gray" />
     </Box>

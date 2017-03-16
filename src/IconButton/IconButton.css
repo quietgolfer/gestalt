@@ -40,16 +40,9 @@
   composes: bg-gray-active from global;
 }
 
-.light-gray {
+.lightGray {
   composes: bg-light-gray from global;
   composes: bg-light-gray-hover from global;
   composes: bg-light-gray-focus from global;
   composes: bg-light-gray-active from global;
-}
-
-.dark-gray {
-  composes: bg-dark-gray  from global;
-  composes: bg-dark-gray-hover from global;
-  composes: bg-dark-gray-focus from global;
-  composes: bg-dark-gray-active from global;
 }

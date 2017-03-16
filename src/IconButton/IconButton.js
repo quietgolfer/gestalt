@@ -11,8 +11,8 @@ import icons from '../Icon/icons';
 type Props = {
   ariaExpanded?: boolean,
   ariaHaspopup?: boolean,
-  bgColor?: 'transparent' | 'light-gray',
-  iconColor?: 'gray' | 'dark-gray' | 'red' | 'blue',
+  bgColor?: 'transparent' | 'lightGray',
+  iconColor?: 'gray' | 'darkGray' | 'red' | 'blue',
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons provided in gestalt-icon/icons/index.js.
@@ -26,7 +26,7 @@ type Props = {
 
 const defaultIconButtonIconColors = {
   transparent: 'gray',
-  'light-gray': 'gray',
+  lightGray: 'gray',
 };
 
 const buttonSize = {
@@ -84,11 +84,11 @@ IconButton.propTypes = {
   ariaExpanded: PropTypes.bool,
   ariaHaspopup: PropTypes.bool,
   bgColor: PropTypes.oneOf(
-    ['transparent', 'light-gray']
+    ['transparent', 'lightGray']
   ),
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
   iconColor: PropTypes.oneOf(
-    ['gray', 'dark-gray', 'red', 'blue']
+    ['gray', 'darkGray', 'red', 'blue']
   ),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
