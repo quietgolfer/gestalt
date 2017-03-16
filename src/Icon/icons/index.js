@@ -6,6 +6,7 @@ import arrowBack from './arrow-back.svg';
 import arrowCircleForward from './arrow-circle-forward.svg';
 import arrowDown from './arrow-down.svg';
 import arrowForward from './arrow-forward.svg';
+import arrowUp from './arrow-up.svg';
 import camera from './camera.svg';
 import cancel from './cancel.svg';
 import check from './check.svg';
@@ -25,6 +26,7 @@ import faceSad from './face-sad.svg';
 import filter from './filter.svg';
 import flag from './flag.svg';
 import globe from './globe.svg';
+import graphBar from './graph-bar.svg';
 import knoop from './knoop.svg';
 import lightbulb from './lightbulb.svg';
 import heart from './like.svg';
@@ -55,6 +57,7 @@ export default {
   'arrow-circle-forward': arrowCircleForward,
   'arrow-down': arrowDown,
   'arrow-forward': arrowForward,
+  'arrow-up': arrowUp,
   camera,
   cancel,
   check,
@@ -74,6 +77,7 @@ export default {
   filter,
   flag,
   globe,
+  'graph-bar': graphBar,
   heart,
   'heart-broken': heartBroken,
   knoop,
