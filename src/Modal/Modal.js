@@ -54,7 +54,7 @@ export default class Modal extends Component {
     document.removeEventListener('click', this.handlePageClick);
     window.removeEventListener('keydown', this.handleKeyDown);
     window.removeEventListener('resize', this.updateBreakpoint);
-    document.removeEventListener('focus', this.restrictFocus);
+    document.removeEventListener('focus', this.restrictFocus, true);
 
     if (document.body) {
       document.body.style.overflow = ''; // Reenables background scrolling
