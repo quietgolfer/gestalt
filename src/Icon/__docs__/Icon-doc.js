@@ -20,6 +20,7 @@ type IconProps = {
    * icons shown below.
    */
   icon: $Keys<typeof paths>,
+  inline?: boolean,
   size?: number, /* default: 16 */
 };
 \`\`\`
