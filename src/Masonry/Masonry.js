@@ -586,6 +586,10 @@ class Masonry<T> extends Component {
   }
 
   render() {
+    const itemClassName = [
+      this.state.serverItems ? 'static' : styles.Masonry__Item,
+      this.state.mounted ? styles.Masonry__Item__Mounted : ''
+    ].join(' ');
     return (
       <div
         className={styles.Masonry}
@@ -600,10 +604,7 @@ class Masonry<T> extends Component {
         />
         {(this.state.serverItems || this.allItems()).map(item =>
           <div
-            className={`
-              ${this.state.serverItems ? 'static ' : styles.Masonry__Item}
-              ${this.state.mounted ? styles.Masonry__Item__Mounted : ''}
-            `}
+            className={itemClassName}
             data-grid-item
             key={item.key}
             style={{
