@@ -24,7 +24,6 @@ type Props = {
   accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   children?: any,
   color?: Color,
-  overflow?: 'normal' | 'breakWord',
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
 };
@@ -35,7 +34,6 @@ export default function Heading(props: Props) {
     children,
     color = 'darkGray',
     size,
-    overflow = 'normal',
     truncate = false,
   } = props;
 
@@ -47,10 +45,8 @@ export default function Heading(props: Props) {
     'sans-serif',
     `display-${size}`,
     headingColor(color),
-    {
-      'break-word': overflow === 'breakWord',
-      truncate,
-    },
+    'break-word',
+    truncate,
   );
 
   const headingLevel = accessibilityLevel || defaultHeadingLevels[size];
@@ -61,7 +57,6 @@ Heading.propTypes = {
   accessibilityLevel: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   children: PropTypes.node,
   color: PropTypes.oneOf(['blue', 'darkGray', 'gray', 'red', 'white']),
-  overflow: PropTypes.oneOf(['normal', 'breakWord']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).isRequired,
   truncate: PropTypes.bool,
 };

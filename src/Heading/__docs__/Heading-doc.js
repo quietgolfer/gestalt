@@ -13,7 +13,6 @@ type Props = {
   accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   children?: any,
   color?: 'blue' | 'darkGray' | 'gray' | 'red' | 'white', /* default: darkGray */
-  overflow?: 'normal' | 'breakWord' /* default: normal */
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool, /* default: false */
 };
@@ -105,7 +104,7 @@ card('Overflow',
   md`
 \`\`\`jsx
 <Heading>White</Heading>
-<Heading overflow="breakWord">WordWrap</Heading>
+<Heading>WordWrap</Heading>
 <Heading truncate>WordWrap</Heading>
 \`\`\`
 `,
@@ -115,7 +114,7 @@ card('Overflow',
       sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
     </Heading>
     <br />
-    <Heading size="xs" overflow="breakWord">
+    <Heading size="xs">
       This is a long and Supercalifragilisticexpialidocious
       sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
     </Heading>

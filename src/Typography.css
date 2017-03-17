@@ -102,7 +102,6 @@
 :global .break-word {
   hyphens: auto;
   overflow-wrap: break-word;
-  word-break: break-all;
 }
 
 :global .truncate {
