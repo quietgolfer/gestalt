@@ -391,10 +391,13 @@ class Masonry<T> extends Component {
         gridItems[colIdx].splice(itemIdx, 0, itemInfo);
 
         // Increase top values of other items
-        for (let i = itemIdx + 1; i < gridItems[colIdx].length; i += 1) {
-          const gridItem = gridItems[colIdx][i];
-          gridItem.top = gridItems[colIdx][i - 1].bottom;
-          gridItem.bottom = gridItem.top + gridItem.height + this.gutterWidth;
+        if (itemIdx < gridItems[colIdx].length - 1) {
+          const offset = gridItems[colIdx][itemIdx].bottom - gridItems[colIdx][itemIdx + 1].top;
+          for (let i = itemIdx + 1; i < gridItems[colIdx].length; i += 1) {
+            const gridItem = gridItems[colIdx][i];
+            gridItem.top += offset;
+            gridItem.bottom += offset;
+          }
         }
       } else {
         const column = this.shortestColumn();
@@ -574,7 +577,7 @@ class Masonry<T> extends Component {
   }
 
   itemIsVisible(item: GridItemType<T>) {
-    return item.bottom < this.state.viewportTop || item.top > this.state.viewportBottom;
+    return !(item.bottom < this.state.viewportTop || item.top > this.state.viewportBottom);
   }
 
   renderHeight = () => {
@@ -612,7 +615,7 @@ class Masonry<T> extends Component {
               left: 0,
               transform: `translateX(${item.left}px) translateY(${item.top}px)`,
               ...(this.itemWidth ? { width: (this.itemWidth - this.gutterWidth) } : {}),
-              ...(this.itemIsVisible(item) ? { display: 'none', transition: 'none' } : {})
+              ...(this.itemIsVisible(item) ? {} : { display: 'none', transition: 'none' })
             }}
             {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
           >
