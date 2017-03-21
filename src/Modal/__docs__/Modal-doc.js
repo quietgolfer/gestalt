@@ -43,9 +43,9 @@ type Props = {
     <div className="py2">
       <Text bold size="md">Sizes</Text>
       <Divider />
-      <Text><b>sm:</b> 435px</Text>
+      <Text><b>sm:</b> 414px</Text>
       <Text><b>md:</b> 544px</Text>
-      <Text><b>lg:</b> 800px</Text>
+      <Text><b>lg:</b> 804px</Text>
       <Text italic>
         If you need additional sizes, please let us know!
         All sizes are subject to change upon design descretion.

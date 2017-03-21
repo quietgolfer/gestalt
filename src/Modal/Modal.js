@@ -7,9 +7,9 @@ import styles from './Modal.css';
 import breakpoints from '../breakpoints.json';
 
 const SIZE_WIDTH_MAP = {
-  sm: 435,
+  sm: 414,
   md: 544,
-  lg: 800,
+  lg: 804,
 };
 
 const ESCAPE_KEY_CODE = 27;
