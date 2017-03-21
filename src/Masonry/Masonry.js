@@ -2,6 +2,7 @@
 /* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import MasonryComponentWrapper from './MasonryComponentWrapper';
 import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Masonry.css';
 import throttle from '../throttle';
@@ -606,27 +607,31 @@ class Masonry<T> extends Component {
           renderHeight={this.renderHeight}
         />
         {(this.state.serverItems || this.allItems()).map(item =>
-          <div
-            className={itemClassName}
-            data-grid-item
-            key={item.key}
-            style={{
-              top: 0,
-              left: 0,
-              transform: `translateX(${item.left}px) translateY(${item.top}px)`,
-              ...(this.itemWidth ? { width: (this.itemWidth - this.gutterWidth) } : {}),
-              ...(this.itemIsVisible(item) ? {} : { display: 'none', transition: 'none' })
-            }}
-            {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
-          >
-            <div
-              className={item.appended || !this.state.mounted ?
-                null :
-                styles.Masonry__Item__Animated}
+          <MasonryComponentWrapper
+            key={`wrapper-${item.key}`}
+            isInViewport={this.itemIsVisible(item)}
+            component={<div
+              className={itemClassName}
+              data-grid-item
+              key={item.key}
+              style={{
+                top: 0,
+                left: 0,
+                transform: `translateX(${item.left}px) translateY(${item.top}px)`,
+                ...(this.itemWidth ? { width: (this.itemWidth - this.gutterWidth) } : {}),
+                ...(this.itemIsVisible(item) ? {} : { display: 'none', transition: 'none' })
+              }}
+              {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
             >
-              {item.component}
-            </div>
-          </div>,
+              <div
+                className={item.appended || !this.state.mounted ?
+                      null :
+                      styles.Masonry__Item__Animated}
+              >
+                {item.component}
+              </div>
+            </div>}
+          />,
         )}
       </div>
     );
