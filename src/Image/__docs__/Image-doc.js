@@ -16,14 +16,15 @@ card('FlowType',
 md`\`\`\`js
 type ImageProps = {
   alt: string,
+  children?: any,
   color: string,
-  height: number,
+  naturalHeight: number,
+  naturalWidth: number,
   onError?: () => void,
   onLoad?: () => void,
   sizes?: string,
   src: string,
   srcSet?: {[key: string]: string},
-  width: number, /* default: false */
 };
 \`\`\`
 `);
