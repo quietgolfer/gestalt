@@ -3,3 +3,7 @@
   composes: col-12 from global;
   composes: absolute from global;
 }
+
+@media (inverted-colors) {
+  img { filter: invert(100%); }
+}

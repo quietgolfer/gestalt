@@ -137,6 +137,12 @@
       "function-url-quotes": "always",
       "indentation": 2,
       "max-nesting-depth": 0,
+      "media-feature-name-no-unknown": [
+        true,
+        {
+          "ignoreMediaFeatureNames": "inverted-colors"
+        }
+      ],
       "no-descending-specificity": true,
       "no-duplicate-selectors": true,
       "no-unknown-animations": true,
