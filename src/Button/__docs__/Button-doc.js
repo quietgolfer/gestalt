@@ -2,6 +2,7 @@
 import React from 'react';
 import { card, md } from 'corkboard';
 import Button from '../Button';
+import GestaltProvider from '../../GestaltProvider/GestaltProvider';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Button', `
@@ -47,7 +48,7 @@ There are 3 choices for button colors. The default color is \`gray\`.
 \`\`\`
 \
 `,
-  <div>
+  <GestaltProvider>
     <div className="p2">
       <Button
         color="red"
@@ -66,7 +67,7 @@ There are 3 choices for button colors. The default color is \`gray\`.
         text="Buy"
       />
     </div>
-  </div>);
+  </GestaltProvider>);
 
 card('Widths',
 md`
@@ -92,7 +93,7 @@ have slightly smaller text and have less padding. The default \`inline\` is fals
 />
 \`\`\`
 `,
-  <div>
+  <GestaltProvider>
     <div className="p2">
       <Button
         text="Wide button with lots of text"
@@ -110,7 +111,7 @@ have slightly smaller text and have less padding. The default \`inline\` is fals
         text="Full bleed width button"
       />
     </div>
-  </div>);
+  </GestaltProvider>);
 
 card('Types',
 md`
@@ -131,7 +132,7 @@ need to specify an \`onClick\` handler. The default type is \`button\`.
 />
 \`\`\`
 `,
-  <div>
+  <GestaltProvider>
     <div className="p2">
       <Button
         onClick={() => undefined}
@@ -146,7 +147,7 @@ need to specify an \`onClick\` handler. The default type is \`button\`.
         type="submit"
       />
     </div>
-  </div>);
+  </GestaltProvider>);
 
 card('Disabled',
 md`
@@ -165,7 +166,7 @@ We also offer support for disabled buttons. The default value for \`disabled\` i
 />
 \`\`\`
 `,
-  <div>
+  <GestaltProvider>
     <div className="p2">
       <Button
         disabled
@@ -179,4 +180,4 @@ We also offer support for disabled buttons. The default value for \`disabled\` i
         text="Submit"
       />
     </div>
-  </div>);
+  </GestaltProvider>);

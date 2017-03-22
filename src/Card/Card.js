@@ -12,6 +12,14 @@ export default class Card extends Component {
     children: PropTypes.node
   }
 
+  static contextTypes = {
+    inputDevice: React.PropTypes.string
+  }
+
+  static context: {
+    inputDevice: '' | 'key' | 'mouse' | 'touch'
+  }
+
   static props: {
     ariaLabel: String,
     children?: any
@@ -50,14 +58,17 @@ export default class Card extends Component {
       hovered
     } = this.state;
 
+    const { inputDevice = 'key' } = this.context;
+
     const classes = classnames(styles.card, {
       [styles.hover]: hovered,
-      [styles.focus]: focused,
+      [styles.focus]: focused
     });
 
     return (
       <Box
         aria-label={ariaLabel}
+        disableFocusStyles={inputDevice !== 'key'}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
         onMouseEnter={this.handleMouseEnter}

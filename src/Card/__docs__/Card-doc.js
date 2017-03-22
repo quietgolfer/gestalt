@@ -5,6 +5,7 @@ import Avatar from '../../Avatar/Avatar';
 import Box from '../../Box/Box';
 import Button from '../../Button/Button';
 import Card from '../Card';
+import GestaltProvider from '../../GestaltProvider/GestaltProvider';
 import Link from '../../Link/Link';
 import Text from '../../Text/Text';
 
@@ -46,9 +47,13 @@ Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. I
 </Card>
 \`\`\`
 `,
-  <div>
+  <GestaltProvider>
     <Box xs={{ display: 'flex' }} wrap>
-      <Box padding={2} dangerouslySetInlineStyle={{ __style: { maxWidth: 236 } }}>
+      <Box
+        dangerouslySetInlineStyle={{ __style: { maxWidth: 236 } }}
+        padding={2}
+        xs={{ column: 12 }}
+      >
         <Card ariaLabel="Ben Silbermann - Pinterest CEO">
           <Link color="darkGray" href="https://pinterest.com">
             <Avatar
@@ -63,7 +68,11 @@ Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. I
           <Button color="red" fullWidth text="Follow" />
         </Card>
       </Box>
-      <Box padding={2} dangerouslySetInlineStyle={{ __style: { maxWidth: 236 } }}>
+      <Box
+        dangerouslySetInlineStyle={{ __style: { maxWidth: 236 } }}
+        padding={2}
+        xs={{ column: 12 }}
+      >
         <Card ariaLabel="Evan Sharp - Pinterest Co-Founder">
           <Link color="darkGray" href="https://pinterest.com">
             <Avatar
@@ -79,4 +88,4 @@ Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. I
         </Card>
       </Box>
     </Box>
-  </div>);
+  </GestaltProvider>);

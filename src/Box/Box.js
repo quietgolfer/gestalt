@@ -376,6 +376,12 @@ const fit = (value: Fit): Style => (
   value ? fromClassName('fit') : identity()
 );
 
+type DisableFocusStyles = boolean;
+
+const disableFocusStyles = (value: DisableFocusStyles): Style => (
+  value ? fromClassName(styles.disableFocusStyles) : identity()
+);
+
 // --
 
 type PropType = {
@@ -393,6 +399,7 @@ type PropType = {
   bottom?: Bottom,
   color?: Color,
   fit?: Fit,
+  disableFocusStyles?: DisableFocusStyles,
   grow?: Grow,
   justifyContent?: JustifyContent,
   left?: Left,
@@ -419,6 +426,7 @@ const propToFn = {
   bottom,
   color,
   fit,
+  disableFocusStyles,
   grow,
   justifyContent,
   left,
@@ -547,6 +555,7 @@ Box.propTypes = {
     'transparent',
   ]),
   fit: PropTypes.bool,
+  disableFocusStyles: PropTypes.bool,
   grow: PropTypes.bool,
   justifyContent: PropTypes.oneOf([
     'start',

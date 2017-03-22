@@ -31,7 +31,12 @@ type LinkProps = {
   inline?: boolean,
 };
 
-export default function Link(props: LinkProps) {
+type GestaltContext = {
+  inputDevice: '' | 'key' | 'mouse' | 'touch'
+};
+
+export default function Link(props: LinkProps, context: GestaltContext) {
+  const { inputDevice = 'key' } = context;
   const { color = 'darkGray', inline = false } = props;
   return (
     // eslint-disable-next-line jsx-a11y/anchor-has-content
@@ -42,11 +47,16 @@ export default function Link(props: LinkProps) {
           styles.link,
           styles[color],
           (inline ? styles.inline : styles.block),
+          (inputDevice !== 'key' ? styles.disableFocusOutline : '')
         )
       }
     />
   );
 }
+
+Link.contextTypes = {
+  inputDevice: React.PropTypes.string
+};
 
 Link.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
@@ -54,5 +64,5 @@ Link.propTypes = {
   color: PropTypes.oneOf(['white', 'darkGray', 'gray', 'red', 'blue']),
   // eslint-disable-next-line react/no-unused-prop-types
   href: PropTypes.string.isRequired,
-  inline: PropTypes.bool,
+  inline: PropTypes.bool
 };

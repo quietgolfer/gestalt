@@ -3,8 +3,9 @@ import React from 'react';
 import { card, md } from 'corkboard';
 import Link from '../Link';
 import { ns } from '../../../.corkboard/cards';
-import Text from '../../Text/Text';
+import GestaltProvider from '../../GestaltProvider/GestaltProvider';
 import Icon from '../../Icon/Icon';
+import Text from '../../Text/Text';
 
 ns('Link');
 
@@ -34,39 +35,49 @@ type LinkProps = {
   `);
 
 card(
-  <div className="bg-gray">
+  <GestaltProvider>
+    <div className="bg-gray">
+      <Text>
+        <Link color="white" href="https://pinterest.com">
+          <div className="p2">Pinterest.com</div>
+        </Link>
+      </Text>
+    </div>
+  </GestaltProvider>,
+  { heading: false },
+);
+card(
+  <GestaltProvider>
     <Text>
-      <Link color="white" href="https://pinterest.com">
-        <div className="p2">Pinterest.com</div>
+      <Link color="gray" href="https://pinterest.com">Pinterest.com</Link>
+    </Text>
+  </GestaltProvider>,
+  { heading: false },
+);
+card(
+  <GestaltProvider>
+    <Text>
+      <Link color="darkGray" href="https://pinterest.com">Pinterest.com</Link>
+    </Text>
+  </GestaltProvider>,
+  { heading: false },
+);
+card(
+  <GestaltProvider>
+    <Text>
+      <Link color="red" href="https://pinterest.com">Pinterest.com</Link>
+    </Text>
+  </GestaltProvider>,
+  { heading: false },
+);
+card(
+  <GestaltProvider>
+    <Text>
+      <Link color="blue" href="https://pinterest.com">
+        <Icon icon="pin" color="blue" inline ariaLabel="pin" />
+        Pinterest.com
       </Link>
     </Text>
-  </div>,
-  { heading: false },
-);
-card(
-  <Text>
-    <Link color="gray" href="https://pinterest.com">Pinterest.com</Link>
-  </Text>,
-  { heading: false },
-);
-card(
-  <Text>
-    <Link color="darkGray" href="https://pinterest.com">Pinterest.com</Link>
-  </Text>,
-  { heading: false },
-);
-card(
-  <Text>
-    <Link color="red" href="https://pinterest.com">Pinterest.com</Link>
-  </Text>,
-  { heading: false },
-);
-card(
-  <Text>
-    <Link color="blue" href="https://pinterest.com">
-      <Icon icon="pin" color="blue" inline ariaLabel="pin" />
-      Pinterest.com
-    </Link>
-  </Text>,
+  </GestaltProvider>,
   { heading: false },
 );

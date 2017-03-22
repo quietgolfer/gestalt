@@ -8,6 +8,15 @@
   text-decoration: underline;
 }
 
+.link:focus {
+  outline: 3px solid rgba(0, 132, 255, 0.3);
+  outline-offset: 1px;
+}
+
+.disableFocusOutline:focus {
+  outline: none;
+}
+
 .inline {
   /* dom default */
 }

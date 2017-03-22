@@ -15,7 +15,11 @@ type Props = {
   type?: 'submit' | 'button',
 }
 
-export default function Button(props: Props) {
+type GestaltContext = {
+  inputDevice: '' | 'key' | 'mouse' | 'touch'
+}
+
+export default function Button(props: Props, context: GestaltContext) {
   const {
     ariaExpanded,
     ariaHaspopup,
@@ -27,7 +31,10 @@ export default function Button(props: Props) {
     type = 'button',
   } = props;
 
+  const { inputDevice = 'key' } = context;
+
   const classes = classnames(styles.button, {
+    [styles.disableFocusOutline]: inputDevice !== 'key',
     [styles.disabled]: disabled,
     [styles.enabled]: !disabled,
     [styles[color]]: !disabled,
@@ -48,6 +55,10 @@ export default function Button(props: Props) {
     </button>
   );
 }
+
+Button.contextTypes = {
+  inputDevice: React.PropTypes.string
+};
 
 Button.propTypes = {
   ariaExpanded: PropTypes.bool,
