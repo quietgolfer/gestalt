@@ -157,21 +157,24 @@ export default class BoxGrid extends Component {
     itemWidth: number,
   } {
     /* eslint react/no-find-dom-node: 0 */
-    const parentNode = ReactDOM.findDOMNode(this).parentNode;
-    const gridWidth = parentNode.clientWidth;
+    const el = ReactDOM.findDOMNode(this);
+    if (el && el.parentNode instanceof HTMLElement) {
+      const gridWidth = el.parentNode.clientWidth;
 
-    const colCount = Math.floor(gridWidth / this.props.minItemWidth);
-    const itemWidth = gridWidth / colCount;
+      const colCount = Math.floor(gridWidth / this.props.minItemWidth);
+      const itemWidth = gridWidth / colCount;
 
-    this.setState({
-      gridWidth,
-      itemWidth,
-    });
-    return {
-      colCount,
-      gridWidth,
-      itemWidth,
-    };
+      this.setState({
+        gridWidth,
+        itemWidth,
+      });
+      return {
+        colCount,
+        gridWidth,
+        itemWidth,
+      };
+    }
+    throw new Error('could not calculate columns');
   }
 
   /**
@@ -179,14 +182,17 @@ export default class BoxGrid extends Component {
    * We need to reflow items if the number of columns we would display should change.
    */
   reflowIfNeeded() {
-    const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-    this.setState({
-      // Recalculate width with new col count.
-      gridWidth,
-    }, () => {
-      // Reflow after setting grid width, needed for calculating columns.
-      this.reflow(this.calculateColumns());
-    });
+    const el = ReactDOM.findDOMNode(this);
+    if (el && el.parentNode instanceof HTMLElement) {
+      const gridWidth = el.parentNode.clientWidth;
+      this.setState({
+        // Recalculate width with new col count.
+        gridWidth,
+      }, () => {
+        // Reflow after setting grid width, needed for calculating columns.
+        this.reflow(this.calculateColumns());
+      });
+    }
   }
 
   /**

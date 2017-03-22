@@ -145,15 +145,18 @@ export default class ClassicGrid extends Component {
 
     const eachItemWidth = this.props.columnWidth + this.props.gutterWidth;
     /* eslint react/no-find-dom-node: 0 */
-    const parentNode = ReactDOM.findDOMNode(this).parentNode;
-    const parentWidth = parentNode.clientWidth;
+    const el = ReactDOM.findDOMNode(this);
+    if (el && el.parentNode instanceof HTMLElement) {
+      const parentWidth = el.parentNode.clientWidth;
 
-    let newColCount = Math.floor(parentWidth / eachItemWidth);
+      let newColCount = Math.floor(parentWidth / eachItemWidth);
 
-    if (newColCount < this.props.minCols) {
-      newColCount = this.props.minCols;
+      if (newColCount < this.props.minCols) {
+        newColCount = this.props.minCols;
+      }
+      return newColCount;
     }
-    return newColCount;
+    throw new Error('could not calculate columns');
   }
 
   /**

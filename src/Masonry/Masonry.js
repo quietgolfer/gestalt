@@ -91,10 +91,12 @@ class Masonry<T> extends Component {
 
     // Determine #columns and itemWidth
     const { columnWidth, flexible } = this.props;
-    const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-    this.columnCount = this.calculateColumns();
-    this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + this.gutterWidth);
-
+    const el = ReactDOM.findDOMNode(this);
+    if (el && el.parentNode instanceof HTMLElement) {
+      const gridWidth = el.parentNode.clientWidth;
+      this.columnCount = this.calculateColumns();
+      this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + this.gutterWidth);
+    }
     this.updateItems(this.props.items);
     this.updateVirtualBounds();
     setTimeout(() => {
@@ -459,10 +461,14 @@ class Masonry<T> extends Component {
     }
     this.resizeTimeout = setTimeout(() => {
       const { columnWidth, flexible } = this.props;
-      const gridWidth = ReactDOM.findDOMNode(this).parentNode.clientWidth;
-      this.columnCount = this.calculateColumns();
-      this.itemWidth = flexible ? (gridWidth / this.columnCount) : (columnWidth + this.gutterWidth);
-      this.reflow();
+      const el = ReactDOM.findDOMNode(this);
+      if (el && el.parentNode instanceof HTMLElement) {
+        const gridWidth = el.parentNode.clientWidth;
+        this.columnCount = this.calculateColumns();
+        this.itemWidth = flexible ? (gridWidth / this.columnCount)
+          : (columnWidth + this.gutterWidth);
+        this.reflow();
+      }
     }, 100);
   }
 
@@ -489,27 +495,33 @@ class Masonry<T> extends Component {
 
     const eachItemWidth = this.props.columnWidth + this.gutterWidth;
     /* eslint react/no-find-dom-node: 0 */
-    const parentNode = ReactDOM.findDOMNode(this).parentNode;
-    const parentWidth = parentNode.clientWidth;
+    const el = ReactDOM.findDOMNode(this);
+    if (el && el.parentNode instanceof HTMLElement) {
+      const parentWidth = el.parentNode.clientWidth;
 
-    let newColCount = Math.floor(parentWidth / eachItemWidth);
+      let newColCount = Math.floor(parentWidth / eachItemWidth);
 
-    if (newColCount < this.props.minCols) {
-      newColCount = this.props.minCols;
+      if (newColCount < this.props.minCols) {
+        newColCount = this.props.minCols;
+      }
+      return newColCount;
     }
-    return newColCount;
+    throw new Error('could not calculate columns');
   }
 
   measureContainer() {
     const { scrollContainer } = this.props;
     this.containerHeight = this.getContainerHeight();
-    if (typeof window !== 'undefined' && scrollContainer === window) {
-      this.containerOffset = ReactDOM.findDOMNode(this).getBoundingClientRect().top
-        + window.scrollY;
-    } else {
-      this.containerOffset = (ReactDOM.findDOMNode(this).getBoundingClientRect().top
-        + scrollContainer.scrollTop)
-        - scrollContainer.getBoundingClientRect().top;
+    const el = ReactDOM.findDOMNode(this);
+    if (el instanceof HTMLElement) {
+      if (typeof window !== 'undefined' && scrollContainer === window) {
+        this.containerOffset = el.getBoundingClientRect().top
+          + window.scrollY;
+      } else {
+        this.containerOffset = (el.getBoundingClientRect().top
+          + scrollContainer.scrollTop)
+          - scrollContainer.getBoundingClientRect().top;
+      }
     }
     this.scrollBuffer = this.containerHeight * 2;
   }
