@@ -40,6 +40,7 @@ import Switch from './Switch/Switch';
 import Text from './Text/Text';
 import TextArea from './TextArea/TextArea';
 import TextField from './TextField/TextField';
+import Toast from './Toast/Toast';
 import Tooltip from './Tooltip/Tooltip';
 
 export {
@@ -76,5 +77,6 @@ export {
   Text,
   TextArea,
   TextField,
+  Toast,
   Tooltip,
 };

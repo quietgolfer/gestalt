@@ -1,0 +1,95 @@
+exports[`test Confirmation Toast 1`] = `
+<div
+  className="box bg-dark-gray fit ml1 mr1 pill"
+  style={
+    Object {
+      "marginBottom": 10,
+      "padding": "16px 28px",
+      "width": 366,
+    }
+  }>
+  <div
+    className="box xs-flex">
+    <div
+      className="box xs-flex-column justify-center">
+      <div
+        className="Mask rounded"
+        style={
+          Object {
+            "height": 48,
+            "width": 48,
+          }
+        }>
+        <img
+          alt=""
+          src="https://s-media-cache-ak0.pinimg.com/474x/b2/55/ed/b255edbf773ffb3985394e6efb9d2a49.jpg" />
+      </div>
+    </div>
+    <div
+      className="box xs-flex-column justify-center"
+      style={
+        Object {
+          "paddingLeft": 10,
+        }
+      }>
+      <div
+        className="box"
+        style={
+          Object {
+            "fontWeight": "normal",
+          }
+        }>
+        <div
+          className="antialiased sans-serif text-lg white text-left">
+          Saved to
+        </div>
+      </div>
+      <div
+        className="antialiased sans-serif text-lg white text-left bold">
+        Home decor
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`test Guide Toast 1`] = `
+<div
+  className="box bg-dark-gray fit ml1 mr1 pill"
+  style={
+    Object {
+      "marginBottom": 10,
+      "padding": "16px 28px",
+      "width": 366,
+    }
+  }>
+  <div
+    className="box xs-flex items-center justify-between">
+    <div
+      className="antialiased sans-serif text-lg white text-left bold">
+      Same great profile, slightly new look. Learn more?
+    </div>
+    <div
+      className="box"
+      style={
+        Object {
+          "paddingLeft": 24,
+        }
+      }>
+      <svg
+        aria-label=""
+        className="icon white block"
+        height={36}
+        role="img"
+        viewBox="0 0 16 16"
+        width={36}>
+        <title>
+          
+        </title>
+        <path
+          d="test-file-stub" />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
