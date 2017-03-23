@@ -1,8 +1,10 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
-import IconButton from '../IconButton';
 import { ns } from '../../../.corkboard/cards';
+import Box from '../../Box/Box';
+import GestaltProvider from '../../GestaltProvider/GestaltProvider';
+import IconButton from '../IconButton';
 
 ns('IconButton',
 'The IconButton component allows you to define an action with a specific Icon.'
@@ -68,14 +70,18 @@ size beyond what we currently have available, please file an issue on Github!
 />
 \`\`\`
 `,
-  <div className="flex mxn2 flex-wrap">
-    {sizes.map((size, key) =>
-      <div className="col-2 text-center border-box" key={key}>
-        <h5>{size}</h5>
-        <IconButtonEx icon="heart" size={size} />
-      </div>
-    )}
-  </div>
+  <GestaltProvider>
+    <Box xs={{ display: 'flex' }} margin={{ left: -2, right: -2 }} wrap>
+      {sizes.map((size, key) =>
+        <Box xs={{ display: 'flexColumn' }} alignItems="center" padding={{ x: 3 }} key={key}>
+          <h5>{size}</h5>
+          <Box xs={{ display: 'flex' }} justifyContent="center">
+            <IconButtonEx icon="heart" size={size} />
+          </Box>
+        </Box>
+      )}
+    </Box>
+  </GestaltProvider>
 );
 
 card('Default Color Combinations',
@@ -104,19 +110,19 @@ If you need an additional color beyond what we currently have available, please 
 \`\`\`
 
 `,
-  <div>
-    <div className="flex mxn2 flex-wrap">
+  <GestaltProvider>
+    <Box margin={{ left: -2, right: -2 }} wrap xs={{ display: 'flex' }}>
       {icons.map((icon, i) =>
-        <div className="col-12 px2 mb1 border-box flex" key={i}>
+        <Box key={i} margin={{ bottom: 1 }} padding={{ x: 2 }} xs={{ display: 'flex', column: 12 }}>
           {colors.map((color, idx) =>
-            <div className="px1" key={idx}>
+            <Box padding={{ x: 1 }} key={idx}>
               <IconButtonEx bgColor={color} icon={icon} size="md" />
-            </div>
+            </Box>
           )}
-        </div>
+        </Box>
     )}
-    </div>
-  </div>
+    </Box>
+  </GestaltProvider>
 );
 
 card('Other Color Options',
@@ -148,28 +154,30 @@ depict the \`IconButton\` as selected.
 />
 \`\`\`
 `,
-  <div className="flex mxn2 flex-wrap">
-    <div className="px1">
-      <IconButton
-        iconColor="red"
-        icon="heart"
-        label="heart"
-      />
-    </div>
-    <div className="px1">
-      <IconButton
-        bgColor="lightGray"
-        iconColor="red"
-        icon="pinterest"
-        label="pinterest"
-      />
-    </div>
-    <div className="px1">
-      <IconButton
-        iconColor="blue"
-        icon="globe"
-        label="globe"
-      />
-    </div>
-  </div>
+  <GestaltProvider>
+    <Box margin={{ left: -2, right: -2 }} wrap xs={{ display: 'flex' }}>
+      <Box padding={{ x: 1 }}>
+        <IconButton
+          iconColor="red"
+          icon="heart"
+          label="heart"
+        />
+      </Box>
+      <Box padding={{ x: 1 }}>
+        <IconButton
+          bgColor="lightGray"
+          iconColor="red"
+          icon="pinterest"
+          label="pinterest"
+        />
+      </Box>
+      <Box padding={{ x: 1 }}>
+        <IconButton
+          iconColor="blue"
+          icon="globe"
+          label="globe"
+        />
+      </Box>
+    </Box>
+  </GestaltProvider>
 );

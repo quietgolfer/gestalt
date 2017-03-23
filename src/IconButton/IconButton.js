@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unused-prop-types */
 /* global $Keys */
 import React, { PropTypes } from 'react';
-import cx from 'classnames';
+import classnames from 'classnames';
 import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
 import styles from './IconButton.css';
@@ -37,7 +37,11 @@ const buttonSize = {
   xl: 56,
 };
 
-export default function IconButton(props: Props) {
+type GestaltContext = {
+  inputDevice: '' | 'key' | 'mouse' | 'touch'
+}
+
+export default function IconButton(props: Props, context: GestaltContext) {
   const {
     ariaExpanded,
     ariaHaspopup,
@@ -49,6 +53,8 @@ export default function IconButton(props: Props) {
     size = 'md',
     tabIndex,
   } = props;
+
+  const { inputDevice = 'key' } = context;
 
   const inlineStyle = {
     height: buttonSize[size],
@@ -62,7 +68,12 @@ export default function IconButton(props: Props) {
       aria-expanded={ariaExpanded}
       aria-haspopup={ariaHaspopup}
       aria-label={label}
-      className={cx(styles.button, styles[bgColor])}
+      className={classnames(
+        styles.button,
+        styles[bgColor], {
+          [styles.disableFocusOutline]: inputDevice !== 'key'
+        }
+      )}
       onClick={onClick}
       style={inlineStyle}
       tabIndex={tabIndex}
@@ -79,6 +90,10 @@ export default function IconButton(props: Props) {
     </button>
   );
 }
+
+IconButton.contextTypes = {
+  inputDevice: React.PropTypes.string
+};
 
 IconButton.propTypes = {
   ariaExpanded: PropTypes.bool,
