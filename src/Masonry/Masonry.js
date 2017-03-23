@@ -87,7 +87,7 @@ class Masonry<T> extends Component {
    */
   componentDidMount() {
     this.props.scrollContainer.addEventListener('scroll', this.updateVirtualBounds);
-    this.props.scrollContainer.addEventListener('resize', this.handleResize);
+    window.addEventListener('resize', this.handleResize);
 
     // Determine #columns and itemWidth
     const { columnWidth, flexible } = this.props;
@@ -145,7 +145,7 @@ class Masonry<T> extends Component {
   componentWillUnmount() {
     clearTimeout(this.measureTimeout);
     this.props.scrollContainer.removeEventListener('scroll', this.updateVirtualBounds);
-    this.props.scrollContainer.removeEventListener('resize', this.handleResize);
+    window.removeEventListener('resize', this.handleResize);
     this.gridWrapper.removeEventListener('animationend', this.handleAnimationEnd);
   }
 
