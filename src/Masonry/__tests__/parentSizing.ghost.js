@@ -2,10 +2,7 @@
 /* global it */
 import assert from 'assert';
 import ghost from 'ghostjs';
-
-const selectors = {
-  gridItem: '[class*="Masonry__Masonry__Item"]',
-};
+import selectors from './lib/selectors';
 
 describe('Masonry > Parent Sizing', () => {
   it('The grid starts from the left bounding box of the parent', async () => {

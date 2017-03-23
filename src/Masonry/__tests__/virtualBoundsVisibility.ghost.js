@@ -1,11 +1,7 @@
 /* global describe */
 /* global it */
 import ghost from 'ghostjs';
-
-const selectors = {
-  gridItem: '[class*="Masonry__Masonry__Item"]',
-  staticItem: '.static',
-};
+import selectors from './lib/selectors';
 
 const getFirstItemDisplay = async () => {
   const gridItems = await ghost.findElements(selectors.gridItem);

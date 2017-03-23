@@ -2,11 +2,7 @@
 /* global it */
 import assert from 'assert';
 import ghost from 'ghostjs';
-
-const selectors = {
-  gridItem: '[class*="Masonry__Masonry__Item"]',
-  afterGrid: '.afterGrid',
-};
+import selectors from './lib/selectors';
 
 describe.skip('Masonry > Cache invalidation', () => {
   it('Able to invalidate cache', async () => {

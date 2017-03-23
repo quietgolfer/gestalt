@@ -2,12 +2,7 @@
 /* global it */
 import assert from 'assert';
 import ghost from 'ghostjs';
-
-const selectors = {
-  gridItem: '[data-grid-item]',
-  afterGrid: '.afterGrid',
-  insertItem: '#insert-item',
-};
+import selectors from './lib/selectors';
 
 const getAnimationCount = async () => await ghost.script(() => window.TEST_ANIMATION_COUNT);
 

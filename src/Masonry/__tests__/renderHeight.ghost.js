@@ -2,11 +2,7 @@
 /* global it */
 import assert from 'assert';
 import ghost from 'ghostjs';
-
-const selectors = {
-  gridItem: '[class*="Masonry__Masonry__Item"]',
-  afterGrid: '.afterGrid',
-};
+import selectors from './lib/selectors';
 
 describe('Masonry > Render Height', () => {
   it('Items can be positioned under the grid', async () => {

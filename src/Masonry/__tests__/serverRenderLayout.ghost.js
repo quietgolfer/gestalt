@@ -2,11 +2,7 @@
 /* global it */
 import assert from 'assert';
 import ghost from 'ghostjs';
-
-const selectors = {
-  gridItem: '[class*="Masonry__Masonry__Item"]',
-  staticItem: '.static',
-};
+import selectors from './lib/selectors';
 
 describe('Masonry > Server Render Layout', () => {
   it('items rendered on the server maintain position after mounting', async () => {

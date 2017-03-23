@@ -2,11 +2,7 @@
 /* global it */
 import assert from 'assert';
 import ghost from 'ghostjs';
-
-const selectors = {
-  gridItem: '[class*="Masonry__Masonry__Item"]',
-  staticItem: '.static',
-};
+import selectors from './lib/selectors';
 
 const PIN_INSERTION_TIME = 500;
 
