@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Divider from '../Divider/Divider';
+import Heading from '../Heading/Heading';
 import IconButton from '../IconButton/IconButton';
 import styles from './Modal.css';
 import breakpoints from '../breakpoints.json';
@@ -18,7 +19,7 @@ type Props = {
   children?: any,
   closeLabel: string,
   footer?: any,
-  header: any,
+  heading: string,
   modalLabel: string,
   onDismiss: () => void,
   role?: 'alertdialog' | 'dialog',
@@ -112,7 +113,7 @@ export default class Modal extends Component {
   priorFocus: ?HTMLElement;
 
   render() {
-    const { children, closeLabel, footer, header, modalLabel, role = 'dialog', size = 'sm' } = this.props;
+    const { children, closeLabel, footer, heading, modalLabel, role = 'dialog', size = 'sm' } = this.props;
     const width = SIZE_WIDTH_MAP[size];
 
     const container = ['fixed', 'border-box', 'col-12', 'flex', 'justify-center', 'left-0', 'top-0'];
@@ -142,10 +143,22 @@ export default class Modal extends Component {
         >
           <div className="flex flex-column relative" style={{ maxHeight: '90vh' }}>
             <div className="border-box fit">
-              <div className="flex py3 px2 justify-between">
-                {header}
-                {role === 'dialog' ? <IconButton label={closeLabel} icon="cancel" onClick={this.handleClose} /> : null }
-              </div>
+              {role === 'dialog' ?
+                <div className="flex py3 justify-center text-center" style={{ paddingLeft: 50, paddingRight: 50 }}>
+                  <Heading size="xs" accessibilityLevel={1}>
+                    {heading}
+                  </Heading>
+                </div>
+                : <div className="flex py3 px2">
+                  <Heading size="lg" accessibilityLevel={1}>
+                    {heading}
+                  </Heading>
+                </div> }
+              {role === 'dialog' ?
+                <div className="absolute top-0 right-0 p1">
+                  <IconButton label={closeLabel} icon="cancel" onClick={this.handleClose} />
+                </div>
+              : null }
               {role === 'dialog' ? <Divider /> : null}
             </div>
             <div className="overflow-auto flex-auto relative">
@@ -172,7 +185,7 @@ Modal.propTypes = {
   children: PropTypes.node,
   closeLabel: PropTypes.string.isRequired,
   footer: PropTypes.node,
-  header: PropTypes.node.isRequired,
+  heading: PropTypes.string.isRequired,
   modalLabel: PropTypes.string.isRequired,
   onDismiss: PropTypes.func,
   role: PropTypes.oneOf(['alertdialog', 'dialog']),

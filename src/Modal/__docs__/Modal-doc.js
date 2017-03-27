@@ -24,7 +24,7 @@ type Props = {
   children?: any,
   closeLabel: string,
   footer?: any,
-  header: any,
+  heading: string,
   modalLabel: string,
   role?: 'alertdialog' | 'dialog', /* default: dialog */
   onDismiss: () => void,
@@ -34,7 +34,7 @@ type Props = {
 `,
   <div>
     <div className="py2">
-      <Text bold size="md">Header & Footer</Text>
+      <Text bold size="md">Heading & Footer</Text>
       <Divider />
       <Text>
         These properties become fixed if the modal height expands beyond the window height.
@@ -57,28 +57,26 @@ type Props = {
 card('Default padding & styling',
 md`
 Some of the padding required to style your modal has already been provided for ease of use. The modal shown
-by clicking on the "View padding" button highlights what the default behavior is. It was created using the
-\`props\` below. The two divider's between the \`header\`, \`children\`, and \`footer\` are included as well.
+by clicking on the "View padding" button highlights what the default behavior is. The two divider's between
+the \`heading\`, \`children\`, and \`footer\` are included as well.
 
-<b>\`header\`</b>
 \`\`\`jsx
-<div className="bg-gray">
-  <Heading size="sm">Heading</Heading>
-</div>
-}
-\`\`\`
-<b>\`footer\`</b>
-\`\`\`jsx
-<div className="bg-gray">
-  <Heading size="sm">Footer</Heading>
-</div>
-
-\`\`\`
-<b>\`children\`</b>
-\`\`\`jsx
-<div className="bg-gray" style={{ height: 400 }}>
-  <Heading size="sm">Children</Heading>
-</div>
+<Modal
+  closeLabel="close"
+  heading="Heading"
+  modalLabel="View default padding and styling"
+  onDismiss={() => this.setState({ isOpen: false })}
+  footer={
+    <div className="bg-gray">
+      <Heading size="sm">Footer</Heading>
+    </div>
+  }
+  size="md"
+>
+  <div className="bg-gray" style={{ height: 400 }}>
+    <Heading size="sm">Children</Heading>
+  </div>
+</Modal>
 \`\`\`
 `,
 atom => (
@@ -87,11 +85,7 @@ atom => (
     {atom.deref().isOpen ? (
       <Modal
         closeLabel="close"
-        header={
-          <div className="bg-gray">
-            <Heading size="sm">Heading</Heading>
-          </div>
-        }
+        heading="Heading"
         modalLabel="View default padding and styling"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={
@@ -219,19 +213,16 @@ function editBoardFooter(onClose) {
 card('Static Content Example',
 md`Here is an example of the \`Modal\` component with static content.
 \`\`\`jsx
-<Button text="Edit board" onClick={() => this.setState({ isOpen: !this.state.isOpen })} />
-{this.state.isOpen ? (
-  <Modal
-    closeLabel="close"
-    header={<Heading size="xs">Edit your board</Heading>}
-    modalLabel="Edit Julia's board"
-    onDismiss={() => this.setState({ isOpen: false })}
-    footer={footerButtons}
-    size="md"
-  >
-    {children}
-  </Modal>
-  ) : null}
+<Modal
+  closeLabel="close"
+  heading="Edit your board"
+  modalLabel="Edit Julia's board"
+  onDismiss={() => this.setState({ isOpen: false })}
+  footer={footerButtons}
+  size="md"
+>
+  {children}
+</Modal>
 \`\`\`
 `,
 atom => (
@@ -240,7 +231,7 @@ atom => (
     {atom.deref().isOpen ? (
       <Modal
         closeLabel="close"
-        header={<Heading size="xs">Edit your board</Heading>}
+        heading="Edit your board"
         modalLabel="Edit Julia's board"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={editBoardFooter(() => atom.reset({ isOpen: false }))}
@@ -292,22 +283,19 @@ md`
 Here is an example of the \`Modal\` component with dynamic children. You may want to display a \`Spinner\`
 while waiting for content to load. You can achieve this in a few ways. As shown in this example, the \`ImageModalContents\`
 component first renders a \`Spinner\` and then switches to the actual images once loaded. This results in
-the \`header\` and \`footer\` being rendered prior to the content. You could also choose to display the
+the \`heading\` and \`footer\` being rendered prior to the content. You could also choose to display the
 \`Spinner\` while waiting for the contents to load and then only display the \`Modal\` once fully loaded.
 \`\`\`jsx
-<Button text="View images" onClick={() => this.setState({ isOpen: !this.state.isOpen })} />
-{this.state.isOpen ? (
-  <Modal
-    closeLabel="close"
-    header={<Heading size="xs">Images</Heading>}
-    modalLabel="View random images"
-    onDismiss={() => this.setState({ isOpen: false })}
-    footer={footerButtons}
-    size="lg"
-  >
-    <ImageModalContents />
-  </Modal>
-    ) : null}
+<Modal
+  closeLabel="close"
+  heading="Images"
+  modalLabel="View random images"
+  onDismiss={() => this.setState({ isOpen: false })}
+  footer={footerButtons}
+  size="lg"
+>
+  <ImageModalContents />
+</Modal>
 \`\`\`
 `,
 atom => (
@@ -316,7 +304,7 @@ atom => (
     {atom.deref().isOpen ? (
       <Modal
         closeLabel="close"
-        header={<Heading size="xs">Images</Heading>}
+        heading="Images"
         modalLabel="View random images"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={viewImagesFooter(() => atom.reset({ isOpen: false }))}
@@ -354,9 +342,9 @@ md`
 The \`alertdialog\` role is used to notify the user of urgent information that demands the user's immediate attention.
 We need to specify this role separately from other dialog's for accessibility.
 
-*Note: There are 2 small visual differences from the other Modal's we've seen so far. First, there is no cancel button in the top
+*Note: There are 3 small visual differences from the other Modal's we've seen so far. First, there is no cancel button in the top
 right, forcing the user to take an explicit action. Second, there is no divider between the heading, children,
-and footer.*
+and footer. Finally, the heading's are larger and are left-aligned rather than centered.*
 
 
 `,
@@ -366,7 +354,7 @@ atom => (
     {atom.deref().isOpen ? (
       <Modal
         closeLabel="close"
-        header={<Heading size="md">Block Chris?</Heading>}
+        heading="Block Chris?"
         modalLabel="Would you like to block Chris?"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={alertFooter(() => atom.reset({ isOpen: false }))}
