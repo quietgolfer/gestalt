@@ -12,14 +12,14 @@ type Props = {
  */
 export default class GestaltProvider extends Component {
   static childContextTypes = {
-    inputDevice: React.PropTypes.string
+    inputDevice: React.PropTypes.string,
   };
 
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      inputDevice: 'key'
+      inputDevice: 'key',
     };
   }
 
@@ -29,43 +29,41 @@ export default class GestaltProvider extends Component {
 
   getChildContext() {
     return {
-      inputDevice: this.state.inputDevice
+      inputDevice: this.state.inputDevice,
     };
   }
 
-  componentDidMount() {
-    document.addEventListener('keydown', this.onKeyDown);
-    document.addEventListener('mousedown', this.onMouseDown);
-    document.addEventListener('touchstart', this.onTouchStart);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.onKeyDown);
-    document.removeEventListener('mousedown', this.onMouseDown);
-    document.removeEventListener('touchstart', this.onTouchStart);
-  }
-
   onKeyDown = () => {
-    this.setState({
-      inputDevice: 'key'
-    });
+    if (this.state.inputDevice !== 'key') {
+      this.setState({
+        inputDevice: 'key',
+      });
+    }
   }
 
   onMouseDown = () => {
-    this.setState({
-      inputDevice: 'mouse'
-    });
+    if (this.state.inputDevice !== 'mouse') {
+      this.setState({
+        inputDevice: 'mouse',
+      });
+    }
   }
 
   onTouchStart = () => {
-    this.setState({
-      inputDevice: 'touch'
-    });
+    if (this.state.inputDevice !== 'touch') {
+      this.setState({
+        inputDevice: 'touch',
+      });
+    }
   }
 
   render() {
     return (
-      <Box>
+      <Box
+        onKeyDown={this.onKeyDown}
+        onMouseDown={this.onMouseDown}
+        onTouchStart={this.onTouchStart}
+      >
         {this.props.children}
       </Box>
     );
