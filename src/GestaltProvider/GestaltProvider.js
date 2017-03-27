@@ -6,6 +6,10 @@ type Props = {
   children?: any,
 };
 
+type State = {
+  inputDevice: string,
+};
+
 /**
  * Context provider to see which type of input
  * is interacting with the device: 'key' / 'mouse' / 'touch'
@@ -23,9 +27,7 @@ export default class GestaltProvider extends Component {
     };
   }
 
-  state: {
-    inputDevice: string,
-  }
+  state: State;
 
   getChildContext() {
     return {
@@ -33,28 +35,26 @@ export default class GestaltProvider extends Component {
     };
   }
 
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    return this.state.inputDevice !== nextState.inputDevice;
+  }
+
   onKeyDown = () => {
-    if (this.state.inputDevice !== 'key') {
-      this.setState({
-        inputDevice: 'key',
-      });
-    }
+    this.setState({
+      inputDevice: 'key',
+    });
   }
 
   onMouseDown = () => {
-    if (this.state.inputDevice !== 'mouse') {
-      this.setState({
-        inputDevice: 'mouse',
-      });
-    }
+    this.setState({
+      inputDevice: 'mouse',
+    });
   }
 
   onTouchStart = () => {
-    if (this.state.inputDevice !== 'touch') {
-      this.setState({
-        inputDevice: 'touch',
-      });
-    }
+    this.setState({
+      inputDevice: 'touch',
+    });
   }
 
   render() {
