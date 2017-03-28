@@ -8,7 +8,7 @@ import Icon from '../Icon/Icon';
 import styles from './IconButton.css';
 import icons from '../Icon/icons';
 
-type Props = {
+type Props = {|
   ariaExpanded?: boolean,
   ariaHaspopup?: boolean,
   bgColor?: 'transparent' | 'lightGray',
@@ -22,7 +22,7 @@ type Props = {
   onClick?: () => void,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   tabIndex?: -1 | 0,
-}
+|}
 
 const defaultIconButtonIconColors = {
   transparent: 'gray',

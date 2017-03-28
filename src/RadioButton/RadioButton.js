@@ -13,13 +13,13 @@ export default class RadioButton extends Component {
     value: PropTypes.string.isRequired,
   };
 
-  props: {
+  props: {|
     checked?: boolean,
     id: string,
     name?: string,
     onChange: (e: { +checked: boolean }) => void,
     value: string,
-  };
+  |};
 
   handleChange = (e: { nativeEvent: { target: { checked: boolean}}}) => {
     const checked = e.nativeEvent.target.checked;

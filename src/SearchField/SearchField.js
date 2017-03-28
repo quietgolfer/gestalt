@@ -22,7 +22,7 @@ export default class SearchField extends Component {
     hovered: false,
   };
 
-  props: {
+  props: {|
     // eslint-disable-next-line react/no-unused-prop-types
     aria: { label: string },
     id: string,
@@ -30,7 +30,7 @@ export default class SearchField extends Component {
     onClear: () => void,
     placeholder?: string,
     value?: string,
-  };
+  |};
 
   handleChange = (e: Event) => {
     if (e.target instanceof HTMLInputElement) {

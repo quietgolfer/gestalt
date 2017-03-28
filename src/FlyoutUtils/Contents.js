@@ -42,7 +42,7 @@ type Size = {
   width: number,
 };
 
-type Props = {
+type Props = {|
   bgColor: 'dark-gray' | 'white' | 'orange',
   children?: any,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
@@ -52,7 +52,7 @@ type Props = {
   shouldFocus?: boolean,
   triggerRect: ClientRect,
   width: number,
-};
+|};
 
 type State = {
   flyoutOffset: {

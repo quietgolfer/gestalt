@@ -23,7 +23,7 @@ export default class Image extends Component {
     color: 'transparent',
   }
 
-  props: {
+  props: {|
     alt: string,
     children?: any,
     color: string,
@@ -34,7 +34,7 @@ export default class Image extends Component {
     sizes?: string,
     src: string,
     srcSet?: {[key: string]: string},
-  };
+  |};
 
   handleLoad = () => {
     if (this.props.onLoad) {

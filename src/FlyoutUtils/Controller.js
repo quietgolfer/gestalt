@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import Contents from './Contents';
 
-type Props = {
+type Props = {|
   bgColor: 'dark-gray' | 'white' | 'orange',
   children?: any,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
@@ -12,7 +12,7 @@ type Props = {
   shouldFocus?: boolean,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   trigger: React$Element<any>,
-};
+|};
 
 const SIZE_WIDTH_MAP = {
   xs: 185,

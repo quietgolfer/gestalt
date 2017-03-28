@@ -4,11 +4,11 @@ import classnames from 'classnames';
 import Text from '../Text/Text';
 import styles from './SegmentedControl.css';
 
-type Props = {
+type Props = {|
   items: Array<any>,
   onChange: (i: number, e: Event) => void,
   selectedItemIndex: number
-};
+|};
 
 export default function SegmentedControl(props: Props) {
   const {

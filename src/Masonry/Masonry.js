@@ -8,7 +8,7 @@ import styles from './Masonry.css';
 import throttle from '../throttle';
 import ThrottleInsertion from './ThrottleInsertion';
 
-type Props<T> = {
+type Props<T> = {|
   columnWidth: number,
   comp: () => void,
   flexible: boolean,
@@ -17,7 +17,7 @@ type Props<T> = {
   minCols: number,
   loadItems: () => void,
   scrollContainer: HTMLElement,
-};
+|};
 
 type GridItemType<T> = {
   component: {},

@@ -7,14 +7,14 @@ import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Grid.css';
 import WithLayout from './WithLayout';
 
-type Props<T> = {
+type Props<T> = {|
   comp: () => void,
   items: T[],
   maxItemWidth: number,
   minItemWidth: number,
   loadItems: () => void,
   scrollContainer: HTMLElement,
-};
+|};
 
 export default class BoxGrid extends Component {
   static defaultProps: {};

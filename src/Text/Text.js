@@ -13,7 +13,7 @@ const textColor = (color: Color) => {
   }
 };
 
-type Props = {
+type Props = {|
   align?: 'left' | 'right' | 'center' | 'justify',
   bold?: bool,
   children?: any,
@@ -23,7 +23,7 @@ type Props = {
   overflow?: 'normal' | 'breakWord',
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
-};
+|};
 
 export default function Text(props: Props) {
   const {

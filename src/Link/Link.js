@@ -22,14 +22,14 @@ const PropBlacklist = [
   'style',
 ];
 
-type LinkProps = {
+type LinkProps = {|
   // eslint-disable-next-line react/no-unused-prop-types
   children?: any,
   color: 'white' | 'darkGray' | 'gray' | 'red' | 'blue',
   // eslint-disable-next-line react/no-unused-prop-types
   href: string,
   inline?: boolean,
-};
+|};
 
 type GestaltContext = {
   inputDevice: '' | 'key' | 'mouse' | 'touch'

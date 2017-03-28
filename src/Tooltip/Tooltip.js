@@ -4,14 +4,14 @@ import React from 'react';
 import Box from '../Box/Box';
 import Controller from '../FlyoutUtils/Controller';
 
-type Props = {
+type Props = {|
   children?: any,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
   onDismiss: () => void,
   size?: 'xs' | 'sm' | 'md',
   trigger: React$Element<any>,
-};
+|};
 
 export default function Tooltip(props: Props) {
   const { children, idealDirection, isOpen, onDismiss, size, trigger } = props;

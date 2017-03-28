@@ -231,7 +231,4 @@ attach to the Text component.
     <div className="mb2">
       <Text italic>Italic</Text>
     </div>
-    <div className="mb2">
-      <Text underline>Underline</Text>
-    </div>
   </div>);

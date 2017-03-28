@@ -54,11 +54,11 @@ export default class Avatar extends Component {
     this.el = el;
   }
 
-  props: {
+  props: {|
     name: string,
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
     src?: string,
-  };
+  |};
 
   render() {
     const {

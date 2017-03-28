@@ -6,7 +6,7 @@ import Controller from '../FlyoutUtils/Controller';
 import MobileFlyout from './MobileFlyout';
 import breakpoints from '../breakpoints.json';
 
-type Props = {
+type Props = {|
   children?: any,
   closeLabel: string,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
@@ -14,7 +14,7 @@ type Props = {
   onDismiss: () => void,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   trigger: React$Element<any>,
-};
+|};
 
 type State = {
   breakpoint: 'xs' | 'sm' | 'md' | 'lg',
@@ -72,7 +72,6 @@ export default class Flyout extends Component {
       <Box xs={{ display: 'inlineBlock' }}>
         <Controller
           bgColor="white"
-          closeLabel={closeLabel}
           idealDirection={idealDirection}
           isOpen={isOpen}
           onDismiss={onDismiss}

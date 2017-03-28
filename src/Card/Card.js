@@ -20,10 +20,10 @@ export default class Card extends Component {
     inputDevice: '' | 'key' | 'mouse' | 'touch'
   }
 
-  static props: {
+  static props: {|
     ariaLabel: String,
     children?: any
-  }
+  |}
 
   state = {
     focused: false,

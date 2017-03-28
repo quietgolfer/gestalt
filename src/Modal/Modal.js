@@ -15,7 +15,7 @@ const SIZE_WIDTH_MAP = {
 
 const ESCAPE_KEY_CODE = 27;
 
-type Props = {
+type Props = {|
   children?: any,
   closeLabel: string,
   footer?: any,
@@ -24,7 +24,7 @@ type Props = {
   onDismiss: () => void,
   role?: 'alertdialog' | 'dialog',
   size?: 'sm' | 'md' | 'lg',
-};
+|};
 
 type State = {
   breakpoint: 'xs' | 'sm' | 'md' | 'lg',

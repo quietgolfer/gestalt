@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import styles from './Button.css';
 
-type Props = {
+type Props = {|
   ariaExpanded?: boolean,
   ariaHaspopup?: boolean,
   color?: 'gray' | 'red' | 'blue',
@@ -13,7 +13,7 @@ type Props = {
   onClick?: () => void,
   text: string,
   type?: 'submit' | 'button',
-}
+|}
 
 type GestaltContext = {
   inputDevice: '' | 'key' | 'mouse' | 'touch'

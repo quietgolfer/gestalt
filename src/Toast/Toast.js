@@ -6,10 +6,10 @@ import Mask from '../Mask/Mask';
 import Text from '../Text/Text';
 import Icon from '../Icon/Icon';
 
-type Props = {
+type Props = {|
   text: string | Array<string>,
   thumbnail?: React$Element<any>,
-};
+|};
 
 export default function Toast(props: Props) {
   const { thumbnail, text } = props;

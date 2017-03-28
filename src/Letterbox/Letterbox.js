@@ -2,12 +2,12 @@
 import React, { PropTypes } from 'react';
 import Mask from '../Mask/Mask';
 
-type PropType = {
+type PropType = {|
   children?: any,
   contentAspectRatio: number,
   height: number,
   width: number,
-};
+|};
 
 export default function Letterbox(
   {

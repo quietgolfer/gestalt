@@ -2,9 +2,9 @@
 import React, { PropTypes } from 'react';
 import Box from '../Box/Box';
 
-type Props = {
+type Props = {|
   children?: any,
-}
+|}
 
 export default function Container(props: Props) {
   const { children } = props;

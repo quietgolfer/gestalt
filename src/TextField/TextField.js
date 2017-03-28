@@ -33,7 +33,7 @@ export default class TextField extends Component {
     errorIsOpen: false,
   };
 
-  props: {
+  props: {|
     errorMessage?: string,
     hasError?: bool,
     id: string,
@@ -43,7 +43,7 @@ export default class TextField extends Component {
     placeholder?: string,
     type?: 'email' | 'password' | 'text' | 'url',
     value?: string,
-  };
+  |};
 
   handleChange = (e: Event) => {
     if (e.target instanceof HTMLInputElement) {

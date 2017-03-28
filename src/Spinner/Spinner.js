@@ -1,4 +1,6 @@
 // @flow
+/* global $Exact */
+/* global $Shape */
 import React, { PropTypes, Component } from 'react';
 import Box from '../Box/Box';
 import Icon from '../Icon/Icon';
@@ -7,10 +9,10 @@ import styles from './Spinner.css';
 const DELAY = 300;
 const SIZE = 40;
 
-type Props = {
+type Props = {|
   label: string,
-  show: bool,
-};
+  show: boolean,
+|};
 
 export default class Spinner extends Component {
 

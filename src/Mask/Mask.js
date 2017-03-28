@@ -3,13 +3,13 @@ import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import styles from './Mask.css';
 
-type Props = {
+type Props = {|
   children?: any,
   height?: number,
   shape?: 'circle' | 'rounded' | 'square',
   width?: number,
   wash?: bool,
-};
+|};
 
 export default function Mask(props: Props) {
   const { children, shape = 'square', width, height, wash = false } = props;

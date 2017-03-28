@@ -2,10 +2,10 @@
 import React, { PropTypes } from 'react';
 import styles from './Label.css';
 
-type Props = {
+type Props = {|
   children?: any,
   htmlFor: string,
-};
+|};
 
 export default function Label(props: Props) {
   const { children, htmlFor } = props;

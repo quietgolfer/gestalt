@@ -65,7 +65,7 @@ Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. I
               </Text>
             </Box>
           </Link>
-          <Button color="red" fullWidth text="Follow" />
+          <Button color="red" text="Follow" />
         </Card>
       </Box>
       <Box
@@ -84,7 +84,7 @@ Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. I
               </Text>
             </Box>
           </Link>
-          <Button color="red" fullWidth text="Follow" />
+          <Button color="red" text="Follow" />
         </Card>
       </Box>
     </Box>

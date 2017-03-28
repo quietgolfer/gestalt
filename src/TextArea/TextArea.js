@@ -26,7 +26,7 @@ export default class TextArea extends Component {
     errorIsOpen: false,
   };
 
-  props: {
+  props: {|
     errorMessage?: string,
     id: string,
     name?: string,
@@ -35,7 +35,7 @@ export default class TextArea extends Component {
     onFocus?: (value: string) => void,
     placeholder?: string,
     value?: string,
-  };
+  |};
 
   handleChange = (e: Event) => {
     if (e.target instanceof HTMLTextAreaElement) {

@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import Box from '../Box/Box';
 
-type Props = {
+type Props = {|
   children?: any,
-};
+|};
 
 type State = {
   inputDevice: string,

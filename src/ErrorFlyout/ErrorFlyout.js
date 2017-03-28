@@ -5,7 +5,7 @@ import Box from '../Box/Box';
 import Controller from '../FlyoutUtils/Controller';
 import Text from '../Text/Text';
 
-type Props = {
+type Props = {|
   id?: string,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
@@ -13,7 +13,7 @@ type Props = {
   onDismiss: () => void,
   size?: 'xs' | 'sm' | 'md', /* default sm */
   trigger: React$Element<any>,
-};
+|};
 
 export default function ErrorFlyout(props: Props) {
   const { id, idealDirection, isOpen, message, onDismiss, size, trigger } = props;

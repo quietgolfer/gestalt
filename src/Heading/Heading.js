@@ -20,13 +20,13 @@ const headingColor = (color: Color) => {
   }
 };
 
-type Props = {
+type Props = {|
   accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
   children?: any,
   color?: Color,
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   truncate?: bool,
-};
+|};
 
 export default function Heading(props: Props) {
   const {

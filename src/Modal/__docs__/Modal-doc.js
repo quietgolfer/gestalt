@@ -132,7 +132,7 @@ const editBoard = (
           </Label>
         </Column>
         <Column xs={8}>
-          <SelectList id="category" onChange={() => undefined} options={[{ key: 'food', value: 'Food' }]} selectedKey="food" />
+          <SelectList id="category" onChange={() => undefined} options={[{ key: 'food', value: 'Food' }]} value="food" />
         </Column>
       </div>
       <Divider />
@@ -143,7 +143,7 @@ const editBoard = (
           </Label>
         </Column>
         <Column xs={8}>
-          <Button id="cover" label="Cover Photo" text="Cover" />
+          <Button text="Cover" />
         </Column>
       </div>
       <Divider />
@@ -198,12 +198,12 @@ function editBoardFooter(onClose) {
   return (
     <div className="flex justify-between">
       <Column xs={6}>
-        <Button label="delete" text="Delete Board" />
+        <Button text="Delete Board" />
       </Column>
       <Column xs={6}>
         <div className="flex justify-end">
-          <Button label="cancel" text="Cancel" onClick={onClose} />
-          <Button color="red" label="save" text="Save" />
+          <Button text="Cancel" onClick={onClose} />
+          <Button color="red" text="Save" />
         </div>
       </Column>
     </div>
@@ -273,7 +273,7 @@ class ImageModalContents extends Component {
 function viewImagesFooter(onClose) {
   return (
     <div className="flex justify-end">
-      <Button label="cancel" text="Cancel" onClick={onClose} />
+      <Button text="Cancel" onClick={onClose} />
     </div>
   );
 }
@@ -328,10 +328,10 @@ function alertFooter(onClose) {
   return (
     <div className="flex-column">
       <div className="py1">
-        <Button fullWidth text="Cancel" onClick={onClose} />
+        <Button text="Cancel" onClick={onClose} />
       </div>
       <div className="py1">
-        <Button color="red" fullWidth text="Block" onClick={onClose} />
+        <Button color="red" text="Block" onClick={onClose} />
       </div>
     </div>
   );

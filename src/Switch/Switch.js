@@ -5,12 +5,12 @@ import styles from './Switch.css';
 
 const cx = classnames.bind(styles);
 
-type Props = {
+type Props = {|
   id: string,
   name?: string,
   onChange: (value: boolean) => void,
   switched?: boolean,
-}
+|}
 
 export default function Switch(props: Props) {
   const { id, name, onChange, switched = false } = props;

@@ -40,10 +40,10 @@ type ModifiedAvatarProps = CollabProps & {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
 };
 
-type GroupAvatarProps = {
+type GroupAvatarProps = {|
   collaborators: Array<CollabProps>,
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
-};
+|};
 
 type GridItemPropsType = {
   data: ModifiedAvatarProps,

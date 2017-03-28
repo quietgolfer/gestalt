@@ -20,7 +20,7 @@ export default class SelectList extends Component {
     options: [],
   }
 
-  props: {
+  props: {|
     id: string,
     name?: string,
     onChange: (e: { +value: string }) => void,
@@ -29,7 +29,7 @@ export default class SelectList extends Component {
       value: string,
     }>,
     value?: ?string,
-  };
+  |};
 
   handleOnChange = (e: Event) => {
     if (

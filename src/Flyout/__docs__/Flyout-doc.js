@@ -242,8 +242,8 @@ atom => (
         onDismiss={() => atom.reset({ more: false })}
         trigger={
           <IconButton
-            aria-expanded={!!atom.deref().more}
-            aria-haspopup
+            ariaExpanded={!!atom.deref().more}
+            ariaHaspopup
             icon="ellipsis"
             label="More options"
             onClick={() => atom.reset({ more: !atom.deref().more })}
@@ -263,8 +263,8 @@ atom => (
         onDismiss={() => atom.reset({ profile: false })}
         trigger={
           <IconButton
-            aria-expanded={!!atom.deref().profile}
-            aria-haspopup
+            ariaExpanded={!!atom.deref().profile}
+            ariaHaspopup
             icon="person"
             label="Profile options"
             onClick={() => atom.reset({ profile: !atom.deref().profile })}
@@ -282,8 +282,8 @@ atom => (
         onDismiss={() => atom.reset({ add: false })}
         trigger={
           <IconButton
-            aria-expanded={!!atom.deref().add}
-            aria-haspopup
+            ariaExpanded={!!atom.deref().add}
+            ariaHaspopup
             icon="add"
             label="Add pin"
             onClick={() => atom.reset({ add: !atom.deref().add })}
@@ -302,8 +302,8 @@ atom => (
         onDismiss={() => atom.reset({ help: false })}
         trigger={
           <Button
-            aria-expanded={!!atom.deref().help}
-            aria-haspopup
+            ariaExpanded={!!atom.deref().help}
+            ariaHaspopup
             onClick={() => atom.reset({ help: !atom.deref().help })}
             text="Help"
           />
