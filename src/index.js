@@ -1,6 +1,6 @@
 // @flow
 import './Borders.css';
-import './Colors.css';
+import './LegacyColors.css';
 import './Column.css';
 import './Cursor.css';
 import './Layout.css';

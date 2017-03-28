@@ -10,7 +10,7 @@ const colors = [
   'light-gray',
   'pine',
   'red',
-  'slate',
+  'olive',
   'white',
   'orange',
 ];

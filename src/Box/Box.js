@@ -301,7 +301,7 @@ const shrink = (value: Shrink): Style => (
   value ? fromClassName('flex-none') : identity()
 );
 
-type Color = 'blue' | 'darkGray' | 'pine' | 'gray' | 'red' | 'slate' | 'lightGray' | 'white' | 'orange' | 'transparent';
+type Color = 'blue' | 'darkGray' | 'pine' | 'gray' | 'red' | 'olive' | 'lightGray' | 'white' | 'orange' | 'transparent';
 
 const color = (value: Color): Style => {
   switch (value) {
@@ -315,8 +315,8 @@ const color = (value: Color): Style => {
       return fromClassName('bg-gray');
     case 'red':
       return fromClassName('bg-red');
-    case 'slate':
-      return fromClassName('bg-slate');
+    case 'olive':
+      return fromClassName('bg-olive');
     case 'lightGray':
       return fromClassName('bg-light-gray');
     case 'white':
@@ -548,7 +548,7 @@ Box.propTypes = {
     'pine',
     'gray',
     'red',
-    'slate',
+    'olive',
     'lightGray',
     'white',
     'orange',

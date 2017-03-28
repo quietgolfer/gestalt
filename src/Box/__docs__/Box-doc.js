@@ -183,7 +183,7 @@ Boxes are transparent by default.
 <Box color="darkGray" />
 <Box color="red" />
 <Box color="blue" />
-<Box color="slate" />
+<Box color="olive" />
 <Box color="pine" />
 <Box color="orange" />
 <Box color="transparent" />
@@ -196,7 +196,7 @@ Boxes are transparent by default.
     <ColorSwatch color="darkGray" />
     <ColorSwatch color="red" />
     <ColorSwatch color="blue" />
-    <ColorSwatch color="slate" />
+    <ColorSwatch color="olive" />
     <ColorSwatch color="pine" />
     <ColorSwatch color="orange" />
     <ColorSwatch color="transparent" />
