@@ -54,7 +54,6 @@ export default function Toast(props: Props) {
       color="darkGray"
       fit
       shape="pill"
-      margin={{ left: 1, right: 1 }}
       dangerouslySetInlineStyle={{
         __style: {
           width: 366,

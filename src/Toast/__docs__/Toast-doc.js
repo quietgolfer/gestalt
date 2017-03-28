@@ -47,6 +47,7 @@ atom => (
             transform: 'translateX(-50%)',
           }
         }}
+        padding={{ x: 1 }}
         position="fixed"
       >
         <Toast
@@ -89,6 +90,7 @@ atom => (
             transform: 'translateX(-50%)',
           }
         }}
+        padding={{ x: 1 }}
         position="fixed"
       >
         <Toast
