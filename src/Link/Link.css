@@ -28,21 +28,21 @@
 /* colors */
 
 .white {
-  composes: white from global;
+  composes: white from "../Colors.css";
 }
 
 .darkGray {
-  composes: dark-gray from global;
+  composes: darkGray from "../Colors.css";
 }
 
 .gray {
-  composes: gray from global;
+  composes: gray from "../Colors.css";
 }
 
 .red {
-  composes: red from global;
+  composes: red from "../Colors.css";
 }
 
 .blue {
-  composes: blue from global;
+  composes: blue from "../Colors.css";
 }

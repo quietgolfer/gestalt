@@ -12,7 +12,7 @@
   --olive: #364a4c;
   --orange: #e3780c;
 
-  /* darker versions of colors for hover states */
+  /* TODO(juliac): can delete all of these if pinboard isn't using them */
   --blue-hover: color(var(--blue) blackness(+ 6%));
   --blue-active: color(var(--blue) blackness(+ 10%));
   --dark-gray-hover: color(var(--dark-gray) blackness(+ 6%));
@@ -165,7 +165,7 @@
 
 :global .bg-light-gray-hover:hover,
 :global .bg-light-gray-focus:focus {
-  background-color: var(--light-gray-hover);
+   background-color: color(var(--light-gray) blackness(+ 6%));
 }
 
 :global .bg-light-gray-active:active {

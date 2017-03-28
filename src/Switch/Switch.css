@@ -11,16 +11,16 @@
 }
 
 .switchOn {
-  composes: bg-pine from global;
+  composes: bg-pine from "../Colors.css";
 }
 
 .switchOff {
-  composes: bg-gray from global;
+  composes: bg-gray from "../Colors.css";
 }
 
 .slider {
   composes: absolute from global;
-  composes: bg-white from global;
+  composes: bg-white from "../Colors.css";
   composes: circle from global;
   height: 24px;
   transition: left 0.2s sease;

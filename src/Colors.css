@@ -2,9 +2,9 @@
   /* primary colors */
   --red: #bd081c;
   --white: #fff;
-  --light-gray: #efefef;
+  --lightGray: #efefef;
   --gray: #b5b5b5;
-  --dark-gray: #555;
+  --darkGray: #555;
 
   /* secondary colors */
   --green: #0fa573;
@@ -35,11 +35,11 @@
 
 .bg-white { background-color: var(--white); }
 
-/* light-gray */
+/* lightGray */
 
-.light-gray { color: var(--light-gray); }
+.lightGray { color: var(--lightGray); }
 
-.bg-light-gray { background-color: var(--light-gray); }
+.bg-lightGray { background-color: var(--lightGray); }
 
 /* gray */
 
@@ -47,11 +47,11 @@
 
 .bg-gray { background-color: var(--gray); }
 
-/* dark-gray */
+/* darkGray */
 
-.dark-gray { color: var(--dark-gray); }
+.darkGray { color: var(--darkGray); }
 
-.bg-dark-gray { background-color: var(--dark-gray); }
+.bg-darkGray { background-color: var(--darkGray); }
 
 /** SECONDARY COLORS **/
 

@@ -1,5 +1,5 @@
 .textArea {
-  composes: bg-light-gray dark-gray from global;
+  composes: bg-lightGray darkGray from "../Colors.css";
   composes: bold text-md from global;
   composes: border-box from global;
   composes: col-12 from global;

@@ -1,3 +1,7 @@
+:root {
+  --lightGray: #efefef;
+}
+
 .button {
   composes: block from global;
   composes: circle from global;
@@ -28,30 +32,15 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.red {
-  composes: bg-red from global;
-  composes: bg-red-hover from global;
-  composes: bg-red-focus from global;
-  composes: bg-red-active from global;
-}
-
-.blue {
-  composes: bg-blue from global;
-  composes: bg-blue-hover from global;
-  composes: bg-blue-focus from global;
-  composes: bg-blue-active from global;
-}
-
-.gray {
-  composes: bg-gray from global;
-  composes: bg-gray-hover from global;
-  composes: bg-gray-focus from global;
-  composes: bg-gray-active from global;
-}
-
 .lightGray {
-  composes: bg-light-gray from global;
-  composes: bg-light-gray-hover from global;
-  composes: bg-light-gray-focus from global;
-  composes: bg-light-gray-active from global;
+  composes: bg-lightGray from "../Colors.css";
+}
+
+.lightGray:hover,
+.lightGray:focus {
+  background-color: color(var(--lightGray) blackness(+ 6%));
+}
+
+.lightGray:active {
+  background-color: color(var(--lightGray) blackness(+ 10%));
 }

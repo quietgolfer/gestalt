@@ -6,11 +6,11 @@
 }
 
 .unchecked {
-  composes: bg-light-gray from global;
+  composes: bg-lightGray from "../Colors.css";
 }
 
 .checked {
-  composes: bg-dark-gray from global;
+  composes: bg-darkGray from "../Colors.css";
   border-color: #efefef;
 }
 

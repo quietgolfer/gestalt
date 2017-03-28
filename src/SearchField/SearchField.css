@@ -1,6 +1,6 @@
 .input {
-  composes: col-12 bg-light-gray dark-gray from global;
-  composes: bold text-md from global;
+  composes: bg-lightGray darkGray from "../Colors.css";
+  composes: col-12 bold text-md from global;
   composes: border from global;
   composes: py2 from global;
   border-radius: 999px;

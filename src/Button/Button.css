@@ -1,10 +1,7 @@
 :root {
-  --blue-hover: color(#0084ff blackness(+ 6%));
-  --blue-active: color(#0084ff blackness(+ 10%));
-  --light-gray-hover: color(#efefef blackness(+ 6%));
-  --light-gray-active: color(#efefef blackness(+ 10%));
-  --red-hover: color(#bd081c blackness(+ 6%));
-  --red-active: color(#bd081c blackness(+ 10%));
+  --blue: #0084ff;
+  --red: #bd081c;
+  --lightGray: #efefef;
 }
 
 .button {
@@ -42,49 +39,46 @@
 }
 
 .disabled {
-  composes: bg-light-gray from global;
-  composes: gray from global;
+  composes: bg-lightGray gray from "../Colors.css";
   cursor: default;
 }
 
 .gray {
-  composes: bg-light-gray from global;
-  composes: dark-gray from global;
+  composes: bg-lightGray from "../Colors.css";
+  composes: darkGray from "../Colors.css";
 }
 
 .gray:hover,
 .gray:focus {
-  background-color: var(--light-gray-hover);
+  background-color: color(var(--lightGray) blackness(+ 6%));
 }
 
 .gray:active {
-  background-color: var(--light-gray-active);
+  background-color: color(var(--lightGray) blackness(+ 10%));
 }
 
 .red {
-  composes: bg-red from global;
-  composes: white from global;
+  composes: bg-red white from "../Colors.css";
 }
 
 .red:hover,
 .red:focus {
-  background-color: var(--red-hover);
+  background-color: color(var(--red) blackness(+ 6%));
 }
 
 .red:active {
-  background-color: var(--red-active);
+  background-color: color(var(--red) blackness(+ 10%));
 }
 
 .blue {
-  composes: bg-blue from global;
-  composes: white from global;
+  composes: bg-blue white from "../Colors.css";
 }
 
 .blue:hover,
 .blue:focus {
-  background-color: var(--blue-hover);
+  background-color: color(var(--blue) blackness(+ 6%));
 }
 
 .blue:active {
-  background-color: var(--blue-active);
+  background-color: color(var(--blue) blackness(+ 10%));
 }
