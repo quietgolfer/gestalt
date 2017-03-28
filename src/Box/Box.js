@@ -3,7 +3,7 @@
 
 import React, { PropTypes } from 'react';
 import styles from './Box.css';
-
+import colors from '../Colors.css';
 
 // --
 
@@ -301,28 +301,45 @@ const shrink = (value: Shrink): Style => (
   value ? fromClassName('flex-none') : identity()
 );
 
-type Color = 'blue' | 'darkGray' | 'pine' | 'gray' | 'red' | 'olive' | 'lightGray' | 'white' | 'orange' | 'transparent';
+type Color = 'blue' | 'darkGray' | 'pine' | 'gray' | 'red' | 'olive' | 'lightGray' | 'white' |'orange' |
+  'green' | 'navy' | 'midnight' | 'purple' | 'orchid' | 'eggplant' | 'maroon' | 'watermelon' | 'transparent';
 
 const color = (value: Color): Style => {
   switch (value) {
     case 'blue':
-      return fromClassName('bg-blue');
+      return fromClassName(colors['bg-blue']);
     case 'darkGray':
-      return fromClassName('bg-dark-gray');
+      return fromClassName(colors['bg-darkGray']);
     case 'pine':
-      return fromClassName('bg-pine');
+      return fromClassName(colors['bg-pine']);
     case 'gray':
-      return fromClassName('bg-gray');
+      return fromClassName(colors['bg-gray']);
     case 'red':
-      return fromClassName('bg-red');
+      return fromClassName(colors['bg-red']);
     case 'olive':
-      return fromClassName('bg-olive');
+      return fromClassName(colors['bg-olive']);
     case 'lightGray':
-      return fromClassName('bg-light-gray');
+      return fromClassName(colors['bg-lightGray']);
     case 'white':
-      return fromClassName('bg-white');
+      return fromClassName(colors['bg-white']);
     case 'orange':
-      return fromClassName('bg-orange');
+      return fromClassName(colors['bg-orange']);
+    case 'green':
+      return fromClassName(colors['bg-green']);
+    case 'navy':
+      return fromClassName(colors['bg-navy']);
+    case 'midnight':
+      return fromClassName(colors['bg-midnight']);
+    case 'purple':
+      return fromClassName(colors['bg-purple']);
+    case 'orchid':
+      return fromClassName(colors['bg-orchid']);
+    case 'eggplant':
+      return fromClassName(colors['bg-eggplant']);
+    case 'maroon':
+      return fromClassName(colors['bg-maroon']);
+    case 'watermelon':
+      return fromClassName(colors['bg-watermelon']);
     default /* transparent */:
       return identity();
   }
@@ -552,6 +569,14 @@ Box.propTypes = {
     'lightGray',
     'white',
     'orange',
+    'green',
+    'navy',
+    'midnight',
+    'purple',
+    'orchid',
+    'eggplant',
+    'maroon',
+    'watermelon',
     'transparent',
   ]),
   fit: PropTypes.bool,

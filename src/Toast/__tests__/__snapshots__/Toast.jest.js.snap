@@ -1,6 +1,6 @@
 exports[`test Confirmation Toast 1`] = `
 <div
-  className="box bg-dark-gray fit pill"
+  className="box bg-darkGray fit pill"
   style={
     Object {
       "marginBottom": 10,
@@ -55,7 +55,7 @@ exports[`test Confirmation Toast 1`] = `
 
 exports[`test Guide Toast 1`] = `
 <div
-  className="box bg-dark-gray fit pill"
+  className="box bg-darkGray fit pill"
   style={
     Object {
       "marginBottom": 10,

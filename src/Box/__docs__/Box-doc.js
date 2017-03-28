@@ -177,27 +177,41 @@ card('Colors', md`
 Boxes are transparent by default.
 
 \`\`\`jsx
+<Box color="red" />
 <Box color="white" />
 <Box color="lightGray" />
 <Box color="gray" />
 <Box color="darkGray" />
-<Box color="red" />
-<Box color="blue" />
-<Box color="olive" />
+<Box color="green" />
 <Box color="pine" />
+<Box color="olive" />
+<Box color="blue" />
+<Box color="navy" />
+<Box color="midnight" />
+<Box color="purple" />
+<Box color="eggplant" />
+<Box color="maroon" />
+<Box color="watermelon" />
 <Box color="orange" />
 <Box color="transparent" />
 \`\`\`
 `,
   <Box xs={{ display: 'flex' }} wrap>
+    <ColorSwatch color="red" />
     <ColorSwatch color="white" />
     <ColorSwatch color="lightGray" />
     <ColorSwatch color="gray" />
     <ColorSwatch color="darkGray" />
-    <ColorSwatch color="red" />
-    <ColorSwatch color="blue" />
-    <ColorSwatch color="olive" />
+    <ColorSwatch color="green" />
     <ColorSwatch color="pine" />
+    <ColorSwatch color="olive" />
+    <ColorSwatch color="blue" />
+    <ColorSwatch color="navy" />
+    <ColorSwatch color="midnight" />
+    <ColorSwatch color="purple" />
+    <ColorSwatch color="eggplant" />
+    <ColorSwatch color="maroon" />
+    <ColorSwatch color="watermelon" />
     <ColorSwatch color="orange" />
     <ColorSwatch color="transparent" />
   </Box>
