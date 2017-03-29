@@ -8,7 +8,7 @@ import styles from './Avatar.css';
 import colors from '../Colors.css';
 
 const Square = (props: *) => (
-  <Box {...props} postition="relative">
+  <Box {...props} position="relative">
     <Box dangerouslySetInlineStyle={{ __style: { paddingBottom: '100%' } }} position="relative" />
     <Box>{props.children}</Box>
   </Box>
