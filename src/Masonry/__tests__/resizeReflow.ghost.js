@@ -6,7 +6,7 @@ import countColumns from './lib/countColumns';
 import triggerResize from './lib/triggerResize';
 
 const PIN_SIZE = 235;
-const RESIZE_DEBOUNCE = 100;
+const RESIZE_DEBOUNCE = 300;
 
 describe('Masonry > Resize', () => {
   it('Reflows the grid after a resize', async () => {
