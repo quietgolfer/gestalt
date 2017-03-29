@@ -337,8 +337,6 @@ class Masonry<T> extends Component {
     let items;
     if (forceUpdate) {
       items = newItems;
-    } else if (this.insertedItemsCount === 0 && this.serverRefs.length) {
-      items = newItems.slice(0, this.columnCount);
     } else if (this.serverRefs.length && this.insertedItemsCount < this.serverRefs.length) {
       items = newItems.slice(0, this.serverRefs.length - this.insertedItemsCount);
     } else if (newItems.length > MAX_ITEMS_PER_INSERTION) {
