@@ -39,12 +39,12 @@
 }
 
 .disabled {
-  composes: bg-lightGray gray from "../Colors.css";
+  composes: lightGrayBg gray from "../Colors.css";
   cursor: default;
 }
 
 .gray {
-  composes: bg-lightGray from "../Colors.css";
+  composes: lightGrayBg from "../Colors.css";
   composes: darkGray from "../Colors.css";
 }
 
@@ -58,7 +58,7 @@
 }
 
 .red {
-  composes: bg-red white from "../Colors.css";
+  composes: redBg white from "../Colors.css";
 }
 
 .red:hover,
@@ -71,7 +71,7 @@
 }
 
 .blue {
-  composes: bg-blue white from "../Colors.css";
+  composes: blueBg white from "../Colors.css";
 }
 
 .blue:hover,

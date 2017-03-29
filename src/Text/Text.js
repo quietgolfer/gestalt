@@ -2,16 +2,9 @@
 
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
+import colors from '../Colors.css';
 
 type Color = 'blue' | 'darkGray' | 'gray' | 'red' | 'white';
-const textColor = (color: Color) => {
-  switch (color) {
-    case 'darkGray':
-      return 'dark-gray';
-    default:
-      return color;
-  }
-};
 
 type Props = {|
   align?: 'left' | 'right' | 'center' | 'justify',
@@ -43,7 +36,7 @@ export default function Text(props: Props) {
     'antialiased',
     'sans-serif',
     `text-${size}`,
-    textColor(color),
+    colors[color],
     `text-${align}`,
     {
       bold,

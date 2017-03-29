@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Caret from './Caret';
 import styles from './Contents.css';
+import colors from '../Colors.css';
 
 /* Needed until this Flow issue is fixed: https://github.com/facebook/flow/issues/380 */
 /* eslint quote-props: 0*/
@@ -43,7 +44,7 @@ type Size = {
 };
 
 type Props = {|
-  bgColor: 'dark-gray' | 'white' | 'orange',
+  bgColor: 'darkGray' | 'white' | 'orange',
   children?: any,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   onClick: (e: Event) => void,
@@ -327,14 +328,14 @@ export default class Contents extends Component {
 
     // Needed to prevent UI thrashing
     const visibility = this.state.mainDir === null ? 'hidden' : 'visible';
-    const background = `bg-${bgColor}`;
+    const background = `${bgColor}Bg`;
     const stroke = bgColor === 'white' ? '#efefef' : null;
-    const borderColor = bgColor === 'white' ? 'light-gray ' : bgColor;
+    const borderColor = bgColor === 'white' ? 'lightGray' : bgColor;
 
     return (
       <div className={'relative'} style={{ stroke, visibility }}>
         <div
-          className={classnames('absolute', background, 'block', 'border-box', borderColor, 'rounded', 'Flyout', styles.dimensions, styles.contents)}
+          className={classnames('absolute', colors[background], 'block', 'border-box', colors[borderColor], 'rounded', 'Flyout', styles.dimensions, styles.contents)}
           style={this.state.flyoutOffset}
           ref={(c) => { this.flyout = c; }}
           tabIndex={-1}
@@ -342,7 +343,7 @@ export default class Contents extends Component {
           <div className={classnames('items-center', 'flex', 'overflow-auto', styles.dimensions)} style={{ width }}>
             {children}
           </div>
-          <div className={classnames('absolute', bgColor, styles.caret)} style={{ ...this.state.caretOffset }}>
+          <div className={classnames('absolute', colors[bgColor], styles.caret)} style={{ ...this.state.caretOffset }}>
             <Caret direction={this.state.mainDir} />
           </div>
         </div>
@@ -353,7 +354,7 @@ export default class Contents extends Component {
 
 /* eslint react/no-unused-prop-types: 0 */
 Contents.propTypes = {
-  bgColor: PropTypes.oneOf(['dark-gray', 'white', 'orange']),
+  bgColor: PropTypes.oneOf(['darkGray', 'white', 'orange']),
   children: PropTypes.node,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   onClick: PropTypes.func.isRequired,

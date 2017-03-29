@@ -19,7 +19,7 @@ export default function Tooltip(props: Props) {
   return (
     <Box xs={{ display: 'inlineBlock' }}>
       <Controller
-        bgColor="dark-gray"
+        bgColor="darkGray"
         idealDirection={idealDirection}
         isOpen={isOpen}
         onDismiss={onDismiss}

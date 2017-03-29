@@ -1,5 +1,5 @@
 .input {
-  composes: bg-lightGray darkGray from "../Colors.css";
+  composes: lightGrayBg darkGray from "../Colors.css";
   composes: col-12 bold text-md from global;
   composes: border from global;
   composes: py2 from global;

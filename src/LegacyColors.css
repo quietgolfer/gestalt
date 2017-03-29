@@ -165,7 +165,7 @@
 
 :global .bg-light-gray-hover:hover,
 :global .bg-light-gray-focus:focus {
-   background-color: color(var(--light-gray) blackness(+ 6%));
+  background-color: color(var(--light-gray) blackness(+ 6%));
 }
 
 :global .bg-light-gray-active:active {

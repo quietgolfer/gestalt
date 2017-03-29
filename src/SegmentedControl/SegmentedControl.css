@@ -1,5 +1,5 @@
 .SegmentedControl {
-  composes: bg-lightGray from "../Colors.css";
+  composes: lightGrayBg from "../Colors.css";
   composes: flex justify-between from global;
   border-radius: 4px;
   padding: 2px;
@@ -21,7 +21,7 @@
 }
 
 .itemIsSelected {
-  composes: bg-white from "../Colors.css";
+  composes: whiteBg from "../Colors.css";
 }
 
 @media (--md) {

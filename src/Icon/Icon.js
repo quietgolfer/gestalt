@@ -4,16 +4,9 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import styles from './Icon.css';
 import icons from './icons';
+import colors from '../Colors.css';
 
 type Color = 'blue' | 'darkGray' | 'gray' | 'red' | 'white';
-const iconColor = (color: Color) => {
-  switch (color) {
-    case 'darkGray':
-      return 'dark-gray';
-    default:
-      return color;
-  }
-};
 
 type IconProps = {
   accessibilityLabel: string,
@@ -38,7 +31,7 @@ export default function Icon(props: IconProps) {
 
   const cs = classnames(
     styles.icon,
-    iconColor(color),
+    colors[color],
     (!inline && 'block'),
   );
 

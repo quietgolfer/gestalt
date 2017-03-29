@@ -307,39 +307,39 @@ type Color = 'blue' | 'darkGray' | 'pine' | 'gray' | 'red' | 'olive' | 'lightGra
 const color = (value: Color): Style => {
   switch (value) {
     case 'blue':
-      return fromClassName(colors['bg-blue']);
+      return fromClassName(colors.blueBg);
     case 'darkGray':
-      return fromClassName(colors['bg-darkGray']);
+      return fromClassName(colors.darkGrayBg);
     case 'pine':
-      return fromClassName(colors['bg-pine']);
+      return fromClassName(colors.pineBg);
     case 'gray':
-      return fromClassName(colors['bg-gray']);
+      return fromClassName(colors.grayBg);
     case 'red':
-      return fromClassName(colors['bg-red']);
+      return fromClassName(colors.redBg);
     case 'olive':
-      return fromClassName(colors['bg-olive']);
+      return fromClassName(colors.oliveBg);
     case 'lightGray':
-      return fromClassName(colors['bg-lightGray']);
+      return fromClassName(colors.lightGrayBg);
     case 'white':
-      return fromClassName(colors['bg-white']);
+      return fromClassName(colors.whiteBg);
     case 'orange':
-      return fromClassName(colors['bg-orange']);
+      return fromClassName(colors.orangeBg);
     case 'green':
-      return fromClassName(colors['bg-green']);
+      return fromClassName(colors.greenBg);
     case 'navy':
-      return fromClassName(colors['bg-navy']);
+      return fromClassName(colors.navyBg);
     case 'midnight':
-      return fromClassName(colors['bg-midnight']);
+      return fromClassName(colors.midnightBg);
     case 'purple':
-      return fromClassName(colors['bg-purple']);
+      return fromClassName(colors.purpleBg);
     case 'orchid':
-      return fromClassName(colors['bg-orchid']);
+      return fromClassName(colors.orchidBg);
     case 'eggplant':
-      return fromClassName(colors['bg-eggplant']);
+      return fromClassName(colors.eggplantBg);
     case 'maroon':
-      return fromClassName(colors['bg-maroon']);
+      return fromClassName(colors.maroonBg);
     case 'watermelon':
-      return fromClassName(colors['bg-watermelon']);
+      return fromClassName(colors.watermelonBg);
     default /* transparent */:
       return identity();
   }

@@ -20,7 +20,7 @@
 }
 
 .transparent {
-  background: transparent;
+  composes: transparentBg from "../Colors.css";
 }
 
 .transparent:hover,
@@ -33,7 +33,7 @@
 }
 
 .lightGray {
-  composes: bg-lightGray from "../Colors.css";
+  composes: lightGrayBg from "../Colors.css";
 }
 
 .lightGray:hover,

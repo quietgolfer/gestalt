@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import cx from 'classnames';
 import IconButton from '../IconButton/IconButton';
 import styles from './MobileFlyout.css';
+import colors from '../Colors.css';
 
 const ESCAPE_KEY_CODE = 27;
 
@@ -57,7 +58,7 @@ export default class MobileFlyout extends Component {
             <div>
               <div className={cx('fixed', 'left-0', 'top-0', 'zoom-out', styles['MobileFlyout-overlay'])} />
               <div
-                className={cx('bg-white', 'block', 'border', 'border-box', 'bottom-0', 'fixed', 'left-0', styles.MobileFlyout, 'overflow-scroll')}
+                className={cx(colors.whiteBg, 'block', 'border', 'border-box', 'bottom-0', 'fixed', 'left-0', styles.MobileFlyout, 'overflow-scroll')}
                 ref={(c) => { this.flyout = c; }}
               >
                 <div className={cx('pull-right')}>

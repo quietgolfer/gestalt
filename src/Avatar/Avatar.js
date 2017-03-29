@@ -5,6 +5,7 @@ import Box from '../Box/Box';
 import Image from '../Image/Image';
 import Mask from '../Mask/Mask';
 import styles from './Avatar.css';
+import colors from '../Colors.css';
 
 const Square = (props: *) => (
   <Box {...props} postition="relative">
@@ -27,7 +28,7 @@ const DefaultAvatar = ({ name, size }: { name: string, size: number }) => {
       shape="circle"
       xs={{ display: 'flex' }}
     >
-      <span className={classnames('white', 'bold', 'antialiased')}>{firstInitial}</span>
+      <span className={classnames(colors.white, 'bold', 'antialiased')}>{firstInitial}</span>
     </Square>
   );
 };

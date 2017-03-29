@@ -1,6 +1,7 @@
 // @flow
 import { createElement, PropTypes } from 'react';
 import cx from 'classnames';
+import colors from '../Colors.css';
 
 const defaultHeadingLevels = {
   xs: 5,
@@ -11,14 +12,6 @@ const defaultHeadingLevels = {
 };
 
 type Color = 'blue' | 'darkGray' | 'gray' | 'red' | 'white';
-const headingColor = (color: Color) => {
-  switch (color) {
-    case 'darkGray':
-      return 'dark-gray';
-    default:
-      return color;
-  }
-};
 
 type Props = {|
   accessibilityLevel?: 1 | 2 | 3 | 4 | 5 | 6,
@@ -44,7 +37,7 @@ export default function Heading(props: Props) {
     'mt0',
     'sans-serif',
     `display-${size}`,
-    headingColor(color),
+    colors[color],
     'break-word',
     truncate,
   );

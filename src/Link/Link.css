@@ -24,25 +24,3 @@
 .block {
   composes: block from global;
 }
-
-/* colors */
-
-.white {
-  composes: white from "../Colors.css";
-}
-
-.darkGray {
-  composes: darkGray from "../Colors.css";
-}
-
-.gray {
-  composes: gray from "../Colors.css";
-}
-
-.red {
-  composes: red from "../Colors.css";
-}
-
-.blue {
-  composes: blue from "../Colors.css";
-}

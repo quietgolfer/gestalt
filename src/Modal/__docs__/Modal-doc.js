@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
 import Button from '../../Button/Button';
 import Column from '../../Column/Column';
 import Divider from '../../Divider/Divider';
@@ -67,15 +68,15 @@ the \`heading\`, \`children\`, and \`footer\` are included as well.
   heading="Heading"
   onDismiss={() => this.setState({ isOpen: false })}
   footer={
-    <div className="bg-gray">
+    <Box color="gray">
       <Heading size="sm">Footer</Heading>
-    </div>
+    </Box>
   }
   size="md"
 >
-  <div className="bg-gray" style={{ height: 400 }}>
+  <Box color="gray" dangerouslySetInlineStyle={{ __style: { height: 400 } }}>
     <Heading size="sm">Children</Heading>
-  </div>
+  </Box>
 </Modal>
 \`\`\`
 `,
@@ -89,15 +90,15 @@ atom => (
         heading="Heading"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={
-          <div className="bg-gray">
+          <Box color="gray">
             <Heading size="sm">Footer</Heading>
-          </div>
+          </Box>
         }
         size="md"
       >
-        <div className="bg-gray" style={{ height: 400 }}>
+        <Box color="gray" dangerouslySetInlineStyle={{ __style: { height: 400 } }}>
           <Heading size="sm">Children</Heading>
-        </div>
+        </Box>
       </Modal>
     ) : null }
   </div>

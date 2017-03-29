@@ -27,31 +27,31 @@
 
 .red { color: var(--red); }
 
-.bg-red { background-color: var(--red); }
+.redBg { background-color: var(--red); }
 
 /* white */
 
 .white { color: var(--white); }
 
-.bg-white { background-color: var(--white); }
+.whiteBg { background-color: var(--white); }
 
 /* lightGray */
 
 .lightGray { color: var(--lightGray); }
 
-.bg-lightGray { background-color: var(--lightGray); }
+.lightGrayBg { background-color: var(--lightGray); }
 
 /* gray */
 
 .gray { color: var(--gray); }
 
-.bg-gray { background-color: var(--gray); }
+.grayBg { background-color: var(--gray); }
 
 /* darkGray */
 
 .darkGray { color: var(--darkGray); }
 
-.bg-darkGray { background-color: var(--darkGray); }
+.darkGrayBg { background-color: var(--darkGray); }
 
 /** SECONDARY COLORS **/
 
@@ -59,70 +59,74 @@
 
 .green { color: var(--green); }
 
-.bg-green { background-color: var(--green); }
+.greenBg { background-color: var(--green); }
 
 /* pine */
 
 .pine { color: var(--pine); }
 
-.bg-pine { background-color: var(--pine); }
+.pineBg { background-color: var(--pine); }
 
 /* olive */
 
 .olive { color: var(--olive); }
 
-.bg-olive { background-color: var(--olive); }
+.oliveBg { background-color: var(--olive); }
 
 /* blue */
 
 .blue { color: var(--blue); }
 
-.bg-blue { background-color: var(--blue); }
+.blueBg { background-color: var(--blue); }
 
 /* navy */
 
 .navy { color: var(--navy); }
 
-.bg-navy { background-color: var(--navy); }
+.navyBg { background-color: var(--navy); }
 
 /* midnight */
 
 .midnight { color: var(--midnight); }
 
-.bg-midnight { background-color: var(--midnight); }
+.midnightBg { background-color: var(--midnight); }
 
 /* purple */
 
 .purple { color: var(--purple); }
 
-.bg-purple { background-color: var(--purple); }
+.purpleBg { background-color: var(--purple); }
 
 /* orchid */
 
 .orchid { color: var(--orchid); }
 
-.bg-orchid { background-color: var(--orchid); }
+.orchidBg { background-color: var(--orchid); }
 
 /* eggplant */
 
 .eggplant { color: var(--eggplant); }
 
-.bg-eggplant { background-color: var(--eggplant); }
+.eggplantBg { background-color: var(--eggplant); }
 
 /* maroon */
 
 .maroon { color: var(--maroon); }
 
-.bg-maroon { background-color: var(--maroon); }
+.maroonBg { background-color: var(--maroon); }
 
 /* watermelon */
 
 .watermelon { color: var(--watermelon); }
 
-.bg-watermelon { background-color: var(--watermelon); }
+.watermelonBg { background-color: var(--watermelon); }
 
 /* orange */
 
 .orange { color: var(--orange); }
 
-.bg-orange { background-color: var(--orange); }
+.orangeBg { background-color: var(--orange); }
+
+/* transparent */
+
+.transparentBg { background-color: transparent; }

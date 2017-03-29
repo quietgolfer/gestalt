@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
 import Link from '../Link';
 import { ns } from '../../../.corkboard/cards';
 import GestaltProvider from '../../GestaltProvider/GestaltProvider';
@@ -36,13 +37,13 @@ type LinkProps = {
 
 card(
   <GestaltProvider>
-    <div className="bg-gray">
+    <Box color="gray">
       <Text>
         <Link color="white" href="https://pinterest.com">
           <div className="p2">Pinterest.com</div>
         </Link>
       </Text>
-    </div>
+    </Box>
   </GestaltProvider>,
   { heading: false },
 );

@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 import Masonry from '../Masonry/Masonry';
 import styles from './GroupAvatar.css';
+import colors from '../Colors.css';
 
 const GUTTER_WIDTH = 2;
 
@@ -75,11 +76,11 @@ function DefaultAvatar(props: DefaultAvatarProps) {
 
   const container = classnames(
     'antialiased',
-    'bg-gray',
+    colors.grayBg,
     'bold',
     'overflow-hidden',
     'relative',
-    'white'
+    colors.white,
   );
 
   const containerStyles = {
@@ -141,7 +142,7 @@ function Avatar(props: GridItemPropsType) {
   const { data } = props;
 
   const avatarStyles = getAvatarStyles(data.placement, data.size);
-  const backgroundColor = data.src ? 'bg-light-gray' : 'bg-gray';
+  const backgroundColor = data.src ? 'lightGrayBg' : 'grayBg';
   const imgContainerStyles = {
     height: avatarStyles.width,
   };
@@ -172,7 +173,7 @@ function Avatar(props: GridItemPropsType) {
 
   return (
     <div className={classnames('overflow-hidden', 'relative')} style={containerStyles}>
-      <div className={classnames(backgroundColor, 'overflow-hidden')} style={imgContainerStyles}>
+      <div className={classnames(colors[backgroundColor], 'overflow-hidden')} style={imgContainerStyles}>
         {avatarSection}
       </div>
     </div>
@@ -194,7 +195,7 @@ export default function GroupAvatar(props: GroupAvatarProps) {
 
   return (
     <div
-      className={classnames('bg-white', 'circle', 'overflow-hidden')}
+      className={classnames(colors.whiteBg, 'circle', 'overflow-hidden')}
       style={borderBoxStyle}
     >
       <div style={{ margin: GUTTER_WIDTH / -2 }}>

@@ -2,6 +2,7 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import styles from './Link.css';
+import colors from '../Colors.css';
 
 const contains = (key, arr) => arr.indexOf(key) >= 0;
 const omit = (keys, obj) => Object.keys(obj).reduce((acc, k) => {
@@ -45,7 +46,7 @@ export default function Link(props: LinkProps, context: GestaltContext) {
       className={
         cx(
           styles.link,
-          styles[color],
+          colors[color],
           (inline ? styles.inline : styles.block),
           (inputDevice !== 'key' ? styles.disableFocusOutline : '')
         )

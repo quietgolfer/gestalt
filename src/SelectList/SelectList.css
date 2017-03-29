@@ -1,13 +1,12 @@
 .select {
   composes: col-12 from global;
   composes: bold from global;
-  composes: darkGray from "../Colors.css";
+  composes: darkGray transparentBg from "../Colors.css";
   composes: text-md from global;
   composes: no-border from global;
   composes: p2 from global;
   composes: relative from global;
   composes: pointer from global;
   appearance: none;
-  background-color: transparent;
   padding-right: 20%; /* prevents option.name from running into arrow */
 }

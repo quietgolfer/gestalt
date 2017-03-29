@@ -4,7 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import Contents from './Contents';
 
 type Props = {|
-  bgColor: 'dark-gray' | 'white' | 'orange',
+  bgColor: 'darkGray' | 'white' | 'orange',
   children?: any,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
@@ -111,7 +111,7 @@ export default class Controller extends Component {
 }
 
 Controller.propTypes = {
-  bgColor: PropTypes.oneOf(['dark-gray', 'white', 'orange']),
+  bgColor: PropTypes.oneOf(['darkGray', 'white', 'orange']),
   children: PropTypes.node,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   isOpen: PropTypes.bool.isRequired,

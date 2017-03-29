@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
 import Container from '../Container';
 import { ns } from '../../../.corkboard/cards';
 
@@ -22,20 +23,19 @@ Containers are useful in responsively laying out content on different screens. O
 the container is the width of the screen. On large screens, it centers the content.
 
 \`\`\`html
-<div className="bg-gray">
-  <Container>
-    <div className="bg-white p2">
+  <Box color="gray" padding={2}>  <Container>
+    <Box color="white" padding={2}>
       Centered content
-    </div>
+    </Box>
   </Container>
-</div>
+</Box>
 \`\`\`
 `,
-  <div className="bg-gray p2">
+  <Box color="gray" padding={2}>
     <Container>
-      <div className="bg-white p2">
+      <Box color="white" padding={2}>
         Centered content
-      </div>
+      </Box>
     </Container>
-  </div>,
+  </Box>,
 { stacked: true });

@@ -6,6 +6,7 @@ import Heading from '../Heading/Heading';
 import IconButton from '../IconButton/IconButton';
 import styles from './Modal.css';
 import breakpoints from '../breakpoints.json';
+import colors from '../Colors.css';
 
 const SIZE_WIDTH_MAP = {
   sm: 414,
@@ -128,12 +129,12 @@ export default class Modal extends Component {
     const containerClasses = this.state.breakpoint === 'xs' ?
       classnames(container, 'items-end', 'bottom-0') : classnames(container, 'items-center', styles.container);
 
-    const wrapper = ['bg-white', 'fit', 'relative'];
+    const wrapper = ['fit', 'relative'];
     const wrapperClasses = this.state.breakpoint === 'xs' ?
-      classnames(wrapper, 'm0', 'self-end') : classnames(wrapper, 'my2', 'rounded', styles.wrapper);
+      classnames(wrapper, colors.whiteBg, 'm0', 'self-end') : classnames(wrapper, colors.whiteBg, 'my2', 'rounded', styles.wrapper);
 
-    const overlay = ['absolute', 'bg-dark-gray', 'col-12', 'left-0', 'top-0', 'zoom-out'];
-    const overlayClasses = classnames(overlay, styles.overlay);
+    const overlay = ['absolute', 'col-12', 'left-0', 'top-0', 'zoom-out'];
+    const overlayClasses = classnames(overlay, styles.overlay, colors.darkGrayBg);
 
     return (
       <div
