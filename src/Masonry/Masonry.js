@@ -274,7 +274,6 @@ class Masonry<T> extends Component {
   insertedItemsCount: number;
   itemKeyCounter: number;
   resizeTimeout: ?number;
-  scrollBuffer: number;
   serverRefs: Array<HTMLElement>;
 
   updateItems(items: Array<*>) {
@@ -523,7 +522,6 @@ class Masonry<T> extends Component {
           - scrollContainer.getBoundingClientRect().top;
       }
     }
-    this.scrollBuffer = this.containerHeight * 2;
   }
 
   /**
