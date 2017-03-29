@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { card, md } from 'corkboard';
 import Col from '../Column';
-import { ns, stylesTable } from '../../../.corkboard/cards';
+import { ns } from '../../../.corkboard/cards';
 
 ns('Column');
 
@@ -194,8 +194,3 @@ Column gutters can be created through composition and negative margins.
       </Col>
     </div>
   </div>);
-
-card('Styles Table',
-  <p className="red">These styles are deprecated. Please use the <code>Column</code> component instead.</p>,
-  stylesTable(require('!!raw!postcss!../../Column.css')),
-  { stacked: true });
