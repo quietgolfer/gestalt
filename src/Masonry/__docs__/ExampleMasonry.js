@@ -106,7 +106,7 @@ export default class ExampleMasonry extends React.Component {
               gutterWidth={5}
               items={this.state.pins}
               minCols={1}
-              ref={(ref) => { this.grid = (ref ? ref.gridRef : ref); }}
+              ref={(ref) => { this.grid = ref; }}
               scrollContainer={this.scrollContainer}
             />
           )}

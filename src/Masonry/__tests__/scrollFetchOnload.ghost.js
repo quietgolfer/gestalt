@@ -25,7 +25,9 @@ describe('Masonry > ScrollFetch onload', () => {
       },
     });
     await ghost.script(() => window.NEXT_FETCH());
-    const largerFetchCount = await ghost.script(() => window.TEST_FETCH_COUNTS);
-    assert.ok(largerFetchCount >= 1);
+    await ghost.wait(async () => {
+      const largerFetchCount = await ghost.script(() => window.TEST_FETCH_COUNTS);
+      return largerFetchCount >= 1;
+    });
   });
 });

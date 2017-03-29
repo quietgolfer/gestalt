@@ -6,7 +6,8 @@ import MasonryComponentWrapper from './MasonryComponentWrapper';
 import ScrollFetch from '../ScrollFetch/ScrollFetch';
 import styles from './Masonry.css';
 import throttle from '../throttle';
-import ThrottleInsertion from './ThrottleInsertion';
+
+const MAX_ITEMS_PER_INSERTION = 1;
 
 type Props<T> = {|
   columnWidth: number,
@@ -121,8 +122,8 @@ class Masonry<T> extends Component {
       // Shallow compare all items, if any change reflow the grid.
       for (let i = 0; i < items.length; i += 1) {
         if (items[i] !== this.props.items[i]) {
-          this.insertedItemsCount = 0;
           this.setGridItems(items);
+          break;
         }
       }
     }
@@ -219,7 +220,9 @@ class Masonry<T> extends Component {
     this.setState({
       gridItems: [],
     }, () => {
-      this.insertItems(items);
+      this.insertedItemsCount = 0;
+      this.serverRefSizes = [];
+      this.insertItems(items, null, null, true);
     });
   }
 
@@ -275,6 +278,7 @@ class Masonry<T> extends Component {
   itemKeyCounter: number;
   resizeTimeout: ?number;
   serverRefs: Array<HTMLElement>;
+  serverRefSizes: Array<*>;
 
   updateItems(items: Array<*>) {
     if (!items) {
@@ -282,7 +286,6 @@ class Masonry<T> extends Component {
     }
     if (items.length !== this.insertedItemsCount) {
       this.insertItems(items.slice(this.insertedItemsCount));
-      this.insertedItemsCount = items.length;
     }
   }
 
@@ -318,17 +321,12 @@ class Masonry<T> extends Component {
     return serverItems;
   }
 
-  insertItems(items: Array<*>, colIdx?: (number | null) = null, itemIdx?: (number | null) = null) {
-    // Append a temporary node to the dom to measure it.
-    const measuringNode = document.createElement('div');
-    // Force width for flexible layouts
-    measuringNode.style.width = `${this.itemWidth}px`;
-
-    if (document.body) {
-      document.body.appendChild(measuringNode);
-    }
-
+  insertItems(newItems: Array<*>, colIdx?: (number | null) = null,
+    itemIdx?: (number | null) = null, forceUpdate?: (boolean | null) = null) {
     const gridItems = this.state.gridItems;
+    const previousItemInColumn = colIdx !== null && itemIdx !== null &&
+      gridItems[colIdx] && gridItems[colIdx][itemIdx - 1] ?
+      gridItems[colIdx][itemIdx - 1] : null;
 
     if (!gridItems.length) {
       for (let i = 0; i < this.columnCount; i += 1) {
@@ -336,14 +334,46 @@ class Masonry<T> extends Component {
       }
     }
 
-    this.itemKeyCounter = this.itemKeyCounter || 0;
+    let items;
+    if (forceUpdate) {
+      items = newItems;
+    } else if (this.insertedItemsCount === 0 && this.serverRefs.length) {
+      items = newItems.slice(0, this.columnCount);
+    } else if (this.serverRefs.length && this.insertedItemsCount < this.serverRefs.length) {
+      items = newItems.slice(0, this.serverRefs.length - this.insertedItemsCount);
+    } else if (newItems.length > MAX_ITEMS_PER_INSERTION) {
+      items = newItems.slice(0, MAX_ITEMS_PER_INSERTION);
+    } else {
+      items = newItems;
+    }
 
-    items.forEach((itemData, insertedItemIdx) => {
+    this.itemKeyCounter = this.itemKeyCounter || 1;
+    if (!this.serverRefSizes && this.serverRefs.length > 0) {
+      this.serverRefSizes = this.serverRefs.map((ref) => {
+        const serverRendered = ref;
+        serverRendered.style.width = `${this.itemWidth}px`;
+        return [serverRendered.clientWidth, serverRendered.clientHeight];
+      });
+    }
+
+    // build out initial item info blobs for each component
+    const pendingDomMeasurements = [];
+    const itemInfos = items.map((itemData, insertedItemIdx) => {
+      const actualIdx = insertedItemIdx + this.insertedItemsCount;
       const itemInfo = {};
 
-      const key = colIdx != null && itemIdx != null ?
-        parseFloat(`${insertedItemIdx.toString()}.${this.itemKeyCounter}1`) :
-        this.itemKeyCounter;
+      let key;
+      if (colIdx != null && itemIdx != null) {
+        const counterAsDecimal = (this.itemKeyCounter % 10000) / 1000;
+        if (previousItemInColumn) {
+          key = parseFloat(`${parseInt(previousItemInColumn.key, 10) + counterAsDecimal}`);
+        } else {
+          key = parseFloat(`${counterAsDecimal}`);
+        }
+      } else {
+        key = this.itemKeyCounter;
+      }
+      this.itemKeyCounter += 1;
 
       const component = (
         <this.props.comp
@@ -353,33 +383,62 @@ class Masonry<T> extends Component {
         />
       );
 
-      let clientHeight;
-      let clientWidth;
-      if (this.serverRefs && this.serverRefs[insertedItemIdx]) {
-        const serverRendered = this.serverRefs[insertedItemIdx];
-        serverRendered.style.width = `${this.itemWidth}px`;
-        clientHeight = serverRendered.clientHeight;
-        clientWidth = serverRendered.clientWidth;
+      if (this.serverRefSizes && actualIdx < this.serverRefSizes.length) {
+        const sizeInfo = this.serverRefSizes[actualIdx];
+        itemInfo.width = sizeInfo[0];
+        itemInfo.height = sizeInfo[1];
       } else {
-        ReactDOM.unstable_renderSubtreeIntoContainer(
-          this, component, measuringNode);
-        clientHeight = measuringNode.clientHeight;
-        clientWidth = measuringNode.clientWidth;
+        pendingDomMeasurements.push({
+          component,
+          itemInfo
+        });
       }
 
       itemInfo.component = component;
-      itemInfo.width = clientWidth;
-      itemInfo.height = clientHeight;
       itemInfo.itemData = itemData;
+      itemInfo.key = key;
+
+      return itemInfo;
+    });
+
+    if (pendingDomMeasurements.length > 0) {
+      // Append a temporary node to the dom to measure it.
+      const measuringNode = document.createElement('div');
+
+      if (document.body) {
+        document.body.appendChild(measuringNode);
+      }
+
+      ReactDOM.unstable_renderSubtreeIntoContainer(
+        this, <div> { pendingDomMeasurements.map(({ component }, idx) =>
+          <div key={`el-${idx}`} style={{ width: `${this.itemWidth}px` }}>{ component }</div>
+        )} </div>, measuringNode);
+
+      const wrapperNodes = measuringNode.children[0].children;
+      for (let i = 0; i < wrapperNodes.length; i += 1) {
+        const { itemInfo } = pendingDomMeasurements[i];
+        const el = wrapperNodes[i];
+        itemInfo.width = el.clientWidth;
+        itemInfo.height = el.clientHeight;
+      }
+
+      ReactDOM.unmountComponentAtNode(measuringNode);
+
+      if (document.body) {
+        document.body.removeChild(measuringNode);
+      }
+    }
+
+    // insert the actual items into the grid
+    items.forEach((itemData, insertedItemIdx) => {
+      const itemInfo = itemInfos[insertedItemIdx];
 
       if (colIdx != null && itemIdx != null) {
         if (!gridItems[colIdx]) {
           return;
         }
         const left = colIdx * this.itemWidth;
-        const previousItemInColumn = gridItems[colIdx] && gridItems[colIdx][itemIdx - 1] ?
-          gridItems[colIdx][itemIdx - 1].bottom : 0;
-        const top = previousItemInColumn || 0;
+        const top = previousItemInColumn ? previousItemInColumn.bottom : 0;
 
         // Construct a more specific render key for inserted items.
         // This allows us to properly order items after a reflow when sorting on the key.
@@ -387,8 +446,7 @@ class Masonry<T> extends Component {
         itemInfo.column = parseInt(colIdx, 10);
         itemInfo.left = left;
         itemInfo.top = top;
-        itemInfo.bottom = top + clientHeight + this.gutterWidth;
-        itemInfo.key = key;
+        itemInfo.bottom = top + itemInfo.height + this.gutterWidth;
 
         gridItems[colIdx].splice(itemIdx, 0, itemInfo);
 
@@ -412,19 +470,16 @@ class Masonry<T> extends Component {
         itemInfo.appended = true;
         itemInfo.left = left;
         itemInfo.top = top;
-        itemInfo.bottom = top + clientHeight + this.gutterWidth;
-        itemInfo.key = key;
+        itemInfo.bottom = top + itemInfo.height + this.gutterWidth;
+        itemInfo.key = itemInfo.key;
 
         gridItems[column].push(itemInfo);
       }
-
-      this.itemKeyCounter += 1;
-
-      ReactDOM.unmountComponentAtNode(measuringNode);
     });
 
-    if (document.body) {
-      document.body.removeChild(measuringNode);
+    if (colIdx === null && itemIdx === null) {
+      // update the number of items retrieved from the main feed
+      this.insertedItemsCount += items.length;
     }
 
     // The grid height is the longest of all columns.
@@ -441,12 +496,15 @@ class Masonry<T> extends Component {
       }
     }
 
-    this.serverRefs = [];
     this.setState({
       gridItems,
       height,
       minHeight: minHeight || this.state.minHeight,
-      serverItems: null,
+      serverItems: null
+    }, () => {
+      if (this.insertedItemsCount < this.props.items.length) {
+        setTimeout(() => this.insertItems(this.props.items.slice(this.insertedItemsCount)), 25);
+      }
     });
   }
 
@@ -600,6 +658,7 @@ class Masonry<T> extends Component {
   }
 
   render() {
+    const allItems = this.state.serverItems || this.allItems();
     const itemClassName = [
       this.state.serverItems ? 'static' : styles.Masonry__Item,
       this.state.mounted ? styles.Masonry__Item__Mounted : ''
@@ -613,10 +672,11 @@ class Masonry<T> extends Component {
         <ScrollFetch
           container={this.props.scrollContainer}
           fetchMore={this.fetchMore}
-          isFetching={this.state.fetchingFrom !== false || this.props.insertionsQueued}
+          isFetching={this.state.fetchingFrom !== false
+            || this.insertedItemsCount < this.props.items.length}
           renderHeight={this.renderHeight}
         />
-        {(this.state.serverItems || this.allItems()).map(item =>
+        {allItems.map((item, idx) =>
           <MasonryComponentWrapper
             key={`wrapper-${item.key}`}
             isInViewport={this.itemIsVisible(item)}
@@ -631,7 +691,11 @@ class Masonry<T> extends Component {
                 ...(this.itemWidth ? { width: (this.itemWidth - this.gutterWidth) } : {}),
                 ...(this.itemIsVisible(item) ? {} : { display: 'none', transition: 'none' })
               }}
-              {...this.state.serverItems ? { ref: (ref) => { this.serverRefs.push(ref); } } : {}}
+              {...this.state.serverItems ? { ref: (ref) => {
+                if (this.serverRefs.length < idx) {
+                  this.serverRefs.push(ref);
+                }
+              } } : {}}
             >
               <div
                 className={item.appended || !this.state.mounted ?
@@ -673,11 +737,6 @@ Masonry.propTypes = {
   gutterWidth: React.PropTypes.number,
 
   /**
-   * Whether or not insertions are queued from <ThrottleInsertion>
-   */
-  insertionsQueued: React.PropTypes.bool,
-
-  /**
    * An array of all objects to display in the grid.
    */
   items: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
@@ -713,6 +772,4 @@ Masonry.defaultProps = {
   loadItems: () => {},
 };
 
-export { Masonry as DefaultGrid };
-
-export default ThrottleInsertion(Masonry);
+export default Masonry;
