@@ -8,7 +8,7 @@ const HOVER_DELAY = 32;
 
 export default class Card extends Component {
   static PropTypes = {
-    ariaLabel: PropTypes.string.isRequired,
+    accessibilityLabel: PropTypes.string.isRequired,
     children: PropTypes.node
   }
 
@@ -21,7 +21,7 @@ export default class Card extends Component {
   }
 
   static props: {|
-    ariaLabel: String,
+    accessibilityLabel: String,
     children?: any
   |}
 
@@ -49,7 +49,7 @@ export default class Card extends Component {
 
   render() {
     const {
-      ariaLabel,
+      accessibilityLabel,
       children
     } = this.props;
 
@@ -67,7 +67,7 @@ export default class Card extends Component {
 
     return (
       <Box
-        aria-label={ariaLabel}
+        aria-label={accessibilityLabel}
         disableFocusStyles={inputDevice !== 'key'}
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}

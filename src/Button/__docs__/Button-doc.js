@@ -14,8 +14,8 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
-  ariaExpanded?: boolean, /* accessibility */
-  ariaHaspopup?: boolean, /* accessibility */
+  accessibilityExpanded?: boolean,
+  accessibilityHaspopup?: boolean,
   color?: 'gray' | 'red' | 'blue', /* default: gray */
   disabled?: boolean, /* default: false */
   inline?: boolean, /* default: false */

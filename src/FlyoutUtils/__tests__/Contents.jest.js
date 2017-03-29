@@ -147,7 +147,7 @@ describe('Contents', () => {
       const triggerRect = centerTriggerRect();
       const wrapper = shallow(
         <Contents
-          closeLabel="close"
+          accessibilityCloseLabel="close"
           onClick={jest.fn()}
           onDismiss={jest.fn()}
           onKeyDown={jest.fn()}

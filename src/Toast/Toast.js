@@ -43,7 +43,7 @@ export default function Toast(props: Props) {
       <Box xs={{ display: 'flex' }} justifyContent="between" alignItems="center">
         <Text bold color="white" size="lg">{text}</Text>
         <Box dangerouslySetInlineStyle={{ __style: { paddingLeft: 24 } }}>
-          <Icon ariaLabel="" color="white" icon="arrow-circle-forward" size={36} />
+          <Icon accessibilityLabel="" color="white" icon="arrow-circle-forward" size={36} />
         </Box>
       </Box>
     );

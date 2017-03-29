@@ -16,12 +16,12 @@ const iconColor = (color: Color) => {
 };
 
 type IconProps = {
+  accessibilityLabel: string,
   color?: Color,
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons provided in gestalt-icon/icons/index.js.
    */
-  ariaLabel: string,
   icon: $Keys<typeof icons>,
   inline?: boolean,
   size?: number,
@@ -29,7 +29,7 @@ type IconProps = {
 
 export default function Icon(props: IconProps) {
   const {
-    ariaLabel,
+    accessibilityLabel,
     color = 'gray',
     icon,
     inline,
@@ -45,15 +45,15 @@ export default function Icon(props: IconProps) {
   const path = icons[icon];
 
   return (
-    <svg className={cs} height={size} width={size} viewBox="0 0 16 16" aria-label={ariaLabel} role="img">
-      <title>{ariaLabel}</title>
+    <svg className={cs} height={size} width={size} viewBox="0 0 16 16" aria-label={accessibilityLabel} role="img">
+      <title>{accessibilityLabel}</title>
       <path d={path} />
     </svg>
   );
 }
 
 Icon.propTypes = {
-  ariaLabel: PropTypes.string.isRequired,
+  accessibilityLabel: PropTypes.string.isRequired,
   color: PropTypes.oneOf(['white', 'gray', 'darkGray', 'blue', 'red']),
   icon: PropTypes.oneOf(Object.keys(icons)).isRequired,
   inline: PropTypes.bool,

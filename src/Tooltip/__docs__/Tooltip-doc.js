@@ -66,7 +66,7 @@ Click on the IconButton to see the Tooltip display.
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <IconButton
-      label="Create a new board"
+      accessibilityLabel="Create a new board"
       icon="add"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
     />
@@ -86,7 +86,7 @@ atom => (
         onDismiss={() => atom.reset({ value: !atom.deref().value })}
         trigger={
           <IconButton
-            label="Create a new board"
+            accessibilityLabel="Create a new board"
             icon="add"
             onClick={() => atom.reset({ value: !atom.deref().value })}
           />

@@ -16,11 +16,11 @@ const SIZE_WIDTH_MAP = {
 const ESCAPE_KEY_CODE = 27;
 
 type Props = {|
+  accessibilityCloseLabel: string,
+  accessibilityModalLabel: string,
   children?: any,
-  closeLabel: string,
   footer?: any,
   heading: string,
-  modalLabel: string,
   onDismiss: () => void,
   role?: 'alertdialog' | 'dialog',
   size?: 'sm' | 'md' | 'lg',
@@ -113,7 +113,15 @@ export default class Modal extends Component {
   priorFocus: ?HTMLElement;
 
   render() {
-    const { children, closeLabel, footer, heading, modalLabel, role = 'dialog', size = 'sm' } = this.props;
+    const {
+      accessibilityCloseLabel,
+      accessibilityModalLabel,
+      children,
+      footer,
+      heading,
+      role = 'dialog',
+      size = 'sm'
+    } = this.props;
     const width = SIZE_WIDTH_MAP[size];
 
     const container = ['fixed', 'border-box', 'col-12', 'flex', 'justify-center', 'left-0', 'top-0'];
@@ -129,7 +137,7 @@ export default class Modal extends Component {
 
     return (
       <div
-        aria-label={modalLabel}
+        aria-label={accessibilityModalLabel}
         className={containerClasses}
         ref={(c) => { this.container = c; }}
         role={role}
@@ -156,7 +164,7 @@ export default class Modal extends Component {
                 </div> }
               {role === 'dialog' ?
                 <div className="absolute top-0 right-0 p1">
-                  <IconButton label={closeLabel} icon="cancel" onClick={this.handleClose} />
+                  <IconButton accessibilityLabel={accessibilityCloseLabel} icon="cancel" onClick={this.handleClose} />
                 </div>
               : null }
               {role === 'dialog' ? <Divider /> : null}
@@ -183,10 +191,10 @@ export default class Modal extends Component {
 
 Modal.propTypes = {
   children: PropTypes.node,
-  closeLabel: PropTypes.string.isRequired,
+  accessibilityCloseLabel: PropTypes.string.isRequired,
   footer: PropTypes.node,
   heading: PropTypes.string.isRequired,
-  modalLabel: PropTypes.string.isRequired,
+  accessibilityModalLabel: PropTypes.string.isRequired,
   onDismiss: PropTypes.func,
   role: PropTypes.oneOf(['alertdialog', 'dialog']),
   size: PropTypes.oneOf(['sm', 'md', 'lg']),

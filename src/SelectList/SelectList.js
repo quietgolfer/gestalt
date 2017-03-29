@@ -65,7 +65,7 @@ export default class SelectList extends Component {
           top
           xs={{ display: 'flex' }}
         >
-          <Icon icon="arrow-down" size={14} color="darkGray" ariaLabel="" />
+          <Icon icon="arrow-down" size={14} color="darkGray" accessibilityLabel="" />
         </Box>
         <select
           className={styles.select}

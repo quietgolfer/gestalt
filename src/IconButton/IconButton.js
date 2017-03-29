@@ -9,8 +9,9 @@ import styles from './IconButton.css';
 import icons from '../Icon/icons';
 
 type Props = {|
-  ariaExpanded?: boolean,
-  ariaHaspopup?: boolean,
+  accessibilityExpanded?: boolean,
+  accessibilityHaspopup?: boolean,
+  accessibilityLabel: string,
   bgColor?: 'transparent' | 'lightGray',
   iconColor?: 'gray' | 'darkGray' | 'red' | 'blue',
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
@@ -18,7 +19,6 @@ type Props = {|
    * icons provided in gestalt-icon/icons/index.js.
    */
   icon: $Keys<typeof icons>,
-  label: string,
   onClick?: () => void,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl',
   tabIndex?: -1 | 0,
@@ -43,12 +43,12 @@ type GestaltContext = {
 
 export default function IconButton(props: Props, context: GestaltContext) {
   const {
-    ariaExpanded,
-    ariaHaspopup,
+    accessibilityExpanded,
+    accessibilityHaspopup,
+    accessibilityLabel,
     bgColor = 'transparent',
     iconColor = defaultIconButtonIconColors[bgColor],
     icon,
-    label,
     onClick,
     size = 'md',
     tabIndex,
@@ -65,9 +65,9 @@ export default function IconButton(props: Props, context: GestaltContext) {
 
   return (
     <button
-      aria-expanded={ariaExpanded}
-      aria-haspopup={ariaHaspopup}
-      aria-label={label}
+      aria-expanded={accessibilityExpanded}
+      aria-haspopup={accessibilityHaspopup}
+      aria-label={accessibilityLabel}
       className={classnames(
         styles.button,
         styles[bgColor], {
@@ -85,7 +85,7 @@ export default function IconButton(props: Props, context: GestaltContext) {
           This is similar to having empty `alt` attributes:
           https://davidwalsh.name/accessibility-tip-empty-alt-attributes
         */}
-        <Icon color={iconColor} icon={icon} size={iconSize} ariaLabel="" />
+        <Icon color={iconColor} icon={icon} size={iconSize} accessibilityLabel="" />
       </Box>
     </button>
   );
@@ -96,8 +96,9 @@ IconButton.contextTypes = {
 };
 
 IconButton.propTypes = {
-  ariaExpanded: PropTypes.bool,
-  ariaHaspopup: PropTypes.bool,
+  accessibilityExpanded: PropTypes.bool,
+  accessibilityHaspopup: PropTypes.bool,
+  accessibilityLabel: PropTypes.string.isRequired,
   bgColor: PropTypes.oneOf(
     ['transparent', 'lightGray']
   ),
@@ -105,7 +106,6 @@ IconButton.propTypes = {
   iconColor: PropTypes.oneOf(
     ['gray', 'darkGray', 'red', 'blue']
   ),
-  label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   size: PropTypes.oneOf(
     ['xs', 'sm', 'md', 'lg', 'xl']

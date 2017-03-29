@@ -7,8 +7,8 @@ import MobileFlyout from './MobileFlyout';
 import breakpoints from '../breakpoints.json';
 
 type Props = {|
+  accessibilityCloseLabel: string,
   children?: any,
-  closeLabel: string,
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen: boolean,
   onDismiss: () => void,
@@ -57,11 +57,19 @@ export default class Flyout extends Component {
   props: Props;
 
   render() {
-    const { children, closeLabel, idealDirection, isOpen, onDismiss, size, trigger } = this.props;
+    const {
+      accessibilityCloseLabel,
+      children,
+      idealDirection,
+      isOpen,
+      onDismiss,
+      size,
+      trigger
+    } = this.props;
 
     return this.state.breakpoint === 'xs' ? (
       <MobileFlyout
-        closeLabel={closeLabel}
+        accessibilityCloseLabel={accessibilityCloseLabel}
         isOpen={isOpen}
         onDismiss={onDismiss}
         trigger={trigger}
@@ -89,7 +97,7 @@ export default class Flyout extends Component {
 
 Flyout.propTypes = {
   children: PropTypes.node,
-  closeLabel: PropTypes.string.isRequired,
+  accessibilityCloseLabel: PropTypes.string.isRequired,
   idealDirection: PropTypes.oneOf(['up', 'right', 'down', 'left']),
   isOpen: PropTypes.bool.isRequired,
   onDismiss: PropTypes.func.isRequired,

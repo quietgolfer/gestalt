@@ -15,8 +15,8 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
+  accessibilityCloseLabel: string, // needed for accessibility  and internationalization
   children?: any,
-  closeLabel: string, // needed for accessibility  and internationalization
   idealDirection?: 'up' | 'right' | 'down' | 'left',
   isOpen?: boolean,
   onDismiss: () => void,
@@ -154,15 +154,15 @@ Below are several sample code snippets with corresponding live Flyout examples o
 <b>#1</b>
 \`\`\`jsx
 <Flyout
-  closeLabel="close"
+  accessibilityCloseLabel="close"
   idealDirection="down"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <IconButton
-      aria-expanded={this.state.isOpen}
-      aria-haspopup
-      label="More options"
+      accessibilityExpanded={this.state.isOpen}
+      accessibilityHaspopup
+      accessibilityLabel="More options"
       icon="ellipsis"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
     />
@@ -175,15 +175,15 @@ Below are several sample code snippets with corresponding live Flyout examples o
 <b>#2</b>
 \`\`\`jsx
 <Flyout
-  closeLabel="close"
+  accessibilityCloseLabel="close"
   idealDirection="right"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <IconButton
-      aria-expanded={this.state.isOpen}
-      aria-haspopup
-      label="Profile options"
+      accessibilityExpanded={this.state.isOpen}
+      accessibilityHaspopup
+      accessibilityLabel="Profile options"
       icon="person"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
     />
@@ -195,14 +195,14 @@ Below are several sample code snippets with corresponding live Flyout examples o
 <b>#3</b>
 \`\`\`jsx
 <Flyout
-  closeLabel="close"
+  accessibilityCloseLabel="close"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <IconButton
-      aria-expanded={this.state.isOpen}
-      aria-haspopup
-      label="Add pin"
+      accessibilityExpanded={this.state.isOpen}
+      accessibilityHaspopup
+      accessibilityLabel="Add pin"
       icon="plus"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
     />
@@ -214,14 +214,14 @@ Below are several sample code snippets with corresponding live Flyout examples o
 <b>#4</b>
 \`\`\`jsx
 <Flyout
-  closeLabel="close"
+  accessibilityCloseLabel="close"
   idealDirection="up"
   isOpen={this.state.isOpen}
   onDismiss={() => this.setState({ isOpen: false })}
   trigger={
     <Button
-      aria-expanded={this.state.isOpen}
-      aria-haspopup
+      accessibilityExpanded={this.state.isOpen}
+      accessibilityHaspopup
       text="Help"
       onClick={() => this.setState({ isOpen: !this.state.isOpen })}
     />
@@ -236,16 +236,16 @@ atom => (
     <div className="py2">
       <span className="px1"><Text bold inline>#1</Text></span>
       <Flyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         idealDirection="right"
         isOpen={!!atom.deref().more}
         onDismiss={() => atom.reset({ more: false })}
         trigger={
           <IconButton
-            ariaExpanded={!!atom.deref().more}
-            ariaHaspopup
+            accessibilityLabel="More options"
+            accessibilityExpanded={!!atom.deref().more}
+            accessibilityHaspopup
             icon="ellipsis"
-            label="More options"
             onClick={() => atom.reset({ more: !atom.deref().more })}
           />
         }
@@ -257,16 +257,16 @@ atom => (
     <div className="py2">
       <span className="px1"><Text bold inline>#2</Text></span>
       <Flyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         idealDirection="right"
         isOpen={!!atom.deref().profile}
         onDismiss={() => atom.reset({ profile: false })}
         trigger={
           <IconButton
-            ariaExpanded={!!atom.deref().profile}
-            ariaHaspopup
+            accessibilityLabel="Profile options"
+            accessibilityExpanded={!!atom.deref().profile}
+            accessibilityHaspopup
             icon="person"
-            label="Profile options"
             onClick={() => atom.reset({ profile: !atom.deref().profile })}
           />
         }
@@ -277,15 +277,15 @@ atom => (
     <div className="py2">
       <span className="px1"><Text bold inline>#3</Text></span>
       <Flyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         isOpen={!!atom.deref().add}
         onDismiss={() => atom.reset({ add: false })}
         trigger={
           <IconButton
-            ariaExpanded={!!atom.deref().add}
-            ariaHaspopup
+            accessibilityLabel="Add pin"
+            accessibilityExpanded={!!atom.deref().add}
+            accessibilityHaspopup
             icon="add"
-            label="Add pin"
             onClick={() => atom.reset({ add: !atom.deref().add })}
           />
         }
@@ -296,14 +296,14 @@ atom => (
     <div className="py2">
       <span className="px1"><Text bold inline>#4</Text></span>
       <Flyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         idealDirection="up"
         isOpen={!!atom.deref().help}
         onDismiss={() => atom.reset({ help: false })}
         trigger={
           <Button
-            ariaExpanded={!!atom.deref().help}
-            ariaHaspopup
+            accessibilityExpanded={!!atom.deref().help}
+            accessibilityHaspopup
             onClick={() => atom.reset({ help: !atom.deref().help })}
             text="Help"
           />

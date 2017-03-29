@@ -74,7 +74,7 @@ card(
   <GestaltProvider>
     <Text>
       <Link color="blue" href="https://pinterest.com">
-        <Icon icon="pin" color="blue" inline ariaLabel="pin" />
+        <Icon icon="pin" color="blue" inline accessibilityLabel="pin" />
         Pinterest.com
       </Link>
     </Text>

@@ -9,7 +9,7 @@ const ESCAPE_KEY_CODE = 27;
 
 type Props = {
   children?: any,
-  closeLabel: string,
+  accessibilityCloseLabel: string,
   isOpen: boolean,
   onDismiss: () => void,
   trigger: React$Element<any>,
@@ -46,7 +46,7 @@ export default class MobileFlyout extends Component {
   }
 
   render() {
-    const { children, closeLabel, isOpen, onDismiss, trigger } = this.props;
+    const { children, accessibilityCloseLabel, isOpen, onDismiss, trigger } = this.props;
     return (
       <div className="inline-block">
         <div ref={(c) => { this.triggerButton = c; }}>
@@ -61,7 +61,7 @@ export default class MobileFlyout extends Component {
                 ref={(c) => { this.flyout = c; }}
               >
                 <div className={cx('pull-right')}>
-                  <IconButton icon="cancel" label={closeLabel} onClick={onDismiss} />
+                  <IconButton accessibilityLabel={accessibilityCloseLabel} icon="cancel" onClick={onDismiss} />
                 </div>
                 {children}
               </div>
@@ -75,7 +75,7 @@ export default class MobileFlyout extends Component {
 
 MobileFlyout.propTypes = {
   children: PropTypes.node,
-  closeLabel: PropTypes.string.isRequired,
+  accessibilityCloseLabel: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   onDismiss: PropTypes.func.isRequired,
   trigger: PropTypes.node.isRequired,

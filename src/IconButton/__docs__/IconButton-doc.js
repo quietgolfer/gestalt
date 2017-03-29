@@ -14,8 +14,9 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
-  ariaExpanded?: boolean, /* accessibility */
-  ariaHaspopup?: boolean, /* accessibility */
+  accessibilityExpanded?: boolean,
+  accessibilityHaspopup?: boolean,
+  accessibilityLabel: string,
   bgColor?: 'transparent' | 'lightGray', /* default: transparent */
   iconColor?: 'gray' | 'darkGray' | 'red' | 'blue', /* default: gray */
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
@@ -23,7 +24,6 @@ type Props = {
    * icons provided in gestalt-icon/icons/index.js.
    */
   icon: $Keys<typeof icons>,
-  label: string,
   onClick?: () => void,
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl', /* default: md */
 }
@@ -46,9 +46,9 @@ function IconButtonEx(props: *) {
   const { bgColor = 'lightGray', icon, size } = props;
   return (
     <IconButton
+      accessibilityLabel={icon.replace(/-/g, ' ')}
       bgColor={bgColor}
       icon={icon}
-      label={icon.replace(/-/g, ' ')}
       size={size}
     />
   );
@@ -63,9 +63,9 @@ These are subject to change as design recalibrates sizing. If you need a differe
 size beyond what we currently have available, please file an issue on Github!
 \`\`\`html
 <IconButton
+  accessibilityLabel="cancel"
   bgColor="lightGray"
   icon="cancel"
-  label="cancel"
   size="sm"
 />
 \`\`\`
@@ -97,15 +97,15 @@ If you need an additional color beyond what we currently have available, please 
 
 \`\`\`html
 <IconButton
+  accessibilityLabel="add"
   icon="add"
-  label="add"
 />
 \`\`\`
 \`\`\`html
 <IconButton
+  accessibilityLabel="cancel"
   bgColor="lightGray"
   icon="cancel"
-  label="cancel"
 />
 \`\`\`
 
@@ -133,24 +133,24 @@ depict the \`IconButton\` as selected.
 
 \`\`\`html
 <IconButton
+  accessibilityLabel="heart"
   iconColor="red"
   icon="heart"
-  label="heart"
 />
 \`\`\`
 \`\`\`html
 <IconButton
+  accessibilityLabel="pinterest"
   bgColor="lightGray"
   iconColor="red"
   icon="pinterest"
-  label="pinterest"
 />
 \`\`\`
 \`\`\`html
 <IconButton
+  accessibilityLabel="globe"
   iconColor="blue"
   icon="globe"
-  label="globe"
 />
 \`\`\`
 `,
@@ -158,24 +158,24 @@ depict the \`IconButton\` as selected.
     <Box margin={{ left: -2, right: -2 }} wrap xs={{ display: 'flex' }}>
       <Box padding={{ x: 1 }}>
         <IconButton
+          accessibilityLabel="heart"
           iconColor="red"
           icon="heart"
-          label="heart"
         />
       </Box>
       <Box padding={{ x: 1 }}>
         <IconButton
+          accessibilityLabel="pinterest"
           bgColor="lightGray"
           iconColor="red"
           icon="pinterest"
-          label="pinterest"
         />
       </Box>
       <Box padding={{ x: 1 }}>
         <IconButton
+          accessibilityLabel="globe"
           iconColor="blue"
           icon="globe"
-          label="globe"
         />
       </Box>
     </Box>

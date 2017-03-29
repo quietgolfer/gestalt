@@ -8,7 +8,7 @@ describe('MobileFlyout', () => {
   it('does not render contents when isOpen is false', () => {
     const wrapper = shallow(
       <MobileFlyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         isOpen={false}
         onDismiss={() => null}
         trigger={<button onClick={() => null}> test </button>}
@@ -21,7 +21,7 @@ describe('MobileFlyout', () => {
   it('renders contents when isOpen is true', () => {
     const wrapper = shallow(
       <MobileFlyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         isOpen
         onDismiss={() => null}
         trigger={<button onClick={() => null}> test </button>}

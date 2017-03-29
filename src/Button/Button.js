@@ -5,8 +5,8 @@ import classnames from 'classnames';
 import styles from './Button.css';
 
 type Props = {|
-  ariaExpanded?: boolean,
-  ariaHaspopup?: boolean,
+  accessibilityExpanded?: boolean,
+  accessibilityHaspopup?: boolean,
   color?: 'gray' | 'red' | 'blue',
   disabled?: boolean,
   inline?: boolean,
@@ -21,8 +21,8 @@ type GestaltContext = {
 
 export default function Button(props: Props, context: GestaltContext) {
   const {
-    ariaExpanded,
-    ariaHaspopup,
+    accessibilityExpanded,
+    accessibilityHaspopup,
     color = 'gray',
     disabled = false,
     inline = false,
@@ -44,8 +44,8 @@ export default function Button(props: Props, context: GestaltContext) {
 
   return (
     <button
-      aria-expanded={ariaExpanded}
-      aria-haspopup={ariaHaspopup}
+      aria-expanded={accessibilityExpanded}
+      aria-haspopup={accessibilityHaspopup}
       className={classes}
       disabled={disabled}
       onClick={onClick}
@@ -61,8 +61,8 @@ Button.contextTypes = {
 };
 
 Button.propTypes = {
-  ariaExpanded: PropTypes.bool,
-  ariaHaspopup: PropTypes.bool,
+  accessibilityExpanded: PropTypes.bool,
+  accessibilityHaspopup: PropTypes.bool,
   color: PropTypes.oneOf(['blue', 'gray', 'red']),
   disabled: PropTypes.bool,
   inline: PropTypes.bool,

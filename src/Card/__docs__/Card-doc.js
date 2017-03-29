@@ -20,7 +20,7 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
-  ariaLabel: String,
+  accessibilityLabel: String,
   children?: any
 }
 \`\`\`
@@ -30,7 +30,7 @@ card('Example',
 md`
 Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. Ideally all of the children should be clickable and cover 100% of the area.
 \`\`\`html
-<Card ariaLabel="Ben Silbermann - Pinterest CEO">
+<Card accessibilityLabel="Ben Silbermann - Pinterest CEO">
   <Box>
     <Link color="darkGray" href="https://pinterest.com">
       <Avatar
@@ -54,7 +54,7 @@ Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. I
         padding={2}
         xs={{ column: 12 }}
       >
-        <Card ariaLabel="Ben Silbermann - Pinterest CEO">
+        <Card accessibilityLabel="Ben Silbermann - Pinterest CEO">
           <Link color="darkGray" href="https://pinterest.com">
             <Avatar
               name="Ben Silbermann" src="http://static.logomaker.com.s3-us-west-2.amazonaws.com/wp-content/uploads/2014/10/Ben-Silberman.jpg"
@@ -73,7 +73,7 @@ Using \`Card\` is as easy as it can be, simply wrap your component(s) with it. I
         padding={2}
         xs={{ column: 12 }}
       >
-        <Card ariaLabel="Evan Sharp - Pinterest Co-Founder">
+        <Card accessibilityLabel="Evan Sharp - Pinterest Co-Founder">
           <Link color="darkGray" href="https://pinterest.com">
             <Avatar
               name="Evan Sharp" src="https://pbs.twimg.com/profile_images/619669180481081344/9LMWv-Du.jpg"

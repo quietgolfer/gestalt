@@ -12,7 +12,7 @@ describe('Flyout', () => {
   it('does not render Contents when isOpen is false', () => {
     const wrapper = shallow(
       <Controller
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         isOpen={false}
         onDismiss={() => null}
         trigger={<button onClick={() => null}> test </button>}

@@ -21,11 +21,11 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
+  accessibilityCloseLabel: string,
+  accessibilityModalLabel: string,
   children?: any,
-  closeLabel: string,
   footer?: any,
   heading: string,
-  modalLabel: string,
   role?: 'alertdialog' | 'dialog', /* default: dialog */
   onDismiss: () => void,
   size?: 'sm' | 'md' | 'lg', /* default: sm */
@@ -62,9 +62,9 @@ the \`heading\`, \`children\`, and \`footer\` are included as well.
 
 \`\`\`jsx
 <Modal
-  closeLabel="close"
+  accessibilityCloseLabel="close"
+  accessibilityModalLabel="View default padding and styling"
   heading="Heading"
-  modalLabel="View default padding and styling"
   onDismiss={() => this.setState({ isOpen: false })}
   footer={
     <div className="bg-gray">
@@ -84,9 +84,9 @@ atom => (
     <Button text="View padding" onClick={() => atom.reset({ isOpen: !atom.deref().isOpen })} />
     {atom.deref().isOpen ? (
       <Modal
-        closeLabel="close"
+        accessibilityCloseLabel="close"
+        accessibilityModalLabel="View default padding and styling"
         heading="Heading"
-        modalLabel="View default padding and styling"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={
           <div className="bg-gray">
@@ -214,9 +214,9 @@ card('Static Content Example',
 md`Here is an example of the \`Modal\` component with static content.
 \`\`\`jsx
 <Modal
-  closeLabel="close"
+  accessibilityCloseLabel="close"
+  accessibilityModalLabel="Edit Julia's board"
   heading="Edit your board"
-  modalLabel="Edit Julia's board"
   onDismiss={() => this.setState({ isOpen: false })}
   footer={footerButtons}
   size="md"
@@ -230,9 +230,9 @@ atom => (
     <Button text="Edit board" onClick={() => atom.reset({ isOpen: !atom.deref().isOpen })} />
     {atom.deref().isOpen ? (
       <Modal
-        closeLabel="close"
+        accessibilityCloseLabel="close"
+        accessibilityModalLabel="Edit Julia's board"
         heading="Edit your board"
-        modalLabel="Edit Julia's board"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={editBoardFooter(() => atom.reset({ isOpen: false }))}
         size="md"
@@ -258,7 +258,7 @@ class ImageModalContents extends Component {
   render() {
     return (
       <div className="flex">
-        <Spinner label="random image" show={!this.state.hasLoaded} />
+        <Spinner accessibilityLabel="random image" show={!this.state.hasLoaded} />
         <div ref={(c) => { this.image = c; }}>
           <img alt="" onLoad={this.handleLoad} src="http://placebear.com/400/400" />
           <img alt="" onLoad={this.handleLoad} src="http://lorempixel.com/400/400" />
@@ -287,9 +287,9 @@ the \`heading\` and \`footer\` being rendered prior to the content. You could al
 \`Spinner\` while waiting for the contents to load and then only display the \`Modal\` once fully loaded.
 \`\`\`jsx
 <Modal
-  closeLabel="close"
+  accessibilityCloseLabel="close"
+  accessibilityModalLabel="View random images"
   heading="Images"
-  modalLabel="View random images"
   onDismiss={() => this.setState({ isOpen: false })}
   footer={footerButtons}
   size="lg"
@@ -303,9 +303,9 @@ atom => (
     <Button text="View images" onClick={() => atom.reset({ isOpen: !atom.deref().isOpen })} />
     {atom.deref().isOpen ? (
       <Modal
-        closeLabel="close"
+        accessibilityCloseLabel="close"
+        accessibilityModalLabel="View random images"
         heading="Images"
-        modalLabel="View random images"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={viewImagesFooter(() => atom.reset({ isOpen: false }))}
         size="lg"
@@ -353,9 +353,9 @@ atom => (
     <Button text="Block Chris" onClick={() => atom.reset({ isOpen: !atom.deref().isOpen })} />
     {atom.deref().isOpen ? (
       <Modal
-        closeLabel="close"
+        accessibilityCloseLabel="close"
+        accessibilityModalLabel="Would you like to block Chris?"
         heading="Block Chris?"
-        modalLabel="Would you like to block Chris?"
         onDismiss={() => atom.reset({ isOpen: false })}
         footer={alertFooter(() => atom.reset({ isOpen: false }))}
         role="alertdialog"

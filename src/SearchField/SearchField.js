@@ -8,9 +8,7 @@ import IconButton from '../IconButton/IconButton';
 
 export default class SearchField extends Component {
   static propTypes = {
-    aria: PropTypes.shape({
-      label: PropTypes.string.isRequired,
-    }).isRequired,
+    accessibilityLabel: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
@@ -24,7 +22,7 @@ export default class SearchField extends Component {
 
   props: {|
     // eslint-disable-next-line react/no-unused-prop-types
-    aria: { label: string },
+    accessibilityLabel: string,
     id: string,
     onChange: ({ value: string }) => void,
     onClear: () => void,
@@ -45,7 +43,7 @@ export default class SearchField extends Component {
 
   render() {
     const {
-      aria: { label },
+      accessibilityLabel,
       id,
       placeholder,
       onClear,
@@ -74,10 +72,10 @@ export default class SearchField extends Component {
           left
           margin={{ left: 2 }}
         >
-          <Icon icon="search" ariaLabel="" />
+          <Icon icon="search" accessibilityLabel="" />
         </Box>
         <input
-          aria-label={label}
+          aria-label={accessibilityLabel}
           className={styles.input}
           id={id}
           onChange={this.handleChange}
@@ -89,8 +87,8 @@ export default class SearchField extends Component {
         {showClear && (
           <Box position="absolute" right padding={{ x: 1 }}>
             <IconButton
+              accessibilityLabel=""
               icon="clear"
-              label=""
               size="sm"
               onClick={onClear}
               tabIndex={-1}

@@ -10,15 +10,15 @@ const DELAY = 300;
 const SIZE = 40;
 
 type Props = {|
-  label: string,
-  show: boolean,
+  accessibilityLabel: string,
+  show: bool,
 |};
 
 export default class Spinner extends Component {
 
   static propTypes = {
     show: PropTypes.bool.isRequired,
-    label: PropTypes.string.isRequired,
+    accessibilityLabel: PropTypes.string.isRequired,
   }
 
   constructor(props: Props) {
@@ -61,7 +61,7 @@ export default class Spinner extends Component {
   }
 
   render() {
-    const { label } = this.props;
+    const { accessibilityLabel } = this.props;
     const { visible } = this.state;
     if (!visible) {
       return <div />;
@@ -70,7 +70,7 @@ export default class Spinner extends Component {
     return (
       <Box xs={{ display: 'flex' }} justifyContent="around" overflow="hidden">
         <div className={styles.icon}>
-          <Icon icon="knoop" ariaLabel={label} size={SIZE} />
+          <Icon icon="knoop" accessibilityLabel={accessibilityLabel} size={SIZE} />
         </div>
       </Box>
     );

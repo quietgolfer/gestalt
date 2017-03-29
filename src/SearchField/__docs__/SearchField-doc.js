@@ -14,7 +14,7 @@ card('FlowType',
 md`
 \`\`\`jsx
 type Props = {
-  aria: { label: string },
+  accessibilityLabel: string,
   id: string,
   onChange: ({ value: string }) => void,
   onClear: () => void,
@@ -29,11 +29,11 @@ atom => (
   <div className="border">
     <Box padding={{ x: 1, y: 2 }} xs={{ display: 'flex' }} alignItems="center">
       <Box padding={2}>
-        <Icon icon="pinterest" color="red" size={20} ariaLabel="Pinterest" />
+        <Icon icon="pinterest" color="red" size={20} accessibilityLabel="Pinterest" />
       </Box>
       <Box grow padding={{ x: 1 }}>
         <SearchField
-          aria={{ label: 'Demo Search Field' }}
+          accessibilityLabel="Demo Search Field"
           id="searchField"
           onChange={({ value }) => atom.reset({ value })}
           onClear={() => atom.reset({ value: '' })}
@@ -42,10 +42,10 @@ atom => (
         />
       </Box>
       <Box padding={{ x: 1 }}>
-        <IconButton icon="speech-ellipsis" size="md" label="Notifications" />
+        <IconButton accessibilityLabel="Notifications" icon="speech-ellipsis" size="md" />
       </Box>
       <Box padding={{ x: 1 }}>
-        <IconButton icon="person" size="md" label="Profile" />
+        <IconButton accessibilityLabel="Profile" icon="person" size="md" />
       </Box>
     </Box>
   </div>

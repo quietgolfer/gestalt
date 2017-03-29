@@ -13,7 +13,7 @@ card('FlowType',
 md`
 \`\`\`jsx
 type IconProps = {
-  ariaLabel: string,
+  accessibilityLabel: string,
   color?: 'white' | 'gray' | 'darkGray' | 'blue' | 'red', /* default: gray */
   /* $Keys is an undocumented feature of Flow that helps with creating enums dynamically.
    * This allows us to type check for a valid icon name based on the keys from the list of
@@ -37,11 +37,11 @@ const colorMap = {
 
 const colorItem = (color) => {
   if (color !== 'white') {
-    return <Icon icon="pin" ariaLabel="Pin" color={color} />;
+    return <Icon icon="pin" accessibilityLabel="Pin" color={color} />;
   }
   return (
     <Box xs={{ display: 'flexColumn' }} alignItems="center" color="darkGray" shape="circle" justifyContent="center" dangerouslySetInlineStyle={{ __style: { minWidth: 26, minHeight: 26 } }}>
-      <Icon icon="pin" ariaLabel="Pin" color="white" />
+      <Icon icon="pin" accessibilityLabel="Pin" color="white" />
     </Box>
   );
 };
@@ -49,8 +49,8 @@ const colorItem = (color) => {
 card('Colors',
   md`
 \`\`\`html
-<Icon icon="pin" ariaLabel="Pin" />
-<Icon icon="pin" ariaLabel="Pin" color="darkGray" />
+<Icon icon="pin" accessibilityLabel="Pin" />
+<Icon icon="pin" accessibilityLabel="Pin" color="darkGray" />
 \`\`\`
 `,
   <Box xs={{ display: 'flex' }}>
@@ -70,11 +70,11 @@ card('Sizes',
   md`
 Currently, icons can be any size desired. The default size is 16.
 \`\`\`html
-<Icon icon="pin" ariaLabel="Pin" size={16} />
-<Icon icon="pin" ariaLabel="Pin" size={20} />
-<Icon icon="pin" ariaLabel="Pin" size={24} />
-<Icon icon="pin" ariaLabel="Pin" size={28} />
-<Icon icon="pin" ariaLabel="Pin" size={32} />
+<Icon icon="pin" accessibilityLabel="Pin" size={16} />
+<Icon icon="pin" accessibilityLabel="Pin" size={20} />
+<Icon icon="pin" accessibilityLabel="Pin" size={24} />
+<Icon icon="pin" accessibilityLabel="Pin" size={28} />
+<Icon icon="pin" accessibilityLabel="Pin" size={32} />
 \`\`\`
 `,
   <Box xs={{ display: 'flex' }} wrap>
@@ -83,7 +83,7 @@ Currently, icons can be any size desired. The default size is 16.
         <Box padding={{ y: 3 }}>
           <Text align="center" bold color="darkGray">{size}</Text>
         </Box>
-        <Icon icon="pin" ariaLabel="Pin" size={size} />
+        <Icon icon="pin" accessibilityLabel="Pin" size={size} />
       </Box>
     )}
   </Box>
@@ -95,7 +95,7 @@ function IconType({ iconName }) {
       <Box padding={{ y: 3 }}>
         <Text align="center" bold color="darkGray">{iconName}</Text>
       </Box>
-      <Icon icon={iconName} ariaLabel={iconName.replace(/-/g, ' ')} color="gray" />
+      <Icon icon={iconName} accessibilityLabel={iconName.replace(/-/g, ' ')} color="gray" />
     </Box>
   );
 }
@@ -107,11 +107,11 @@ IconType.propTypes = {
 card('Types',
   md`
 \`\`\`html
-<Icon icon="pin" ariaLabel="Pin" />
-<Icon icon="add-circle" ariaLabel="Add" />
-<Icon icon="add-pin" ariaLabel="Add a Pin" />
-<Icon icon="arrow-back" ariaLabel="Back" />
-<Icon icon="arrow-circle-forward" ariaLabel="Forward" />
+<Icon icon="pin" accessibilityLabel="Pin" />
+<Icon icon="add-circle" accessibilityLabel="Add" />
+<Icon icon="add-pin" accessibilityLabel="Add a Pin" />
+<Icon icon="arrow-back" accessibilityLabel="Back" />
+<Icon icon="arrow-circle-forward" accessibilityLabel="Forward" />
 \`\`\`
 `,
   <Box xs={{ display: 'flex' }} wrap>

@@ -7,7 +7,7 @@ describe('Regular & Mobile version display checks', () => {
   it('Renders Controller if breakpoint is larger than xs', () => {
     const wrapper = shallow(
       <Flyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         idealDirection="down"
         isOpen={false}
         onDismiss={jest.fn()}
@@ -29,7 +29,7 @@ describe('Regular & Mobile version display checks', () => {
   it('Renders MobileFlyout if breakpoint is xs', () => {
     const wrapper = shallow(
       <Flyout
-        closeLabel="close"
+        accessibilityCloseLabel="close"
         idealDirection="down"
         isOpen={false}
         onDismiss={jest.fn()}

@@ -10,7 +10,7 @@ const snapshot = (component) => {
   expect(tree).toMatchSnapshot();
 };
 
-it('renders an empty Card', () => snapshot(<Card ariaLabel="Empty card" />));
+it('renders an empty Card', () => snapshot(<Card accessibilityLabel="Empty card" />));
 it('renders a Card with text', () =>
-  snapshot(<Card ariaLabel="Chris Lloyd - founder of Box">Chris Lloyd</Card>)
+  snapshot(<Card accessibilityLabel="Chris Lloyd - founder of Box">Chris Lloyd</Card>)
 );
