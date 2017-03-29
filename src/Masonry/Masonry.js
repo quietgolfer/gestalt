@@ -690,7 +690,7 @@ class Masonry<T> extends Component {
                 ...(this.itemIsVisible(item) ? {} : { display: 'none', transition: 'none' })
               }}
               {...this.state.serverItems ? { ref: (ref) => {
-                if (this.serverRefs.length < idx) {
+                if (this.serverRefs.length <= idx) {
                   this.serverRefs.push(ref);
                 }
               } } : {}}
