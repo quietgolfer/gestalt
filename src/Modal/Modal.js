@@ -103,7 +103,6 @@ export default class Modal extends Component {
 
   restrictFocus = (e: Event) => {
     if (e.target instanceof Node && !this.modal.contains(e.target)) {
-      e.stopPropagation();
       this.modal.focus();
     }
   }
