@@ -1,5 +1,4 @@
 // @flow
-/* eslint react/no-find-dom-node: 0 */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import MasonryComponentWrapper from './MasonryComponentWrapper';
@@ -92,7 +91,7 @@ class Masonry<T> extends Component {
 
     // Determine #columns and itemWidth
     const { columnWidth, flexible } = this.props;
-    const el = ReactDOM.findDOMNode(this);
+    const el = this.gridWrapper;
     if (el && el.parentNode instanceof HTMLElement) {
       const gridWidth = el.parentNode.clientWidth;
       this.columnCount = this.calculateColumns();
@@ -144,6 +143,10 @@ class Masonry<T> extends Component {
    * Remove listeners when unmounting.
    */
   componentWillUnmount() {
+    if (this.insertAnimationFrame) {
+      cancelAnimationFrame(this.insertAnimationFrame);
+    }
+    clearTimeout(this.resizeTimeout);
     clearTimeout(this.measureTimeout);
     this.props.scrollContainer.removeEventListener('scroll', this.updateVirtualBounds);
     window.removeEventListener('resize', this.handleResize);
@@ -275,6 +278,7 @@ class Masonry<T> extends Component {
   containerOffset: number;
   gridWrapper: HTMLElement;
   insertedItemsCount: number;
+  insertAnimationFrame: ?number;
   itemKeyCounter: number;
   resizeTimeout: ?number;
   serverRefs: Array<HTMLElement>;
@@ -499,11 +503,16 @@ class Masonry<T> extends Component {
       height,
       minHeight: minHeight || this.state.minHeight,
       serverItems: null
-    }, () => {
-      if (this.insertedItemsCount < this.props.items.length) {
-        setTimeout(() => this.insertItems(this.props.items.slice(this.insertedItemsCount)), 25);
-      }
-    });
+    }, this.insertNextItems);
+  }
+
+  insertNextItems = () => {
+    if (this.insertedItemsCount >= this.props.items.length) {
+      return;
+    }
+    this.insertAnimationFrame = requestAnimationFrame(
+      () => this.insertItems(this.props.items.slice(this.insertedItemsCount))
+    );
   }
 
   /**
@@ -512,11 +521,10 @@ class Masonry<T> extends Component {
   handleResize = () => {
     if (this.resizeTimeout) {
       clearTimeout(this.resizeTimeout);
-      this.resizeTimeout = null;
     }
     this.resizeTimeout = setTimeout(() => {
       const { columnWidth, flexible } = this.props;
-      const el = ReactDOM.findDOMNode(this);
+      const el = this.gridWrapper;
       if (el && el.parentNode instanceof HTMLElement) {
         const gridWidth = el.parentNode.clientWidth;
         this.columnCount = this.calculateColumns();
@@ -549,8 +557,7 @@ class Masonry<T> extends Component {
     }
 
     const eachItemWidth = this.props.columnWidth + this.gutterWidth;
-    /* eslint react/no-find-dom-node: 0 */
-    const el = ReactDOM.findDOMNode(this);
+    const el = this.gridWrapper;
     if (el && el.parentNode instanceof HTMLElement) {
       const parentWidth = el.parentNode.clientWidth;
 
@@ -567,7 +574,7 @@ class Masonry<T> extends Component {
   measureContainer() {
     const { scrollContainer } = this.props;
     this.containerHeight = this.getContainerHeight();
-    const el = ReactDOM.findDOMNode(this);
+    const el = this.gridWrapper;
     if (el instanceof HTMLElement) {
       if (typeof window !== 'undefined' && scrollContainer === window) {
         this.containerOffset = el.getBoundingClientRect().top
