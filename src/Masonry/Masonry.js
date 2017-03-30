@@ -41,6 +41,30 @@ function distance(a, b) {
   return Math.sqrt((x * x) + (y * y));
 }
 
+/**
+ * Returns the index of the shortest column.
+ */
+function getShortestColumn(gridItems: Array<*>): number {
+  let min = 0;
+  for (let col = 0; col < gridItems.length; col += 1) {
+    const colItems = gridItems[col];
+    const lastItem = colItems[colItems.length - 1];
+    const currMinColItems = gridItems[min];
+    const currMin = currMinColItems[currMinColItems.length - 1];
+
+    // If there is no last item in this column, set it as the min.
+    if (!lastItem) {
+      min = col;
+      return min;
+    }
+
+    if (!currMin || lastItem.bottom < currMin.bottom) {
+      min = col;
+    }
+  }
+  return min;
+}
+
 class Masonry<T> extends Component {
   static defaultProps: {};
 
@@ -220,13 +244,9 @@ class Masonry<T> extends Component {
    * Sets all grid items in the grid.
    */
   setGridItems(items: Array<*>) {
-    this.setState({
-      gridItems: [],
-    }, () => {
-      this.insertedItemsCount = 0;
-      this.serverRefSizes = [];
-      this.insertItems(items, null, null, true);
-    });
+    this.insertedItemsCount = 0;
+    this.serverRefSizes = [];
+    this.insertItems(items, null, null, true);
   }
 
   columnCount: number;
@@ -327,7 +347,7 @@ class Masonry<T> extends Component {
 
   insertItems(newItems: Array<*>, colIdx?: (number | null) = null,
     itemIdx?: (number | null) = null, forceUpdate?: (boolean | null) = null) {
-    const gridItems = this.state.gridItems;
+    const gridItems = forceUpdate ? [] : this.state.gridItems;
     const previousItemInColumn = colIdx !== null && itemIdx !== null &&
       gridItems[colIdx] && gridItems[colIdx][itemIdx - 1] ?
       gridItems[colIdx][itemIdx - 1] : null;
@@ -462,7 +482,7 @@ class Masonry<T> extends Component {
           }
         }
       } else {
-        const column = this.shortestColumn();
+        const column = getShortestColumn(gridItems);
 
         const lastItemInColumn = gridItems[column][gridItems[column].length - 1];
         const top = (lastItemInColumn && lastItemInColumn.bottom) || 0;
@@ -617,30 +637,6 @@ class Masonry<T> extends Component {
     }
   }
 
-  /**
-   * Returns the index of the shortest column.
-   */
-  shortestColumn() {
-    let min = 0;
-    for (let col = 0; col < this.state.gridItems.length; col += 1) {
-      const colItems = this.state.gridItems[col];
-      const lastItem = colItems[colItems.length - 1];
-      const currMinColItems = this.state.gridItems[min];
-      const currMin = currMinColItems[currMinColItems.length - 1];
-
-      // If there is no last item in this column, set it as the min.
-      if (!lastItem) {
-        min = col;
-        return min;
-      }
-
-      if (!currMin || lastItem.bottom < currMin.bottom) {
-        min = col;
-      }
-    }
-    return min;
-  }
-
   allItems() : Array<GridItemType<T>> {
     const allItems = [];
     if (!this.state.gridItems.length) {
@@ -656,7 +652,7 @@ class Masonry<T> extends Component {
 
   renderHeight = () => {
     const { gridItems } = this.state;
-    const colIdx = this.shortestColumn();
+    const colIdx = getShortestColumn(gridItems);
     const column = gridItems[colIdx];
     const lastItemInColumn = column && column[column.length - 1];
     return lastItemInColumn ? lastItemInColumn.bottom : null;
