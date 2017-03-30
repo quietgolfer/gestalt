@@ -52,14 +52,18 @@ export default class TextField extends Component {
   }
 
   handleBlur = (e: Event) => {
-    this.setState({ errorIsOpen: false });
+    if (this.props.errorMessage) {
+      this.setState({ errorIsOpen: false });
+    }
     if (e.target instanceof HTMLInputElement && this.props.onBlur) {
       this.props.onBlur(e.target.value);
     }
   }
 
   handleFocus = (e: Event) => {
-    this.setState({ errorIsOpen: true });
+    if (this.props.errorMessage) {
+      this.setState({ errorIsOpen: true });
+    }
     if (e.target instanceof HTMLInputElement && this.props.onFocus) {
       this.props.onFocus(e.target.value);
     }
@@ -80,15 +84,15 @@ export default class TextField extends Component {
       [styles.errored]: hasError || errorMessage,
     });
 
-    const textField = (onBlur, onFocus) => (
+    const textField = () => (
       <input
         aria-describedby={errorMessage && this.state.focused ? `${id}-gestalt-error` : null}
         aria-invalid={(errorMessage || hasError) ? 'true' : 'false'}
         className={classes}
         id={id}
-        onBlur={onBlur}
+        onBlur={this.handleBlur}
         onChange={this.handleChange}
-        onFocus={onFocus}
+        onFocus={this.handleFocus}
         placeholder={placeholder}
         type={type}
         value={value}
@@ -103,7 +107,7 @@ export default class TextField extends Component {
         message={errorMessage}
         onDismiss={() => this.setState({ errorIsOpen: false })}
         size="sm"
-        trigger={textField(this.handleBlur, this.handleFocus)}
+        trigger={textField()}
       />
     ) : textField();
   }

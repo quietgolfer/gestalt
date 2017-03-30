@@ -44,14 +44,18 @@ export default class TextArea extends Component {
   }
 
   handleBlur = (e: Event) => {
-    this.setState({ errorIsOpen: false });
+    if (this.props.errorMessage) {
+      this.setState({ errorIsOpen: false });
+    }
     if (e.target instanceof HTMLTextAreaElement && this.props.onBlur) {
       this.props.onBlur(e.target.value);
     }
   }
 
   handleFocus = (e: Event) => {
-    this.setState({ errorIsOpen: true });
+    if (this.props.errorMessage) {
+      this.setState({ errorIsOpen: true });
+    }
     if (e.target instanceof HTMLTextAreaElement && this.props.onFocus) {
       this.props.onFocus(e.target.value);
     }
@@ -71,16 +75,16 @@ export default class TextArea extends Component {
       [styles.errored]: errorMessage,
     });
 
-    const textArea = (onBlur, onFocus) => (
+    const textArea = () => (
       <textarea
         aria-describedby={errorMessage && this.state.focused ? `${id}-gestalt-error` : null}
         aria-invalid={errorMessage ? 'true' : 'false'}
         className={classes}
         id={id}
         name={name}
-        onBlur={onBlur}
+        onBlur={this.handleBlur}
         onChange={this.handleChange}
-        onFocus={onFocus}
+        onFocus={this.handleFocus}
         placeholder={placeholder}
         rows={3}
         value={value}
@@ -95,7 +99,7 @@ export default class TextArea extends Component {
         message={errorMessage}
         onDismiss={() => this.setState({ errorIsOpen: false })}
         size="sm"
-        trigger={textArea(this.handleBlur, this.handleFocus)}
+        trigger={textArea()}
       />
     ) : textArea();
   }

@@ -1,0 +1,15 @@
+exports[`TextField TextField normal 1`] = `
+<input
+  aria-describedby={null}
+  aria-invalid="false"
+  className="textField normal"
+  id="test"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  placeholder={undefined}
+  type="text"
+  value={undefined} />
+`;
+
+exports[`TextField TextField with error 1`] = `"<div><div><input type=\"text\" aria-invalid=\"true\" class=\"textField errored\" id=\"test\"/></div><div></div></div>"`;

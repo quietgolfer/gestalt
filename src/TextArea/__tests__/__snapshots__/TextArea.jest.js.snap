@@ -1,0 +1,16 @@
+exports[`TextField TextArea normal 1`] = `
+<textarea
+  aria-describedby={null}
+  aria-invalid="false"
+  className="textArea normal"
+  id="test"
+  name={undefined}
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  placeholder={undefined}
+  rows={3}
+  value={undefined} />
+`;
+
+exports[`TextField TextArea with error 1`] = `"<div><div><textarea aria-invalid=\"true\" class=\"textArea errored\" id=\"test\" rows=\"3\"></textarea></div><div></div></div>"`;
