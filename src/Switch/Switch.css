@@ -11,7 +11,7 @@
 }
 
 .switchOn {
-  composes: pineBg from "../Colors.css";
+  composes: greenBg from "../Colors.css";
 }
 
 .switchOff {
