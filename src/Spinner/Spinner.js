@@ -32,7 +32,7 @@ export default class Spinner extends Component {
   }
 
   componentDidUpdate() {
-    // cleanup any timeouts that cause dthe state change
+    // cleanup any timeouts that caused the state change
     clearTimeout(this.timeout);
 
     // toggle visibility if the desired state doesn't match props

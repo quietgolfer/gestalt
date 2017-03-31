@@ -29,7 +29,7 @@ The label on a spinner is for accessibility. You should pick labels that relate 
     >
       {!atom.deref().show ? 'Show spinner' : 'Hide spinner'}
     </button>
-    <Spinner show={atom.deref().show} accessibilityLabel="Example spinner" />
+    <Spinner show={!!atom.deref().show} accessibilityLabel="Example spinner" />
     <p>Data</p>
   </div>
 ), { heading: false, initialState: { show: true } });
