@@ -22,8 +22,5 @@ The following outlines our release process:
 * Bump package version in `package.json`.
 * Open a pull request with the new version and land that in master.
 * Once the version is bumped in master, checkout that commit locally.
-* Publish to NPM with `npm publish`.
-* Tag the commit with `git tag v(NPM version)`.
-* Push the tag to the repository with `git push upstream v(NPM version)`.
+* Publish the tag, npm package, and docs with: `./scripts/publish.js`.
 * Draft a release from the tag and update the release notes at https://github.com/pinterest/gestalt/releases
-* Publish a new set of docs if necessary with `./scripts/ghpages.sh`.
