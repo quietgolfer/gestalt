@@ -1,201 +1,48 @@
 :root {
-  /* primary colors */
   --dark-gray: #555;
   --gray: #b5b5b5;
-  --light-gray: #efefef;
   --red: #bd081c;
-  --white: #fff;
-
-  /* secondary colors */
   --blue: #0084ff;
   --pine: #0a6955;
   --olive: #364a4c;
-  --orange: #e3780c;
-
-  /* TODO(juliac): can delete all of these if pinboard isn't using them */
-  --blue-hover: color(var(--blue) blackness(+ 6%));
-  --blue-active: color(var(--blue) blackness(+ 10%));
-  --dark-gray-hover: color(var(--dark-gray) blackness(+ 6%));
-  --dark-gray-active: color(var(--dark-gray) blackness(+ 10%));
-  --light-gray-hover: color(var(--light-gray) blackness(+ 6%));
-  --gray-hover: color(var(--gray) blackness(+ 6%));
-  --gray-active: color(var(--gray) blackness(+ 10%));
-  --light-gray-active: color(var(--light-gray) blackness(+ 10%));
   --red-hover: color(var(--red) blackness(+ 6%));
   --red-active: color(var(--red) blackness(+ 10%));
 }
 
-/* blue */
-
-:global .blue {
-  color: var(--blue);
-}
+/* Needed for docs */
 
 :global .blue-hover:hover {
   color: var(--blue);
 }
 
-:global .bg-blue {
-  background-color: var(--blue);
-}
-
-:global .bg-blue-hover:hover,
-:global .bg-blue-focus:focus {
-  background-color: var(--blue-hover);
-}
-
-:global .bg-blue-active:active {
-  background-color: var(--blue-active);
-}
-
-/* dark-gray */
-
 :global .dark-gray {
   color: var(--dark-gray);
 }
-
-:global .dark-gray-hover:hover {
-  color: var(--dark-gray);
-}
-
-:global .bg-dark-gray {
-  background-color: var(--dark-gray);
-}
-
-:global .bg-dark-gray-hover:hover,
-:global .bg-dark-gray-focus:focus {
-  background-color: var(--dark-gray-hover);
-}
-
-:global .bg-dark-gray-active:active {
-  background-color: var(--dark-gray-active);
-}
-
-/* pine */
-
-:global .pine {
-  color: var(--pine);
-}
-
-:global .pine-hover:hover {
-  color: var(--pine);
-}
-
-:global .bg-pine {
-  background-color: var(--pine);
-}
-
-/* gray */
 
 :global .gray {
   color: var(--gray);
 }
 
-:global .gray-hover:hover {
-  color: var(--gray);
+/* Needed for www  */
+
+:global .bg-pine {
+  background-color: var(--pine);
+}
+
+:global .bg-red-foucs:focus {
+  background-color: var(--red-hover);
 }
 
 :global .bg-gray {
   background-color: var(--gray);
 }
 
-:global .bg-gray-hover:hover,
-:global .bg-gray-focus:focus {
-  background-color: var(--gray-hover);
-}
-
-:global .bg-gray-active:active {
-  background-color: var(--gray-active);
-}
-
-/* red */
-
-:global .red {
-  color: var(--red);
-}
-
-:global .red-hover:hover {
-  color: var(--red);
-}
-
-:global .bg-red {
-  background-color: var(--red);
-}
-
-:global .bg-red-hover:hover,
-:global .bg-red-foucs:focus {
-  background-color: var(--red-hover);
-}
-
 :global .bg-red-active:active {
   background-color: var(--red-active);
 }
 
-/* olive */
+/* Needed for both */
 
 :global .olive {
   color: var(--olive);
-}
-
-:global .olive-hover:hover {
-  color: var(--olive);
-}
-
-:global .bg-olive {
-  background-color: var(--olive);
-}
-
-:global .bg-olive-hover:hover {
-  background-color: var(--olive);
-}
-
-/* light-gray */
-
-:global .light-gray {
-  color: var(--light-gray);
-}
-
-:global .light-gray-hover:hover {
-  color: var(--light-gray);
-}
-
-:global .bg-light-gray {
-  background-color: var(--light-gray);
-}
-
-:global .bg-light-gray-hover:hover,
-:global .bg-light-gray-focus:focus {
-  background-color: color(var(--light-gray) blackness(+ 6%));
-}
-
-:global .bg-light-gray-active:active {
-  background-color: var(--light-gray-active);
-}
-
-/* white */
-
-:global .white {
-  color: var(--white);
-}
-
-:global .white-hover:hover {
-  color: var(--white);
-}
-
-:global .bg-white {
-  background-color: var(--white);
-}
-
-/* orange */
-
-:global .orange {
-  color: var(--orange);
-}
-
-:global .orange-hover:hover {
-  color: var(--orange);
-}
-
-:global .bg-orange {
-  background-color: var(--orange);
 }
