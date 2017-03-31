@@ -13,7 +13,7 @@ Create layout to convey clear sense of information hierarchy.
 When control is engaged, information below the control should get updated.
 `);
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`js
 type Props = {

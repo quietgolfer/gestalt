@@ -7,7 +7,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('TextField');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

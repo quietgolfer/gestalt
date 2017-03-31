@@ -18,7 +18,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Modal');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

@@ -9,7 +9,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Toast');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

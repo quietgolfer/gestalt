@@ -11,7 +11,7 @@ const maxWidthStyle = {
   maxWidth: '8em',
 };
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

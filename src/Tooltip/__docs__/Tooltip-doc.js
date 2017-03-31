@@ -10,7 +10,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Tooltip');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

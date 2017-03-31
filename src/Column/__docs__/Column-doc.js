@@ -1,6 +1,7 @@
 // @flow
 import React, { PropTypes } from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
 import Col from '../Column';
 import { ns } from '../../../.corkboard/cards';
 
@@ -31,7 +32,7 @@ function Column(props: *) {
   ].filter(p => p.span).map(p => [p.prefix, p.span].join('=')).join(', ');
   return (
     <Col {...props}>
-      <div className={'border p1 border-box'}>{children || `Col ${label}`}</div>
+      <Box padding={1} dangerouslySetInlineStyle={{ __style: { border: '1px solid #eee' } }}>{children || `Col ${label}`}</Box>
     </Col>
   );
 }
@@ -50,7 +51,7 @@ card(
 Gestalt supports a 12-column system.
 
 \`\`\`javascript
-<div>
+<Box>
   <Column xs={1} />
   <Column xs={1} />
   <Column xs={1} />
@@ -63,27 +64,27 @@ Gestalt supports a 12-column system.
   <Column xs={1} />
   <Column xs={1} />
   <Column xs={1} />
-</div>
+</Box>
 
-<div>
+<Box>
   <Column xs={8} />
   <Column xs={4} />
-</div>
+</Box>
 
-<div>
+<Box>
   <Column xs={4} />
   <Column xs={4} />
   <Column xs={4} />
-</div>
+</Box>
 
-<div>
+<Box>
   <Column xs={6} />
   <Column xs={6} />
-</div>
+</Box>
 \`\`\`
 `,
-  <div>
-    <div className="mb2">
+  <Box>
+    <Box margin={{ bottom: 2 }}>
       <Column xs={1} />
       <Column xs={1} />
       <Column xs={1} />
@@ -96,24 +97,24 @@ Gestalt supports a 12-column system.
       <Column xs={1} />
       <Column xs={1} />
       <Column xs={1} />
-    </div>
+    </Box>
 
-    <div className="mb2">
+    <Box margin={{ bottom: 2 }}>
       <Column xs={8} />
       <Column xs={4} />
-    </div>
+    </Box>
 
-    <div className="mb2">
+    <Box margin={{ bottom: 2 }}>
       <Column xs={4} />
       <Column xs={4} />
       <Column xs={4} />
-    </div>
+    </Box>
 
-    <div>
+    <Box margin={{ bottom: 2 }}>
       <Column xs={6} />
       <Column xs={6} />
-    </div>
-  </div>);
+    </Box>
+  </Box>);
 
 card(
   'Responsive columns',
@@ -121,39 +122,39 @@ card(
   Column supports setting a span at our 4 responsive breakpoints: xs, sm, md, lg. Each sets the span of the column from that breakpoint and up. If you don't want your column to be responsive, only set the \`xs\` prop.
 
   \`\`\`html
-  <div>
+  <Box>
     <Column xs={12} md={8} />
     <Column xs={6} md={4} />
-  </div>
+  </Box>
 
-  <div>
+  <Box>
     <Column xs={12} md={4} />
     <Column xs={12} md={4} />
     <Column xs={12} md={4} />
-  </div>
+  </Box>
 
-  <div>
+  <Box>
     <Column xs={6} />
     <Column xs={6} />
-  </div>
+  </Box>
   \`\`\`
   `,
   <div>
-    <div className="mb2">
+    <Box margin={{ bottom: 2 }}>
       <Column xs={12} md={8} />
       <Column xs={6} md={4} />
-    </div>
+    </Box>
 
-    <div className="mb2">
+    <Box margin={{ bottom: 2 }}>
       <Column xs={12} md={4} />
       <Column xs={12} md={4} />
       <Column xs={12} md={4} />
-    </div>
+    </Box>
 
-    <div className="mb2">
+    <Box margin={{ bottom: 2 }}>
       <Column xs={6} />
       <Column xs={6} />
-    </div>
+    </Box>
   </div>);
 
 card(
@@ -162,35 +163,35 @@ card(
 Column gutters can be created through composition and negative margins.
 
 \`\`\`javascript
-<div className="mxn2">
+<Box margin={{ left: -2, right: -2 }}>
   <Col xs={6}>
-    <div className="p2 border-box">
+    <Box padding={2}>
       Col A
-    </div>
+    </Box>
   </Col>
   <Col xs={6}>
-    <div className="p2 border-box">
+    <Box padding={2}>
       Col B
-    </div>
+    </Box>
   </Col>
-</div>
+</Box>
 \`\`\`
     `,
-  <div className="py2" style={{ backgroundColor: 'rgba(0, 0, 255, 0.1)' }}>
-    <div className="mxn2" style={{ backgroundColor: 'rgba(255, 0, 0, 0.1)' }}>
+  <Box padding={{ y: 2 }} dangerouslySetInlineStyle={{ __style: { backgroundColor: 'rgba(0, 0, 255, 0.1)' } }}>
+    <Box margin={{ left: -2, right: -2 }} dangerouslySetInlineStyle={{ __style: { backgroundColor: 'rgba(255, 0, 0, 0.1)' } }}>
       <Col xs={6}>
-        <div className="p2 border-box">
-          <div style={{ backgroundColor: 'rgba(255, 0, 0, 0.1)' }}>
+        <Box padding={2}>
+          <Box dangerouslySetInlineStyle={{ __style: { backgroundColor: 'rgba(255, 0, 0, 0.1)' } }}>
               Col A
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Col>
       <Col xs={6}>
-        <div className="p2 border-box">
-          <div style={{ backgroundColor: 'rgba(255, 0, 0, 0.1)' }}>
+        <Box padding={2}>
+          <Box dangerouslySetInlineStyle={{ __style: { backgroundColor: 'rgba(255, 0, 0, 0.1)' } }}>
               Col B
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Col>
-    </div>
-  </div>);
+    </Box>
+  </Box>);

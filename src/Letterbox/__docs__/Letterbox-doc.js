@@ -16,7 +16,7 @@ be always possible for either cost or performance reasons.
 Letterbox should be used in situations where you would have otherwise used the
 CSS property \`background-size: cover\`.`);
 
-card('FlowType', md`
+card('FlowTypes', md`
 \`\`\`javascript
 type Props = {
   children?: any,

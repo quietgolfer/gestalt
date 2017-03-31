@@ -16,7 +16,7 @@ ns('Card', `
 The Card component allows for a special animation on hover. It visually shows that items belong together.
 `);
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

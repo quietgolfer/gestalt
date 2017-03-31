@@ -10,7 +10,7 @@ In Gestalt we have 3 main kinds of buttons: red, gray, and blue. You are able
 to specify the color, type, and width of buttons to change their apperance (outlined below).
 `);
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

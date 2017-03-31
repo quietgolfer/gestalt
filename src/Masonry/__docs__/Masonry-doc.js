@@ -10,7 +10,7 @@ Masonry creates a deterministic grid layout, positioning items based on availabl
 It contains performance optimizations like virtualization and server rendering, as well as support for infinite scrolling.
 `);
 
-card('FlowType',
+card('FlowTypes',
   md`
 \`\`\`js
 type Props<T> = {

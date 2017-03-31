@@ -6,7 +6,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Heading');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

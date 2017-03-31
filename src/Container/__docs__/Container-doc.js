@@ -7,7 +7,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Container');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`javascript
 type Props = {
@@ -23,7 +23,8 @@ Containers are useful in responsively laying out content on different screens. O
 the container is the width of the screen. On large screens, it centers the content.
 
 \`\`\`html
-  <Box color="gray" padding={2}>  <Container>
+<Box color="gray" padding={2}>
+  <Container>
     <Box color="white" padding={2}>
       Centered content
     </Box>

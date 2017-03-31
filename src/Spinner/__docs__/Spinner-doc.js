@@ -1,12 +1,15 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
+import Button from '../../Button/Button';
+import Text from '../../Text/Text';
 import Spinner from '../Spinner';
 import { ns } from '../../../.corkboard/cards';
 
 ns('Spinner');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`javascript
 type Props = {
@@ -21,15 +24,17 @@ Spinners indicate when a user has to wait for something else to occur. They dela
 
 The label on a spinner is for accessibility. You should pick labels that relate to the specific part of the product it's being used in ("Loading homefeed" for instance).
 `, atom => (
-  <div>
-    <button
-      onClick={() => {
-        atom.reset({ show: !atom.deref().show });
-      }}
-    >
-      {!atom.deref().show ? 'Show spinner' : 'Hide spinner'}
-    </button>
+  <Box>
+    <Box padding={{ y: 1 }}>
+      <Button
+        inline
+        text={!atom.deref().show ? 'Show spinner' : 'Hide spinner'}
+        onClick={() => {
+          atom.reset({ show: !atom.deref().show });
+        }}
+      />
+    </Box>
     <Spinner show={!!atom.deref().show} accessibilityLabel="Example spinner" />
-    <p>Data</p>
-  </div>
+    <Text>Data</Text>
+  </Box>
 ), { heading: false, initialState: { show: true } });

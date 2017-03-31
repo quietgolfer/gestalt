@@ -1,7 +1,10 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
+import Label from '../../Label/Label';
 import Switch from '../Switch';
+import Text from '../../Text/Text';
 import { ns } from '../../../.corkboard/cards';
 
 ns(
@@ -9,7 +12,7 @@ ns(
   'Use the `Switch` component as an on/off control.'
 );
 
-card('FlowType',
+card('FlowTypes',
   md`
 \`\`\`js
 type Props = {
@@ -21,21 +24,21 @@ type Props = {
 \`\`\`
 `,
   atom => (
-    <div className="flex mxn1">
-      <div className="p1">
+    <Box xs={{ display: 'flex' }} margin={{ left: -1, right: -1 }}>
+      <Box padding={1}>
         <Switch
           onChange={() => atom.reset()}
           id="ex1"
         />
-      </div>
-      <div className="p1">
+      </Box>
+      <Box padding={1}>
         <Switch
           onChange={() => atom.reset()}
           id="ex1"
           switched
         />
-      </div>
-    </div>
+      </Box>
+    </Box>
   ));
 
 card('Example',
@@ -44,7 +47,7 @@ Whenever you are using a \`Switch\` component, you should use a [Label](#/Label)
 your component accessible.
 \`\`\`html
 <Label htmlFor="switchExample">
-  <Text size="sm">Live example</Text>
+  <Text>Live example</Text>
 </Label>
 <Switch
   onChange={() => atom.reset({ switched: !atom.deref().switched })}
@@ -54,14 +57,16 @@ your component accessible.
 \`\`\`
   `,
   atom => (
-    <div>
-      <div>
-        <label htmlFor="switchExample">Live example</label>
-      </div>
+    <Box>
+      <Box padding={{ y: 1 }}>
+        <Label htmlFor="switchExample">
+          <Text>Live example</Text>
+        </Label>
+      </Box>
       <Switch
         onChange={() => atom.reset({ switched: !atom.deref().switched })}
         id="switchExample"
         switched={atom.deref().switched}
       />
-    </div>
+    </Box>
   ));

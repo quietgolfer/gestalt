@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
 import Button from '../../Button/Button';
 import Divider from '../../Divider/Divider';
 import Heading from '../../Heading/Heading';
@@ -11,7 +12,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Flyout');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {
@@ -25,8 +26,8 @@ type Props = {
 };
 \`\`\`
 `,
-  <div>
-    <div className="py2">
+  <Box>
+    <Box padding={{ y: 2 }}>
       <Heading size="xs">Sizes</Heading>
       <Divider />
       <Text><b>xs:</b> 185px</Text>
@@ -34,14 +35,14 @@ type Props = {
       <Text><b>md:</b> 320px</Text>
       <Text><b>lg:</b> 350px</Text>
       <Text><b>xl:</b> 496px</Text>
-      <div className="py2">
+      <Box padding={{ y: 2 }}>
         <Text italic>
           Sizes are subject to change as we continue to gather input from design. For the time
           being, these sizes cover the 5 most common flyout usecases for web.
         </Text>
-      </div>
-    </div>
-  </div>
+      </Box>
+    </Box>
+  </Box>
 );
 
 card('Ideal Direction Preference',
@@ -232,9 +233,11 @@ Below are several sample code snippets with corresponding live Flyout examples o
 \`\`\`
 `,
 atom => (
-  <div>
-    <div className="py2">
-      <span className="px1"><Text bold inline>#1</Text></span>
+  <Box>
+    <Box alignItems="center" padding={{ y: 2 }} xs={{ display: 'flex' }}>
+      <Box padding={{ x: 1 }}>
+        <Text bold inline>#1</Text>
+      </Box>
       <Flyout
         accessibilityCloseLabel="close"
         idealDirection="right"
@@ -253,9 +256,11 @@ atom => (
       >
         {moreFlyout}
       </Flyout>
-    </div>
-    <div className="py2">
-      <span className="px1"><Text bold inline>#2</Text></span>
+    </Box>
+    <Box alignItems="center" padding={{ y: 2 }} xs={{ display: 'flex' }}>
+      <Box padding={{ x: 1 }}>
+        <Text bold inline>#2</Text>
+      </Box>
       <Flyout
         accessibilityCloseLabel="close"
         idealDirection="right"
@@ -273,9 +278,11 @@ atom => (
       >
         {profileFlyout}
       </Flyout>
-    </div>
-    <div className="py2">
-      <span className="px1"><Text bold inline>#3</Text></span>
+    </Box>
+    <Box alignItems="center" padding={{ y: 2 }} xs={{ display: 'flex' }}>
+      <Box padding={{ x: 1 }}>
+        <Text bold inline>#3</Text>
+      </Box>
       <Flyout
         accessibilityCloseLabel="close"
         isOpen={!!atom.deref().add}
@@ -292,9 +299,11 @@ atom => (
       >
         {plusFlyout}
       </Flyout>
-    </div>
-    <div className="py2">
-      <span className="px1"><Text bold inline>#4</Text></span>
+    </Box>
+    <Box alignItems="center" padding={{ y: 2 }} xs={{ display: 'flex' }}>
+      <Box padding={{ x: 1 }}>
+        <Text bold inline>#4</Text>
+      </Box>
       <Flyout
         accessibilityCloseLabel="close"
         idealDirection="up"
@@ -311,6 +320,6 @@ atom => (
       >
         {helpFlyout}
       </Flyout>
-    </div>
-  </div>
+    </Box>
+  </Box>
 ));

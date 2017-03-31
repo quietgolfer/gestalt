@@ -10,7 +10,7 @@ import IconButton from '../../IconButton/IconButton';
 
 ns('SearchField');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

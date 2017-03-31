@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
 import Button from '../../Button/Button';
 import Divider from '../../Divider/Divider';
 import ErrorFlyout from '../ErrorFlyout';
@@ -13,7 +14,7 @@ ns('ErrorFlyout',
 is only for use with errors on other types of form fields.`
 );
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {
@@ -26,21 +27,21 @@ type Props = {
 };
 \`\`\`
 `,
-  <div>
-    <div className="py2">
+  <Box>
+    <Box padding={{ y: 2 }}>
       <Heading size="xs">Sizes</Heading>
       <Divider />
       <Text><b>xs:</b> 185px</Text>
       <Text><b>sm:</b> 230px</Text>
       <Text><b>md:</b> 320px</Text>
-      <div className="py2">
+      <Box padding={{ y: 2 }}>
         <Text italic>
           Sizes are subject to change as we continue to gather input from design. For the time
           being, these sizes cover the 3 most common usecases for web.
         </Text>
-      </div>
-    </div>
-  </div>
+      </Box>
+    </Box>
+  </Box>
 );
 
 card('Ideal Direction Preference',
@@ -78,8 +79,8 @@ md`
 \`\`\`
 `,
 atom => (
-  <div className="flex">
-    <div className="py2">
+  <Box xs={{ display: 'flex' }}>
+    <Box padding={{ y: 2 }} className="py2">
       <ErrorFlyout
         idealDirection="down"
         isOpen={atom.deref().open}
@@ -93,7 +94,6 @@ atom => (
           />
         }
       />
-    </div>
-
-  </div>
+    </Box>
+  </Box>
 ));

@@ -10,10 +10,10 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('RadioButton');
 
-card('PropTypes',
+card('FlowTypes',
 md`
 \`\`\`jsx
-type props: {
+type Props = {
   checked?: boolean,
   id: string,
   name?: string, // the name given for all radio buttons in a single group

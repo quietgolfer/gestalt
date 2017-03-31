@@ -10,7 +10,7 @@ ns('IconButton',
 'The IconButton component allows you to define an action with a specific Icon.'
 );
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type Props = {

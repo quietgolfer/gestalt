@@ -12,7 +12,7 @@ In response, we've added a few extra super-powers to the regular Image tag to
 make it even more awesome.
 `);
 
-card('FlowType',
+card('FlowTypes',
 md`\`\`\`js
 type ImageProps = {
   alt: string,

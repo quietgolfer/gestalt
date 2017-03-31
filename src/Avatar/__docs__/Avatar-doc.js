@@ -9,7 +9,7 @@ import { ns } from '../../../.corkboard/cards';
 ns('Avatar',
 'You can use an `Avatar` to represent a user. Every Avatar image has a subtle color wash.');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type AvatarProps = {

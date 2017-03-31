@@ -10,7 +10,7 @@ import Text from '../../Text/Text';
 
 ns('Link');
 
-card('FlowType',
+card('FlowTypes',
   md`
 \`\`\`js
 type LinkProps = {

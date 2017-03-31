@@ -10,7 +10,7 @@ ns(
   putting a \`Mask\` on it.
   `);
 
-card('FlowType',
+card('FlowTypes',
   md`
 \`\`\`js
 type Props = {

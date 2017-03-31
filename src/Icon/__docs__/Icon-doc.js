@@ -9,7 +9,7 @@ import { ns } from '../../../.corkboard/cards';
 
 ns('Icon');
 
-card('FlowType',
+card('FlowTypes',
 md`
 \`\`\`jsx
 type IconProps = {

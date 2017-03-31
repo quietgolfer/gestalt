@@ -1,7 +1,10 @@
 // @flow
 import React from 'react';
 import { card, md } from 'corkboard';
+import Box from '../../Box/Box';
+import Label from '../../Label/Label';
 import SelectList from '../SelectList';
+import Text from '../../Text/Text';
 import { ns } from '../../../.corkboard/cards';
 
 ns('SelectList');
@@ -57,7 +60,11 @@ a user to choose from.
 `,
 atom => (
   <div>
-    <label htmlFor="country">Country:</label>
+    <Box padding={{ y: 1 }}>
+      <Label htmlFor="country">
+        <Text>Country</Text>
+      </Label>
+    </Box>
     <SelectList
       id="country"
       name="country"
