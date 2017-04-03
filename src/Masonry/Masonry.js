@@ -17,6 +17,7 @@ type Props<T> = {|
   minCols: number,
   loadItems: () => void,
   scrollContainer: HTMLElement,
+  serverRender: boolean,
 |};
 
 type GridItemType<T> = {
@@ -87,7 +88,7 @@ class Masonry<T> extends Component {
       fetchingFrom: false,
       height: 0,
       gridItems: [],
-      serverItems: this.serverItems(props.items),
+      serverItems: props.serverRender ? this.serverItems(props.items) : null,
       minHeight: 0,
       mounted: false,
       viewportBottom: 0,
@@ -763,6 +764,12 @@ Masonry.propTypes = {
     scrollTop: React.PropTypes.number,
     scrollY: React.PropTypes.number,
   }),
+
+  /**
+   * Whether or not this instance is server rendered.
+   * TODO: If true, generate and output CSS for the initial server render.
+   */
+  serverRender: React.PropTypes.bool,
 };
 
 Masonry.defaultProps = {
@@ -770,6 +777,7 @@ Masonry.defaultProps = {
   gutterWidth: null,
   minCols: 3,
   scrollContainer: typeof window !== 'undefined' ? window : null,
+  serverRender: false,
   loadItems: () => {},
 };
 

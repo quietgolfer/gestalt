@@ -125,6 +125,7 @@ export default class MasonryExample extends React.Component {
           flexible={Boolean(this.props.flexible)}
           items={this.state.pins}
           ref={(ref) => { this.gridRef = ref; }}
+          serverRender
           {...dynamicGridProps}
         />
         <div className="afterGrid" />
