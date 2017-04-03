@@ -9,6 +9,8 @@
 .item {
   composes: flex-auto no-border pointer px2 m0 from global;
   border-radius: 3px;
+  flex-basis: 0;
+  flex-shrink: 1;
   height: 36px;
 }
 

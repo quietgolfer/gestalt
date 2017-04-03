@@ -16,7 +16,6 @@ export default function SegmentedControl(props: Props) {
     onChange,
     selectedItemIndex,
   } = props;
-  const itemWidth = 1 / items.length;
   return (
     <div className={styles.SegmentedControl} role="tablist">
       {items.map((item, i) => {
@@ -27,11 +26,11 @@ export default function SegmentedControl(props: Props) {
         });
         return (
           <button
+            aria-selected={isSelected}
             className={cs}
             key={i}
             onClick={e => onChange(i, e)}
             role="tab"
-            style={{ width: `${itemWidth}%` }}
           >
             <Text
               bold

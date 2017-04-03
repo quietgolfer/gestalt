@@ -1,0 +1,36 @@
+exports[`test SegmentedControl renders 1`] = `
+<div
+  className="SegmentedControl"
+  role="tablist">
+  <button
+    aria-selected={true}
+    className="item itemIsSelected"
+    onClick={[Function]}
+    role="tab">
+    <div
+      className="antialiased sans-serif text-lg darkGray text-center bold truncate">
+      News
+    </div>
+  </button>
+  <button
+    aria-selected={false}
+    className="item itemIsNotSelected"
+    onClick={[Function]}
+    role="tab">
+    <div
+      className="antialiased sans-serif text-lg gray text-center bold truncate">
+      You
+    </div>
+  </button>
+  <button
+    aria-selected={false}
+    className="item itemIsNotSelected"
+    onClick={[Function]}
+    role="tab">
+    <div
+      className="antialiased sans-serif text-lg gray text-center bold truncate">
+      Messages
+    </div>
+  </button>
+</div>
+`;
