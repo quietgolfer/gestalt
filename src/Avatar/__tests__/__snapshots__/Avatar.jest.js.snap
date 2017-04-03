@@ -2,13 +2,7 @@ exports[`test Avatar renders multibyte names 1`] = `
 <div
   className="col-12">
   <div
-    aria-label="💩 astral"
-    className="box xs-flex items-center grayBg justify-center relative circle"
-    style={
-      Object {
-        "fontSize": 50,
-      }
-    }>
+    className="box grayBg relative circle">
     <div
       className="box relative"
       style={
@@ -17,11 +11,26 @@ exports[`test Avatar renders multibyte names 1`] = `
         }
       } />
     <div
-      className="box">
-      <span
-        className="white bold antialiased">
-        💩
-      </span>
+      className="box bottom-0 left-0 absolute right-0 top-0">
+      <svg
+        preserveAspectRatio="xMidYMid meet"
+        version="1.1"
+        viewBox="-50 -50 100 100"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg">
+        <title>
+          💩 astral
+        </title>
+        <text
+          dominantBaseline="central"
+          fill="#FFFFFF"
+          fontSize="50px"
+          fontWeight="bold"
+          lineHeight="50px"
+          textAnchor="middle">
+          💩
+        </text>
+      </svg>
     </div>
   </div>
 </div>
