@@ -16,7 +16,7 @@ export default class MasonryExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pins: props.initialPins,
+      items: props.initialPins,
     };
   }
 
@@ -24,6 +24,12 @@ export default class MasonryExample extends React.Component {
     window.addEventListener('trigger-reflow', () => {
       this.gridRef.reflow();
       this.forceUpdate();
+    });
+
+    window.addEventListener('set-masonry-items', (e) => {
+      this.setState({
+        items: e.detail.items,
+      });
     });
 
     // Trigger a re-render in case we need to render /w scrollContainer.
@@ -34,7 +40,7 @@ export default class MasonryExample extends React.Component {
     });
   }
 
-  getPins = (meta = {}, collage) => {
+  getItems = (meta = {}, collage) => {
     const from = meta.from || 0;
     let until = from + 20;
 
@@ -46,9 +52,9 @@ export default class MasonryExample extends React.Component {
     }
 
     return new Promise((resolve) => {
-      const pins = [];
+      const items = [];
       for (let i = from; i < until; i += 1) {
-        pins.push({
+        items.push({
           name: `foo ${i}`,
           height: baseHeight + i,
           color: getRandomColor(),
@@ -58,7 +64,7 @@ export default class MasonryExample extends React.Component {
       window.TEST_FETCH_COUNTS += 1;
       window.NEXT_FETCH = () => {
         window.NEXT_FETCH = null;
-        resolve(pins);
+        resolve(items);
       };
       if (!this.props.manualFetch) {
         window.NEXT_FETCH();
@@ -75,10 +81,10 @@ export default class MasonryExample extends React.Component {
 
 
   loadItems = (meta) => {
-    this.getPins(meta, this.props.collage)
-      .then((newPins) => {
+    this.getItems(meta, this.props.collage)
+      .then((newItems) => {
         this.setState({
-          pins: this.state.pins.concat(newPins),
+          items: this.state.items.concat(newItems),
         });
       });
   }
@@ -123,7 +129,7 @@ export default class MasonryExample extends React.Component {
         <Masonry
           comp={this.renderItem}
           flexible={Boolean(this.props.flexible)}
-          items={this.state.pins}
+          items={this.state.items}
           ref={(ref) => { this.gridRef = ref; }}
           serverRender
           {...dynamicGridProps}

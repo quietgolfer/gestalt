@@ -4,7 +4,7 @@ import assert from 'assert';
 import ghost from 'ghostjs';
 
 const PIN_SIZE = 236;
-const RESIZE_DEBOUNCE = 200;
+const RESIZE_DEBOUNCE = 300;
 
 const selectors = {
   gridItem: '[class^="Grid__Grid__Item"]',

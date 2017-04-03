@@ -139,16 +139,18 @@ class Masonry<T> extends Component {
       });
     }
 
-    if (items.length > this.props.items.length) {
-      // Insert new items.
-      this.updateItems(items);
-    } else {
-      // Shallow compare all items, if any change reflow the grid.
-      for (let i = 0; i < items.length; i += 1) {
-        if (items[i] !== this.props.items[i]) {
-          this.setGridItems(items);
-          break;
-        }
+    // Shallow compare all items, if any change reflow the grid.
+    for (let i = 0; i < items.length; i += 1) {
+      // We've reached the end of our current props and everything matches.
+      // If we hit this case it means we need to insert new items.
+      if (this.props.items[i] === undefined) {
+        this.updateItems(items);
+        return;
+      }
+      // Items don't match, reset grid items.
+      if (items[i] !== this.props.items[i]) {
+        this.setGridItems(items);
+        return;
       }
     }
   }
