@@ -1,3 +1,23 @@
+exports[`test Box has correct *-flex classes when display is flex 1`] = `
+<div
+  className="box xs-flex sm-flex md-flex lg-flex" />
+`;
+
+exports[`test Box has correct *-flex-column classes when display is flexColumn 1`] = `
+<div
+  className="box xs-flex-column sm-flex-column md-flex-column lg-flex-column" />
+`;
+
+exports[`test Box has correct *-hide classes when display is false 1`] = `
+<div
+  className="box xs-hide sm-hide md-hide lg-hide" />
+`;
+
+exports[`test Box has correct *-inline-block classes when display is inlineBlock 1`] = `
+<div
+  className="box xs-inline-block sm-inline-block md-inline-block lg-inline-block" />
+`;
+
 exports[`test Box renders 1`] = `
 <div
   className="box" />

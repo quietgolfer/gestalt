@@ -83,7 +83,7 @@ const xs = (value: ResponsiveProps): Style => {
   if (!value) { return identity(); }
   return map(c => styles[c], prefix('xs')(concat(
     value.column ? column(value.column) : identity(),
-    value.display ? display(value.display) : identity()
+    typeof value.display !== 'undefined' ? display(value.display) : identity()
   )));
 };
 
@@ -91,7 +91,7 @@ const sm = (value: ResponsiveProps): Style => {
   if (!value) { return identity(); }
   return map(c => styles[c], prefix('sm')(concat(
     value.column ? column(value.column) : identity(),
-    value.display ? display(value.display) : identity()
+    typeof value.display !== 'undefined' ? display(value.display) : identity()
   )));
 };
 
@@ -99,7 +99,7 @@ const md = (value: ResponsiveProps): Style => {
   if (!value) { return identity(); }
   return map(c => styles[c], prefix('md')(concat(
     value.column ? column(value.column) : identity(),
-    value.display ? display(value.display) : identity()
+    typeof value.display !== 'undefined' ? display(value.display) : identity()
   )));
 };
 
@@ -107,7 +107,7 @@ const lg = (value: ResponsiveProps): Style => {
   if (!value) { return identity(); }
   return map(c => styles[c], prefix('lg')(concat(
     value.column ? column(value.column) : identity(),
-    value.display ? display(value.display) : identity()
+    typeof value.display !== 'undefined' ? display(value.display) : identity()
   )));
 };
 
