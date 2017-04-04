@@ -1,0 +1,111 @@
+exports[`test Pog active renders 1`] = `
+<div
+  className="pog transparent active"
+  style={
+    Object {
+      "height": 40,
+      "width": 40,
+    }
+  }>
+  <div
+    className="box circle">
+    <svg
+      aria-label=""
+      className="icon gray block"
+      height={20}
+      role="img"
+      viewBox="0 0 16 16"
+      width={20}>
+      <title>
+        
+      </title>
+      <path
+        d="test-file-stub" />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`test Pog focused renders 1`] = `
+<div
+  className="pog transparent focused"
+  style={
+    Object {
+      "height": 40,
+      "width": 40,
+    }
+  }>
+  <div
+    className="box circle">
+    <svg
+      aria-label=""
+      className="icon gray block"
+      height={20}
+      role="img"
+      viewBox="0 0 16 16"
+      width={20}>
+      <title>
+        
+      </title>
+      <path
+        d="test-file-stub" />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`test Pog hovered renders 1`] = `
+<div
+  className="pog transparent hovered"
+  style={
+    Object {
+      "height": 40,
+      "width": 40,
+    }
+  }>
+  <div
+    className="box circle">
+    <svg
+      aria-label=""
+      className="icon gray block"
+      height={20}
+      role="img"
+      viewBox="0 0 16 16"
+      width={20}>
+      <title>
+        
+      </title>
+      <path
+        d="test-file-stub" />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`test Pog renders 1`] = `
+<div
+  className="pog transparent"
+  style={
+    Object {
+      "height": 40,
+      "width": 40,
+    }
+  }>
+  <div
+    className="box circle">
+    <svg
+      aria-label=""
+      className="icon gray block"
+      height={20}
+      role="img"
+      viewBox="0 0 16 16"
+      width={20}>
+      <title>
+        
+      </title>
+      <path
+        d="test-file-stub" />
+    </svg>
+  </div>
+</div>
+`;

@@ -4,43 +4,12 @@
 
 .button {
   composes: block from global;
-  composes: circle from global;
   composes: no-border from global;
   composes: p0 from global;
   composes: pointer from global;
+  background: transparent;
 }
 
 .button:focus {
-  outline: 3px solid rgba(0, 132, 255, 0.3);
-  outline-offset: 1px;
-}
-
-.disableFocusOutline:focus {
   outline: none;
-}
-
-.transparent {
-  composes: transparentBg from "../Colors.css";
-}
-
-.transparent:hover,
-.transparent:focus {
-  background-color: rgba(0, 0, 0, 0.06);
-}
-
-.transparent:active {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.lightGray {
-  composes: lightGrayBg from "../Colors.css";
-}
-
-.lightGray:hover,
-.lightGray:focus {
-  background-color: color(var(--lightGray) blackness(+ 6%));
-}
-
-.lightGray:active {
-  background-color: color(var(--lightGray) blackness(+ 10%));
 }

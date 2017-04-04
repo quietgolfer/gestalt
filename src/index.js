@@ -30,6 +30,7 @@ import Link from './Link/Link';
 import Mask from './Mask/Mask';
 import Masonry from './Masonry/Masonry';
 import Modal from './Modal/Modal';
+import Pog from './Pog/Pog';
 import RadioButton from './RadioButton/RadioButton';
 import ScrollFetch from './ScrollFetch/ScrollFetch';
 import SegmentedControl from './SegmentedControl/SegmentedControl';
@@ -66,6 +67,7 @@ export {
   Link,
   Mask,
   Modal,
+  Pog,
   RadioButton,
   ScrollFetch,
   SearchField,

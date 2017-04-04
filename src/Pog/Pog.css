@@ -1,0 +1,40 @@
+:root {
+  --lightGray: #efefef;
+}
+
+.pog {
+  composes: circle from global;
+  composes: flex from global;
+  composes: items-center from global;
+  composes: justify-center from global;
+}
+
+.focused {
+  box-shadow: 0 0 0 1px #fff, 0 0 1px 4px rgba(0, 132, 255, 0.3);
+}
+
+.transparent {
+  composes: transparentBg from "../Colors.css";
+}
+
+.transparent.hovered,
+.transparent.focused {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.transparent.active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.lightGray {
+  composes: lightGrayBg from "../Colors.css";
+}
+
+.lightGray.hovered,
+.lightGray.focused {
+  background-color: color(var(--lightGray) blackness(+ 6%));
+}
+
+.lightGray.active {
+  background-color: color(var(--lightGray) blackness(+ 10%));
+}
