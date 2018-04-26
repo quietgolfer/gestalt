@@ -19,9 +19,10 @@ type IconProps = {
    * This allows us to type check for a valid icon name based on the keys from the list of
    * icons shown below.
    */
-  icon: $Keys<typeof paths>,
+  icon?: $Keys<typeof paths>,
   inline?: boolean,
-  size?: number, /* default: 16 */
+  size?: number, /* default: 16 */,
+  dangerouslySetSvgPath?: { __path: string },
 };
 \`\`\`
 `
